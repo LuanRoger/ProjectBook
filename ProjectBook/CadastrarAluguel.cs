@@ -1,0 +1,92 @@
+﻿using System;
+using System.Data;
+using System.Windows.Forms;
+using ProjectBook.DB.SqlServerExpress;
+using ProjectBook.Livros;
+
+namespace ProjectBook
+{
+    public partial class CadastrarAluguel : Form
+    {
+        private LivrosDb livrosDb = new LivrosDb();
+        private ClienteDb clienteDb = new ClienteDb();
+        private AluguelDb aluguelDb = new AluguelDb();
+        public CadastrarAluguel()
+        {
+            InitializeComponent();
+        }
+
+        private void btnBuscarLivroAluguel_Click(object sender, EventArgs e)
+        {
+            string tituloParaBusca = txtBuscarLivroAluguel.Text;
+
+            if(Verificadores.VerificarStrings(tituloParaBusca))
+            {
+                MessageBox.Show(Properties.Resources.preencherCampos_MessageBox, Properties.Resources.error_MessageBox ,
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            livrosDb.AbrirConexaoDb();
+            DataTable table = livrosDb.BuscarLivrosTitulo(tituloParaBusca);
+            livrosDb.FechaConecxaoDb();
+
+            //Preencher campos de livros
+            try
+            {
+                txtTituloLivroAluguel.Text = table.Rows[0][1].ToString();
+                txtAutorLivroAluguel.Text = table.Rows[0][2].ToString();
+            }catch
+            {
+                MessageBox.Show(Properties.Resources.livroNaoExiste_MessageBox, Properties.Resources.error_MessageBox,
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnBuscarCliente_Click(object sender, EventArgs e)
+        {
+            string clienteParaBuscar = txtBuscarClienteAluguel.Text;
+
+            if(Verificadores.VerificarStrings(clienteParaBuscar))
+            {
+                MessageBox.Show(Properties.Resources.preencherCampos_MessageBox, Properties.Resources.error_MessageBox,
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            livrosDb.AbrirConexaoDb();
+            DataTable table = clienteDb.BuscarClienteNome(clienteParaBuscar);
+            livrosDb.FechaConecxaoDb();
+
+            //Preencher campos de clientes
+            try
+            {
+                txtNomeClienteAluguel.Text = table.Rows[0][1].ToString();
+                txtEnderecoClienteAluguel.Text = table.Rows[0][2].ToString();
+                txtTelefoneClienteAluguel.Text = table.Rows[0][6].ToString();
+                txtEmailClienteAluguel.Text = table.Rows[0][7].ToString();
+            }
+            catch
+            {
+                MessageBox.Show(Properties.Resources.clienteNaoExiste_MessageBox, Properties.Resources.error_MessageBox,
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnSalvarAluguel_Click(object sender, EventArgs e)
+        {
+            Aluguel aluguel = Aluguel.AluguelFactory(txtTituloLivroAluguel.Text, txtAutorLivroAluguel.Text, txtNomeClienteAluguel.Text,
+                dtpDataEntrega.Value, dtpDataRecebimento.Value, Properties.Resources.aluguelStatus_Pendente);
+            if (Verificadores.VerificarCamposAluguel(aluguel))
+            {
+                MessageBox.Show(Properties.Resources.preencherCampos_MessageBox, Properties.Resources.error_MessageBox,
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            aluguelDb.AbrirConexaoDb();
+            aluguelDb.CadastrarAluguel(aluguel);
+            aluguelDb.FechaConecxaoDb();
+        }
+    }
+}
