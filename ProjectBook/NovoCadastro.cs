@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Text;
@@ -26,8 +27,21 @@ namespace ProjectBook
 
         private void btnSalvarLivro_Click(object sender, EventArgs e)
         {
-            Livro livro = Livro.LivroFactory(txtTituloLivro.Text, txtAutorLivro.Text, txtEditoraLivro.Text, txtEdicaoLivro.Text,
-                   txtAno.Text, txtGenero.Text, txtIsbn.Text);
+            Livro livro;
+            //Aplicar a formatação na instânciação do cliente
+            if (ConfigurationManager.AppSettings["formatarLivro"] == "1")
+            {
+                livro = new Livro(txtTituloLivro.Text.ToUpper(), txtAutorLivro.Text.ToUpper(),
+                    txtEditoraLivro.Text.ToUpper(), txtEdicaoLivro.Text.ToUpper(), txtAno.Text.ToUpper(),
+                    txtGenero.Text.ToUpper(), txtIsbn.Text.ToUpper());
+            }
+            else
+            {
+                livro = new Livro(txtTituloLivro.Text, txtAutorLivro.Text,
+                    txtEditoraLivro.Text, txtEdicaoLivro.Text, txtAno.Text,
+                    txtGenero.Text, txtIsbn.Text);
+            }
+            
             if (Verificadores.VerificarCamposLivros(livro))
             {
                 MessageBox.Show(Properties.Resources.preencherCampos_MessageBox, Properties.Resources.error_MessageBox,

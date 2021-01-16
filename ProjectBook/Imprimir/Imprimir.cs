@@ -7,7 +7,7 @@ namespace ProjectBook
 {
     class Imprimir
     {
-        DGVPrinter printer = new DGVPrinter();
+        private DGVPrinter printer = new DGVPrinter();
 
         public void ImprimirSemVisualizacaoModelo(DataGridView dataGrid)
         {
@@ -16,7 +16,6 @@ namespace ProjectBook
             printer.Title = "Relatorio de livros";
             printer.TitleAlignment = StringAlignment.Center;
             printer.TitleFont = new Font("Arial", 18, FontStyle.Bold, GraphicsUnit.Point);
-            printer.SubTitle = "Casa Espirita Mão de Luz";
             printer.SubTitleAlignment = StringAlignment.Center;
             printer.SubTitleFont = new Font("Arial", 12, FontStyle.Bold, GraphicsUnit.Point);
             printer.SubTitleFormatFlags = StringFormatFlags.LineLimit | StringFormatFlags.NoClip;
@@ -35,7 +34,6 @@ namespace ProjectBook
             printer.Title = "Relatorio de livros";
             printer.TitleAlignment = StringAlignment.Center;
             printer.TitleFont = new Font("Arial", 18, FontStyle.Bold, GraphicsUnit.Point);
-            printer.SubTitle = "Casa Espirita Mão de Luz";
             printer.SubTitleAlignment = StringAlignment.Center;
             printer.SubTitleFont = new Font("Arial", 12, FontStyle.Bold, GraphicsUnit.Point);
             printer.SubTitleFormatFlags = StringFormatFlags.LineLimit | StringFormatFlags.NoClip;

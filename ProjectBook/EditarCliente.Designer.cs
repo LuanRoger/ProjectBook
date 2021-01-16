@@ -44,16 +44,16 @@ namespace ProjectBook
             this.label4 = new System.Windows.Forms.Label();
             this.cmbNovoUf = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.txtNovoCep = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.txtNovoTelefone1 = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.txtNovoTelefone2 = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtNovoEmail = new System.Windows.Forms.TextBox();
             this.btnSalvarEditarCliente = new System.Windows.Forms.Button();
             this.btnLimparEditarCliente = new System.Windows.Forms.Button();
             this.btnCancelarEditarCliente = new System.Windows.Forms.Button();
+            this.txtNovoCep = new System.Windows.Forms.MaskedTextBox();
+            this.txtNovoTelefone1 = new System.Windows.Forms.MaskedTextBox();
+            this.txtNovoTelefone2 = new System.Windows.Forms.MaskedTextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -124,7 +124,7 @@ namespace ProjectBook
             // 
             this.txtNovoNome.Location = new System.Drawing.Point(12, 118);
             this.txtNovoNome.Name = "txtNovoNome";
-            this.txtNovoNome.Size = new System.Drawing.Size(292, 23);
+            this.txtNovoNome.Size = new System.Drawing.Size(300, 23);
             this.txtNovoNome.TabIndex = 2;
             // 
             // label2
@@ -202,7 +202,7 @@ namespace ProjectBook
             "DF"});
             this.cmbNovoUf.Location = new System.Drawing.Point(243, 166);
             this.cmbNovoUf.Name = "cmbNovoUf";
-            this.cmbNovoUf.Size = new System.Drawing.Size(61, 23);
+            this.cmbNovoUf.Size = new System.Drawing.Size(69, 23);
             this.cmbNovoUf.TabIndex = 8;
             // 
             // label5
@@ -214,13 +214,6 @@ namespace ProjectBook
             this.label5.TabIndex = 9;
             this.label5.Text = "CEP:";
             // 
-            // txtNovoCep
-            // 
-            this.txtNovoCep.Location = new System.Drawing.Point(243, 215);
-            this.txtNovoCep.Name = "txtNovoCep";
-            this.txtNovoCep.Size = new System.Drawing.Size(61, 23);
-            this.txtNovoCep.TabIndex = 10;
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -230,13 +223,6 @@ namespace ProjectBook
             this.label6.TabIndex = 11;
             this.label6.Text = "*Telefone 1:";
             // 
-            // txtNovoTelefone1
-            // 
-            this.txtNovoTelefone1.Location = new System.Drawing.Point(12, 263);
-            this.txtNovoTelefone1.Name = "txtNovoTelefone1";
-            this.txtNovoTelefone1.Size = new System.Drawing.Size(87, 23);
-            this.txtNovoTelefone1.TabIndex = 12;
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -245,13 +231,6 @@ namespace ProjectBook
             this.label7.Size = new System.Drawing.Size(63, 15);
             this.label7.TabIndex = 13;
             this.label7.Text = "Telefone 2:";
-            // 
-            // txtNovoTelefone2
-            // 
-            this.txtNovoTelefone2.Location = new System.Drawing.Point(106, 262);
-            this.txtNovoTelefone2.Name = "txtNovoTelefone2";
-            this.txtNovoTelefone2.Size = new System.Drawing.Size(87, 23);
-            this.txtNovoTelefone2.TabIndex = 14;
             // 
             // label8
             // 
@@ -264,9 +243,9 @@ namespace ProjectBook
             // 
             // txtNovoEmail
             // 
-            this.txtNovoEmail.Location = new System.Drawing.Point(200, 262);
+            this.txtNovoEmail.Location = new System.Drawing.Point(198, 262);
             this.txtNovoEmail.Name = "txtNovoEmail";
-            this.txtNovoEmail.Size = new System.Drawing.Size(104, 23);
+            this.txtNovoEmail.Size = new System.Drawing.Size(114, 23);
             this.txtNovoEmail.TabIndex = 16;
             // 
             // btnSalvarEditarCliente
@@ -299,21 +278,45 @@ namespace ProjectBook
             this.btnCancelarEditarCliente.UseVisualStyleBackColor = true;
             this.btnCancelarEditarCliente.Click += new System.EventHandler(this.btnCancelarEditarCliente_Click);
             // 
+            // txtNovoCep
+            // 
+            this.txtNovoCep.Location = new System.Drawing.Point(243, 214);
+            this.txtNovoCep.Mask = "00000-000";
+            this.txtNovoCep.Name = "txtNovoCep";
+            this.txtNovoCep.Size = new System.Drawing.Size(69, 23);
+            this.txtNovoCep.TabIndex = 20;
+            // 
+            // txtNovoTelefone1
+            // 
+            this.txtNovoTelefone1.Location = new System.Drawing.Point(13, 262);
+            this.txtNovoTelefone1.Mask = "(99) 0000-00000";
+            this.txtNovoTelefone1.Name = "txtNovoTelefone1";
+            this.txtNovoTelefone1.Size = new System.Drawing.Size(87, 23);
+            this.txtNovoTelefone1.TabIndex = 21;
+            // 
+            // txtNovoTelefone2
+            // 
+            this.txtNovoTelefone2.Location = new System.Drawing.Point(106, 262);
+            this.txtNovoTelefone2.Mask = "(99) 0000-00000";
+            this.txtNovoTelefone2.Name = "txtNovoTelefone2";
+            this.txtNovoTelefone2.Size = new System.Drawing.Size(87, 23);
+            this.txtNovoTelefone2.TabIndex = 22;
+            // 
             // EditarCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(324, 345);
+            this.Controls.Add(this.txtNovoTelefone2);
+            this.Controls.Add(this.txtNovoTelefone1);
+            this.Controls.Add(this.txtNovoCep);
             this.Controls.Add(this.btnCancelarEditarCliente);
             this.Controls.Add(this.btnLimparEditarCliente);
             this.Controls.Add(this.btnSalvarEditarCliente);
             this.Controls.Add(this.txtNovoEmail);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.txtNovoTelefone2);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.txtNovoTelefone1);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.txtNovoCep);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.cmbNovoUf);
             this.Controls.Add(this.label4);
@@ -353,15 +356,15 @@ namespace ProjectBook
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cmbNovoUf;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtNovoCep;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtNovoTelefone1;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox txtNovoTelefone2;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtNovoEmail;
         private System.Windows.Forms.Button btnSalvarEditarCliente;
         private System.Windows.Forms.Button btnLimparEditarCliente;
         private System.Windows.Forms.Button btnCancelarEditarCliente;
+        private System.Windows.Forms.MaskedTextBox txtNovoCep;
+        private System.Windows.Forms.MaskedTextBox txtNovoTelefone1;
+        private System.Windows.Forms.MaskedTextBox txtNovoTelefone2;
     }
 }

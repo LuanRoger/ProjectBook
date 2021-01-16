@@ -30,13 +30,13 @@ namespace ProjectBook
             try
             {
                 aluguelDb.AbrirConexaoDb();
-                if (rabBuscarNomeCliente.Checked == true)
+                if (rabBuscarNomeCliente.Checked)
                 {
                     infoAluguel = aluguelDb.BuscarAluguelCliente(buscarEditarAluguel);
                     infoCliente = clienteDb.BuscarClienteNome(infoAluguel.Rows[0][2].ToString());
                     aluguelDb.FechaConecxaoDb();
                 }
-                else if (rabBuscarTituloLivro.Checked == true)
+                else if (rabBuscarTituloLivro.Checked)
                 {
                     infoAluguel = aluguelDb.BuscarAluguelLivro(buscarEditarAluguel);
                     infoCliente = clienteDb.BuscarClienteNome(infoAluguel.Rows[0][2].ToString());
@@ -52,9 +52,10 @@ namespace ProjectBook
                 MessageBox.Show("O livro ou o cliente não existem", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 aluguelDb.FechaConecxaoDb();
+                
                 return;
             }
-
+            
             PreencherCamposBuscaAluguel(infoAluguel, infoCliente);
         }
 

@@ -47,7 +47,7 @@ namespace ProjectBook
             this.dgvListaLivros.Name = "dgvListaLivros";
             this.dgvListaLivros.ReadOnly = true;
             this.dgvListaLivros.RowTemplate.Height = 25;
-            this.dgvListaLivros.Size = new System.Drawing.Size(415, 346);
+            this.dgvListaLivros.Size = new System.Drawing.Size(822, 472);
             this.dgvListaLivros.TabIndex = 0;
             // 
             // mnuListaLivros
@@ -57,7 +57,7 @@ namespace ProjectBook
             this.mnuImprimirLista});
             this.mnuListaLivros.Location = new System.Drawing.Point(0, 0);
             this.mnuListaLivros.Name = "mnuListaLivros";
-            this.mnuListaLivros.Size = new System.Drawing.Size(415, 24);
+            this.mnuListaLivros.Size = new System.Drawing.Size(822, 24);
             this.mnuListaLivros.TabIndex = 1;
             this.mnuListaLivros.Text = "menuStrip1";
             // 
@@ -72,7 +72,7 @@ namespace ProjectBook
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(415, 370);
+            this.ClientSize = new System.Drawing.Size(822, 496);
             this.Controls.Add(this.dgvListaLivros);
             this.Controls.Add(this.mnuListaLivros);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

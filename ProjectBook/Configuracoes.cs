@@ -20,6 +20,8 @@ namespace ProjectBook
         {
             if (ConfigurationManager.AppSettings["visualizarImpressao"] == "1") chbVisualizarImpressao.Checked = true;
             if (ConfigurationManager.AppSettings["dbPadrao"] == "sqlserverexpress") rabSqlServerExpress.Checked = true;
+            if (ConfigurationManager.AppSettings["formatarCliente"] == "1") chbFormatarCliente.Checked = true;
+            if (ConfigurationManager.AppSettings["formatarLivro"] == "1") chbFormatarLivro.Checked = true;
             txtStringConexao.Text = ConfigurationManager.ConnectionStrings["SqlConnectionString"].ConnectionString;
         }
 
@@ -31,6 +33,13 @@ namespace ProjectBook
             //Preferencias de impressão
             if (chbVisualizarImpressao.Checked) config.AppSettings.Settings["visualizarImpressao"].Value = "1";
             else config.AppSettings.Settings["visualizarImpressao"].Value = "0";
+            
+            //Formatação
+            if (chbFormatarCliente.Checked) config.AppSettings.Settings["formatarCliente"].Value = "1";
+            else config.AppSettings.Settings["formatarCliente"].Value = "0";
+
+            if (chbFormatarLivro.Checked) config.AppSettings.Settings["formatarLivro"].Value = "1";
+            else config.AppSettings.Settings["formatarLivro"].Value = "0";
 
             //String de conexão
             config.AppSettings.Settings["dbPadrao"].Value = "sqlserverexpress";

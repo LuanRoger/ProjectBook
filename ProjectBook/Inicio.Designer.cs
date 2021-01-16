@@ -81,10 +81,10 @@ namespace ProjectBook
             this.mnuExcluirCliente = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuConfig = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuSobre = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnDbTesteConexao = new System.Windows.Forms.Button();
             this.btnSairUsuario = new System.Windows.Forms.Button();
             this.lblNomeUsuario = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnDbTesteConexao = new System.Windows.Forms.Button();
             this.mnuInicio.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -394,6 +394,7 @@ namespace ProjectBook
             // 
             // mnuPesquisarAluguel
             // 
+            this.mnuPesquisarAluguel.Image = ((System.Drawing.Image)(resources.GetObject("mnuPesquisarAluguel.Image")));
             this.mnuPesquisarAluguel.Name = "mnuPesquisarAluguel";
             this.mnuPesquisarAluguel.Size = new System.Drawing.Size(196, 22);
             this.mnuPesquisarAluguel.Text = "Pesquisar livro alugado";
@@ -412,6 +413,7 @@ namespace ProjectBook
             // 
             // mnuPesquisarCliente
             // 
+            this.mnuPesquisarCliente.Image = ((System.Drawing.Image)(resources.GetObject("mnuPesquisarCliente.Image")));
             this.mnuPesquisarCliente.Name = "mnuPesquisarCliente";
             this.mnuPesquisarCliente.Size = new System.Drawing.Size(196, 22);
             this.mnuPesquisarCliente.Text = "Pesquisar cliente";
@@ -459,20 +461,6 @@ namespace ProjectBook
             this.mnuSobre.Size = new System.Drawing.Size(49, 20);
             this.mnuSobre.Text = "Sobre";
             // 
-            // btnDbTesteConexao
-            // 
-            this.btnDbTesteConexao.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDbTesteConexao.BackColor = System.Drawing.Color.Transparent;
-            this.btnDbTesteConexao.FlatAppearance.BorderSize = 0;
-            this.btnDbTesteConexao.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.btnDbTesteConexao.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDbTesteConexao.Image = ((System.Drawing.Image)(resources.GetObject("btnDbTesteConexao.Image")));
-            this.btnDbTesteConexao.Location = new System.Drawing.Point(505, 321);
-            this.btnDbTesteConexao.Name = "btnDbTesteConexao";
-            this.btnDbTesteConexao.Size = new System.Drawing.Size(22, 23);
-            this.btnDbTesteConexao.TabIndex = 9;
-            this.btnDbTesteConexao.UseVisualStyleBackColor = false;
-            // 
             // btnSairUsuario
             // 
             this.btnSairUsuario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -502,13 +490,14 @@ namespace ProjectBook
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnCount = 4;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Controls.Add(this.btnSairUsuario, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblNomeUsuario, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btnDbTesteConexao, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnDbTesteConexao, 3, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 24);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -516,6 +505,20 @@ namespace ProjectBook
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(530, 347);
             this.tableLayoutPanel1.TabIndex = 12;
+            // 
+            // btnDbTesteConexao
+            // 
+            this.btnDbTesteConexao.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDbTesteConexao.BackColor = System.Drawing.Color.Transparent;
+            this.btnDbTesteConexao.FlatAppearance.BorderSize = 0;
+            this.btnDbTesteConexao.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.btnDbTesteConexao.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDbTesteConexao.Image = ((System.Drawing.Image)(resources.GetObject("btnDbTesteConexao.Image")));
+            this.btnDbTesteConexao.Location = new System.Drawing.Point(505, 321);
+            this.btnDbTesteConexao.Name = "btnDbTesteConexao";
+            this.btnDbTesteConexao.Size = new System.Drawing.Size(22, 23);
+            this.btnDbTesteConexao.TabIndex = 9;
+            this.btnDbTesteConexao.UseVisualStyleBackColor = false;
             // 
             // Inicio
             // 
@@ -539,8 +542,6 @@ namespace ProjectBook
         }
 
         #endregion
-        private System.Windows.Forms.ToolStripMenuItem btmCadastro;
-        private System.Windows.Forms.ToolStripComboBox toolStripComboBox1;
         private System.Windows.Forms.ToolStripMenuItem contentsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem indexToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem searchToolStripMenuItem;
@@ -572,7 +573,6 @@ namespace ProjectBook
         private System.Windows.Forms.ToolStripMenuItem mnuExcluir;
         private System.Windows.Forms.ToolStripMenuItem mnuPesquisar;
         private System.Windows.Forms.ToolStripMenuItem mnuSobre;
-        private System.Windows.Forms.Button btnDbTesteConexao;
         private System.Windows.Forms.ToolStripMenuItem mnuTodosLivros;
         private System.Windows.Forms.ToolStripMenuItem mnuEditarCadastro;
         private System.Windows.Forms.ToolStripMenuItem mnuConfig;
@@ -596,6 +596,7 @@ namespace ProjectBook
         private System.Windows.Forms.Button btnSairUsuario;
         private System.Windows.Forms.Label lblNomeUsuario;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Button btnDbTesteConexao;
     }
 }
 

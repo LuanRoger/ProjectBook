@@ -3,6 +3,7 @@ using ProjectBook.Livros;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Text;
@@ -21,8 +22,19 @@ namespace ProjectBook
 
         private void btnSalvarEditarCliente_Click(object sender, EventArgs e)
         {
-            Cliente cliente = Cliente.ClienteFactory(txtNovoNome.Text, txtNovoEndereco.Text, txtNovoCidade.Text, cmbNovoUf.Text,
-                txtNovoCep.Text, txtNovoTelefone1.Text, txtNovoTelefone2.Text, txtNovoEmail.Text);
+            Cliente cliente;
+            //Aplicar a formatação na instânciação do cliente
+            if (ConfigurationManager.AppSettings["formatarCliente"] == "1")
+            {
+                cliente = new Cliente(txtNovoNome.Text.ToUpper(), txtNovoEndereco.Text.ToUpper(), txtNovoCidade.Text.ToUpper(), cmbNovoUf.Text.ToUpper(),
+                txtNovoCep.Text.ToUpper(), txtNovoTelefone1.Text.ToUpper(), txtNovoTelefone2.Text.ToUpper(), txtNovoEmail.Text);
+                
+            }
+            else
+            {
+                cliente = new Cliente(txtNovoNome.Text, txtNovoEndereco.Text, txtNovoCidade.Text, cmbNovoUf.Text,
+                    txtNovoCep.Text, txtNovoTelefone1.Text, txtNovoTelefone2.Text, txtNovoEmail.Text);
+            }
 
             if (Verificadores.VerificarCamposCliente(cliente))
             {
@@ -40,12 +52,29 @@ namespace ProjectBook
         private void btnCancelarEditarCliente_Click(object sender, EventArgs e) => this.Close();
         private void btnBucarCliente_Click(object sender, EventArgs e)
         {
+            string termoBuscaCliente = txtBuscarClienteEditar.Text;
+            if (Verificadores.VerificarStrings(termoBuscaCliente))
+            {
+                MessageBox.Show(Properties.Resources.preencherCampos_MessageBox, Properties.Resources.error_MessageBox,
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            
             clienteDb.AbrirConexaoDb();
-            if (rabBuscarClienteId.Checked) infoCliente = clienteDb.BuscarClienteId(txtBuscarClienteEditar.Text);
-            else if (rabBsucarClienteNome.Checked) infoCliente = clienteDb.BuscarClienteNome(txtBuscarClienteEditar.Text);
+            if (rabBuscarClienteId.Checked) infoCliente = clienteDb.BuscarClienteId(termoBuscaCliente);
+            else if (rabBsucarClienteNome.Checked) infoCliente = clienteDb.BuscarClienteNome(termoBuscaCliente);
             clienteDb.FechaConecxaoDb();
 
-            PreencherCampos(infoCliente);
+            //Caso retorne uma coluna vazia
+            try
+            {
+                PreencherCampos(infoCliente);
+            }
+            catch
+            {
+                MessageBox.Show("Faça uma pesquisa para continuar", Properties.Resources.error_MessageBox,
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         private void btnLimparEditarCliente_Click(object sender, EventArgs e) => LimparCampos();
 

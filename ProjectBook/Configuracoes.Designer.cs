@@ -37,8 +37,12 @@ namespace ProjectBook
             this.lblCaminhoArquivo = new System.Windows.Forms.Label();
             this.txtStringConexao = new System.Windows.Forms.TextBox();
             this.rabSqlServerExpress = new System.Windows.Forms.RadioButton();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.chbFormatarCliente = new System.Windows.Forms.CheckBox();
+            this.chbFormatarLivro = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -78,7 +82,7 @@ namespace ProjectBook
             this.groupBox2.Controls.Add(this.rabSqlServerExpress);
             this.groupBox2.Location = new System.Drawing.Point(12, 70);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(353, 105);
+            this.groupBox2.Size = new System.Drawing.Size(453, 105);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Banco de dados";
@@ -96,7 +100,7 @@ namespace ProjectBook
             // 
             this.txtStringConexao.Location = new System.Drawing.Point(6, 66);
             this.txtStringConexao.Name = "txtStringConexao";
-            this.txtStringConexao.Size = new System.Drawing.Size(341, 23);
+            this.txtStringConexao.Size = new System.Drawing.Size(441, 23);
             this.txtStringConexao.TabIndex = 1;
             // 
             // rabSqlServerExpress
@@ -110,16 +114,49 @@ namespace ProjectBook
             this.rabSqlServerExpress.Text = "SQL Server Express";
             this.rabSqlServerExpress.UseVisualStyleBackColor = true;
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.chbFormatarLivro);
+            this.groupBox3.Controls.Add(this.chbFormatarCliente);
+            this.groupBox3.Location = new System.Drawing.Point(165, 12);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(300, 52);
+            this.groupBox3.TabIndex = 3;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Formatar em maiúsculo";
+            // 
+            // chbFormatarCliente
+            // 
+            this.chbFormatarCliente.AutoSize = true;
+            this.chbFormatarCliente.Location = new System.Drawing.Point(6, 22);
+            this.chbFormatarCliente.Name = "chbFormatarCliente";
+            this.chbFormatarCliente.Size = new System.Drawing.Size(177, 19);
+            this.chbFormatarCliente.TabIndex = 0;
+            this.chbFormatarCliente.Text = "Clientes (E-mail não incluso)";
+            this.chbFormatarCliente.UseVisualStyleBackColor = true;
+            // 
+            // chbFormatarLivro
+            // 
+            this.chbFormatarLivro.AutoSize = true;
+            this.chbFormatarLivro.Location = new System.Drawing.Point(189, 22);
+            this.chbFormatarLivro.Name = "chbFormatarLivro";
+            this.chbFormatarLivro.Size = new System.Drawing.Size(57, 19);
+            this.chbFormatarLivro.TabIndex = 1;
+            this.chbFormatarLivro.Text = "Livros";
+            this.chbFormatarLivro.UseVisualStyleBackColor = true;
+            // 
             // Configuracoes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(477, 217);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnSalvarConfiguracoes);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "Configuracoes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Configurações";
@@ -127,6 +164,8 @@ namespace ProjectBook
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -140,5 +179,8 @@ namespace ProjectBook
         private System.Windows.Forms.Label lblCaminhoArquivo;
         private System.Windows.Forms.TextBox txtStringConexao;
         private System.Windows.Forms.RadioButton rabSqlServerExpress;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.CheckBox chbFormatarLivro;
+        private System.Windows.Forms.CheckBox chbFormatarCliente;
     }
 }

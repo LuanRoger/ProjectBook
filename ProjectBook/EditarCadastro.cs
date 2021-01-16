@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Text;
@@ -21,7 +22,7 @@ namespace ProjectBook
             InitializeComponent();
 
             //Colocar todos os generos no combobox
-            foreach (DataRow itens in db.VerTodosLivros().Rows)
+            foreach (DataRow itens in db.PegarGeneros().Rows)
             {
                 txtEditarGenero.Items.Add(itens["Genero"]);
             }
@@ -54,9 +55,22 @@ namespace ProjectBook
 
         private void btnSalvarEditar_Click(object sender, EventArgs e)
         {
-            Livro livro = Livro.LivroFactory(txtEditarTitulo.Text, txtEditarAutor.Text, txtEditarEditora.Text, txtEditarEdicao.Text,
-                txtEditarAno.Text, txtEditarGenero.Text, txtEditarIsbn.Text);
-            if (Verificadores.VerificarCamposLivros(livro) == true)
+            Livro livro;
+            //Aplicar a formatação na instânciação do cliente
+            if (ConfigurationManager.AppSettings["formatarLivro"] == "1")
+            {
+                livro = new Livro(txtEditarTitulo.Text.ToUpper(), txtEditarAutor.Text.ToUpper(),
+                    txtEditarEditora.Text.ToUpper(), txtEditarEdicao.Text.ToUpper(), txtEditarAno.Text.ToUpper(),
+                    txtEditarGenero.Text.ToUpper(), txtEditarIsbn.Text.ToUpper());
+            }
+            else
+            {
+                livro = new Livro(txtEditarTitulo.Text, txtEditarAutor.Text,
+                    txtEditarEditora.Text, txtEditarEdicao.Text, txtEditarAno.Text,
+                    txtEditarGenero.Text, txtEditarIsbn.Text);
+            }
+            
+            if (Verificadores.VerificarCamposLivros(livro))
             {
                 MessageBox.Show(Properties.Resources.preencherCampos_MessageBox, Properties.Resources.error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -92,6 +106,7 @@ namespace ProjectBook
         }
         private void LimparCamposEditar()
         {
+            txtEditarBuscar.Clear();
             txtEditarTitulo.Clear();
             txtEditarAutor.Clear();
             txtEditarEditora.Clear();
@@ -99,8 +114,6 @@ namespace ProjectBook
             txtEditarAno.Clear();
             txtEditarGenero.Text = "";
             txtEditarIsbn.Clear();
-
-            resultadoBusca = new DataTable();
         }
     }
 }

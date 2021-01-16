@@ -113,6 +113,7 @@ namespace ProjectBook
             this.Controls.Add(this.txtTermoPesquisa);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "PesquisaSeletiva";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

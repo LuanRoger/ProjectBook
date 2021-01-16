@@ -21,6 +21,7 @@ namespace ProjectBook
             mnuImprimirLista.Click += (sender, e) =>
             {
                 Imprimir imprimir = new Imprimir();
+                
                 if (ConfigurationManager.AppSettings["visualizarImpressao"] == "0") imprimir.ImprimirSemVisualizacaoModelo(dgvListaLivros);
                 else imprimir.ImprimirModelo(dgvListaLivros);
             };

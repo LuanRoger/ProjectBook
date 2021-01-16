@@ -38,15 +38,16 @@ namespace ProjectBook
             this.label4 = new System.Windows.Forms.Label();
             this.cmbEstadoCliente = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.txtTelefone1Cliente = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtEmailCliente = new System.Windows.Forms.TextBox();
             this.btnSalvarCliente = new System.Windows.Forms.Button();
             this.btnLimparCliente = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
-            this.txtCepCliente = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.txtTelefone2Cliente = new System.Windows.Forms.TextBox();
+            this.txtTelefone1Cliente = new System.Windows.Forms.MaskedTextBox();
+            this.txtTelefone2Cliente = new System.Windows.Forms.MaskedTextBox();
+            this.txtCepCliente = new System.Windows.Forms.MaskedTextBox();
+            this.btnCancelarCadastrarClientes = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -125,13 +126,6 @@ namespace ProjectBook
             this.label6.TabIndex = 10;
             this.label6.Text = "*Telefone 1:";
             // 
-            // txtTelefone1Cliente
-            // 
-            this.txtTelefone1Cliente.Location = new System.Drawing.Point(11, 155);
-            this.txtTelefone1Cliente.Name = "txtTelefone1Cliente";
-            this.txtTelefone1Cliente.Size = new System.Drawing.Size(75, 20);
-            this.txtTelefone1Cliente.TabIndex = 6;
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -145,12 +139,12 @@ namespace ProjectBook
             // 
             this.txtEmailCliente.Location = new System.Drawing.Point(171, 155);
             this.txtEmailCliente.Name = "txtEmailCliente";
-            this.txtEmailCliente.Size = new System.Drawing.Size(152, 20);
+            this.txtEmailCliente.Size = new System.Drawing.Size(153, 20);
             this.txtEmailCliente.TabIndex = 8;
             // 
             // btnSalvarCliente
             // 
-            this.btnSalvarCliente.Location = new System.Drawing.Point(182, 196);
+            this.btnSalvarCliente.Location = new System.Drawing.Point(112, 193);
             this.btnSalvarCliente.Name = "btnSalvarCliente";
             this.btnSalvarCliente.Size = new System.Drawing.Size(64, 20);
             this.btnSalvarCliente.TabIndex = 9;
@@ -160,7 +154,7 @@ namespace ProjectBook
             // 
             // btnLimparCliente
             // 
-            this.btnLimparCliente.Location = new System.Drawing.Point(252, 196);
+            this.btnLimparCliente.Location = new System.Drawing.Point(182, 193);
             this.btnLimparCliente.Name = "btnLimparCliente";
             this.btnLimparCliente.Size = new System.Drawing.Size(64, 20);
             this.btnLimparCliente.TabIndex = 10;
@@ -171,18 +165,11 @@ namespace ProjectBook
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(278, 96);
+            this.label5.Location = new System.Drawing.Point(271, 96);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(31, 13);
             this.label5.TabIndex = 18;
             this.label5.Text = "CEP:";
-            // 
-            // txtCepCliente
-            // 
-            this.txtCepCliente.Location = new System.Drawing.Point(271, 112);
-            this.txtCepCliente.Name = "txtCepCliente";
-            this.txtCepCliente.Size = new System.Drawing.Size(53, 20);
-            this.txtCepCliente.TabIndex = 5;
             // 
             // label8
             // 
@@ -193,27 +180,55 @@ namespace ProjectBook
             this.label8.TabIndex = 20;
             this.label8.Text = "Telefone 2:";
             // 
+            // txtTelefone1Cliente
+            // 
+            this.txtTelefone1Cliente.Location = new System.Drawing.Point(12, 155);
+            this.txtTelefone1Cliente.Mask = "(99) 0000-00000";
+            this.txtTelefone1Cliente.Name = "txtTelefone1Cliente";
+            this.txtTelefone1Cliente.Size = new System.Drawing.Size(75, 20);
+            this.txtTelefone1Cliente.TabIndex = 21;
+            // 
             // txtTelefone2Cliente
             // 
-            this.txtTelefone2Cliente.Location = new System.Drawing.Point(92, 154);
+            this.txtTelefone2Cliente.Location = new System.Drawing.Point(90, 155);
+            this.txtTelefone2Cliente.Mask = "(99) 9999-99999";
             this.txtTelefone2Cliente.Name = "txtTelefone2Cliente";
             this.txtTelefone2Cliente.Size = new System.Drawing.Size(75, 20);
-            this.txtTelefone2Cliente.TabIndex = 7;
+            this.txtTelefone2Cliente.TabIndex = 22;
+            // 
+            // txtCepCliente
+            // 
+            this.txtCepCliente.Location = new System.Drawing.Point(271, 113);
+            this.txtCepCliente.Mask = "00000-000";
+            this.txtCepCliente.Name = "txtCepCliente";
+            this.txtCepCliente.Size = new System.Drawing.Size(53, 20);
+            this.txtCepCliente.TabIndex = 23;
+            // 
+            // btnCancelarCadastrarClientes
+            // 
+            this.btnCancelarCadastrarClientes.Location = new System.Drawing.Point(252, 193);
+            this.btnCancelarCadastrarClientes.Name = "btnCancelarCadastrarClientes";
+            this.btnCancelarCadastrarClientes.Size = new System.Drawing.Size(64, 20);
+            this.btnCancelarCadastrarClientes.TabIndex = 11;
+            this.btnCancelarCadastrarClientes.Text = "Cancelar";
+            this.btnCancelarCadastrarClientes.UseVisualStyleBackColor = true;
+            this.btnCancelarCadastrarClientes.Click += new System.EventHandler(this.btnCancelarCadastrarClientes_Click);
             // 
             // CadastrarClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(328, 228);
-            this.Controls.Add(this.txtTelefone2Cliente);
-            this.Controls.Add(this.label8);
+            this.Controls.Add(this.btnCancelarCadastrarClientes);
             this.Controls.Add(this.txtCepCliente);
+            this.Controls.Add(this.txtTelefone2Cliente);
+            this.Controls.Add(this.txtTelefone1Cliente);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.btnLimparCliente);
             this.Controls.Add(this.btnSalvarCliente);
             this.Controls.Add(this.txtEmailCliente);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.txtTelefone1Cliente);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.cmbEstadoCliente);
             this.Controls.Add(this.label4);
@@ -224,6 +239,7 @@ namespace ProjectBook
             this.Controls.Add(this.txtNomeCliente);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "CadastrarClientes";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -231,6 +247,14 @@ namespace ProjectBook
             this.ResumeLayout(false);
             this.PerformLayout();
         }
+
+        private System.Windows.Forms.Button btnCancelarCadastrarClientes;
+
+        private System.Windows.Forms.MaskedTextBox txtCepCliente;
+
+        private System.Windows.Forms.MaskedTextBox txtTelefone2Cliente;
+
+        private System.Windows.Forms.MaskedTextBox txtTelefone1Cliente;
 
         #endregion
 
@@ -243,14 +267,11 @@ namespace ProjectBook
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cmbEstadoCliente;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtTelefone1Cliente;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtEmailCliente;
         private System.Windows.Forms.Button btnSalvarCliente;
         private System.Windows.Forms.Button btnLimparCliente;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtCepCliente;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox txtTelefone2Cliente;
     }
 }
