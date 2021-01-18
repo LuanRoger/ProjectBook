@@ -3,6 +3,7 @@ using System.Data;
 using System.Windows.Forms;
 using ProjectBook.DB.SqlServerExpress;
 using ProjectBook.Livros;
+using ProjectBook.Tipos;
 
 namespace ProjectBook
 {
@@ -16,10 +17,10 @@ namespace ProjectBook
 
         private void btnCadastrarUsuario_Click(object sender, EventArgs e)
         {
-            Usuario usuario = new Usuario(txtUsuarioCadastrar.Text, txtSenhaCadastrar.Text, "USU");
+            Usuario usuario = new Usuario(txtUsuarioCadastrar.Text, txtSenhaCadastrar.Text, TipoUsuário.USU.ToString());
             if (Verificadores.VerificarCamposUsuario(usuario))
             {
-                MessageBox.Show(Properties.Resources.preencherCampos_MessageBox, Properties.Resources.error_MessageBox,
+                MessageBox.Show(Properties.Resources.preencherCampoBusca_MessageBox, Properties.Resources.error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -34,7 +35,7 @@ namespace ProjectBook
             Usuario usuario = new Usuario(txtNovoUsuario.Text, txtNovoSenhaUsuario.Text, cmdNovoStatus.Text);
             if (Verificadores.VerificarCamposUsuario(usuario))
             {
-                MessageBox.Show(Properties.Resources.preencherCampos_MessageBox, Properties.Resources.error_MessageBox,
+                MessageBox.Show(Properties.Resources.preencherCampoBusca_MessageBox, Properties.Resources.error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -54,7 +55,7 @@ namespace ProjectBook
 
             if (Verificadores.VerificarDataTable(infoUsuario))
             {
-                MessageBox.Show(Properties.Resources.preencherCampos_MessageBox, Properties.Resources.error_MessageBox,
+                MessageBox.Show(Properties.Resources.preencherCampoBusca_MessageBox, Properties.Resources.error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -72,13 +73,15 @@ namespace ProjectBook
 
             if (Verificadores.VerificarDataTable(infoUsuario))
             {
-                MessageBox.Show(Properties.Resources.preencherCampos_MessageBox, Properties.Resources.error_MessageBox,
+                MessageBox.Show(Properties.Resources.preencherCampoBusca_MessageBox, Properties.Resources.error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            DialogResult dialogResult = MessageBox.Show($"Deseja realmente excluir {infoUsuario.Rows[0][1]}", "Excluir",
+            DialogResult dialogResult = MessageBox.Show(Properties.Resources.confirmarExclusao + infoUsuario.Rows[0][1],
+                Properties.Resources.excluir_MessageBox,
                 MessageBoxButtons.YesNo, MessageBoxIcon.Stop);
+            
             usuarioDb.AbrirConexaoDb();
             if (dialogResult == DialogResult.Yes) usuarioDb.DeletarUsuarioId(txtIdDeletarUsuario.Text);
             usuarioDb.FechaConecxaoDb();

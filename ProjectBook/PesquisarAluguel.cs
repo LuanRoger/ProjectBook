@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using ProjectBook.Tipos;
 
 namespace ProjectBook
 {
@@ -23,9 +24,9 @@ namespace ProjectBook
             DataTable data = aluguelDb.BuscarAluguelCliente(txtBuscarCliente.Text);
             aluguelDb.FechaConecxaoDb();
 
-            if(Verificadores.VerificarDataTable(data) == true)
+            if(Verificadores.VerificarDataTable(data))
             {
-                MessageBox.Show("Este cliente não tem livro alugado", "Error",
+                MessageBox.Show(Properties.Resources.livroNaoAlugado, Properties.Resources.error_MessageBox,
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -46,9 +47,9 @@ namespace ProjectBook
             DataTable data = aluguelDb.BuscarAluguelLivro(txtBuscarTitulo.Text);
             aluguelDb.FechaConecxaoDb();
 
-            if (Verificadores.VerificarDataTable(data) == true)
+            if (Verificadores.VerificarDataTable(data))
             {
-                MessageBox.Show("Este livro não foi alugado", "Error",
+                MessageBox.Show(Properties.Resources.livroNaoAlugado, Properties.Resources.error_MessageBox,
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -58,9 +59,10 @@ namespace ProjectBook
             txtResultadoStatus.Text = data.Rows[0][5].ToString();
             DateTime entrega = (DateTime)data.Rows[0][3];
             DateTime recebimento = (DateTime)data.Rows[0][4];
-            txtAVencer.Text = Convert.ToInt32((recebimento.Date - entrega.Date).Days) <= 0 ? "-" : (recebimento.Date - entrega.Date).Days.ToString();
-            txtAtraso.Text = Convert.ToInt32((entrega.Date - recebimento.Date).Days) <= 0 || data.Rows[0][5].ToString() == "Devolvido" ?
-                 "-" : (entrega.Date - recebimento.Date).Days.ToString();
+            txtAVencer.Text = Convert.ToInt32((recebimento.Date - entrega.Date).Days) <= 0
+                ? "-" : (recebimento.Date - entrega.Date).Days.ToString();
+            txtAtraso.Text = Convert.ToInt32((entrega.Date - recebimento.Date).Days) <= 0
+                ? "-" : (entrega.Date - recebimento.Date).Days.ToString();
         }
     }
 }

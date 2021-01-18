@@ -17,12 +17,7 @@ namespace ProjectBook
         public NovoCadastro()
         {
             InitializeComponent();
-
-            //Colocar todos os generos no combobox
-            foreach(DataRow itens in db.PegarGeneros().Rows)
-            {
-                txtGenero.Items.Add(itens["Genero"]);
-            }
+            ColocarGeneros();
         }
 
         private void btnSalvarLivro_Click(object sender, EventArgs e)
@@ -33,18 +28,18 @@ namespace ProjectBook
             {
                 livro = new Livro(txtTituloLivro.Text.ToUpper(), txtAutorLivro.Text.ToUpper(),
                     txtEditoraLivro.Text.ToUpper(), txtEdicaoLivro.Text.ToUpper(), txtAno.Text.ToUpper(),
-                    txtGenero.Text.ToUpper(), txtIsbn.Text.ToUpper());
+                    cmdGenero.Text.ToUpper(), txtIsbn.Text.ToUpper());
             }
             else
             {
                 livro = new Livro(txtTituloLivro.Text, txtAutorLivro.Text,
                     txtEditoraLivro.Text, txtEdicaoLivro.Text, txtAno.Text,
-                    txtGenero.Text, txtIsbn.Text);
+                    cmdGenero.Text, txtIsbn.Text);
             }
             
             if (Verificadores.VerificarCamposLivros(livro))
             {
-                MessageBox.Show(Properties.Resources.preencherCampos_MessageBox, Properties.Resources.error_MessageBox,
+                MessageBox.Show(Properties.Resources.preencherCampoBusca_MessageBox, Properties.Resources.error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -53,12 +48,18 @@ namespace ProjectBook
             db.AdicionarLivro(livro);
             db.FechaConecxaoDb();
             
+            ColocarGeneros();
             LimparCamposCadastro();
         }
 
         private void btnFecharCadastro_Click(object sender, EventArgs e) => this.Close();
         private void btnLimparTxtLivros_Click(object sender, EventArgs e) => LimparCamposCadastro();
 
+        private void ColocarGeneros()
+        {
+            //Colocar todos os generos no combobox
+            foreach(DataRow itens in db.PegarGeneros().Rows) cmdGenero.Items.Add(itens["Genero"]);
+        }
         private void LimparCamposCadastro()
         {
             txtTituloLivro.Clear();
@@ -66,7 +67,7 @@ namespace ProjectBook
             txtEditoraLivro.Clear();
             txtEdicaoLivro.Clear();
             txtAno.Clear();
-            txtGenero.Text = "";
+            cmdGenero.Text = "";
             txtIsbn.Clear();
         }
     }

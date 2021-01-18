@@ -55,7 +55,7 @@ namespace ProjectBook
             //Se o usuário mudou a string de conexão o programa deve ser reinicado
             if (stringConexaoAtual != config.ConnectionStrings.ConnectionStrings["SqlConnectionString"].ConnectionString)
             {
-                MessageBox.Show("Houve uma mudança na String de conexão, o programa será reiniciado.",
+                MessageBox.Show(Properties.Resources.mudancaConnectionString,
                     Properties.Resources.informacao_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 
                 Process.Start(Application.StartupPath + Assembly.GetExecutingAssembly().GetName().Name + ".exe");

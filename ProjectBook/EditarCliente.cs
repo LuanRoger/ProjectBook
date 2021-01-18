@@ -1,12 +1,8 @@
 ﻿using ProjectBook.DB.SqlServerExpress;
 using ProjectBook.Livros;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Configuration;
 using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace ProjectBook
@@ -38,7 +34,7 @@ namespace ProjectBook
 
             if (Verificadores.VerificarCamposCliente(cliente))
             {
-                MessageBox.Show(Properties.Resources.preencherCampos_MessageBox, Properties.Resources.error_MessageBox,
+                MessageBox.Show(Properties.Resources.preencherCampoBusca_MessageBox, Properties.Resources.error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -55,7 +51,7 @@ namespace ProjectBook
             string termoBuscaCliente = txtBuscarClienteEditar.Text;
             if (Verificadores.VerificarStrings(termoBuscaCliente))
             {
-                MessageBox.Show(Properties.Resources.preencherCampos_MessageBox, Properties.Resources.error_MessageBox,
+                MessageBox.Show(Properties.Resources.preencherCampoBusca_MessageBox, Properties.Resources.error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -72,7 +68,7 @@ namespace ProjectBook
             }
             catch
             {
-                MessageBox.Show("Faça uma pesquisa para continuar", Properties.Resources.error_MessageBox,
+                MessageBox.Show(Properties.Resources.preencherCampoBusca_MessageBox, Properties.Resources.error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

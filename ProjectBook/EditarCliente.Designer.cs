@@ -65,7 +65,7 @@ namespace ProjectBook
             this.groupBox1.Controls.Add(this.rabBuscarClienteId);
             this.groupBox1.Location = new System.Drawing.Point(13, 13);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(282, 83);
+            this.groupBox1.Size = new System.Drawing.Size(299, 83);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Buscar cliente";
@@ -75,7 +75,7 @@ namespace ProjectBook
             this.btnBucarCliente.FlatAppearance.BorderSize = 0;
             this.btnBucarCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBucarCliente.Image = ((System.Drawing.Image)(resources.GetObject("btnBucarCliente.Image")));
-            this.btnBucarCliente.Location = new System.Drawing.Point(249, 48);
+            this.btnBucarCliente.Location = new System.Drawing.Point(266, 48);
             this.btnBucarCliente.Name = "btnBucarCliente";
             this.btnBucarCliente.Size = new System.Drawing.Size(27, 23);
             this.btnBucarCliente.TabIndex = 3;
@@ -84,7 +84,7 @@ namespace ProjectBook
             // 
             // txtBuscarClienteEditar
             // 
-            this.txtBuscarClienteEditar.Location = new System.Drawing.Point(6, 48);
+            this.txtBuscarClienteEditar.Location = new System.Drawing.Point(23, 48);
             this.txtBuscarClienteEditar.Name = "txtBuscarClienteEditar";
             this.txtBuscarClienteEditar.Size = new System.Drawing.Size(237, 23);
             this.txtBuscarClienteEditar.TabIndex = 2;
@@ -289,7 +289,7 @@ namespace ProjectBook
             // txtNovoTelefone1
             // 
             this.txtNovoTelefone1.Location = new System.Drawing.Point(13, 262);
-            this.txtNovoTelefone1.Mask = "(99) 0000-00000";
+            this.txtNovoTelefone1.Mask = "(99) 00000-0000";
             this.txtNovoTelefone1.Name = "txtNovoTelefone1";
             this.txtNovoTelefone1.Size = new System.Drawing.Size(87, 23);
             this.txtNovoTelefone1.TabIndex = 21;
@@ -297,7 +297,7 @@ namespace ProjectBook
             // txtNovoTelefone2
             // 
             this.txtNovoTelefone2.Location = new System.Drawing.Point(106, 262);
-            this.txtNovoTelefone2.Mask = "(99) 0000-00000";
+            this.txtNovoTelefone2.Mask = "(99) 00000-0000";
             this.txtNovoTelefone2.Name = "txtNovoTelefone2";
             this.txtNovoTelefone2.Size = new System.Drawing.Size(87, 23);
             this.txtNovoTelefone2.TabIndex = 22;

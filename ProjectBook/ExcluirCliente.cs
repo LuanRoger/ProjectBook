@@ -1,10 +1,6 @@
 ﻿using ProjectBook.DB.SqlServerExpress;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace ProjectBook
@@ -21,15 +17,16 @@ namespace ProjectBook
         {
             DataTable data = clienteDb.BuscarClienteId(txtBuscarExcluirCliente.Text);
 
-            if (Verificadores.VerificarDataTable(data) == true)
+            if (Verificadores.VerificarDataTable(data))
             {
-                MessageBox.Show("Este livro não existe", "Error",
+                MessageBox.Show(Properties.Resources.livroNaoExiste_MessageBox, Properties.Resources.error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            DialogResult resultadoExcluir = MessageBox.Show($"Deseja realmente excluir {data.Rows[0][0]} alugado por {data.Rows[0][2]}?",
-            "Excluir", MessageBoxButtons.YesNo, MessageBoxIcon.Stop);
+            DialogResult resultadoExcluir = MessageBox.Show(
+                $"{Properties.Resources.confirmarExclusao} {data.Rows[0][1]}",
+                Properties.Resources.excluir_MessageBox, MessageBoxButtons.YesNo, MessageBoxIcon.Stop);
 
             clienteDb.AbrirConexaoDb();
             if (resultadoExcluir == DialogResult.Yes) clienteDb.DeletarClienteId(data.Rows[0][0].ToString());

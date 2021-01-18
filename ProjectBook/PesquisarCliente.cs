@@ -23,8 +23,8 @@ namespace ProjectBook
             DataTable dataTable;
 
             clienteDb.AbrirConexaoDb();
-            if (rabPesquisarId.Checked == true) dataTable = clienteDb.BuscarClienteId(termoPesquisa);
-            else if (rabPesquisarNome.Checked == true) dataTable = clienteDb.BuscarClienteNome(termoPesquisa);
+            if (rabPesquisarId.Checked) dataTable = clienteDb.BuscarClienteId(termoPesquisa);
+            else if (rabPesquisarNome.Checked) dataTable = clienteDb.BuscarClienteNome(termoPesquisa);
             else return;
             clienteDb.FechaConecxaoDb();
 

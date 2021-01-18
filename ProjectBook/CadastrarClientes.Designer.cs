@@ -53,57 +53,64 @@ namespace ProjectBook
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(11, 11);
+            this.label1.Location = new System.Drawing.Point(13, 13);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(42, 13);
+            this.label1.Size = new System.Drawing.Size(48, 15);
             this.label1.TabIndex = 0;
             this.label1.Text = "*Nome:";
             // 
             // txtNomeCliente
             // 
-            this.txtNomeCliente.Location = new System.Drawing.Point(11, 27);
+            this.txtNomeCliente.Location = new System.Drawing.Point(13, 31);
+            this.txtNomeCliente.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtNomeCliente.Name = "txtNomeCliente";
-            this.txtNomeCliente.Size = new System.Drawing.Size(313, 20);
+            this.txtNomeCliente.Size = new System.Drawing.Size(364, 23);
             this.txtNomeCliente.TabIndex = 1;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(11, 54);
+            this.label2.Location = new System.Drawing.Point(13, 62);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(60, 13);
+            this.label2.Size = new System.Drawing.Size(64, 15);
             this.label2.TabIndex = 2;
             this.label2.Text = "*Endereço:";
             // 
             // txtEnderecoCliente
             // 
-            this.txtEnderecoCliente.Location = new System.Drawing.Point(11, 70);
+            this.txtEnderecoCliente.Location = new System.Drawing.Point(13, 81);
+            this.txtEnderecoCliente.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtEnderecoCliente.Name = "txtEnderecoCliente";
-            this.txtEnderecoCliente.Size = new System.Drawing.Size(255, 20);
+            this.txtEnderecoCliente.Size = new System.Drawing.Size(297, 23);
             this.txtEnderecoCliente.TabIndex = 2;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(11, 96);
+            this.label3.Location = new System.Drawing.Point(13, 111);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(47, 13);
+            this.label3.Size = new System.Drawing.Size(52, 15);
             this.label3.TabIndex = 4;
             this.label3.Text = "*Cidade:";
             // 
             // txtCidadeCliente
             // 
-            this.txtCidadeCliente.Location = new System.Drawing.Point(11, 113);
+            this.txtCidadeCliente.Location = new System.Drawing.Point(13, 130);
+            this.txtCidadeCliente.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtCidadeCliente.Name = "txtCidadeCliente";
-            this.txtCidadeCliente.Size = new System.Drawing.Size(255, 20);
+            this.txtCidadeCliente.Size = new System.Drawing.Size(297, 23);
             this.txtCidadeCliente.TabIndex = 4;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(271, 55);
+            this.label4.Location = new System.Drawing.Point(316, 63);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(28, 13);
+            this.label4.Size = new System.Drawing.Size(29, 15);
             this.label4.TabIndex = 6;
             this.label4.Text = "*UF:";
             // 
@@ -111,42 +118,74 @@ namespace ProjectBook
             // 
             this.cmbEstadoCliente.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbEstadoCliente.FormattingEnabled = true;
-            this.cmbEstadoCliente.Items.AddRange(new object[] {"AC", "AL", "AP", "AM", "BA", "CE", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO", "DF"});
-            this.cmbEstadoCliente.Location = new System.Drawing.Point(271, 70);
+            this.cmbEstadoCliente.Items.AddRange(new object[] {
+            "AC",
+            "AL",
+            "AP",
+            "AM",
+            "BA",
+            "CE",
+            "ES",
+            "GO",
+            "MA",
+            "MT",
+            "MS",
+            "MG",
+            "PA",
+            "PB",
+            "PR",
+            "PE",
+            "PI",
+            "RJ",
+            "RN",
+            "RS",
+            "RO",
+            "RR",
+            "SC",
+            "SP",
+            "SE",
+            "TO",
+            "DF"});
+            this.cmbEstadoCliente.Location = new System.Drawing.Point(316, 81);
+            this.cmbEstadoCliente.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmbEstadoCliente.Name = "cmbEstadoCliente";
-            this.cmbEstadoCliente.Size = new System.Drawing.Size(53, 21);
+            this.cmbEstadoCliente.Size = new System.Drawing.Size(61, 23);
             this.cmbEstadoCliente.TabIndex = 3;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(11, 139);
+            this.label6.Location = new System.Drawing.Point(13, 160);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(65, 13);
+            this.label6.Size = new System.Drawing.Size(68, 15);
             this.label6.TabIndex = 10;
             this.label6.Text = "*Telefone 1:";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(171, 140);
+            this.label7.Location = new System.Drawing.Point(200, 162);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(38, 13);
+            this.label7.Size = new System.Drawing.Size(44, 15);
             this.label7.TabIndex = 12;
             this.label7.Text = "E-mail:";
             // 
             // txtEmailCliente
             // 
-            this.txtEmailCliente.Location = new System.Drawing.Point(171, 155);
+            this.txtEmailCliente.Location = new System.Drawing.Point(200, 179);
+            this.txtEmailCliente.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtEmailCliente.Name = "txtEmailCliente";
-            this.txtEmailCliente.Size = new System.Drawing.Size(153, 20);
+            this.txtEmailCliente.Size = new System.Drawing.Size(178, 23);
             this.txtEmailCliente.TabIndex = 8;
             // 
             // btnSalvarCliente
             // 
-            this.btnSalvarCliente.Location = new System.Drawing.Point(112, 193);
+            this.btnSalvarCliente.Location = new System.Drawing.Point(13, 223);
+            this.btnSalvarCliente.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnSalvarCliente.Name = "btnSalvarCliente";
-            this.btnSalvarCliente.Size = new System.Drawing.Size(64, 20);
+            this.btnSalvarCliente.Size = new System.Drawing.Size(75, 23);
             this.btnSalvarCliente.TabIndex = 9;
             this.btnSalvarCliente.Text = "Salvar";
             this.btnSalvarCliente.UseVisualStyleBackColor = true;
@@ -154,9 +193,10 @@ namespace ProjectBook
             // 
             // btnLimparCliente
             // 
-            this.btnLimparCliente.Location = new System.Drawing.Point(182, 193);
+            this.btnLimparCliente.Location = new System.Drawing.Point(212, 223);
+            this.btnLimparCliente.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnLimparCliente.Name = "btnLimparCliente";
-            this.btnLimparCliente.Size = new System.Drawing.Size(64, 20);
+            this.btnLimparCliente.Size = new System.Drawing.Size(75, 23);
             this.btnLimparCliente.TabIndex = 10;
             this.btnLimparCliente.Text = "Limpar";
             this.btnLimparCliente.UseVisualStyleBackColor = true;
@@ -165,50 +205,56 @@ namespace ProjectBook
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(271, 96);
+            this.label5.Location = new System.Drawing.Point(316, 111);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(31, 13);
+            this.label5.Size = new System.Drawing.Size(31, 15);
             this.label5.TabIndex = 18;
             this.label5.Text = "CEP:";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(92, 140);
+            this.label8.Location = new System.Drawing.Point(107, 162);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(61, 13);
+            this.label8.Size = new System.Drawing.Size(63, 15);
             this.label8.TabIndex = 20;
             this.label8.Text = "Telefone 2:";
             // 
             // txtTelefone1Cliente
             // 
-            this.txtTelefone1Cliente.Location = new System.Drawing.Point(12, 155);
-            this.txtTelefone1Cliente.Mask = "(99) 0000-00000";
+            this.txtTelefone1Cliente.Location = new System.Drawing.Point(14, 179);
+            this.txtTelefone1Cliente.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtTelefone1Cliente.Mask = "(99) 00000-0000";
             this.txtTelefone1Cliente.Name = "txtTelefone1Cliente";
-            this.txtTelefone1Cliente.Size = new System.Drawing.Size(75, 20);
+            this.txtTelefone1Cliente.Size = new System.Drawing.Size(87, 23);
             this.txtTelefone1Cliente.TabIndex = 21;
             // 
             // txtTelefone2Cliente
             // 
-            this.txtTelefone2Cliente.Location = new System.Drawing.Point(90, 155);
-            this.txtTelefone2Cliente.Mask = "(99) 9999-99999";
+            this.txtTelefone2Cliente.Location = new System.Drawing.Point(105, 179);
+            this.txtTelefone2Cliente.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtTelefone2Cliente.Mask = "(99) 00000-0000";
             this.txtTelefone2Cliente.Name = "txtTelefone2Cliente";
-            this.txtTelefone2Cliente.Size = new System.Drawing.Size(75, 20);
+            this.txtTelefone2Cliente.Size = new System.Drawing.Size(87, 23);
             this.txtTelefone2Cliente.TabIndex = 22;
             // 
             // txtCepCliente
             // 
-            this.txtCepCliente.Location = new System.Drawing.Point(271, 113);
+            this.txtCepCliente.Location = new System.Drawing.Point(316, 130);
+            this.txtCepCliente.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtCepCliente.Mask = "00000-000";
             this.txtCepCliente.Name = "txtCepCliente";
-            this.txtCepCliente.Size = new System.Drawing.Size(53, 20);
+            this.txtCepCliente.Size = new System.Drawing.Size(61, 23);
             this.txtCepCliente.TabIndex = 23;
             // 
             // btnCancelarCadastrarClientes
             // 
-            this.btnCancelarCadastrarClientes.Location = new System.Drawing.Point(252, 193);
+            this.btnCancelarCadastrarClientes.Location = new System.Drawing.Point(294, 223);
+            this.btnCancelarCadastrarClientes.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnCancelarCadastrarClientes.Name = "btnCancelarCadastrarClientes";
-            this.btnCancelarCadastrarClientes.Size = new System.Drawing.Size(64, 20);
+            this.btnCancelarCadastrarClientes.Size = new System.Drawing.Size(75, 23);
             this.btnCancelarCadastrarClientes.TabIndex = 11;
             this.btnCancelarCadastrarClientes.Text = "Cancelar";
             this.btnCancelarCadastrarClientes.UseVisualStyleBackColor = true;
@@ -216,9 +262,9 @@ namespace ProjectBook
             // 
             // CadastrarClientes
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(328, 228);
+            this.ClientSize = new System.Drawing.Size(383, 263);
             this.Controls.Add(this.btnCancelarCadastrarClientes);
             this.Controls.Add(this.txtCepCliente);
             this.Controls.Add(this.txtTelefone2Cliente);
@@ -239,6 +285,7 @@ namespace ProjectBook
             this.Controls.Add(this.txtNomeCliente);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.MaximizeBox = false;
             this.Name = "CadastrarClientes";
             this.ShowIcon = false;
@@ -246,6 +293,7 @@ namespace ProjectBook
             this.Text = "Cadastrar clientes";
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         private System.Windows.Forms.Button btnCancelarCadastrarClientes;

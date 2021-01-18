@@ -1,4 +1,6 @@
 ﻿
+using ProjectBook.Tipos;
+
 namespace ProjectBook
 {
     partial class EditarAluguel
@@ -377,18 +379,18 @@ namespace ProjectBook
             this.label14.AutoSize = true;
             this.label14.Location = new System.Drawing.Point(7, 69);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(120, 15);
+            this.label14.Size = new System.Drawing.Size(108, 15);
             this.label14.TabIndex = 2;
-            this.label14.Text = "Data de recebimento:";
+            this.label14.Text = "Data de devolução:";
             // 
             // label13
             // 
             this.label13.AutoSize = true;
             this.label13.Location = new System.Drawing.Point(7, 21);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(93, 15);
+            this.label13.Size = new System.Drawing.Size(80, 15);
             this.label13.TabIndex = 1;
-            this.label13.Text = "Data de entrega:";
+            this.label13.Text = "Data de saída:";
             // 
             // dtpEditarDataEntrega
             // 
@@ -412,8 +414,10 @@ namespace ProjectBook
             this.cmbNovoStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbNovoStatus.FormattingEnabled = true;
             this.cmbNovoStatus.Items.AddRange(new object[] {
-            "Pendente",
-            "Devolvido"});
+            Tipos.StatusAluguel.Alugado,
+            Tipos.StatusAluguel.Atrssado,
+            Tipos.StatusAluguel.Devolvido
+            });
             this.cmbNovoStatus.Location = new System.Drawing.Point(468, 142);
             this.cmbNovoStatus.Name = "cmbNovoStatus";
             this.cmbNovoStatus.Size = new System.Drawing.Size(146, 23);

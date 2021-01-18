@@ -51,7 +51,7 @@ namespace ProjectBook
             this.rabEditarAutor = new System.Windows.Forms.RadioButton();
             this.rabEditarTitulo = new System.Windows.Forms.RadioButton();
             this.rabEditarId = new System.Windows.Forms.RadioButton();
-            this.txtEditarGenero = new System.Windows.Forms.ComboBox();
+            this.cmbEditarGenero = new System.Windows.Forms.ComboBox();
             this.gpbBuscar.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -255,20 +255,20 @@ namespace ProjectBook
             this.rabEditarId.Text = "ID";
             this.rabEditarId.UseVisualStyleBackColor = true;
             // 
-            // txtEditarGenero
+            // cmbEditarGenero
             // 
-            this.txtEditarGenero.FormattingEnabled = true;
-            this.txtEditarGenero.Location = new System.Drawing.Point(14, 252);
-            this.txtEditarGenero.Name = "txtEditarGenero";
-            this.txtEditarGenero.Size = new System.Drawing.Size(292, 23);
-            this.txtEditarGenero.TabIndex = 32;
+            this.cmbEditarGenero.FormattingEnabled = true;
+            this.cmbEditarGenero.Location = new System.Drawing.Point(14, 252);
+            this.cmbEditarGenero.Name = "cmbEditarGenero";
+            this.cmbEditarGenero.Size = new System.Drawing.Size(292, 23);
+            this.cmbEditarGenero.TabIndex = 32;
             // 
             // EditarCadastro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(535, 377);
-            this.Controls.Add(this.txtEditarGenero);
+            this.Controls.Add(this.cmbEditarGenero);
             this.Controls.Add(this.gpbBuscar);
             this.Controls.Add(this.btnFecharEdicao);
             this.Controls.Add(this.btnLimparTxtEditar);
@@ -323,6 +323,6 @@ namespace ProjectBook
         private System.Windows.Forms.RadioButton rabEditarAutor;
         private System.Windows.Forms.RadioButton rabEditarTitulo;
         private System.Windows.Forms.RadioButton rabEditarId;
-        private System.Windows.Forms.ComboBox txtEditarGenero;
+        private System.Windows.Forms.ComboBox cmbEditarGenero;
     }
 }

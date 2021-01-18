@@ -11,7 +11,7 @@ namespace ProjectBook.Livros
         public string alugadoPor { get; private set; }
         public DateTime dataEntrega { get; private set; }
         public DateTime dataRecebimento { get; private set; }
-        public string status { get; private set; } = "Pendente";
+        public string status { get; private set; }
 
         public static Aluguel AluguelFactory(string titulo, string autor, string alugadoPor, DateTime dataEntrega,
             DateTime dateRecebimento, string status)

@@ -56,6 +56,8 @@ namespace ProjectBook
             this.txtBuscarClienteAluguel = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btnBuscarCliente = new System.Windows.Forms.Button();
+            this.btnLimparCadastroAluguel = new System.Windows.Forms.Button();
+            this.btnCancelarCadastroAluguel = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -147,7 +149,7 @@ namespace ProjectBook
             this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Location = new System.Drawing.Point(421, 12);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(124, 119);
+            this.groupBox3.Size = new System.Drawing.Size(150, 119);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Dados de aquisição";
@@ -157,7 +159,7 @@ namespace ProjectBook
             this.dtpDataRecebimento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpDataRecebimento.Location = new System.Drawing.Point(7, 89);
             this.dtpDataRecebimento.Name = "dtpDataRecebimento";
-            this.dtpDataRecebimento.Size = new System.Drawing.Size(106, 23);
+            this.dtpDataRecebimento.Size = new System.Drawing.Size(137, 23);
             this.dtpDataRecebimento.TabIndex = 3;
             // 
             // label6
@@ -174,7 +176,7 @@ namespace ProjectBook
             this.dtpDataEntrega.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpDataEntrega.Location = new System.Drawing.Point(6, 41);
             this.dtpDataEntrega.Name = "dtpDataEntrega";
-            this.dtpDataEntrega.Size = new System.Drawing.Size(107, 23);
+            this.dtpDataEntrega.Size = new System.Drawing.Size(138, 23);
             this.dtpDataEntrega.TabIndex = 1;
             // 
             // label5
@@ -184,11 +186,11 @@ namespace ProjectBook
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(64, 15);
             this.label5.TabIndex = 0;
-            this.label5.Text = "Data saida:";
+            this.label5.Text = "Data saída:";
             // 
             // btnSalvarAluguel
             // 
-            this.btnSalvarAluguel.Location = new System.Drawing.Point(421, 364);
+            this.btnSalvarAluguel.Location = new System.Drawing.Point(12, 399);
             this.btnSalvarAluguel.Name = "btnSalvarAluguel";
             this.btnSalvarAluguel.Size = new System.Drawing.Size(75, 23);
             this.btnSalvarAluguel.TabIndex = 3;
@@ -246,9 +248,9 @@ namespace ProjectBook
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(7, 151);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(54, 15);
+            this.label9.Size = new System.Drawing.Size(63, 15);
             this.label9.TabIndex = 9;
-            this.label9.Text = "Telefone:";
+            this.label9.Text = "Telefone 1:";
             // 
             // txtEnderecoClienteAluguel
             // 
@@ -312,11 +314,33 @@ namespace ProjectBook
             this.btnBuscarCliente.UseVisualStyleBackColor = true;
             this.btnBuscarCliente.Click += new System.EventHandler(this.btnBuscarCliente_Click);
             // 
+            // btnLimparCadastroAluguel
+            // 
+            this.btnLimparCadastroAluguel.Location = new System.Drawing.Point(415, 399);
+            this.btnLimparCadastroAluguel.Name = "btnLimparCadastroAluguel";
+            this.btnLimparCadastroAluguel.Size = new System.Drawing.Size(75, 23);
+            this.btnLimparCadastroAluguel.TabIndex = 5;
+            this.btnLimparCadastroAluguel.Text = "Limpar";
+            this.btnLimparCadastroAluguel.UseVisualStyleBackColor = true;
+            this.btnLimparCadastroAluguel.Click += new System.EventHandler(this.btnLimparCadastroAluguel_Click);
+            // 
+            // btnCancelarCadastroAluguel
+            // 
+            this.btnCancelarCadastroAluguel.Location = new System.Drawing.Point(496, 399);
+            this.btnCancelarCadastroAluguel.Name = "btnCancelarCadastroAluguel";
+            this.btnCancelarCadastroAluguel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancelarCadastroAluguel.TabIndex = 6;
+            this.btnCancelarCadastroAluguel.Text = "Cancelar";
+            this.btnCancelarCadastroAluguel.UseVisualStyleBackColor = true;
+            this.btnCancelarCadastroAluguel.Click += new System.EventHandler(this.btnCancelarCadastroAluguel_Click);
+            // 
             // CadastrarAluguel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(560, 394);
+            this.ClientSize = new System.Drawing.Size(583, 434);
+            this.Controls.Add(this.btnCancelarCadastroAluguel);
+            this.Controls.Add(this.btnLimparCadastroAluguel);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnSalvarAluguel);
             this.Controls.Add(this.groupBox3);
@@ -365,5 +389,7 @@ namespace ProjectBook
         private System.Windows.Forms.TextBox txtBuscarClienteAluguel;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnBuscarCliente;
+        private System.Windows.Forms.Button btnLimparCadastroAluguel;
+        private System.Windows.Forms.Button btnCancelarCadastroAluguel;
     }
 }

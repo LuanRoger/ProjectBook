@@ -12,6 +12,7 @@ using System.Windows.Forms;
 using ProjectBook.Livros;
 using System.Reflection;
 using ProjectBook.DB.SqlServerExpress;
+using ProjectBook.Tipos;
 
 namespace ProjectBook
 {
@@ -122,10 +123,10 @@ namespace ProjectBook
 
             mnuSobre.Click += (sender, e) =>
             {
-                MessageBox.Show("" +
-                    $"N° da versão: v{Assembly.GetExecutingAssembly().GetName().Version}\n" +
-                    "Luan Roger© 2021",
-                    "Sobre", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(Properties.Resources.versao_MessageBox +
+                                Assembly.GetExecutingAssembly().GetName().Version + 
+                                "\n" + Properties.Resources.luanroger,
+                    Properties.Resources.sobre_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Information);
             };
         }
 

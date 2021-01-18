@@ -23,9 +23,9 @@ namespace ProjectBook
             DataTable resultadoPesquisa;
 
             livrosDb.AbrirConexaoDb();
-            if (rabPesquisarId.Checked == true) resultadoPesquisa = livrosDb.BuscarLivrosId(termoPesquisa);
-            else if (rabPesquisarTitulo.Checked == true) resultadoPesquisa = livrosDb.BuscarLivrosTitulo(termoPesquisa);
-            else if (rabPesquisarAutor.Checked == true) resultadoPesquisa = livrosDb.BuscarLivrosAutor(termoPesquisa);
+            if (rabPesquisarId.Checked) resultadoPesquisa = livrosDb.BuscarLivrosId(termoPesquisa);
+            else if (rabPesquisarTitulo.Checked) resultadoPesquisa = livrosDb.BuscarLivrosTitulo(termoPesquisa);
+            else if (rabPesquisarAutor.Checked) resultadoPesquisa = livrosDb.BuscarLivrosAutor(termoPesquisa);
             else return;
             livrosDb.FechaConecxaoDb();
 

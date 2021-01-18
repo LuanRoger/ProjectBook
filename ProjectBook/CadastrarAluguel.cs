@@ -22,7 +22,7 @@ namespace ProjectBook
 
             if(Verificadores.VerificarStrings(tituloParaBusca))
             {
-                MessageBox.Show(Properties.Resources.preencherCampos_MessageBox, Properties.Resources.error_MessageBox ,
+                MessageBox.Show(Properties.Resources.preencherCampoBusca_MessageBox, Properties.Resources.error_MessageBox ,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -49,7 +49,7 @@ namespace ProjectBook
 
             if(Verificadores.VerificarStrings(clienteParaBuscar))
             {
-                MessageBox.Show(Properties.Resources.preencherCampos_MessageBox, Properties.Resources.error_MessageBox,
+                MessageBox.Show(Properties.Resources.preencherCampoBusca_MessageBox, Properties.Resources.error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -64,7 +64,7 @@ namespace ProjectBook
                 txtNomeClienteAluguel.Text = table.Rows[0][1].ToString();
                 txtEnderecoClienteAluguel.Text = table.Rows[0][2].ToString();
                 txtTelefoneClienteAluguel.Text = table.Rows[0][6].ToString();
-                txtEmailClienteAluguel.Text = table.Rows[0][7].ToString();
+                txtEmailClienteAluguel.Text = table.Rows[0][8].ToString();
             }
             catch
             {
@@ -76,10 +76,11 @@ namespace ProjectBook
         private void btnSalvarAluguel_Click(object sender, EventArgs e)
         {
             Aluguel aluguel = Aluguel.AluguelFactory(txtTituloLivroAluguel.Text, txtAutorLivroAluguel.Text, txtNomeClienteAluguel.Text,
-                dtpDataEntrega.Value, dtpDataRecebimento.Value, Properties.Resources.aluguelStatus_Pendente);
+                dtpDataEntrega.Value, dtpDataRecebimento.Value, Tipos.StatusAluguel.Alugado.ToString());
+            
             if (Verificadores.VerificarCamposAluguel(aluguel))
             {
-                MessageBox.Show(Properties.Resources.preencherCampos_MessageBox, Properties.Resources.error_MessageBox,
+                MessageBox.Show(Properties.Resources.preencherCampoBusca_MessageBox, Properties.Resources.error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -87,6 +88,23 @@ namespace ProjectBook
             aluguelDb.AbrirConexaoDb();
             aluguelDb.CadastrarAluguel(aluguel);
             aluguelDb.FechaConecxaoDb();
+            
+            LimparCampos();
+        }
+        
+        private void btnLimparCadastroAluguel_Click(object sender, EventArgs e) => LimparCampos();
+        private void btnCancelarCadastroAluguel_Click(object sender, EventArgs e) => this.Close();
+
+        private void LimparCampos()
+        {
+            txtBuscarLivroAluguel.Clear();
+            txtTituloLivroAluguel.Clear();
+            txtAutorLivroAluguel.Clear();
+            txtBuscarClienteAluguel.Clear();
+            txtNomeClienteAluguel.Clear();
+            txtEnderecoClienteAluguel.Clear();
+            txtTelefoneClienteAluguel.Clear();
+            txtEmailClienteAluguel.Clear();
         }
     }
 }

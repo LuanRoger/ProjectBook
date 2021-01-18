@@ -22,7 +22,7 @@ namespace ProjectBook
         {
             if (Verificadores.VerificarStrings(txtLoginUsuario.Text, txtLoginSenha.Text))
             {
-                MessageBox.Show(Properties.Resources.preencherCampos_MessageBox, Properties.Resources.error_MessageBox,
+                MessageBox.Show(Properties.Resources.preencherCampoBusca_MessageBox, Properties.Resources.error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -33,7 +33,7 @@ namespace ProjectBook
             
             if (Verificadores.VerificarDataTable(infoUsuario))
             {
-                MessageBox.Show("As informações estão incorretas.", Properties.Resources.error_MessageBox,
+                MessageBox.Show(Properties.Resources.informacoesIncorretas, Properties.Resources.error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }

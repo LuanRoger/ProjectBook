@@ -90,7 +90,7 @@ namespace ProjectBook.DB.SqlServerExpress
                 adapter = new SqlDataAdapter($"SELECT * FROM Clientes WHERE [Nome completo] LIKE \'%{nomeCompleto}%\'", connection);
                 adapter.Fill(table);
             }
-            catch (SqlException e) { MessageBox.Show(e.Message, Properties.Resources.preencherCampos_MessageBox,
+            catch (SqlException e) { MessageBox.Show(e.Message, Properties.Resources.preencherCampoBusca_MessageBox,
                 MessageBoxButtons.OK, MessageBoxIcon.Error); }
 
             return table;

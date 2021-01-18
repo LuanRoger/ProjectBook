@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Configuration;
 using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 using ProjectBook.DB.SqlServerExpress;
 using ProjectBook.Livros;
@@ -20,12 +16,8 @@ namespace ProjectBook
         public EditarCadastro()
         {
             InitializeComponent();
-
-            //Colocar todos os generos no combobox
-            foreach (DataRow itens in db.PegarGeneros().Rows)
-            {
-                txtEditarGenero.Items.Add(itens["Genero"]);
-            }
+            
+            ColocarGeneros();
         }
 
         private void btnFecharEdicao_Click(object sender, EventArgs e) => this.Close();
@@ -36,7 +28,7 @@ namespace ProjectBook
 
             if(Verificadores.VerificarStrings(paraBuscar))
             {
-                MessageBox.Show(Properties.Resources.preencherCampos_MessageBox, Properties.Resources.error_MessageBox,
+                MessageBox.Show(Properties.Resources.preencherCampoBusca_MessageBox, Properties.Resources.error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -61,18 +53,18 @@ namespace ProjectBook
             {
                 livro = new Livro(txtEditarTitulo.Text.ToUpper(), txtEditarAutor.Text.ToUpper(),
                     txtEditarEditora.Text.ToUpper(), txtEditarEdicao.Text.ToUpper(), txtEditarAno.Text.ToUpper(),
-                    txtEditarGenero.Text.ToUpper(), txtEditarIsbn.Text.ToUpper());
+                    cmbEditarGenero.Text.ToUpper(), txtEditarIsbn.Text.ToUpper());
             }
             else
             {
                 livro = new Livro(txtEditarTitulo.Text, txtEditarAutor.Text,
                     txtEditarEditora.Text, txtEditarEdicao.Text, txtEditarAno.Text,
-                    txtEditarGenero.Text, txtEditarIsbn.Text);
+                    cmbEditarGenero.Text, txtEditarIsbn.Text);
             }
             
             if (Verificadores.VerificarCamposLivros(livro))
             {
-                MessageBox.Show(Properties.Resources.preencherCampos_MessageBox, Properties.Resources.error_MessageBox,
+                MessageBox.Show(Properties.Resources.preencherCampoBusca_MessageBox, Properties.Resources.error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -82,6 +74,7 @@ namespace ProjectBook
             db.FechaConecxaoDb();
 
             LimparCamposEditar();
+            ColocarGeneros();
             gpbBuscar.Enabled = true;
         }
         private void PreencherCampos(DataTable info)
@@ -93,7 +86,7 @@ namespace ProjectBook
                 txtEditarEditora.Text = info.Rows[0][3].ToString();
                 txtEditarEdicao.Text = info.Rows[0][4].ToString();
                 txtEditarAno.Text = info.Rows[0][5].ToString();
-                txtEditarGenero.Text = info.Rows[0][6].ToString();
+                cmbEditarGenero.Text = info.Rows[0][6].ToString();
                 txtEditarIsbn.Text = info.Rows[0][7].ToString();
             } 
             catch
@@ -101,8 +94,13 @@ namespace ProjectBook
                 MessageBox.Show(Properties.Resources.livroNaoExiste_MessageBox, Properties.Resources.error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 gpbBuscar.Enabled = true;
-                return;
             }
+        }
+        
+        private void ColocarGeneros()
+        {
+            //Colocar todos os generos no combobox
+            foreach(DataRow itens in db.PegarGeneros().Rows) cmbEditarGenero.Items.Add(itens["Genero"]);
         }
         private void LimparCamposEditar()
         {
@@ -112,7 +110,7 @@ namespace ProjectBook
             txtEditarEditora.Clear();
             txtEditarEdicao.Clear();
             txtEditarAno.Clear();
-            txtEditarGenero.Text = "";
+            cmbEditarGenero.Text = "";
             txtEditarIsbn.Clear();
         }
     }
