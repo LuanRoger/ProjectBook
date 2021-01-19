@@ -415,7 +415,6 @@ namespace ProjectBook
             this.cmbNovoStatus.FormattingEnabled = true;
             this.cmbNovoStatus.Items.AddRange(new object[] {
             Tipos.StatusAluguel.Alugado,
-            Tipos.StatusAluguel.Atrssado,
             Tipos.StatusAluguel.Devolvido
             });
             this.cmbNovoStatus.Location = new System.Drawing.Point(468, 142);

@@ -20,6 +20,12 @@ namespace ProjectBook
         private void btnPesquisarCliente_Click(object sender, EventArgs e)
         {
             string termoPesquisa = txtPesquisarCliente.Text;
+            if (Verificadores.VerificarStrings(termoPesquisa))
+            {
+                MessageBox.Show(Properties.Resources.preencherCampoBusca_MessageBox, Properties.Resources.error_MessageBox,
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             DataTable dataTable;
 
             clienteDb.AbrirConexaoDb();

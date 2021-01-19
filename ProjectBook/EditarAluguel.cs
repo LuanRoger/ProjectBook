@@ -22,6 +22,13 @@ namespace ProjectBook
         private void btnBuscarEditarAluguel_Click(object sender, EventArgs e)
         {
             string buscarEditarAluguel = txtBuscarAluguel.Text;
+            if (Verificadores.VerificarStrings(buscarEditarAluguel))
+            {
+                MessageBox.Show(Properties.Resources.preencherCampoBusca_MessageBox, Properties.Resources.error_MessageBox,
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             try
             {
                 aluguelDb.AbrirConexaoDb();
@@ -35,16 +42,18 @@ namespace ProjectBook
                     infoAluguel = aluguelDb.BuscarAluguelLivro(buscarEditarAluguel);
                     infoCliente = clienteDb.BuscarClienteNome(infoAluguel.Rows[0][2].ToString());
                 }
+
                 aluguelDb.FechaConecxaoDb();
-            }catch
+            }
+            catch
             {
                 MessageBox.Show(Properties.Resources.clienteLivroNaoAlugados, Properties.Resources.error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 aluguelDb.FechaConecxaoDb();
-                
+
                 return;
             }
-            
+
             PreencherCamposCliente(infoCliente);
             PreencherCamposAluguel(infoAluguel);
         }
@@ -90,7 +99,7 @@ namespace ProjectBook
 
         private void btnSalvarEditarAluguel_Click(object sender, EventArgs e)
         {
-            Aluguel aluguel = Aluguel.AluguelFactory(txtNovoTituloLivroAluguel.Text, txtNovoAutorAluguel.Text, txtNovoClienteAluguel.Text,
+            Aluguel aluguel = new Aluguel(txtNovoTituloLivroAluguel.Text, txtNovoAutorAluguel.Text, txtNovoClienteAluguel.Text,
                 dtpEditarDataEntrega.Value, dtpEditarDataRecebimento.Value, cmbNovoStatus.Text);
 
             if (Verificadores.VerificarCamposAluguel(aluguel))
@@ -138,9 +147,6 @@ namespace ProjectBook
             txtNovoTelefoneAluguel.Clear();
             txtNovoEmailAluguel.Clear();
             cmbNovoStatus.Text = "";
-
-            infoAluguel = new DataTable();
-            infoCliente = new DataTable();
         }
     }
 }

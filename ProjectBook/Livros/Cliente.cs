@@ -15,7 +15,7 @@ namespace ProjectBook.Livros
             this.cep = cep;
             this.telefone1 = telefone1;
             this.telefone2 = telefone2;
-            this.email = email;
+            this.email = email.ToLower();
         }
 
         public string nomeCompleto { get;}

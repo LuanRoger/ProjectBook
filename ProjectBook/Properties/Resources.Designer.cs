@@ -343,11 +343,20 @@ namespace ProjectBook.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Preencha todos os campos para continuar..
+        /// </summary>
+        internal static string preencherCampos {
+            get {
+                return ResourceManager.GetString("preencherCampos", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Preencha todos os campos obrigatórios.
         /// </summary>
-        internal static string PreencherCamposObrigatorios_MessageBox {
+        internal static string preencherCamposObrigatorios_MessageBox {
             get {
-                return ResourceManager.GetString("PreencherCamposObrigatorios_MessageBox", resourceCulture);
+                return ResourceManager.GetString("preencherCamposObrigatorios_MessageBox", resourceCulture);
             }
         }
         

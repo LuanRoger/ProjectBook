@@ -61,16 +61,14 @@ namespace ProjectBook
             else if (rabBsucarClienteNome.Checked) infoCliente = clienteDb.BuscarClienteNome(termoBuscaCliente);
             clienteDb.FechaConecxaoDb();
 
-            //Caso retorne uma coluna vazia
-            try
+            if (Verificadores.VerificarDataTable(infoCliente))
             {
-                PreencherCampos(infoCliente);
-            }
-            catch
-            {
-                MessageBox.Show(Properties.Resources.preencherCampoBusca_MessageBox, Properties.Resources.error_MessageBox,
+                MessageBox.Show(Properties.Resources.clienteNaoExiste_MessageBox, Properties.Resources.error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
+            
+            PreencherCampos(infoCliente);
         }
         private void btnLimparEditarCliente_Click(object sender, EventArgs e) => LimparCampos();
 

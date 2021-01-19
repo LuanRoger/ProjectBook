@@ -64,7 +64,7 @@ namespace ProjectBook
             
             if (Verificadores.VerificarCamposLivros(livro))
             {
-                MessageBox.Show(Properties.Resources.preencherCampoBusca_MessageBox, Properties.Resources.error_MessageBox,
+                MessageBox.Show(Properties.Resources.preencherCampos, Properties.Resources.error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }

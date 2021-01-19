@@ -75,7 +75,7 @@ namespace ProjectBook
 
         private void btnSalvarAluguel_Click(object sender, EventArgs e)
         {
-            Aluguel aluguel = Aluguel.AluguelFactory(txtTituloLivroAluguel.Text, txtAutorLivroAluguel.Text, txtNomeClienteAluguel.Text,
+            Aluguel aluguel = new Aluguel(txtTituloLivroAluguel.Text, txtAutorLivroAluguel.Text, txtNomeClienteAluguel.Text,
                 dtpDataEntrega.Value, dtpDataRecebimento.Value, Tipos.StatusAluguel.Alugado.ToString());
             
             if (Verificadores.VerificarCamposAluguel(aluguel))

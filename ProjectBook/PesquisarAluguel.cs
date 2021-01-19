@@ -20,6 +20,14 @@ namespace ProjectBook
 
         private void btnBuscarClientePesquisaAluguel_Click(object sender, EventArgs e)
         {
+            string termoBusca = txtBuscarCliente.Text;
+            if (Verificadores.VerificarStrings(termoBusca))
+            {
+                MessageBox.Show(Properties.Resources.preencherCampoBusca_MessageBox, Properties.Resources.error_MessageBox,
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            
             aluguelDb.AbrirConexaoDb();
             DataTable data = aluguelDb.BuscarAluguelCliente(txtBuscarCliente.Text);
             aluguelDb.FechaConecxaoDb();
@@ -31,18 +39,19 @@ namespace ProjectBook
                 return;
             }
 
-            txtResultadoCliete.Text = data.Rows[0][2].ToString();
-            txtResultadoLivro.Text = data.Rows[0][0].ToString();
-            txtResultadoStatus.Text = data.Rows[0][5].ToString();
-            DateTime entrega = (DateTime)data.Rows[0][3];
-            DateTime recebimento = (DateTime)data.Rows[0][4];
-            txtAVencer.Text = Convert.ToInt32((recebimento.Date - entrega.Date).Days) <= 0 ? "-" : (recebimento.Date - entrega.Date).Days.ToString();
-            txtAtraso.Text = Convert.ToInt32((entrega.Date - recebimento.Date).Days) <= 0 || data.Rows[0][5].ToString() == "Devolvido" ?
-                 "-" : (entrega.Date - recebimento.Date).Days.ToString();
+            PreencherCampos(data);
         }
 
         private void btnBuscarTituloPesquisarAluguel_Click(object sender, EventArgs e)
         {
+            string termoBusca = txtBuscarTitulo.Text;
+            if (Verificadores.VerificarStrings(termoBusca))
+            {
+                MessageBox.Show(Properties.Resources.preencherCampoBusca_MessageBox, Properties.Resources.error_MessageBox,
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            
             aluguelDb.AbrirConexaoDb();
             DataTable data = aluguelDb.BuscarAluguelLivro(txtBuscarTitulo.Text);
             aluguelDb.FechaConecxaoDb();
@@ -53,16 +62,21 @@ namespace ProjectBook
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            
+            PreencherCampos(data);
+        }
 
+        private void PreencherCampos(DataTable data)
+        {
             txtResultadoCliete.Text = data.Rows[0][2].ToString();
             txtResultadoLivro.Text = data.Rows[0][0].ToString();
             txtResultadoStatus.Text = data.Rows[0][5].ToString();
-            DateTime entrega = (DateTime)data.Rows[0][3];
-            DateTime recebimento = (DateTime)data.Rows[0][4];
-            txtAVencer.Text = Convert.ToInt32((recebimento.Date - entrega.Date).Days) <= 0
-                ? "-" : (recebimento.Date - entrega.Date).Days.ToString();
-            txtAtraso.Text = Convert.ToInt32((entrega.Date - recebimento.Date).Days) <= 0
-                ? "-" : (entrega.Date - recebimento.Date).Days.ToString();
+            DateTime hoje = DateTime.Now.Date;
+            DateTime devolucao = (DateTime)data.Rows[0][4];
+            txtAVencer.Text = Convert.ToInt32((devolucao.Date - hoje).Days) <= 0
+                ? "-" : (devolucao.Date - hoje).Days.ToString();
+            txtAtraso.Text = Convert.ToInt32((hoje - devolucao.Date).Days) <= 0
+                ? "-" : (hoje - devolucao.Date).Days.ToString();
         }
     }
 }

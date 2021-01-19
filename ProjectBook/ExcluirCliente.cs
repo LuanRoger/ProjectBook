@@ -15,8 +15,17 @@ namespace ProjectBook
 
         private void btnExcluirCliente_Click(object sender, EventArgs e)
         {
-            DataTable data = clienteDb.BuscarClienteId(txtBuscarExcluirCliente.Text);
-
+            string termoBusca = txtBuscarExcluirCliente.Text;
+            if (Verificadores.VerificarStrings(termoBusca))
+            {
+                MessageBox.Show(Properties.Resources.preencherCampoBusca_MessageBox, Properties.Resources.error_MessageBox,
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            clienteDb.AbrirConexaoDb();
+            DataTable data = clienteDb.BuscarClienteId(termoBusca);
+            clienteDb.FechaConecxaoDb();
+            
             if (Verificadores.VerificarDataTable(data))
             {
                 MessageBox.Show(Properties.Resources.livroNaoExiste_MessageBox, Properties.Resources.error_MessageBox,

@@ -184,7 +184,7 @@
   <data name="UserGroup_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\img\UserGroup_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="PreencherCamposObrigatorios_MessageBox" xml:space="preserve">
+  <data name="preencherCamposObrigatorios_MessageBox" xml:space="preserve">
     <value>Preencha todos os campos obrigatórios</value>
   </data>
   <data name="SearchGo_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
@@ -237,5 +237,8 @@
   </data>
   <data name="clienteLivroNaoAlugados" xml:space="preserve">
     <value>Este livro não foi alugado ou o cliente não alugou nenhum livro.</value>
+  </data>
+  <data name="preencherCampos" xml:space="preserve">
+    <value>Preencha todos os campos para continuar.</value>
   </data>
 </root>

@@ -15,14 +15,14 @@ namespace ProjectBook.DB.SqlServerExpress
             command.Parameters.AddWithValue("@titulo", aluguel.titulo);
             command.Parameters.AddWithValue("@autor", aluguel.autor);
             command.Parameters.AddWithValue("@alugadoPor", aluguel.alugadoPor);
-            command.Parameters.AddWithValue("@dataEntrega", aluguel.dataEntrega);
-            command.Parameters.AddWithValue("@dataRecebimento", aluguel.dataRecebimento);
+            command.Parameters.AddWithValue("@dataSaida", aluguel.dataEntrega);
+            command.Parameters.AddWithValue("@dataDevolucao", aluguel.dataRecebimento);
             command.Parameters.AddWithValue("@status", aluguel.status);
             #endregion
             try
             {
-                command.CommandText = "INSERT INTO Aluguel(Titulo, Autor, [Alugado por], [Data da entrega], [Data do recebimento], Status) " +
-                "VALUES(@titulo, @autor, @alugadoPor, @dataEntrega, @dataRecebimento, @status)";
+                command.CommandText = "INSERT INTO Aluguel(Titulo, Autor, [Alugado por], [Data de saida], [Data de devolução], Status) " +
+                "VALUES(@titulo, @autor, @alugadoPor, @dataSaida, @dataDevolucao, @status)";
                 command.ExecuteNonQuery();
                 command.Dispose();
 
@@ -115,14 +115,14 @@ namespace ProjectBook.DB.SqlServerExpress
             command.Parameters.AddWithValue("@titulo", aluguel.titulo);
             command.Parameters.AddWithValue("@autor", aluguel.autor);
             command.Parameters.AddWithValue("@alugadoPor", aluguel.alugadoPor);
-            command.Parameters.AddWithValue("@dataEntrega", aluguel.dataEntrega);
-            command.Parameters.AddWithValue("@dataRecebimento", aluguel.dataRecebimento);
+            command.Parameters.AddWithValue("@dataSaida", aluguel.dataEntrega);
+            command.Parameters.AddWithValue("@dataDevolucao", aluguel.dataRecebimento);
             command.Parameters.AddWithValue("@status", aluguel.status);
             #endregion
             try
             {
                 command.CommandText = "UPDATE Livros SET Titulo = @titulo, Autor = @autor, [Alugado por] = @alugadoPor," +
-                    $" [Data de entrega] = @dataEntrega, [Data do recebimento] = @dataRecebimento, Status = @status WHERE Titulo = \'{titulo}\'";
+                    $" [Data de saida] = @dataEntrega, [Data de devolução] = @dataRecebimento, Status = @status WHERE Titulo = \'{titulo}\'";
                 command.ExecuteNonQuery();
                 command.Dispose();
 
@@ -137,14 +137,14 @@ namespace ProjectBook.DB.SqlServerExpress
             command.Parameters.AddWithValue("@titulo", aluguel.titulo);
             command.Parameters.AddWithValue("@autor", aluguel.autor);
             command.Parameters.AddWithValue("@alugadoPor", aluguel.alugadoPor);
-            command.Parameters.AddWithValue("@dataEntrega", aluguel.dataEntrega);
-            command.Parameters.AddWithValue("@dataRecebimento", aluguel.dataRecebimento);
+            command.Parameters.AddWithValue("@dataSaida", aluguel.dataEntrega);
+            command.Parameters.AddWithValue("@dataDevolucao", aluguel.dataRecebimento);
             command.Parameters.AddWithValue("@status", aluguel.status);
             #endregion
             try
             {
                 command.CommandText = "UPDATE Aluguel SET Titulo = @titulo, Autor = @autor, [Alugado por] = @alugadoPor," +
-                    $" [Data da entrega] = @dataEntrega, [Data do recebimento] = @dataRecebimento, Status = @status WHERE [Alugado por] = \'{nomeCliente}\'";
+                    $" [Data de saida] = @dataSaida, [Data de devolução] = @dataDevolucao, Status = @status WHERE [Alugado por] = \'{nomeCliente}\'";
                 command.ExecuteNonQuery();
                 command.Dispose();
 

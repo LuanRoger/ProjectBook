@@ -6,26 +6,21 @@ namespace ProjectBook.Livros
 {
     class Aluguel
     {
-        public string titulo { get; private set; }
-        public string autor { get; private set; }
-        public string alugadoPor { get; private set; }
-        public DateTime dataEntrega { get; private set; }
-        public DateTime dataRecebimento { get; private set; }
-        public string status { get; private set; }
-
-        public static Aluguel AluguelFactory(string titulo, string autor, string alugadoPor, DateTime dataEntrega,
-            DateTime dateRecebimento, string status)
+        public Aluguel(string titulo, string autor, string alugadoPor, DateTime dataEntrega, DateTime dataRecebimento, string status)
         {
-            Aluguel aluguel = new Aluguel
-            {
-                titulo = titulo,
-                autor = autor,
-                alugadoPor = alugadoPor,
-                dataEntrega = dataEntrega,
-                dataRecebimento = dateRecebimento,
-                status = status
-            };
-            return aluguel;
+            this.titulo = titulo;
+            this.autor = autor;
+            this.alugadoPor = alugadoPor;
+            this.dataEntrega = dataEntrega;
+            this.dataRecebimento = dataRecebimento;
+            this.status = status;
         }
+
+        public string titulo { get;}
+        public string autor { get;}
+        public string alugadoPor { get;}
+        public DateTime dataEntrega { get;}
+        public DateTime dataRecebimento { get;}
+        public string status { get;}
     }
 }

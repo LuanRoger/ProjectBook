@@ -18,9 +18,9 @@ namespace ProjectBook
 {
     public partial class Inicio : Form
     {
-        LivrosDb livrosDb = new LivrosDb();
-        AluguelDb aluguelDb = new AluguelDb();
-        ClienteDb clienteDb = new ClienteDb();
+        private LivrosDb livrosDb = new LivrosDb();
+        private AluguelDb aluguelDb = new AluguelDb();
+        private ClienteDb clienteDb = new ClienteDb();
         public Inicio()
         {
             InitializeComponent();
@@ -60,8 +60,7 @@ namespace ProjectBook
                 editarCliente.Show();
             };
 
-            if (ConfigurationManager.AppSettings["tipoUsuario"] == "ADM") mnuUsuario.Visible = true;
-            else mnuUsuario.Visible = false;
+            mnuUsuario.Visible = ConfigurationManager.AppSettings["tipoUsuario"] == "ADM";
             mnuUsuario.Click += (sender, e) =>
             {
                 GerenciarUsuario gerenciarUsuario = new GerenciarUsuario();
@@ -153,8 +152,7 @@ namespace ProjectBook
         {
             Configuracoes.config.AppSettings.Settings["usuarioLogado"].Value = "";
             Configuracoes.config.Save();
-            ConfigurationManager.RefreshSection("appSetting");
-            
+
             Process.Start(Application.StartupPath + Assembly.GetExecutingAssembly().GetName().Name + ".exe");
             Process.GetCurrentProcess().Kill();
         }

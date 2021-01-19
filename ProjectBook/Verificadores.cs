@@ -11,9 +11,8 @@ namespace ProjectBook
     {
         public static bool VerificarCamposLivros(Livro livro)
         {
-            bool error = false;
-            if (livro.titulo.Length == 0 || livro.autor.Length == 0 || livro.editora.Length == 0 || livro.edicao.Length == 0
-                || livro.genero.Length == 0 || livro.isbn.Length == 0) error = true;
+            bool error = livro.titulo.Length == 0 || livro.autor.Length == 0 || livro.editora.Length == 0 || livro.edicao.Length == 0 
+                         || livro.ano.Length == 0 || livro.genero.Length == 0 || livro.isbn.Length == 0;
             return error;
         }
         public static bool VerificarCamposAluguel(Aluguel aluguel)
@@ -38,8 +37,7 @@ namespace ProjectBook
         }
         public static bool VerificarDataTable(DataTable table)
         {
-            bool error = false;
-            if (table.Rows.Count == 0) error = true;
+            bool error = table.Rows.Count == 0;
             return error;
         }
 

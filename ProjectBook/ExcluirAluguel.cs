@@ -15,8 +15,15 @@ namespace ProjectBook
 
         private void btnBuscarExcluirAluguel_Click(object sender, EventArgs e)
         {
+            string termoBusca = txtBuscaAluguel.Text;
+            if (Verificadores.VerificarStrings(termoBusca))
+            {
+                MessageBox.Show(Properties.Resources.preencherCampoBusca_MessageBox, Properties.Resources.error_MessageBox,
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             aluguelDb.AbrirConexaoDb();
-            DataTable data = aluguelDb.BuscarAluguelLivro(txtBuscaAluguel.Text);
+            DataTable data = aluguelDb.BuscarAluguelLivro(termoBusca);
             aluguelDb.FechaConecxaoDb();
 
             if (Verificadores.VerificarDataTable(data))
