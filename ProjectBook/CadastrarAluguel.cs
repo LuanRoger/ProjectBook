@@ -14,6 +14,21 @@ namespace ProjectBook
         public CadastrarAluguel()
         {
             InitializeComponent();
+            
+            //Preparar sugestões
+            //Livro
+            AutoCompleteStringCollection livrosSugestoes = new AutoCompleteStringCollection();
+            livrosDb.AbrirConexaoDb();
+            foreach (DataRow livro in livrosDb.VerTodosLivros().Rows) livrosSugestoes.Add(livro[1].ToString());
+            livrosDb.FechaConecxaoDb();
+            txtBuscarLivroAluguel.AutoCompleteCustomSource = livrosSugestoes;
+            
+            //Cliente
+            AutoCompleteStringCollection clienteSugestoes = new AutoCompleteStringCollection();
+            clienteDb.AbrirConexaoDb();
+            foreach (DataRow cliente in clienteDb.VerTodosClientes().Rows) clienteSugestoes.Add(cliente[1].ToString());
+            clienteDb.FechaConecxaoDb();
+            txtBuscarClienteAluguel.AutoCompleteCustomSource = clienteSugestoes;
         }
 
         private void btnBuscarLivroAluguel_Click(object sender, EventArgs e)

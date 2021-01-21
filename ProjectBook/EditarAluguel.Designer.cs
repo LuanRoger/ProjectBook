@@ -80,9 +80,9 @@ namespace ProjectBook
             this.rabBuscarNomeCliente.Name = "rabBuscarNomeCliente";
             this.rabBuscarNomeCliente.Size = new System.Drawing.Size(113, 19);
             this.rabBuscarNomeCliente.TabIndex = 0;
-            this.rabBuscarNomeCliente.TabStop = true;
             this.rabBuscarNomeCliente.Text = "Nome do cliente";
             this.rabBuscarNomeCliente.UseVisualStyleBackColor = true;
+            this.rabBuscarNomeCliente.CheckedChanged += new System.EventHandler(this.rabBuscarNomeCliente_CheckedChanged);
             // 
             // rabBuscarTituloLivro
             // 
@@ -91,13 +91,13 @@ namespace ProjectBook
             this.rabBuscarTituloLivro.Name = "rabBuscarTituloLivro";
             this.rabBuscarTituloLivro.Size = new System.Drawing.Size(98, 19);
             this.rabBuscarTituloLivro.TabIndex = 1;
-            this.rabBuscarTituloLivro.TabStop = true;
             this.rabBuscarTituloLivro.Text = "Titulo do livro";
             this.rabBuscarTituloLivro.UseVisualStyleBackColor = true;
+            this.rabBuscarTituloLivro.CheckedChanged += new System.EventHandler(this.rabBuscarTituloLivro_CheckedChanged);
             // 
             // txtBuscarAluguel
             // 
-            this.txtBuscarAluguel.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.txtBuscarAluguel.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.txtBuscarAluguel.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txtBuscarAluguel.Location = new System.Drawing.Point(6, 46);
             this.txtBuscarAluguel.Name = "txtBuscarAluguel";
@@ -193,6 +193,8 @@ namespace ProjectBook
             // 
             // txtMudarLivroAluguel
             // 
+            this.txtMudarLivroAluguel.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.txtMudarLivroAluguel.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txtMudarLivroAluguel.Location = new System.Drawing.Point(75, 17);
             this.txtMudarLivroAluguel.Name = "txtMudarLivroAluguel";
             this.txtMudarLivroAluguel.Size = new System.Drawing.Size(287, 23);
@@ -309,6 +311,8 @@ namespace ProjectBook
             // 
             // txtMudarClienteAluguel
             // 
+            this.txtMudarClienteAluguel.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.txtMudarClienteAluguel.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txtMudarClienteAluguel.Location = new System.Drawing.Point(76, 20);
             this.txtMudarClienteAluguel.Name = "txtMudarClienteAluguel";
             this.txtMudarClienteAluguel.Size = new System.Drawing.Size(286, 23);
@@ -414,9 +418,8 @@ namespace ProjectBook
             this.cmbNovoStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbNovoStatus.FormattingEnabled = true;
             this.cmbNovoStatus.Items.AddRange(new object[] {
-            Tipos.StatusAluguel.Alugado,
-            Tipos.StatusAluguel.Devolvido
-            });
+            ProjectBook.Tipos.StatusAluguel.Alugado,
+            ProjectBook.Tipos.StatusAluguel.Devolvido});
             this.cmbNovoStatus.Location = new System.Drawing.Point(468, 142);
             this.cmbNovoStatus.Name = "cmbNovoStatus";
             this.cmbNovoStatus.Size = new System.Drawing.Size(146, 23);

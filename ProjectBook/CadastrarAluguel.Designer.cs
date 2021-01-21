@@ -81,6 +81,8 @@ namespace ProjectBook
             // 
             // txtBuscarLivroAluguel
             // 
+            this.txtBuscarLivroAluguel.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.txtBuscarLivroAluguel.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txtBuscarLivroAluguel.Location = new System.Drawing.Point(110, 19);
             this.txtBuscarLivroAluguel.Name = "txtBuscarLivroAluguel";
             this.txtBuscarLivroAluguel.Size = new System.Drawing.Size(258, 23);
@@ -288,6 +290,8 @@ namespace ProjectBook
             // 
             // txtBuscarClienteAluguel
             // 
+            this.txtBuscarClienteAluguel.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.txtBuscarClienteAluguel.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txtBuscarClienteAluguel.Location = new System.Drawing.Point(114, 23);
             this.txtBuscarClienteAluguel.Name = "txtBuscarClienteAluguel";
             this.txtBuscarClienteAluguel.Size = new System.Drawing.Size(254, 23);

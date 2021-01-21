@@ -137,12 +137,23 @@ namespace ProjectBook
             {
                 btnDbTesteConexao.Image = Properties.Resources.database_icon;
                 
+                //Verificar se existe usuário logado
                 if (String.IsNullOrEmpty(ConfigurationManager.AppSettings["usuarioLogado"]))
                 {
                     this.Enabled = false;
                     Login login = new Login();
                     login.Show();
                 }
+                //Atualizar Status do aluguel
+                aluguelDb.AbrirConexaoDb();
+                foreach(DataRow data in aluguelDb.PegarLivrosAlugados().Rows)
+                {
+                    DateTime hoje = DateTime.Now.Date;
+                    DateTime devolucao = (DateTime)data[4];
+                    if (Convert.ToInt32((hoje - devolucao).Days) >= 0)
+                        aluguelDb.AtualizarStatusAtrasado(data[2].ToString());
+                }
+                aluguelDb.FechaConecxaoDb();
             }
             else btnDbTesteConexao.Image = Properties.Resources.database_error_icon;
             livrosDb.FechaConecxaoDb();

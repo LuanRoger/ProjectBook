@@ -105,6 +105,19 @@ namespace ProjectBook.DB.SqlServerExpress
 
             return table;
         }
+        public DataTable PegarLivrosAlugados()
+        {
+            SqlDataAdapter adapter;
+            DataTable table = new DataTable();
+            try
+            {
+                adapter = new SqlDataAdapter($"SELECT * FROM Aluguel WHERE Status = \'{Tipos.StatusAluguel.Alugado}\'", connection);
+                adapter.Fill(table);
+            }
+            catch (SqlException e) { MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+
+            return table;
+        }
         #endregion
 
         #region Atualizar
@@ -152,6 +165,13 @@ namespace ProjectBook.DB.SqlServerExpress
             }
             catch (SqlException e) { MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
+        public void AtualizarStatusAtrasado(string alugadoPor)
+        {
+            SqlCommand command = new SqlCommand {Connection = connection};
+            command.CommandText = $"UPDATE Aluguel SET Status = \'{Tipos.StatusAluguel.Atrssado}\' WHERE [Alugado por] = \'{alugadoPor}\'";
+            command.ExecuteNonQuery();
+            command.Dispose();
+            }
         #endregion
     }
 }

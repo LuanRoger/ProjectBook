@@ -17,12 +17,46 @@ namespace ProjectBook
         public EditarAluguel()
         {
             InitializeComponent();
+            
+            //Preparar sugestões
+            AutoCompleteStringCollection aluguelSugestao = new AutoCompleteStringCollection();
+            
+            //Livro
+            livrosDb.AbrirConexaoDb();
+            foreach (DataRow livro in livrosDb.VerTodosLivros().Rows) aluguelSugestao.Add(livro[1].ToString());
+            livrosDb.FechaConecxaoDb();
+            txtMudarLivroAluguel.AutoCompleteCustomSource = aluguelSugestao;
+            
+            //Cliente
+            aluguelSugestao = new AutoCompleteStringCollection();
+            clienteDb.AbrirConexaoDb();
+            foreach (DataRow cliente in clienteDb.VerTodosClientes().Rows) aluguelSugestao.Add(cliente[1].ToString());
+            clienteDb.FechaConecxaoDb();
+            txtMudarClienteAluguel.AutoCompleteCustomSource = aluguelSugestao;
+        }
+        private void rabBuscarNomeCliente_CheckedChanged(object sender, EventArgs e)
+        {
+            AutoCompleteStringCollection aluguelSugestao = new AutoCompleteStringCollection();
+            clienteDb.AbrirConexaoDb();
+            foreach (DataRow cliente in aluguelDb.VerTodosAluguel().Rows) aluguelSugestao.Add($"{cliente[2]} - {cliente[0]}");
+            clienteDb.FechaConecxaoDb();
+            txtBuscarAluguel.AutoCompleteCustomSource = aluguelSugestao;
+        }
+        private void rabBuscarTituloLivro_CheckedChanged(object sender, EventArgs e)
+        {
+            AutoCompleteStringCollection aluguelSugestao = new AutoCompleteStringCollection();
+            livrosDb.AbrirConexaoDb();
+            foreach (DataRow livro in aluguelDb.VerTodosAluguel().Rows) aluguelSugestao.Add($"{livro[0]} - {livro[2]}");
+            livrosDb.FechaConecxaoDb();
+            txtBuscarAluguel.AutoCompleteCustomSource = aluguelSugestao;
         }
 
         private void btnBuscarEditarAluguel_Click(object sender, EventArgs e)
         {
-            string buscarEditarAluguel = txtBuscarAluguel.Text;
-            if (Verificadores.VerificarStrings(buscarEditarAluguel))
+            string[] buscarEditarAluguel = txtBuscarAluguel.Text.Split("-");
+            string cliente = buscarEditarAluguel[0];
+            string titulo = buscarEditarAluguel[1];
+            if (Verificadores.VerificarStrings(buscarEditarAluguel[0]))
             {
                 MessageBox.Show(Properties.Resources.preencherCampoBusca_MessageBox, Properties.Resources.error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -34,15 +68,14 @@ namespace ProjectBook
                 aluguelDb.AbrirConexaoDb();
                 if (rabBuscarNomeCliente.Checked)
                 {
-                    infoAluguel = aluguelDb.BuscarAluguelCliente(buscarEditarAluguel);
+                    infoAluguel = aluguelDb.BuscarAluguelCliente(buscarEditarAluguel[0].Trim());
                     infoCliente = clienteDb.BuscarClienteNome(infoAluguel.Rows[0][2].ToString());
                 }
                 else if (rabBuscarTituloLivro.Checked)
                 {
-                    infoAluguel = aluguelDb.BuscarAluguelLivro(buscarEditarAluguel);
+                    infoAluguel = aluguelDb.BuscarAluguelLivro(buscarEditarAluguel[1].Trim());
                     infoCliente = clienteDb.BuscarClienteNome(infoAluguel.Rows[0][2].ToString());
                 }
-
                 aluguelDb.FechaConecxaoDb();
             }
             catch
@@ -60,7 +93,6 @@ namespace ProjectBook
         private void btnBuscarNovoLivro_Click(object sender, EventArgs e)
         {
             string buscarLivro = txtMudarLivroAluguel.Text;
-            DataTable resultadoBusca;
 
             if (Verificadores.VerificarStrings(buscarLivro))
             {
@@ -70,7 +102,7 @@ namespace ProjectBook
             }
 
             livrosDb.AbrirConexaoDb();
-            resultadoBusca = livrosDb.BuscarLivrosTitulo(buscarLivro);
+            DataTable resultadoBusca = livrosDb.BuscarLivrosTitulo(buscarLivro);
             livrosDb.FechaConecxaoDb();
 
             //Preencher campo dos livros
@@ -81,7 +113,6 @@ namespace ProjectBook
         private void btnBuscarNovoCliente_Click(object sender, EventArgs e)
         {
             string buscarCliete = txtMudarClienteAluguel.Text;
-            DataTable resultadoBusca;
 
             if (Verificadores.VerificarStrings(buscarCliete))
             {
@@ -91,7 +122,7 @@ namespace ProjectBook
             }
 
             clienteDb.AbrirConexaoDb();
-            resultadoBusca = clienteDb.BuscarClienteNome(buscarCliete);
+            DataTable resultadoBusca = clienteDb.BuscarClienteNome(buscarCliete);
             clienteDb.FechaConecxaoDb();
             
             PreencherCamposCliente(resultadoBusca);
