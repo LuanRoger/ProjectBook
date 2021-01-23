@@ -30,23 +30,16 @@ namespace ProjectBook
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Excluir));
-            this.label1 = new System.Windows.Forms.Label();
             this.txtExcluirLivro = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.btnCancelarExcluirLivro = new System.Windows.Forms.Button();
+            this.rabIdExcluirLivro = new System.Windows.Forms.RadioButton();
+            this.rabExcluirTitulo = new System.Windows.Forms.RadioButton();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 13);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(47, 15);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "ID livro:";
             // 
             // txtExcluirLivro
             // 
-            this.txtExcluirLivro.Location = new System.Drawing.Point(13, 32);
+            this.txtExcluirLivro.Location = new System.Drawing.Point(12, 38);
             this.txtExcluirLivro.Name = "txtExcluirLivro";
             this.txtExcluirLivro.Size = new System.Drawing.Size(255, 23);
             this.txtExcluirLivro.TabIndex = 1;
@@ -57,21 +50,55 @@ namespace ProjectBook
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(274, 29);
+            this.button1.Location = new System.Drawing.Point(273, 35);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(28, 23);
             this.button1.TabIndex = 2;
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // btnCancelarExcluirLivro
+            // 
+            this.btnCancelarExcluirLivro.Location = new System.Drawing.Point(227, 72);
+            this.btnCancelarExcluirLivro.Name = "btnCancelarExcluirLivro";
+            this.btnCancelarExcluirLivro.Size = new System.Drawing.Size(75, 23);
+            this.btnCancelarExcluirLivro.TabIndex = 3;
+            this.btnCancelarExcluirLivro.Text = "Cancelar";
+            this.btnCancelarExcluirLivro.UseVisualStyleBackColor = true;
+            this.btnCancelarExcluirLivro.Click += new System.EventHandler(this.btnCancelarExcluirLivro_Click);
+            // 
+            // rabIdExcluirLivro
+            // 
+            this.rabIdExcluirLivro.AutoSize = true;
+            this.rabIdExcluirLivro.Location = new System.Drawing.Point(13, 13);
+            this.rabIdExcluirLivro.Name = "rabIdExcluirLivro";
+            this.rabIdExcluirLivro.Size = new System.Drawing.Size(36, 19);
+            this.rabIdExcluirLivro.TabIndex = 4;
+            this.rabIdExcluirLivro.TabStop = true;
+            this.rabIdExcluirLivro.Text = "ID";
+            this.rabIdExcluirLivro.UseVisualStyleBackColor = true;
+            // 
+            // rabExcluirTitulo
+            // 
+            this.rabExcluirTitulo.AutoSize = true;
+            this.rabExcluirTitulo.Location = new System.Drawing.Point(212, 13);
+            this.rabExcluirTitulo.Name = "rabExcluirTitulo";
+            this.rabExcluirTitulo.Size = new System.Drawing.Size(55, 19);
+            this.rabExcluirTitulo.TabIndex = 5;
+            this.rabExcluirTitulo.TabStop = true;
+            this.rabExcluirTitulo.Text = "Titulo";
+            this.rabExcluirTitulo.UseVisualStyleBackColor = true;
+            // 
             // Excluir
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(314, 64);
+            this.ClientSize = new System.Drawing.Size(314, 107);
+            this.Controls.Add(this.rabExcluirTitulo);
+            this.Controls.Add(this.rabIdExcluirLivro);
+            this.Controls.Add(this.btnCancelarExcluirLivro);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.txtExcluirLivro);
-            this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "Excluir";
@@ -84,9 +111,10 @@ namespace ProjectBook
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtExcluirLivro;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnCancelarExcluirLivro;
+        private System.Windows.Forms.RadioButton rabIdExcluirLivro;
+        private System.Windows.Forms.RadioButton rabExcluirTitulo;
     }
 }

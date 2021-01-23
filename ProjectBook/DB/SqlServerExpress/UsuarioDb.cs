@@ -98,6 +98,20 @@ namespace ProjectBook.DB.SqlServerExpress
 
             return table;
         }
+        public DataTable BuscarUsuarioNome(string nomeUsuario)
+        {
+            SqlDataAdapter adapter;
+            DataTable table = new DataTable();
+
+            try
+            {
+                adapter = new SqlDataAdapter($"SELECT * FROM Usuarios WHERE Usuario = \'{nomeUsuario}\'", connection);
+                adapter.Fill(table);
+            }
+            catch (SqlException e) { MessageBox.Show(e.Message, Properties.Resources.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); }
+
+            return table;
+        }
         #endregion
     }
 }

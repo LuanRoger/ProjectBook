@@ -21,6 +21,7 @@ namespace ProjectBook
         private LivrosDb livrosDb = new LivrosDb();
         private AluguelDb aluguelDb = new AluguelDb();
         private ClienteDb clienteDb = new ClienteDb();
+        private UsuarioDb usuarioDb = new UsuarioDb();
         public Inicio()
         {
             InitializeComponent();
@@ -144,6 +145,12 @@ namespace ProjectBook
                     Login login = new Login();
                     login.Show();
                 }
+                else if (Verificadores.VerificarDataTable(usuarioDb.BuscarUsuarioNome(ConfigurationManager.AppSettings["usuarioLogado"])))
+                {
+                    this.Enabled = false;
+                    Login login = new Login();
+                    login.Show();
+                }
                 //Atualizar Status do aluguel
                 aluguelDb.AbrirConexaoDb();
                 foreach(DataRow data in aluguelDb.PegarLivrosAlugados().Rows)
@@ -158,7 +165,6 @@ namespace ProjectBook
             else btnDbTesteConexao.Image = Properties.Resources.database_error_icon;
             livrosDb.FechaConecxaoDb();
         }
-
         private void btnSairUsuario_Click(object sender, EventArgs e)
         {
             Configuracoes.config.AppSettings.Settings["usuarioLogado"].Value = "";

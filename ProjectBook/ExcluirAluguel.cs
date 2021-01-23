@@ -16,15 +16,27 @@ namespace ProjectBook
         private void btnBuscarExcluirAluguel_Click(object sender, EventArgs e)
         {
             string termoBusca = txtBuscaAluguel.Text;
+            DataTable data = new DataTable();
+            
             if (Verificadores.VerificarStrings(termoBusca))
             {
                 MessageBox.Show(Properties.Resources.preencherCampoBusca_MessageBox, Properties.Resources.error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            aluguelDb.AbrirConexaoDb();
-            DataTable data = aluguelDb.BuscarAluguelLivro(termoBusca);
-            aluguelDb.FechaConecxaoDb();
+
+            if (rabExcluirAluguelCliente.Checked)
+            {
+                aluguelDb.AbrirConexaoDb();
+                data = aluguelDb.BuscarAluguelCliente(termoBusca);
+                aluguelDb.FechaConecxaoDb();
+            }
+            else if (rabExcluirAluguelTitulo.Checked)
+            {
+                aluguelDb.AbrirConexaoDb();
+                data = aluguelDb.BuscarAluguelLivro(termoBusca);
+                aluguelDb.FechaConecxaoDb();
+            }
 
             if (Verificadores.VerificarDataTable(data))
             {
@@ -34,15 +46,26 @@ namespace ProjectBook
             }
 
             DialogResult resultadoExcluir = MessageBox.Show(
-            $"{Properties.Resources.confirmarExclusao} {data.Rows[0][1]} {Properties.Resources.confirmarExclusaoAluguel2} {data.Rows[0][2]}",
+            $@"{Properties.Resources.confirmarExclusao} {data.Rows[0][1]} {Properties.Resources.confirmarExclusaoAluguel2} {data.Rows[0][2]}",
                 Properties.Resources.excluir_MessageBox, MessageBoxButtons.YesNo, MessageBoxIcon.Stop);
             
-            aluguelDb.AbrirConexaoDb();
-            if (rabExcluirAluguelTitulo.Checked && resultadoExcluir == DialogResult.Yes)
-                aluguelDb.DeletarAluguelTitulo(data.Rows[0][0].ToString());
-            else if (rabExcluirAluguelCliente.Checked && resultadoExcluir == DialogResult.Yes)
-                aluguelDb.DeletarAluguelCliente(data.Rows[0][2].ToString());
-            aluguelDb.FechaConecxaoDb();
+            if (resultadoExcluir == DialogResult.Yes)
+            {
+                if (rabExcluirAluguelCliente.Checked)
+                {
+                    aluguelDb.AbrirConexaoDb();
+                    aluguelDb.DeletarAluguelCliente(data.Rows[0][2].ToString());
+                    aluguelDb.FechaConecxaoDb();
+                }
+                else if (rabExcluirAluguelTitulo.Checked)
+                {
+                    aluguelDb.AbrirConexaoDb();
+                    aluguelDb.DeletarAluguelTitulo(data.Rows[0][0].ToString());
+                    aluguelDb.FechaConecxaoDb();
+                }
+                txtBuscaAluguel.Clear();
+            }
         }
+        private void btnCancelarExcluirAluguel_Click(object sender, EventArgs e) => this.Close();
     }
 }

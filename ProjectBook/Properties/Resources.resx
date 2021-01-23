@@ -239,6 +239,6 @@
     <value>Este livro não foi alugado ou o cliente não alugou nenhum livro.</value>
   </data>
   <data name="preencherCampos" xml:space="preserve">
-    <value>Preencha todos os campos para continuar.</value>
+    <value>Preencha todos e/ou verifique todos os campos para continuar.</value>
   </data>
 </root>

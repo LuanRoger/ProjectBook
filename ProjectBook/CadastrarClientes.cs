@@ -26,12 +26,11 @@ namespace ProjectBook
             {
                 cliente = new Cliente(txtNomeCliente.Text.ToUpper(), txtEnderecoCliente.Text.ToUpper(), txtCidadeCliente.Text.ToUpper(), cmbEstadoCliente.Text.ToUpper(),
                     txtCepCliente.Text.ToUpper(), txtTelefone1Cliente.Text.ToUpper(), txtTelefone2Cliente.Text.ToUpper(), txtEmailCliente.Text);
-                
             }
             else
             {
-                cliente = new Cliente(txtNomeCliente.Text.ToUpper(), txtEnderecoCliente.Text.ToUpper(), txtCidadeCliente.Text.ToUpper(), cmbEstadoCliente.Text.ToUpper(),
-                    txtCepCliente.Text.ToUpper(), txtTelefone1Cliente.Text.ToUpper(), txtTelefone2Cliente.Text.ToUpper(), txtEmailCliente.Text);
+                cliente = new Cliente(txtNomeCliente.Text, txtEnderecoCliente.Text, txtCidadeCliente.Text, cmbEstadoCliente.Text,
+                    txtCepCliente.Text, txtTelefone1Cliente.Text, txtTelefone2Cliente.Text, txtEmailCliente.Text);
             }
             
             if(Verificadores.VerificarCamposCliente(cliente))

@@ -54,9 +54,7 @@ namespace ProjectBook
         private void btnBuscarEditarAluguel_Click(object sender, EventArgs e)
         {
             string[] buscarEditarAluguel = txtBuscarAluguel.Text.Split("-");
-            string cliente = buscarEditarAluguel[0];
-            string titulo = buscarEditarAluguel[1];
-            if (Verificadores.VerificarStrings(buscarEditarAluguel[0]))
+            if (Verificadores.VerificarStrings(txtBuscarAluguel.Text))
             {
                 MessageBox.Show(Properties.Resources.preencherCampoBusca_MessageBox, Properties.Resources.error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -73,7 +71,7 @@ namespace ProjectBook
                 }
                 else if (rabBuscarTituloLivro.Checked)
                 {
-                    infoAluguel = aluguelDb.BuscarAluguelLivro(buscarEditarAluguel[1].Trim());
+                    infoAluguel = aluguelDb.BuscarAluguelLivro(buscarEditarAluguel[0].Trim());
                     infoCliente = clienteDb.BuscarClienteNome(infoAluguel.Rows[0][2].ToString());
                 }
                 aluguelDb.FechaConecxaoDb();

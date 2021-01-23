@@ -33,8 +33,9 @@ namespace ProjectBook
             this.btnPesquisarCliente = new System.Windows.Forms.Button();
             this.txtPesquisarCliente = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.rabPesquisarId = new System.Windows.Forms.RadioButton();
             this.rabPesquisarNome = new System.Windows.Forms.RadioButton();
+            this.rabPesquisarId = new System.Windows.Forms.RadioButton();
+            this.btnCancelarPesquisarCliente = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -68,17 +69,6 @@ namespace ProjectBook
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Pesquisar por:";
             // 
-            // rabPesquisarId
-            // 
-            this.rabPesquisarId.AutoSize = true;
-            this.rabPesquisarId.Location = new System.Drawing.Point(6, 22);
-            this.rabPesquisarId.Name = "rabPesquisarId";
-            this.rabPesquisarId.Size = new System.Drawing.Size(36, 19);
-            this.rabPesquisarId.TabIndex = 0;
-            this.rabPesquisarId.TabStop = true;
-            this.rabPesquisarId.Text = "ID";
-            this.rabPesquisarId.UseVisualStyleBackColor = true;
-            // 
             // rabPesquisarNome
             // 
             this.rabPesquisarNome.AutoSize = true;
@@ -90,11 +80,33 @@ namespace ProjectBook
             this.rabPesquisarNome.Text = "Nome";
             this.rabPesquisarNome.UseVisualStyleBackColor = true;
             // 
+            // rabPesquisarId
+            // 
+            this.rabPesquisarId.AutoSize = true;
+            this.rabPesquisarId.Location = new System.Drawing.Point(6, 22);
+            this.rabPesquisarId.Name = "rabPesquisarId";
+            this.rabPesquisarId.Size = new System.Drawing.Size(36, 19);
+            this.rabPesquisarId.TabIndex = 0;
+            this.rabPesquisarId.TabStop = true;
+            this.rabPesquisarId.Text = "ID";
+            this.rabPesquisarId.UseVisualStyleBackColor = true;
+            // 
+            // btnCancelarPesquisarCliente
+            // 
+            this.btnCancelarPesquisarCliente.Location = new System.Drawing.Point(161, 106);
+            this.btnCancelarPesquisarCliente.Name = "btnCancelarPesquisarCliente";
+            this.btnCancelarPesquisarCliente.Size = new System.Drawing.Size(75, 23);
+            this.btnCancelarPesquisarCliente.TabIndex = 5;
+            this.btnCancelarPesquisarCliente.Text = "Cancelar";
+            this.btnCancelarPesquisarCliente.UseVisualStyleBackColor = true;
+            this.btnCancelarPesquisarCliente.Click += new System.EventHandler(this.btnCancelarPesquisarCliente_Click);
+            // 
             // PesquisarCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(248, 110);
+            this.ClientSize = new System.Drawing.Size(248, 141);
+            this.Controls.Add(this.btnCancelarPesquisarCliente);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.txtPesquisarCliente);
             this.Controls.Add(this.btnPesquisarCliente);
@@ -117,5 +129,6 @@ namespace ProjectBook
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton rabPesquisarNome;
         private System.Windows.Forms.RadioButton rabPesquisarId;
+        private System.Windows.Forms.Button btnCancelarPesquisarCliente;
     }
 }

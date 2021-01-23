@@ -31,6 +31,10 @@ namespace ProjectBook
 
             ListaLivros listaLivros = new ListaLivros(resultadoPesquisa);
             listaLivros.Show();
+
+            txtTermoPesquisa.Clear();
         }
+
+        private void btnFecharPesquisaLivro_Click(object sender, EventArgs e) => this.Close();
     }
 }

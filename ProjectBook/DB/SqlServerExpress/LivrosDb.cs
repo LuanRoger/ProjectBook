@@ -35,6 +35,8 @@ namespace ProjectBook.DB.SqlServerExpress
             }
             catch(SqlException e) { MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);  }
         }
+
+        #region Deletar
         public void DeletarLivroId(string id)
         {
             SqlCommand command = new SqlCommand {Connection = connection};
@@ -50,6 +52,23 @@ namespace ProjectBook.DB.SqlServerExpress
             }
             catch (SqlException e) { MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
+        public void DeletarLivroTitulo(string tituloLivro)
+        {
+            SqlCommand command = new SqlCommand {Connection = connection};
+
+            try
+            {
+                command.CommandText = $"DELETE FROM Livros WHERE Titulo LIKE \'%{tituloLivro}%\'";
+                command.ExecuteNonQuery();
+                command.Dispose();
+
+                MessageBox.Show("Livro deletado com sucesso", "Concluido",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (SqlException e) { MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+        }
+        #endregion
+        
         public DataTable VerTodosLivros()
         {
             SqlDataAdapter adapter;

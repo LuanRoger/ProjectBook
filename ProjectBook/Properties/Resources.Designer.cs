@@ -343,7 +343,7 @@ namespace ProjectBook.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Preencha todos os campos para continuar..
+        ///   Looks up a localized string similar to Preencha todos e/ou verifique todos os campos para continuar..
         /// </summary>
         internal static string preencherCampos {
             get {

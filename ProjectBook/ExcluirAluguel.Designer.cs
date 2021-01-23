@@ -34,6 +34,7 @@ namespace ProjectBook
             this.rabExcluirAluguelCliente = new System.Windows.Forms.RadioButton();
             this.txtBuscaAluguel = new System.Windows.Forms.TextBox();
             this.btnBuscarExcluirAluguel = new System.Windows.Forms.Button();
+            this.btnCancelarExcluirAluguel = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // rabExcluirAluguelTitulo
@@ -77,11 +78,22 @@ namespace ProjectBook
             this.btnBuscarExcluirAluguel.UseVisualStyleBackColor = true;
             this.btnBuscarExcluirAluguel.Click += new System.EventHandler(this.btnBuscarExcluirAluguel_Click);
             // 
+            // btnCancelarExcluirAluguel
+            // 
+            this.btnCancelarExcluirAluguel.Location = new System.Drawing.Point(290, 79);
+            this.btnCancelarExcluirAluguel.Name = "btnCancelarExcluirAluguel";
+            this.btnCancelarExcluirAluguel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancelarExcluirAluguel.TabIndex = 4;
+            this.btnCancelarExcluirAluguel.Text = "Cancelar";
+            this.btnCancelarExcluirAluguel.UseVisualStyleBackColor = true;
+            this.btnCancelarExcluirAluguel.Click += new System.EventHandler(this.btnCancelarExcluirAluguel_Click);
+            // 
             // ExcluirAluguel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(377, 72);
+            this.ClientSize = new System.Drawing.Size(377, 114);
+            this.Controls.Add(this.btnCancelarExcluirAluguel);
             this.Controls.Add(this.btnBuscarExcluirAluguel);
             this.Controls.Add(this.txtBuscaAluguel);
             this.Controls.Add(this.rabExcluirAluguelCliente);
@@ -103,5 +115,6 @@ namespace ProjectBook
         private System.Windows.Forms.RadioButton rabExcluirAluguelCliente;
         private System.Windows.Forms.TextBox txtBuscaAluguel;
         private System.Windows.Forms.Button btnBuscarExcluirAluguel;
+        private System.Windows.Forms.Button btnCancelarExcluirAluguel;
     }
 }

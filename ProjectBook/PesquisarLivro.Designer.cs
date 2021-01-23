@@ -36,6 +36,7 @@ namespace ProjectBook
             this.rabPesquisarId = new System.Windows.Forms.RadioButton();
             this.txtTermoPesquisa = new System.Windows.Forms.TextBox();
             this.btnPesquisarSeletiva = new System.Windows.Forms.Button();
+            this.btnCancelarPesquisaLivro = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -104,11 +105,22 @@ namespace ProjectBook
             this.btnPesquisarSeletiva.UseVisualStyleBackColor = false;
             this.btnPesquisarSeletiva.Click += new System.EventHandler(this.btnPesquisarSeletiva_Click);
             // 
+            // btnCancelarPesquisaLivro
+            // 
+            this.btnCancelarPesquisaLivro.Location = new System.Drawing.Point(275, 114);
+            this.btnCancelarPesquisaLivro.Name = "btnCancelarPesquisaLivro";
+            this.btnCancelarPesquisaLivro.Size = new System.Drawing.Size(75, 23);
+            this.btnCancelarPesquisaLivro.TabIndex = 3;
+            this.btnCancelarPesquisaLivro.Text = "Cancelar";
+            this.btnCancelarPesquisaLivro.UseVisualStyleBackColor = true;
+            this.btnCancelarPesquisaLivro.Click += new System.EventHandler(this.btnFecharPesquisaLivro_Click);
+            // 
             // PesquisaSeletiva
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(362, 116);
+            this.ClientSize = new System.Drawing.Size(362, 149);
+            this.Controls.Add(this.btnCancelarPesquisaLivro);
             this.Controls.Add(this.btnPesquisarSeletiva);
             this.Controls.Add(this.txtTermoPesquisa);
             this.Controls.Add(this.groupBox1);
@@ -117,7 +129,7 @@ namespace ProjectBook
             this.Name = "PesquisaSeletiva";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Pesquisa Seletiva";
+            this.Text = "Pesquisar livro";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -133,5 +145,6 @@ namespace ProjectBook
         private System.Windows.Forms.RadioButton rabPesquisarId;
         private System.Windows.Forms.TextBox txtTermoPesquisa;
         private System.Windows.Forms.Button btnPesquisarSeletiva;
+        private System.Windows.Forms.Button btnCancelarPesquisaLivro;
     }
 }

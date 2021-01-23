@@ -15,18 +15,29 @@ namespace ProjectBook
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string idLivroExcluir = txtExcluirLivro.Text;
-            if (Verificadores.VerificarStrings(idLivroExcluir))
+            string termoBusca = txtExcluirLivro.Text;
+            DataTable data = new DataTable();
+            
+            if (Verificadores.VerificarStrings(termoBusca))
             {
                 MessageBox.Show(Properties.Resources.preencherCampoBusca_MessageBox, Properties.Resources.error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            
-            livrosDb.AbrirConexaoDb();
-            DataTable data = livrosDb.BuscarLivrosId(idLivroExcluir);
-            livrosDb.FechaConecxaoDb();
-            
+
+            if (rabIdExcluirLivro.Checked)
+            {
+                livrosDb.AbrirConexaoDb();
+                data = livrosDb.BuscarLivrosId(termoBusca);
+                livrosDb.FechaConecxaoDb();
+            }
+            else if (rabExcluirTitulo.Checked)
+            {
+                livrosDb.AbrirConexaoDb();
+                data = livrosDb.BuscarLivrosTitulo(termoBusca);
+                livrosDb.FechaConecxaoDb();
+            }
+
             if (Verificadores.VerificarDataTable(data))
             {
                 MessageBox.Show(Properties.Resources.livroNaoExiste_MessageBox, Properties.Resources.error_MessageBox,
@@ -35,14 +46,27 @@ namespace ProjectBook
             }
 
             DialogResult resultadoExcluir = MessageBox.Show(
-                $"{Properties.Resources.confirmarExclusao} {data.Rows[0][1]} {Properties.Resources.confirmarExclusaoDe} {data.Rows[0][2]}",
+                $@"{Properties.Resources.confirmarExclusao} {data.Rows[0][1]}",
                 Properties.Resources.excluir_MessageBox, MessageBoxButtons.YesNo, MessageBoxIcon.Stop);
-
-            livrosDb.AbrirConexaoDb();
-            if (resultadoExcluir == DialogResult.Yes) livrosDb.DeletarLivroId(idLivroExcluir);
-            livrosDb.FechaConecxaoDb();
             
+            if (resultadoExcluir == DialogResult.Yes)
+            {
+                if (rabExcluirTitulo.Checked)
+                {
+                    livrosDb.AbrirConexaoDb();
+                    livrosDb.DeletarLivroTitulo(termoBusca);
+                    livrosDb.FechaConecxaoDb();
+                }
+                else if (rabIdExcluirLivro.Checked)
+                {
+                    livrosDb.AbrirConexaoDb();
+                    livrosDb.DeletarLivroId(termoBusca);
+                    livrosDb.FechaConecxaoDb();
+                }
+            }
+
             txtExcluirLivro.Clear();
         }
+        private void btnCancelarExcluirLivro_Click(object sender, EventArgs e) => this.Close();
     }
 }

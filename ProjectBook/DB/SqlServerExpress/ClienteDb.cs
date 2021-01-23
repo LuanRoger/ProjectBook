@@ -49,6 +49,7 @@ namespace ProjectBook.DB.SqlServerExpress
             return table;
         }
 
+        #region Deletar
         public void DeletarClienteId(string id)
         {
             SqlCommand command = new SqlCommand {Connection = connection};
@@ -64,7 +65,23 @@ namespace ProjectBook.DB.SqlServerExpress
             }
             catch (SqlException e) { MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
+        public void DeletarClienteNome(string nome)
+        {
+            SqlCommand command = new SqlCommand {Connection = connection};
 
+            try
+            {
+                command.CommandText = $"DELETE FROM Clientes WHERE [Nome completo] LIKE \'%{nome}%\'";
+                command.ExecuteNonQuery();
+                command.Dispose();
+
+                MessageBox.Show("Cliente deletado com sucesso", "Concluido",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (SqlException e) { MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+        }
+        #endregion
+        
         #region Buscar
         public DataTable BuscarClienteId(string id)
         {

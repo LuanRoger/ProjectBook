@@ -11,7 +11,7 @@ namespace ProjectBook
 {
     public partial class PesquisarCliente : Form
     {
-        ClienteDb clienteDb = new ClienteDb();
+        private ClienteDb clienteDb = new ClienteDb();
         public PesquisarCliente()
         {
             InitializeComponent();
@@ -26,16 +26,25 @@ namespace ProjectBook
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            DataTable dataTable;
+            DataTable dataTable = new DataTable();
 
             clienteDb.AbrirConexaoDb();
             if (rabPesquisarId.Checked) dataTable = clienteDb.BuscarClienteId(termoPesquisa);
             else if (rabPesquisarNome.Checked) dataTable = clienteDb.BuscarClienteNome(termoPesquisa);
-            else return;
             clienteDb.FechaConecxaoDb();
 
+            if (Verificadores.VerificarDataTable(dataTable))
+            {
+                MessageBox.Show(Properties.Resources.clienteNaoExiste_MessageBox, Properties.Resources.error_MessageBox,
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            
             ListaLivros listaLivros = new ListaLivros(dataTable);
             listaLivros.Show();
+            
+            txtPesquisarCliente.Clear();
         }
+        private void btnCancelarPesquisarCliente_Click(object sender, EventArgs e) => this.Close();
     }
 }
