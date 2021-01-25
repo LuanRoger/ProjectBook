@@ -46,7 +46,7 @@ namespace ProjectBook
             }
 
             DialogResult resultadoExcluir = MessageBox.Show(
-            $@"{Properties.Resources.confirmarExclusao} {data.Rows[0][1]} {Properties.Resources.confirmarExclusaoAluguel2} {data.Rows[0][2]}",
+            $@"{Properties.Resources.confirmarExclusao} {data.Rows[0][0]} {Properties.Resources.confirmarExclusaoAluguel2} {data.Rows[0][2]}",
                 Properties.Resources.excluir_MessageBox, MessageBoxButtons.YesNo, MessageBoxIcon.Stop);
             
             if (resultadoExcluir == DialogResult.Yes)
@@ -67,5 +67,23 @@ namespace ProjectBook
             }
         }
         private void btnCancelarExcluirAluguel_Click(object sender, EventArgs e) => this.Close();
+
+        private void rabExcluirAluguelTitulo_CheckedChanged(object sender, EventArgs e)
+        {
+            AutoCompleteStringCollection livrosSugestoes = new AutoCompleteStringCollection();
+            aluguelDb.AbrirConexaoDb();
+            foreach (DataRow livro in aluguelDb.VerTodosAluguel().Rows) livrosSugestoes.Add(livro[0].ToString());
+            aluguelDb.FechaConecxaoDb();
+            txtBuscaAluguel.AutoCompleteCustomSource = livrosSugestoes;
+        }
+
+        private void rabExcluirAluguelCliente_CheckedChanged(object sender, EventArgs e)
+        {
+            AutoCompleteStringCollection livrosSugestoes = new AutoCompleteStringCollection();
+            aluguelDb.AbrirConexaoDb();
+            foreach (DataRow livro in aluguelDb.VerTodosAluguel().Rows) livrosSugestoes.Add(livro[2].ToString());
+            aluguelDb.FechaConecxaoDb();
+            txtBuscaAluguel.AutoCompleteCustomSource = livrosSugestoes;
+        }
     }
 }

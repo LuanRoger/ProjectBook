@@ -47,6 +47,7 @@ namespace ProjectBook
             this.rabExcluirAluguelTitulo.TabStop = true;
             this.rabExcluirAluguelTitulo.Text = "Titulo do livro";
             this.rabExcluirAluguelTitulo.UseVisualStyleBackColor = true;
+            this.rabExcluirAluguelTitulo.CheckedChanged += new System.EventHandler(this.rabExcluirAluguelTitulo_CheckedChanged);
             // 
             // rabExcluirAluguelCliente
             // 
@@ -58,9 +59,12 @@ namespace ProjectBook
             this.rabExcluirAluguelCliente.TabStop = true;
             this.rabExcluirAluguelCliente.Text = "Nome do cliente";
             this.rabExcluirAluguelCliente.UseVisualStyleBackColor = true;
+            this.rabExcluirAluguelCliente.CheckedChanged += new System.EventHandler(this.rabExcluirAluguelCliente_CheckedChanged);
             // 
             // txtBuscaAluguel
             // 
+            this.txtBuscaAluguel.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.txtBuscaAluguel.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txtBuscaAluguel.Location = new System.Drawing.Point(12, 37);
             this.txtBuscaAluguel.Name = "txtBuscaAluguel";
             this.txtBuscaAluguel.Size = new System.Drawing.Size(328, 23);

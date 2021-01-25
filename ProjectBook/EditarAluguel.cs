@@ -37,17 +37,17 @@ namespace ProjectBook
         private void rabBuscarNomeCliente_CheckedChanged(object sender, EventArgs e)
         {
             AutoCompleteStringCollection aluguelSugestao = new AutoCompleteStringCollection();
-            clienteDb.AbrirConexaoDb();
+            aluguelDb.AbrirConexaoDb();
             foreach (DataRow cliente in aluguelDb.VerTodosAluguel().Rows) aluguelSugestao.Add($"{cliente[2]} - {cliente[0]}");
-            clienteDb.FechaConecxaoDb();
+            aluguelDb.FechaConecxaoDb();
             txtBuscarAluguel.AutoCompleteCustomSource = aluguelSugestao;
         }
         private void rabBuscarTituloLivro_CheckedChanged(object sender, EventArgs e)
         {
             AutoCompleteStringCollection aluguelSugestao = new AutoCompleteStringCollection();
-            livrosDb.AbrirConexaoDb();
+            aluguelDb.AbrirConexaoDb();
             foreach (DataRow livro in aluguelDb.VerTodosAluguel().Rows) aluguelSugestao.Add($"{livro[0]} - {livro[2]}");
-            livrosDb.FechaConecxaoDb();
+            aluguelDb.FechaConecxaoDb();
             txtBuscarAluguel.AutoCompleteCustomSource = aluguelSugestao;
         }
 
