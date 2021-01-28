@@ -9,7 +9,7 @@ namespace ProjectBook.DB.SqlServerExpress
 {
     internal class Db
     {
-        internal readonly SqlConnection connection = 
+        protected readonly SqlConnection connection = 
             new SqlConnection(ConfigurationManager.ConnectionStrings["SqlConnectionString"].ConnectionString);
 
         public string DbStatus() => connection.State.ToString();
@@ -19,15 +19,22 @@ namespace ProjectBook.DB.SqlServerExpress
             try { connection.Open(); }
             catch(Exception e)
             {
-                DialogResult dialogResult = MessageBox.Show($"Não foi possivel conectar-se a base de dados: {e.Message}. Deseja abrir a configurações?", "Error",
-                    MessageBoxButtons.YesNo, MessageBoxIcon.Error);
-
-                if (dialogResult == DialogResult.Yes)
+                if (Application.OpenForms.Count < 2)
                 {
-                    Configuracoes configuracoes = new Configuracoes();
-                    configuracoes.Show();
+                    Application.OpenForms["Inicio"].Enabled = false;
+
+                    DialogResult dialogResult = MessageBox.Show(
+                        $"Não foi possivel conectar-se a base de dados: {e.Message}. Deseja abrir a configurações?",
+                        Properties.Resources.error_MessageBox,
+                        MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        Configuracoes configuracoes = new Configuracoes();
+                        configuracoes.Show();
+                    }
+                    else Application.Exit();
                 }
-                else Application.Exit();
             }
 
         }

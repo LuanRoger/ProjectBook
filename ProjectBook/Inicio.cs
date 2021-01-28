@@ -1,18 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Configuration;
 using System.Data;
 using System.Diagnostics;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using ProjectBook.Livros;
 using System.Reflection;
 using ProjectBook.DB.SqlServerExpress;
-using ProjectBook.Tipos;
 
 namespace ProjectBook
 {
@@ -21,7 +15,7 @@ namespace ProjectBook
         private LivrosDb livrosDb = new LivrosDb();
         private AluguelDb aluguelDb = new AluguelDb();
         private ClienteDb clienteDb = new ClienteDb();
-        private UsuarioDb usuarioDb = new UsuarioDb();
+
         public Inicio()
         {
             InitializeComponent();
@@ -130,36 +124,50 @@ namespace ProjectBook
             };
         }
 
-        private void Inicio_Activated(object sender, EventArgs e)
+        private async void Inicio_Activated(object sender, EventArgs e)
         {
             //Verificar conexão com o banco de dados
             livrosDb.AbrirConexaoDb();
             if (livrosDb.DbStatus() == "Open")
             {
                 btnDbTesteConexao.Image = Properties.Resources.database_icon;
-                
+
                 //Verificar se existe usuário logado
                 if (String.IsNullOrEmpty(ConfigurationManager.AppSettings["usuarioLogado"]))
                 {
-                    this.Enabled = false;
-                    Login login = new Login();
-                    login.Show();
+                    if (Application.OpenForms.Count < 2)
+                    {
+                        Login login = new Login();
+                        this.Enabled = false;
+                        login.Show();
+                    }
                 }
-                else if (Verificadores.VerificarDataTable(usuarioDb.BuscarUsuarioNome(ConfigurationManager.AppSettings["usuarioLogado"])))
-                {
-                    this.Enabled = false;
-                    Login login = new Login();
-                    login.Show();
-                }
+
                 //Atualizar Status do aluguel
-                aluguelDb.AbrirConexaoDb();
+                List<Task> atualizarStatus = new List<Task>();
+                await Task.Run(() => aluguelDb.AbrirConexaoDb());
                 foreach(DataRow data in aluguelDb.PegarLivrosAlugados().Rows)
                 {
                     DateTime hoje = DateTime.Now.Date;
                     DateTime devolucao = (DateTime)data[4];
-                    if (Convert.ToInt32((hoje - devolucao).Days) >= 0)
-                        aluguelDb.AtualizarStatusAtrasado(data[2].ToString());
+                    if (Convert.ToInt32((hoje - devolucao).Days) >= 0) 
+                        atualizarStatus.Add(Task.Run(() => aluguelDb.AtualizarStatusAtrasado(data[2].ToString())));
                 }
+                await Task.WhenAll(atualizarStatus);
+                await Task.Run(() => aluguelDb.FechaConecxaoDb());
+
+                //Carregar informações
+                int quantidadeLivros = await Task.Run(() => livrosDb.VerTodosLivros().Rows.Count);
+                lblLivrosCadastrados.Text = quantidadeLivros.ToString();
+
+                clienteDb.AbrirConexaoDb();
+                int quantidadeCliente = await Task.Run(() => clienteDb.VerTodosClientes().Rows.Count);
+                lblClientesCadastrados.Text = quantidadeCliente.ToString();
+                clienteDb.FechaConecxaoDb();
+
+                aluguelDb.AbrirConexaoDb();
+                int quantidadeAluguel = await Task.Run(() => aluguelDb.VerTodosAluguel().Rows.Count);
+                lblAlugueisRegistrados.Text = quantidadeAluguel.ToString();
                 aluguelDb.FechaConecxaoDb();
             }
             else btnDbTesteConexao.Image = Properties.Resources.database_error_icon;

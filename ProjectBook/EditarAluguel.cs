@@ -81,7 +81,6 @@ namespace ProjectBook
                 MessageBox.Show(Properties.Resources.clienteLivroNaoAlugados, Properties.Resources.error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 aluguelDb.FechaConecxaoDb();
-
                 return;
             }
 
@@ -155,7 +154,6 @@ namespace ProjectBook
             txtNovoTelefoneAluguel.Text = infoCliente.Rows[0][6].ToString();
             txtNovoEmailAluguel.Text = infoCliente.Rows[0][8].ToString();
         }
-
         private void PreencherCamposAluguel(DataTable infoAluguel)
         {
             txtNovoTituloLivroAluguel.Text = infoAluguel.Rows[0][0].ToString();
@@ -164,6 +162,7 @@ namespace ProjectBook
             dtpEditarDataRecebimento.Value = Convert.ToDateTime(infoAluguel.Rows[0][4]);
             cmbNovoStatus.Text = infoAluguel.Rows[0][5].ToString();
         }
+
         private void LimparCampos()
         {
             txtBuscarAluguel.Clear();

@@ -85,8 +85,16 @@ namespace ProjectBook
             this.lblNomeUsuario = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.btnDbTesteConexao = new System.Windows.Forms.Button();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lblLivrosCadastrados = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lblClientesCadastrados = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lblAlugueisRegistrados = new System.Windows.Forms.ToolStripStatusLabel();
             this.mnuInicio.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // contentsToolStripMenuItem
@@ -271,7 +279,7 @@ namespace ProjectBook
             this.mnuSobre});
             this.mnuInicio.Location = new System.Drawing.Point(0, 0);
             this.mnuInicio.Name = "mnuInicio";
-            this.mnuInicio.Size = new System.Drawing.Size(530, 24);
+            this.mnuInicio.Size = new System.Drawing.Size(714, 24);
             this.mnuInicio.TabIndex = 2;
             this.mnuInicio.Text = "Cadastro";
             // 
@@ -468,7 +476,7 @@ namespace ProjectBook
             this.btnSairUsuario.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSairUsuario.Image = ((System.Drawing.Image)(resources.GetObject("btnSairUsuario.Image")));
             this.btnSairUsuario.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSairUsuario.Location = new System.Drawing.Point(3, 321);
+            this.btnSairUsuario.Location = new System.Drawing.Point(3, 397);
             this.btnSairUsuario.Name = "btnSairUsuario";
             this.btnSairUsuario.Size = new System.Drawing.Size(51, 23);
             this.btnSairUsuario.TabIndex = 10;
@@ -481,7 +489,7 @@ namespace ProjectBook
             // 
             this.lblNomeUsuario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblNomeUsuario.AutoSize = true;
-            this.lblNomeUsuario.Location = new System.Drawing.Point(57, 325);
+            this.lblNomeUsuario.Location = new System.Drawing.Point(57, 401);
             this.lblNomeUsuario.Margin = new System.Windows.Forms.Padding(0, 0, 3, 7);
             this.lblNomeUsuario.Name = "lblNomeUsuario";
             this.lblNomeUsuario.Size = new System.Drawing.Size(46, 15);
@@ -494,16 +502,17 @@ namespace ProjectBook
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 424F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 608F));
             this.tableLayoutPanel1.Controls.Add(this.btnSairUsuario, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblNomeUsuario, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnDbTesteConexao, 3, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 24);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(530, 347);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(714, 452);
             this.tableLayoutPanel1.TabIndex = 12;
             // 
             // btnDbTesteConexao
@@ -514,17 +523,85 @@ namespace ProjectBook
             this.btnDbTesteConexao.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.MenuHighlight;
             this.btnDbTesteConexao.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDbTesteConexao.Image = ((System.Drawing.Image)(resources.GetObject("btnDbTesteConexao.Image")));
-            this.btnDbTesteConexao.Location = new System.Drawing.Point(505, 321);
+            this.btnDbTesteConexao.Location = new System.Drawing.Point(689, 397);
             this.btnDbTesteConexao.Name = "btnDbTesteConexao";
             this.btnDbTesteConexao.Size = new System.Drawing.Size(22, 23);
             this.btnDbTesteConexao.TabIndex = 9;
             this.btnDbTesteConexao.UseVisualStyleBackColor = false;
             // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1,
+            this.lblLivrosCadastrados,
+            this.toolStripStatusLabel2,
+            this.lblClientesCadastrados,
+            this.toolStripStatusLabel3,
+            this.lblAlugueisRegistrados});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 452);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.ManagerRenderMode;
+            this.statusStrip1.Size = new System.Drawing.Size(714, 24);
+            this.statusStrip1.SizingGrip = false;
+            this.statusStrip1.TabIndex = 13;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)(((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(111, 19);
+            this.toolStripStatusLabel1.Text = "Livros cadastrados:";
+            // 
+            // lblLivrosCadastrados
+            // 
+            this.lblLivrosCadastrados.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)(((System.Windows.Forms.ToolStripStatusLabelBorderSides.Top | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.lblLivrosCadastrados.Name = "lblLivrosCadastrados";
+            this.lblLivrosCadastrados.Size = new System.Drawing.Size(17, 19);
+            this.lblLivrosCadastrados.Text = "0";
+            // 
+            // toolStripStatusLabel2
+            // 
+            this.toolStripStatusLabel2.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)(((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.toolStripStatusLabel2.Margin = new System.Windows.Forms.Padding(5, 3, 0, 2);
+            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(122, 19);
+            this.toolStripStatusLabel2.Text = "Clientes cadastrados:";
+            // 
+            // lblClientesCadastrados
+            // 
+            this.lblClientesCadastrados.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)(((System.Windows.Forms.ToolStripStatusLabelBorderSides.Top | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.lblClientesCadastrados.Name = "lblClientesCadastrados";
+            this.lblClientesCadastrados.Size = new System.Drawing.Size(17, 19);
+            this.lblClientesCadastrados.Text = "0";
+            // 
+            // toolStripStatusLabel3
+            // 
+            this.toolStripStatusLabel3.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)(((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.toolStripStatusLabel3.Margin = new System.Windows.Forms.Padding(5, 3, 0, 2);
+            this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
+            this.toolStripStatusLabel3.Size = new System.Drawing.Size(121, 19);
+            this.toolStripStatusLabel3.Text = "Alugueis registrados:";
+            // 
+            // lblAlugueisRegistrados
+            // 
+            this.lblAlugueisRegistrados.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)(((System.Windows.Forms.ToolStripStatusLabelBorderSides.Top | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.lblAlugueisRegistrados.Name = "lblAlugueisRegistrados";
+            this.lblAlugueisRegistrados.Size = new System.Drawing.Size(17, 19);
+            this.lblAlugueisRegistrados.Text = "0";
+            // 
             // Inicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(530, 371);
+            this.ClientSize = new System.Drawing.Size(714, 476);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.mnuInicio);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -536,6 +613,8 @@ namespace ProjectBook
             this.mnuInicio.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -596,6 +675,13 @@ namespace ProjectBook
         private System.Windows.Forms.Button btnSairUsuario;
         private System.Windows.Forms.Label lblNomeUsuario;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.ToolStripStatusLabel lblLivrosCadastrados;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
+        private System.Windows.Forms.ToolStripStatusLabel lblClientesCadastrados;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
+        private System.Windows.Forms.ToolStripStatusLabel lblAlugueisRegistrados;
         private System.Windows.Forms.Button btnDbTesteConexao;
     }
 }
