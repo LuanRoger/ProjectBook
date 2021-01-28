@@ -41,7 +41,7 @@ namespace ProjectBook
             // 
             this.txtBuscarExcluirCliente.Location = new System.Drawing.Point(12, 37);
             this.txtBuscarExcluirCliente.Name = "txtBuscarExcluirCliente";
-            this.txtBuscarExcluirCliente.Size = new System.Drawing.Size(256, 23);
+            this.txtBuscarExcluirCliente.Size = new System.Drawing.Size(206, 23);
             this.txtBuscarExcluirCliente.TabIndex = 1;
             // 
             // btnExcluirCliente
@@ -49,7 +49,7 @@ namespace ProjectBook
             this.btnExcluirCliente.FlatAppearance.BorderSize = 0;
             this.btnExcluirCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExcluirCliente.Image = ((System.Drawing.Image)(resources.GetObject("btnExcluirCliente.Image")));
-            this.btnExcluirCliente.Location = new System.Drawing.Point(274, 37);
+            this.btnExcluirCliente.Location = new System.Drawing.Point(219, 37);
             this.btnExcluirCliente.Name = "btnExcluirCliente";
             this.btnExcluirCliente.Size = new System.Drawing.Size(27, 23);
             this.btnExcluirCliente.TabIndex = 2;
@@ -58,7 +58,7 @@ namespace ProjectBook
             // 
             // btnCancelarExcluirCliente
             // 
-            this.btnCancelarExcluirCliente.Location = new System.Drawing.Point(227, 70);
+            this.btnCancelarExcluirCliente.Location = new System.Drawing.Point(171, 72);
             this.btnCancelarExcluirCliente.Name = "btnCancelarExcluirCliente";
             this.btnCancelarExcluirCliente.Size = new System.Drawing.Size(75, 23);
             this.btnCancelarExcluirCliente.TabIndex = 3;
@@ -80,7 +80,7 @@ namespace ProjectBook
             // rabBuscarNome
             // 
             this.rabBuscarNome.AutoSize = true;
-            this.rabBuscarNome.Location = new System.Drawing.Point(210, 12);
+            this.rabBuscarNome.Location = new System.Drawing.Point(160, 12);
             this.rabBuscarNome.Name = "rabBuscarNome";
             this.rabBuscarNome.Size = new System.Drawing.Size(58, 19);
             this.rabBuscarNome.TabIndex = 5;
@@ -92,7 +92,7 @@ namespace ProjectBook
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(314, 105);
+            this.ClientSize = new System.Drawing.Size(258, 107);
             this.Controls.Add(this.rabBuscarNome);
             this.Controls.Add(this.rabBsucarIdCliente);
             this.Controls.Add(this.btnCancelarExcluirCliente);

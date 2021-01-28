@@ -84,9 +84,9 @@ namespace ProjectBook
             // 
             // txtBuscarClienteEditar
             // 
-            this.txtBuscarClienteEditar.Location = new System.Drawing.Point(23, 48);
+            this.txtBuscarClienteEditar.Location = new System.Drawing.Point(7, 48);
             this.txtBuscarClienteEditar.Name = "txtBuscarClienteEditar";
-            this.txtBuscarClienteEditar.Size = new System.Drawing.Size(237, 23);
+            this.txtBuscarClienteEditar.Size = new System.Drawing.Size(253, 23);
             this.txtBuscarClienteEditar.TabIndex = 2;
             // 
             // rabBsucarClienteNome

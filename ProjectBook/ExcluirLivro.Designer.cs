@@ -41,7 +41,7 @@ namespace ProjectBook
             // 
             this.txtExcluirLivro.Location = new System.Drawing.Point(12, 38);
             this.txtExcluirLivro.Name = "txtExcluirLivro";
-            this.txtExcluirLivro.Size = new System.Drawing.Size(255, 23);
+            this.txtExcluirLivro.Size = new System.Drawing.Size(209, 23);
             this.txtExcluirLivro.TabIndex = 1;
             // 
             // button1
@@ -50,7 +50,7 @@ namespace ProjectBook
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(273, 35);
+            this.button1.Location = new System.Drawing.Point(227, 38);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(28, 23);
             this.button1.TabIndex = 2;
@@ -59,7 +59,7 @@ namespace ProjectBook
             // 
             // btnCancelarExcluirLivro
             // 
-            this.btnCancelarExcluirLivro.Location = new System.Drawing.Point(227, 72);
+            this.btnCancelarExcluirLivro.Location = new System.Drawing.Point(171, 72);
             this.btnCancelarExcluirLivro.Name = "btnCancelarExcluirLivro";
             this.btnCancelarExcluirLivro.Size = new System.Drawing.Size(75, 23);
             this.btnCancelarExcluirLivro.TabIndex = 3;
@@ -81,7 +81,7 @@ namespace ProjectBook
             // rabExcluirTitulo
             // 
             this.rabExcluirTitulo.AutoSize = true;
-            this.rabExcluirTitulo.Location = new System.Drawing.Point(212, 13);
+            this.rabExcluirTitulo.Location = new System.Drawing.Point(166, 13);
             this.rabExcluirTitulo.Name = "rabExcluirTitulo";
             this.rabExcluirTitulo.Size = new System.Drawing.Size(55, 19);
             this.rabExcluirTitulo.TabIndex = 5;
@@ -93,7 +93,7 @@ namespace ProjectBook
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(314, 107);
+            this.ClientSize = new System.Drawing.Size(258, 107);
             this.Controls.Add(this.rabExcluirTitulo);
             this.Controls.Add(this.rabIdExcluirLivro);
             this.Controls.Add(this.btnCancelarExcluirLivro);

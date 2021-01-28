@@ -52,7 +52,7 @@ namespace ProjectBook
             // rabExcluirAluguelCliente
             // 
             this.rabExcluirAluguelCliente.AutoSize = true;
-            this.rabExcluirAluguelCliente.Location = new System.Drawing.Point(227, 12);
+            this.rabExcluirAluguelCliente.Location = new System.Drawing.Point(116, 12);
             this.rabExcluirAluguelCliente.Name = "rabExcluirAluguelCliente";
             this.rabExcluirAluguelCliente.Size = new System.Drawing.Size(113, 19);
             this.rabExcluirAluguelCliente.TabIndex = 1;
@@ -67,7 +67,7 @@ namespace ProjectBook
             this.txtBuscaAluguel.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txtBuscaAluguel.Location = new System.Drawing.Point(12, 37);
             this.txtBuscaAluguel.Name = "txtBuscaAluguel";
-            this.txtBuscaAluguel.Size = new System.Drawing.Size(328, 23);
+            this.txtBuscaAluguel.Size = new System.Drawing.Size(215, 23);
             this.txtBuscaAluguel.TabIndex = 2;
             // 
             // btnBuscarExcluirAluguel
@@ -75,7 +75,7 @@ namespace ProjectBook
             this.btnBuscarExcluirAluguel.FlatAppearance.BorderSize = 0;
             this.btnBuscarExcluirAluguel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBuscarExcluirAluguel.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscarExcluirAluguel.Image")));
-            this.btnBuscarExcluirAluguel.Location = new System.Drawing.Point(346, 37);
+            this.btnBuscarExcluirAluguel.Location = new System.Drawing.Point(233, 36);
             this.btnBuscarExcluirAluguel.Name = "btnBuscarExcluirAluguel";
             this.btnBuscarExcluirAluguel.Size = new System.Drawing.Size(26, 23);
             this.btnBuscarExcluirAluguel.TabIndex = 3;
@@ -84,7 +84,7 @@ namespace ProjectBook
             // 
             // btnCancelarExcluirAluguel
             // 
-            this.btnCancelarExcluirAluguel.Location = new System.Drawing.Point(290, 79);
+            this.btnCancelarExcluirAluguel.Location = new System.Drawing.Point(184, 72);
             this.btnCancelarExcluirAluguel.Name = "btnCancelarExcluirAluguel";
             this.btnCancelarExcluirAluguel.Size = new System.Drawing.Size(75, 23);
             this.btnCancelarExcluirAluguel.TabIndex = 4;
@@ -96,7 +96,7 @@ namespace ProjectBook
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(377, 114);
+            this.ClientSize = new System.Drawing.Size(271, 107);
             this.Controls.Add(this.btnCancelarExcluirAluguel);
             this.Controls.Add(this.btnBuscarExcluirAluguel);
             this.Controls.Add(this.txtBuscaAluguel);

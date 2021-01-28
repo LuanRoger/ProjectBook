@@ -84,7 +84,7 @@ namespace ProjectBook
             // 
             this.txtEditarAno.Location = new System.Drawing.Point(11, 208);
             this.txtEditarAno.Name = "txtEditarAno";
-            this.txtEditarAno.Size = new System.Drawing.Size(76, 23);
+            this.txtEditarAno.Size = new System.Drawing.Size(103, 23);
             this.txtEditarAno.TabIndex = 23;
             this.txtEditarAno.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 

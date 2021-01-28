@@ -164,7 +164,7 @@ namespace ProjectBook
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.txtResultadoCliete);
             this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Location = new System.Drawing.Point(13, 119);
+            this.groupBox2.Location = new System.Drawing.Point(13, 110);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(370, 159);
             this.groupBox2.TabIndex = 6;
