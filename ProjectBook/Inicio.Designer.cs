@@ -84,7 +84,6 @@ namespace ProjectBook
             this.btnSairUsuario = new System.Windows.Forms.Button();
             this.lblNomeUsuario = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnDbTesteConexao = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblLivrosCadastrados = new System.Windows.Forms.ToolStripStatusLabel();
@@ -498,6 +497,8 @@ namespace ProjectBook
             // 
             // tableLayoutPanel1
             // 
+            this.tableLayoutPanel1.BackColor = System.Drawing.Color.White;
+            this.tableLayoutPanel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tableLayoutPanel1.BackgroundImage")));
             this.tableLayoutPanel1.ColumnCount = 4;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
@@ -505,7 +506,6 @@ namespace ProjectBook
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 608F));
             this.tableLayoutPanel1.Controls.Add(this.btnSairUsuario, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblNomeUsuario, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btnDbTesteConexao, 3, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 24);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -514,20 +514,6 @@ namespace ProjectBook
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(714, 452);
             this.tableLayoutPanel1.TabIndex = 12;
-            // 
-            // btnDbTesteConexao
-            // 
-            this.btnDbTesteConexao.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDbTesteConexao.BackColor = System.Drawing.Color.Transparent;
-            this.btnDbTesteConexao.FlatAppearance.BorderSize = 0;
-            this.btnDbTesteConexao.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.btnDbTesteConexao.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDbTesteConexao.Image = ((System.Drawing.Image)(resources.GetObject("btnDbTesteConexao.Image")));
-            this.btnDbTesteConexao.Location = new System.Drawing.Point(689, 397);
-            this.btnDbTesteConexao.Name = "btnDbTesteConexao";
-            this.btnDbTesteConexao.Size = new System.Drawing.Size(22, 23);
-            this.btnDbTesteConexao.TabIndex = 9;
-            this.btnDbTesteConexao.UseVisualStyleBackColor = false;
             // 
             // statusStrip1
             // 
@@ -550,6 +536,7 @@ namespace ProjectBook
             // 
             this.toolStripStatusLabel1.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)(((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
             | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.toolStripStatusLabel1.BorderStyle = System.Windows.Forms.Border3DStyle.RaisedInner;
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(111, 19);
             this.toolStripStatusLabel1.Text = "Livros cadastrados:";
@@ -558,6 +545,7 @@ namespace ProjectBook
             // 
             this.lblLivrosCadastrados.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)(((System.Windows.Forms.ToolStripStatusLabelBorderSides.Top | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
             | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.lblLivrosCadastrados.BorderStyle = System.Windows.Forms.Border3DStyle.RaisedInner;
             this.lblLivrosCadastrados.Name = "lblLivrosCadastrados";
             this.lblLivrosCadastrados.Size = new System.Drawing.Size(17, 19);
             this.lblLivrosCadastrados.Text = "0";
@@ -566,6 +554,7 @@ namespace ProjectBook
             // 
             this.toolStripStatusLabel2.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)(((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
             | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.toolStripStatusLabel2.BorderStyle = System.Windows.Forms.Border3DStyle.RaisedInner;
             this.toolStripStatusLabel2.Margin = new System.Windows.Forms.Padding(5, 3, 0, 2);
             this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
             this.toolStripStatusLabel2.Size = new System.Drawing.Size(122, 19);
@@ -575,6 +564,7 @@ namespace ProjectBook
             // 
             this.lblClientesCadastrados.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)(((System.Windows.Forms.ToolStripStatusLabelBorderSides.Top | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
             | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.lblClientesCadastrados.BorderStyle = System.Windows.Forms.Border3DStyle.RaisedInner;
             this.lblClientesCadastrados.Name = "lblClientesCadastrados";
             this.lblClientesCadastrados.Size = new System.Drawing.Size(17, 19);
             this.lblClientesCadastrados.Text = "0";
@@ -583,6 +573,7 @@ namespace ProjectBook
             // 
             this.toolStripStatusLabel3.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)(((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
             | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.toolStripStatusLabel3.BorderStyle = System.Windows.Forms.Border3DStyle.RaisedInner;
             this.toolStripStatusLabel3.Margin = new System.Windows.Forms.Padding(5, 3, 0, 2);
             this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
             this.toolStripStatusLabel3.Size = new System.Drawing.Size(121, 19);
@@ -592,6 +583,7 @@ namespace ProjectBook
             // 
             this.lblAlugueisRegistrados.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)(((System.Windows.Forms.ToolStripStatusLabelBorderSides.Top | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
             | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.lblAlugueisRegistrados.BorderStyle = System.Windows.Forms.Border3DStyle.RaisedInner;
             this.lblAlugueisRegistrados.Name = "lblAlugueisRegistrados";
             this.lblAlugueisRegistrados.Size = new System.Drawing.Size(17, 19);
             this.lblAlugueisRegistrados.Text = "0";
@@ -609,6 +601,7 @@ namespace ProjectBook
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Project Book";
             this.Activated += new System.EventHandler(this.Inicio_Activated);
+            this.Load += new System.EventHandler(this.Inicio_Load);
             this.mnuInicio.ResumeLayout(false);
             this.mnuInicio.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -682,7 +675,6 @@ namespace ProjectBook
         private System.Windows.Forms.ToolStripStatusLabel lblClientesCadastrados;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
         private System.Windows.Forms.ToolStripStatusLabel lblAlugueisRegistrados;
-        private System.Windows.Forms.Button btnDbTesteConexao;
     }
 }
 

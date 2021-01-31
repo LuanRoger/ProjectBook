@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Reflection;
+using System.Threading;
 using ProjectBook.DB.SqlServerExpress;
 
 namespace ProjectBook
@@ -19,6 +20,7 @@ namespace ProjectBook
         public Inicio()
         {
             InitializeComponent();
+
             lblNomeUsuario.Text = ConfigurationManager.AppSettings["usuarioLogado"];
 
             mnuNovoCadastro.Click += (sender, e) =>
@@ -126,39 +128,13 @@ namespace ProjectBook
 
         private async void Inicio_Activated(object sender, EventArgs e)
         {
-            //Verificar conexão com o banco de dados
+            //Carregar informações
             livrosDb.AbrirConexaoDb();
             if (livrosDb.DbStatus() == "Open")
             {
-                btnDbTesteConexao.Image = Properties.Resources.database_icon;
-
-                //Verificar se existe usuário logado
-                if (String.IsNullOrEmpty(ConfigurationManager.AppSettings["usuarioLogado"]))
-                {
-                    if (Application.OpenForms.Count < 2)
-                    {
-                        Login login = new Login();
-                        this.Enabled = false;
-                        login.Show();
-                    }
-                }
-
-                //Atualizar Status do aluguel
-                List<Task> atualizarStatus = new List<Task>();
-                await Task.Run(() => aluguelDb.AbrirConexaoDb());
-                foreach(DataRow data in aluguelDb.PegarLivrosAlugados().Rows)
-                {
-                    DateTime hoje = DateTime.Now.Date;
-                    DateTime devolucao = (DateTime)data[4];
-                    if (Convert.ToInt32((hoje - devolucao).Days) >= 0) 
-                        atualizarStatus.Add(Task.Run(() => aluguelDb.AtualizarStatusAtrasado(data[2].ToString())));
-                }
-                await Task.WhenAll(atualizarStatus);
-                await Task.Run(() => aluguelDb.FechaConecxaoDb());
-
-                //Carregar informações
                 int quantidadeLivros = await Task.Run(() => livrosDb.VerTodosLivros().Rows.Count);
                 lblLivrosCadastrados.Text = quantidadeLivros.ToString();
+                livrosDb.FechaConecxaoDb();
 
                 clienteDb.AbrirConexaoDb();
                 int quantidadeCliente = await Task.Run(() => clienteDb.VerTodosClientes().Rows.Count);
@@ -170,8 +146,6 @@ namespace ProjectBook
                 lblAlugueisRegistrados.Text = quantidadeAluguel.ToString();
                 aluguelDb.FechaConecxaoDb();
             }
-            else btnDbTesteConexao.Image = Properties.Resources.database_error_icon;
-            livrosDb.FechaConecxaoDb();
         }
         private void btnSairUsuario_Click(object sender, EventArgs e)
         {
@@ -180,6 +154,25 @@ namespace ProjectBook
 
             Process.Start(Application.StartupPath + Assembly.GetExecutingAssembly().GetName().Name + ".exe");
             Process.GetCurrentProcess().Kill();
+        }
+
+        private async void Inicio_Load(object sender, EventArgs e)
+        {
+            this.ShowInTaskbar = false;
+            this.Opacity = 0;
+
+            SplashScreen splashScreen = new SplashScreen();
+            splashScreen.Show();
+
+            livrosDb.AbrirConexaoDb();
+            if (!String.IsNullOrEmpty(ConfigurationManager.AppSettings["usuarioLogado"]) && livrosDb.DbStatus() == "Open")
+            {
+                await Task.Delay(3000); //Delay para ver a Splash Screen
+                this.ShowInTaskbar = true;
+                this.Opacity = 100;
+                splashScreen.Close();
+            }
+            livrosDb.FechaConecxaoDb();
         }
     }
 }

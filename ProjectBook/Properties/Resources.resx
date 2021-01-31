@@ -124,44 +124,74 @@
   <data name="Edit_grey_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\img\Edit_grey_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="preencherCamposObrigatorios_MessageBox" xml:space="preserve">
+    <value>Preencha todos os campos obrigatórios</value>
+  </data>
+  <data name="informacoesIncorretas" xml:space="preserve">
+    <value>As informações estão incorretas.</value>
+  </data>
   <data name="LibrarySettings_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\img\LibrarySettings_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="livroNaoExiste_MessageBox" xml:space="preserve">
     <value>Este livro não existe, verifique se a informação de busca foi digitada corretamente.</value>
   </data>
+  <data name="clienteNaoExiste_MessageBox" xml:space="preserve">
+    <value>Este cliente não está cadastrado, verifique se a informação de busca foi digitada corretamente.</value>
+  </data>
+  <data name="configuracoesSalvas_MessageBox" xml:space="preserve">
+    <value>Configurações salvas.</value>
+  </data>
   <data name="Print_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\img\Print_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SplashScreen" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\img\SplashScreen.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="DeleteClause_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\img\DeleteClause_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="reiniciarPrograma_MessageBox" xml:space="preserve">
-    <value>Para que as alterações do banco de dados sejam aplicadas será nescessário reiniciar o programa. Desseja reiniciar?</value>
+  <data name="confirmarExclusao" xml:space="preserve">
+    <value>Deseja realmente excluir</value>
   </data>
   <data name="AddUser_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\img\AddUser_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="preencherCampoBusca_MessageBox" xml:space="preserve">
-    <value>Faça uma pesquisa para continuar.</value>
+  <data name="confirmarExclusaoAluguel2" xml:space="preserve">
+    <value>alugado por </value>
   </data>
   <data name="Library_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\img\Library_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Trash_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\assets\img\Trash_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="key" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\key.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="user" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\user.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="preencherCampoBusca_MessageBox" xml:space="preserve">
+    <value>Faça uma pesquisa para continuar.</value>
+  </data>
+  <data name="preencherCampos" xml:space="preserve">
+    <value>Preencha todos e/ou verifique todos os campos para continuar.</value>
+  </data>
   <data name="AddTextFile_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\img\AddTextFile_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="clienteLivroNaoAlugados" xml:space="preserve">
+    <value>Este livro não foi alugado ou o cliente não alugou nenhum livro.</value>
   </data>
   <data name="concluido_MessageBox" xml:space="preserve">
     <value>Concluido</value>
   </data>
-  <data name="key" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\key.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="mudancaConnectionString" xml:space="preserve">
+    <value>Houve uma mudança na String de conexão, o programa será reiniciado.</value>
+  </data>
+  <data name="naoExisteLivroCliente" xml:space="preserve">
+    <value>O livro ou o cliente não existem.</value>
+  </data>
+  <data name="confirmarExclusaoDe" xml:space="preserve">
+    <value>de</value>
   </data>
   <data name="database-error-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\img\database-error-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -169,8 +199,14 @@
   <data name="aluguelStatus_Pendente" xml:space="preserve">
     <value>Alugado</value>
   </data>
-  <data name="clienteNaoExiste_MessageBox" xml:space="preserve">
-    <value>Este cliente não está cadastrado, verifique se a informação de busca foi digitada corretamente.</value>
+  <data name="excluir_MessageBox" xml:space="preserve">
+    <value>Excluir</value>
+  </data>
+  <data name="luanroger" xml:space="preserve">
+    <value>Luan Roger© 2021</value>
+  </data>
+  <data name="sobre_MessageBox" xml:space="preserve">
+    <value>Sobre</value>
   </data>
   <data name="DeleteAllRows_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\img\DeleteAllRows_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -181,11 +217,20 @@
   <data name="database-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\img\database-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="versao_MessageBox" xml:space="preserve">
+    <value>N° da versão: v</value>
+  </data>
   <data name="UserGroup_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\img\UserGroup_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="preencherCamposObrigatorios_MessageBox" xml:space="preserve">
-    <value>Preencha todos os campos obrigatórios</value>
+  <data name="reiniciarPrograma_MessageBox" xml:space="preserve">
+    <value>Para que as alterações do banco de dados sejam aplicadas será nescessário reiniciar o programa. Desseja reiniciar?</value>
+  </data>
+  <data name="exit_account" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\img\exit_account.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="livroNaoAlugado" xml:space="preserve">
+    <value>Este cliente não tem livro alugado.</value>
   </data>
   <data name="SearchGo_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\img\SearchGo_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -196,49 +241,10 @@
   <data name="error_MessageBox" xml:space="preserve">
     <value>Error</value>
   </data>
-  <data name="configuracoesSalvas_MessageBox" xml:space="preserve">
-    <value>Configurações salvas.</value>
+  <data name="Trash_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\img\Trash_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="exit_account" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\assets\img\exit_account.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="mudancaConnectionString" xml:space="preserve">
-    <value>Houve uma mudança na String de conexão, o programa será reiniciado.</value>
-  </data>
-  <data name="naoExisteLivroCliente" xml:space="preserve">
-    <value>O livro ou o cliente não existem.</value>
-  </data>
-  <data name="confirmarExclusao" xml:space="preserve">
-    <value>Deseja realmente excluir</value>
-  </data>
-  <data name="confirmarExclusaoAluguel2" xml:space="preserve">
-    <value>alugado por </value>
-  </data>
-  <data name="excluir_MessageBox" xml:space="preserve">
-    <value>Excluir</value>
-  </data>
-  <data name="sobre_MessageBox" xml:space="preserve">
-    <value>Sobre</value>
-  </data>
-  <data name="luanroger" xml:space="preserve">
-    <value>Luan Roger© 2021</value>
-  </data>
-  <data name="versao_MessageBox" xml:space="preserve">
-    <value>N° da versão: v</value>
-  </data>
-  <data name="informacoesIncorretas" xml:space="preserve">
-    <value>As informações estão incorretas.</value>
-  </data>
-  <data name="livroNaoAlugado" xml:space="preserve">
-    <value>Este cliente não tem livro alugado.</value>
-  </data>
-  <data name="confirmarExclusaoDe" xml:space="preserve">
-    <value>de</value>
-  </data>
-  <data name="clienteLivroNaoAlugados" xml:space="preserve">
-    <value>Este livro não foi alugado ou o cliente não alugou nenhum livro.</value>
-  </data>
-  <data name="preencherCampos" xml:space="preserve">
-    <value>Preencha todos e/ou verifique todos os campos para continuar.</value>
+  <data name="InicioBackground" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\img\InicioBackground.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -34,12 +34,14 @@ namespace ProjectBook
             this.chbVisualizarImpressao = new System.Windows.Forms.CheckBox();
             this.btnSalvarConfiguracoes = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.lblCaminhoArquivo = new System.Windows.Forms.Label();
-            this.txtStringConexao = new System.Windows.Forms.TextBox();
+            this.btnSelecionarArquivoDb = new System.Windows.Forms.Button();
+            this.rabSqlServerLocalDb = new System.Windows.Forms.RadioButton();
+            this.lblInfoTxt = new System.Windows.Forms.Label();
+            this.txtStringConexaoCaminhoDb = new System.Windows.Forms.TextBox();
             this.rabSqlServerExpress = new System.Windows.Forms.RadioButton();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.chbFormatarCliente = new System.Windows.Forms.CheckBox();
             this.chbFormatarLivro = new System.Windows.Forms.CheckBox();
+            this.chbFormatarCliente = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -77,8 +79,10 @@ namespace ProjectBook
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.lblCaminhoArquivo);
-            this.groupBox2.Controls.Add(this.txtStringConexao);
+            this.groupBox2.Controls.Add(this.btnSelecionarArquivoDb);
+            this.groupBox2.Controls.Add(this.rabSqlServerLocalDb);
+            this.groupBox2.Controls.Add(this.lblInfoTxt);
+            this.groupBox2.Controls.Add(this.txtStringConexaoCaminhoDb);
             this.groupBox2.Controls.Add(this.rabSqlServerExpress);
             this.groupBox2.Location = new System.Drawing.Point(12, 70);
             this.groupBox2.Name = "groupBox2";
@@ -87,21 +91,43 @@ namespace ProjectBook
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Banco de dados";
             // 
-            // lblCaminhoArquivo
+            // btnSelecionarArquivoDb
             // 
-            this.lblCaminhoArquivo.AutoSize = true;
-            this.lblCaminhoArquivo.Location = new System.Drawing.Point(6, 48);
-            this.lblCaminhoArquivo.Name = "lblCaminhoArquivo";
-            this.lblCaminhoArquivo.Size = new System.Drawing.Size(105, 15);
-            this.lblCaminhoArquivo.TabIndex = 2;
-            this.lblCaminhoArquivo.Text = "String de conexão:";
+            this.btnSelecionarArquivoDb.Location = new System.Drawing.Point(420, 66);
+            this.btnSelecionarArquivoDb.Name = "btnSelecionarArquivoDb";
+            this.btnSelecionarArquivoDb.Size = new System.Drawing.Size(27, 23);
+            this.btnSelecionarArquivoDb.TabIndex = 4;
+            this.btnSelecionarArquivoDb.Text = "...";
+            this.btnSelecionarArquivoDb.UseVisualStyleBackColor = true;
+            this.btnSelecionarArquivoDb.Click += new System.EventHandler(this.btnSelecionarArquivoDb_Click);
             // 
-            // txtStringConexao
+            // rabSqlServerLocalDb
             // 
-            this.txtStringConexao.Location = new System.Drawing.Point(6, 66);
-            this.txtStringConexao.Name = "txtStringConexao";
-            this.txtStringConexao.Size = new System.Drawing.Size(441, 23);
-            this.txtStringConexao.TabIndex = 1;
+            this.rabSqlServerLocalDb.AutoSize = true;
+            this.rabSqlServerLocalDb.Location = new System.Drawing.Point(136, 21);
+            this.rabSqlServerLocalDb.Name = "rabSqlServerLocalDb";
+            this.rabSqlServerLocalDb.Size = new System.Drawing.Size(176, 19);
+            this.rabSqlServerLocalDb.TabIndex = 3;
+            this.rabSqlServerLocalDb.TabStop = true;
+            this.rabSqlServerLocalDb.Text = "SQL Server LocalDB (MSSQL)";
+            this.rabSqlServerLocalDb.UseVisualStyleBackColor = true;
+            this.rabSqlServerLocalDb.CheckedChanged += new System.EventHandler(this.rabSqlServerLocalDb_CheckedChanged);
+            // 
+            // lblInfoTxt
+            // 
+            this.lblInfoTxt.AutoSize = true;
+            this.lblInfoTxt.Location = new System.Drawing.Point(6, 48);
+            this.lblInfoTxt.Name = "lblInfoTxt";
+            this.lblInfoTxt.Size = new System.Drawing.Size(105, 15);
+            this.lblInfoTxt.TabIndex = 2;
+            this.lblInfoTxt.Text = "String de conexão:";
+            // 
+            // txtStringConexaoCaminhoDb
+            // 
+            this.txtStringConexaoCaminhoDb.Location = new System.Drawing.Point(6, 66);
+            this.txtStringConexaoCaminhoDb.Name = "txtStringConexaoCaminhoDb";
+            this.txtStringConexaoCaminhoDb.Size = new System.Drawing.Size(408, 23);
+            this.txtStringConexaoCaminhoDb.TabIndex = 1;
             // 
             // rabSqlServerExpress
             // 
@@ -113,6 +139,7 @@ namespace ProjectBook
             this.rabSqlServerExpress.TabStop = true;
             this.rabSqlServerExpress.Text = "SQL Server Express";
             this.rabSqlServerExpress.UseVisualStyleBackColor = true;
+            this.rabSqlServerExpress.CheckedChanged += new System.EventHandler(this.rabSqlServerExpress_CheckedChanged);
             // 
             // groupBox3
             // 
@@ -125,16 +152,6 @@ namespace ProjectBook
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Formatar em maiúsculo";
             // 
-            // chbFormatarCliente
-            // 
-            this.chbFormatarCliente.AutoSize = true;
-            this.chbFormatarCliente.Location = new System.Drawing.Point(6, 22);
-            this.chbFormatarCliente.Name = "chbFormatarCliente";
-            this.chbFormatarCliente.Size = new System.Drawing.Size(177, 19);
-            this.chbFormatarCliente.TabIndex = 0;
-            this.chbFormatarCliente.Text = "Clientes (E-mail não incluso)";
-            this.chbFormatarCliente.UseVisualStyleBackColor = true;
-            // 
             // chbFormatarLivro
             // 
             this.chbFormatarLivro.AutoSize = true;
@@ -144,6 +161,16 @@ namespace ProjectBook
             this.chbFormatarLivro.TabIndex = 1;
             this.chbFormatarLivro.Text = "Livros";
             this.chbFormatarLivro.UseVisualStyleBackColor = true;
+            // 
+            // chbFormatarCliente
+            // 
+            this.chbFormatarCliente.AutoSize = true;
+            this.chbFormatarCliente.Location = new System.Drawing.Point(6, 22);
+            this.chbFormatarCliente.Name = "chbFormatarCliente";
+            this.chbFormatarCliente.Size = new System.Drawing.Size(177, 19);
+            this.chbFormatarCliente.TabIndex = 0;
+            this.chbFormatarCliente.Text = "Clientes (E-mail não incluso)";
+            this.chbFormatarCliente.UseVisualStyleBackColor = true;
             // 
             // Configuracoes
             // 
@@ -176,11 +203,13 @@ namespace ProjectBook
         private System.Windows.Forms.CheckBox chbVisualizarImpressao;
         private System.Windows.Forms.Button btnSalvarConfiguracoes;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Label lblCaminhoArquivo;
-        private System.Windows.Forms.TextBox txtStringConexao;
+        private System.Windows.Forms.Label lblInfoTxt;
+        private System.Windows.Forms.TextBox txtStringConexaoCaminhoDb;
         private System.Windows.Forms.RadioButton rabSqlServerExpress;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.CheckBox chbFormatarLivro;
         private System.Windows.Forms.CheckBox chbFormatarCliente;
+        private System.Windows.Forms.RadioButton rabSqlServerLocalDb;
+        private System.Windows.Forms.Button btnSelecionarArquivoDb;
     }
 }

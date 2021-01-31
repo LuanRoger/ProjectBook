@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using System.Configuration;
 using System.Diagnostics;
+using System.Drawing;
 using System.Reflection;
 
 namespace ProjectBook
@@ -20,9 +21,10 @@ namespace ProjectBook
         {
             if (ConfigurationManager.AppSettings["visualizarImpressao"] == "1") chbVisualizarImpressao.Checked = true;
             if (ConfigurationManager.AppSettings["dbPadrao"] == "sqlserverexpress") rabSqlServerExpress.Checked = true;
+            else if (ConfigurationManager.AppSettings["dbPadrao"] == "sqlserverlocaldb") rabSqlServerLocalDb.Checked = true;
             if (ConfigurationManager.AppSettings["formatarCliente"] == "1") chbFormatarCliente.Checked = true;
             if (ConfigurationManager.AppSettings["formatarLivro"] == "1") chbFormatarLivro.Checked = true;
-            txtStringConexao.Text = ConfigurationManager.ConnectionStrings["SqlConnectionString"].ConnectionString;
+            txtStringConexaoCaminhoDb.Text = ConfigurationManager.ConnectionStrings["SqlConnectionString"].ConnectionString;
         }
 
         private void btnSalvarConfiguracoes_Click(object sender, EventArgs e)
@@ -42,9 +44,16 @@ namespace ProjectBook
             else config.AppSettings.Settings["formatarLivro"].Value = "0";
 
             //String de conexão
-            config.AppSettings.Settings["dbPadrao"].Value = "sqlserverexpress";
-            config.ConnectionStrings.ConnectionStrings["SqlConnectionString"].ConnectionString = txtStringConexao.Text;
-            
+            if (rabSqlServerExpress.Checked)
+            {
+                config.AppSettings.Settings["dbPadrao"].Value = "sqlserverexpress";
+                config.ConnectionStrings.ConnectionStrings["SqlConnectionString"].ConnectionString = txtStringConexaoCaminhoDb.Text;
+            }
+            else if (rabSqlServerLocalDb.Checked)
+            {
+                config.AppSettings.Settings["dbPadrao"].Value = "sqlserverlocaldb";
+                config.ConnectionStrings.ConnectionStrings["SqlConnectionString"].ConnectionString = $@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={txtStringConexaoCaminhoDb.Text};Integrated Security=True";
+            }
             //Salvar
             config.Save(ConfigurationSaveMode.Modified);
             ConfigurationManager.RefreshSection("appSettings");
@@ -60,6 +69,32 @@ namespace ProjectBook
                 
                 Process.Start(Application.StartupPath + Assembly.GetExecutingAssembly().GetName().Name + ".exe");
                 Process.GetCurrentProcess().Kill();
+            }
+        }
+        private void rabSqlServerExpress_CheckedChanged(object sender, EventArgs e)
+        {
+            lblInfoTxt.Text = "String de conexão:";
+            btnSelecionarArquivoDb.Visible = false;
+            txtStringConexaoCaminhoDb.Size = new Size(441, 23);
+        }
+
+        private void rabSqlServerLocalDb_CheckedChanged(object sender, EventArgs e)
+        {
+            lblInfoTxt.Text = "Caminho do banco de dados:";
+            btnSelecionarArquivoDb.Visible = true;
+            txtStringConexaoCaminhoDb.Size = new Size(408, 23);
+        }
+
+        private void btnSelecionarArquivoDb_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog caminho = new OpenFileDialog();
+            caminho.Filter = "Arquivo MDF (*.mdf)|*.mdf";
+            caminho.Multiselect = false;
+            DialogResult dialogResult = caminho.ShowDialog();
+            if (dialogResult == DialogResult.OK)
+            {
+                var d = caminho.FileName;
+                txtStringConexaoCaminhoDb.Text = caminho.FileName;
             }
         }
     }

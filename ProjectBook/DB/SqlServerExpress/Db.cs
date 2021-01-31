@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.ComponentModel;
 using System.Configuration;
 using System.Data.SqlClient;
-using System.Text;
 using System.Windows.Forms;
 
 namespace ProjectBook.DB.SqlServerExpress
@@ -21,8 +20,6 @@ namespace ProjectBook.DB.SqlServerExpress
             {
                 if (Application.OpenForms.Count < 2)
                 {
-                    Application.OpenForms["Inicio"].Enabled = false;
-
                     DialogResult dialogResult = MessageBox.Show(
                         $"Não foi possivel conectar-se a base de dados: {e.Message}. Deseja abrir a configurações?",
                         Properties.Resources.error_MessageBox,
@@ -31,9 +28,15 @@ namespace ProjectBook.DB.SqlServerExpress
                     if (dialogResult == DialogResult.Yes)
                     {
                         Configuracoes configuracoes = new Configuracoes();
+                        configuracoes.Closing += delegate(object sender, CancelEventArgs args)
+                        {
+                            if (String.IsNullOrEmpty(ConfigurationManager.AppSettings["usuarioLogado"]) ||
+                                String.IsNullOrEmpty(ConfigurationManager.ConnectionStrings["SqlConnectionString"].ConnectionString))
+                                Environment.Exit(0);
+                        };
                         configuracoes.Show();
                     }
-                    else Application.Exit();
+                    else Environment.Exit(0);
                 }
             }
 
