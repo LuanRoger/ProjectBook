@@ -29,8 +29,8 @@ namespace ProjectBook
             else return;
             livrosDb.FechaConecxaoDb();
 
-            ListaLivros listaLivros = new ListaLivros(resultadoPesquisa);
-            listaLivros.Show();
+            ListaPesquisa listaPesquisa = new ListaPesquisa(resultadoPesquisa);
+            listaPesquisa.Show();
 
             txtTermoPesquisa.Clear();
         }

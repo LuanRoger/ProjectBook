@@ -11,9 +11,9 @@ using System.Configuration;
 
 namespace ProjectBook
 {
-    public partial class ListaLivros : Form
+    public partial class ListaPesquisa : Form
     {
-        public ListaLivros(DataTable data)
+        public ListaPesquisa(DataTable data)
         {
             InitializeComponent();
             dgvListaLivros.DataSource = data;

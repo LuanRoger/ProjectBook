@@ -155,6 +155,16 @@ namespace ProjectBook.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap CSSearch_16x {
+            get {
+                object obj = ResourceManager.GetObject("CSSearch_16x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap database_error_icon {
             get {
                 object obj = ResourceManager.GetObject("database-error-icon", resourceCulture);

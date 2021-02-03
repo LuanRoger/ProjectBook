@@ -56,9 +56,9 @@ namespace ProjectBook
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuInicio = new System.Windows.Forms.MenuStrip();
-            this.mnuCadastro = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuNovoCadastro = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuEditarCadastro = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuLivro = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuNovoLivro = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuEditarLivro = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuAluguel = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCadastrarAluguel = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuEditarAluguel = new System.Windows.Forms.ToolStripMenuItem();
@@ -91,184 +91,151 @@ namespace ProjectBook
             this.lblClientesCadastrados = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblAlugueisRegistrados = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel4 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel5 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tosSugestoes = new System.Windows.Forms.ToolStrip();
+            this.mnuArCadastroLivro = new System.Windows.Forms.ToolStripButton();
+            this.mnuArCadastroCliente = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuArEditarLivro = new System.Windows.Forms.ToolStripButton();
+            this.mnuArEditarCliente = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuArBuscaRapida = new System.Windows.Forms.ToolStripButton();
             this.mnuInicio.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
+            this.tosSugestoes.SuspendLayout();
             this.SuspendLayout();
             // 
             // contentsToolStripMenuItem
             // 
             this.contentsToolStripMenuItem.Name = "contentsToolStripMenuItem";
-            this.contentsToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
-            this.contentsToolStripMenuItem.Text = "&Contents";
+            this.contentsToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
             // 
             // indexToolStripMenuItem
             // 
             this.indexToolStripMenuItem.Name = "indexToolStripMenuItem";
-            this.indexToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
-            this.indexToolStripMenuItem.Text = "&Index";
+            this.indexToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
             // 
             // searchToolStripMenuItem
             // 
             this.searchToolStripMenuItem.Name = "searchToolStripMenuItem";
-            this.searchToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
-            this.searchToolStripMenuItem.Text = "&Search";
+            this.searchToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(119, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 6);
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
-            this.aboutToolStripMenuItem.Text = "&About...";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
             // 
             // customizeToolStripMenuItem
             // 
             this.customizeToolStripMenuItem.Name = "customizeToolStripMenuItem";
-            this.customizeToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
-            this.customizeToolStripMenuItem.Text = "&Customize";
+            this.customizeToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
             // 
             // optionsToolStripMenuItem
             // 
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
-            this.optionsToolStripMenuItem.Text = "&Options";
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
             // 
             // undoToolStripMenuItem
             // 
             this.undoToolStripMenuItem.Name = "undoToolStripMenuItem";
-            this.undoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
-            this.undoToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
-            this.undoToolStripMenuItem.Text = "&Undo";
+            this.undoToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
             // 
             // redoToolStripMenuItem
             // 
             this.redoToolStripMenuItem.Name = "redoToolStripMenuItem";
-            this.redoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Y)));
-            this.redoToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
-            this.redoToolStripMenuItem.Text = "&Redo";
+            this.redoToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(141, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 6);
             // 
             // cutToolStripMenuItem
             // 
-            this.cutToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("cutToolStripMenuItem.Image")));
-            this.cutToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.cutToolStripMenuItem.Name = "cutToolStripMenuItem";
-            this.cutToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
-            this.cutToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
-            this.cutToolStripMenuItem.Text = "Cu&t";
+            this.cutToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
             // 
             // copyToolStripMenuItem
             // 
-            this.copyToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("copyToolStripMenuItem.Image")));
-            this.copyToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
-            this.copyToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
-            this.copyToolStripMenuItem.Text = "&Copy";
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
             // 
             // pasteToolStripMenuItem
             // 
-            this.pasteToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("pasteToolStripMenuItem.Image")));
-            this.pasteToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
-            this.pasteToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
-            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
-            this.pasteToolStripMenuItem.Text = "&Paste";
+            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(141, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 6);
             // 
             // selectAllToolStripMenuItem
             // 
             this.selectAllToolStripMenuItem.Name = "selectAllToolStripMenuItem";
-            this.selectAllToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
-            this.selectAllToolStripMenuItem.Text = "Select &All";
+            this.selectAllToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
             // 
             // newToolStripMenuItem
             // 
-            this.newToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("newToolStripMenuItem.Image")));
-            this.newToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
-            this.newToolStripMenuItem.Text = "&New";
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
             // 
             // openToolStripMenuItem
             // 
-            this.openToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("openToolStripMenuItem.Image")));
-            this.openToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
-            this.openToolStripMenuItem.Text = "&Open";
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
             // 
             // toolStripSeparator
             // 
             this.toolStripSeparator.Name = "toolStripSeparator";
-            this.toolStripSeparator.Size = new System.Drawing.Size(143, 6);
+            this.toolStripSeparator.Size = new System.Drawing.Size(6, 6);
             // 
             // saveToolStripMenuItem
             // 
-            this.saveToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("saveToolStripMenuItem.Image")));
-            this.saveToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
-            this.saveToolStripMenuItem.Text = "&Save";
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
             // 
             // saveAsToolStripMenuItem
             // 
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
-            this.saveAsToolStripMenuItem.Text = "Save &As";
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(143, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 6);
             // 
             // printToolStripMenuItem
             // 
-            this.printToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("printToolStripMenuItem.Image")));
-            this.printToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.printToolStripMenuItem.Name = "printToolStripMenuItem";
-            this.printToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
-            this.printToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
-            this.printToolStripMenuItem.Text = "&Print";
+            this.printToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
             // 
             // printPreviewToolStripMenuItem
             // 
-            this.printPreviewToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("printPreviewToolStripMenuItem.Image")));
-            this.printPreviewToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.printPreviewToolStripMenuItem.Name = "printPreviewToolStripMenuItem";
-            this.printPreviewToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
-            this.printPreviewToolStripMenuItem.Text = "Print Pre&view";
+            this.printPreviewToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(143, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
-            this.exitToolStripMenuItem.Text = "E&xit";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
             // 
             // mnuInicio
             // 
             this.mnuInicio.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuCadastro,
+            this.mnuLivro,
             this.mnuAluguel,
             this.mnuClientes,
             this.mnuUsuario,
@@ -282,29 +249,29 @@ namespace ProjectBook
             this.mnuInicio.TabIndex = 2;
             this.mnuInicio.Text = "Cadastro";
             // 
-            // mnuCadastro
+            // mnuLivro
             // 
-            this.mnuCadastro.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuNovoCadastro,
-            this.mnuEditarCadastro});
-            this.mnuCadastro.Name = "mnuCadastro";
-            this.mnuCadastro.Size = new System.Drawing.Size(66, 20);
-            this.mnuCadastro.Text = "Cadastro";
+            this.mnuLivro.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuNovoLivro,
+            this.mnuEditarLivro});
+            this.mnuLivro.Name = "mnuLivro";
+            this.mnuLivro.Size = new System.Drawing.Size(45, 20);
+            this.mnuLivro.Text = "Livro";
             // 
-            // mnuNovoCadastro
+            // mnuNovoLivro
             // 
-            this.mnuNovoCadastro.BackColor = System.Drawing.SystemColors.Control;
-            this.mnuNovoCadastro.Image = ((System.Drawing.Image)(resources.GetObject("mnuNovoCadastro.Image")));
-            this.mnuNovoCadastro.Name = "mnuNovoCadastro";
-            this.mnuNovoCadastro.Size = new System.Drawing.Size(104, 22);
-            this.mnuNovoCadastro.Text = "Novo";
+            this.mnuNovoLivro.BackColor = System.Drawing.SystemColors.Control;
+            this.mnuNovoLivro.Image = ((System.Drawing.Image)(resources.GetObject("mnuNovoLivro.Image")));
+            this.mnuNovoLivro.Name = "mnuNovoLivro";
+            this.mnuNovoLivro.Size = new System.Drawing.Size(130, 22);
+            this.mnuNovoLivro.Text = "Novo livro";
             // 
-            // mnuEditarCadastro
+            // mnuEditarLivro
             // 
-            this.mnuEditarCadastro.Image = ((System.Drawing.Image)(resources.GetObject("mnuEditarCadastro.Image")));
-            this.mnuEditarCadastro.Name = "mnuEditarCadastro";
-            this.mnuEditarCadastro.Size = new System.Drawing.Size(104, 22);
-            this.mnuEditarCadastro.Text = "Editar";
+            this.mnuEditarLivro.Image = ((System.Drawing.Image)(resources.GetObject("mnuEditarLivro.Image")));
+            this.mnuEditarLivro.Name = "mnuEditarLivro";
+            this.mnuEditarLivro.Size = new System.Drawing.Size(130, 22);
+            this.mnuEditarLivro.Text = "Editar livro";
             // 
             // mnuAluguel
             // 
@@ -475,7 +442,7 @@ namespace ProjectBook
             this.btnSairUsuario.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSairUsuario.Image = ((System.Drawing.Image)(resources.GetObject("btnSairUsuario.Image")));
             this.btnSairUsuario.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSairUsuario.Location = new System.Drawing.Point(3, 397);
+            this.btnSairUsuario.Location = new System.Drawing.Point(3, 372);
             this.btnSairUsuario.Name = "btnSairUsuario";
             this.btnSairUsuario.Size = new System.Drawing.Size(51, 23);
             this.btnSairUsuario.TabIndex = 10;
@@ -488,10 +455,11 @@ namespace ProjectBook
             // 
             this.lblNomeUsuario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblNomeUsuario.AutoSize = true;
-            this.lblNomeUsuario.Location = new System.Drawing.Point(57, 401);
+            this.lblNomeUsuario.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblNomeUsuario.Location = new System.Drawing.Point(57, 376);
             this.lblNomeUsuario.Margin = new System.Windows.Forms.Padding(0, 0, 3, 7);
             this.lblNomeUsuario.Name = "lblNomeUsuario";
-            this.lblNomeUsuario.Size = new System.Drawing.Size(46, 15);
+            this.lblNomeUsuario.Size = new System.Drawing.Size(47, 15);
             this.lblNomeUsuario.TabIndex = 11;
             this.lblNomeUsuario.Text = "usuario";
             // 
@@ -507,12 +475,12 @@ namespace ProjectBook
             this.tableLayoutPanel1.Controls.Add(this.btnSairUsuario, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblNomeUsuario, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 24);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 49);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(714, 452);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(714, 427);
             this.tableLayoutPanel1.TabIndex = 12;
             // 
             // statusStrip1
@@ -523,12 +491,13 @@ namespace ProjectBook
             this.toolStripStatusLabel2,
             this.lblClientesCadastrados,
             this.toolStripStatusLabel3,
-            this.lblAlugueisRegistrados});
+            this.lblAlugueisRegistrados,
+            this.toolStripStatusLabel4,
+            this.toolStripStatusLabel5});
             this.statusStrip1.Location = new System.Drawing.Point(0, 452);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.ManagerRenderMode;
             this.statusStrip1.Size = new System.Drawing.Size(714, 24);
-            this.statusStrip1.SizingGrip = false;
             this.statusStrip1.TabIndex = 13;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -588,6 +557,92 @@ namespace ProjectBook
             this.lblAlugueisRegistrados.Size = new System.Drawing.Size(17, 19);
             this.lblAlugueisRegistrados.Text = "0";
             // 
+            // toolStripStatusLabel4
+            // 
+            this.toolStripStatusLabel4.Name = "toolStripStatusLabel4";
+            this.toolStripStatusLabel4.Size = new System.Drawing.Size(227, 19);
+            this.toolStripStatusLabel4.Spring = true;
+            this.toolStripStatusLabel4.Text = "[F1] - Pesquisa rápida";
+            this.toolStripStatusLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.toolStripStatusLabel4.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
+            // 
+            // toolStripStatusLabel5
+            // 
+            this.toolStripStatusLabel5.Name = "toolStripStatusLabel5";
+            this.toolStripStatusLabel5.Size = new System.Drawing.Size(57, 19);
+            this.toolStripStatusLabel5.Text = "[F6] - Sair";
+            // 
+            // tosSugestoes
+            // 
+            this.tosSugestoes.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuArCadastroLivro,
+            this.mnuArCadastroCliente,
+            this.toolStripSeparator8,
+            this.mnuArEditarLivro,
+            this.mnuArEditarCliente,
+            this.toolStripSeparator9,
+            this.mnuArBuscaRapida});
+            this.tosSugestoes.Location = new System.Drawing.Point(0, 24);
+            this.tosSugestoes.Name = "tosSugestoes";
+            this.tosSugestoes.Size = new System.Drawing.Size(714, 25);
+            this.tosSugestoes.TabIndex = 12;
+            this.tosSugestoes.Text = "toolStrip1";
+            // 
+            // mnuArCadastroLivro
+            // 
+            this.mnuArCadastroLivro.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.mnuArCadastroLivro.Image = ((System.Drawing.Image)(resources.GetObject("mnuArCadastroLivro.Image")));
+            this.mnuArCadastroLivro.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.mnuArCadastroLivro.Name = "mnuArCadastroLivro";
+            this.mnuArCadastroLivro.Size = new System.Drawing.Size(23, 22);
+            this.mnuArCadastroLivro.Text = "Cadastrar livro";
+            // 
+            // mnuArCadastroCliente
+            // 
+            this.mnuArCadastroCliente.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.mnuArCadastroCliente.Image = ((System.Drawing.Image)(resources.GetObject("mnuArCadastroCliente.Image")));
+            this.mnuArCadastroCliente.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.mnuArCadastroCliente.Name = "mnuArCadastroCliente";
+            this.mnuArCadastroCliente.Size = new System.Drawing.Size(23, 22);
+            this.mnuArCadastroCliente.Text = "Cadastrar cliente";
+            // 
+            // toolStripSeparator8
+            // 
+            this.toolStripSeparator8.Name = "toolStripSeparator8";
+            this.toolStripSeparator8.Size = new System.Drawing.Size(6, 25);
+            // 
+            // mnuArEditarLivro
+            // 
+            this.mnuArEditarLivro.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.mnuArEditarLivro.Image = ((System.Drawing.Image)(resources.GetObject("mnuArEditarLivro.Image")));
+            this.mnuArEditarLivro.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.mnuArEditarLivro.Name = "mnuArEditarLivro";
+            this.mnuArEditarLivro.Size = new System.Drawing.Size(23, 22);
+            this.mnuArEditarLivro.Text = "Editar livro";
+            // 
+            // mnuArEditarCliente
+            // 
+            this.mnuArEditarCliente.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.mnuArEditarCliente.Image = ((System.Drawing.Image)(resources.GetObject("mnuArEditarCliente.Image")));
+            this.mnuArEditarCliente.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.mnuArEditarCliente.Name = "mnuArEditarCliente";
+            this.mnuArEditarCliente.Size = new System.Drawing.Size(23, 22);
+            this.mnuArEditarCliente.Text = "Editar cliente";
+            // 
+            // toolStripSeparator9
+            // 
+            this.toolStripSeparator9.Name = "toolStripSeparator9";
+            this.toolStripSeparator9.Size = new System.Drawing.Size(6, 25);
+            // 
+            // mnuArBuscaRapida
+            // 
+            this.mnuArBuscaRapida.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.mnuArBuscaRapida.Image = ((System.Drawing.Image)(resources.GetObject("mnuArBuscaRapida.Image")));
+            this.mnuArBuscaRapida.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.mnuArBuscaRapida.Name = "mnuArBuscaRapida";
+            this.mnuArBuscaRapida.Size = new System.Drawing.Size(23, 22);
+            this.mnuArBuscaRapida.Text = "Busca rápida";
+            // 
             // Inicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -595,19 +650,24 @@ namespace ProjectBook
             this.ClientSize = new System.Drawing.Size(714, 476);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.Controls.Add(this.tosSugestoes);
             this.Controls.Add(this.mnuInicio);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
             this.Name = "Inicio";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Project Book";
+            this.Text = "Project Books";
             this.Activated += new System.EventHandler(this.Inicio_Activated);
             this.Load += new System.EventHandler(this.Inicio_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Inicio_KeyDown);
             this.mnuInicio.ResumeLayout(false);
             this.mnuInicio.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            this.tosSugestoes.ResumeLayout(false);
+            this.tosSugestoes.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -640,13 +700,11 @@ namespace ProjectBook
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.MenuStrip mnuInicio;
-        private System.Windows.Forms.ToolStripMenuItem mnuCadastro;
-        private System.Windows.Forms.ToolStripMenuItem mnuNovoCadastro;
+        private System.Windows.Forms.ToolStripMenuItem mnuLivro;
         private System.Windows.Forms.ToolStripMenuItem mnuExcluir;
         private System.Windows.Forms.ToolStripMenuItem mnuPesquisar;
         private System.Windows.Forms.ToolStripMenuItem mnuSobre;
         private System.Windows.Forms.ToolStripMenuItem mnuTodosLivros;
-        private System.Windows.Forms.ToolStripMenuItem mnuEditarCadastro;
         private System.Windows.Forms.ToolStripMenuItem mnuConfig;
         private System.Windows.Forms.ToolStripMenuItem mnuPesquisaSeletiva;
         private System.Windows.Forms.ToolStripMenuItem mnuAluguel;
@@ -675,6 +733,18 @@ namespace ProjectBook
         private System.Windows.Forms.ToolStripStatusLabel lblClientesCadastrados;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
         private System.Windows.Forms.ToolStripStatusLabel lblAlugueisRegistrados;
+        private System.Windows.Forms.ToolStrip tosSugestoes;
+        private System.Windows.Forms.ToolStripButton mnuArCadastroLivro;
+        private System.Windows.Forms.ToolStripButton mnuArCadastroCliente;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
+        private System.Windows.Forms.ToolStripMenuItem mnuNovoLivro;
+        private System.Windows.Forms.ToolStripMenuItem mnuEditarLivro;
+        private System.Windows.Forms.ToolStripButton mnuArEditarLivro;
+        private System.Windows.Forms.ToolStripButton mnuArEditarCliente;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
+        private System.Windows.Forms.ToolStripButton mnuArBuscaRapida;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel4;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel5;
     }
 }
 

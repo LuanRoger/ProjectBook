@@ -1,7 +1,7 @@
 ﻿
 namespace ProjectBook
 {
-    partial class ListaLivros
+    partial class ListaPesquisa
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@ namespace ProjectBook
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ListaLivros));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ListaPesquisa));
             this.dgvListaLivros = new System.Windows.Forms.DataGridView();
             this.mnuListaLivros = new System.Windows.Forms.MenuStrip();
             this.mnuImprimirLista = new System.Windows.Forms.ToolStripMenuItem();
@@ -41,7 +41,9 @@ namespace ProjectBook
             // 
             this.dgvListaLivros.AllowUserToAddRows = false;
             this.dgvListaLivros.AllowUserToDeleteRows = false;
+            this.dgvListaLivros.BackgroundColor = System.Drawing.Color.White;
             this.dgvListaLivros.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvListaLivros.Cursor = System.Windows.Forms.Cursors.Default;
             this.dgvListaLivros.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvListaLivros.Location = new System.Drawing.Point(0, 24);
             this.dgvListaLivros.Name = "dgvListaLivros";
@@ -68,7 +70,7 @@ namespace ProjectBook
             this.mnuImprimirLista.Size = new System.Drawing.Size(28, 20);
             this.mnuImprimirLista.ToolTipText = "Imprimir";
             // 
-            // ListaLivros
+            // ListaPesquisa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -77,7 +79,7 @@ namespace ProjectBook
             this.Controls.Add(this.mnuListaLivros);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.mnuListaLivros;
-            this.Name = "ListaLivros";
+            this.Name = "ListaPesquisa";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Lista";
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaLivros)).EndInit();

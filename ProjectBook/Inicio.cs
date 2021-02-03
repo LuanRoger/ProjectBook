@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Diagnostics;
+using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Reflection;
@@ -23,16 +24,17 @@ namespace ProjectBook
 
             lblNomeUsuario.Text = ConfigurationManager.AppSettings["usuarioLogado"];
 
-            mnuNovoCadastro.Click += (sender, e) =>
+            //Menu
+            mnuNovoLivro.Click += (sender, e) =>
             {
-                NovoCadastro novoCadastro = new NovoCadastro();
-                novoCadastro.Show();
+                CadastroLivro cadastroLivro = new CadastroLivro();
+                cadastroLivro.Show();
             };
 
-            mnuEditarCadastro.Click += (sender, e) => 
+            mnuEditarLivro.Click += (sender, e) => 
             {
-                EditarCadastro editarCadastro = new EditarCadastro();
-                editarCadastro.Show();
+                EditarLivro editarLivro = new EditarLivro();
+                editarLivro.Show();
             };
 
             mnuCadastrarAluguel.Click += (sender, e) =>
@@ -82,8 +84,8 @@ namespace ProjectBook
 
             mnuTodosLivros.Click += (sender, e) =>
             {
-                ListaLivros listaLivros = new ListaLivros(livrosDb.VerTodosLivros());
-                listaLivros.Show();
+                ListaPesquisa listaPesquisa = new ListaPesquisa(livrosDb.VerTodosLivros());
+                listaPesquisa.Show();
             };
             mnuPesquisaSeletiva.Click += (sender, e) =>
             {
@@ -92,8 +94,8 @@ namespace ProjectBook
             };
             mnuLivrosAlugados.Click += (sender, e) => 
             {
-                ListaLivros listaLivros = new ListaLivros(aluguelDb.VerTodosAluguel());
-                listaLivros.Show();
+                ListaPesquisa listaPesquisa = new ListaPesquisa(aluguelDb.VerTodosAluguel());
+                listaPesquisa.Show();
             };
             mnuPesquisarAluguel.Click += (sender, e) =>
             {
@@ -102,8 +104,8 @@ namespace ProjectBook
             };
             mnuTodosClientes.Click += (sender, e) =>
             {
-                ListaLivros listaLivros = new ListaLivros(clienteDb.VerTodosClientes());
-                listaLivros.Show();
+                ListaPesquisa listaPesquisa = new ListaPesquisa(clienteDb.VerTodosClientes());
+                listaPesquisa.Show();
             };
             mnuPesquisarCliente.Click += (sender, e) =>
             {
@@ -121,8 +123,37 @@ namespace ProjectBook
             {
                 MessageBox.Show(Properties.Resources.versao_MessageBox +
                                 Assembly.GetExecutingAssembly().GetName().Version + 
-                                "\n" + Properties.Resources.luanroger,
+                                "\n" + Properties.Resources.luanroger +
+                                "\n" + "Uso da biblioteca de imagens do VS2019." +
+                                "\n" + "Uso de ícones de FAMFAMFAM: http://famfamfam.com",
                     Properties.Resources.sobre_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            };
+
+            //Acesso rápido
+            mnuArCadastroLivro.Click += (sender, e) =>
+            {
+                CadastroLivro cadastroLivro = new CadastroLivro();
+                cadastroLivro.Show();
+            };
+            mnuArCadastroCliente.Click += (sender, e) =>
+            {
+                CadastrarClientes cadastrarClientes = new CadastrarClientes();
+                cadastrarClientes.Show();
+            };
+            mnuArEditarLivro.Click += (sender, e) =>
+            {
+                EditarLivro editarLivro = new EditarLivro();
+                editarLivro.Show();
+            };
+            mnuArEditarCliente.Click += (sender, e) =>
+            {
+                EditarCliente editarCliente = new EditarCliente();
+                editarCliente.Show();
+            };
+            mnuArBuscaRapida.Click += (sender, e) =>
+            {
+                PesquisaRapida pesquisaRapida = new PesquisaRapida();
+                pesquisaRapida.Show();
             };
         }
 
@@ -158,6 +189,7 @@ namespace ProjectBook
 
         private async void Inicio_Load(object sender, EventArgs e)
         {
+            //Deixar o form inicial invisível enquanto a SplashScreen está carregando
             this.ShowInTaskbar = false;
             this.Opacity = 0;
 
@@ -173,6 +205,25 @@ namespace ProjectBook
                 splashScreen.Close();
             }
             livrosDb.FechaConecxaoDb();
+
+            //Deixar o lblNomeUsuario trasnparente para evitar que sobreponha a imagem de fundo
+            lblNomeUsuario.BackColor = Color.Transparent;
+
+            this.BringToFront();
+        }
+
+        private void Inicio_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.F1:
+                    PesquisaRapida pesquisaRapida = new PesquisaRapida();
+                    pesquisaRapida.Show();
+                    break;
+                case Keys.F6: 
+                    this.Close(); 
+                    break;
+            }
         }
     }
 }

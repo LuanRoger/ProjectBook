@@ -1,7 +1,7 @@
 ﻿
 namespace ProjectBook
 {
-    partial class EditarCadastro
+    partial class EditarLivro
     {
         /// <summary>
         /// Required designer variable.
@@ -262,7 +262,7 @@ namespace ProjectBook
             this.cmbEditarGenero.Size = new System.Drawing.Size(292, 23);
             this.cmbEditarGenero.TabIndex = 10;
             // 
-            // EditarCadastro
+            // EditarLivro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -287,7 +287,7 @@ namespace ProjectBook
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
-            this.Name = "EditarCadastro";
+            this.Name = "EditarLivro";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Editar Cadastro";

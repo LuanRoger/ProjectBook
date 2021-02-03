@@ -40,8 +40,8 @@ namespace ProjectBook
                 return;
             }
             
-            ListaLivros listaLivros = new ListaLivros(dataTable);
-            listaLivros.Show();
+            ListaPesquisa listaPesquisa = new ListaPesquisa(dataTable);
+            listaPesquisa.Show();
             
             txtPesquisarCliente.Clear();
         }

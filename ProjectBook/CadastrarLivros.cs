@@ -11,10 +11,10 @@ using ProjectBook.Livros;
 
 namespace ProjectBook
 {
-    public partial class NovoCadastro : Form
+    public partial class CadastroLivro : Form
     {
         LivrosDb db = new LivrosDb();
-        public NovoCadastro()
+        public CadastroLivro()
         {
             InitializeComponent();
             ColocarGeneros();

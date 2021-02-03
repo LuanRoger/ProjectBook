@@ -1,7 +1,7 @@
 ﻿
 namespace ProjectBook
 {
-    partial class NovoCadastro
+    partial class CadastroLivro
     {
         /// <summary>
         /// Required designer variable.
@@ -208,7 +208,7 @@ namespace ProjectBook
             this.cmdGenero.Size = new System.Drawing.Size(294, 23);
             this.cmdGenero.TabIndex = 6;
             // 
-            // NovoCadastro
+            // CadastroLivro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -233,7 +233,7 @@ namespace ProjectBook
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.MaximizeBox = false;
-            this.Name = "NovoCadastro";
+            this.Name = "CadastroLivro";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Novo Cadastro";

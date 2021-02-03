@@ -7,13 +7,13 @@ using ProjectBook.Livros;
 
 namespace ProjectBook
 {
-    public partial class EditarCadastro : Form
+    public partial class EditarLivro : Form
     {
         private LivrosDb db = new LivrosDb();
 
         private DataTable resultadoBusca;
 
-        public EditarCadastro()
+        public EditarLivro()
         {
             InitializeComponent();
             

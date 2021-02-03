@@ -6,9 +6,9 @@ using System.Windows.Forms;
 
 namespace ProjectBook.DB.SqlServerExpress
 {
-    internal class Db
+    internal abstract class Db
     {
-        protected readonly SqlConnection connection = 
+        protected static readonly SqlConnection connection = 
             new SqlConnection(ConfigurationManager.ConnectionStrings["SqlConnectionString"].ConnectionString);
 
         public string DbStatus() => connection.State.ToString();
