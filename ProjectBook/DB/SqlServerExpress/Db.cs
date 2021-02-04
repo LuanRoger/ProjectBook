@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Windows.Forms;
+using ProjectBook.Properties;
 
 namespace ProjectBook.DB.SqlServerExpress
 {
@@ -21,7 +22,7 @@ namespace ProjectBook.DB.SqlServerExpress
                 if (Application.OpenForms.Count < 2)
                 {
                     DialogResult dialogResult = MessageBox.Show(
-                        $"Não foi possivel conectar-se a base de dados: {e.Message}. Deseja abrir a configurações?",
+                        string.Format(Resources.não_foi_possivel_conectar_se_a_base_de_dados___0___Deseja_abrir_a_configurações_, e.Message),
                         Properties.Resources.error_MessageBox,
                         MessageBoxButtons.YesNo, MessageBoxIcon.Error);
 

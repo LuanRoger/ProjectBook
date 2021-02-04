@@ -1,8 +1,8 @@
 ﻿using ProjectBook.Livros;
-using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
+using ProjectBook.Properties;
 
 namespace ProjectBook.DB.SqlServerExpress
 {
@@ -26,21 +26,20 @@ namespace ProjectBook.DB.SqlServerExpress
                 command.ExecuteNonQuery();
                 command.Dispose();
 
-                MessageBox.Show("Aluguel registrado com sucesso", "Concluido",
+                MessageBox.Show(Resources.aluguel_registrado_com_sucesso, Resources.concluido_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch (SqlException e) { MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            catch (SqlException e) { MessageBox.Show(e.Message, Resources.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
         public DataTable VerTodosAluguel()
         {
-            SqlDataAdapter adapter;
             DataTable table = new DataTable();
             try
             {
-                adapter = new SqlDataAdapter("SELECT * FROM Aluguel", connection);
+                SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM Aluguel", connection);
                 adapter.Fill(table);
             }
-            catch (SqlException e) { MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            catch (SqlException e) { MessageBox.Show(e.Message, Resources.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); }
 
             return table;
         }
@@ -56,10 +55,10 @@ namespace ProjectBook.DB.SqlServerExpress
                 command.ExecuteNonQuery();
                 command.Dispose();
 
-                MessageBox.Show("Livro deletado com sucesso", "Concluido",
+                MessageBox.Show(Resources.livro_deletado_com_sucesso, Resources.concluido_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch (SqlException e) { MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            catch (SqlException e) { MessageBox.Show(e.Message, Resources.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
         public void DeletarAluguelCliente(string nomeCliente)
         {
@@ -71,50 +70,47 @@ namespace ProjectBook.DB.SqlServerExpress
                 command.ExecuteNonQuery();
                 command.Dispose();
 
-                MessageBox.Show("Livro deletado com sucesso", "Concluido",
+                MessageBox.Show(Resources.livro_deletado_com_sucesso, Resources.concluido_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch (SqlException e) { MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            catch (SqlException e) { MessageBox.Show(e.Message, Resources.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
         #endregion
 
         #region Buscar
         public DataTable BuscarAluguelLivro(string titulo)
         {
-            SqlDataAdapter adapter;
             DataTable table = new DataTable();
             try
             {
-                adapter = new SqlDataAdapter($"SELECT * FROM Aluguel WHERE Titulo LIKE \'%{titulo}%\'", connection);
+                SqlDataAdapter adapter = new SqlDataAdapter($"SELECT * FROM Aluguel WHERE Titulo LIKE \'%{titulo}%\'", connection);
                 adapter.Fill(table);
             }
-            catch (SqlException e) { MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            catch (SqlException e) { MessageBox.Show(e.Message, Resources.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); }
 
             return table;
         }
         public DataTable BuscarAluguelCliente(string nomeCliente)
         {
-            SqlDataAdapter adapter;
             DataTable table = new DataTable();
             try
             {
-                adapter = new SqlDataAdapter($"SELECT * FROM Aluguel WHERE [Alugado por] LIKE \'%{nomeCliente}%\'", connection);
+                SqlDataAdapter adapter = new SqlDataAdapter($"SELECT * FROM Aluguel WHERE [Alugado por] LIKE \'%{nomeCliente}%\'", connection);
                 adapter.Fill(table);
             }
-            catch (SqlException e) { MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            catch (SqlException e) { MessageBox.Show(e.Message, Resources.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); }
 
             return table;
         }
         public DataTable PegarLivrosAlugados()
         {
-            SqlDataAdapter adapter;
             DataTable table = new DataTable();
             try
             {
-                adapter = new SqlDataAdapter($"SELECT * FROM Aluguel WHERE Status = \'{Tipos.StatusAluguel.Alugado}\'", connection);
+                SqlDataAdapter adapter = new SqlDataAdapter($"SELECT * FROM Aluguel WHERE Status = \'{Tipos.StatusAluguel.Alugado}\'", connection);
                 adapter.Fill(table);
             }
-            catch (SqlException e) { MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            catch (SqlException e) { MessageBox.Show(e.Message, Resources.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); }
 
             return table;
         }
@@ -139,9 +135,9 @@ namespace ProjectBook.DB.SqlServerExpress
                 command.ExecuteNonQuery();
                 command.Dispose();
 
-                MessageBox.Show("Informações atualizadas", "Concluido", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(Resources.informações_atualizadas, Resources.concluido_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch (SqlException e) { MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            catch (SqlException e) { MessageBox.Show(e.Message, Resources.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
         public void AtualizarAluguelNomeCliente(Aluguel aluguel, string nomeCliente)
         {
@@ -161,9 +157,9 @@ namespace ProjectBook.DB.SqlServerExpress
                 command.ExecuteNonQuery();
                 command.Dispose();
 
-                MessageBox.Show("Informações atualizadas", "Concluido", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(Resources.informações_atualizadas, Resources.concluido_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch (SqlException e) { MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            catch (SqlException e) { MessageBox.Show(e.Message, Resources.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
         public void AtualizarStatusAtrasado(string alugadoPor)
         {
@@ -171,7 +167,7 @@ namespace ProjectBook.DB.SqlServerExpress
             command.CommandText = $"UPDATE Aluguel SET Status = \'{Tipos.StatusAluguel.Atrssado}\' WHERE [Alugado por] = \'{alugadoPor}\'";
             command.ExecuteNonQuery();
             command.Dispose();
-            }
+        }
         #endregion
     }
 }

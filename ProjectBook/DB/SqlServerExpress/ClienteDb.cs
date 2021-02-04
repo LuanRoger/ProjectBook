@@ -1,10 +1,8 @@
 ﻿using ProjectBook.Livros;
-using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Text;
 using System.Windows.Forms;
+using ProjectBook.Properties;
 
 namespace ProjectBook.DB.SqlServerExpress
 {
@@ -30,21 +28,20 @@ namespace ProjectBook.DB.SqlServerExpress
                 command.ExecuteNonQuery();
                 command.Dispose();
 
-                MessageBox.Show("Cliente registrado com sucesso", "Concluido",
+                MessageBox.Show(Resources.cliente_registrado_com_sucesso, Resources.concluido_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch (SqlException e) { MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            catch (SqlException e) { MessageBox.Show(e.Message, Resources.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
         public DataTable VerTodosClientes()
         {
-            SqlDataAdapter adapter;
             DataTable table = new DataTable();
             try
             {
-                adapter = new SqlDataAdapter("SELECT * FROM Clientes", connection);
+                SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM Clientes", connection);
                 adapter.Fill(table);
             }
-            catch (SqlException e) { MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            catch (SqlException e) { MessageBox.Show(e.Message, Resources.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); }
 
             return table;
         }
@@ -60,10 +57,10 @@ namespace ProjectBook.DB.SqlServerExpress
                 command.ExecuteNonQuery();
                 command.Dispose();
 
-                MessageBox.Show("Cliente deletado com sucesso", "Concluido",
+                MessageBox.Show(Resources.cliente_deletado_com_sucesso, Resources.concluido_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch (SqlException e) { MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            catch (SqlException e) { MessageBox.Show(e.Message, Resources.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
         public void DeletarClienteNome(string nome)
         {
@@ -75,39 +72,37 @@ namespace ProjectBook.DB.SqlServerExpress
                 command.ExecuteNonQuery();
                 command.Dispose();
 
-                MessageBox.Show("Cliente deletado com sucesso", "Concluido",
+                MessageBox.Show(Resources.cliente_deletado_com_sucesso, Resources.concluido_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch (SqlException e) { MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            catch (SqlException e) { MessageBox.Show(e.Message, Resources.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
         #endregion
         
         #region Buscar
         public DataTable BuscarClienteId(string id)
         {
-            SqlDataAdapter adapter;
             DataTable table = new DataTable();
 
             try
             {
-                adapter = new SqlDataAdapter($"SELECT * FROM Clientes WHERE ID = {id}", connection);
+                SqlDataAdapter adapter = new SqlDataAdapter($"SELECT * FROM Clientes WHERE ID = {id}", connection);
                 adapter.Fill(table);
             }
-            catch (SqlException e) { MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            catch (SqlException e) { MessageBox.Show(e.Message, Resources.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); }
 
             return table;
         }
         public DataTable BuscarClienteNome(string nomeCompleto)
         {
-            SqlDataAdapter adapter;
             DataTable table = new DataTable();
 
             try
             {
-                adapter = new SqlDataAdapter($"SELECT * FROM Clientes WHERE [Nome completo] LIKE \'%{nomeCompleto}%\'", connection);
+                SqlDataAdapter adapter = new SqlDataAdapter($"SELECT * FROM Clientes WHERE [Nome completo] LIKE \'%{nomeCompleto}%\'", connection);
                 adapter.Fill(table);
             }
-            catch (SqlException e) { MessageBox.Show(e.Message, Properties.Resources.preencherCampoBusca_MessageBox,
+            catch (SqlException e) { MessageBox.Show(e.Message, Resources.preencherCampoBusca_MessageBox,
                 MessageBoxButtons.OK, MessageBoxIcon.Error); }
 
             return table;
@@ -135,9 +130,9 @@ namespace ProjectBook.DB.SqlServerExpress
                 command.ExecuteNonQuery();
                 command.Dispose();
 
-                MessageBox.Show("Informações atualizadas", "Concluido", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(Resources.informações_atualizadas, Resources.concluido_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch (SqlException e) { MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            catch (SqlException e) { MessageBox.Show(e.Message, Resources.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
         #endregion
     }

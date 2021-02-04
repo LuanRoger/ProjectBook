@@ -3,6 +3,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 using ProjectBook.Livros;
+using ProjectBook.Properties;
 
 namespace ProjectBook.DB.SqlServerExpress
 {
@@ -23,10 +24,10 @@ namespace ProjectBook.DB.SqlServerExpress
                 command.ExecuteNonQuery();
                 command.Dispose();
 
-                MessageBox.Show("Usuário registrado com sucesso", Properties.Resources.concluido_MessageBox,
+                MessageBox.Show(Resources.usuário_registrado_com_sucesso, Resources.concluido_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch (SqlException e) { MessageBox.Show(e.Message, Properties.Resources.error_MessageBox,
+            catch (SqlException e) { MessageBox.Show(e.Message, Resources.error_MessageBox,
                 MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
         public void DeletarUsuarioId(string id)
@@ -39,26 +40,25 @@ namespace ProjectBook.DB.SqlServerExpress
                 command.ExecuteNonQuery();
                 command.Dispose();
 
-                MessageBox.Show("Usuário deletado com sucesso", Properties.Resources.concluido_MessageBox,
+                MessageBox.Show(Resources.usuário_deletado_com_sucesso, Resources.concluido_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (SqlException e)
             {
-                MessageBox.Show(e.Message, Properties.Resources.error_MessageBox,
+                MessageBox.Show(e.Message, Resources.error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         public DataTable LoginUsuario(string usuario, string senha)
         {
-            SqlDataAdapter adapter;
             DataTable dataTable = new DataTable();
             
             try
             {
-                adapter = new SqlDataAdapter($"SELECT * FROM Usuarios WHERE Usuario = \'{usuario}\' AND Senha = \'{senha}\'", connection);
+                SqlDataAdapter adapter = new SqlDataAdapter($"SELECT * FROM Usuarios WHERE Usuario = \'{usuario}\' AND Senha = \'{senha}\'", connection);
                 adapter.Fill(dataTable);
             }
-            catch (SqlException e){ MessageBox.Show(e.Message, Properties.Resources.error_MessageBox,
+            catch (SqlException e){ MessageBox.Show(e.Message, Resources.error_MessageBox,
                 MessageBoxButtons.OK, MessageBoxIcon.Error); }
 
             return dataTable;
@@ -77,38 +77,35 @@ namespace ProjectBook.DB.SqlServerExpress
                 command.ExecuteNonQuery();
                 command.Dispose();
 
-                MessageBox.Show("Informações atualizadas", Properties.Resources.concluido_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(Resources.informações_atualizadas, Resources.concluido_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch (SqlException e) { MessageBox.Show(e.Message, Properties.Resources.error_MessageBox,
+            catch (SqlException e) { MessageBox.Show(e.Message, Resources.error_MessageBox,
                 MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
 
         #region Buscar
         public DataTable BuscarUsuarioId(string id)
         {
-            SqlDataAdapter adapter;
             DataTable table = new DataTable();
 
             try
             {
-                adapter = new SqlDataAdapter($"SELECT * FROM Usuarios WHERE ID = {id}", connection);
+                SqlDataAdapter adapter = new SqlDataAdapter($"SELECT * FROM Usuarios WHERE ID = {id}", connection);
                 adapter.Fill(table);
             }
-            catch (SqlException e) { MessageBox.Show(e.Message, Properties.Resources.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            catch (SqlException e) { MessageBox.Show(e.Message, Resources.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); }
 
             return table;
         }
         public DataTable BuscarUsuarioNome(string nomeUsuario)
         {
-            SqlDataAdapter adapter;
             DataTable table = new DataTable();
-
             try
             {
-                adapter = new SqlDataAdapter($"SELECT * FROM Usuarios WHERE Usuario = \'{nomeUsuario}\'", connection);
+                SqlDataAdapter adapter = new SqlDataAdapter($"SELECT * FROM Usuarios WHERE Usuario = \'{nomeUsuario}\'", connection);
                 adapter.Fill(table);
             }
-            catch (SqlException e) { MessageBox.Show(e.Message, Properties.Resources.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            catch (SqlException e) { MessageBox.Show(e.Message, Resources.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); }
 
             return table;
         }

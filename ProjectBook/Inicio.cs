@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.Reflection;
 using System.Threading;
 using ProjectBook.DB.SqlServerExpress;
+using ProjectBook.Properties;
 
 namespace ProjectBook
 {
@@ -124,8 +125,8 @@ namespace ProjectBook
                 MessageBox.Show(Properties.Resources.versao_MessageBox +
                                 Assembly.GetExecutingAssembly().GetName().Version + 
                                 "\n" + Properties.Resources.luanroger +
-                                "\n" + "Uso da biblioteca de imagens do VS2019." +
-                                "\n" + "Uso de ícones de FAMFAMFAM: http://famfamfam.com",
+                                "\n" + Resources.uso_da_biblioteca_de_imagens_do_VS2019 +
+                                "\n" + Resources.uso_de_ícones_de_FAMFAMFAM__http___famfamfam_com,
                     Properties.Resources.sobre_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Information);
             };
 

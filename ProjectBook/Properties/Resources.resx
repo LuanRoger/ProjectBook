@@ -250,4 +250,49 @@
   <data name="CSSearch_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\img\CSSearch_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="aluguel_registrado_com_sucesso" xml:space="preserve">
+    <value>Aluguel registrado com sucesso.</value>
+  </data>
+  <data name="informações_atualizadas" xml:space="preserve">
+    <value>Informações atualizadas</value>
+  </data>
+  <data name="cliente_registrado_com_sucesso" xml:space="preserve">
+    <value>Cliente registrado com sucesso</value>
+  </data>
+  <data name="cliente_deletado_com_sucesso" xml:space="preserve">
+    <value>Cliente deletado com sucesso.</value>
+  </data>
+  <data name="não_foi_possivel_conectar_se_a_base_de_dados___0___Deseja_abrir_a_configurações_" xml:space="preserve">
+    <value>Não foi possivel conectar-se a base de dados: {0}. Deseja abrir a configurações?</value>
+  </data>
+  <data name="livro_registrado_com_sucesso" xml:space="preserve">
+    <value>Livro registrado com sucesso</value>
+  </data>
+  <data name="livro_deletado_com_sucesso" xml:space="preserve">
+    <value>Livro deletado com sucesso.</value>
+  </data>
+  <data name="usuário_registrado_com_sucesso" xml:space="preserve">
+    <value>Usuário registrado com sucesso</value>
+  </data>
+  <data name="usuário_deletado_com_sucesso" xml:space="preserve">
+    <value>Usuário deletado com sucesso</value>
+  </data>
+  <data name="atualizando_banco_de_dados_splashscreen" xml:space="preserve">
+    <value>Atualizando banco de dados...</value>
+  </data>
+  <data name="realizando_verificações_de_segurança_splashscreen" xml:space="preserve">
+    <value>Realizando verificações de segurança...</value>
+  </data>
+  <data name="uso_da_biblioteca_de_imagens_do_VS2019" xml:space="preserve">
+    <value>Uso da biblioteca de imagens do VS2019.</value>
+  </data>
+  <data name="uso_de_ícones_de_FAMFAMFAM__http___famfamfam_com" xml:space="preserve">
+    <value>Uso de ícones de FAMFAMFAM: http://famfamfam.com</value>
+  </data>
+  <data name="caminho_do_banco_de_dados" xml:space="preserve">
+    <value>Caminho do banco de dados:</value>
+  </data>
+  <data name="string_de_conexão" xml:space="preserve">
+    <value>String de conexão:</value>
+  </data>
 </root>

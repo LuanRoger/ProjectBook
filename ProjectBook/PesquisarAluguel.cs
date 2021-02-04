@@ -77,12 +77,15 @@ namespace ProjectBook
             txtResultadoCliete.Text = data.Rows[0][2].ToString();
             txtResultadoLivro.Text = data.Rows[0][0].ToString();
             txtResultadoStatus.Text = data.Rows[0][5].ToString();
-            DateTime hoje = DateTime.Now.Date;
-            DateTime devolucao = (DateTime)data.Rows[0][4];
-            txtAVencer.Text = Convert.ToInt32((devolucao.Date - hoje).Days) <= 0
-                ? "-" : (devolucao.Date - hoje).Days.ToString();
-            txtAtraso.Text = Convert.ToInt32((hoje - devolucao.Date).Days) <= 0
-                ? "-" : (hoje - devolucao.Date).Days.ToString();
+            if (txtResultadoStatus.Text != StatusAluguel.Devolvido.ToString())
+            {
+                DateTime hoje = DateTime.Now.Date;
+                DateTime devolucao = (DateTime)data.Rows[0][4];
+                txtAVencer.Text = Convert.ToInt32((devolucao.Date - hoje).Days) <= 0
+                    ? "-" : (devolucao.Date - hoje).Days.ToString();
+                txtAtraso.Text = Convert.ToInt32((hoje - devolucao.Date).Days) <= 0
+                    ? "-" : (hoje - devolucao.Date).Days.ToString();
+            }
         }
 
         private void btnFecharPesquisaAluguel_Click(object sender, EventArgs e) => this.Close();
@@ -91,7 +94,6 @@ namespace ProjectBook
         private void LimaprCampos()
         {
             txtBuscarAluguel.Clear();
-            // txtBuscarTitulo.Clear();
             txtAtraso.Clear();
             txtAVencer.Clear();
             txtResultadoCliete.Clear();

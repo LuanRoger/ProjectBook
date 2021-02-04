@@ -81,11 +81,56 @@ namespace ProjectBook.Properties {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Aluguel registrado com sucesso..
+        /// </summary>
+        internal static string aluguel_registrado_com_sucesso {
+            get {
+                return ResourceManager.GetString("aluguel_registrado_com_sucesso", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Alugado.
         /// </summary>
         internal static string aluguelStatus_Pendente {
             get {
                 return ResourceManager.GetString("aluguelStatus_Pendente", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Atualizando banco de dados....
+        /// </summary>
+        internal static string atualizando_banco_de_dados_splashscreen {
+            get {
+                return ResourceManager.GetString("atualizando_banco_de_dados_splashscreen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Caminho do banco de dados:.
+        /// </summary>
+        internal static string caminho_do_banco_de_dados {
+            get {
+                return ResourceManager.GetString("caminho_do_banco_de_dados", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Cliente deletado com sucesso..
+        /// </summary>
+        internal static string cliente_deletado_com_sucesso {
+            get {
+                return ResourceManager.GetString("cliente_deletado_com_sucesso", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Cliente registrado com sucesso.
+        /// </summary>
+        internal static string cliente_registrado_com_sucesso {
+            get {
+                return ResourceManager.GetString("cliente_registrado_com_sucesso", resourceCulture);
             }
         }
         
@@ -260,6 +305,15 @@ namespace ProjectBook.Properties {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Informações atualizadas.
+        /// </summary>
+        internal static string informações_atualizadas {
+            get {
+                return ResourceManager.GetString("informações_atualizadas", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a As informações estão incorretas..
         /// </summary>
         internal static string informacoesIncorretas {
@@ -309,6 +363,24 @@ namespace ProjectBook.Properties {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Livro deletado com sucesso..
+        /// </summary>
+        internal static string livro_deletado_com_sucesso {
+            get {
+                return ResourceManager.GetString("livro_deletado_com_sucesso", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Livro registrado com sucesso.
+        /// </summary>
+        internal static string livro_registrado_com_sucesso {
+            get {
+                return ResourceManager.GetString("livro_registrado_com_sucesso", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Este cliente não tem livro alugado..
         /// </summary>
         internal static string livroNaoAlugado {
@@ -341,6 +413,15 @@ namespace ProjectBook.Properties {
         internal static string mudancaConnectionString {
             get {
                 return ResourceManager.GetString("mudancaConnectionString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Não foi possivel conectar-se a base de dados: {0}. Deseja abrir a configurações?.
+        /// </summary>
+        internal static string não_foi_possivel_conectar_se_a_base_de_dados___0___Deseja_abrir_a_configurações_ {
+            get {
+                return ResourceManager.GetString("não_foi_possivel_conectar_se_a_base_de_dados___0___Deseja_abrir_a_configurações_", resourceCulture);
             }
         }
         
@@ -387,6 +468,15 @@ namespace ProjectBook.Properties {
             get {
                 object obj = ResourceManager.GetObject("Print_16x", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Realizando verificações de segurança....
+        /// </summary>
+        internal static string realizando_verificações_de_segurança_splashscreen {
+            get {
+                return ResourceManager.GetString("realizando_verificações_de_segurança_splashscreen", resourceCulture);
             }
         }
         
@@ -439,6 +529,15 @@ namespace ProjectBook.Properties {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a String de conexão:.
+        /// </summary>
+        internal static string string_de_conexão {
+            get {
+                return ResourceManager.GetString("string_de_conexão", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Trash_16x {
@@ -465,6 +564,42 @@ namespace ProjectBook.Properties {
             get {
                 object obj = ResourceManager.GetObject("UserGroup_16x", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Uso da biblioteca de imagens do VS2019..
+        /// </summary>
+        internal static string uso_da_biblioteca_de_imagens_do_VS2019 {
+            get {
+                return ResourceManager.GetString("uso_da_biblioteca_de_imagens_do_VS2019", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Uso de ícones de FAMFAMFAM: http://famfamfam.com.
+        /// </summary>
+        internal static string uso_de_ícones_de_FAMFAMFAM__http___famfamfam_com {
+            get {
+                return ResourceManager.GetString("uso_de_ícones_de_FAMFAMFAM__http___famfamfam_com", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Usuário deletado com sucesso.
+        /// </summary>
+        internal static string usuário_deletado_com_sucesso {
+            get {
+                return ResourceManager.GetString("usuário_deletado_com_sucesso", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Usuário registrado com sucesso.
+        /// </summary>
+        internal static string usuário_registrado_com_sucesso {
+            get {
+                return ResourceManager.GetString("usuário_registrado_com_sucesso", resourceCulture);
             }
         }
         

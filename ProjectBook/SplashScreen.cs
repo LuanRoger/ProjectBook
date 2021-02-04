@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ProjectBook.DB.SqlServerExpress;
+using ProjectBook.Properties;
 
 namespace ProjectBook
 {
@@ -31,11 +32,11 @@ namespace ProjectBook
             if (livrosDb.DbStatus() == "Open")
             {
                 //Atualizar Status do aluguel
-                lblStatusCarregamento.Text = "Atualizando banco de dados...";
+                lblStatusCarregamento.Text = Resources.atualizando_banco_de_dados_splashscreen;
                 AtualizarAtrasso();
 
                 //Verificar se existe usuário logado
-                lblStatusCarregamento.Text = "Realizando verificações de segurança...";
+                lblStatusCarregamento.Text = Resources.realizando_verificações_de_segurança_splashscreen;
                 UsuarioLogado();
             }
             livrosDb.FechaConecxaoDb();
@@ -47,6 +48,7 @@ namespace ProjectBook
                 if (Application.OpenForms.Count < 2)
                 {
                     Login login = new Login();
+                    login.BringToFront();
                     login.Show();
                 }
             }

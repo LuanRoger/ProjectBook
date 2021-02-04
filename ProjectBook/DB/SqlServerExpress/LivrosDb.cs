@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Windows.Forms;
 using System.Data;
 using ProjectBook.Livros;
+using ProjectBook.Properties;
 
 namespace ProjectBook.DB.SqlServerExpress
 {
@@ -30,10 +31,10 @@ namespace ProjectBook.DB.SqlServerExpress
                 command.ExecuteNonQuery();
                 command.Dispose();
 
-                MessageBox.Show("Livro registrado com sucesso", "Concluido",
+                MessageBox.Show(Resources.livro_registrado_com_sucesso, Resources.concluido_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch(SqlException e) { MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);  }
+            catch(SqlException e) { MessageBox.Show(e.Message, Resources.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error);  }
         }
 
         #region Deletar
@@ -47,10 +48,10 @@ namespace ProjectBook.DB.SqlServerExpress
                 command.ExecuteNonQuery();
                 command.Dispose();
 
-                MessageBox.Show("Livro deletado com sucesso", "Concluido",
+                MessageBox.Show(Resources.livro_deletado_com_sucesso, Resources.concluido_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch (SqlException e) { MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            catch (SqlException e) { MessageBox.Show(e.Message, Resources.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
         public void DeletarLivroTitulo(string tituloLivro)
         {
@@ -62,23 +63,22 @@ namespace ProjectBook.DB.SqlServerExpress
                 command.ExecuteNonQuery();
                 command.Dispose();
 
-                MessageBox.Show("Livro deletado com sucesso", "Concluido",
+                MessageBox.Show(Resources.livro_deletado_com_sucesso, Resources.concluido_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch (SqlException e) { MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            catch (SqlException e) { MessageBox.Show(e.Message, Resources.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
         #endregion
         
         public DataTable VerTodosLivros()
         {
-            SqlDataAdapter adapter;
             DataTable table = new DataTable();
             try
             {
-                adapter = new SqlDataAdapter("SELECT * FROM Livros", connection);
+                SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM Livros", connection);
                 adapter.Fill(table);
             }
-            catch (SqlException e) { MessageBox.Show(e.Message, Properties.Resources.error_MessageBox,
+            catch (SqlException e) { MessageBox.Show(e.Message, Resources.error_MessageBox,
                 MessageBoxButtons.OK, MessageBoxIcon.Error); }
             
             return table;
@@ -86,14 +86,13 @@ namespace ProjectBook.DB.SqlServerExpress
 
         public DataTable PegarGeneros()
         {
-            SqlDataAdapter adapter;
             DataTable table = new DataTable();
             try
             {
-                adapter = new SqlDataAdapter("SELECT DISTINCT Genero FROM Livros", connection);
+                SqlDataAdapter adapter = new SqlDataAdapter("SELECT DISTINCT Genero FROM Livros", connection);
                 adapter.Fill(table);
             }
-            catch (SqlException e) { MessageBox.Show(e.Message, Properties.Resources.error_MessageBox,
+            catch (SqlException e) { MessageBox.Show(e.Message, Resources.error_MessageBox,
                 MessageBoxButtons.OK, MessageBoxIcon.Error); }
 
             return table;
@@ -102,40 +101,37 @@ namespace ProjectBook.DB.SqlServerExpress
         #region Buscar
         public DataTable BuscarLivrosId(string id)
         {
-            SqlDataAdapter adapter;
             DataTable table = new DataTable();
             try
             {
-                adapter = new SqlDataAdapter($"SELECT * FROM Livros WHERE ID = ${id}", connection);
+                SqlDataAdapter adapter = new SqlDataAdapter($"SELECT * FROM Livros WHERE ID = ${id}", connection);
                 adapter.Fill(table);
             }
-            catch (SqlException e) { MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            catch (SqlException e) { MessageBox.Show(e.Message, Resources.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); }
 
             return table;
         }
         public DataTable BuscarLivrosTitulo(string titulo)
         {
-            SqlDataAdapter adapter;
             DataTable table = new DataTable();
             try
             {
-                adapter = new SqlDataAdapter($"SELECT * FROM Livros WHERE Titulo LIKE \'%{titulo}%\'", connection);
+                SqlDataAdapter adapter = new SqlDataAdapter($"SELECT * FROM Livros WHERE Titulo LIKE \'%{titulo}%\'", connection);
                 adapter.Fill(table);
             }
-            catch (SqlException e) { MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            catch (SqlException e) { MessageBox.Show(e.Message, Resources.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); }
 
             return table;
         }
         public DataTable BuscarLivrosAutor(string autor)
         {
-            SqlDataAdapter adapter;
             DataTable table = new DataTable();
             try
             {
-                adapter = new SqlDataAdapter($"SELECT * FROM Livros WHERE Autor LIKE \'%{autor}%\'", connection);
+                SqlDataAdapter adapter = new SqlDataAdapter($"SELECT * FROM Livros WHERE Autor LIKE \'%{autor}%\'", connection);
                 adapter.Fill(table);
             }
-            catch (SqlException e) { MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            catch (SqlException e) { MessageBox.Show(e.Message, Resources.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); }
 
             return table;
         }
@@ -161,9 +157,9 @@ namespace ProjectBook.DB.SqlServerExpress
                 command.ExecuteNonQuery();
                 command.Dispose();
 
-                MessageBox.Show("Informações atualizadas", "Concluido", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(Resources.informações_atualizadas, Resources.concluido_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch (SqlException e) { MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            catch (SqlException e) { MessageBox.Show(e.Message, Resources.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
         public void AtualizarViaTitulo(string titulo, Livro livro)
         {
@@ -184,9 +180,9 @@ namespace ProjectBook.DB.SqlServerExpress
                 command.ExecuteNonQuery();
                 command.Dispose();
 
-                MessageBox.Show("Informações atualizadas", "Concluido", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(Resources.informações_atualizadas, Resources.concluido_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch (SqlException e) { MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            catch (SqlException e) { MessageBox.Show(e.Message, Resources.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
         public void AtualizarViaAutor(string autor, Livro livro)
         {
@@ -207,9 +203,9 @@ namespace ProjectBook.DB.SqlServerExpress
                 command.ExecuteNonQuery();
                 command.Dispose();
 
-                MessageBox.Show("Informações atualizadas", "Concluido", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(Resources.informações_atualizadas, Resources.concluido_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch (SqlException e) { MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            catch (SqlException e) { MessageBox.Show(e.Message, Resources.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
         #endregion
     }
