@@ -6,8 +6,9 @@ namespace ProjectBook.Livros
 {
     class Livro
     {
-        public Livro(string titulo, string autor, string editora, string edicao, string ano, string genero, string isbn)
+        public Livro(string id, string titulo, string autor, string editora, string edicao, string ano, string genero, string isbn)
         {
+            this.id = id;
             this.titulo = titulo;
             this.autor = autor;
             this.editora = editora;
@@ -17,6 +18,7 @@ namespace ProjectBook.Livros
             this.isbn = isbn;
         }
 
+        public string id { get; private set; }
         public string titulo { get; private set; }
         public string autor { get; private set; }
         public string editora { get; private set; }

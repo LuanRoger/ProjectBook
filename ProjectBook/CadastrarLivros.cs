@@ -23,16 +23,29 @@ namespace ProjectBook
         private void btnSalvarLivro_Click(object sender, EventArgs e)
         {
             Livro livro;
+
+            if (Verificadores.VerificarStrings(txtCodigoLivro.Text))
+            {
+                int codigo = new Random().Next(0, 999);
+
+                while (Verificadores.VerificarIdLivro(codigo))
+                {
+                    codigo = new Random().Next(0, 999);
+                }
+
+                txtCodigoLivro.Text = codigo.ToString();
+            }
+
             //Aplicar a formatação na instânciação do cliente
             if (ConfigurationManager.AppSettings["formatarLivro"] == "1")
             {
-                livro = new Livro(txtTituloLivro.Text.ToUpper(), txtAutorLivro.Text.ToUpper(),
+                livro = new Livro(txtCodigoLivro.Text, txtTituloLivro.Text.ToUpper(), txtAutorLivro.Text.ToUpper(),
                     txtEditoraLivro.Text.ToUpper(), txtEdicaoLivro.Text.ToUpper(), txtAno.Text.ToUpper(),
                     cmdGenero.Text.ToUpper(), txtIsbn.Text.ToUpper());
             }
             else
             {
-                livro = new Livro(txtTituloLivro.Text, txtAutorLivro.Text,
+                livro = new Livro(txtCodigoLivro.Text, txtTituloLivro.Text, txtAutorLivro.Text,
                     txtEditoraLivro.Text, txtEdicaoLivro.Text, txtAno.Text,
                     cmdGenero.Text, txtIsbn.Text);
             }
@@ -62,6 +75,7 @@ namespace ProjectBook
         }
         private void LimparCamposCadastro()
         {
+            txtCodigoLivro.Clear();
             txtTituloLivro.Clear();
             txtAutorLivro.Clear();
             txtEditoraLivro.Clear();

@@ -48,16 +48,29 @@ namespace ProjectBook
         private void btnSalvarEditar_Click(object sender, EventArgs e)
         {
             Livro livro;
+
+            if (Verificadores.VerificarStrings(txtEditarCodigo.Text))
+            {
+                int codigo = new Random().Next(0, 999);
+
+                while (Verificadores.VerificarIdLivro(codigo))
+                {
+                    codigo = new Random().Next(0, 999);
+                }
+
+                txtEditarCodigo.Text = codigo.ToString();
+            }
+
             //Aplicar a formatação na instânciação do cliente
             if (ConfigurationManager.AppSettings["formatarLivro"] == "1")
             {
-                livro = new Livro(txtEditarTitulo.Text.ToUpper(), txtEditarAutor.Text.ToUpper(),
+                livro = new Livro(txtEditarCodigo.Text, txtEditarTitulo.Text.ToUpper(), txtEditarAutor.Text.ToUpper(),
                     txtEditarEditora.Text.ToUpper(), txtEditarEdicao.Text.ToUpper(), txtEditarAno.Text.ToUpper(),
                     cmbEditarGenero.Text.ToUpper(), txtEditarIsbn.Text.ToUpper());
             }
             else
             {
-                livro = new Livro(txtEditarTitulo.Text, txtEditarAutor.Text,
+                livro = new Livro(txtEditarCodigo.Text, txtEditarTitulo.Text, txtEditarAutor.Text,
                     txtEditarEditora.Text, txtEditarEdicao.Text, txtEditarAno.Text,
                     cmbEditarGenero.Text, txtEditarIsbn.Text);
             }
@@ -81,6 +94,7 @@ namespace ProjectBook
         {
             try
             {
+                txtEditarCodigo.Text = info.Rows[0][0].ToString();
                 txtEditarTitulo.Text = info.Rows[0][1].ToString();
                 txtEditarAutor.Text = info.Rows[0][2].ToString();
                 txtEditarEditora.Text = info.Rows[0][3].ToString();
@@ -104,6 +118,7 @@ namespace ProjectBook
         }
         private void LimparCamposEditar()
         {
+            txtEditarCodigo.Clear();
             txtEditarBuscar.Clear();
             txtEditarTitulo.Clear();
             txtEditarAutor.Clear();

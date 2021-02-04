@@ -11,23 +11,23 @@ namespace ProjectBook.DB.SqlServerExpress
 {
     class LivrosDb : Db
     {
-        
         public void AdicionarLivro(Livro livro)
         {
             SqlCommand command = new SqlCommand {Connection = connection};
             #region Parâmetros
+            command.Parameters.AddWithValue("@id", livro.id);
             command.Parameters.AddWithValue("@titulo", livro.titulo);
             command.Parameters.AddWithValue("@autor", livro.autor);
             command.Parameters.AddWithValue("@editora", livro.editora);
             command.Parameters.AddWithValue("@edicao", livro.edicao);
-            command.Parameters.AddWithValue("@ano", Convert.ToInt32(livro.ano));
+            command.Parameters.AddWithValue("@ano", livro.ano);
             command.Parameters.AddWithValue("@genero", livro.genero);
             command.Parameters.AddWithValue("@isbn", livro.isbn);
             #endregion
             try
             {
-                command.CommandText = "INSERT INTO Livros(Titulo, Autor, Editora, Edicao, Ano, Genero, Isbn) " +
-                "VALUES(@titulo, @autor, @editora, @edicao, @ano, @genero, @isbn)";
+                command.CommandText = "INSERT INTO Livros(ID, Titulo, Autor, Editora, Edicao, Ano, Genero, Isbn) " +
+                "VALUES(@id, @titulo, @autor, @editora, @edicao, @ano, @genero, @isbn)";
                 command.ExecuteNonQuery();
                 command.Dispose();
 

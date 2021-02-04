@@ -46,74 +46,76 @@ namespace ProjectBook
             this.btnLimparTxtLivros = new System.Windows.Forms.Button();
             this.btnFecharCadastro = new System.Windows.Forms.Button();
             this.cmdGenero = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtCodigoLivro = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 13);
+            this.label1.Location = new System.Drawing.Point(13, 58);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(37, 15);
+            this.label1.Size = new System.Drawing.Size(42, 15);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Titulo";
+            this.label1.Text = "*Titulo";
             // 
             // txtTituloLivro
             // 
-            this.txtTituloLivro.Location = new System.Drawing.Point(13, 31);
+            this.txtTituloLivro.Location = new System.Drawing.Point(13, 76);
             this.txtTituloLivro.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtTituloLivro.Name = "txtTituloLivro";
             this.txtTituloLivro.Size = new System.Drawing.Size(294, 23);
-            this.txtTituloLivro.TabIndex = 1;
+            this.txtTituloLivro.TabIndex = 2;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 61);
+            this.label2.Location = new System.Drawing.Point(13, 106);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(37, 15);
+            this.label2.Size = new System.Drawing.Size(42, 15);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Autor";
+            this.label2.Text = "*Autor";
             // 
             // txtAutorLivro
             // 
-            this.txtAutorLivro.Location = new System.Drawing.Point(13, 80);
+            this.txtAutorLivro.Location = new System.Drawing.Point(13, 125);
             this.txtAutorLivro.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtAutorLivro.Name = "txtAutorLivro";
             this.txtAutorLivro.Size = new System.Drawing.Size(294, 23);
-            this.txtAutorLivro.TabIndex = 2;
+            this.txtAutorLivro.TabIndex = 3;
             // 
             // txtEditoraLivro
             // 
-            this.txtEditoraLivro.Location = new System.Drawing.Point(13, 123);
+            this.txtEditoraLivro.Location = new System.Drawing.Point(13, 168);
             this.txtEditoraLivro.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtEditoraLivro.Name = "txtEditoraLivro";
             this.txtEditoraLivro.Size = new System.Drawing.Size(294, 23);
-            this.txtEditoraLivro.TabIndex = 3;
+            this.txtEditoraLivro.TabIndex = 4;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(13, 106);
+            this.label3.Location = new System.Drawing.Point(13, 151);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(44, 15);
+            this.label3.Size = new System.Drawing.Size(49, 15);
             this.label3.TabIndex = 4;
-            this.label3.Text = "Editora";
+            this.label3.Text = "*Editora";
             // 
             // txtEdicaoLivro
             // 
-            this.txtEdicaoLivro.Location = new System.Drawing.Point(13, 168);
+            this.txtEdicaoLivro.Location = new System.Drawing.Point(13, 213);
             this.txtEdicaoLivro.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtEdicaoLivro.Name = "txtEdicaoLivro";
             this.txtEdicaoLivro.Size = new System.Drawing.Size(102, 23);
-            this.txtEdicaoLivro.TabIndex = 4;
+            this.txtEdicaoLivro.TabIndex = 5;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(13, 150);
+            this.label4.Location = new System.Drawing.Point(13, 195);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(42, 15);
@@ -122,26 +124,26 @@ namespace ProjectBook
             // 
             // txtAno
             // 
-            this.txtAno.Location = new System.Drawing.Point(12, 212);
+            this.txtAno.Location = new System.Drawing.Point(12, 257);
             this.txtAno.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtAno.Name = "txtAno";
             this.txtAno.Size = new System.Drawing.Size(103, 23);
-            this.txtAno.TabIndex = 5;
+            this.txtAno.TabIndex = 6;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(13, 194);
+            this.label5.Location = new System.Drawing.Point(13, 239);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(29, 15);
+            this.label5.Size = new System.Drawing.Size(34, 15);
             this.label5.TabIndex = 8;
-            this.label5.Text = "Ano";
+            this.label5.Text = "*Ano";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(13, 238);
+            this.label6.Location = new System.Drawing.Point(13, 283);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(45, 15);
@@ -150,16 +152,16 @@ namespace ProjectBook
             // 
             // txtIsbn
             // 
-            this.txtIsbn.Location = new System.Drawing.Point(13, 300);
+            this.txtIsbn.Location = new System.Drawing.Point(13, 345);
             this.txtIsbn.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtIsbn.Name = "txtIsbn";
             this.txtIsbn.Size = new System.Drawing.Size(112, 23);
-            this.txtIsbn.TabIndex = 7;
+            this.txtIsbn.TabIndex = 8;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(13, 282);
+            this.label7.Location = new System.Drawing.Point(13, 327);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(32, 15);
@@ -168,33 +170,33 @@ namespace ProjectBook
             // 
             // btnSalvarLivro
             // 
-            this.btnSalvarLivro.Location = new System.Drawing.Point(13, 342);
+            this.btnSalvarLivro.Location = new System.Drawing.Point(13, 387);
             this.btnSalvarLivro.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnSalvarLivro.Name = "btnSalvarLivro";
             this.btnSalvarLivro.Size = new System.Drawing.Size(75, 23);
-            this.btnSalvarLivro.TabIndex = 8;
+            this.btnSalvarLivro.TabIndex = 9;
             this.btnSalvarLivro.Text = "Salvar";
             this.btnSalvarLivro.UseVisualStyleBackColor = true;
             this.btnSalvarLivro.Click += new System.EventHandler(this.btnSalvarLivro_Click);
             // 
             // btnLimparTxtLivros
             // 
-            this.btnLimparTxtLivros.Location = new System.Drawing.Point(124, 342);
+            this.btnLimparTxtLivros.Location = new System.Drawing.Point(124, 387);
             this.btnLimparTxtLivros.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnLimparTxtLivros.Name = "btnLimparTxtLivros";
             this.btnLimparTxtLivros.Size = new System.Drawing.Size(75, 23);
-            this.btnLimparTxtLivros.TabIndex = 9;
+            this.btnLimparTxtLivros.TabIndex = 10;
             this.btnLimparTxtLivros.Text = "Limpar";
             this.btnLimparTxtLivros.UseVisualStyleBackColor = true;
             this.btnLimparTxtLivros.Click += new System.EventHandler(this.btnLimparTxtLivros_Click);
             // 
             // btnFecharCadastro
             // 
-            this.btnFecharCadastro.Location = new System.Drawing.Point(232, 342);
+            this.btnFecharCadastro.Location = new System.Drawing.Point(232, 387);
             this.btnFecharCadastro.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnFecharCadastro.Name = "btnFecharCadastro";
             this.btnFecharCadastro.Size = new System.Drawing.Size(75, 23);
-            this.btnFecharCadastro.TabIndex = 10;
+            this.btnFecharCadastro.TabIndex = 11;
             this.btnFecharCadastro.Text = "Cancelar";
             this.btnFecharCadastro.UseVisualStyleBackColor = true;
             this.btnFecharCadastro.Click += new System.EventHandler(this.btnFecharCadastro_Click);
@@ -202,17 +204,38 @@ namespace ProjectBook
             // cmdGenero
             // 
             this.cmdGenero.FormattingEnabled = true;
-            this.cmdGenero.Location = new System.Drawing.Point(13, 256);
+            this.cmdGenero.Location = new System.Drawing.Point(13, 301);
             this.cmdGenero.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmdGenero.Name = "cmdGenero";
             this.cmdGenero.Size = new System.Drawing.Size(294, 23);
-            this.cmdGenero.TabIndex = 6;
+            this.cmdGenero.TabIndex = 7;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(13, 13);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(49, 15);
+            this.label8.TabIndex = 13;
+            this.label8.Text = "Código:";
+            // 
+            // txtCodigoLivro
+            // 
+            this.txtCodigoLivro.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.txtCodigoLivro.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.txtCodigoLivro.ForeColor = System.Drawing.Color.White;
+            this.txtCodigoLivro.Location = new System.Drawing.Point(13, 32);
+            this.txtCodigoLivro.Name = "txtCodigoLivro";
+            this.txtCodigoLivro.Size = new System.Drawing.Size(102, 23);
+            this.txtCodigoLivro.TabIndex = 1;
             // 
             // CadastroLivro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(318, 377);
+            this.ClientSize = new System.Drawing.Size(318, 424);
+            this.Controls.Add(this.txtCodigoLivro);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.cmdGenero);
             this.Controls.Add(this.btnFecharCadastro);
             this.Controls.Add(this.btnLimparTxtLivros);
@@ -261,5 +284,7 @@ namespace ProjectBook
         private System.Windows.Forms.Button btnLimparTxtLivros;
         private System.Windows.Forms.Button btnFecharCadastro;
         private System.Windows.Forms.ComboBox cmdGenero;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtCodigoLivro;
     }
 }

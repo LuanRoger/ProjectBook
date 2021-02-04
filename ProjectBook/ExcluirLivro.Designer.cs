@@ -72,10 +72,10 @@ namespace ProjectBook
             this.rabIdExcluirLivro.AutoSize = true;
             this.rabIdExcluirLivro.Location = new System.Drawing.Point(13, 13);
             this.rabIdExcluirLivro.Name = "rabIdExcluirLivro";
-            this.rabIdExcluirLivro.Size = new System.Drawing.Size(36, 19);
+            this.rabIdExcluirLivro.Size = new System.Drawing.Size(64, 19);
             this.rabIdExcluirLivro.TabIndex = 4;
             this.rabIdExcluirLivro.TabStop = true;
-            this.rabIdExcluirLivro.Text = "ID";
+            this.rabIdExcluirLivro.Text = "Código";
             this.rabIdExcluirLivro.UseVisualStyleBackColor = true;
             // 
             // rabExcluirTitulo
