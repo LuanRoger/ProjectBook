@@ -61,18 +61,13 @@ namespace ProjectBook
                     Resources.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); }
             }
 
-            livrosDb.AbrirConexaoDb();
-            if (livrosDb.DbStatus() == "Open")
-            {
-                //Atualizar Status do aluguel
-                lblStatusCarregamento.Text = Resources.atualizando_banco_de_dados_splashscreen;
-                AtualizarAtrasso();
+            //Atualizar Status do aluguel
+            lblStatusCarregamento.Text = Resources.atualizando_banco_de_dados_splashscreen;
+            AtualizarAtrasso();
 
-                //Verificar se existe usuário logado
-                lblStatusCarregamento.Text = Resources.realizando_verificações_de_segurança_splashscreen;
-                UsuarioLogado();
-            }
-            livrosDb.FechaConecxaoDb();
+            //Verificar se existe usuário logado
+            lblStatusCarregamento.Text = Resources.realizando_verificações_de_segurança_splashscreen;
+            UsuarioLogado();
         }
         private void UsuarioLogado()
         {
@@ -88,6 +83,7 @@ namespace ProjectBook
         }
         private void AtualizarAtrasso()
         {
+            aluguelDb.AbrirConexaoDb();
             foreach (DataRow data in aluguelDb.PegarLivrosAlugados().Rows)
             {
                 DateTime hoje = DateTime.Now.Date;
@@ -95,6 +91,7 @@ namespace ProjectBook
                 if (Convert.ToInt32((hoje - devolucao).Days) >= 0)
                    aluguelDb.AtualizarStatusAtrasado(data[2].ToString());
             }
+            aluguelDb.FechaConecxaoDb();
         }
     }
 }

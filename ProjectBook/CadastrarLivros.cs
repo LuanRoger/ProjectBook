@@ -71,7 +71,9 @@ namespace ProjectBook
         private void ColocarGeneros()
         {
             //Colocar todos os generos no combobox
+            db.AbrirConexaoDb();
             foreach(DataRow itens in db.PegarGeneros().Rows) cmdGenero.Items.Add(itens["Genero"]);
+            db.FechaConecxaoDb();
         }
         private void LimparCamposCadastro()
         {
