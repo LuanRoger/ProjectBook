@@ -5,6 +5,10 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Reflection;
 using ProjectBook.Properties;
+using System.Management;
+using System.IO;
+using System.Linq;
+using ProjectBook.DB.SqlServerExpress;
 
 namespace ProjectBook
 {
@@ -16,13 +20,29 @@ namespace ProjectBook
         {
             InitializeComponent();
             CarregarConfiguracoes();
+
+            //Verificar sistema operacional
+            string so = null;
+            using (ManagementObjectSearcher searcher = new ManagementObjectSearcher("SELECT * FROM Win32_OperatingSystem"))
+            {
+                foreach (var infos in searcher.Get())
+                {
+                    so = infos["Caption"].ToString();
+                }
+                if (String.IsNullOrEmpty(so) || !so.Contains("Windows 10")) rabOneDrive.Visible = false;
+            }
         }
 
         private void CarregarConfiguracoes()
         {
+            var directoryInfo = String.IsNullOrEmpty(ConfigurationManager.AppSettings["pastaDb"]) ?
+                "" : Directory.GetParent(ConfigurationManager.AppSettings["pastaDb"]).ToString();
+            var db = ConfigurationManager.AppSettings["dbPadrao"];
             if (ConfigurationManager.AppSettings["visualizarImpressao"] == "1") chbVisualizarImpressao.Checked = true;
             if (ConfigurationManager.AppSettings["dbPadrao"] == "sqlserverexpress") rabSqlServerExpress.Checked = true;
             else if (ConfigurationManager.AppSettings["dbPadrao"] == "sqlserverlocaldb") rabSqlServerLocalDb.Checked = true;
+            else if (ConfigurationManager.AppSettings["dbPadrao"] == "onedrive" && directoryInfo.Contains("OneDrive"))
+                rabOneDrive.Checked = true;
             if (ConfigurationManager.AppSettings["formatarCliente"] == "1") chbFormatarCliente.Checked = true;
             if (ConfigurationManager.AppSettings["formatarLivro"] == "1") chbFormatarLivro.Checked = true;
             txtStringConexaoCaminhoDb.Text = ConfigurationManager.ConnectionStrings["SqlConnectionString"].ConnectionString;
@@ -46,28 +66,44 @@ namespace ProjectBook
             {
                 config.AppSettings.Settings["dbPadrao"].Value = "sqlserverexpress";
                 config.ConnectionStrings.ConnectionStrings["SqlConnectionString"].ConnectionString = txtStringConexaoCaminhoDb.Text;
+                config.AppSettings.Settings["pastaDb"].Value = "";
             }
             else if (rabSqlServerLocalDb.Checked)
             {
-                config.AppSettings.Settings["dbPadrao"].Value = "sqlserverlocaldb";
+                config.AppSettings.Settings["dbPadrao"].Value = ConfigurationManager.AppSettings["pastaDb"].Contains("OneDrive") ?
+                    "onedrive" : "sqlserverlocaldb";
+
                 config.ConnectionStrings.ConnectionStrings["SqlConnectionString"].ConnectionString = txtStringConexaoCaminhoDb.Text;
+            }
+            else if (rabOneDrive.Checked)
+            {
+                if (ConfigurationManager.AppSettings["dbPadrao"] == "onedrive")
+                {
+                    MessageBox.Show("O banco de dados já está sincronizado com o OneDrive.",
+                        Resources.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                DialogResult dialogResult = MessageBox.Show("Você deseja migrar o banco de dados para seu OneDrive? Para que a sincronização funcione você deve estar com o aplicativo do OneDrive sempre atualizado.",
+                    Resources.informacao_MessageBox, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (dialogResult != DialogResult.Yes) return;
+
+                config.AppSettings.Settings["dbPadrao"].Value = "onedrive";
+                config.ConnectionStrings.ConnectionStrings["SqlConnectionString"].ConnectionString = "";
             }
 
             //Salvar
             config.Save(ConfigurationSaveMode.Modified);
             ConfigurationManager.RefreshSection("appSettings");
 
-            var d = stringConexaoAtual;
-            var a = config.ConnectionStrings.ConnectionStrings["SqlConnectionString"].ConnectionString;
-
-            MessageBox.Show(Properties.Resources.configuracoesSalvas_MessageBox, Properties.Resources.concluido_MessageBox,
+            MessageBox.Show(Resources.configuracoesSalvas_MessageBox, Resources.concluido_MessageBox,
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             //Se o usuário mudou a string de conexão o programa deve ser reinicado
             if (!stringConexaoAtual.Equals(config.ConnectionStrings.ConnectionStrings["SqlConnectionString"].ConnectionString))
             {
-                MessageBox.Show(Properties.Resources.mudancaConnectionString,
-                    Properties.Resources.informacao_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(Resources.mudancaConnectionString,
+                    Resources.informacao_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 
                 Process.Start(Application.StartupPath + Assembly.GetExecutingAssembly().GetName().Name + ".exe");
                 Process.GetCurrentProcess().Kill();
@@ -76,15 +112,42 @@ namespace ProjectBook
         private void rabSqlServerExpress_CheckedChanged(object sender, EventArgs e)
         {
             lblInfoTxt.Text = Resources.string_de_conexão;
+            lblInfoTxt.ForeColor = Color.Black;
             btnSelecionarArquivoDb.Visible = false;
+            txtStringConexaoCaminhoDb.Visible = true;
             txtStringConexaoCaminhoDb.Size = new Size(441, 23);
         }
 
         private void rabSqlServerLocalDb_CheckedChanged(object sender, EventArgs e)
         {
             lblInfoTxt.Text = Resources.caminho_do_banco_de_dados;
+            lblInfoTxt.ForeColor = Color.Black;
             btnSelecionarArquivoDb.Visible = true;
+            txtStringConexaoCaminhoDb.Visible = true;
             txtStringConexaoCaminhoDb.Size = new Size(408, 23);
+        }
+        private void rabOneDrive_CheckedChanged(object sender, EventArgs e)
+        {
+            lblInfoTxt.Visible = false;
+            btnSelecionarArquivoDb.Visible = false;
+            txtStringConexaoCaminhoDb.Visible = false;
+
+            DirectoryInfo directoryInfo;
+            try { directoryInfo = Directory.GetParent(ConfigurationManager.AppSettings["pastaDb"]); }
+            catch
+            {
+                MessageBox.Show(
+                    "É necessário fazer uma conexão local com o banco de dados para fazer a migração para o OneDrive.",
+                    Resources.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                rabSqlServerLocalDb.Checked = true;
+                return;
+            }
+            if (directoryInfo?.Parent != null && directoryInfo.ToString().Contains("OneDrive"))
+            {
+                lblInfoTxt.Visible = true;
+                lblInfoTxt.Text = "Banco de dados sincronizado com o OneDrive";
+                lblInfoTxt.ForeColor = Color.Green;
+            }
         }
 
         private void btnSelecionarArquivoDb_Click(object sender, EventArgs e)
@@ -92,11 +155,13 @@ namespace ProjectBook
             OpenFileDialog caminho = new OpenFileDialog 
                 { Filter = "Arquivo MDF (*.mdf)|*.mdf", Multiselect = false };
             DialogResult dialogResult = caminho.ShowDialog();
-            if (dialogResult == DialogResult.OK)
-            {
-                txtStringConexaoCaminhoDb.Text =
-                    $@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={caminho.FileName};Integrated Security=True";
-            }
+            if (dialogResult != DialogResult.OK) return;
+
+            config.AppSettings.Settings["pastaDb"].Value = caminho.FileName;
+            config.Save();
+            ConfigurationManager.RefreshSection("appSettings");
+            txtStringConexaoCaminhoDb.Text =
+                $@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={caminho.FileName};Integrated Security=True";
         }
     }
 }

@@ -79,10 +79,10 @@ namespace ProjectBook
             this.rabPesquisarId.AutoSize = true;
             this.rabPesquisarId.Location = new System.Drawing.Point(7, 23);
             this.rabPesquisarId.Name = "rabPesquisarId";
-            this.rabPesquisarId.Size = new System.Drawing.Size(36, 19);
+            this.rabPesquisarId.Size = new System.Drawing.Size(64, 19);
             this.rabPesquisarId.TabIndex = 0;
             this.rabPesquisarId.TabStop = true;
-            this.rabPesquisarId.Text = "ID";
+            this.rabPesquisarId.Text = "Código";
             this.rabPesquisarId.UseVisualStyleBackColor = true;
             // 
             // txtTermoPesquisa

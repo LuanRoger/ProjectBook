@@ -218,7 +218,9 @@ namespace ProjectBook
             // 
             // txtEditarBuscar
             // 
-            this.txtEditarBuscar.Location = new System.Drawing.Point(5, 42);
+            this.txtEditarBuscar.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.txtEditarBuscar.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.txtEditarBuscar.Location = new System.Drawing.Point(5, 44);
             this.txtEditarBuscar.Name = "txtEditarBuscar";
             this.txtEditarBuscar.Size = new System.Drawing.Size(182, 23);
             this.txtEditarBuscar.TabIndex = 1;
@@ -233,6 +235,7 @@ namespace ProjectBook
             this.rabEditarAutor.TabStop = true;
             this.rabEditarAutor.Text = "Autor";
             this.rabEditarAutor.UseVisualStyleBackColor = true;
+            this.rabEditarAutor.CheckedChanged += new System.EventHandler(this.rabEditarAutor_CheckedChanged);
             // 
             // rabEditarTitulo
             // 
@@ -244,6 +247,7 @@ namespace ProjectBook
             this.rabEditarTitulo.TabStop = true;
             this.rabEditarTitulo.Text = "Titulo";
             this.rabEditarTitulo.UseVisualStyleBackColor = true;
+            this.rabEditarTitulo.CheckedChanged += new System.EventHandler(this.rabEditarTitulo_CheckedChanged);
             // 
             // rabEditarId
             // 
@@ -255,6 +259,7 @@ namespace ProjectBook
             this.rabEditarId.TabStop = true;
             this.rabEditarId.Text = "Código";
             this.rabEditarId.UseVisualStyleBackColor = true;
+            this.rabEditarId.CheckedChanged += new System.EventHandler(this.rabEditarId_CheckedChanged);
             // 
             // cmbEditarGenero
             // 

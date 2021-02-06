@@ -34,6 +34,7 @@ namespace ProjectBook
             this.chbVisualizarImpressao = new System.Windows.Forms.CheckBox();
             this.btnSalvarConfiguracoes = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.rabOneDrive = new System.Windows.Forms.RadioButton();
             this.btnSelecionarArquivoDb = new System.Windows.Forms.Button();
             this.rabSqlServerLocalDb = new System.Windows.Forms.RadioButton();
             this.lblInfoTxt = new System.Windows.Forms.Label();
@@ -79,6 +80,7 @@ namespace ProjectBook
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.rabOneDrive);
             this.groupBox2.Controls.Add(this.btnSelecionarArquivoDb);
             this.groupBox2.Controls.Add(this.rabSqlServerLocalDb);
             this.groupBox2.Controls.Add(this.lblInfoTxt);
@@ -90,6 +92,18 @@ namespace ProjectBook
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Banco de dados";
+            // 
+            // rabOneDrive
+            // 
+            this.rabOneDrive.AutoSize = true;
+            this.rabOneDrive.Location = new System.Drawing.Point(317, 22);
+            this.rabOneDrive.Name = "rabOneDrive";
+            this.rabOneDrive.Size = new System.Drawing.Size(74, 19);
+            this.rabOneDrive.TabIndex = 5;
+            this.rabOneDrive.TabStop = true;
+            this.rabOneDrive.Text = "OneDrive";
+            this.rabOneDrive.UseVisualStyleBackColor = true;
+            this.rabOneDrive.CheckedChanged += new System.EventHandler(this.rabOneDrive_CheckedChanged);
             // 
             // btnSelecionarArquivoDb
             // 
@@ -104,7 +118,7 @@ namespace ProjectBook
             // rabSqlServerLocalDb
             // 
             this.rabSqlServerLocalDb.AutoSize = true;
-            this.rabSqlServerLocalDb.Location = new System.Drawing.Point(136, 21);
+            this.rabSqlServerLocalDb.Location = new System.Drawing.Point(135, 22);
             this.rabSqlServerLocalDb.Name = "rabSqlServerLocalDb";
             this.rabSqlServerLocalDb.Size = new System.Drawing.Size(176, 19);
             this.rabSqlServerLocalDb.TabIndex = 3;
@@ -211,5 +225,6 @@ namespace ProjectBook
         private System.Windows.Forms.CheckBox chbFormatarCliente;
         private System.Windows.Forms.RadioButton rabSqlServerLocalDb;
         private System.Windows.Forms.Button btnSelecionarArquivoDb;
+        private System.Windows.Forms.RadioButton rabOneDrive;
     }
 }

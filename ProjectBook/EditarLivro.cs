@@ -9,8 +9,7 @@ namespace ProjectBook
 {
     public partial class EditarLivro : Form
     {
-        private LivrosDb db = new LivrosDb();
-
+        private LivrosDb livrosDb = new LivrosDb();
         private DataTable resultadoBusca;
 
         public EditarLivro()
@@ -20,7 +19,30 @@ namespace ProjectBook
             ColocarGeneros();
         }
 
+        #region Configurar sugestões
+        private void rabEditarTitulo_CheckedChanged(object sender, EventArgs e)
+        {
+            AutoCompleteStringCollection tituloSugestao = new AutoCompleteStringCollection();
+            livrosDb.AbrirConexaoDb();
+            foreach (DataRow titulo in livrosDb.VerTodosLivros().Rows) tituloSugestao.Add(titulo[1].ToString());
+            livrosDb.FechaConecxaoDb();
+            txtEditarBuscar.AutoCompleteCustomSource = tituloSugestao;
+        }
+
+        private void rabEditarAutor_CheckedChanged(object sender, EventArgs e)
+        {
+            AutoCompleteStringCollection autorSugestao = new AutoCompleteStringCollection();
+            livrosDb.AbrirConexaoDb();
+            foreach (DataRow titulo in livrosDb.VerTodosLivros().Rows) autorSugestao.Add(titulo[2].ToString());
+            livrosDb.FechaConecxaoDb();
+            txtEditarBuscar.AutoCompleteCustomSource = autorSugestao;
+        }
+
+        private void rabEditarId_CheckedChanged(object sender, EventArgs e) =>
+            txtEditarBuscar.AutoCompleteCustomSource = null;
+
         private void btnFecharEdicao_Click(object sender, EventArgs e) => this.Close();
+        #endregion
 
         private void btnBuscarEditar_Click(object sender, EventArgs e)
         {
@@ -33,9 +55,9 @@ namespace ProjectBook
                 return;
             }
 
-            if (rabEditarId.Checked) resultadoBusca = db.BuscarLivrosId(paraBuscar); 
-            else if (rabEditarTitulo.Checked) resultadoBusca = db.BuscarLivrosTitulo(paraBuscar); 
-            else if (rabEditarAutor.Checked) resultadoBusca = db.BuscarLivrosAutor(paraBuscar); 
+            if (rabEditarId.Checked) resultadoBusca = livrosDb.BuscarLivrosId(paraBuscar); 
+            else if (rabEditarTitulo.Checked) resultadoBusca = livrosDb.BuscarLivrosTitulo(paraBuscar); 
+            else if (rabEditarAutor.Checked) resultadoBusca = livrosDb.BuscarLivrosAutor(paraBuscar); 
             else return; 
 
             gpbBuscar.Enabled = false;
@@ -82,9 +104,9 @@ namespace ProjectBook
                 return;
             }
 
-            db.AbrirConexaoDb();
-            db.AtualizarViaId(resultadoBusca.Rows[0][0].ToString(), livro);
-            db.FechaConecxaoDb();
+            livrosDb.AbrirConexaoDb();
+            livrosDb.AtualizarViaId(resultadoBusca.Rows[0][0].ToString(), livro);
+            livrosDb.FechaConecxaoDb();
 
             LimparCamposEditar();
             ColocarGeneros();
@@ -114,7 +136,7 @@ namespace ProjectBook
         private void ColocarGeneros()
         {
             //Colocar todos os generos no combobox
-            foreach(DataRow itens in db.PegarGeneros().Rows) cmbEditarGenero.Items.Add(itens["Genero"]);
+            foreach(DataRow itens in livrosDb.PegarGeneros().Rows) cmbEditarGenero.Items.Add(itens["Genero"]);
         }
         private void LimparCamposEditar()
         {
