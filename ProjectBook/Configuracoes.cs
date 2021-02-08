@@ -21,7 +21,10 @@ namespace ProjectBook
             InitializeComponent();
             CarregarConfiguracoes();
 
-            //Verificar sistema operacional
+            if (ConfigurationManager.AppSettings["tipoUsuario"] ==
+                Tipos.TipoUsuário.ADM.ToString()) gpbBancoDados.Enabled = true;
+
+                //Verificar sistema operacional
             string so = null;
             using (ManagementObjectSearcher searcher = new ManagementObjectSearcher("SELECT * FROM Win32_OperatingSystem"))
             {

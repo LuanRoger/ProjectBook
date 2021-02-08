@@ -24,7 +24,7 @@ namespace ProjectBook
         {
             AutoCompleteStringCollection tituloSugestao = new AutoCompleteStringCollection();
             livrosDb.AbrirConexaoDb();
-            foreach (DataRow titulo in livrosDb.VerTodosLivros().Rows) tituloSugestao.Add(titulo[1].ToString());
+            foreach (DataRow livro in livrosDb.VerTodosLivros().Rows) tituloSugestao.Add($"{livro[1]} - {livro[2]}");
             livrosDb.FechaConecxaoDb();
             txtEditarBuscar.AutoCompleteCustomSource = tituloSugestao;
         }
@@ -33,7 +33,7 @@ namespace ProjectBook
         {
             AutoCompleteStringCollection autorSugestao = new AutoCompleteStringCollection();
             livrosDb.AbrirConexaoDb();
-            foreach (DataRow titulo in livrosDb.VerTodosLivros().Rows) autorSugestao.Add(titulo[2].ToString());
+            foreach (DataRow livro in livrosDb.VerTodosLivros().Rows) autorSugestao.Add($"{livro[2]} - {livro[1]}");
             livrosDb.FechaConecxaoDb();
             txtEditarBuscar.AutoCompleteCustomSource = autorSugestao;
         }
@@ -46,18 +46,18 @@ namespace ProjectBook
 
         private void btnBuscarEditar_Click(object sender, EventArgs e)
         {
-            string paraBuscar = txtEditarBuscar.Text;
+            string[] paraBuscar = txtEditarBuscar.Text.Split("-");
 
-            if(Verificadores.VerificarStrings(paraBuscar))
+            if(Verificadores.VerificarStrings(txtEditarBuscar.Text))
             {
                 MessageBox.Show(Properties.Resources.preencherCampoBusca_MessageBox, Properties.Resources.error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            if (rabEditarId.Checked) resultadoBusca = livrosDb.BuscarLivrosId(paraBuscar); 
-            else if (rabEditarTitulo.Checked) resultadoBusca = livrosDb.BuscarLivrosTitulo(paraBuscar); 
-            else if (rabEditarAutor.Checked) resultadoBusca = livrosDb.BuscarLivrosAutor(paraBuscar); 
+            if (rabEditarId.Checked) resultadoBusca = livrosDb.BuscarLivrosId(txtEditarBuscar.Text); 
+            else if (rabEditarTitulo.Checked) resultadoBusca = livrosDb.BuscarLivrosTitulo(paraBuscar[0].Trim()); 
+            else if (rabEditarAutor.Checked) resultadoBusca = livrosDb.BuscarLivrosAutor(paraBuscar[0].Trim()); 
             else return; 
 
             gpbBuscar.Enabled = false;

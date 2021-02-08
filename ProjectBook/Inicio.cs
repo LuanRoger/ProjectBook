@@ -166,17 +166,14 @@ namespace ProjectBook
             {
                 int quantidadeLivros = await Task.Run(() => livrosDb.VerTodosLivros().Rows.Count);
                 lblLivrosCadastrados.Text = quantidadeLivros.ToString();
-                livrosDb.FechaConecxaoDb();
 
-                clienteDb.AbrirConexaoDb();
                 int quantidadeCliente = await Task.Run(() => clienteDb.VerTodosClientes().Rows.Count);
                 lblClientesCadastrados.Text = quantidadeCliente.ToString();
-                clienteDb.FechaConecxaoDb();
 
-                aluguelDb.AbrirConexaoDb();
                 int quantidadeAluguel = await Task.Run(() => aluguelDb.VerTodosAluguel().Rows.Count);
                 lblAlugueisRegistrados.Text = quantidadeAluguel.ToString();
-                aluguelDb.FechaConecxaoDb();
+
+                livrosDb.FechaConecxaoDb();
             }
         }
         private void btnSairUsuario_Click(object sender, EventArgs e)
@@ -223,6 +220,9 @@ namespace ProjectBook
                     break;
                 case Keys.F6: 
                     this.Close(); 
+                    break;
+                case Keys.F7:
+                    btnSairUsuario.PerformClick();
                     break;
             }
         }

@@ -93,6 +93,7 @@ namespace ProjectBook
             this.lblAlugueisRegistrados = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel4 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel5 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel6 = new System.Windows.Forms.ToolStripStatusLabel();
             this.tosSugestoes = new System.Windows.Forms.ToolStrip();
             this.mnuArCadastroLivro = new System.Windows.Forms.ToolStripButton();
             this.mnuArCadastroCliente = new System.Windows.Forms.ToolStripButton();
@@ -493,6 +494,7 @@ namespace ProjectBook
             this.toolStripStatusLabel3,
             this.lblAlugueisRegistrados,
             this.toolStripStatusLabel4,
+            this.toolStripStatusLabel6,
             this.toolStripStatusLabel5});
             this.statusStrip1.Location = new System.Drawing.Point(0, 452);
             this.statusStrip1.Name = "statusStrip1";
@@ -560,7 +562,7 @@ namespace ProjectBook
             // toolStripStatusLabel4
             // 
             this.toolStripStatusLabel4.Name = "toolStripStatusLabel4";
-            this.toolStripStatusLabel4.Size = new System.Drawing.Size(227, 19);
+            this.toolStripStatusLabel4.Size = new System.Drawing.Size(121, 19);
             this.toolStripStatusLabel4.Spring = true;
             this.toolStripStatusLabel4.Text = "[F1] - Pesquisa rápida";
             this.toolStripStatusLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -571,6 +573,12 @@ namespace ProjectBook
             this.toolStripStatusLabel5.Name = "toolStripStatusLabel5";
             this.toolStripStatusLabel5.Size = new System.Drawing.Size(57, 19);
             this.toolStripStatusLabel5.Text = "[F6] - Sair";
+            // 
+            // toolStripStatusLabel6
+            // 
+            this.toolStripStatusLabel6.Name = "toolStripStatusLabel6";
+            this.toolStripStatusLabel6.Size = new System.Drawing.Size(106, 19);
+            this.toolStripStatusLabel6.Text = "[F7] - Sair da conta";
             // 
             // tosSugestoes
             // 
@@ -745,6 +753,7 @@ namespace ProjectBook
         private System.Windows.Forms.ToolStripButton mnuArBuscaRapida;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel4;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel5;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel6;
     }
 }
 

@@ -33,7 +33,7 @@ namespace ProjectBook
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.chbVisualizarImpressao = new System.Windows.Forms.CheckBox();
             this.btnSalvarConfiguracoes = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.gpbBancoDados = new System.Windows.Forms.GroupBox();
             this.rabOneDrive = new System.Windows.Forms.RadioButton();
             this.btnSelecionarArquivoDb = new System.Windows.Forms.Button();
             this.rabSqlServerLocalDb = new System.Windows.Forms.RadioButton();
@@ -44,7 +44,7 @@ namespace ProjectBook
             this.chbFormatarLivro = new System.Windows.Forms.CheckBox();
             this.chbFormatarCliente = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.gpbBancoDados.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -78,20 +78,21 @@ namespace ProjectBook
             this.btnSalvarConfiguracoes.UseVisualStyleBackColor = true;
             this.btnSalvarConfiguracoes.Click += new System.EventHandler(this.btnSalvarConfiguracoes_Click);
             // 
-            // groupBox2
+            // gpbBancoDados
             // 
-            this.groupBox2.Controls.Add(this.rabOneDrive);
-            this.groupBox2.Controls.Add(this.btnSelecionarArquivoDb);
-            this.groupBox2.Controls.Add(this.rabSqlServerLocalDb);
-            this.groupBox2.Controls.Add(this.lblInfoTxt);
-            this.groupBox2.Controls.Add(this.txtStringConexaoCaminhoDb);
-            this.groupBox2.Controls.Add(this.rabSqlServerExpress);
-            this.groupBox2.Location = new System.Drawing.Point(12, 70);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(453, 105);
-            this.groupBox2.TabIndex = 2;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Banco de dados";
+            this.gpbBancoDados.Controls.Add(this.rabOneDrive);
+            this.gpbBancoDados.Controls.Add(this.btnSelecionarArquivoDb);
+            this.gpbBancoDados.Controls.Add(this.rabSqlServerLocalDb);
+            this.gpbBancoDados.Controls.Add(this.lblInfoTxt);
+            this.gpbBancoDados.Controls.Add(this.txtStringConexaoCaminhoDb);
+            this.gpbBancoDados.Controls.Add(this.rabSqlServerExpress);
+            this.gpbBancoDados.Enabled = false;
+            this.gpbBancoDados.Location = new System.Drawing.Point(12, 70);
+            this.gpbBancoDados.Name = "gpbBancoDados";
+            this.gpbBancoDados.Size = new System.Drawing.Size(453, 105);
+            this.gpbBancoDados.TabIndex = 2;
+            this.gpbBancoDados.TabStop = false;
+            this.gpbBancoDados.Text = "Banco de dados";
             // 
             // rabOneDrive
             // 
@@ -192,7 +193,7 @@ namespace ProjectBook
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(477, 217);
             this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.gpbBancoDados);
             this.Controls.Add(this.btnSalvarConfiguracoes);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -203,8 +204,8 @@ namespace ProjectBook
             this.Text = "Configurações";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.gpbBancoDados.ResumeLayout(false);
+            this.gpbBancoDados.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
@@ -216,7 +217,7 @@ namespace ProjectBook
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.CheckBox chbVisualizarImpressao;
         private System.Windows.Forms.Button btnSalvarConfiguracoes;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox gpbBancoDados;
         private System.Windows.Forms.Label lblInfoTxt;
         private System.Windows.Forms.TextBox txtStringConexaoCaminhoDb;
         private System.Windows.Forms.RadioButton rabSqlServerExpress;
