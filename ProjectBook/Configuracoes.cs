@@ -40,12 +40,19 @@ namespace ProjectBook
         {
             var directoryInfo = String.IsNullOrEmpty(ConfigurationManager.AppSettings["pastaDb"]) ?
                 "" : Directory.GetParent(ConfigurationManager.AppSettings["pastaDb"]).ToString();
-            var db = ConfigurationManager.AppSettings["dbPadrao"];
             if (ConfigurationManager.AppSettings["visualizarImpressao"] == "1") chbVisualizarImpressao.Checked = true;
-            if (ConfigurationManager.AppSettings["dbPadrao"] == "sqlserverexpress") rabSqlServerExpress.Checked = true;
-            else if (ConfigurationManager.AppSettings["dbPadrao"] == "sqlserverlocaldb") rabSqlServerLocalDb.Checked = true;
-            else if (ConfigurationManager.AppSettings["dbPadrao"] == "onedrive" && directoryInfo.Contains("OneDrive"))
-                rabOneDrive.Checked = true;
+            switch (ConfigurationManager.AppSettings["dbPadrao"])
+            {
+                case "sqlserverexpress":
+                    rabSqlServerExpress.Checked = true;
+                    break;
+                case "sqlserverlocaldb":
+                    rabSqlServerLocalDb.Checked = true;
+                    break;
+                case "onedrive" when directoryInfo.Contains("OneDrive"):
+                    rabOneDrive.Checked = true;
+                    break;
+            }
             if (ConfigurationManager.AppSettings["formatarCliente"] == "1") chbFormatarCliente.Checked = true;
             if (ConfigurationManager.AppSettings["formatarLivro"] == "1") chbFormatarLivro.Checked = true;
             txtStringConexaoCaminhoDb.Text = ConfigurationManager.ConnectionStrings["SqlConnectionString"].ConnectionString;
@@ -78,14 +85,8 @@ namespace ProjectBook
 
                 config.ConnectionStrings.ConnectionStrings["SqlConnectionString"].ConnectionString = txtStringConexaoCaminhoDb.Text;
             }
-            else if (rabOneDrive.Checked)
+            else if (rabOneDrive.Checked && !ConfigurationManager.AppSettings["pastaDb"].Contains("OneDrive"))
             {
-                if (ConfigurationManager.AppSettings["dbPadrao"] == "onedrive")
-                {
-                    MessageBox.Show("O banco de dados já está sincronizado com o OneDrive.",
-                        Resources.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
                 DialogResult dialogResult = MessageBox.Show("Você deseja migrar o banco de dados para seu OneDrive? Para que a sincronização funcione você deve estar com o aplicativo do OneDrive sempre atualizado.",
                     Resources.informacao_MessageBox, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 

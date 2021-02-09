@@ -97,7 +97,7 @@ namespace ProjectBook.DB.SqlServerExpress
 
             return table;
         }
-        public DataTable BuscarUsuarioNome(string nomeUsuario)
+        public DataRow BuscarUsuarioNome(string nomeUsuario)
         {
             DataTable table = new DataTable();
             try
@@ -107,7 +107,7 @@ namespace ProjectBook.DB.SqlServerExpress
             }
             catch (SqlException e) { MessageBox.Show(e.Message, Resources.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); }
 
-            return table;
+            return table.Rows[0];
         }
         #endregion
     }

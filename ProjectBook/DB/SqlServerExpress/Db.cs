@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Windows.Forms;
@@ -28,8 +27,11 @@ namespace ProjectBook.DB.SqlServerExpress
 
                     if (dialogResult == DialogResult.Yes)
                     {
+                        Configuracoes.config.AppSettings.Settings["tipoUsuario"].Value = Tipos.TipoUsuário.ADM.ToString();
+                        Configuracoes.config.Save();
+                        ConfigurationManager.RefreshSection("appSettings");
                         Configuracoes configuracoes = new Configuracoes();
-                        configuracoes.Closing += delegate(object sender, CancelEventArgs args)
+                        configuracoes.Closing += delegate
                         {
                             if (String.IsNullOrEmpty(ConfigurationManager.AppSettings["usuarioLogado"]) ||
                                 String.IsNullOrEmpty(ConfigurationManager.ConnectionStrings["SqlConnectionString"].ConnectionString))

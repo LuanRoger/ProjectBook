@@ -19,6 +19,7 @@ namespace ProjectBook
     {
         private LivrosDb livrosDb = new LivrosDb();
         private AluguelDb aluguelDb = new AluguelDb();
+        private UsuarioDb usuarioDb = new UsuarioDb();
 
         public SplashScreen()
         {
@@ -34,40 +35,24 @@ namespace ProjectBook
             if (ConfigurationManager.AppSettings["dbPadrao"] == "onedrive" &&
                 ConfigurationManager.ConnectionStrings["SqlConnectionString"].ConnectionString == "")
             {
-                lblStatusCarregamento.Text = "Migrando banco para o OneDrive...";
+                lblStatusCarregamento.Text = Resources.migrando_banco_para_o_OneDrive;
                 string pastaAplicacaoOneDrive = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) +
                                                 @"\OneDrive\ProjectBook";
-                try
-                {
-                    //Mover pasta o OneDrive
-                    Directory.Move(Directory
-                        .GetParent(ConfigurationManager.AppSettings["pastaDb"]).ToString(), pastaAplicacaoOneDrive);
-
-                    //Pegar o novo diretorio do banco de dados
-                    string diretorioDbOneDrive = Directory
-                        .GetFiles(pastaAplicacaoOneDrive, "*.*", SearchOption.AllDirectories)
-                        .First(mdf => mdf.Contains(".mdf"));
-
-                    //Criar novo string de conexão
-                    Configuracoes.config.ConnectionStrings.ConnectionStrings["SqlConnectionString"]
-                            .ConnectionString =
-                        $@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={diretorioDbOneDrive};Integrated Security=True";
-
-                    Configuracoes.config.AppSettings.Settings["pastaDb"].Value = pastaAplicacaoOneDrive;
-                    Configuracoes.config.Save();
-                    ConfigurationManager.RefreshSection("connectionStrings");
-                }
-                catch (Exception e) { MessageBox.Show($"Ocorreu um error: {e.Message}. Volte as configurações e crie uma novo string de conexão.", 
-                    Resources.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); }
+                MigrarOneDrive(pastaAplicacaoOneDrive);
             }
 
-            //Atualizar Status do aluguel
-            lblStatusCarregamento.Text = Resources.atualizando_banco_de_dados_splashscreen;
-            AtualizarAtrasso();
+            livrosDb.AbrirConexaoDb();
+            if (livrosDb.DbStatus() == "Open")
+            {
+                //Atualizar Status do aluguel
+                lblStatusCarregamento.Text = Resources.atualizando_banco_de_dados_splashscreen;
+                if (!String.IsNullOrEmpty(ConfigurationManager.AppSettings["usuarioLogado"])) AtualizarAtrasso();
 
-            //Verificar se existe usuário logado
-            lblStatusCarregamento.Text = Resources.realizando_verificações_de_segurança_splashscreen;
-            UsuarioLogado();
+                //Verificar se existe usuário logado
+                lblStatusCarregamento.Text = Resources.realizando_verificações_de_segurança_splashscreen;
+                UsuarioLogado();
+            }
+            livrosDb.FechaConecxaoDb();
         }
         private void UsuarioLogado()
         {
@@ -80,10 +65,16 @@ namespace ProjectBook
                     login.Show();
                 }
             }
+            else
+            {
+                DataRow usuario = usuarioDb.BuscarUsuarioNome(ConfigurationManager.AppSettings["usuarioLogado"]);
+                Configuracoes.config.AppSettings.Settings["tipoUsuario"].Value = usuario[3].ToString();
+                Configuracoes.config.Save();
+                ConfigurationManager.RefreshSection("appSettings");
+            }
         }
         private void AtualizarAtrasso()
         {
-            aluguelDb.AbrirConexaoDb();
             foreach (DataRow data in aluguelDb.PegarLivrosAlugados().Rows)
             {
                 DateTime hoje = DateTime.Now.Date;
@@ -91,7 +82,37 @@ namespace ProjectBook
                 if (Convert.ToInt32((hoje - devolucao).Days) >= 0)
                    aluguelDb.AtualizarStatusAtrasado(data[2].ToString());
             }
-            aluguelDb.FechaConecxaoDb();
+        }
+
+        private void MigrarOneDrive(string pastaAplicacaoOneDrive)
+        {
+            try
+            {
+                if (Directory.Exists(pastaAplicacaoOneDrive)) Directory.Delete(pastaAplicacaoOneDrive, true);
+                //Mover pasta o OneDrive
+                Directory.Move(Directory
+                    .GetParent(ConfigurationManager.AppSettings["pastaDb"]).ToString(), pastaAplicacaoOneDrive);
+
+                //Pegar o novo diretorio do banco de dados
+                string diretorioDbOneDrive = Directory
+                    .GetFiles(pastaAplicacaoOneDrive, "*.*", SearchOption.AllDirectories)
+                    .First(mdf => mdf.Contains(".mdf"));
+
+                //Criar novo string de conexão
+                Configuracoes.config.ConnectionStrings.ConnectionStrings["SqlConnectionString"]
+                        .ConnectionString =
+                    $@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={diretorioDbOneDrive};Integrated Security=True";
+
+                Configuracoes.config.AppSettings.Settings["pastaDb"].Value = pastaAplicacaoOneDrive;
+                Configuracoes.config.Save();
+                ConfigurationManager.RefreshSection("connectionStrings");
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(
+                    string.Format(Resources.ocorreu_um_error___0___Volte_as_configurações_e_crie_uma_novo_string_de_conexão_, e.Message),
+                    Resources.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

@@ -30,7 +30,7 @@ namespace ProjectBook
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditarCliente));
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.gpbBuscarCliente = new System.Windows.Forms.GroupBox();
             this.btnBucarCliente = new System.Windows.Forms.Button();
             this.txtBuscarClienteEditar = new System.Windows.Forms.TextBox();
             this.rabBsucarClienteNome = new System.Windows.Forms.RadioButton();
@@ -54,21 +54,21 @@ namespace ProjectBook
             this.txtNovoCep = new System.Windows.Forms.MaskedTextBox();
             this.txtNovoTelefone1 = new System.Windows.Forms.MaskedTextBox();
             this.txtNovoTelefone2 = new System.Windows.Forms.MaskedTextBox();
-            this.groupBox1.SuspendLayout();
+            this.gpbBuscarCliente.SuspendLayout();
             this.SuspendLayout();
             // 
-            // groupBox1
+            // gpbBuscarCliente
             // 
-            this.groupBox1.Controls.Add(this.btnBucarCliente);
-            this.groupBox1.Controls.Add(this.txtBuscarClienteEditar);
-            this.groupBox1.Controls.Add(this.rabBsucarClienteNome);
-            this.groupBox1.Controls.Add(this.rabBuscarClienteId);
-            this.groupBox1.Location = new System.Drawing.Point(13, 13);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(299, 83);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Buscar cliente";
+            this.gpbBuscarCliente.Controls.Add(this.btnBucarCliente);
+            this.gpbBuscarCliente.Controls.Add(this.txtBuscarClienteEditar);
+            this.gpbBuscarCliente.Controls.Add(this.rabBsucarClienteNome);
+            this.gpbBuscarCliente.Controls.Add(this.rabBuscarClienteId);
+            this.gpbBuscarCliente.Location = new System.Drawing.Point(13, 13);
+            this.gpbBuscarCliente.Name = "gpbBuscarCliente";
+            this.gpbBuscarCliente.Size = new System.Drawing.Size(299, 83);
+            this.gpbBuscarCliente.TabIndex = 0;
+            this.gpbBuscarCliente.TabStop = false;
+            this.gpbBuscarCliente.Text = "Buscar cliente";
             // 
             // btnBucarCliente
             // 
@@ -84,6 +84,8 @@ namespace ProjectBook
             // 
             // txtBuscarClienteEditar
             // 
+            this.txtBuscarClienteEditar.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.txtBuscarClienteEditar.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txtBuscarClienteEditar.Location = new System.Drawing.Point(7, 48);
             this.txtBuscarClienteEditar.Name = "txtBuscarClienteEditar";
             this.txtBuscarClienteEditar.Size = new System.Drawing.Size(253, 23);
@@ -92,13 +94,14 @@ namespace ProjectBook
             // rabBsucarClienteNome
             // 
             this.rabBsucarClienteNome.AutoSize = true;
-            this.rabBsucarClienteNome.Location = new System.Drawing.Point(185, 23);
+            this.rabBsucarClienteNome.Location = new System.Drawing.Point(203, 23);
             this.rabBsucarClienteNome.Name = "rabBsucarClienteNome";
             this.rabBsucarClienteNome.Size = new System.Drawing.Size(58, 19);
             this.rabBsucarClienteNome.TabIndex = 1;
             this.rabBsucarClienteNome.TabStop = true;
             this.rabBsucarClienteNome.Text = "Nome";
             this.rabBsucarClienteNome.UseVisualStyleBackColor = true;
+            this.rabBsucarClienteNome.CheckedChanged += new System.EventHandler(this.rabBsucarClienteNome_CheckedChanged);
             // 
             // rabBuscarClienteId
             // 
@@ -110,6 +113,7 @@ namespace ProjectBook
             this.rabBuscarClienteId.TabStop = true;
             this.rabBuscarClienteId.Text = "ID";
             this.rabBuscarClienteId.UseVisualStyleBackColor = true;
+            this.rabBuscarClienteId.CheckedChanged += new System.EventHandler(this.rabBuscarClienteId_CheckedChanged);
             // 
             // label1
             // 
@@ -326,15 +330,15 @@ namespace ProjectBook
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtNovoNome);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.gpbBuscarCliente);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "EditarCliente";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Editar cliente";
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.gpbBuscarCliente.ResumeLayout(false);
+            this.gpbBuscarCliente.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -342,7 +346,7 @@ namespace ProjectBook
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox gpbBuscarCliente;
         private System.Windows.Forms.Button btnBucarCliente;
         private System.Windows.Forms.TextBox txtBuscarClienteEditar;
         private System.Windows.Forms.RadioButton rabBsucarClienteNome;

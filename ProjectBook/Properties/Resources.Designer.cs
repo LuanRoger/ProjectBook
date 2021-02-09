@@ -408,6 +408,15 @@ namespace ProjectBook.Properties {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Migrando banco para o OneDrive....
+        /// </summary>
+        internal static string migrando_banco_para_o_OneDrive {
+            get {
+                return ResourceManager.GetString("migrando_banco_para_o_OneDrive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Houve uma mudança na String de conexão, o programa será reiniciado..
         /// </summary>
         internal static string mudancaConnectionString {
@@ -431,6 +440,15 @@ namespace ProjectBook.Properties {
         internal static string naoExisteLivroCliente {
             get {
                 return ResourceManager.GetString("naoExisteLivroCliente", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Ocorreu um error: {0}. Volte as configurações e crie uma novo string de conexão..
+        /// </summary>
+        internal static string ocorreu_um_error___0___Volte_as_configurações_e_crie_uma_novo_string_de_conexão_ {
+            get {
+                return ResourceManager.GetString("ocorreu_um_error___0___Volte_as_configurações_e_crie_uma_novo_string_de_conexão_", resourceCulture);
             }
         }
         

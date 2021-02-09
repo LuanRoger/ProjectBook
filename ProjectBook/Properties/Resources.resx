@@ -295,4 +295,10 @@
   <data name="string_de_conexão" xml:space="preserve">
     <value>String de conexão:</value>
   </data>
+  <data name="migrando_banco_para_o_OneDrive" xml:space="preserve">
+    <value>Migrando banco para o OneDrive...</value>
+  </data>
+  <data name="ocorreu_um_error___0___Volte_as_configurações_e_crie_uma_novo_string_de_conexão_" xml:space="preserve">
+    <value>Ocorreu um error: {0}. Volte as configurações e crie uma novo string de conexão.</value>
+  </data>
 </root>

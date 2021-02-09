@@ -16,6 +16,21 @@ namespace ProjectBook
             InitializeComponent();
         }
 
+        private void rabBuscarClienteId_CheckedChanged(object sender, EventArgs e) => txtBuscarClienteEditar
+            .AutoCompleteSource = AutoCompleteSource.None;
+
+        private void rabBsucarClienteNome_CheckedChanged(object sender, EventArgs e)
+        {
+            //Preparar sugestões
+            txtBuscarClienteEditar.AutoCompleteSource = AutoCompleteSource.CustomSource;
+
+            AutoCompleteStringCollection autoCompleteStringCollection = new AutoCompleteStringCollection();
+            clienteDb.AbrirConexaoDb();
+            foreach (DataRow cliente in clienteDb.VerTodosClientes().Rows) autoCompleteStringCollection.Add(cliente[1].ToString());
+            clienteDb.FechaConecxaoDb();
+            txtBuscarClienteEditar.AutoCompleteCustomSource = autoCompleteStringCollection;
+        }
+
         private void btnSalvarEditarCliente_Click(object sender, EventArgs e)
         {
             Cliente cliente;
@@ -67,7 +82,8 @@ namespace ProjectBook
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            
+
+            gpbBuscarCliente.Enabled = false;
             PreencherCampos(infoCliente);
         }
         private void btnLimparEditarCliente_Click(object sender, EventArgs e) => LimparCampos();
@@ -85,6 +101,8 @@ namespace ProjectBook
         }
         private void LimparCampos()
         {
+            gpbBuscarCliente.Enabled = true;
+            txtBuscarClienteEditar.Clear();
             txtNovoNome.Clear();
             txtNovoEndereco.Clear();
             txtNovoCidade.Clear();
