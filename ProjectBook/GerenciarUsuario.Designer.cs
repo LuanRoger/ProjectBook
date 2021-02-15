@@ -31,6 +31,7 @@ namespace ProjectBook
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GerenciarUsuario));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.btnLimparCadastrarUsuario = new System.Windows.Forms.Button();
@@ -70,10 +71,11 @@ namespace ProjectBook
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Location = new System.Drawing.Point(11, 11);
+            this.tabControl1.Location = new System.Drawing.Point(0, 0);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(349, 207);
+            this.tabControl1.Size = new System.Drawing.Size(434, 265);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -84,19 +86,21 @@ namespace ProjectBook
             this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Controls.Add(this.txtSenhaCadastrar);
             this.tabPage1.Controls.Add(this.txtUsuarioCadastrar);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Location = new System.Drawing.Point(4, 24);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(341, 181);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.tabPage1.Size = new System.Drawing.Size(426, 237);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Cadastrar usuário";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // btnLimparCadastrarUsuario
             // 
-            this.btnLimparCadastrarUsuario.Location = new System.Drawing.Point(260, 152);
+            this.btnLimparCadastrarUsuario.Location = new System.Drawing.Point(327, 202);
+            this.btnLimparCadastrarUsuario.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnLimparCadastrarUsuario.Name = "btnLimparCadastrarUsuario";
-            this.btnLimparCadastrarUsuario.Size = new System.Drawing.Size(75, 23);
+            this.btnLimparCadastrarUsuario.Size = new System.Drawing.Size(88, 27);
             this.btnLimparCadastrarUsuario.TabIndex = 3;
             this.btnLimparCadastrarUsuario.Text = "Limpar";
             this.btnLimparCadastrarUsuario.UseVisualStyleBackColor = true;
@@ -104,9 +108,10 @@ namespace ProjectBook
             // 
             // btnCadastrarUsuario
             // 
-            this.btnCadastrarUsuario.Location = new System.Drawing.Point(179, 152);
+            this.btnCadastrarUsuario.Location = new System.Drawing.Point(231, 202);
+            this.btnCadastrarUsuario.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnCadastrarUsuario.Name = "btnCadastrarUsuario";
-            this.btnCadastrarUsuario.Size = new System.Drawing.Size(75, 23);
+            this.btnCadastrarUsuario.Size = new System.Drawing.Size(88, 27);
             this.btnCadastrarUsuario.TabIndex = 2;
             this.btnCadastrarUsuario.Text = "Cadastrar";
             this.btnCadastrarUsuario.UseVisualStyleBackColor = true;
@@ -114,32 +119,36 @@ namespace ProjectBook
             // 
             // label2
             // 
-            this.label2.Location = new System.Drawing.Point(6, 44);
+            this.label2.Location = new System.Drawing.Point(7, 51);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(49, 15);
+            this.label2.Size = new System.Drawing.Size(57, 17);
             this.label2.TabIndex = 1;
             this.label2.Text = "Senha:";
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(6, 3);
+            this.label1.Location = new System.Drawing.Point(7, 3);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(49, 15);
+            this.label1.Size = new System.Drawing.Size(57, 17);
             this.label1.TabIndex = 1;
             this.label1.Text = "Usuário:";
             // 
             // txtSenhaCadastrar
             // 
-            this.txtSenhaCadastrar.Location = new System.Drawing.Point(6, 62);
+            this.txtSenhaCadastrar.Location = new System.Drawing.Point(7, 72);
+            this.txtSenhaCadastrar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtSenhaCadastrar.Name = "txtSenhaCadastrar";
-            this.txtSenhaCadastrar.Size = new System.Drawing.Size(329, 20);
+            this.txtSenhaCadastrar.Size = new System.Drawing.Size(408, 23);
             this.txtSenhaCadastrar.TabIndex = 1;
             // 
             // txtUsuarioCadastrar
             // 
-            this.txtUsuarioCadastrar.Location = new System.Drawing.Point(6, 21);
+            this.txtUsuarioCadastrar.Location = new System.Drawing.Point(7, 24);
+            this.txtUsuarioCadastrar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtUsuarioCadastrar.Name = "txtUsuarioCadastrar";
-            this.txtUsuarioCadastrar.Size = new System.Drawing.Size(329, 20);
+            this.txtUsuarioCadastrar.Size = new System.Drawing.Size(408, 23);
             this.txtUsuarioCadastrar.TabIndex = 0;
             // 
             // tabPage2
@@ -153,19 +162,21 @@ namespace ProjectBook
             this.tabPage2.Controls.Add(this.txtNovoSenhaUsuario);
             this.tabPage2.Controls.Add(this.btnSalvarEditarUsuario);
             this.tabPage2.Controls.Add(this.txtNovoUsuario);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Location = new System.Drawing.Point(4, 24);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(341, 181);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.tabPage2.Size = new System.Drawing.Size(426, 237);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Editar usuário";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // btnLimparEditarUsuario
             // 
-            this.btnLimparEditarUsuario.Location = new System.Drawing.Point(260, 152);
+            this.btnLimparEditarUsuario.Location = new System.Drawing.Point(327, 202);
+            this.btnLimparEditarUsuario.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnLimparEditarUsuario.Name = "btnLimparEditarUsuario";
-            this.btnLimparEditarUsuario.Size = new System.Drawing.Size(75, 23);
+            this.btnLimparEditarUsuario.Size = new System.Drawing.Size(88, 27);
             this.btnLimparEditarUsuario.TabIndex = 7;
             this.btnLimparEditarUsuario.Text = "Limpar";
             this.btnLimparEditarUsuario.UseVisualStyleBackColor = true;
@@ -175,10 +186,13 @@ namespace ProjectBook
             // 
             this.cmdNovoStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmdNovoStatus.FormattingEnabled = true;
-            this.cmdNovoStatus.Items.AddRange(new object[] {"ADM", "USU"});
-            this.cmdNovoStatus.Location = new System.Drawing.Point(134, 103);
+            this.cmdNovoStatus.Items.AddRange(new object[] {
+            "ADM",
+            "USU"});
+            this.cmdNovoStatus.Location = new System.Drawing.Point(156, 119);
+            this.cmdNovoStatus.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmdNovoStatus.Name = "cmdNovoStatus";
-            this.cmdNovoStatus.Size = new System.Drawing.Size(201, 21);
+            this.cmdNovoStatus.Size = new System.Drawing.Size(259, 23);
             this.cmdNovoStatus.TabIndex = 5;
             // 
             // groupBox1
@@ -186,9 +200,11 @@ namespace ProjectBook
             this.groupBox1.Controls.Add(this.btnBuscarUsuario);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.txtIdBuscarUsuario);
-            this.groupBox1.Location = new System.Drawing.Point(6, 6);
+            this.groupBox1.Location = new System.Drawing.Point(7, 7);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(122, 60);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.groupBox1.Size = new System.Drawing.Size(141, 69);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Buscar";
@@ -197,65 +213,73 @@ namespace ProjectBook
             // 
             this.btnBuscarUsuario.FlatAppearance.BorderSize = 0;
             this.btnBuscarUsuario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBuscarUsuario.Image = global::ProjectBook.Properties.Resources.Search_16x;
-            this.btnBuscarUsuario.Location = new System.Drawing.Point(89, 31);
+            this.btnBuscarUsuario.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscarUsuario.Image")));
+            this.btnBuscarUsuario.Location = new System.Drawing.Point(112, 37);
+            this.btnBuscarUsuario.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnBuscarUsuario.Name = "btnBuscarUsuario";
-            this.btnBuscarUsuario.Size = new System.Drawing.Size(27, 23);
+            this.btnBuscarUsuario.Size = new System.Drawing.Size(21, 25);
             this.btnBuscarUsuario.TabIndex = 2;
             this.btnBuscarUsuario.UseVisualStyleBackColor = true;
             this.btnBuscarUsuario.Click += new System.EventHandler(this.btnBuscarUsuario_Click);
             // 
             // label3
             // 
-            this.label3.Location = new System.Drawing.Point(6, 16);
+            this.label3.Location = new System.Drawing.Point(7, 18);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(23, 14);
+            this.label3.Size = new System.Drawing.Size(27, 16);
             this.label3.TabIndex = 2;
             this.label3.Text = "ID:";
             // 
             // txtIdBuscarUsuario
             // 
-            this.txtIdBuscarUsuario.Location = new System.Drawing.Point(6, 33);
+            this.txtIdBuscarUsuario.Location = new System.Drawing.Point(7, 38);
+            this.txtIdBuscarUsuario.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtIdBuscarUsuario.Name = "txtIdBuscarUsuario";
-            this.txtIdBuscarUsuario.Size = new System.Drawing.Size(77, 20);
+            this.txtIdBuscarUsuario.Size = new System.Drawing.Size(97, 23);
             this.txtIdBuscarUsuario.TabIndex = 1;
             // 
             // label6
             // 
-            this.label6.Location = new System.Drawing.Point(134, 86);
+            this.label6.Location = new System.Drawing.Point(156, 99);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(42, 14);
+            this.label6.Size = new System.Drawing.Size(49, 16);
             this.label6.TabIndex = 2;
             this.label6.Text = "Tipo:";
             // 
             // label5
             // 
-            this.label5.Location = new System.Drawing.Point(134, 46);
+            this.label5.Location = new System.Drawing.Point(156, 53);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(42, 14);
+            this.label5.Size = new System.Drawing.Size(49, 16);
             this.label5.TabIndex = 2;
             this.label5.Text = "Senha:";
             // 
             // label4
             // 
-            this.label4.Location = new System.Drawing.Point(134, 3);
+            this.label4.Location = new System.Drawing.Point(156, 3);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(53, 14);
+            this.label4.Size = new System.Drawing.Size(62, 16);
             this.label4.TabIndex = 2;
             this.label4.Text = "Usuário:";
             // 
             // txtNovoSenhaUsuario
             // 
-            this.txtNovoSenhaUsuario.Location = new System.Drawing.Point(134, 63);
+            this.txtNovoSenhaUsuario.Location = new System.Drawing.Point(156, 73);
+            this.txtNovoSenhaUsuario.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtNovoSenhaUsuario.Name = "txtNovoSenhaUsuario";
-            this.txtNovoSenhaUsuario.Size = new System.Drawing.Size(201, 20);
+            this.txtNovoSenhaUsuario.Size = new System.Drawing.Size(259, 23);
             this.txtNovoSenhaUsuario.TabIndex = 4;
             // 
             // btnSalvarEditarUsuario
             // 
-            this.btnSalvarEditarUsuario.Location = new System.Drawing.Point(179, 152);
+            this.btnSalvarEditarUsuario.Location = new System.Drawing.Point(231, 202);
+            this.btnSalvarEditarUsuario.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnSalvarEditarUsuario.Name = "btnSalvarEditarUsuario";
-            this.btnSalvarEditarUsuario.Size = new System.Drawing.Size(75, 23);
+            this.btnSalvarEditarUsuario.Size = new System.Drawing.Size(88, 27);
             this.btnSalvarEditarUsuario.TabIndex = 6;
             this.btnSalvarEditarUsuario.Text = "Salvar";
             this.btnSalvarEditarUsuario.UseVisualStyleBackColor = true;
@@ -263,28 +287,31 @@ namespace ProjectBook
             // 
             // txtNovoUsuario
             // 
-            this.txtNovoUsuario.Location = new System.Drawing.Point(134, 20);
+            this.txtNovoUsuario.Location = new System.Drawing.Point(156, 23);
+            this.txtNovoUsuario.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtNovoUsuario.Name = "txtNovoUsuario";
-            this.txtNovoUsuario.Size = new System.Drawing.Size(201, 20);
+            this.txtNovoUsuario.Size = new System.Drawing.Size(259, 23);
             this.txtNovoUsuario.TabIndex = 3;
             // 
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.btnDeletarUsuario);
             this.tabPage3.Controls.Add(this.groupBox2);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Location = new System.Drawing.Point(4, 24);
+            this.tabPage3.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(341, 181);
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.tabPage3.Size = new System.Drawing.Size(426, 237);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Deletar usuário";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // btnDeletarUsuario
             // 
-            this.btnDeletarUsuario.Location = new System.Drawing.Point(260, 152);
+            this.btnDeletarUsuario.Location = new System.Drawing.Point(327, 202);
+            this.btnDeletarUsuario.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnDeletarUsuario.Name = "btnDeletarUsuario";
-            this.btnDeletarUsuario.Size = new System.Drawing.Size(75, 23);
+            this.btnDeletarUsuario.Size = new System.Drawing.Size(88, 27);
             this.btnDeletarUsuario.TabIndex = 2;
             this.btnDeletarUsuario.Text = "Deletar";
             this.btnDeletarUsuario.UseVisualStyleBackColor = true;
@@ -294,35 +321,40 @@ namespace ProjectBook
             // 
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.txtIdDeletarUsuario);
-            this.groupBox2.Location = new System.Drawing.Point(6, 6);
+            this.groupBox2.Location = new System.Drawing.Point(7, 7);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(329, 61);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.groupBox2.Size = new System.Drawing.Size(408, 70);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Buscar";
             // 
             // label7
             // 
-            this.label7.Location = new System.Drawing.Point(6, 16);
+            this.label7.Location = new System.Drawing.Point(7, 18);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(36, 15);
+            this.label7.Size = new System.Drawing.Size(42, 17);
             this.label7.TabIndex = 0;
             this.label7.Text = "ID:";
             // 
             // txtIdDeletarUsuario
             // 
-            this.txtIdDeletarUsuario.Location = new System.Drawing.Point(6, 34);
+            this.txtIdDeletarUsuario.Location = new System.Drawing.Point(7, 39);
+            this.txtIdDeletarUsuario.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtIdDeletarUsuario.Name = "txtIdDeletarUsuario";
-            this.txtIdDeletarUsuario.Size = new System.Drawing.Size(317, 20);
+            this.txtIdDeletarUsuario.Size = new System.Drawing.Size(393, 23);
             this.txtIdDeletarUsuario.TabIndex = 1;
             // 
             // GerenciarUsuario
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(370, 230);
+            this.ClientSize = new System.Drawing.Size(432, 265);
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.MaximizeBox = false;
             this.Name = "GerenciarUsuario";
             this.ShowIcon = false;
@@ -339,6 +371,7 @@ namespace ProjectBook
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
+
         }
 
         private System.Windows.Forms.Button btnLimparCadastrarUsuario;

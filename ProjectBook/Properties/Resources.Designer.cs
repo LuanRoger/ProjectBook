@@ -61,26 +61,6 @@ namespace ProjectBook.Properties {
         }
         
         /// <summary>
-        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap AddTextFile_16x {
-            get {
-                object obj = ResourceManager.GetObject("AddTextFile_16x", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap AddUser_16x {
-            get {
-                object obj = ResourceManager.GetObject("AddUser_16x", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Aluguel registrado com sucesso..
         /// </summary>
         internal static string aluguel_registrado_com_sucesso {
@@ -108,11 +88,110 @@ namespace ProjectBook.Properties {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Banco de dados sincronizado com o OneDrive.
+        /// </summary>
+        internal static string banco_de_dados_sincronizado_com_o_OneDrive {
+            get {
+                return ResourceManager.GetString("banco_de_dados_sincronizado_com_o_OneDrive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap book_add {
+            get {
+                object obj = ResourceManager.GetObject("book_add", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap book_delete {
+            get {
+                object obj = ResourceManager.GetObject("book_delete", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap book_edit {
+            get {
+                object obj = ResourceManager.GetObject("book_edit", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap book_go {
+            get {
+                object obj = ResourceManager.GetObject("book_go", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap bullet_go {
+            get {
+                object obj = ResourceManager.GetObject("bullet_go", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Caminho do banco de dados:.
         /// </summary>
         internal static string caminho_do_banco_de_dados {
             get {
                 return ResourceManager.GetString("caminho_do_banco_de_dados", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap client_add {
+            get {
+                object obj = ResourceManager.GetObject("client_add", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap client_delete {
+            get {
+                object obj = ResourceManager.GetObject("client_delete", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap client_edit {
+            get {
+                object obj = ResourceManager.GetObject("client_edit", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap client_go {
+            get {
+                object obj = ResourceManager.GetObject("client_go", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -200,16 +279,6 @@ namespace ProjectBook.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap CSSearch_16x {
-            get {
-                object obj = ResourceManager.GetObject("CSSearch_16x", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap database_error_icon {
             get {
                 object obj = ResourceManager.GetObject("database-error-icon", resourceCulture);
@@ -228,42 +297,12 @@ namespace ProjectBook.Properties {
         }
         
         /// <summary>
-        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        ///   Consulta uma cadeia de caracteres localizada semelhante a É necessário fazer uma conexão local com o banco de dados para fazer a migração para o OneDrive..
         /// </summary>
-        internal static System.Drawing.Bitmap DeleteAllRows_16x {
+        internal static string é_necessário_fazer_uma_conexão_local_com_o_banco_de_dados_para_fazer_a_migração_para_o_OneDrive_ {
             get {
-                object obj = ResourceManager.GetObject("DeleteAllRows_16x", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap DeleteClause_16x {
-            get {
-                object obj = ResourceManager.GetObject("DeleteClause_16x", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap DeleteUser_16x {
-            get {
-                object obj = ResourceManager.GetObject("DeleteUser_16x", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Edit_grey_16x {
-            get {
-                object obj = ResourceManager.GetObject("Edit_grey_16x", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return ResourceManager.GetString("é_necessário_fazer_uma_conexão_local_com_o_banco_de_dados_para_fazer_a_migração_p" +
+                        "ara_o_OneDrive_", resourceCulture);
             }
         }
         
@@ -338,26 +377,6 @@ namespace ProjectBook.Properties {
         internal static System.Drawing.Bitmap key {
             get {
                 object obj = ResourceManager.GetObject("key", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Library_16x {
-            get {
-                object obj = ResourceManager.GetObject("Library_16x", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap LibrarySettings_16x {
-            get {
-                object obj = ResourceManager.GetObject("LibrarySettings_16x", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -453,6 +472,46 @@ namespace ProjectBook.Properties {
         }
         
         /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap page_add {
+            get {
+                object obj = ResourceManager.GetObject("page_add", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap page_delete {
+            get {
+                object obj = ResourceManager.GetObject("page_delete", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap page_edit {
+            get {
+                object obj = ResourceManager.GetObject("page_edit", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap page_go {
+            get {
+                object obj = ResourceManager.GetObject("page_go", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Faça uma pesquisa para continuar..
         /// </summary>
         internal static string preencherCampoBusca_MessageBox {
@@ -482,9 +541,9 @@ namespace ProjectBook.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Print_16x {
+        internal static System.Drawing.Bitmap printer {
             get {
-                object obj = ResourceManager.GetObject("Print_16x", resourceCulture);
+                object obj = ResourceManager.GetObject("printer", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -504,26 +563,6 @@ namespace ProjectBook.Properties {
         internal static string reiniciarPrograma_MessageBox {
             get {
                 return ResourceManager.GetString("reiniciarPrograma_MessageBox", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Search_16x {
-            get {
-                object obj = ResourceManager.GetObject("Search_16x", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap SearchGo_16x {
-            get {
-                object obj = ResourceManager.GetObject("SearchGo_16x", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -558,29 +597,9 @@ namespace ProjectBook.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Trash_16x {
-            get {
-                object obj = ResourceManager.GetObject("Trash_16x", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap user {
             get {
                 object obj = ResourceManager.GetObject("user", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap UserGroup_16x {
-            get {
-                object obj = ResourceManager.GetObject("UserGroup_16x", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -622,11 +641,22 @@ namespace ProjectBook.Properties {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a N° da versão: v.
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Você deseja migrar o banco de dados para seu OneDrive? Para que a sincronização funcione você deve estar com o aplicativo do OneDrive sempre atualizado..
         /// </summary>
-        internal static string versao_MessageBox {
+        internal static string você_deseja_migrar_o_banco_de_dados_para_seu_OneDrive__Para_que_a_sincronização_funcione_você_deve_estar_com_o_aplicativo_do_OneDrive_sempre_atualizado_ {
             get {
-                return ResourceManager.GetString("versao_MessageBox", resourceCulture);
+                return ResourceManager.GetString("você_deseja_migrar_o_banco_de_dados_para_seu_OneDrive__Para_que_a_sincronização_f" +
+                        "uncione_você_deve_estar_com_o_aplicativo_do_OneDrive_sempre_atualizado_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap zoom {
+            get {
+                object obj = ResourceManager.GetObject("zoom", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }

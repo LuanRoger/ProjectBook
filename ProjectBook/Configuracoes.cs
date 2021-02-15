@@ -7,8 +7,6 @@ using System.Reflection;
 using ProjectBook.Properties;
 using System.Management;
 using System.IO;
-using System.Linq;
-using ProjectBook.DB.SqlServerExpress;
 
 namespace ProjectBook
 {
@@ -24,16 +22,14 @@ namespace ProjectBook
             if (ConfigurationManager.AppSettings["tipoUsuario"] ==
                 Tipos.TipoUsuário.ADM.ToString()) gpbBancoDados.Enabled = true;
 
-                //Verificar sistema operacional
+            //Verificar sistema operacional
             string so = null;
-            using (ManagementObjectSearcher searcher = new ManagementObjectSearcher("SELECT * FROM Win32_OperatingSystem"))
+            using ManagementObjectSearcher searcher = new ManagementObjectSearcher("SELECT * FROM Win32_OperatingSystem");
+            foreach (var infos in searcher.Get())
             {
-                foreach (var infos in searcher.Get())
-                {
-                    so = infos["Caption"].ToString();
-                }
-                if (String.IsNullOrEmpty(so) || !so.Contains("Windows 10")) rabOneDrive.Visible = false;
+                so = infos["Caption"].ToString();
             }
+            if (String.IsNullOrEmpty(so) || !so.Contains("Windows 10")) rabOneDrive.Visible = false;
         }
 
         private void CarregarConfiguracoes()
@@ -87,7 +83,8 @@ namespace ProjectBook
             }
             else if (rabOneDrive.Checked && !ConfigurationManager.AppSettings["pastaDb"].Contains("OneDrive"))
             {
-                DialogResult dialogResult = MessageBox.Show("Você deseja migrar o banco de dados para seu OneDrive? Para que a sincronização funcione você deve estar com o aplicativo do OneDrive sempre atualizado.",
+                DialogResult dialogResult = MessageBox
+                    .Show(Resources.você_deseja_migrar_o_banco_de_dados_para_seu_OneDrive__Para_que_a_sincronização_funcione_você_deve_estar_com_o_aplicativo_do_OneDrive_sempre_atualizado_,
                     Resources.informacao_MessageBox, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (dialogResult != DialogResult.Yes) return;
@@ -113,6 +110,7 @@ namespace ProjectBook
                 Process.GetCurrentProcess().Kill();
             }
         }
+
         private void rabSqlServerExpress_CheckedChanged(object sender, EventArgs e)
         {
             lblInfoTxt.Text = Resources.string_de_conexão;
@@ -121,7 +119,12 @@ namespace ProjectBook
             txtStringConexaoCaminhoDb.Visible = true;
             txtStringConexaoCaminhoDb.Size = new Size(441, 23);
         }
-
+        private void txtStringConexaoCaminhoDb_Leave(object sender, EventArgs e)
+        {
+            if (txtStringConexaoCaminhoDb.Text.Contains("MultipleActiveResultSets=True") &&
+                rabSqlServerExpress.Checked) lblMars.Visible = false;
+            else lblMars.Visible = true;
+        }
         private void rabSqlServerLocalDb_CheckedChanged(object sender, EventArgs e)
         {
             lblInfoTxt.Text = Resources.caminho_do_banco_de_dados;
@@ -141,7 +144,7 @@ namespace ProjectBook
             catch
             {
                 MessageBox.Show(
-                    "É necessário fazer uma conexão local com o banco de dados para fazer a migração para o OneDrive.",
+                    Resources.é_necessário_fazer_uma_conexão_local_com_o_banco_de_dados_para_fazer_a_migração_para_o_OneDrive_,
                     Resources.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 rabSqlServerLocalDb.Checked = true;
                 return;
@@ -149,7 +152,7 @@ namespace ProjectBook
             if (directoryInfo?.Parent != null && directoryInfo.ToString().Contains("OneDrive"))
             {
                 lblInfoTxt.Visible = true;
-                lblInfoTxt.Text = "Banco de dados sincronizado com o OneDrive";
+                lblInfoTxt.Text = Resources.banco_de_dados_sincronizado_com_o_OneDrive;
                 lblInfoTxt.ForeColor = Color.Green;
             }
         }
@@ -165,7 +168,7 @@ namespace ProjectBook
             config.Save();
             ConfigurationManager.RefreshSection("appSettings");
             txtStringConexaoCaminhoDb.Text =
-                $@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={caminho.FileName};Integrated Security=True";
+                $@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={caminho.FileName};Integrated Security=True;MultipleActiveResultSets=True";
         }
     }
 }

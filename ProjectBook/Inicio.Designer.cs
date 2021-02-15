@@ -92,8 +92,8 @@ namespace ProjectBook
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblAlugueisRegistrados = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel4 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel5 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel6 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel5 = new System.Windows.Forms.ToolStripStatusLabel();
             this.tosSugestoes = new System.Windows.Forms.ToolStrip();
             this.mnuArCadastroLivro = new System.Windows.Forms.ToolStripButton();
             this.mnuArCadastroCliente = new System.Windows.Forms.ToolStripButton();
@@ -237,8 +237,8 @@ namespace ProjectBook
             // 
             this.mnuInicio.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuLivro,
-            this.mnuAluguel,
             this.mnuClientes,
+            this.mnuAluguel,
             this.mnuUsuario,
             this.mnuPesquisar,
             this.mnuExcluir,
@@ -332,11 +332,11 @@ namespace ProjectBook
             this.mnuTodosLivros,
             this.mnuPesquisaSeletiva,
             this.toolStripSeparator6,
-            this.mnuLivrosAlugados,
-            this.mnuPesquisarAluguel,
-            this.toolStripSeparator7,
             this.mnuTodosClientes,
-            this.mnuPesquisarCliente});
+            this.mnuPesquisarCliente,
+            this.toolStripSeparator7,
+            this.mnuLivrosAlugados,
+            this.mnuPesquisarAluguel});
             this.mnuPesquisar.Name = "mnuPesquisar";
             this.mnuPesquisar.Size = new System.Drawing.Size(69, 20);
             this.mnuPesquisar.Text = "Pesquisar";
@@ -345,26 +345,26 @@ namespace ProjectBook
             // 
             this.mnuTodosLivros.Image = ((System.Drawing.Image)(resources.GetObject("mnuTodosLivros.Image")));
             this.mnuTodosLivros.Name = "mnuTodosLivros";
-            this.mnuTodosLivros.Size = new System.Drawing.Size(196, 22);
+            this.mnuTodosLivros.Size = new System.Drawing.Size(181, 22);
             this.mnuTodosLivros.Text = "Ver todos os livros";
             // 
             // mnuPesquisaSeletiva
             // 
             this.mnuPesquisaSeletiva.Image = ((System.Drawing.Image)(resources.GetObject("mnuPesquisaSeletiva.Image")));
             this.mnuPesquisaSeletiva.Name = "mnuPesquisaSeletiva";
-            this.mnuPesquisaSeletiva.Size = new System.Drawing.Size(196, 22);
+            this.mnuPesquisaSeletiva.Size = new System.Drawing.Size(181, 22);
             this.mnuPesquisaSeletiva.Text = "Pesquisar livro";
             // 
             // toolStripSeparator6
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(193, 6);
+            this.toolStripSeparator6.Size = new System.Drawing.Size(178, 6);
             // 
             // mnuLivrosAlugados
             // 
             this.mnuLivrosAlugados.Image = ((System.Drawing.Image)(resources.GetObject("mnuLivrosAlugados.Image")));
             this.mnuLivrosAlugados.Name = "mnuLivrosAlugados";
-            this.mnuLivrosAlugados.Size = new System.Drawing.Size(196, 22);
+            this.mnuLivrosAlugados.Size = new System.Drawing.Size(181, 22);
             this.mnuLivrosAlugados.Text = "Ver livros alugados";
             // 
             // mnuPesquisarAluguel
@@ -377,28 +377,28 @@ namespace ProjectBook
             // toolStripSeparator7
             // 
             this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(193, 6);
+            this.toolStripSeparator7.Size = new System.Drawing.Size(178, 6);
             // 
             // mnuTodosClientes
             // 
             this.mnuTodosClientes.Image = ((System.Drawing.Image)(resources.GetObject("mnuTodosClientes.Image")));
             this.mnuTodosClientes.Name = "mnuTodosClientes";
-            this.mnuTodosClientes.Size = new System.Drawing.Size(196, 22);
+            this.mnuTodosClientes.Size = new System.Drawing.Size(181, 22);
             this.mnuTodosClientes.Text = "Ver todos os clientes";
             // 
             // mnuPesquisarCliente
             // 
             this.mnuPesquisarCliente.Image = ((System.Drawing.Image)(resources.GetObject("mnuPesquisarCliente.Image")));
             this.mnuPesquisarCliente.Name = "mnuPesquisarCliente";
-            this.mnuPesquisarCliente.Size = new System.Drawing.Size(196, 22);
+            this.mnuPesquisarCliente.Size = new System.Drawing.Size(181, 22);
             this.mnuPesquisarCliente.Text = "Pesquisar cliente";
             // 
             // mnuExcluir
             // 
             this.mnuExcluir.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuExcluirLivro,
-            this.mnuExcluirAluguel,
-            this.mnuExcluirCliente});
+            this.mnuExcluirCliente,
+            this.mnuExcluirAluguel});
             this.mnuExcluir.Name = "mnuExcluir";
             this.mnuExcluir.Size = new System.Drawing.Size(54, 20);
             this.mnuExcluir.Text = "Excluir";
@@ -568,17 +568,17 @@ namespace ProjectBook
             this.toolStripStatusLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.toolStripStatusLabel4.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
             // 
-            // toolStripStatusLabel5
-            // 
-            this.toolStripStatusLabel5.Name = "toolStripStatusLabel5";
-            this.toolStripStatusLabel5.Size = new System.Drawing.Size(57, 19);
-            this.toolStripStatusLabel5.Text = "[F6] - Sair";
-            // 
             // toolStripStatusLabel6
             // 
             this.toolStripStatusLabel6.Name = "toolStripStatusLabel6";
             this.toolStripStatusLabel6.Size = new System.Drawing.Size(106, 19);
             this.toolStripStatusLabel6.Text = "[F7] - Sair da conta";
+            // 
+            // toolStripStatusLabel5
+            // 
+            this.toolStripStatusLabel5.Name = "toolStripStatusLabel5";
+            this.toolStripStatusLabel5.Size = new System.Drawing.Size(57, 19);
+            this.toolStripStatusLabel5.Text = "[F6] - Sair";
             // 
             // tosSugestoes
             // 

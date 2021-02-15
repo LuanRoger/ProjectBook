@@ -80,6 +80,7 @@ namespace ProjectBook
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.mnuListaLivros;
             this.Name = "ListaPesquisa";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Lista";
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaLivros)).EndInit();

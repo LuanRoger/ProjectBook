@@ -43,6 +43,7 @@ namespace ProjectBook
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.chbFormatarLivro = new System.Windows.Forms.CheckBox();
             this.chbFormatarCliente = new System.Windows.Forms.CheckBox();
+            this.lblMars = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.gpbBancoDados.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -143,6 +144,7 @@ namespace ProjectBook
             this.txtStringConexaoCaminhoDb.Name = "txtStringConexaoCaminhoDb";
             this.txtStringConexaoCaminhoDb.Size = new System.Drawing.Size(408, 23);
             this.txtStringConexaoCaminhoDb.TabIndex = 1;
+            this.txtStringConexaoCaminhoDb.Leave += new System.EventHandler(this.txtStringConexaoCaminhoDb_Leave);
             // 
             // rabSqlServerExpress
             // 
@@ -187,11 +189,24 @@ namespace ProjectBook
             this.chbFormatarCliente.Text = "Clientes (E-mail não incluso)";
             this.chbFormatarCliente.UseVisualStyleBackColor = true;
             // 
+            // lblMars
+            // 
+            this.lblMars.AutoSize = true;
+            this.lblMars.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblMars.ForeColor = System.Drawing.Color.Red;
+            this.lblMars.Location = new System.Drawing.Point(12, 182);
+            this.lblMars.Name = "lblMars";
+            this.lblMars.Size = new System.Drawing.Size(271, 15);
+            this.lblMars.TabIndex = 4;
+            this.lblMars.Text = "Considere ativar o MARS para evitar problemas.";
+            this.lblMars.Visible = false;
+            // 
             // Configuracoes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(477, 217);
+            this.Controls.Add(this.lblMars);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.gpbBancoDados);
             this.Controls.Add(this.btnSalvarConfiguracoes);
@@ -200,6 +215,7 @@ namespace ProjectBook
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Configuracoes";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Configurações";
             this.groupBox1.ResumeLayout(false);
@@ -209,6 +225,7 @@ namespace ProjectBook
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -227,5 +244,6 @@ namespace ProjectBook
         private System.Windows.Forms.RadioButton rabSqlServerLocalDb;
         private System.Windows.Forms.Button btnSelecionarArquivoDb;
         private System.Windows.Forms.RadioButton rabOneDrive;
+        private System.Windows.Forms.Label lblMars;
     }
 }

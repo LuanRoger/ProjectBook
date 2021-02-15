@@ -28,6 +28,8 @@ namespace ProjectBook
             usuarioDb.AbrirConexaoDb();
             usuarioDb.CadastrarUsuario(usuario);
             usuarioDb.FechaConecxaoDb();
+            
+            LimparCampos();
         }
 
         private void btnSalvarEditarUsuario_Click(object sender, EventArgs e)
@@ -43,6 +45,8 @@ namespace ProjectBook
             usuarioDb.AbrirConexaoDb();
             usuarioDb.AtualizarUsuarioId(txtIdBuscarUsuario.Text, usuario);
             usuarioDb.FechaConecxaoDb();
+
+            LimparCampos();
         }
 
         private void btnBuscarUsuario_Click(object sender, EventArgs e)
@@ -85,6 +89,8 @@ namespace ProjectBook
             usuarioDb.AbrirConexaoDb();
             if (dialogResult == DialogResult.Yes) usuarioDb.DeletarUsuarioId(txtIdDeletarUsuario.Text);
             usuarioDb.FechaConecxaoDb();
+
+            LimparCampos();
         }
 
         private void btnLimparEditarUsuario_Click(object sender, EventArgs e) => LimparCampos();

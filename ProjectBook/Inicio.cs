@@ -4,6 +4,7 @@ using System.Configuration;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Reflection;
@@ -25,7 +26,7 @@ namespace ProjectBook
 
             lblNomeUsuario.Text = ConfigurationManager.AppSettings["usuarioLogado"];
 
-            //Menu
+            #region MenuClick
             mnuNovoLivro.Click += (sender, e) =>
             {
                 CadastroLivro cadastroLivro = new CadastroLivro();
@@ -122,15 +123,15 @@ namespace ProjectBook
 
             mnuSobre.Click += (sender, e) =>
             {
-                MessageBox.Show(Properties.Resources.versao_MessageBox +
+                MessageBox.Show("Project Book v" +
                                 Assembly.GetExecutingAssembly().GetName().Version + 
-                                "\n" + Properties.Resources.luanroger +
-                                "\n" + Resources.uso_da_biblioteca_de_imagens_do_VS2019 +
+                                "\n" + Resources.luanroger +
                                 "\n" + Resources.uso_de_ícones_de_FAMFAMFAM__http___famfamfam_com,
-                    Properties.Resources.sobre_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Resources.sobre_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Information);
             };
+            #endregion
 
-            //Acesso rápido
+            #region Acesso rápido
             mnuArCadastroLivro.Click += (sender, e) =>
             {
                 CadastroLivro cadastroLivro = new CadastroLivro();
@@ -157,24 +158,28 @@ namespace ProjectBook
                 pesquisaRapida.Show();
             };
         }
+        #endregion
 
         private async void Inicio_Activated(object sender, EventArgs e)
         {
             //Carregar informações
             livrosDb.AbrirConexaoDb();
-            if (livrosDb.DbStatus() == "Open")
+            if (livrosDb.DbStatus() != "Open") return;
+
+            List<Task<int>> quantidade = new List<Task<int>>
             {
-                int quantidadeLivros = await Task.Run(() => livrosDb.VerTodosLivros().Rows.Count);
-                lblLivrosCadastrados.Text = quantidadeLivros.ToString();
+                Task.Run(() => livrosDb.VerTodosLivros().Rows.Count),
+                Task.Run(() => clienteDb.VerTodosClientes().Rows.Count),
+                Task.Run(() => aluguelDb.VerTodosAluguel().Rows.Count)
+            };
 
-                int quantidadeCliente = await Task.Run(() => clienteDb.VerTodosClientes().Rows.Count);
-                lblClientesCadastrados.Text = quantidadeCliente.ToString();
+            int[] resultado = await Task.WhenAll(quantidade);
 
-                int quantidadeAluguel = await Task.Run(() => aluguelDb.VerTodosAluguel().Rows.Count);
-                lblAlugueisRegistrados.Text = quantidadeAluguel.ToString();
+            lblLivrosCadastrados.Text = resultado[0].ToString();
+            lblClientesCadastrados.Text = resultado[1].ToString();
+            lblAlugueisRegistrados.Text = resultado[2].ToString();
 
-                livrosDb.FechaConecxaoDb();
-            }
+            livrosDb.FechaConecxaoDb();
         }
         private void btnSairUsuario_Click(object sender, EventArgs e)
         {
@@ -187,7 +192,7 @@ namespace ProjectBook
 
         private async void Inicio_Load(object sender, EventArgs e)
         {
-            //Deixar o form inicial invisível enquanto a SplashScreen está carregando
+            //Deixar o form invisível enquanto a SplashScreen está carregando
             this.ShowInTaskbar = false;
             this.Opacity = 0;
 
