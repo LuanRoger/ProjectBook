@@ -297,6 +297,15 @@ namespace ProjectBook.Properties {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Deseja realmente sair?.
+        /// </summary>
+        internal static string deseja_realmente_sair_ {
+            get {
+                return ResourceManager.GetString("deseja_realmente_sair_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a É necessário fazer uma conexão local com o banco de dados para fazer a migração para o OneDrive..
         /// </summary>
         internal static string é_necessário_fazer_uma_conexão_local_com_o_banco_de_dados_para_fazer_a_migração_para_o_OneDrive_ {
@@ -312,6 +321,16 @@ namespace ProjectBook.Properties {
         internal static string error_MessageBox {
             get {
                 return ResourceManager.GetString("error_MessageBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Está faltando arquivos escenciais para abrir o programa, tente reistalar-lo novamente..
+        /// </summary>
+        internal static string está_faltando_arquivos_escenciais_para_abrir_o_programa__tente_reistalar_lo_novamente_ {
+            get {
+                return ResourceManager.GetString("está_faltando_arquivos_escenciais_para_abrir_o_programa__tente_reistalar_lo_novam" +
+                        "ente_", resourceCulture);
             }
         }
         
@@ -504,6 +523,16 @@ namespace ProjectBook.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap page_excel {
+            get {
+                object obj = ResourceManager.GetObject("page_excel", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap page_go {
             get {
                 object obj = ResourceManager.GetObject("page_go", resourceCulture);
@@ -600,6 +629,16 @@ namespace ProjectBook.Properties {
         internal static System.Drawing.Bitmap user {
             get {
                 object obj = ResourceManager.GetObject("user", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap user_gray {
+            get {
+                object obj = ResourceManager.GetObject("user_gray", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

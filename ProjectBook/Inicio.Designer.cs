@@ -59,26 +59,26 @@ namespace ProjectBook
             this.mnuLivro = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuNovoLivro = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuEditarLivro = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuAluguel = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuCadastrarAluguel = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuEditarAluguel = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuClientes = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCadastrarCliente = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuEditarClientes = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuAluguel = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuCadastrarAluguel = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuEditarAluguel = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuUsuario = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuPesquisar = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuTodosLivros = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuPesquisaSeletiva = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
-            this.mnuLivrosAlugados = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuPesquisarAluguel = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuTodosClientes = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuPesquisarCliente = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuLivrosAlugados = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuPesquisarAluguel = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuExcluir = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuExcluirLivro = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuExcluirAluguel = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuExcluirCliente = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuExcluirAluguel = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuConfig = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuSobre = new System.Windows.Forms.ToolStripMenuItem();
             this.btnSairUsuario = new System.Windows.Forms.Button();
@@ -97,11 +97,15 @@ namespace ProjectBook
             this.tosSugestoes = new System.Windows.Forms.ToolStrip();
             this.mnuArCadastroLivro = new System.Windows.Forms.ToolStripButton();
             this.mnuArCadastroCliente = new System.Windows.Forms.ToolStripButton();
+            this.mnuArCadastroAluguel = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuArEditarLivro = new System.Windows.Forms.ToolStripButton();
             this.mnuArEditarCliente = new System.Windows.Forms.ToolStripButton();
+            this.mnuArEditarAluguel = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuArBuscaRapida = new System.Windows.Forms.ToolStripButton();
+            this.mnuArUsuario = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuInicio.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -274,29 +278,6 @@ namespace ProjectBook
             this.mnuEditarLivro.Size = new System.Drawing.Size(130, 22);
             this.mnuEditarLivro.Text = "Editar livro";
             // 
-            // mnuAluguel
-            // 
-            this.mnuAluguel.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuCadastrarAluguel,
-            this.mnuEditarAluguel});
-            this.mnuAluguel.Name = "mnuAluguel";
-            this.mnuAluguel.Size = new System.Drawing.Size(60, 20);
-            this.mnuAluguel.Text = "Aluguel";
-            // 
-            // mnuCadastrarAluguel
-            // 
-            this.mnuCadastrarAluguel.Image = ((System.Drawing.Image)(resources.GetObject("mnuCadastrarAluguel.Image")));
-            this.mnuCadastrarAluguel.Name = "mnuCadastrarAluguel";
-            this.mnuCadastrarAluguel.Size = new System.Drawing.Size(146, 22);
-            this.mnuCadastrarAluguel.Text = "Novo aluguel";
-            // 
-            // mnuEditarAluguel
-            // 
-            this.mnuEditarAluguel.Image = ((System.Drawing.Image)(resources.GetObject("mnuEditarAluguel.Image")));
-            this.mnuEditarAluguel.Name = "mnuEditarAluguel";
-            this.mnuEditarAluguel.Size = new System.Drawing.Size(146, 22);
-            this.mnuEditarAluguel.Text = "Editar aluguel";
-            // 
             // mnuClientes
             // 
             this.mnuClientes.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -319,6 +300,29 @@ namespace ProjectBook
             this.mnuEditarClientes.Name = "mnuEditarClientes";
             this.mnuEditarClientes.Size = new System.Drawing.Size(147, 22);
             this.mnuEditarClientes.Text = "Editar clientes";
+            // 
+            // mnuAluguel
+            // 
+            this.mnuAluguel.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuCadastrarAluguel,
+            this.mnuEditarAluguel});
+            this.mnuAluguel.Name = "mnuAluguel";
+            this.mnuAluguel.Size = new System.Drawing.Size(60, 20);
+            this.mnuAluguel.Text = "Aluguel";
+            // 
+            // mnuCadastrarAluguel
+            // 
+            this.mnuCadastrarAluguel.Image = ((System.Drawing.Image)(resources.GetObject("mnuCadastrarAluguel.Image")));
+            this.mnuCadastrarAluguel.Name = "mnuCadastrarAluguel";
+            this.mnuCadastrarAluguel.Size = new System.Drawing.Size(146, 22);
+            this.mnuCadastrarAluguel.Text = "Novo aluguel";
+            // 
+            // mnuEditarAluguel
+            // 
+            this.mnuEditarAluguel.Image = ((System.Drawing.Image)(resources.GetObject("mnuEditarAluguel.Image")));
+            this.mnuEditarAluguel.Name = "mnuEditarAluguel";
+            this.mnuEditarAluguel.Size = new System.Drawing.Size(146, 22);
+            this.mnuEditarAluguel.Text = "Editar aluguel";
             // 
             // mnuUsuario
             // 
@@ -345,26 +349,45 @@ namespace ProjectBook
             // 
             this.mnuTodosLivros.Image = ((System.Drawing.Image)(resources.GetObject("mnuTodosLivros.Image")));
             this.mnuTodosLivros.Name = "mnuTodosLivros";
-            this.mnuTodosLivros.Size = new System.Drawing.Size(181, 22);
+            this.mnuTodosLivros.Size = new System.Drawing.Size(196, 22);
             this.mnuTodosLivros.Text = "Ver todos os livros";
             // 
             // mnuPesquisaSeletiva
             // 
             this.mnuPesquisaSeletiva.Image = ((System.Drawing.Image)(resources.GetObject("mnuPesquisaSeletiva.Image")));
             this.mnuPesquisaSeletiva.Name = "mnuPesquisaSeletiva";
-            this.mnuPesquisaSeletiva.Size = new System.Drawing.Size(181, 22);
+            this.mnuPesquisaSeletiva.Size = new System.Drawing.Size(196, 22);
             this.mnuPesquisaSeletiva.Text = "Pesquisar livro";
             // 
             // toolStripSeparator6
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(178, 6);
+            this.toolStripSeparator6.Size = new System.Drawing.Size(193, 6);
+            // 
+            // mnuTodosClientes
+            // 
+            this.mnuTodosClientes.Image = ((System.Drawing.Image)(resources.GetObject("mnuTodosClientes.Image")));
+            this.mnuTodosClientes.Name = "mnuTodosClientes";
+            this.mnuTodosClientes.Size = new System.Drawing.Size(196, 22);
+            this.mnuTodosClientes.Text = "Ver todos os clientes";
+            // 
+            // mnuPesquisarCliente
+            // 
+            this.mnuPesquisarCliente.Image = ((System.Drawing.Image)(resources.GetObject("mnuPesquisarCliente.Image")));
+            this.mnuPesquisarCliente.Name = "mnuPesquisarCliente";
+            this.mnuPesquisarCliente.Size = new System.Drawing.Size(196, 22);
+            this.mnuPesquisarCliente.Text = "Pesquisar cliente";
+            // 
+            // toolStripSeparator7
+            // 
+            this.toolStripSeparator7.Name = "toolStripSeparator7";
+            this.toolStripSeparator7.Size = new System.Drawing.Size(193, 6);
             // 
             // mnuLivrosAlugados
             // 
             this.mnuLivrosAlugados.Image = ((System.Drawing.Image)(resources.GetObject("mnuLivrosAlugados.Image")));
             this.mnuLivrosAlugados.Name = "mnuLivrosAlugados";
-            this.mnuLivrosAlugados.Size = new System.Drawing.Size(181, 22);
+            this.mnuLivrosAlugados.Size = new System.Drawing.Size(196, 22);
             this.mnuLivrosAlugados.Text = "Ver livros alugados";
             // 
             // mnuPesquisarAluguel
@@ -373,25 +396,6 @@ namespace ProjectBook
             this.mnuPesquisarAluguel.Name = "mnuPesquisarAluguel";
             this.mnuPesquisarAluguel.Size = new System.Drawing.Size(196, 22);
             this.mnuPesquisarAluguel.Text = "Pesquisar livro alugado";
-            // 
-            // toolStripSeparator7
-            // 
-            this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(178, 6);
-            // 
-            // mnuTodosClientes
-            // 
-            this.mnuTodosClientes.Image = ((System.Drawing.Image)(resources.GetObject("mnuTodosClientes.Image")));
-            this.mnuTodosClientes.Name = "mnuTodosClientes";
-            this.mnuTodosClientes.Size = new System.Drawing.Size(181, 22);
-            this.mnuTodosClientes.Text = "Ver todos os clientes";
-            // 
-            // mnuPesquisarCliente
-            // 
-            this.mnuPesquisarCliente.Image = ((System.Drawing.Image)(resources.GetObject("mnuPesquisarCliente.Image")));
-            this.mnuPesquisarCliente.Name = "mnuPesquisarCliente";
-            this.mnuPesquisarCliente.Size = new System.Drawing.Size(181, 22);
-            this.mnuPesquisarCliente.Text = "Pesquisar cliente";
             // 
             // mnuExcluir
             // 
@@ -410,19 +414,19 @@ namespace ProjectBook
             this.mnuExcluirLivro.Size = new System.Drawing.Size(151, 22);
             this.mnuExcluirLivro.Text = "Excluir livro";
             // 
-            // mnuExcluirAluguel
-            // 
-            this.mnuExcluirAluguel.Image = ((System.Drawing.Image)(resources.GetObject("mnuExcluirAluguel.Image")));
-            this.mnuExcluirAluguel.Name = "mnuExcluirAluguel";
-            this.mnuExcluirAluguel.Size = new System.Drawing.Size(151, 22);
-            this.mnuExcluirAluguel.Text = "Excluir aluguel";
-            // 
             // mnuExcluirCliente
             // 
             this.mnuExcluirCliente.Image = ((System.Drawing.Image)(resources.GetObject("mnuExcluirCliente.Image")));
             this.mnuExcluirCliente.Name = "mnuExcluirCliente";
             this.mnuExcluirCliente.Size = new System.Drawing.Size(151, 22);
             this.mnuExcluirCliente.Text = "Excluir cliente";
+            // 
+            // mnuExcluirAluguel
+            // 
+            this.mnuExcluirAluguel.Image = ((System.Drawing.Image)(resources.GetObject("mnuExcluirAluguel.Image")));
+            this.mnuExcluirAluguel.Name = "mnuExcluirAluguel";
+            this.mnuExcluirAluguel.Size = new System.Drawing.Size(151, 22);
+            this.mnuExcluirAluguel.Text = "Excluir aluguel";
             // 
             // mnuConfig
             // 
@@ -585,10 +589,14 @@ namespace ProjectBook
             this.tosSugestoes.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuArCadastroLivro,
             this.mnuArCadastroCliente,
+            this.mnuArCadastroAluguel,
             this.toolStripSeparator8,
             this.mnuArEditarLivro,
             this.mnuArEditarCliente,
+            this.mnuArEditarAluguel,
             this.toolStripSeparator9,
+            this.mnuArUsuario,
+            this.toolStripSeparator10,
             this.mnuArBuscaRapida});
             this.tosSugestoes.Location = new System.Drawing.Point(0, 24);
             this.tosSugestoes.Name = "tosSugestoes";
@@ -614,6 +622,15 @@ namespace ProjectBook
             this.mnuArCadastroCliente.Size = new System.Drawing.Size(23, 22);
             this.mnuArCadastroCliente.Text = "Cadastrar cliente";
             // 
+            // mnuArCadastroAluguel
+            // 
+            this.mnuArCadastroAluguel.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.mnuArCadastroAluguel.Image = ((System.Drawing.Image)(resources.GetObject("mnuArCadastroAluguel.Image")));
+            this.mnuArCadastroAluguel.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.mnuArCadastroAluguel.Name = "mnuArCadastroAluguel";
+            this.mnuArCadastroAluguel.Size = new System.Drawing.Size(23, 22);
+            this.mnuArCadastroAluguel.Text = "Cadastrar aluguel";
+            // 
             // toolStripSeparator8
             // 
             this.toolStripSeparator8.Name = "toolStripSeparator8";
@@ -637,6 +654,15 @@ namespace ProjectBook
             this.mnuArEditarCliente.Size = new System.Drawing.Size(23, 22);
             this.mnuArEditarCliente.Text = "Editar cliente";
             // 
+            // mnuArEditarAluguel
+            // 
+            this.mnuArEditarAluguel.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.mnuArEditarAluguel.Image = ((System.Drawing.Image)(resources.GetObject("mnuArEditarAluguel.Image")));
+            this.mnuArEditarAluguel.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.mnuArEditarAluguel.Name = "mnuArEditarAluguel";
+            this.mnuArEditarAluguel.Size = new System.Drawing.Size(23, 22);
+            this.mnuArEditarAluguel.Text = "Editar aluguel";
+            // 
             // toolStripSeparator9
             // 
             this.toolStripSeparator9.Name = "toolStripSeparator9";
@@ -650,6 +676,20 @@ namespace ProjectBook
             this.mnuArBuscaRapida.Name = "mnuArBuscaRapida";
             this.mnuArBuscaRapida.Size = new System.Drawing.Size(23, 22);
             this.mnuArBuscaRapida.Text = "Busca rápida";
+            // 
+            // mnuArUsuario
+            // 
+            this.mnuArUsuario.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.mnuArUsuario.Image = ((System.Drawing.Image)(resources.GetObject("mnuArUsuario.Image")));
+            this.mnuArUsuario.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.mnuArUsuario.Name = "mnuArUsuario";
+            this.mnuArUsuario.Size = new System.Drawing.Size(23, 22);
+            this.mnuArUsuario.Text = "Usuario";
+            // 
+            // toolStripSeparator10
+            // 
+            this.toolStripSeparator10.Name = "toolStripSeparator10";
+            this.toolStripSeparator10.Size = new System.Drawing.Size(6, 25);
             // 
             // Inicio
             // 
@@ -666,6 +706,7 @@ namespace ProjectBook
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Project Books";
             this.Activated += new System.EventHandler(this.Inicio_Activated);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Inicio_FormClosing);
             this.Load += new System.EventHandler(this.Inicio_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Inicio_KeyDown);
             this.mnuInicio.ResumeLayout(false);
@@ -754,6 +795,10 @@ namespace ProjectBook
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel4;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel5;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel6;
+        private System.Windows.Forms.ToolStripButton mnuArCadastroAluguel;
+        private System.Windows.Forms.ToolStripButton mnuArEditarAluguel;
+        private System.Windows.Forms.ToolStripButton mnuArUsuario;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator10;
     }
 }
 

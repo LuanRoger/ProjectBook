@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Text;
 using System.IO;
@@ -28,14 +29,16 @@ namespace ProjectBook
             try
             {
                 PrivateFontCollection privateFont = new PrivateFontCollection();
-                privateFont.AddFontFile(Application.StartupPath + @"font\\Montserrat-ExtraBold.ttf");
-                privateFont.AddFontFile(Application.StartupPath + @"font\\Montserrat-ExtraLight.ttf");
+                privateFont.AddFontFile(Application.StartupPath + @"font\Montserrat-ExtraBold.ttf");
+                privateFont.AddFontFile(Application.StartupPath + @"font\Montserrat-ExtraLight.ttf");
                 label1.Font = new Font(privateFont.Families[0], 20, FontStyle.Bold);
                 label2.Font = new Font(privateFont.Families[1], 7, FontStyle.Regular);
             }
             catch
             {
-                MessageBox.Show("Está faltando arquivos escenciais para abrir o programa, tente reistalar-lo novamente.");
+                MessageBox.Show(Resources.está_faltando_arquivos_escenciais_para_abrir_o_programa__tente_reistalar_lo_novamente_,
+                    Resources.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Process.GetCurrentProcess().Kill();
             }
 
             //Sincronização OneDrive

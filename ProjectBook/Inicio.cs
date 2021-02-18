@@ -231,5 +231,13 @@ namespace ProjectBook
                     break;
             }
         }
+
+        private void Inicio_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show(Resources.deseja_realmente_sair_, Resources.informacao_MessageBox,
+                MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+
+            e.Cancel = dialogResult != DialogResult.Yes;
+        }
     }
 }
