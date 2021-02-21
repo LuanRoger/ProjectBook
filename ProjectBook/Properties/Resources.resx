@@ -136,8 +136,14 @@
   <data name="key" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\key.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="preencherCampos" xml:space="preserve">
+    <value>Preencha todos e/ou verifique todos os campos para continuar.</value>
+  </data>
   <data name="naoExisteLivroCliente" xml:space="preserve">
     <value>O livro ou o cliente não existem.</value>
+  </data>
+  <data name="page_excel" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\img\page_excel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="client_delete" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\img\client_delete.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -175,6 +181,9 @@
   <data name="page_go" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\img\page_go.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="está_faltando_arquivos_escenciais_para_abrir_o_programa__tente_reistalar_lo_novamente_" xml:space="preserve">
+    <value>Está faltando arquivos escenciais para abrir o programa, tente reistalar-lo novamente.</value>
+  </data>
   <data name="deseja_realmente_sair_" xml:space="preserve">
     <value>Deseja realmente sair?</value>
   </data>
@@ -204,9 +213,6 @@
   </data>
   <data name="informacao_MessageBox" xml:space="preserve">
     <value>Informação</value>
-  </data>
-  <data name="informações_atualizadas" xml:space="preserve">
-    <value>Informações atualizadas</value>
   </data>
   <data name="client_go" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\img\client_go.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -271,8 +277,8 @@
   <data name="client_add" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\img\client_add.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="preencherCampos" xml:space="preserve">
-    <value>Preencha todos e/ou verifique todos os campos para continuar.</value>
+  <data name="informações_atualizadas" xml:space="preserve">
+    <value>Informações atualizadas</value>
   </data>
   <data name="confirmarExclusao" xml:space="preserve">
     <value>Deseja realmente excluir</value>
@@ -316,10 +322,7 @@
   <data name="client_edit" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\img\client_edit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="page_excel" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\assets\img\page_excel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="está_faltando_arquivos_escenciais_para_abrir_o_programa__tente_reistalar_lo_novamente_" xml:space="preserve">
-    <value>Está faltando arquivos escenciais para abrir o programa, tente reistalar-lo novamente.</value>
+  <data name="table" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\img\table.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

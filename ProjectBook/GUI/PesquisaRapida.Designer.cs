@@ -51,7 +51,7 @@ namespace ProjectBook.GUI
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(396, 28);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(401, 28);
             this.tableLayoutPanel1.TabIndex = 0;
             this.tableLayoutPanel1.CellPaint += new System.Windows.Forms.TableLayoutCellPaintEventHandler(this.tableLayoutPanel1_CellPaint);
             // 
@@ -60,7 +60,7 @@ namespace ProjectBook.GUI
             this.lblParaCaixaTexto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.lblParaCaixaTexto.AutoSize = true;
             this.lblParaCaixaTexto.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblParaCaixaTexto.Location = new System.Drawing.Point(133, 0);
+            this.lblParaCaixaTexto.Location = new System.Drawing.Point(135, 0);
             this.lblParaCaixaTexto.Name = "lblParaCaixaTexto";
             this.lblParaCaixaTexto.Size = new System.Drawing.Size(130, 28);
             this.lblParaCaixaTexto.TabIndex = 0;
@@ -69,49 +69,55 @@ namespace ProjectBook.GUI
             // rabLivroId
             // 
             this.rabLivroId.AutoSize = true;
-            this.rabLivroId.Location = new System.Drawing.Point(12, 34);
+            this.rabLivroId.Location = new System.Drawing.Point(4, 34);
             this.rabLivroId.Name = "rabLivroId";
             this.rabLivroId.Size = new System.Drawing.Size(73, 19);
             this.rabLivroId.TabIndex = 1;
             this.rabLivroId.TabStop = true;
             this.rabLivroId.Text = "Livro (ID)";
             this.rabLivroId.UseVisualStyleBackColor = true;
+            this.rabLivroId.CheckedChanged += new System.EventHandler(this.rabLivroId_CheckedChanged);
             // 
             // rabLivroNome
             // 
             this.rabLivroNome.AutoSize = true;
-            this.rabLivroNome.Location = new System.Drawing.Point(91, 34);
+            this.rabLivroNome.Location = new System.Drawing.Point(90, 34);
             this.rabLivroNome.Name = "rabLivroNome";
             this.rabLivroNome.Size = new System.Drawing.Size(95, 19);
             this.rabLivroNome.TabIndex = 2;
             this.rabLivroNome.TabStop = true;
             this.rabLivroNome.Text = "Livro (Nome)";
             this.rabLivroNome.UseVisualStyleBackColor = true;
+            this.rabLivroNome.CheckedChanged += new System.EventHandler(this.rabLivroNome_CheckedChanged);
             // 
             // rabClienteId
             // 
             this.rabClienteId.AutoSize = true;
-            this.rabClienteId.Location = new System.Drawing.Point(195, 34);
+            this.rabClienteId.Location = new System.Drawing.Point(198, 34);
             this.rabClienteId.Name = "rabClienteId";
             this.rabClienteId.Size = new System.Drawing.Size(84, 19);
             this.rabClienteId.TabIndex = 3;
             this.rabClienteId.TabStop = true;
             this.rabClienteId.Text = "Cliente (ID)";
             this.rabClienteId.UseVisualStyleBackColor = true;
+            this.rabClienteId.CheckedChanged += new System.EventHandler(this.rabClienteId_CheckedChanged);
             // 
             // rabClienteNome
             // 
             this.rabClienteNome.AutoSize = true;
-            this.rabClienteNome.Location = new System.Drawing.Point(287, 34);
+            this.rabClienteNome.Location = new System.Drawing.Point(299, 34);
             this.rabClienteNome.Name = "rabClienteNome";
             this.rabClienteNome.Size = new System.Drawing.Size(106, 19);
             this.rabClienteNome.TabIndex = 4;
             this.rabClienteNome.TabStop = true;
             this.rabClienteNome.Text = "Cliente (Nome)";
             this.rabClienteNome.UseVisualStyleBackColor = true;
+            this.rabClienteNome.CheckedChanged += new System.EventHandler(this.rabClienteNome_CheckedChanged);
             // 
             // txtPesquisaRapida
             // 
+            this.txtPesquisaRapida.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.txtPesquisaRapida.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txtPesquisaRapida.Location = new System.Drawing.Point(12, 60);
             this.txtPesquisaRapida.Name = "txtPesquisaRapida";
             this.txtPesquisaRapida.Size = new System.Drawing.Size(381, 23);
@@ -123,7 +129,7 @@ namespace ProjectBook.GUI
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.ClientSize = new System.Drawing.Size(396, 85);
+            this.ClientSize = new System.Drawing.Size(401, 84);
             this.ControlBox = false;
             this.Controls.Add(this.txtPesquisaRapida);
             this.Controls.Add(this.rabClienteNome);
@@ -132,12 +138,14 @@ namespace ProjectBook.GUI
             this.Controls.Add(this.rabLivroId);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.KeyPreview = true;
             this.Name = "PesquisaRapida";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Deactivate += new System.EventHandler(this.PesquisaRapida_Deactivate);
             this.Load += new System.EventHandler(this.PesquisaRapida_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PesquisaRapida_KeyDown);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);

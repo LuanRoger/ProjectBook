@@ -60,5 +60,56 @@ namespace ProjectBook.GUI
             listaPesquisa.Show();
             listaPesquisa.BringToFront();
         }
+
+        #region CheckChange
+        private void rabLivroNome_CheckedChanged(object sender, EventArgs e)
+        {
+            txtPesquisaRapida.AutoCompleteMode = AutoCompleteMode.Suggest;
+
+            AutoCompleteStringCollection livroSugestao = new AutoCompleteStringCollection();
+            livrosDb.AbrirConexaoDb();
+            foreach (DataRow livro in livrosDb.VerTodosLivros().Rows) livroSugestao.Add(livro[1].ToString());
+            livrosDb.FechaConecxaoDb();
+
+            txtPesquisaRapida.AutoCompleteCustomSource = livroSugestao;
+        }
+        private void rabClienteNome_CheckedChanged(object sender, EventArgs e)
+        {
+            txtPesquisaRapida.AutoCompleteMode = AutoCompleteMode.Suggest;
+
+            AutoCompleteStringCollection clienteSugestao = new AutoCompleteStringCollection();
+            clienteDb.AbrirConexaoDb();
+            foreach (DataRow cliente in clienteDb.VerTodosClientes().Rows) clienteSugestao.Add(cliente[1].ToString());
+            clienteDb.FechaConecxaoDb();
+
+            txtPesquisaRapida.AutoCompleteCustomSource = clienteSugestao;
+        }
+        private void rabLivroId_CheckedChanged(object sender, EventArgs e) => RemoverSugestao();
+        private void rabClienteId_CheckedChanged(object sender, EventArgs e) => RemoverSugestao();
+        private void RemoverSugestao() => txtPesquisaRapida.AutoCompleteMode = AutoCompleteMode.None;
+        #endregion
+
+        private void PesquisaRapida_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.NumPad1:
+                case Keys.D1:
+                    rabLivroId.Checked = true;
+                    break;
+                case Keys.NumPad2:
+                case Keys.D2:
+                    rabLivroNome.Checked = true;
+                    break;
+                case Keys.NumPad3:
+                case Keys.D3:
+                    rabClienteId.Checked = true;
+                    break;
+                case Keys.NumPad4:
+                case Keys.D4:
+                    rabClienteNome.Checked = true;
+                    break;
+            }
+        }
     }
 }

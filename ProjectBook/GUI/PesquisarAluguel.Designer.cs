@@ -29,6 +29,7 @@ namespace ProjectBook.GUI
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PesquisarAluguel));
             this.label1 = new System.Windows.Forms.Label();
             this.txtBuscarAluguel = new System.Windows.Forms.TextBox();
@@ -51,14 +52,22 @@ namespace ProjectBook.GUI
             this.btnLimparPequisaAluguel = new System.Windows.Forms.Button();
             this.rabTituloLivro = new System.Windows.Forms.RadioButton();
             this.rabNomeCliente = new System.Windows.Forms.RadioButton();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.mnuRelatorio = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuVerLivroAlugado = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuVerLivrosDevolvidos = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuVerLivrosAtasados = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnVerEmRelatorio = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(5, 35);
+            this.label1.Location = new System.Drawing.Point(5, 53);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(45, 15);
             this.label1.TabIndex = 0;
@@ -66,9 +75,9 @@ namespace ProjectBook.GUI
             // 
             // txtBuscarAluguel
             // 
-            this.txtBuscarAluguel.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.txtBuscarAluguel.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.txtBuscarAluguel.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.txtBuscarAluguel.Location = new System.Drawing.Point(5, 54);
+            this.txtBuscarAluguel.Location = new System.Drawing.Point(5, 72);
             this.txtBuscarAluguel.Name = "txtBuscarAluguel";
             this.txtBuscarAluguel.Size = new System.Drawing.Size(180, 23);
             this.txtBuscarAluguel.TabIndex = 1;
@@ -78,7 +87,7 @@ namespace ProjectBook.GUI
             this.btnBuscarClientePesquisaAluguel.FlatAppearance.BorderSize = 0;
             this.btnBuscarClientePesquisaAluguel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBuscarClientePesquisaAluguel.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscarClientePesquisaAluguel.Image")));
-            this.btnBuscarClientePesquisaAluguel.Location = new System.Drawing.Point(191, 54);
+            this.btnBuscarClientePesquisaAluguel.Location = new System.Drawing.Point(191, 72);
             this.btnBuscarClientePesquisaAluguel.Name = "btnBuscarClientePesquisaAluguel";
             this.btnBuscarClientePesquisaAluguel.Size = new System.Drawing.Size(26, 23);
             this.btnBuscarClientePesquisaAluguel.TabIndex = 2;
@@ -93,7 +102,7 @@ namespace ProjectBook.GUI
             this.groupBox1.Controls.Add(this.txtAtraso);
             this.groupBox1.Controls.Add(this.txtAVencer);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Location = new System.Drawing.Point(223, 13);
+            this.groupBox1.Location = new System.Drawing.Point(252, 31);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(160, 91);
             this.groupBox1.TabIndex = 5;
@@ -164,9 +173,9 @@ namespace ProjectBook.GUI
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.txtResultadoCliete);
             this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Location = new System.Drawing.Point(13, 110);
+            this.groupBox2.Location = new System.Drawing.Point(5, 128);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(370, 159);
+            this.groupBox2.Size = new System.Drawing.Size(407, 159);
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Informações";
@@ -193,7 +202,7 @@ namespace ProjectBook.GUI
             this.txtResultadoLivro.Enabled = false;
             this.txtResultadoLivro.Location = new System.Drawing.Point(7, 91);
             this.txtResultadoLivro.Name = "txtResultadoLivro";
-            this.txtResultadoLivro.Size = new System.Drawing.Size(357, 23);
+            this.txtResultadoLivro.Size = new System.Drawing.Size(394, 23);
             this.txtResultadoLivro.TabIndex = 3;
             // 
             // label8
@@ -210,7 +219,7 @@ namespace ProjectBook.GUI
             this.txtResultadoCliete.Enabled = false;
             this.txtResultadoCliete.Location = new System.Drawing.Point(7, 42);
             this.txtResultadoCliete.Name = "txtResultadoCliete";
-            this.txtResultadoCliete.Size = new System.Drawing.Size(357, 23);
+            this.txtResultadoCliete.Size = new System.Drawing.Size(394, 23);
             this.txtResultadoCliete.TabIndex = 1;
             // 
             // label7
@@ -224,7 +233,7 @@ namespace ProjectBook.GUI
             // 
             // btnCancelarPesquisaAluguel
             // 
-            this.btnCancelarPesquisaAluguel.Location = new System.Drawing.Point(318, 286);
+            this.btnCancelarPesquisaAluguel.Location = new System.Drawing.Point(337, 302);
             this.btnCancelarPesquisaAluguel.Name = "btnCancelarPesquisaAluguel";
             this.btnCancelarPesquisaAluguel.Size = new System.Drawing.Size(75, 23);
             this.btnCancelarPesquisaAluguel.TabIndex = 7;
@@ -234,7 +243,7 @@ namespace ProjectBook.GUI
             // 
             // btnLimparPequisaAluguel
             // 
-            this.btnLimparPequisaAluguel.Location = new System.Drawing.Point(237, 286);
+            this.btnLimparPequisaAluguel.Location = new System.Drawing.Point(259, 302);
             this.btnLimparPequisaAluguel.Name = "btnLimparPequisaAluguel";
             this.btnLimparPequisaAluguel.Size = new System.Drawing.Size(75, 23);
             this.btnLimparPequisaAluguel.TabIndex = 8;
@@ -245,7 +254,7 @@ namespace ProjectBook.GUI
             // rabTituloLivro
             // 
             this.rabTituloLivro.AutoSize = true;
-            this.rabTituloLivro.Location = new System.Drawing.Point(5, 12);
+            this.rabTituloLivro.Location = new System.Drawing.Point(5, 31);
             this.rabTituloLivro.Name = "rabTituloLivro";
             this.rabTituloLivro.Size = new System.Drawing.Size(98, 19);
             this.rabTituloLivro.TabIndex = 9;
@@ -257,7 +266,7 @@ namespace ProjectBook.GUI
             // rabNomeCliente
             // 
             this.rabNomeCliente.AutoSize = true;
-            this.rabNomeCliente.Location = new System.Drawing.Point(109, 13);
+            this.rabNomeCliente.Location = new System.Drawing.Point(133, 31);
             this.rabNomeCliente.Name = "rabNomeCliente";
             this.rabNomeCliente.Size = new System.Drawing.Size(113, 19);
             this.rabNomeCliente.TabIndex = 10;
@@ -266,11 +275,67 @@ namespace ProjectBook.GUI
             this.rabNomeCliente.UseVisualStyleBackColor = true;
             this.rabNomeCliente.CheckedChanged += new System.EventHandler(this.rabNomeCliente_CheckedChanged);
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuRelatorio});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(421, 24);
+            this.menuStrip1.TabIndex = 11;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // mnuRelatorio
+            // 
+            this.mnuRelatorio.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuVerLivroAlugado,
+            this.mnuVerLivrosDevolvidos,
+            this.mnuVerLivrosAtasados});
+            this.mnuRelatorio.Name = "mnuRelatorio";
+            this.mnuRelatorio.Size = new System.Drawing.Size(66, 20);
+            this.mnuRelatorio.Text = "Relatório";
+            // 
+            // mnuVerLivroAlugado
+            // 
+            this.mnuVerLivroAlugado.Name = "mnuVerLivroAlugado";
+            this.mnuVerLivroAlugado.Size = new System.Drawing.Size(181, 22);
+            this.mnuVerLivroAlugado.Text = "Ver livros alugados";
+            // 
+            // mnuVerLivrosDevolvidos
+            // 
+            this.mnuVerLivrosDevolvidos.Name = "mnuVerLivrosDevolvidos";
+            this.mnuVerLivrosDevolvidos.Size = new System.Drawing.Size(181, 22);
+            this.mnuVerLivrosDevolvidos.Text = "Ver livros devolvidos";
+            // 
+            // mnuVerLivrosAtasados
+            // 
+            this.mnuVerLivrosAtasados.Name = "mnuVerLivrosAtasados";
+            this.mnuVerLivrosAtasados.Size = new System.Drawing.Size(181, 22);
+            this.mnuVerLivrosAtasados.Text = "Ver livros atrassados";
+            // 
+            // btnVerEmRelatorio
+            // 
+            this.btnVerEmRelatorio.FlatAppearance.BorderSize = 0;
+            this.btnVerEmRelatorio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVerEmRelatorio.Image = ((System.Drawing.Image)(resources.GetObject("btnVerEmRelatorio.Image")));
+            this.btnVerEmRelatorio.Location = new System.Drawing.Point(223, 70);
+            this.btnVerEmRelatorio.Name = "btnVerEmRelatorio";
+            this.btnVerEmRelatorio.Size = new System.Drawing.Size(23, 26);
+            this.btnVerEmRelatorio.TabIndex = 12;
+            this.toolTip1.SetToolTip(this.btnVerEmRelatorio, "Mostra uma tabela com mais informações sobre a pesquisa.");
+            this.btnVerEmRelatorio.UseVisualStyleBackColor = true;
+            this.btnVerEmRelatorio.Click += new System.EventHandler(this.btnVerEmRelatorio_Click);
+            // 
+            // toolTip1
+            // 
+            this.toolTip1.ToolTipTitle = "Ver detalhes";
+            // 
             // PesquisarAluguel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(405, 321);
+            this.ClientSize = new System.Drawing.Size(421, 334);
+            this.Controls.Add(this.btnVerEmRelatorio);
             this.Controls.Add(this.rabNomeCliente);
             this.Controls.Add(this.rabTituloLivro);
             this.Controls.Add(this.btnLimparPequisaAluguel);
@@ -280,6 +345,7 @@ namespace ProjectBook.GUI
             this.Controls.Add(this.btnBuscarClientePesquisaAluguel);
             this.Controls.Add(this.txtBuscarAluguel);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "PesquisarAluguel";
@@ -290,6 +356,8 @@ namespace ProjectBook.GUI
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -318,5 +386,12 @@ namespace ProjectBook.GUI
         private System.Windows.Forms.Button btnLimparPequisaAluguel;
         private System.Windows.Forms.RadioButton rabTituloLivro;
         private System.Windows.Forms.RadioButton rabNomeCliente;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem mnuRelatorio;
+        private System.Windows.Forms.ToolStripMenuItem mnuVerLivroAlugado;
+        private System.Windows.Forms.ToolStripMenuItem mnuVerLivrosDevolvidos;
+        private System.Windows.Forms.ToolStripMenuItem mnuVerLivrosAtasados;
+        private System.Windows.Forms.Button btnVerEmRelatorio;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

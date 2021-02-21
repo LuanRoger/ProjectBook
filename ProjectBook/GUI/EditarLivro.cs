@@ -19,7 +19,7 @@ namespace ProjectBook.GUI
             ColocarGeneros();
         }
 
-        #region Configurar sugestões
+        #region CheckChange
         private void rabEditarTitulo_CheckedChanged(object sender, EventArgs e)
         {
             AutoCompleteStringCollection tituloSugestao = new AutoCompleteStringCollection();

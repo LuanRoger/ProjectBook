@@ -1,4 +1,5 @@
-﻿using ProjectBook.Livros;
+﻿using System;
+using ProjectBook.Livros;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
@@ -108,6 +109,32 @@ namespace ProjectBook.DB.SqlServerExpress
             try
             {
                 SqlDataAdapter adapter = new SqlDataAdapter($"SELECT * FROM Aluguel WHERE Status = \'{Tipos.StatusAluguel.Alugado}\'", connection);
+                adapter.Fill(table);
+            }
+            catch (SqlException e) { MessageBox.Show(e.Message, Resources.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); }
+
+            return table;
+        }
+
+        public DataTable PegarLivroDevolvido()
+        {
+            DataTable table = new DataTable();
+            try
+            {
+                SqlDataAdapter adapter = new SqlDataAdapter($"SELECT * FROM Aluguel WHERE Status = \'{Tipos.StatusAluguel.Devolvido}\'", connection);
+                adapter.Fill(table);
+            }
+            catch (SqlException e) { MessageBox.Show(e.Message, Resources.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); }
+
+            return table;
+        }
+
+        public DataTable PegarLivroAtrassado()
+        {
+            DataTable table = new DataTable();
+            try
+            {
+                SqlDataAdapter adapter = new SqlDataAdapter($"SELECT * FROM Aluguel WHERE Status = \'{Tipos.StatusAluguel.Atrssado}\'", connection);
                 adapter.Fill(table);
             }
             catch (SqlException e) { MessageBox.Show(e.Message, Resources.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); }
