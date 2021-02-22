@@ -103,9 +103,9 @@ namespace ProjectBook.GUI
             this.mnuArEditarCliente = new System.Windows.Forms.ToolStripButton();
             this.mnuArEditarAluguel = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
-            this.mnuArBuscaRapida = new System.Windows.Forms.ToolStripButton();
             this.mnuArUsuario = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuArBuscaRapida = new System.Windows.Forms.ToolStripButton();
             this.mnuInicio.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -668,15 +668,6 @@ namespace ProjectBook.GUI
             this.toolStripSeparator9.Name = "toolStripSeparator9";
             this.toolStripSeparator9.Size = new System.Drawing.Size(6, 25);
             // 
-            // mnuArBuscaRapida
-            // 
-            this.mnuArBuscaRapida.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.mnuArBuscaRapida.Image = ((System.Drawing.Image)(resources.GetObject("mnuArBuscaRapida.Image")));
-            this.mnuArBuscaRapida.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.mnuArBuscaRapida.Name = "mnuArBuscaRapida";
-            this.mnuArBuscaRapida.Size = new System.Drawing.Size(23, 22);
-            this.mnuArBuscaRapida.Text = "Busca rápida";
-            // 
             // mnuArUsuario
             // 
             this.mnuArUsuario.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -691,6 +682,15 @@ namespace ProjectBook.GUI
             this.toolStripSeparator10.Name = "toolStripSeparator10";
             this.toolStripSeparator10.Size = new System.Drawing.Size(6, 25);
             // 
+            // mnuArBuscaRapida
+            // 
+            this.mnuArBuscaRapida.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.mnuArBuscaRapida.Image = ((System.Drawing.Image)(resources.GetObject("mnuArBuscaRapida.Image")));
+            this.mnuArBuscaRapida.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.mnuArBuscaRapida.Name = "mnuArBuscaRapida";
+            this.mnuArBuscaRapida.Size = new System.Drawing.Size(23, 22);
+            this.mnuArBuscaRapida.Text = "Busca rápida";
+            // 
             // Inicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -704,7 +704,7 @@ namespace ProjectBook.GUI
             this.KeyPreview = true;
             this.Name = "Inicio";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Project Books";
+            this.Text = "Project Book";
             this.Activated += new System.EventHandler(this.Inicio_Activated);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Inicio_FormClosing);
             this.Load += new System.EventHandler(this.Inicio_Load);

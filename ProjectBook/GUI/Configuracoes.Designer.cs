@@ -44,6 +44,7 @@ namespace ProjectBook.GUI
             this.chbFormatarLivro = new System.Windows.Forms.CheckBox();
             this.chbFormatarCliente = new System.Windows.Forms.CheckBox();
             this.lblMars = new System.Windows.Forms.Label();
+            this.btnPersonalizarImpressao = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.gpbBancoDados.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -51,10 +52,11 @@ namespace ProjectBook.GUI
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnPersonalizarImpressao);
             this.groupBox1.Controls.Add(this.chbVisualizarImpressao);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(147, 52);
+            this.groupBox1.Size = new System.Drawing.Size(147, 79);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Impressão";
@@ -71,7 +73,7 @@ namespace ProjectBook.GUI
             // 
             // btnSalvarConfiguracoes
             // 
-            this.btnSalvarConfiguracoes.Location = new System.Drawing.Point(390, 182);
+            this.btnSalvarConfiguracoes.Location = new System.Drawing.Point(390, 209);
             this.btnSalvarConfiguracoes.Name = "btnSalvarConfiguracoes";
             this.btnSalvarConfiguracoes.Size = new System.Drawing.Size(75, 23);
             this.btnSalvarConfiguracoes.TabIndex = 1;
@@ -88,7 +90,7 @@ namespace ProjectBook.GUI
             this.gpbBancoDados.Controls.Add(this.txtStringConexaoCaminhoDb);
             this.gpbBancoDados.Controls.Add(this.rabSqlServerExpress);
             this.gpbBancoDados.Enabled = false;
-            this.gpbBancoDados.Location = new System.Drawing.Point(12, 70);
+            this.gpbBancoDados.Location = new System.Drawing.Point(12, 97);
             this.gpbBancoDados.Name = "gpbBancoDados";
             this.gpbBancoDados.Size = new System.Drawing.Size(453, 105);
             this.gpbBancoDados.TabIndex = 2;
@@ -194,18 +196,28 @@ namespace ProjectBook.GUI
             this.lblMars.AutoSize = true;
             this.lblMars.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblMars.ForeColor = System.Drawing.Color.Red;
-            this.lblMars.Location = new System.Drawing.Point(12, 182);
+            this.lblMars.Location = new System.Drawing.Point(12, 209);
             this.lblMars.Name = "lblMars";
             this.lblMars.Size = new System.Drawing.Size(271, 15);
             this.lblMars.TabIndex = 4;
             this.lblMars.Text = "Considere ativar o MARS para evitar problemas.";
             this.lblMars.Visible = false;
             // 
+            // btnPersonalizarImpressao
+            // 
+            this.btnPersonalizarImpressao.Location = new System.Drawing.Point(4, 47);
+            this.btnPersonalizarImpressao.Name = "btnPersonalizarImpressao";
+            this.btnPersonalizarImpressao.Size = new System.Drawing.Size(140, 23);
+            this.btnPersonalizarImpressao.TabIndex = 2;
+            this.btnPersonalizarImpressao.Text = "Personalizar impressão";
+            this.btnPersonalizarImpressao.UseVisualStyleBackColor = true;
+            this.btnPersonalizarImpressao.Click += new System.EventHandler(this.btnPersonalizarImpressao_Click);
+            // 
             // Configuracoes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(477, 217);
+            this.ClientSize = new System.Drawing.Size(477, 240);
             this.Controls.Add(this.lblMars);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.gpbBancoDados);
@@ -245,5 +257,6 @@ namespace ProjectBook.GUI
         private System.Windows.Forms.Button btnSelecionarArquivoDb;
         private System.Windows.Forms.RadioButton rabOneDrive;
         private System.Windows.Forms.Label lblMars;
+        private System.Windows.Forms.Button btnPersonalizarImpressao;
     }
 }

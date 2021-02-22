@@ -170,5 +170,11 @@ namespace ProjectBook.GUI
             txtStringConexaoCaminhoDb.Text =
                 $@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={caminho.FileName};Integrated Security=True;MultipleActiveResultSets=True";
         }
+
+        private void btnPersonalizarImpressao_Click(object sender, EventArgs e)
+        {
+            PersonalizarImpressao personalizarImpressao = new PersonalizarImpressao();
+            personalizarImpressao.Show();
+        }
     }
 }

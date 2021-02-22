@@ -39,15 +39,7 @@ namespace ProjectBook.GUI
             mnuImprimirLista.Click += (sender, e) =>
             {
                 Imprimir imprimir = new Imprimir();
-                switch (ConfigurationManager.AppSettings["visualizarImpressao"])
-                {
-                    case "0":
-                        imprimir.ImprimirSemVisualizacaoModelo(dgvLista);
-                        break;
-                    case "1":
-                        imprimir.ImprimirModelo(dgvLista);
-                        break;
-                }
+                imprimir.ImprimirModelo(dgvLista);
             };
             mnuExportarExcel.Click += (sender, e) => throw new NotImplementedException();
         }

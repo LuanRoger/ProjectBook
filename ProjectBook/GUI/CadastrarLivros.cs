@@ -18,7 +18,6 @@ namespace ProjectBook.GUI
 
         private void btnSalvarLivro_Click(object sender, EventArgs e)
         {
-            Livro livro;
 
             if (Verificadores.VerificarStrings(txtCodigoLivro.Text))
             {
@@ -32,6 +31,7 @@ namespace ProjectBook.GUI
                 txtCodigoLivro.Text = codigo.ToString();
             }
 
+            Livro livro;
             //Aplicar a formatação na instânciação do cliente
             if (ConfigurationManager.AppSettings["formatarLivro"] == "1")
             {

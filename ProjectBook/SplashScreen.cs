@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Configuration;
 using System.Data;
 using System.Diagnostics;
@@ -8,8 +6,6 @@ using System.Drawing;
 using System.Drawing.Text;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using ProjectBook.DB.SqlServerExpress;
 using ProjectBook.GUI;
@@ -112,7 +108,7 @@ namespace ProjectBook
                 //Criar novo string de conexão
                 Configuracoes.config.ConnectionStrings.ConnectionStrings["SqlConnectionString"]
                         .ConnectionString =
-                    $@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={diretorioDbOneDrive};Integrated Security=True";
+                    $@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={diretorioDbOneDrive};Integrated Security=True;MultipleActiveResultSets=True";
 
                 Configuracoes.config.AppSettings.Settings["pastaDb"].Value = pastaAplicacaoOneDrive;
                 Configuracoes.config.Save();

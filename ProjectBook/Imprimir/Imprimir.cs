@@ -1,7 +1,9 @@
 ﻿using DGVPrinterHelper;
 using System;
+using System.Configuration;
 using System.Drawing;
 using System.Windows.Forms;
+using ProjectBook.GUI;
 
 namespace ProjectBook
 {
@@ -9,41 +11,30 @@ namespace ProjectBook
     {
         private DGVPrinter printer = new DGVPrinter();
 
-        public void ImprimirSemVisualizacaoModelo(DataGridView dataGrid)
-        {
-            try { dataGrid.Columns.Remove(dataGrid.Columns["ID"]); } catch { /* Continuar */ } //Remover coluna ID
-
-            printer.Title = "Relatorio de livros";
-            printer.TitleAlignment = StringAlignment.Center;
-            printer.TitleFont = new Font("Arial", 18, FontStyle.Bold, GraphicsUnit.Point);
-            printer.SubTitleAlignment = StringAlignment.Center;
-            printer.SubTitleFont = new Font("Arial", 12, FontStyle.Bold, GraphicsUnit.Point);
-            printer.SubTitleFormatFlags = StringFormatFlags.LineLimit | StringFormatFlags.NoClip;
-            printer.PageNumberInHeader = false;
-            printer.PorportionalColumns = true;
-            printer.PageNumbers = true;
-            printer.HeaderCellAlignment = StringAlignment.Near;
-            printer.Footer = $"{DateTime.Now}";
-            printer.FooterFont = new Font("Arial", 10, FontStyle.Bold, GraphicsUnit.Point);
-            printer.PrintDataGridView(dataGrid);
-        }
         public void ImprimirModelo(DataGridView dataGrid)
         {
-            try { dataGrid.Columns.Remove(dataGrid.Columns["ID"]); } catch { /* Continuar */ } //Remover coluna ID
+            if (ConfigurationManager.AppSettings["ExibirID"] == "0") 
+                try { dataGrid.Columns.Remove(dataGrid.Columns["ID"]); } catch { /* Continuar */ } //Remover coluna ID
 
-            printer.Title = "Relatorio de livros";
+            printer.Title = ConfigurationManager.AppSettings["TituloFolha"];
             printer.TitleAlignment = StringAlignment.Center;
             printer.TitleFont = new Font("Arial", 18, FontStyle.Bold, GraphicsUnit.Point);
+
+            printer.SubTitle = ConfigurationManager.AppSettings["SubtituloFolha"];
             printer.SubTitleAlignment = StringAlignment.Center;
             printer.SubTitleFont = new Font("Arial", 12, FontStyle.Bold, GraphicsUnit.Point);
             printer.SubTitleFormatFlags = StringFormatFlags.LineLimit | StringFormatFlags.NoClip;
+            
+            printer.Footer = ConfigurationManager.AppSettings["Rodape"];
+            printer.FooterFont = new Font("Arial", 10, FontStyle.Bold, GraphicsUnit.Point);
+
+            printer.PageNumbers = ConfigurationManager.AppSettings["NumeroPaginas"] == "1";
+            printer.HeaderCellAlignment = StringAlignment.Near;
             printer.PageNumberInHeader = false;
             printer.PorportionalColumns = true;
-            printer.PageNumbers = true;
-            printer.HeaderCellAlignment = StringAlignment.Near;
-            printer.Footer = $"{DateTime.Now}";
-            printer.FooterFont = new Font("Arial", 10, FontStyle.Bold, GraphicsUnit.Point);
-            printer.PrintPreviewDataGridView(dataGrid);
+
+            if (ConfigurationManager.AppSettings["visualizarImpressao"] == "0") printer.PrintDataGridView(dataGrid);
+            else printer.PrintPreviewDataGridView(dataGrid);
         }
 
     }

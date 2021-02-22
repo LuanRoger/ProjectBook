@@ -7,6 +7,7 @@ using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ProjectBook.DB.SqlServerExpress;
+using ProjectBook.Livros;
 using ProjectBook.Properties;
 
 namespace ProjectBook.GUI
@@ -139,6 +140,11 @@ namespace ProjectBook.GUI
                 CadastrarClientes cadastrarClientes = new CadastrarClientes();
                 cadastrarClientes.Show();
             };
+            mnuArCadastroAluguel.Click += (sender, e) =>
+            {
+                CadastrarAluguel cadastrarAluguel = new CadastrarAluguel();
+                cadastrarAluguel.Show();
+            };
             mnuArEditarLivro.Click += (sender, e) =>
             {
                 EditarLivro editarLivro = new EditarLivro();
@@ -148,6 +154,16 @@ namespace ProjectBook.GUI
             {
                 EditarCliente editarCliente = new EditarCliente();
                 editarCliente.Show();
+            };
+            mnuArEditarAluguel.Click += (sender, e) =>
+            {
+                EditarAluguel editarAluguel = new EditarAluguel();
+                editarAluguel.Show();
+            };
+            mnuArUsuario.Click += (sender, e) =>
+            {
+                GerenciarUsuario gerenciarUsuario = new GerenciarUsuario();
+                gerenciarUsuario.Show();
             };
             mnuArBuscaRapida.Click += (sender, e) =>
             {

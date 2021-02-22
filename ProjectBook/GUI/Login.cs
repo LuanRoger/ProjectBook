@@ -40,7 +40,7 @@ namespace ProjectBook.GUI
 
             Configuracoes.config.AppSettings.Settings["usuarioLogado"].Value = txtLoginUsuario.Text;
             Configuracoes.config.AppSettings.Settings["tipoUsuario"].Value = infoUsuario.Rows[0][3].ToString();
-            Configuracoes.config.Save();
+            Configuracoes.config.Save(ConfigurationSaveMode.Modified);
             ConfigurationManager.RefreshSection("appSettings");
             
             Process.Start(Application.StartupPath + Assembly.GetExecutingAssembly().GetName().Name + ".exe");
