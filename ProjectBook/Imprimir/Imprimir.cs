@@ -1,9 +1,7 @@
 ﻿using DGVPrinterHelper;
-using System;
 using System.Configuration;
 using System.Drawing;
 using System.Windows.Forms;
-using ProjectBook.GUI;
 
 namespace ProjectBook
 {
