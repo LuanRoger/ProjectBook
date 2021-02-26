@@ -53,10 +53,12 @@ e o  [Microsoft Visual C++ Redistribuível](https://support.microsoft.com/pt-br/
 Depois é só executar o programa normalmente.
 
 ### Configurando
-Logo quando abrir o programa verá um erro pedindo para que inicie a String de conexão,
+Logo quando abrir o programa verá um erro, pedindo para que inicie a String de conexão,
 para isso baixe os dois arquivos em [DbModel](./DbModel) e coloque em qualquer pasta de seu computador e indique o caminho.
 Caso esteja com um servidor local apenas coloque a String de conexão do seu servidor,
 mas lembre que você deve anexar os dois arquivos de [DbModel](./DbModel) em sua instância do SQL Server.
+
+Se preferir baixe o [arquivo SQL](./DbModel/ModeloSQL.sql) e execute em seu banco de dados para criar todas as tabelas de forma que o programa consiga ler sem problemas.
 
 ## OneDrive
 <p>
