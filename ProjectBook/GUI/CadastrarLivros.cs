@@ -10,6 +10,7 @@ namespace ProjectBook.GUI
     public partial class CadastroLivro : Form
     {
         LivrosDb db = new LivrosDb();
+
         public CadastroLivro()
         {
             InitializeComponent();
@@ -18,8 +19,8 @@ namespace ProjectBook.GUI
 
         private void btnSalvarLivro_Click(object sender, EventArgs e)
         {
-
-            if (Verificadores.VerificarStrings(txtCodigoLivro.Text))
+            string codigoTxt = txtCodigoLivro.Text;
+            if (Verificadores.VerificarStrings(codigoTxt))
             {
                 int codigo = new Random().Next(0, 999);
 
@@ -29,6 +30,14 @@ namespace ProjectBook.GUI
                 }
 
                 txtCodigoLivro.Text = codigo.ToString();
+            }
+            else
+            {
+                if(Verificadores.VerificarIdLivro(Convert.ToInt32(codigoTxt))) 
+                {
+                    MessageBox.Show("O código do livro digitado já existe.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
             }
 
             Livro livro;
@@ -53,9 +62,7 @@ namespace ProjectBook.GUI
                 return;
             }
 
-            db.AbrirConexaoDb();
             db.AdicionarLivro(livro);
-            db.FechaConecxaoDb();
             
             ColocarGeneros();
             LimparCamposCadastro();
@@ -67,9 +74,7 @@ namespace ProjectBook.GUI
         private void ColocarGeneros()
         {
             //Colocar todos os generos no combobox
-            db.AbrirConexaoDb();
             foreach(DataRow itens in db.PegarGeneros().Rows) cmdGenero.Items.Add(itens["Genero"]);
-            db.FechaConecxaoDb();
         }
         private void LimparCamposCadastro()
         {

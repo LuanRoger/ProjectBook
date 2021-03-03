@@ -51,6 +51,7 @@ namespace ProjectBook
             livrosDb.AbrirConexaoDb();
             if (livrosDb.DbStatus() == "Open")
             {
+                livrosDb.FechaConecxaoDb();
                 //Atualizar Status do aluguel
                 lblStatusCarregamento.Text = Resources.atualizando_banco_de_dados_splashscreen;
                 if (!String.IsNullOrEmpty(ConfigurationManager.AppSettings["usuarioLogado"])) AtualizarAtrasso();
@@ -59,7 +60,6 @@ namespace ProjectBook
                 lblStatusCarregamento.Text = Resources.realizando_verificações_de_segurança_splashscreen;
                 UsuarioLogado();
             }
-            livrosDb.FechaConecxaoDb();
         }
         private void UsuarioLogado()
         {

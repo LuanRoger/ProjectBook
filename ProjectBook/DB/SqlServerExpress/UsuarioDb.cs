@@ -20,7 +20,11 @@ namespace ProjectBook.DB.SqlServerExpress
             {
                 command.CommandText = "INSERT INTO Usuarios(Usuario, Senha, Tipo) " +
                                       "VALUES(@usuario, @senha, @tipo)";
+
+                AbrirConexaoDb();
                 command.ExecuteNonQuery();
+                FechaConecxaoDb();
+
                 command.Dispose();
 
                 MessageBox.Show(Resources.usuário_registrado_com_sucesso, Resources.concluido_MessageBox,
@@ -31,12 +35,15 @@ namespace ProjectBook.DB.SqlServerExpress
         }
         public void DeletarUsuarioId(string id)
         {
-            SqlCommand command = new SqlCommand {Connection = connection};
-
+            SqlCommand command = new SqlCommand { Connection = connection };
             try
             {
                 command.CommandText = $"DELETE FROM Usuarios WHERE ID = {id}";
+
+                AbrirConexaoDb();
                 command.ExecuteNonQuery();
+                FechaConecxaoDb();
+
                 command.Dispose();
 
                 MessageBox.Show(Resources.usuário_deletado_com_sucesso, Resources.concluido_MessageBox,
@@ -51,10 +58,11 @@ namespace ProjectBook.DB.SqlServerExpress
         public DataTable LoginUsuario(string usuario, string senha)
         {
             DataTable dataTable = new DataTable();
-            
             try
             {
+                AbrirConexaoDb();
                 SqlDataAdapter adapter = new SqlDataAdapter($"SELECT * FROM Usuarios WHERE Usuario = \'{usuario}\' AND Senha = \'{senha}\'", connection);
+                FechaConecxaoDb();
                 adapter.Fill(dataTable);
             }
             catch (SqlException e){ MessageBox.Show(e.Message, Resources.error_MessageBox,
@@ -73,7 +81,11 @@ namespace ProjectBook.DB.SqlServerExpress
             try
             {
                 command.CommandText = $"UPDATE Usuarios SET Usuario = @usuario, Senha = @senha, Tipo = @tipo WHERE ID = {id}";
+
+                AbrirConexaoDb();
                 command.ExecuteNonQuery();
+                FechaConecxaoDb();
+
                 command.Dispose();
 
                 MessageBox.Show(Resources.informações_atualizadas, Resources.concluido_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -89,7 +101,9 @@ namespace ProjectBook.DB.SqlServerExpress
 
             try
             {
+                AbrirConexaoDb();
                 SqlDataAdapter adapter = new SqlDataAdapter($"SELECT * FROM Usuarios WHERE ID = {id}", connection);
+                FechaConecxaoDb();
                 adapter.Fill(table);
             }
             catch (SqlException e) { MessageBox.Show(e.Message, Resources.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); }
@@ -101,7 +115,9 @@ namespace ProjectBook.DB.SqlServerExpress
             DataTable table = new DataTable();
             try
             {
+                AbrirConexaoDb();
                 SqlDataAdapter adapter = new SqlDataAdapter($"SELECT * FROM Usuarios WHERE Usuario = \'{nomeUsuario}\'", connection);
+                FechaConecxaoDb();
                 adapter.Fill(table);
             }
             catch (SqlException e) { MessageBox.Show(e.Message, Resources.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); }

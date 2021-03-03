@@ -26,7 +26,11 @@ namespace ProjectBook.DB.SqlServerExpress
             {
                 command.CommandText = "INSERT INTO Livros(ID, Titulo, Autor, Editora, Edicao, Ano, Genero, Isbn) " +
                 "VALUES(@id, @titulo, @autor, @editora, @edicao, @ano, @genero, @isbn)";
+
+                AbrirConexaoDb();
                 command.ExecuteNonQuery();
+                FechaConecxaoDb();
+
                 command.Dispose();
 
                 MessageBox.Show(Resources.livro_registrado_com_sucesso, Resources.concluido_MessageBox,
@@ -43,7 +47,11 @@ namespace ProjectBook.DB.SqlServerExpress
             try
             {
                 command.CommandText = $"DELETE FROM Livros WHERE ID = {id}";
+
+                AbrirConexaoDb();
                 command.ExecuteNonQuery();
+                FechaConecxaoDb();
+
                 command.Dispose();
 
                 MessageBox.Show(Resources.livro_deletado_com_sucesso, Resources.concluido_MessageBox,
@@ -58,7 +66,11 @@ namespace ProjectBook.DB.SqlServerExpress
             try
             {
                 command.CommandText = $"DELETE FROM Livros WHERE Titulo LIKE \'%{tituloLivro}%\'";
+
+                AbrirConexaoDb();
                 command.ExecuteNonQuery();
+                FechaConecxaoDb();
+
                 command.Dispose();
 
                 MessageBox.Show(Resources.livro_deletado_com_sucesso, Resources.concluido_MessageBox,
@@ -73,7 +85,10 @@ namespace ProjectBook.DB.SqlServerExpress
             DataTable table = new DataTable();
             try
             {
+                AbrirConexaoDb();
                 SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM Livros", connection);
+                FechaConecxaoDb();
+
                 adapter.Fill(table);
             }
             catch (SqlException e) { MessageBox.Show(e.Message, Resources.error_MessageBox,
@@ -87,7 +102,10 @@ namespace ProjectBook.DB.SqlServerExpress
             DataTable table = new DataTable();
             try
             {
+                AbrirConexaoDb();
                 SqlDataAdapter adapter = new SqlDataAdapter("SELECT DISTINCT Genero FROM Livros", connection);
+                FechaConecxaoDb();
+
                 adapter.Fill(table);
             }
             catch (SqlException e) { MessageBox.Show(e.Message, Resources.error_MessageBox,
@@ -102,7 +120,9 @@ namespace ProjectBook.DB.SqlServerExpress
             DataTable table = new DataTable();
             try
             {
+                AbrirConexaoDb();
                 SqlDataAdapter adapter = new SqlDataAdapter($"SELECT * FROM Livros WHERE ID = ${id}", connection);
+                FechaConecxaoDb();
                 adapter.Fill(table);
             }
             catch (SqlException e) { MessageBox.Show(e.Message, Resources.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); }
@@ -114,7 +134,9 @@ namespace ProjectBook.DB.SqlServerExpress
             DataTable table = new DataTable();
             try
             {
+                AbrirConexaoDb();
                 SqlDataAdapter adapter = new SqlDataAdapter($"SELECT * FROM Livros WHERE Titulo LIKE \'%{titulo}%\'", connection);
+                FechaConecxaoDb();
                 adapter.Fill(table);
             }
             catch (SqlException e) { MessageBox.Show(e.Message, Resources.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); }
@@ -126,7 +148,10 @@ namespace ProjectBook.DB.SqlServerExpress
             DataTable table = new DataTable();
             try
             {
+                AbrirConexaoDb();
                 SqlDataAdapter adapter = new SqlDataAdapter($"SELECT * FROM Livros WHERE Autor LIKE \'%{autor}%\'", connection);
+                FechaConecxaoDb();
+
                 adapter.Fill(table);
             }
             catch (SqlException e) { MessageBox.Show(e.Message, Resources.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); }
@@ -152,7 +177,11 @@ namespace ProjectBook.DB.SqlServerExpress
             {
                 command.CommandText = "UPDATE Livros SET Titulo = @titulo, Autor = @autor, Editora = @editora," +
                     $" Edicao = @edicao, Ano = @ano, Genero = @genero, Isbn = @isbn WHERE ID = {id}";
+
+                AbrirConexaoDb();
                 command.ExecuteNonQuery();
+                FechaConecxaoDb();
+
                 command.Dispose();
 
                 MessageBox.Show(Resources.informações_atualizadas, Resources.concluido_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -175,7 +204,11 @@ namespace ProjectBook.DB.SqlServerExpress
             {
                 command.CommandText = "UPDATE Livros SET Titulo = @titulo, Autor = @autor, Editora = @editora," +
                     $" Edicao = @edicao, Ano = @ano, Genero = @genero, Isbn = @isbn WHERE Titulo = \'{titulo}\'";
+
+                AbrirConexaoDb();
                 command.ExecuteNonQuery();
+                FechaConecxaoDb();
+
                 command.Dispose();
 
                 MessageBox.Show(Resources.informações_atualizadas, Resources.concluido_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -198,7 +231,11 @@ namespace ProjectBook.DB.SqlServerExpress
             {
                 command.CommandText = "UPDATE Livros SET Titulo = @titulo, Autor = @autor, Editora = @editora," +
                     $" Edicao = @edicao, Ano = @ano, Genero = @genero, Isbn = @isbn WHERE Autor = \'{autor}\'";
+
+                AbrirConexaoDb();
                 command.ExecuteNonQuery();
+                FechaConecxaoDb();
+
                 command.Dispose();
 
                 MessageBox.Show(Resources.informações_atualizadas, Resources.concluido_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Information);

@@ -23,7 +23,7 @@ namespace ProjectBook.DB.SqlServerExpress
                 {
                     DialogResult dialogResult = MessageBox.Show(
                         string.Format(Resources.não_foi_possivel_conectar_se_a_base_de_dados___0___Deseja_abrir_a_configurações_, e.Message),
-                        Properties.Resources.error_MessageBox,
+                        Resources.error_MessageBox,
                         MessageBoxButtons.YesNo, MessageBoxIcon.Error);
 
                     if (dialogResult == DialogResult.Yes)

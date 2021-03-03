@@ -25,7 +25,11 @@ namespace ProjectBook.DB.SqlServerExpress
             {
                 command.CommandText = "INSERT INTO Clientes([Nome completo], Endereco, Cidade, Estado, Cep, Telefone1, Telefone2, Email) " +
                 "VALUES(@nomeCompleto, @endereco, @cidade, @estado, @cep, @telefone1, @telefone2, @email)";
+                
+                AbrirConexaoDb();
                 command.ExecuteNonQuery();
+                FechaConecxaoDb();
+
                 command.Dispose();
 
                 MessageBox.Show(Resources.cliente_registrado_com_sucesso, Resources.concluido_MessageBox,
@@ -38,7 +42,10 @@ namespace ProjectBook.DB.SqlServerExpress
             DataTable table = new DataTable();
             try
             {
+                AbrirConexaoDb();
                 SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM Clientes", connection);
+                FechaConecxaoDb();
+
                 adapter.Fill(table);
             }
             catch (SqlException e) { MessageBox.Show(e.Message, Resources.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); }
@@ -54,7 +61,10 @@ namespace ProjectBook.DB.SqlServerExpress
             try
             {
                 command.CommandText = $"DELETE FROM Clientes WHERE ID = {id}";
+                AbrirConexaoDb();
                 command.ExecuteNonQuery();
+                FechaConecxaoDb();
+
                 command.Dispose();
 
                 MessageBox.Show(Resources.cliente_deletado_com_sucesso, Resources.concluido_MessageBox,
@@ -69,7 +79,9 @@ namespace ProjectBook.DB.SqlServerExpress
             try
             {
                 command.CommandText = $"DELETE FROM Clientes WHERE [Nome completo] LIKE \'%{nome}%\'";
+                AbrirConexaoDb();
                 command.ExecuteNonQuery();
+                FechaConecxaoDb();
                 command.Dispose();
 
                 MessageBox.Show(Resources.cliente_deletado_com_sucesso, Resources.concluido_MessageBox,
@@ -86,7 +98,10 @@ namespace ProjectBook.DB.SqlServerExpress
 
             try
             {
+                AbrirConexaoDb();
                 SqlDataAdapter adapter = new SqlDataAdapter($"SELECT * FROM Clientes WHERE ID = {id}", connection);
+                FechaConecxaoDb();
+
                 adapter.Fill(table);
             }
             catch (SqlException e) { MessageBox.Show(e.Message, Resources.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); }
@@ -99,7 +114,10 @@ namespace ProjectBook.DB.SqlServerExpress
 
             try
             {
+                AbrirConexaoDb();
                 SqlDataAdapter adapter = new SqlDataAdapter($"SELECT * FROM Clientes WHERE [Nome completo] LIKE \'%{nomeCompleto}%\'", connection);
+                FechaConecxaoDb();
+
                 adapter.Fill(table);
             }
             catch (SqlException e) { MessageBox.Show(e.Message, Resources.preencherCampoBusca_MessageBox,
@@ -127,7 +145,11 @@ namespace ProjectBook.DB.SqlServerExpress
             {
                 command.CommandText = "UPDATE Clientes SET [Nome completo] = @nomeCompleto, Endereco = @endereco, Cidade = @cidade, Estado = @estado, Cep = @cep, Telefone1 = @telefone1," +
                     $" Telefone2 = @telefone2, Email = @email WHERE ID = {id}";
+
+                AbrirConexaoDb();
                 command.ExecuteNonQuery();
+                FechaConecxaoDb();
+
                 command.Dispose();
 
                 MessageBox.Show(Resources.informações_atualizadas, Resources.concluido_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Information);

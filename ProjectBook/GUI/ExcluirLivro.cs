@@ -27,15 +27,11 @@ namespace ProjectBook.GUI
 
             if (rabIdExcluirLivro.Checked)
             {
-                livrosDb.AbrirConexaoDb();
                 data = livrosDb.BuscarLivrosId(termoBusca);
-                livrosDb.FechaConecxaoDb();
             }
             else if (rabExcluirTitulo.Checked)
             {
-                livrosDb.AbrirConexaoDb();
                 data = livrosDb.BuscarLivrosTitulo(termoBusca);
-                livrosDb.FechaConecxaoDb();
             }
 
             if (Verificadores.VerificarDataTable(data))
@@ -53,15 +49,11 @@ namespace ProjectBook.GUI
             {
                 if (rabExcluirTitulo.Checked)
                 {
-                    livrosDb.AbrirConexaoDb();
                     livrosDb.DeletarLivroTitulo(termoBusca);
-                    livrosDb.FechaConecxaoDb();
                 }
                 else if (rabIdExcluirLivro.Checked)
                 {
-                    livrosDb.AbrirConexaoDb();
                     livrosDb.DeletarLivroId(termoBusca);
-                    livrosDb.FechaConecxaoDb();
                 }
             }
 

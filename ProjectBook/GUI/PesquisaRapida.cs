@@ -67,9 +67,7 @@ namespace ProjectBook.GUI
             txtPesquisaRapida.AutoCompleteMode = AutoCompleteMode.Suggest;
 
             AutoCompleteStringCollection livroSugestao = new AutoCompleteStringCollection();
-            livrosDb.AbrirConexaoDb();
             foreach (DataRow livro in livrosDb.VerTodosLivros().Rows) livroSugestao.Add(livro[1].ToString());
-            livrosDb.FechaConecxaoDb();
 
             txtPesquisaRapida.AutoCompleteCustomSource = livroSugestao;
         }
@@ -78,9 +76,7 @@ namespace ProjectBook.GUI
             txtPesquisaRapida.AutoCompleteMode = AutoCompleteMode.Suggest;
 
             AutoCompleteStringCollection clienteSugestao = new AutoCompleteStringCollection();
-            clienteDb.AbrirConexaoDb();
             foreach (DataRow cliente in clienteDb.VerTodosClientes().Rows) clienteSugestao.Add(cliente[1].ToString());
-            clienteDb.FechaConecxaoDb();
 
             txtPesquisaRapida.AutoCompleteCustomSource = clienteSugestao;
         }

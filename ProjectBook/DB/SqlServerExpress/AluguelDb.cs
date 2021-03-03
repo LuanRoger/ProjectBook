@@ -23,7 +23,11 @@ namespace ProjectBook.DB.SqlServerExpress
             {
                 command.CommandText = "INSERT INTO Aluguel(Titulo, Autor, [Alugado por], [Data de saida], [Data de devolução], Status) " +
                 "VALUES(@titulo, @autor, @alugadoPor, @dataSaida, @dataDevolucao, @status)";
+
+                AbrirConexaoDb();
                 command.ExecuteNonQuery();
+                FechaConecxaoDb();
+
                 command.Dispose();
 
                 MessageBox.Show(Resources.aluguel_registrado_com_sucesso, Resources.concluido_MessageBox,
@@ -36,7 +40,10 @@ namespace ProjectBook.DB.SqlServerExpress
             DataTable table = new DataTable();
             try
             {
+                AbrirConexaoDb();
                 SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM Aluguel", connection);
+                FechaConecxaoDb();
+
                 adapter.Fill(table);
             }
             catch (SqlException e) { MessageBox.Show(e.Message, Resources.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); }
@@ -52,7 +59,10 @@ namespace ProjectBook.DB.SqlServerExpress
             try
             {
                 command.CommandText = $"DELETE FROM Aluguel WHERE Titulo = \'{titulo}\'";
+                AbrirConexaoDb();
                 command.ExecuteNonQuery();
+                FechaConecxaoDb();
+
                 command.Dispose();
 
                 MessageBox.Show(Resources.livro_deletado_com_sucesso, Resources.concluido_MessageBox,
@@ -67,7 +77,9 @@ namespace ProjectBook.DB.SqlServerExpress
             try
             {
                 command.CommandText = $"DELETE FROM Aluguel WHERE [Alugado por] = \'{nomeCliente}\'";
+                AbrirConexaoDb();
                 command.ExecuteNonQuery();
+                FechaConecxaoDb();
                 command.Dispose();
 
                 MessageBox.Show(Resources.livro_deletado_com_sucesso, Resources.concluido_MessageBox,
@@ -83,7 +95,10 @@ namespace ProjectBook.DB.SqlServerExpress
             DataTable table = new DataTable();
             try
             {
+                AbrirConexaoDb();
                 SqlDataAdapter adapter = new SqlDataAdapter($"SELECT * FROM Aluguel WHERE Titulo LIKE \'%{titulo}%\'", connection);
+                FechaConecxaoDb();
+
                 adapter.Fill(table);
             }
             catch (SqlException e) { MessageBox.Show(e.Message, Resources.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); }
@@ -95,7 +110,10 @@ namespace ProjectBook.DB.SqlServerExpress
             DataTable table = new DataTable();
             try
             {
+                AbrirConexaoDb();
                 SqlDataAdapter adapter = new SqlDataAdapter($"SELECT * FROM Aluguel WHERE [Alugado por] LIKE \'%{nomeCliente}%\'", connection);
+                FechaConecxaoDb();
+
                 adapter.Fill(table);
             }
             catch (SqlException e) { MessageBox.Show(e.Message, Resources.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); }
@@ -107,7 +125,10 @@ namespace ProjectBook.DB.SqlServerExpress
             DataTable table = new DataTable();
             try
             {
+                AbrirConexaoDb();
                 SqlDataAdapter adapter = new SqlDataAdapter($"SELECT * FROM Aluguel WHERE Status = \'{Tipos.StatusAluguel.Alugado}\'", connection);
+                FechaConecxaoDb();
+
                 adapter.Fill(table);
             }
             catch (SqlException e) { MessageBox.Show(e.Message, Resources.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); }
@@ -120,7 +141,10 @@ namespace ProjectBook.DB.SqlServerExpress
             DataTable table = new DataTable();
             try
             {
+                AbrirConexaoDb();
                 SqlDataAdapter adapter = new SqlDataAdapter($"SELECT * FROM Aluguel WHERE Status = \'{Tipos.StatusAluguel.Devolvido}\'", connection);
+                FechaConecxaoDb();
+
                 adapter.Fill(table);
             }
             catch (SqlException e) { MessageBox.Show(e.Message, Resources.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); }
@@ -133,7 +157,10 @@ namespace ProjectBook.DB.SqlServerExpress
             DataTable table = new DataTable();
             try
             {
+                AbrirConexaoDb();
                 SqlDataAdapter adapter = new SqlDataAdapter($"SELECT * FROM Aluguel WHERE Status = \'{Tipos.StatusAluguel.Atrssado}\'", connection);
+                FechaConecxaoDb();
+
                 adapter.Fill(table);
             }
             catch (SqlException e) { MessageBox.Show(e.Message, Resources.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); }
@@ -158,7 +185,11 @@ namespace ProjectBook.DB.SqlServerExpress
             {
                 command.CommandText = "UPDATE Livros SET Titulo = @titulo, Autor = @autor, [Alugado por] = @alugadoPor," +
                     $" [Data de saida] = @dataEntrega, [Data de devolução] = @dataRecebimento, Status = @status WHERE Titulo = \'{titulo}\'";
+                
+                AbrirConexaoDb();
                 command.ExecuteNonQuery();
+                FechaConecxaoDb();
+
                 command.Dispose();
 
                 MessageBox.Show(Resources.informações_atualizadas, Resources.concluido_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -180,7 +211,11 @@ namespace ProjectBook.DB.SqlServerExpress
             {
                 command.CommandText = "UPDATE Aluguel SET Titulo = @titulo, Autor = @autor, [Alugado por] = @alugadoPor," +
                     $" [Data de saida] = @dataSaida, [Data de devolução] = @dataDevolucao, Status = @status WHERE [Alugado por] = \'{nomeCliente}\'";
+
+                AbrirConexaoDb();
                 command.ExecuteNonQuery();
+                FechaConecxaoDb();
+
                 command.Dispose();
 
                 MessageBox.Show(Resources.informações_atualizadas, Resources.concluido_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -191,7 +226,11 @@ namespace ProjectBook.DB.SqlServerExpress
         {
             SqlCommand command = new SqlCommand {Connection = connection};
             command.CommandText = $"UPDATE Aluguel SET Status = \'{Tipos.StatusAluguel.Atrssado}\' WHERE [Alugado por] = \'{alugadoPor}\'";
+
+            AbrirConexaoDb();
             command.ExecuteNonQuery();
+            FechaConecxaoDb();
+
             command.Dispose();
         }
         #endregion

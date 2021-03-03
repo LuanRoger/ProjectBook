@@ -27,15 +27,11 @@ namespace ProjectBook.GUI
 
             if (rabExcluirAluguelCliente.Checked)
             {
-                aluguelDb.AbrirConexaoDb();
                 data = aluguelDb.BuscarAluguelCliente(termoBusca);
-                aluguelDb.FechaConecxaoDb();
             }
             else if (rabExcluirAluguelTitulo.Checked)
             {
-                aluguelDb.AbrirConexaoDb();
                 data = aluguelDb.BuscarAluguelLivro(termoBusca);
-                aluguelDb.FechaConecxaoDb();
             }
 
             if (Verificadores.VerificarDataTable(data))
@@ -53,15 +49,11 @@ namespace ProjectBook.GUI
             {
                 if (rabExcluirAluguelCliente.Checked)
                 {
-                    aluguelDb.AbrirConexaoDb();
                     aluguelDb.DeletarAluguelCliente(data.Rows[0][2].ToString());
-                    aluguelDb.FechaConecxaoDb();
                 }
                 else if (rabExcluirAluguelTitulo.Checked)
                 {
-                    aluguelDb.AbrirConexaoDb();
                     aluguelDb.DeletarAluguelTitulo(data.Rows[0][0].ToString());
-                    aluguelDb.FechaConecxaoDb();
                 }
                 txtBuscaAluguel.Clear();
             }
@@ -71,18 +63,14 @@ namespace ProjectBook.GUI
         private void rabExcluirAluguelTitulo_CheckedChanged(object sender, EventArgs e)
         {
             AutoCompleteStringCollection livrosSugestoes = new AutoCompleteStringCollection();
-            aluguelDb.AbrirConexaoDb();
             foreach (DataRow livro in aluguelDb.VerTodosAluguel().Rows) livrosSugestoes.Add(livro[0].ToString());
-            aluguelDb.FechaConecxaoDb();
             txtBuscaAluguel.AutoCompleteCustomSource = livrosSugestoes;
         }
 
         private void rabExcluirAluguelCliente_CheckedChanged(object sender, EventArgs e)
         {
             AutoCompleteStringCollection livrosSugestoes = new AutoCompleteStringCollection();
-            aluguelDb.AbrirConexaoDb();
             foreach (DataRow livro in aluguelDb.VerTodosAluguel().Rows) livrosSugestoes.Add(livro[2].ToString());
-            aluguelDb.FechaConecxaoDb();
             txtBuscaAluguel.AutoCompleteCustomSource = livrosSugestoes;
         }
     }

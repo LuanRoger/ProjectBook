@@ -22,32 +22,24 @@ namespace ProjectBook.GUI
             AutoCompleteStringCollection aluguelSugestao = new AutoCompleteStringCollection();
             
             //Livro
-            livrosDb.AbrirConexaoDb();
             foreach (DataRow livro in livrosDb.VerTodosLivros().Rows) aluguelSugestao.Add(livro[1].ToString());
-            livrosDb.FechaConecxaoDb();
             txtMudarLivroAluguel.AutoCompleteCustomSource = aluguelSugestao;
             
             //Cliente
             aluguelSugestao = new AutoCompleteStringCollection();
-            clienteDb.AbrirConexaoDb();
             foreach (DataRow cliente in clienteDb.VerTodosClientes().Rows) aluguelSugestao.Add(cliente[1].ToString());
-            clienteDb.FechaConecxaoDb();
             txtMudarClienteAluguel.AutoCompleteCustomSource = aluguelSugestao;
         }
         private void rabBuscarNomeCliente_CheckedChanged(object sender, EventArgs e)
         {
             AutoCompleteStringCollection aluguelSugestao = new AutoCompleteStringCollection();
-            aluguelDb.AbrirConexaoDb();
             foreach (DataRow cliente in aluguelDb.VerTodosAluguel().Rows) aluguelSugestao.Add($"{cliente[2]} - {cliente[0]}");
-            aluguelDb.FechaConecxaoDb();
             txtBuscarAluguel.AutoCompleteCustomSource = aluguelSugestao;
         }
         private void rabBuscarTituloLivro_CheckedChanged(object sender, EventArgs e)
         {
             AutoCompleteStringCollection aluguelSugestao = new AutoCompleteStringCollection();
-            aluguelDb.AbrirConexaoDb();
             foreach (DataRow livro in aluguelDb.VerTodosAluguel().Rows) aluguelSugestao.Add($"{livro[0]} - {livro[2]}");
-            aluguelDb.FechaConecxaoDb();
             txtBuscarAluguel.AutoCompleteCustomSource = aluguelSugestao;
         }
 
@@ -63,7 +55,6 @@ namespace ProjectBook.GUI
 
             try
             {
-                aluguelDb.AbrirConexaoDb();
                 if (rabBuscarNomeCliente.Checked)
                 {
                     infoAluguel = aluguelDb.BuscarAluguelCliente(buscarEditarAluguel[0].Trim());
@@ -74,13 +65,11 @@ namespace ProjectBook.GUI
                     infoAluguel = aluguelDb.BuscarAluguelLivro(buscarEditarAluguel[0].Trim());
                     infoCliente = clienteDb.BuscarClienteNome(infoAluguel.Rows[0][2].ToString());
                 }
-                aluguelDb.FechaConecxaoDb();
             }
             catch
             {
                 MessageBox.Show(Properties.Resources.clienteLivroNaoAlugados, Properties.Resources.error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
-                aluguelDb.FechaConecxaoDb();
                 return;
             }
 
@@ -98,9 +87,7 @@ namespace ProjectBook.GUI
                 return;
             }
 
-            livrosDb.AbrirConexaoDb();
             DataTable resultadoBusca = livrosDb.BuscarLivrosTitulo(buscarLivro);
-            livrosDb.FechaConecxaoDb();
 
             //Preencher campo dos livros
             txtNovoTituloLivroAluguel.Text = resultadoBusca.Rows[0][1].ToString();
@@ -118,9 +105,7 @@ namespace ProjectBook.GUI
                 return;
             }
 
-            clienteDb.AbrirConexaoDb();
             DataTable resultadoBusca = clienteDb.BuscarClienteNome(buscarCliete);
-            clienteDb.FechaConecxaoDb();
             
             PreencherCamposCliente(resultadoBusca);
         }
@@ -137,9 +122,7 @@ namespace ProjectBook.GUI
                 return;
             }
 
-            aluguelDb.AbrirConexaoDb();
             aluguelDb.AtualizarAluguelNomeCliente(aluguel, infoCliente.Rows[0][1].ToString());
-            aluguelDb.FechaConecxaoDb();
 
             LimparCampos();
         }

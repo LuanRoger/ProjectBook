@@ -25,9 +25,7 @@ namespace ProjectBook.GUI
             txtBuscarClienteEditar.AutoCompleteSource = AutoCompleteSource.CustomSource;
 
             AutoCompleteStringCollection autoCompleteStringCollection = new AutoCompleteStringCollection();
-            clienteDb.AbrirConexaoDb();
             foreach (DataRow cliente in clienteDb.VerTodosClientes().Rows) autoCompleteStringCollection.Add(cliente[1].ToString());
-            clienteDb.FechaConecxaoDb();
             txtBuscarClienteEditar.AutoCompleteCustomSource = autoCompleteStringCollection;
         }
 
@@ -54,9 +52,7 @@ namespace ProjectBook.GUI
                 return;
             }
 
-            clienteDb.AbrirConexaoDb();
             clienteDb.AtualizarClienteId(infoCliente.Rows[0][0].ToString(), cliente);
-            clienteDb.FechaConecxaoDb();
 
             LimparCampos();
         }
@@ -71,10 +67,8 @@ namespace ProjectBook.GUI
                 return;
             }
             
-            clienteDb.AbrirConexaoDb();
             if (rabBuscarClienteId.Checked) infoCliente = clienteDb.BuscarClienteId(termoBuscaCliente);
             else if (rabBsucarClienteNome.Checked) infoCliente = clienteDb.BuscarClienteNome(termoBuscaCliente);
-            clienteDb.FechaConecxaoDb();
 
             if (Verificadores.VerificarDataTable(infoCliente))
             {

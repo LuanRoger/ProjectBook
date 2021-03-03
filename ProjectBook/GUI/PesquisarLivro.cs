@@ -18,12 +18,10 @@ namespace ProjectBook.GUI
             string termoPesquisa = txtTermoPesquisa.Text;
             DataTable resultadoPesquisa;
 
-            livrosDb.AbrirConexaoDb();
             if (rabPesquisarId.Checked) resultadoPesquisa = livrosDb.BuscarLivrosId(termoPesquisa);
             else if (rabPesquisarTitulo.Checked) resultadoPesquisa = livrosDb.BuscarLivrosTitulo(termoPesquisa);
             else if (rabPesquisarAutor.Checked) resultadoPesquisa = livrosDb.BuscarLivrosAutor(termoPesquisa);
             else return;
-            livrosDb.FechaConecxaoDb();
 
             ListaPesquisa listaPesquisa = new ListaPesquisa(resultadoPesquisa);
             listaPesquisa.Show();

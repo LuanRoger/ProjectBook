@@ -27,15 +27,11 @@ namespace ProjectBook.GUI
 
             if (rabBsucarIdCliente.Checked)
             {
-                clienteDb.AbrirConexaoDb();
                 data = clienteDb.BuscarClienteId(termoBusca);
-                clienteDb.FechaConecxaoDb();
             }
             else if (rabBuscarNome.Checked)
             {
-                clienteDb.AbrirConexaoDb();
                 data = clienteDb.BuscarClienteNome(termoBusca);
-                clienteDb.FechaConecxaoDb();
             }
             
             if (Verificadores.VerificarDataTable(data))
@@ -53,15 +49,11 @@ namespace ProjectBook.GUI
             {
                 if (rabBuscarNome.Checked)
                 {
-                    clienteDb.AbrirConexaoDb();
                     clienteDb.DeletarClienteNome(data.Rows[0][1].ToString());
-                    clienteDb.FechaConecxaoDb();
                 }
                 else if (rabBsucarIdCliente.Checked)
                 {
-                    clienteDb.AbrirConexaoDb();
                     clienteDb.DeletarClienteId(data.Rows[0][0].ToString());
-                    clienteDb.FechaConecxaoDb();
                 }
                 txtBuscarExcluirCliente.Clear();
             }

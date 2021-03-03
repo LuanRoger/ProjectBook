@@ -18,23 +18,17 @@ namespace ProjectBook.GUI
 
             mnuVerLivroAlugado.Click += (sender, e) =>
             {
-                aluguelDb.AbrirConexaoDb();
                 ListaPesquisa lista = new ListaPesquisa(aluguelDb.PegarLivrosAlugados());
-                aluguelDb.FechaConecxaoDb();
                 lista.Show();
             };
             mnuVerLivrosAtasados.Click += (sender, e) =>
             {
-                aluguelDb.AbrirConexaoDb();
                 ListaPesquisa lista = new ListaPesquisa(aluguelDb.PegarLivroAtrassado());
-                aluguelDb.FechaConecxaoDb();
                 lista.Show();
             };
             mnuVerLivrosDevolvidos.Click += (sender, e) =>
             {
-                aluguelDb.AbrirConexaoDb();
                 ListaPesquisa lista = new ListaPesquisa(aluguelDb.PegarLivroDevolvido());
-                aluguelDb.FechaConecxaoDb();
                 lista.Show();
             };
 
@@ -55,15 +49,11 @@ namespace ProjectBook.GUI
             
             if (rabNomeCliente.Checked)
             {
-                aluguelDb.AbrirConexaoDb();
                 data = aluguelDb.BuscarAluguelCliente(termoBusca[0].Trim());
-                aluguelDb.FechaConecxaoDb();
             }
             else if (rabTituloLivro.Checked)
             {
-                aluguelDb.AbrirConexaoDb();
                 data = aluguelDb.BuscarAluguelLivro(termoBusca[0].Trim());
-                aluguelDb.FechaConecxaoDb();
             }
 
             if(Verificadores.VerificarDataTable(data))
@@ -91,16 +81,12 @@ namespace ProjectBook.GUI
 
             if (rabNomeCliente.Checked)
             {
-                aluguelDb.AbrirConexaoDb();
                 lista = new ListaPesquisa(aluguelDb.BuscarAluguelCliente(termoBusca[0].Trim()));
-                aluguelDb.FechaConecxaoDb();
                 lista.Show();
             }
             else if (rabTituloLivro.Checked)
             {
-                aluguelDb.AbrirConexaoDb();
                 lista = new ListaPesquisa(aluguelDb.BuscarAluguelLivro(termoBusca[0].Trim()));
-                aluguelDb.FechaConecxaoDb();
                 lista.Show();
             }
 
@@ -111,17 +97,13 @@ namespace ProjectBook.GUI
         private void rabTituloLivro_CheckedChanged(object sender, EventArgs e)
         {
             AutoCompleteStringCollection aluguelSugestao = new AutoCompleteStringCollection();
-            aluguelDb.AbrirConexaoDb();
             foreach (DataRow livro in aluguelDb.VerTodosAluguel().Rows) aluguelSugestao.Add($"{livro[0]} - {livro[2]}");
-            aluguelDb.FechaConecxaoDb();
             txtBuscarAluguel.AutoCompleteCustomSource = aluguelSugestao;
         }
         private void rabNomeCliente_CheckedChanged(object sender, EventArgs e)
         {
             AutoCompleteStringCollection aluguelSugestao = new AutoCompleteStringCollection();
-            aluguelDb.AbrirConexaoDb();
             foreach (DataRow cliente in aluguelDb.VerTodosAluguel().Rows) aluguelSugestao.Add($"{cliente[2]} - {cliente[0]}");
-            aluguelDb.FechaConecxaoDb();
             txtBuscarAluguel.AutoCompleteCustomSource = aluguelSugestao;
         }
         #endregion

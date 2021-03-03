@@ -175,7 +175,6 @@ namespace ProjectBook.GUI
         private async void Inicio_Activated(object sender, EventArgs e)
         {
             //Carregar informações
-            livrosDb.AbrirConexaoDb();
             if (livrosDb.DbStatus() != "Open") return;
 
             List<Task<int>> quantidade = new List<Task<int>>
@@ -191,7 +190,6 @@ namespace ProjectBook.GUI
             lblClientesCadastrados.Text = resultado[1].ToString();
             lblAlugueisRegistrados.Text = resultado[2].ToString();
 
-            livrosDb.FechaConecxaoDb();
         }
         private void btnSairUsuario_Click(object sender, EventArgs e)
         {
@@ -218,9 +216,9 @@ namespace ProjectBook.GUI
                 this.ShowInTaskbar = true;
                 this.Opacity = 100;
                 splashScreen.Close();
+                livrosDb.FechaConecxaoDb();
             }
-            livrosDb.FechaConecxaoDb();
-
+            else Environment.Exit(1);
             //Deixar o lblNomeUsuario trasnparente para evitar que sobreponha a imagem de fundo
             lblNomeUsuario.BackColor = Color.Transparent;
 

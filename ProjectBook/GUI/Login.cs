@@ -27,9 +27,7 @@ namespace ProjectBook.GUI
                 return;
             }
             
-            usuarioDb.AbrirConexaoDb();
             DataTable infoUsuario = usuarioDb.LoginUsuario(txtLoginUsuario.Text, txtLoginSenha.Text);
-            usuarioDb.FechaConecxaoDb();
             
             if (Verificadores.VerificarDataTable(infoUsuario))
             {

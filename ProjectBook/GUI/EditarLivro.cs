@@ -23,18 +23,14 @@ namespace ProjectBook.GUI
         private void rabEditarTitulo_CheckedChanged(object sender, EventArgs e)
         {
             AutoCompleteStringCollection tituloSugestao = new AutoCompleteStringCollection();
-            livrosDb.AbrirConexaoDb();
             foreach (DataRow livro in livrosDb.VerTodosLivros().Rows) tituloSugestao.Add($"{livro[1]} - {livro[2]}");
-            livrosDb.FechaConecxaoDb();
             txtEditarBuscar.AutoCompleteCustomSource = tituloSugestao;
         }
 
         private void rabEditarAutor_CheckedChanged(object sender, EventArgs e)
         {
             AutoCompleteStringCollection autorSugestao = new AutoCompleteStringCollection();
-            livrosDb.AbrirConexaoDb();
             foreach (DataRow livro in livrosDb.VerTodosLivros().Rows) autorSugestao.Add($"{livro[2]} - {livro[1]}");
-            livrosDb.FechaConecxaoDb();
             txtEditarBuscar.AutoCompleteCustomSource = autorSugestao;
         }
 
@@ -104,9 +100,7 @@ namespace ProjectBook.GUI
                 return;
             }
 
-            livrosDb.AbrirConexaoDb();
             livrosDb.AtualizarViaId(resultadoBusca.Rows[0][0].ToString(), livro);
-            livrosDb.FechaConecxaoDb();
 
             LimparCamposEditar();
             ColocarGeneros();

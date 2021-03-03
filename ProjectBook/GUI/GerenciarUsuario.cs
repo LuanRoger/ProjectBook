@@ -25,9 +25,7 @@ namespace ProjectBook.GUI
                 return;
             }
             
-            usuarioDb.AbrirConexaoDb();
             usuarioDb.CadastrarUsuario(usuario);
-            usuarioDb.FechaConecxaoDb();
             
             LimparCampos();
         }
@@ -42,9 +40,7 @@ namespace ProjectBook.GUI
                 return;
             }
             
-            usuarioDb.AbrirConexaoDb();
             usuarioDb.AtualizarUsuarioId(txtIdBuscarUsuario.Text, usuario);
-            usuarioDb.FechaConecxaoDb();
 
             LimparCampos();
         }
@@ -53,9 +49,7 @@ namespace ProjectBook.GUI
         {
             txtIdBuscarUsuario.Enabled = false;
 
-            usuarioDb.AbrirConexaoDb();
             DataTable infoUsuario = usuarioDb.BuscarUsuarioId(txtIdBuscarUsuario.Text);
-            usuarioDb.FechaConecxaoDb();
 
             if (Verificadores.VerificarDataTable(infoUsuario))
             {
@@ -71,9 +65,7 @@ namespace ProjectBook.GUI
 
         private void btnDeletarUsuario_Click(object sender, EventArgs e)
         {
-            usuarioDb.AbrirConexaoDb();
             DataTable infoUsuario = usuarioDb.BuscarUsuarioId(txtIdDeletarUsuario.Text);
-            usuarioDb.FechaConecxaoDb();
 
             if (Verificadores.VerificarDataTable(infoUsuario))
             {
@@ -86,9 +78,7 @@ namespace ProjectBook.GUI
                 Properties.Resources.excluir_MessageBox,
                 MessageBoxButtons.YesNo, MessageBoxIcon.Stop);
             
-            usuarioDb.AbrirConexaoDb();
             if (dialogResult == DialogResult.Yes) usuarioDb.DeletarUsuarioId(txtIdDeletarUsuario.Text);
-            usuarioDb.FechaConecxaoDb();
 
             LimparCampos();
         }

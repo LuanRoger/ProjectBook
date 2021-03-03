@@ -24,10 +24,8 @@ namespace ProjectBook.GUI
             }
             DataTable dataTable = new DataTable();
 
-            clienteDb.AbrirConexaoDb();
             if (rabPesquisarId.Checked) dataTable = clienteDb.BuscarClienteId(termoPesquisa);
             else if (rabPesquisarNome.Checked) dataTable = clienteDb.BuscarClienteNome(termoPesquisa);
-            clienteDb.FechaConecxaoDb();
 
             if (Verificadores.VerificarDataTable(dataTable))
             {

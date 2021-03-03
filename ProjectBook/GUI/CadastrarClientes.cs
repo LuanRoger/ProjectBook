@@ -36,9 +36,7 @@ namespace ProjectBook.GUI
             }
 
             ClienteDb clienteDb = new ClienteDb();
-            clienteDb.AbrirConexaoDb();
             clienteDb.CadastrarCliente(cliente);
-            clienteDb.FechaConecxaoDb();
 
             LimparCampos();
         }

@@ -31,9 +31,7 @@ namespace ProjectBook
         {
             LivrosDb livrosDb = new LivrosDb();
 
-            livrosDb.AbrirConexaoDb();
             DataTable ids = livrosDb.BuscarLivrosId(id.ToString());
-            livrosDb.FechaConecxaoDb();
 
             return ids.Rows.Count > 0;
         }
