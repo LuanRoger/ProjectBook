@@ -9,16 +9,18 @@ namespace ProjectBook.GUI
 {
     public partial class CadastroLivro : Form
     {
-        LivrosDb db = new LivrosDb();
+        LivrosDb livrosDb = new LivrosDb();
 
         public CadastroLivro()
         {
             InitializeComponent();
+            SugerirAutores();
             ColocarGeneros();
         }
 
         private void btnSalvarLivro_Click(object sender, EventArgs e)
         {
+            #region Tratar código
             string codigoTxt = txtCodigoLivro.Text;
             if (Verificadores.VerificarStrings(codigoTxt))
             {
@@ -39,20 +41,33 @@ namespace ProjectBook.GUI
                     return;
                 }
             }
+            #endregion
 
             Livro livro;
-            //Aplicar a formatação na instânciação do cliente
+            //Aplicar a formatação na instânciação do livro
             if (ConfigurationManager.AppSettings["formatarLivro"] == "1")
             {
-                livro = new Livro(txtCodigoLivro.Text, txtTituloLivro.Text.ToUpper(), txtAutorLivro.Text.ToUpper(),
-                    txtEditoraLivro.Text.ToUpper(), txtEdicaoLivro.Text.ToUpper(), txtAno.Text.ToUpper(),
-                    cmdGenero.Text.ToUpper(), txtIsbn.Text.ToUpper());
+                livro = new Livro(
+                    txtCodigoLivro.Text, 
+                    txtTituloLivro.Text.ToUpper(),
+                    txtAutorLivro.Text.ToUpper(),
+                    txtEditoraLivro.Text.ToUpper(),
+                    txtEdicaoLivro.Text.ToUpper(),
+                    txtAno.Text.ToUpper(),
+                    cmbGenero.Text.ToUpper(),
+                    txtIsbn.Text.ToUpper());
             }
             else
             {
-                livro = new Livro(txtCodigoLivro.Text, txtTituloLivro.Text, txtAutorLivro.Text,
-                    txtEditoraLivro.Text, txtEdicaoLivro.Text, txtAno.Text,
-                    cmdGenero.Text, txtIsbn.Text);
+                livro = new Livro(
+                    txtCodigoLivro.Text,
+                    txtTituloLivro.Text,
+                    txtAutorLivro.Text,
+                    txtEditoraLivro.Text,
+                    txtEdicaoLivro.Text,
+                    txtAno.Text,
+                    cmbGenero.Text,
+                    txtIsbn.Text);
             }
             
             if (Verificadores.VerificarCamposLivros(livro))
@@ -62,8 +77,9 @@ namespace ProjectBook.GUI
                 return;
             }
 
-            db.AdicionarLivro(livro);
-            
+            livrosDb.AdicionarLivro(livro);
+
+            SugerirAutores();
             ColocarGeneros();
             LimparCamposCadastro();
         }
@@ -71,10 +87,20 @@ namespace ProjectBook.GUI
         private void btnFecharCadastro_Click(object sender, EventArgs e) => this.Close();
         private void btnLimparTxtLivros_Click(object sender, EventArgs e) => LimparCamposCadastro();
 
+        private void SugerirAutores()
+        {
+            txtAutorLivro.AutoCompleteCustomSource.Clear();
+
+            AutoCompleteStringCollection autorSugestoes = new AutoCompleteStringCollection();
+            foreach (DataRow autor in livrosDb.VerTodosLivros().Rows) autorSugestoes.Add(autor[2].ToString());
+            txtAutorLivro.AutoCompleteCustomSource = autorSugestoes;
+        }
         private void ColocarGeneros()
         {
+            cmbGenero.Items.Clear();
+
             //Colocar todos os generos no combobox
-            foreach(DataRow itens in db.PegarGeneros().Rows) cmdGenero.Items.Add(itens["Genero"]);
+            foreach(DataRow itens in livrosDb.PegarGeneros().Rows) cmbGenero.Items.Add(itens["Genero"]);
         }
         private void LimparCamposCadastro()
         {
@@ -84,7 +110,7 @@ namespace ProjectBook.GUI
             txtEditoraLivro.Clear();
             txtEdicaoLivro.Clear();
             txtAno.Clear();
-            cmdGenero.Text = "";
+            cmbGenero.Text = "";
             txtIsbn.Clear();
         }
     }

@@ -45,7 +45,7 @@ namespace ProjectBook.GUI
             this.btnSalvarLivro = new System.Windows.Forms.Button();
             this.btnLimparTxtLivros = new System.Windows.Forms.Button();
             this.btnFecharCadastro = new System.Windows.Forms.Button();
-            this.cmdGenero = new System.Windows.Forms.ComboBox();
+            this.cmbGenero = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtCodigoLivro = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
@@ -80,6 +80,8 @@ namespace ProjectBook.GUI
             // 
             // txtAutorLivro
             // 
+            this.txtAutorLivro.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.txtAutorLivro.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txtAutorLivro.Location = new System.Drawing.Point(13, 125);
             this.txtAutorLivro.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtAutorLivro.Name = "txtAutorLivro";
@@ -201,14 +203,14 @@ namespace ProjectBook.GUI
             this.btnFecharCadastro.UseVisualStyleBackColor = true;
             this.btnFecharCadastro.Click += new System.EventHandler(this.btnFecharCadastro_Click);
             // 
-            // cmdGenero
+            // cmbGenero
             // 
-            this.cmdGenero.FormattingEnabled = true;
-            this.cmdGenero.Location = new System.Drawing.Point(13, 301);
-            this.cmdGenero.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.cmdGenero.Name = "cmdGenero";
-            this.cmdGenero.Size = new System.Drawing.Size(294, 23);
-            this.cmdGenero.TabIndex = 7;
+            this.cmbGenero.FormattingEnabled = true;
+            this.cmbGenero.Location = new System.Drawing.Point(13, 301);
+            this.cmbGenero.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.cmbGenero.Name = "cmbGenero";
+            this.cmbGenero.Size = new System.Drawing.Size(294, 23);
+            this.cmbGenero.TabIndex = 7;
             // 
             // label8
             // 
@@ -236,7 +238,7 @@ namespace ProjectBook.GUI
             this.ClientSize = new System.Drawing.Size(318, 424);
             this.Controls.Add(this.txtCodigoLivro);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.cmdGenero);
+            this.Controls.Add(this.cmbGenero);
             this.Controls.Add(this.btnFecharCadastro);
             this.Controls.Add(this.btnLimparTxtLivros);
             this.Controls.Add(this.btnSalvarLivro);
@@ -283,7 +285,7 @@ namespace ProjectBook.GUI
         private System.Windows.Forms.Button btnSalvarLivro;
         private System.Windows.Forms.Button btnLimparTxtLivros;
         private System.Windows.Forms.Button btnFecharCadastro;
-        private System.Windows.Forms.ComboBox cmdGenero;
+        private System.Windows.Forms.ComboBox cmbGenero;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtCodigoLivro;
     }

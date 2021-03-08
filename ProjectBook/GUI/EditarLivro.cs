@@ -10,39 +10,39 @@ namespace ProjectBook.GUI
     public partial class EditarLivro : Form
     {
         private LivrosDb livrosDb = new LivrosDb();
-        private DataTable resultadoBusca;
+        private DataTable infoLivro;
 
         public EditarLivro()
         {
             InitializeComponent();
-            
+            SugerirAutores();
             ColocarGeneros();
         }
 
-        #region CheckChange
+        #region CheckedChanged
         private void rabEditarTitulo_CheckedChanged(object sender, EventArgs e)
         {
+            // Sugerir de acordo com o titulo do livro
             AutoCompleteStringCollection tituloSugestao = new AutoCompleteStringCollection();
-            foreach (DataRow livro in livrosDb.VerTodosLivros().Rows) tituloSugestao.Add($"{livro[1]} - {livro[2]}");
+            foreach (DataRow livro in livrosDb.VerTodosLivros().Rows) tituloSugestao.Add($"{livro[1]} - {livro[2]}"); // Titulo - Autor
             txtEditarBuscar.AutoCompleteCustomSource = tituloSugestao;
         }
-
         private void rabEditarAutor_CheckedChanged(object sender, EventArgs e)
         {
+            // Sugerir de acordo com o autor
             AutoCompleteStringCollection autorSugestao = new AutoCompleteStringCollection();
-            foreach (DataRow livro in livrosDb.VerTodosLivros().Rows) autorSugestao.Add($"{livro[2]} - {livro[1]}");
+            foreach (DataRow livro in livrosDb.VerTodosLivros().Rows) autorSugestao.Add($"{livro[2]} - {livro[1]}"); //Auto - Titulo
             txtEditarBuscar.AutoCompleteCustomSource = autorSugestao;
         }
-
         private void rabEditarId_CheckedChanged(object sender, EventArgs e) =>
             txtEditarBuscar.AutoCompleteCustomSource = null;
+        #endregion
 
         private void btnFecharEdicao_Click(object sender, EventArgs e) => this.Close();
-        #endregion
 
         private void btnBuscarEditar_Click(object sender, EventArgs e)
         {
-            string[] paraBuscar = txtEditarBuscar.Text.Split("-");
+            string[] paraBuscar = txtEditarBuscar.Text.Trim().Split("-");
 
             if(Verificadores.VerificarStrings(txtEditarBuscar.Text))
             {
@@ -51,23 +51,19 @@ namespace ProjectBook.GUI
                 return;
             }
 
-            if (rabEditarId.Checked) resultadoBusca = livrosDb.BuscarLivrosId(txtEditarBuscar.Text); 
-            else if (rabEditarTitulo.Checked) resultadoBusca = livrosDb.BuscarLivrosTitulo(paraBuscar[0].Trim()); 
-            else if (rabEditarAutor.Checked) resultadoBusca = livrosDb.BuscarLivrosAutor(paraBuscar[0].Trim()); 
+            if (rabEditarId.Checked) infoLivro = livrosDb.BuscarLivrosId(txtEditarBuscar.Text); 
+            else if (rabEditarTitulo.Checked) infoLivro = livrosDb.BuscarLivrosTitulo(paraBuscar[0].Trim()); 
+            else if (rabEditarAutor.Checked) infoLivro = livrosDb.BuscarLivrosAutor(paraBuscar[0].Trim()); 
             else return; 
 
-            gpbBuscar.Enabled = false;
-
-            PreencherCampos(resultadoBusca);
+            PreencherCampos(infoLivro);
         }
-
-        private void btnLimparTxtEditar_Click(object sender, EventArgs e) { gpbBuscar.Enabled = true; LimparCamposEditar(); }
 
         private void btnSalvarEditar_Click(object sender, EventArgs e)
         {
-            Livro livro;
-
-            if (Verificadores.VerificarStrings(txtEditarCodigo.Text))
+            #region Tratar código
+            string codigoTxt = txtEditarCodigo.Text;
+            if (Verificadores.VerificarStrings(codigoTxt))
             {
                 int codigo = new Random().Next(0, 999);
 
@@ -78,19 +74,33 @@ namespace ProjectBook.GUI
 
                 txtEditarCodigo.Text = codigo.ToString();
             }
+            #endregion
 
-            //Aplicar a formatação na instânciação do cliente
+            Livro livro;
+            //Aplicar a formatação na instânciação do livro
             if (ConfigurationManager.AppSettings["formatarLivro"] == "1")
             {
-                livro = new Livro(txtEditarCodigo.Text, txtEditarTitulo.Text.ToUpper(), txtEditarAutor.Text.ToUpper(),
-                    txtEditarEditora.Text.ToUpper(), txtEditarEdicao.Text.ToUpper(), txtEditarAno.Text.ToUpper(),
-                    cmbEditarGenero.Text.ToUpper(), txtEditarIsbn.Text.ToUpper());
+                livro = new Livro(
+                    txtEditarCodigo.Text,
+                    txtEditarTitulo.Text.ToUpper(),
+                    txtEditarAutor.Text.ToUpper(),
+                    txtEditarEditora.Text.ToUpper(),
+                    txtEditarEdicao.Text.ToUpper(),
+                    txtEditarAno.Text.ToUpper(),
+                    cmbEditarGenero.Text.ToUpper(),
+                    txtEditarIsbn.Text.ToUpper());
             }
             else
             {
-                livro = new Livro(txtEditarCodigo.Text, txtEditarTitulo.Text, txtEditarAutor.Text,
-                    txtEditarEditora.Text, txtEditarEdicao.Text, txtEditarAno.Text,
-                    cmbEditarGenero.Text, txtEditarIsbn.Text);
+                livro = new Livro(
+                    txtEditarCodigo.Text,
+                    txtEditarTitulo.Text,
+                    txtEditarAutor.Text,
+                    txtEditarEditora.Text,
+                    txtEditarEdicao.Text,
+                    txtEditarAno.Text,
+                    cmbEditarGenero.Text,
+                    txtEditarIsbn.Text);
             }
             
             if (Verificadores.VerificarCamposLivros(livro))
@@ -100,11 +110,11 @@ namespace ProjectBook.GUI
                 return;
             }
 
-            livrosDb.AtualizarViaId(resultadoBusca.Rows[0][0].ToString(), livro);
+            livrosDb.AtualizarViaId(infoLivro.Rows[0][0].ToString(), livro);
 
             LimparCamposEditar();
+            SugerirAutores();
             ColocarGeneros();
-            gpbBuscar.Enabled = true;
         }
         private void PreencherCampos(DataTable info)
         {
@@ -126,12 +136,24 @@ namespace ProjectBook.GUI
                 gpbBuscar.Enabled = true;
             }
         }
-        
+
+        private void SugerirAutores()
+        {
+            txtEditarAutor.AutoCompleteCustomSource.Clear();
+
+            AutoCompleteStringCollection autorSugestoes = new AutoCompleteStringCollection();
+            foreach (DataRow autor in livrosDb.VerTodosLivros().Rows) autorSugestoes.Add(autor[2].ToString());
+            txtEditarAutor.AutoCompleteCustomSource = autorSugestoes;
+        }
         private void ColocarGeneros()
         {
+            cmbEditarGenero.Items.Clear();
+
             //Colocar todos os generos no combobox
             foreach(DataRow itens in livrosDb.PegarGeneros().Rows) cmbEditarGenero.Items.Add(itens["Genero"]);
         }
+
+        private void btnLimparTxtEditar_Click(object sender, EventArgs e) => LimparCamposEditar();
         private void LimparCamposEditar()
         {
             txtEditarCodigo.Clear();

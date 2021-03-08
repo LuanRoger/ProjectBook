@@ -16,25 +16,39 @@ namespace ProjectBook.GUI
         private void btnSalvarCliente_Click(object sender, EventArgs e)
         {
             Cliente cliente;
+
             //Aplicar a formatação na instânciação do cliente
             if (ConfigurationManager.AppSettings["formatarCliente"] == "1")
             {
-                cliente = new Cliente(txtNomeCliente.Text.ToUpper(), txtEnderecoCliente.Text.ToUpper(), txtCidadeCliente.Text.ToUpper(), cmbEstadoCliente.Text.ToUpper(),
-                    txtCepCliente.Text.ToUpper(), txtTelefone1Cliente.Text.ToUpper(), txtTelefone2Cliente.Text.ToUpper(), txtEmailCliente.Text);
+                cliente = new Cliente(
+                    txtNomeCliente.Text.ToUpper(),
+                    txtEnderecoCliente.Text.ToUpper(),
+                    txtCidadeCliente.Text.ToUpper(),
+                    cmbEstadoCliente.Text.ToUpper(),
+                    txtCepCliente.Text.ToUpper(),
+                    txtTelefone1Cliente.Text.ToUpper(),
+                    txtTelefone2Cliente.Text.ToUpper(),
+                    txtEmailCliente.Text);
             }
             else
             {
-                cliente = new Cliente(txtNomeCliente.Text, txtEnderecoCliente.Text, txtCidadeCliente.Text, cmbEstadoCliente.Text,
-                    txtCepCliente.Text, txtTelefone1Cliente.Text, txtTelefone2Cliente.Text, txtEmailCliente.Text);
+                cliente = new Cliente(
+                    txtNomeCliente.Text,
+                    txtEnderecoCliente.Text,
+                    txtCidadeCliente.Text,
+                    cmbEstadoCliente.Text,
+                    txtCepCliente.Text,
+                    txtTelefone1Cliente.Text,
+                    txtTelefone2Cliente.Text,
+                    txtEmailCliente.Text);
             }
-            
-            if(Verificadores.VerificarCamposCliente(cliente))
+
+            if (Verificadores.VerificarCamposCliente(cliente))
             {
                 MessageBox.Show(Properties.Resources.preencherCamposObrigatorios_MessageBox, Properties.Resources.error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
             ClienteDb clienteDb = new ClienteDb();
             clienteDb.CadastrarCliente(cliente);
 

@@ -123,6 +123,7 @@ namespace ProjectBook.GUI
                 MessageBox.Show("Project Book v" +
                                 Assembly.GetExecutingAssembly().GetName().Version + 
                                 "\n" + Resources.luanroger +
+                                "\n" + Resources.license +
                                 "\n" + Resources.uso_de_ícones_de_FAMFAMFAM__http___famfamfam_com,
                     Resources.sobre_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Information);
             };
@@ -172,24 +173,16 @@ namespace ProjectBook.GUI
         }
         #endregion
 
-        private async void Inicio_Activated(object sender, EventArgs e)
+        private void Inicio_Activated(object sender, EventArgs e)
         {
             //Carregar informações
+            livrosDb.AbrirConexaoDb();
             if (livrosDb.DbStatus() != "Open") return;
+            livrosDb.FechaConecxaoDb();
 
-            List<Task<int>> quantidade = new List<Task<int>>
-            {
-                Task.Run(() => livrosDb.VerTodosLivros().Rows.Count),
-                Task.Run(() => clienteDb.VerTodosClientes().Rows.Count),
-                Task.Run(() => aluguelDb.VerTodosAluguel().Rows.Count)
-            };
-
-            int[] resultado = await Task.WhenAll(quantidade);
-
-            lblLivrosCadastrados.Text = resultado[0].ToString();
-            lblClientesCadastrados.Text = resultado[1].ToString();
-            lblAlugueisRegistrados.Text = resultado[2].ToString();
-
+            lblLivrosCadastrados.Text = livrosDb.VerTodosLivros().Rows.Count.ToString();
+            lblClientesCadastrados.Text = clienteDb.VerTodosClientes().Rows.Count.ToString();
+            lblAlugueisRegistrados.Text = aluguelDb.VerTodosAluguel().Rows.Count.ToString();
         }
         private void btnSairUsuario_Click(object sender, EventArgs e)
         {
@@ -210,7 +203,7 @@ namespace ProjectBook.GUI
             splashScreen.Show();
 
             livrosDb.AbrirConexaoDb();
-            if (!String.IsNullOrEmpty(ConfigurationManager.AppSettings["usuarioLogado"]) && livrosDb.DbStatus() == "Open")
+            if (!string.IsNullOrEmpty(ConfigurationManager.AppSettings["usuarioLogado"]) && livrosDb.DbStatus() == "Open")
             {
                 await Task.Delay(3000); //Delay para ver a Splash Screen
                 this.ShowInTaskbar = true;

@@ -11,15 +11,17 @@ namespace ProjectBook.GUI
     {
         private ClienteDb clienteDb = new ClienteDb();
         private DataTable infoCliente;
+
         public EditarCliente()
         {
             InitializeComponent();
         }
 
+        #region CheckedChanged
         private void rabBuscarClienteId_CheckedChanged(object sender, EventArgs e) => txtBuscarClienteEditar
             .AutoCompleteSource = AutoCompleteSource.None;
 
-        private void rabBsucarClienteNome_CheckedChanged(object sender, EventArgs e)
+        private void rabBuscarClienteNome_CheckedChanged(object sender, EventArgs e)
         {
             //Preparar sugestões
             txtBuscarClienteEditar.AutoCompleteSource = AutoCompleteSource.CustomSource;
@@ -28,24 +30,62 @@ namespace ProjectBook.GUI
             foreach (DataRow cliente in clienteDb.VerTodosClientes().Rows) autoCompleteStringCollection.Add(cliente[1].ToString());
             txtBuscarClienteEditar.AutoCompleteCustomSource = autoCompleteStringCollection;
         }
+        #endregion
 
+        private void btnBucarCliente_Click(object sender, EventArgs e)
+        {
+            string termoBuscaCliente = txtBuscarClienteEditar.Text;
+
+            if (Verificadores.VerificarStrings(termoBuscaCliente))
+            {
+                MessageBox.Show(Properties.Resources.preencherCampoBusca_MessageBox, Properties.Resources.error_MessageBox,
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (rabBuscarClienteId.Checked) infoCliente = clienteDb.BuscarClienteId(termoBuscaCliente);
+            else if (rabBuscarClienteNome.Checked) infoCliente = clienteDb.BuscarClienteNome(termoBuscaCliente);
+
+            if (Verificadores.VerificarDataTable(infoCliente))
+            {
+                MessageBox.Show(Properties.Resources.clienteNaoExiste_MessageBox, Properties.Resources.error_MessageBox,
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            PreencherCampos(infoCliente);
+        }
         private void btnSalvarEditarCliente_Click(object sender, EventArgs e)
         {
             Cliente cliente;
             //Aplicar a formatação na instânciação do cliente
             if (ConfigurationManager.AppSettings["formatarCliente"] == "1")
             {
-                cliente = new Cliente(txtNovoNome.Text.ToUpper(), txtNovoEndereco.Text.ToUpper(), txtNovoCidade.Text.ToUpper(), cmbNovoUf.Text.ToUpper(),
-                txtNovoCep.Text.ToUpper(), txtNovoTelefone1.Text.ToUpper(), txtNovoTelefone2.Text.ToUpper(), txtNovoEmail.Text);
+                cliente = new Cliente(
+                    txtNovoNome.Text.ToUpper(),
+                    txtNovoEndereco.Text.ToUpper(),
+                    txtNovoCidade.Text.ToUpper(),
+                    cmbNovoUf.Text.ToUpper(),
+                    txtNovoCep.Text.ToUpper(),
+                    txtNovoTelefone1.Text.ToUpper(),
+                    txtNovoTelefone2.Text.ToUpper(),
+                    txtNovoEmail.Text);
                 
             }
             else
             {
-                cliente = new Cliente(txtNovoNome.Text, txtNovoEndereco.Text, txtNovoCidade.Text, cmbNovoUf.Text,
-                    txtNovoCep.Text, txtNovoTelefone1.Text, txtNovoTelefone2.Text, txtNovoEmail.Text);
+                cliente = new Cliente(
+                    txtNovoNome.Text,
+                    txtNovoEndereco.Text,
+                    txtNovoCidade.Text,
+                    cmbNovoUf.Text,
+                    txtNovoCep.Text,
+                    txtNovoTelefone1.Text,
+                    txtNovoTelefone2.Text,
+                    txtNovoEmail.Text);
             }
 
-            if (Verificadores.VerificarCamposCliente(cliente))
+            if (Verificadores.VerificarCamposCliente(cliente) || Verificadores.VerificarDataTable(infoCliente))
             {
                 MessageBox.Show(Properties.Resources.preencherCampoBusca_MessageBox, Properties.Resources.error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -56,32 +96,9 @@ namespace ProjectBook.GUI
 
             LimparCampos();
         }
-        private void btnCancelarEditarCliente_Click(object sender, EventArgs e) => this.Close();
-        private void btnBucarCliente_Click(object sender, EventArgs e)
-        {
-            string termoBuscaCliente = txtBuscarClienteEditar.Text;
-            if (Verificadores.VerificarStrings(termoBuscaCliente))
-            {
-                MessageBox.Show(Properties.Resources.preencherCampoBusca_MessageBox, Properties.Resources.error_MessageBox,
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            
-            if (rabBuscarClienteId.Checked) infoCliente = clienteDb.BuscarClienteId(termoBuscaCliente);
-            else if (rabBsucarClienteNome.Checked) infoCliente = clienteDb.BuscarClienteNome(termoBuscaCliente);
 
-            if (Verificadores.VerificarDataTable(infoCliente))
-            {
-                MessageBox.Show(Properties.Resources.clienteNaoExiste_MessageBox, Properties.Resources.error_MessageBox,
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            gpbBuscarCliente.Enabled = false;
-            PreencherCampos(infoCliente);
-        }
         private void btnLimparEditarCliente_Click(object sender, EventArgs e) => LimparCampos();
-
+        private void btnCancelarEditarCliente_Click(object sender, EventArgs e) => this.Close();
         private void PreencherCampos(DataTable info)
         {
             txtNovoNome.Text = info.Rows[0][1].ToString();
@@ -95,7 +112,7 @@ namespace ProjectBook.GUI
         }
         private void LimparCampos()
         {
-            gpbBuscarCliente.Enabled = true;
+            infoCliente.Clear();
             txtBuscarClienteEditar.Clear();
             txtNovoNome.Clear();
             txtNovoEndereco.Clear();

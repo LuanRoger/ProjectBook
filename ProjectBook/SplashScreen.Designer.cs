@@ -52,9 +52,9 @@ namespace ProjectBook
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 238);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(79, 15);
+            this.label1.Size = new System.Drawing.Size(74, 15);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Project Books";
+            this.label1.Text = "Project Book";
             // 
             // label2
             // 

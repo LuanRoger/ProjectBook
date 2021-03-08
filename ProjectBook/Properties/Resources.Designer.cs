@@ -306,7 +306,7 @@ namespace ProjectBook.Properties {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a É necessário fazer uma conexão local com o banco de dados para fazer a migração para o OneDrive..
+        ///   Consulta uma cadeia de caracteres localizada semelhante a É necessário fazer uma conexão local com o banco de dados, indicando o caminho, para fazer a migração para o OneDrive..
         /// </summary>
         internal static string é_necessário_fazer_uma_conexão_local_com_o_banco_de_dados_para_fazer_a_migração_para_o_OneDrive_ {
             get {
@@ -397,6 +397,15 @@ namespace ProjectBook.Properties {
             get {
                 object obj = ResourceManager.GetObject("key", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a GNU General Public License v3.0.
+        /// </summary>
+        internal static string license {
+            get {
+                return ResourceManager.GetString("license", resourceCulture);
             }
         }
         

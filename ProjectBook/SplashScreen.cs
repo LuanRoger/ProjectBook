@@ -54,7 +54,7 @@ namespace ProjectBook
                 livrosDb.FechaConecxaoDb();
                 //Atualizar Status do aluguel
                 lblStatusCarregamento.Text = Resources.atualizando_banco_de_dados_splashscreen;
-                if (!String.IsNullOrEmpty(ConfigurationManager.AppSettings["usuarioLogado"])) AtualizarAtrasso();
+                if (!string.IsNullOrEmpty(ConfigurationManager.AppSettings["usuarioLogado"])) AtualizarAtrasso();
 
                 //Verificar se existe usuário logado
                 lblStatusCarregamento.Text = Resources.realizando_verificações_de_segurança_splashscreen;
@@ -63,7 +63,7 @@ namespace ProjectBook
         }
         private void UsuarioLogado()
         {
-            if (String.IsNullOrEmpty(ConfigurationManager.AppSettings["usuarioLogado"]))
+            if (string.IsNullOrEmpty(ConfigurationManager.AppSettings["usuarioLogado"]))
             {
                 if (Application.OpenForms.Count < 2)
                 {
@@ -96,6 +96,7 @@ namespace ProjectBook
             try
             {
                 if (Directory.Exists(pastaAplicacaoOneDrive)) Directory.Delete(pastaAplicacaoOneDrive, true);
+
                 //Mover pasta o OneDrive
                 Directory.Move(Directory
                     .GetParent(ConfigurationManager.AppSettings["pastaDb"]).ToString(), pastaAplicacaoOneDrive);
@@ -106,9 +107,8 @@ namespace ProjectBook
                     .First(mdf => mdf.Contains(".mdf"));
 
                 //Criar novo string de conexão
-                Configuracoes.config.ConnectionStrings.ConnectionStrings["SqlConnectionString"]
-                        .ConnectionString =
-                    $@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={diretorioDbOneDrive};Integrated Security=True;MultipleActiveResultSets=True";
+                Configuracoes.config.ConnectionStrings.ConnectionStrings["SqlConnectionString"].ConnectionString =
+                    $@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={diretorioDbOneDrive};Integrated Security=True";
 
                 Configuracoes.config.AppSettings.Settings["pastaDb"].Value = pastaAplicacaoOneDrive;
                 Configuracoes.config.Save();

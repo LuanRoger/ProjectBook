@@ -167,7 +167,7 @@
     <value>Configurações salvas.</value>
   </data>
   <data name="é_necessário_fazer_uma_conexão_local_com_o_banco_de_dados_para_fazer_a_migração_para_o_OneDrive_" xml:space="preserve">
-    <value>É necessário fazer uma conexão local com o banco de dados para fazer a migração para o OneDrive.</value>
+    <value>É necessário fazer uma conexão local com o banco de dados, indicando o caminho, para fazer a migração para o OneDrive.</value>
   </data>
   <data name="migrando_banco_para_o_OneDrive" xml:space="preserve">
     <value>Migrando banco para o OneDrive...</value>
@@ -324,5 +324,8 @@
   </data>
   <data name="table" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\img\table.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="license" xml:space="preserve">
+    <value>GNU General Public License v3.0</value>
   </data>
 </root>

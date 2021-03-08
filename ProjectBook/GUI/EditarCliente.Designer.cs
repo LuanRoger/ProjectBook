@@ -33,7 +33,7 @@ namespace ProjectBook.GUI
             this.gpbBuscarCliente = new System.Windows.Forms.GroupBox();
             this.btnBucarCliente = new System.Windows.Forms.Button();
             this.txtBuscarClienteEditar = new System.Windows.Forms.TextBox();
-            this.rabBsucarClienteNome = new System.Windows.Forms.RadioButton();
+            this.rabBuscarClienteNome = new System.Windows.Forms.RadioButton();
             this.rabBuscarClienteId = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
             this.txtNovoNome = new System.Windows.Forms.TextBox();
@@ -61,7 +61,7 @@ namespace ProjectBook.GUI
             // 
             this.gpbBuscarCliente.Controls.Add(this.btnBucarCliente);
             this.gpbBuscarCliente.Controls.Add(this.txtBuscarClienteEditar);
-            this.gpbBuscarCliente.Controls.Add(this.rabBsucarClienteNome);
+            this.gpbBuscarCliente.Controls.Add(this.rabBuscarClienteNome);
             this.gpbBuscarCliente.Controls.Add(this.rabBuscarClienteId);
             this.gpbBuscarCliente.Location = new System.Drawing.Point(13, 13);
             this.gpbBuscarCliente.Name = "gpbBuscarCliente";
@@ -84,24 +84,24 @@ namespace ProjectBook.GUI
             // 
             // txtBuscarClienteEditar
             // 
-            this.txtBuscarClienteEditar.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.txtBuscarClienteEditar.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.txtBuscarClienteEditar.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txtBuscarClienteEditar.Location = new System.Drawing.Point(7, 48);
             this.txtBuscarClienteEditar.Name = "txtBuscarClienteEditar";
             this.txtBuscarClienteEditar.Size = new System.Drawing.Size(253, 23);
             this.txtBuscarClienteEditar.TabIndex = 2;
             // 
-            // rabBsucarClienteNome
+            // rabBuscarClienteNome
             // 
-            this.rabBsucarClienteNome.AutoSize = true;
-            this.rabBsucarClienteNome.Location = new System.Drawing.Point(203, 23);
-            this.rabBsucarClienteNome.Name = "rabBsucarClienteNome";
-            this.rabBsucarClienteNome.Size = new System.Drawing.Size(58, 19);
-            this.rabBsucarClienteNome.TabIndex = 1;
-            this.rabBsucarClienteNome.TabStop = true;
-            this.rabBsucarClienteNome.Text = "Nome";
-            this.rabBsucarClienteNome.UseVisualStyleBackColor = true;
-            this.rabBsucarClienteNome.CheckedChanged += new System.EventHandler(this.rabBsucarClienteNome_CheckedChanged);
+            this.rabBuscarClienteNome.AutoSize = true;
+            this.rabBuscarClienteNome.Location = new System.Drawing.Point(203, 23);
+            this.rabBuscarClienteNome.Name = "rabBuscarClienteNome";
+            this.rabBuscarClienteNome.Size = new System.Drawing.Size(58, 19);
+            this.rabBuscarClienteNome.TabIndex = 1;
+            this.rabBuscarClienteNome.TabStop = true;
+            this.rabBuscarClienteNome.Text = "Nome";
+            this.rabBuscarClienteNome.UseVisualStyleBackColor = true;
+            this.rabBuscarClienteNome.CheckedChanged += new System.EventHandler(this.rabBuscarClienteNome_CheckedChanged);
             // 
             // rabBuscarClienteId
             // 
@@ -349,7 +349,7 @@ namespace ProjectBook.GUI
         private System.Windows.Forms.GroupBox gpbBuscarCliente;
         private System.Windows.Forms.Button btnBucarCliente;
         private System.Windows.Forms.TextBox txtBuscarClienteEditar;
-        private System.Windows.Forms.RadioButton rabBsucarClienteNome;
+        private System.Windows.Forms.RadioButton rabBuscarClienteNome;
         private System.Windows.Forms.RadioButton rabBuscarClienteId;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtNovoNome;

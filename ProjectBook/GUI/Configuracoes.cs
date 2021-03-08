@@ -25,17 +25,16 @@ namespace ProjectBook.GUI
             //Verificar sistema operacional
             string so = null;
             using ManagementObjectSearcher searcher = new ManagementObjectSearcher("SELECT * FROM Win32_OperatingSystem");
-            foreach (var infos in searcher.Get())
-            {
-                so = infos["Caption"].ToString();
-            }
-            if (String.IsNullOrEmpty(so) || !so.Contains("Windows 10")) rabOneDrive.Visible = false;
+            foreach (var infos in searcher.Get()) so = infos["Caption"].ToString();
+
+            if (string.IsNullOrEmpty(so) || !so.Contains("Windows 10")) rabOneDrive.Visible = false;
         }
 
         private void CarregarConfiguracoes()
         {
-            var directoryInfo = String.IsNullOrEmpty(ConfigurationManager.AppSettings["pastaDb"]) ?
+            var directoryInfo = string.IsNullOrEmpty(ConfigurationManager.AppSettings["pastaDb"]) ?
                 "" : Directory.GetParent(ConfigurationManager.AppSettings["pastaDb"]).ToString();
+
             if (ConfigurationManager.AppSettings["visualizarImpressao"] == "1") chbVisualizarImpressao.Checked = true;
             switch (ConfigurationManager.AppSettings["dbPadrao"])
             {
@@ -111,6 +110,7 @@ namespace ProjectBook.GUI
             }
         }
 
+        #region CheckedChanged
         private void rabSqlServerExpress_CheckedChanged(object sender, EventArgs e)
         {
             lblInfoTxt.Text = Resources.string_de_conexão;
@@ -118,12 +118,6 @@ namespace ProjectBook.GUI
             btnSelecionarArquivoDb.Visible = false;
             txtStringConexaoCaminhoDb.Visible = true;
             txtStringConexaoCaminhoDb.Size = new Size(441, 23);
-        }
-        private void txtStringConexaoCaminhoDb_Leave(object sender, EventArgs e)
-        {
-            if (txtStringConexaoCaminhoDb.Text.Contains("MultipleActiveResultSets=True") &&
-                rabSqlServerExpress.Checked) lblMars.Visible = false;
-            else lblMars.Visible = true;
         }
         private void rabSqlServerLocalDb_CheckedChanged(object sender, EventArgs e)
         {
@@ -139,9 +133,10 @@ namespace ProjectBook.GUI
             btnSelecionarArquivoDb.Visible = false;
             txtStringConexaoCaminhoDb.Visible = false;
 
-            DirectoryInfo directoryInfo;
-            try { directoryInfo = Directory.GetParent(ConfigurationManager.AppSettings["pastaDb"]); }
-            catch
+            DirectoryInfo directoryInfo = string.IsNullOrEmpty(ConfigurationManager.AppSettings["pastaDb"]) ?
+                null : Directory.GetParent(ConfigurationManager.AppSettings["pastaDb"]);
+
+            if(directoryInfo == null && directoryInfo.Parent == null)
             {
                 MessageBox.Show(
                     Resources.é_necessário_fazer_uma_conexão_local_com_o_banco_de_dados_para_fazer_a_migração_para_o_OneDrive_,
@@ -149,13 +144,15 @@ namespace ProjectBook.GUI
                 rabSqlServerLocalDb.Checked = true;
                 return;
             }
-            if (directoryInfo?.Parent != null && directoryInfo.ToString().Contains("OneDrive"))
+            else if (directoryInfo.ToString().Contains("OneDrive") &&
+                ConfigurationManager.AppSettings["dbPadrao"] == "onedrive")
             {
                 lblInfoTxt.Visible = true;
                 lblInfoTxt.Text = Resources.banco_de_dados_sincronizado_com_o_OneDrive;
                 lblInfoTxt.ForeColor = Color.Green;
             }
         }
+        #endregion
 
         private void btnSelecionarArquivoDb_Click(object sender, EventArgs e)
         {
@@ -168,7 +165,7 @@ namespace ProjectBook.GUI
             config.Save();
             ConfigurationManager.RefreshSection("appSettings");
             txtStringConexaoCaminhoDb.Text =
-                $@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={caminho.FileName};Integrated Security=True;MultipleActiveResultSets=True";
+                $@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={caminho.FileName};Integrated Security=True";
         }
 
         private void btnPersonalizarImpressao_Click(object sender, EventArgs e)

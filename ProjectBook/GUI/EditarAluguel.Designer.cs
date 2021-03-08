@@ -29,7 +29,6 @@ namespace ProjectBook.GUI
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditarAluguel));
             this.rabBuscarNomeCliente = new System.Windows.Forms.RadioButton();
             this.rabBuscarTituloLivro = new System.Windows.Forms.RadioButton();
             this.txtBuscarAluguel = new System.Windows.Forms.TextBox();
@@ -119,7 +118,7 @@ namespace ProjectBook.GUI
             // 
             this.btnBuscarEditarAluguel.FlatAppearance.BorderSize = 0;
             this.btnBuscarEditarAluguel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBuscarEditarAluguel.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscarEditarAluguel.Image")));
+            this.btnBuscarEditarAluguel.Image = global::ProjectBook.Properties.Resources.zoom;
             this.btnBuscarEditarAluguel.Location = new System.Drawing.Point(371, 46);
             this.btnBuscarEditarAluguel.Name = "btnBuscarEditarAluguel";
             this.btnBuscarEditarAluguel.Size = new System.Drawing.Size(24, 23);
@@ -147,7 +146,7 @@ namespace ProjectBook.GUI
             // 
             this.btnBuscarNovoLivro.FlatAppearance.BorderSize = 0;
             this.btnBuscarNovoLivro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBuscarNovoLivro.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscarNovoLivro.Image")));
+            this.btnBuscarNovoLivro.Image = global::ProjectBook.Properties.Resources.zoom;
             this.btnBuscarNovoLivro.Location = new System.Drawing.Point(368, 17);
             this.btnBuscarNovoLivro.Name = "btnBuscarNovoLivro";
             this.btnBuscarNovoLivro.Size = new System.Drawing.Size(23, 23);
@@ -273,7 +272,7 @@ namespace ProjectBook.GUI
             // 
             this.btnBuscarNovoCliente.FlatAppearance.BorderSize = 0;
             this.btnBuscarNovoCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBuscarNovoCliente.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscarNovoCliente.Image")));
+            this.btnBuscarNovoCliente.Image = global::ProjectBook.Properties.Resources.zoom;
             this.btnBuscarNovoCliente.Location = new System.Drawing.Point(368, 21);
             this.btnBuscarNovoCliente.Name = "btnBuscarNovoCliente";
             this.btnBuscarNovoCliente.Size = new System.Drawing.Size(24, 23);
