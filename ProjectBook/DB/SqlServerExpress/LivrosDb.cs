@@ -160,6 +160,21 @@ namespace ProjectBook.DB.SqlServerExpress
 
             return table;
         }
+        public DataTable BuscarLivrosGenero(string genero)
+        {
+            DataTable table = new DataTable();
+            try
+            {
+                AbrirConexaoDb();
+                SqlDataAdapter adapter = new SqlDataAdapter($"SELECT * FROM Livros WHERE Genero = \'{genero}\'", connection);
+                FechaConecxaoDb();
+
+                adapter.Fill(table);
+            }
+            catch (SqlException e) { MessageBox.Show(e.Message, Resources.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); }
+
+            return table;
+        }
         #endregion
 
         #region Atualizar

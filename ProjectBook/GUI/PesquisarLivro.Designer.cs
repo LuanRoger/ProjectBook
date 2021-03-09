@@ -31,13 +31,13 @@ namespace ProjectBook.GUI
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PesquisaSeletiva));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.rabPesquisarGenero = new System.Windows.Forms.RadioButton();
             this.rabPesquisarAutor = new System.Windows.Forms.RadioButton();
             this.rabPesquisarTitulo = new System.Windows.Forms.RadioButton();
             this.rabPesquisarId = new System.Windows.Forms.RadioButton();
             this.txtTermoPesquisa = new System.Windows.Forms.TextBox();
             this.btnPesquisarSeletiva = new System.Windows.Forms.Button();
             this.btnCancelarPesquisaLivro = new System.Windows.Forms.Button();
-            this.rabPesquisarGenero = new System.Windows.Forms.RadioButton();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,6 +54,18 @@ namespace ProjectBook.GUI
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Pesquisar por:";
             // 
+            // rabPesquisarGenero
+            // 
+            this.rabPesquisarGenero.AutoSize = true;
+            this.rabPesquisarGenero.Location = new System.Drawing.Point(268, 23);
+            this.rabPesquisarGenero.Name = "rabPesquisarGenero";
+            this.rabPesquisarGenero.Size = new System.Drawing.Size(63, 19);
+            this.rabPesquisarGenero.TabIndex = 3;
+            this.rabPesquisarGenero.TabStop = true;
+            this.rabPesquisarGenero.Text = "Gênero";
+            this.rabPesquisarGenero.UseVisualStyleBackColor = true;
+            this.rabPesquisarGenero.CheckedChanged += new System.EventHandler(this.rabPesquisarGenero_CheckedChanged);
+            // 
             // rabPesquisarAutor
             // 
             this.rabPesquisarAutor.AutoSize = true;
@@ -64,6 +76,7 @@ namespace ProjectBook.GUI
             this.rabPesquisarAutor.TabStop = true;
             this.rabPesquisarAutor.Text = "Autor";
             this.rabPesquisarAutor.UseVisualStyleBackColor = true;
+            this.rabPesquisarAutor.CheckedChanged += new System.EventHandler(this.rabPesquisarAutor_CheckedChanged);
             // 
             // rabPesquisarTitulo
             // 
@@ -75,6 +88,7 @@ namespace ProjectBook.GUI
             this.rabPesquisarTitulo.TabStop = true;
             this.rabPesquisarTitulo.Text = "Titulo";
             this.rabPesquisarTitulo.UseVisualStyleBackColor = true;
+            this.rabPesquisarTitulo.CheckedChanged += new System.EventHandler(this.rabPesquisarTitulo_CheckedChanged);
             // 
             // rabPesquisarId
             // 
@@ -86,9 +100,12 @@ namespace ProjectBook.GUI
             this.rabPesquisarId.TabStop = true;
             this.rabPesquisarId.Text = "Código";
             this.rabPesquisarId.UseVisualStyleBackColor = true;
+            this.rabPesquisarId.CheckedChanged += new System.EventHandler(this.rabPesquisarId_CheckedChanged);
             // 
             // txtTermoPesquisa
             // 
+            this.txtTermoPesquisa.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.txtTermoPesquisa.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txtTermoPesquisa.Location = new System.Drawing.Point(11, 80);
             this.txtTermoPesquisa.Name = "txtTermoPesquisa";
             this.txtTermoPesquisa.Size = new System.Drawing.Size(307, 23);
@@ -116,17 +133,6 @@ namespace ProjectBook.GUI
             this.btnCancelarPesquisaLivro.Text = "Cancelar";
             this.btnCancelarPesquisaLivro.UseVisualStyleBackColor = true;
             this.btnCancelarPesquisaLivro.Click += new System.EventHandler(this.btnFecharPesquisaLivro_Click);
-            // 
-            // rabPesquisarGenero
-            // 
-            this.rabPesquisarGenero.AutoSize = true;
-            this.rabPesquisarGenero.Location = new System.Drawing.Point(268, 23);
-            this.rabPesquisarGenero.Name = "rabPesquisarGenero";
-            this.rabPesquisarGenero.Size = new System.Drawing.Size(63, 19);
-            this.rabPesquisarGenero.TabIndex = 3;
-            this.rabPesquisarGenero.TabStop = true;
-            this.rabPesquisarGenero.Text = "Gênero";
-            this.rabPesquisarGenero.UseVisualStyleBackColor = true;
             // 
             // PesquisaSeletiva
             // 
