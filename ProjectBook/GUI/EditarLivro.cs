@@ -88,7 +88,9 @@ namespace ProjectBook.GUI
                     txtEditarEdicao.Text.ToUpper(),
                     txtEditarAno.Text.ToUpper(),
                     cmbEditarGenero.Text.ToUpper(),
-                    txtEditarIsbn.Text.ToUpper());
+                    txtEditarIsbn.Text.ToUpper(),
+                    DateTime.Now,
+                    txtEditarObservacoes.Text.ToUpper());
             }
             else
             {
@@ -100,7 +102,9 @@ namespace ProjectBook.GUI
                     txtEditarEdicao.Text,
                     txtEditarAno.Text,
                     cmbEditarGenero.Text,
-                    txtEditarIsbn.Text);
+                    txtEditarIsbn.Text,
+                    DateTime.Now,
+                    txtEditarObservacoes.Text);
             }
             
             if (Verificadores.VerificarCamposLivros(livro))
@@ -128,6 +132,7 @@ namespace ProjectBook.GUI
                 txtEditarAno.Text = info.Rows[0][5].ToString();
                 cmbEditarGenero.Text = info.Rows[0][6].ToString();
                 txtEditarIsbn.Text = info.Rows[0][7].ToString();
+                txtEditarObservacoes.Text = info.Rows[0][9].ToString();
             } 
             catch
             {
@@ -165,6 +170,7 @@ namespace ProjectBook.GUI
             txtEditarAno.Clear();
             cmbEditarGenero.Text = "";
             txtEditarIsbn.Clear();
+            txtEditarObservacoes.Clear();
         }
     }
 }

@@ -15,6 +15,7 @@ namespace ProjectBook.GUI
         {
             InitializeComponent();
             SugerirAutores();
+            SugerirEditora();
             ColocarGeneros();
         }
 
@@ -48,14 +49,16 @@ namespace ProjectBook.GUI
             if (ConfigurationManager.AppSettings["formatarLivro"] == "1")
             {
                 livro = new Livro(
-                    txtCodigoLivro.Text, 
+                    txtCodigoLivro.Text,
                     txtTituloLivro.Text.ToUpper(),
                     txtAutorLivro.Text.ToUpper(),
                     txtEditoraLivro.Text.ToUpper(),
                     txtEdicaoLivro.Text.ToUpper(),
                     txtAno.Text.ToUpper(),
                     cmbGenero.Text.ToUpper(),
-                    txtIsbn.Text.ToUpper());
+                    txtIsbn.Text.ToUpper(),
+                    DateTime.Now,
+                    txtObservacoesCadastro.Text.ToUpper());
             }
             else
             {
@@ -67,7 +70,9 @@ namespace ProjectBook.GUI
                     txtEdicaoLivro.Text,
                     txtAno.Text,
                     cmbGenero.Text,
-                    txtIsbn.Text);
+                    txtIsbn.Text,
+                    DateTime.Now,
+                    txtObservacoesCadastro.Text);
             }
             
             if (Verificadores.VerificarCamposLivros(livro))
@@ -80,6 +85,7 @@ namespace ProjectBook.GUI
             livrosDb.AdicionarLivro(livro);
 
             SugerirAutores();
+            SugerirEditora();
             ColocarGeneros();
             LimparCamposCadastro();
         }
@@ -94,6 +100,14 @@ namespace ProjectBook.GUI
             AutoCompleteStringCollection autorSugestoes = new AutoCompleteStringCollection();
             foreach (DataRow autor in livrosDb.VerTodosLivros().Rows) autorSugestoes.Add(autor[2].ToString());
             txtAutorLivro.AutoCompleteCustomSource = autorSugestoes;
+        }
+        private void SugerirEditora()
+        {
+            txtEditoraLivro.AutoCompleteCustomSource.Clear();
+
+            AutoCompleteStringCollection editoraAutoCompleteString = new AutoCompleteStringCollection();
+            foreach (DataRow editora in livrosDb.VerTodosLivros().Rows) editoraAutoCompleteString.Add(editora[3].ToString());
+            txtEditoraLivro.AutoCompleteCustomSource = editoraAutoCompleteString;
         }
         private void ColocarGeneros()
         {
@@ -112,6 +126,7 @@ namespace ProjectBook.GUI
             txtAno.Clear();
             cmbGenero.Text = "";
             txtIsbn.Clear();
+            txtObservacoesCadastro.Clear();
         }
     }
 }

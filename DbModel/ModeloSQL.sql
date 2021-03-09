@@ -3,7 +3,7 @@ CREATE TABLE Aluguel (
     [Autor]             NVARCHAR (100) NOT NULL,
     [Alugado por]       NVARCHAR (100) NOT NULL,
     [Data de saida]     DATE           NOT NULL,
-    [Data de devolução] DATE           NOT NULL,
+    [Data de devolucao] DATE           NOT NULL,
     [Status]            NVARCHAR (9)   NOT NULL
 );
 CREATE TABLE Clientes (
@@ -19,14 +19,16 @@ CREATE TABLE Clientes (
     PRIMARY KEY CLUSTERED ([ID] ASC)
 );
 CREATE TABLE Livros (
-    [ID]      INT            NOT NULL,
-    [Titulo]  NVARCHAR (100) NOT NULL,
-    [Autor]   NVARCHAR (100) NOT NULL,
-    [Editora] NVARCHAR (100) NOT NULL,
-    [Edicao]  NVARCHAR (100) NULL,
-    [Ano]     INT            NULL,
-    [Genero]  NVARCHAR (100) NULL,
-    [ISBN]    NVARCHAR (17)  NULL,
+    [ID]           INT            NOT NULL,
+    [Titulo]       NVARCHAR (100) NOT NULL,
+    [Autor]        NVARCHAR (100) NOT NULL,
+    [Editora]      NVARCHAR (100) NOT NULL,
+    [Edicao]       NVARCHAR (100) NULL,
+    [Ano]          INT            NULL,
+    [Genero]       NVARCHAR (100) NULL,
+    [ISBN]         NVARCHAR (17)  NULL,
+    [DataCadastro] DATETIME       NOT NULL,
+    [Observacoes]  NVARCHAR (500) NULL,
     CONSTRAINT [PK_Livros] PRIMARY KEY CLUSTERED ([ID] ASC)
 );
 CREATE TABLE Usuarios (

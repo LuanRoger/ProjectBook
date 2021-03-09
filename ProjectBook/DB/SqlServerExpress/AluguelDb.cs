@@ -16,12 +16,12 @@ namespace ProjectBook.DB.SqlServerExpress
             command.Parameters.AddWithValue("@autor", aluguel.autor);
             command.Parameters.AddWithValue("@alugadoPor", aluguel.alugadoPor);
             command.Parameters.AddWithValue("@dataSaida", aluguel.dataEntrega);
-            command.Parameters.AddWithValue("@dataDevolucao", aluguel.dataRecebimento);
+            command.Parameters.AddWithValue("@dataDevolucao", aluguel.dataDevolucao);
             command.Parameters.AddWithValue("@status", aluguel.status);
             #endregion
             try
             {
-                command.CommandText = "INSERT INTO Aluguel(Titulo, Autor, [Alugado por], [Data de saida], [Data de devolução], Status) " +
+                command.CommandText = "INSERT INTO Aluguel(Titulo, Autor, [Alugado por], [Data de saida], [Data de devolucao], Status) " +
                 "VALUES(@titulo, @autor, @alugadoPor, @dataSaida, @dataDevolucao, @status)";
 
                 AbrirConexaoDb();
@@ -178,13 +178,13 @@ namespace ProjectBook.DB.SqlServerExpress
             command.Parameters.AddWithValue("@autor", aluguel.autor);
             command.Parameters.AddWithValue("@alugadoPor", aluguel.alugadoPor);
             command.Parameters.AddWithValue("@dataSaida", aluguel.dataEntrega);
-            command.Parameters.AddWithValue("@dataDevolucao", aluguel.dataRecebimento);
+            command.Parameters.AddWithValue("@dataDevolucao", aluguel.dataDevolucao);
             command.Parameters.AddWithValue("@status", aluguel.status);
             #endregion
             try
             {
                 command.CommandText = "UPDATE Livros SET Titulo = @titulo, Autor = @autor, [Alugado por] = @alugadoPor," +
-                    $" [Data de saida] = @dataEntrega, [Data de devolução] = @dataRecebimento, Status = @status WHERE Titulo = \'{titulo}\'";
+                    $" [Data de saida] = @dataEntrega, [Data de devolucao] = @dataRecebimento, Status = @status WHERE Titulo = \'{titulo}\'";
                 
                 AbrirConexaoDb();
                 command.ExecuteNonQuery();
@@ -204,13 +204,13 @@ namespace ProjectBook.DB.SqlServerExpress
             command.Parameters.AddWithValue("@autor", aluguel.autor);
             command.Parameters.AddWithValue("@alugadoPor", aluguel.alugadoPor);
             command.Parameters.AddWithValue("@dataSaida", aluguel.dataEntrega);
-            command.Parameters.AddWithValue("@dataDevolucao", aluguel.dataRecebimento);
+            command.Parameters.AddWithValue("@dataDevolucao", aluguel.dataDevolucao);
             command.Parameters.AddWithValue("@status", aluguel.status);
             #endregion
             try
             {
                 command.CommandText = "UPDATE Aluguel SET Titulo = @titulo, Autor = @autor, [Alugado por] = @alugadoPor," +
-                    $" [Data de saida] = @dataSaida, [Data de devolução] = @dataDevolucao, Status = @status WHERE [Alugado por] = \'{nomeCliente}\'";
+                    $" [Data de saida] = @dataSaida, [Data de devolucao] = @dataDevolucao, Status = @status WHERE [Alugado por] = \'{nomeCliente}\'";
 
                 AbrirConexaoDb();
                 command.ExecuteNonQuery();

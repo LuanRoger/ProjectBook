@@ -54,6 +54,8 @@ namespace ProjectBook.GUI
             this.cmbEditarGenero = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtEditarCodigo = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtEditarObservacoes = new System.Windows.Forms.RichTextBox();
             this.gpbBuscar.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -166,7 +168,7 @@ namespace ProjectBook.GUI
             // 
             // btnFecharEdicao
             // 
-            this.btnFecharEdicao.Location = new System.Drawing.Point(449, 394);
+            this.btnFecharEdicao.Location = new System.Drawing.Point(449, 469);
             this.btnFecharEdicao.Name = "btnFecharEdicao";
             this.btnFecharEdicao.Size = new System.Drawing.Size(75, 23);
             this.btnFecharEdicao.TabIndex = 15;
@@ -176,7 +178,7 @@ namespace ProjectBook.GUI
             // 
             // btnLimparTxtEditar
             // 
-            this.btnLimparTxtEditar.Location = new System.Drawing.Point(368, 394);
+            this.btnLimparTxtEditar.Location = new System.Drawing.Point(368, 469);
             this.btnLimparTxtEditar.Name = "btnLimparTxtEditar";
             this.btnLimparTxtEditar.Size = new System.Drawing.Size(75, 23);
             this.btnLimparTxtEditar.TabIndex = 14;
@@ -186,7 +188,7 @@ namespace ProjectBook.GUI
             // 
             // btnSalvarEditar
             // 
-            this.btnSalvarEditar.Location = new System.Drawing.Point(12, 394);
+            this.btnSalvarEditar.Location = new System.Drawing.Point(12, 469);
             this.btnSalvarEditar.Name = "btnSalvarEditar";
             this.btnSalvarEditar.Size = new System.Drawing.Size(75, 23);
             this.btnSalvarEditar.TabIndex = 13;
@@ -290,11 +292,30 @@ namespace ProjectBook.GUI
             this.txtEditarCodigo.Size = new System.Drawing.Size(100, 23);
             this.txtEditarCodigo.TabIndex = 5;
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(12, 374);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(77, 15);
+            this.label9.TabIndex = 33;
+            this.label9.Text = "Observações:";
+            // 
+            // txtEditarObservacoes
+            // 
+            this.txtEditarObservacoes.Location = new System.Drawing.Point(14, 392);
+            this.txtEditarObservacoes.Name = "txtEditarObservacoes";
+            this.txtEditarObservacoes.Size = new System.Drawing.Size(292, 71);
+            this.txtEditarObservacoes.TabIndex = 34;
+            this.txtEditarObservacoes.Text = "";
+            // 
             // EditarLivro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(535, 429);
+            this.ClientSize = new System.Drawing.Size(535, 504);
+            this.Controls.Add(this.txtEditarObservacoes);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.txtEditarCodigo);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.cmbEditarGenero);
@@ -355,5 +376,7 @@ namespace ProjectBook.GUI
         private System.Windows.Forms.ComboBox cmbEditarGenero;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtEditarCodigo;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.RichTextBox txtEditarObservacoes;
     }
 }

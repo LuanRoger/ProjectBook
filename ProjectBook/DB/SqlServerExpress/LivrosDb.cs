@@ -21,11 +21,13 @@ namespace ProjectBook.DB.SqlServerExpress
             command.Parameters.AddWithValue("@ano", livro.ano);
             command.Parameters.AddWithValue("@genero", livro.genero);
             command.Parameters.AddWithValue("@isbn", livro.isbn);
+            command.Parameters.AddWithValue("@dataCadastro", livro.dataCadastro);
+            command.Parameters.AddWithValue("@observacoes", livro.observacoes);
             #endregion
             try
             {
-                command.CommandText = "INSERT INTO Livros(ID, Titulo, Autor, Editora, Edicao, Ano, Genero, Isbn) " +
-                "VALUES(@id, @titulo, @autor, @editora, @edicao, @ano, @genero, @isbn)";
+                command.CommandText = "INSERT INTO Livros(ID, Titulo, Autor, Editora, Edicao, Ano, Genero, Isbn, DataCadastro, Observacoes) " +
+                "VALUES(@id, @titulo, @autor, @editora, @edicao, @ano, @genero, @isbn, @dataCadastro, @observacoes)";
 
                 AbrirConexaoDb();
                 command.ExecuteNonQuery();
@@ -169,14 +171,17 @@ namespace ProjectBook.DB.SqlServerExpress
             command.Parameters.AddWithValue("@autor", livro.autor);
             command.Parameters.AddWithValue("@editora", livro.editora);
             command.Parameters.AddWithValue("@edicao", livro.edicao);
-            command.Parameters.AddWithValue("@ano", Convert.ToInt32(livro.ano));
+            command.Parameters.AddWithValue("@ano", livro.ano);
             command.Parameters.AddWithValue("@genero", livro.genero);
             command.Parameters.AddWithValue("@isbn", livro.isbn);
+            command.Parameters.AddWithValue("@dataCadastro", livro.dataCadastro);
+            command.Parameters.AddWithValue("@observacoes", livro.observacoes);
             #endregion
             try
             {
                 command.CommandText = "UPDATE Livros SET Titulo = @titulo, Autor = @autor, Editora = @editora," +
-                    $" Edicao = @edicao, Ano = @ano, Genero = @genero, Isbn = @isbn WHERE ID = {id}";
+                    $" Edicao = @edicao, Ano = @ano, Genero = @genero, Isbn = @isbn," +
+                    $" DataCadastro = @dataCadastro, Observacoes = @observacoes WHERE ID = {id}";
 
                 AbrirConexaoDb();
                 command.ExecuteNonQuery();
@@ -199,11 +204,14 @@ namespace ProjectBook.DB.SqlServerExpress
             command.Parameters.AddWithValue("@ano", Convert.ToInt32(livro.ano));
             command.Parameters.AddWithValue("@genero", livro.genero);
             command.Parameters.AddWithValue("@isbn", livro.isbn);
+            command.Parameters.AddWithValue("@dataCadastro", livro.dataCadastro);
+            command.Parameters.AddWithValue("@observacoes", livro.observacoes);
             #endregion
             try
             {
                 command.CommandText = "UPDATE Livros SET Titulo = @titulo, Autor = @autor, Editora = @editora," +
-                    $" Edicao = @edicao, Ano = @ano, Genero = @genero, Isbn = @isbn WHERE Titulo = \'{titulo}\'";
+                    $" Edicao = @edicao, Ano = @ano, Genero = @genero, Isbn = @isbn," +
+                    $" DataCadastro = @dataCadastro, Observacoes = @observacoes WHERE Titulo = \'{titulo}\'";
 
                 AbrirConexaoDb();
                 command.ExecuteNonQuery();
@@ -226,11 +234,14 @@ namespace ProjectBook.DB.SqlServerExpress
             command.Parameters.AddWithValue("@ano", Convert.ToInt32(livro.ano));
             command.Parameters.AddWithValue("@genero", livro.genero);
             command.Parameters.AddWithValue("@isbn", livro.isbn);
+            command.Parameters.AddWithValue("@dataCadastro", livro.dataCadastro);
+            command.Parameters.AddWithValue("@observacoes", livro.observacoes);
             #endregion
             try
             {
                 command.CommandText = "UPDATE Livros SET Titulo = @titulo, Autor = @autor, Editora = @editora," +
-                    $" Edicao = @edicao, Ano = @ano, Genero = @genero, Isbn = @isbn WHERE Autor = \'{autor}\'";
+                    $" Edicao = @edicao, Ano = @ano, Genero = @genero, Isbn = @isbn," +
+                    $" DataCadastro = @dataCadastro, Observacoes = @observacoes WHERE Autor = \'{autor}\'";
 
                 AbrirConexaoDb();
                 command.ExecuteNonQuery();
