@@ -28,17 +28,21 @@ namespace ProjectBook.DB.SqlServerExpress
 
                     if (dialogResult == DialogResult.Yes)
                     {
+                        // Fazer com que o tipo de usuario seja alterado para ADM para que possa editar a string de conexão
                         Configuracoes.config.AppSettings.Settings["tipoUsuario"].Value = Tipos.TipoUsuário.ADM.ToString();
                         Configuracoes.config.Save();
                         ConfigurationManager.RefreshSection("appSettings");
+
                         Configuracoes configuracoes = new Configuracoes();
                         configuracoes.Closing += delegate
                         {
-                            if (String.IsNullOrEmpty(ConfigurationManager.AppSettings["usuarioLogado"]) ||
-                                String.IsNullOrEmpty(ConfigurationManager.ConnectionStrings["SqlConnectionString"].ConnectionString))
-                                Environment.Exit(0);
+                            //Evitar softlock
+                            if (string.IsNullOrEmpty(ConfigurationManager.AppSettings["usuarioLogado"]) ||
+                                string.IsNullOrEmpty(ConfigurationManager.ConnectionStrings["SqlConnectionString"].ConnectionString))
+                                Environment.Exit(1);
                         };
                         configuracoes.Show();
+                        configuracoes.BringToFront();
                     }
                     else Environment.Exit(0);
                 }

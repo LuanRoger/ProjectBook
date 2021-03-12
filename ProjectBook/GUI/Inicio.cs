@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.Diagnostics;
 using System.Drawing;
@@ -196,8 +195,8 @@ namespace ProjectBook.GUI
         private async void Inicio_Load(object sender, EventArgs e)
         {
             //Deixar o form invisível enquanto a SplashScreen está carregando
-            this.ShowInTaskbar = false;
-            this.Opacity = 0;
+            Opacity = 0;
+            ShowInTaskbar = false;
 
             SplashScreen splashScreen = new SplashScreen();
             splashScreen.Show();
@@ -205,13 +204,13 @@ namespace ProjectBook.GUI
             livrosDb.AbrirConexaoDb();
             if (!string.IsNullOrEmpty(ConfigurationManager.AppSettings["usuarioLogado"]) && livrosDb.DbStatus() == "Open")
             {
-                await Task.Delay(3000); //Delay para ver a Splash Screen
-                this.ShowInTaskbar = true;
-                this.Opacity = 100;
+                await Task.Delay(3000); // Delay para ver a Splash Screen
+                ShowInTaskbar = true;
+                Opacity = 100;
                 splashScreen.Close();
                 livrosDb.FechaConecxaoDb();
             }
-            else Environment.Exit(1);
+
             //Deixar o lblNomeUsuario trasnparente para evitar que sobreponha a imagem de fundo
             lblNomeUsuario.BackColor = Color.Transparent;
 
