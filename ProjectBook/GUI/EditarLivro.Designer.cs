@@ -29,7 +29,6 @@ namespace ProjectBook.GUI
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtEditarIsbn = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.txtEditarAno = new System.Windows.Forms.TextBox();
@@ -56,15 +55,9 @@ namespace ProjectBook.GUI
             this.txtEditarCodigo = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.txtEditarObservacoes = new System.Windows.Forms.RichTextBox();
+            this.txtEditarIsbn = new System.Windows.Forms.TextBox();
             this.gpbBuscar.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // txtEditarIsbn
-            // 
-            this.txtEditarIsbn.Location = new System.Drawing.Point(12, 344);
-            this.txtEditarIsbn.Name = "txtEditarIsbn";
-            this.txtEditarIsbn.Size = new System.Drawing.Size(112, 23);
-            this.txtEditarIsbn.TabIndex = 12;
             // 
             // label7
             // 
@@ -309,11 +302,19 @@ namespace ProjectBook.GUI
             this.txtEditarObservacoes.TabIndex = 34;
             this.txtEditarObservacoes.Text = "";
             // 
+            // txtEditarIsbn
+            // 
+            this.txtEditarIsbn.Location = new System.Drawing.Point(14, 344);
+            this.txtEditarIsbn.Name = "txtEditarIsbn";
+            this.txtEditarIsbn.Size = new System.Drawing.Size(113, 23);
+            this.txtEditarIsbn.TabIndex = 36;
+            // 
             // EditarLivro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(535, 504);
+            this.Controls.Add(this.txtEditarIsbn);
             this.Controls.Add(this.txtEditarObservacoes);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.txtEditarCodigo);
@@ -323,7 +324,6 @@ namespace ProjectBook.GUI
             this.Controls.Add(this.btnFecharEdicao);
             this.Controls.Add(this.btnLimparTxtEditar);
             this.Controls.Add(this.btnSalvarEditar);
-            this.Controls.Add(this.txtEditarIsbn);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txtEditarAno);
@@ -350,8 +350,6 @@ namespace ProjectBook.GUI
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox txtEditarIsbn;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtEditarAno;
@@ -378,5 +376,6 @@ namespace ProjectBook.GUI
         private System.Windows.Forms.TextBox txtEditarCodigo;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.RichTextBox txtEditarObservacoes;
+        private System.Windows.Forms.TextBox txtEditarIsbn;
     }
 }
