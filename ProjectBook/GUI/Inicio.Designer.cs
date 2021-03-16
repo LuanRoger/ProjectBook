@@ -106,6 +106,7 @@ namespace ProjectBook.GUI
             this.mnuArUsuario = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuArBuscaRapida = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuInicio.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -588,11 +589,12 @@ namespace ProjectBook.GUI
             // 
             this.tosSugestoes.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuArCadastroLivro,
-            this.mnuArCadastroCliente,
-            this.mnuArCadastroAluguel,
-            this.toolStripSeparator8,
             this.mnuArEditarLivro,
+            this.toolStripSeparator8,
+            this.mnuArCadastroCliente,
             this.mnuArEditarCliente,
+            this.toolStripSeparator11,
+            this.mnuArCadastroAluguel,
             this.mnuArEditarAluguel,
             this.toolStripSeparator9,
             this.mnuArUsuario,
@@ -690,6 +692,11 @@ namespace ProjectBook.GUI
             this.mnuArBuscaRapida.Name = "mnuArBuscaRapida";
             this.mnuArBuscaRapida.Size = new System.Drawing.Size(23, 22);
             this.mnuArBuscaRapida.Text = "Busca rápida";
+            // 
+            // toolStripSeparator11
+            // 
+            this.toolStripSeparator11.Name = "toolStripSeparator11";
+            this.toolStripSeparator11.Size = new System.Drawing.Size(6, 25);
             // 
             // Inicio
             // 
@@ -799,6 +806,7 @@ namespace ProjectBook.GUI
         private System.Windows.Forms.ToolStripButton mnuArEditarAluguel;
         private System.Windows.Forms.ToolStripButton mnuArUsuario;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator10;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator11;
     }
 }
 

@@ -84,13 +84,14 @@ namespace ProjectBook.GUI
             this.mnuImprimirLista.Image = ((System.Drawing.Image)(resources.GetObject("mnuImprimirLista.Image")));
             this.mnuImprimirLista.Name = "mnuImprimirLista";
             this.mnuImprimirLista.Size = new System.Drawing.Size(28, 20);
+            this.mnuImprimirLista.ToolTipText = "Imprimir";
             // 
             // mnuExportarExcel
             // 
             this.mnuExportarExcel.Image = ((System.Drawing.Image)(resources.GetObject("mnuExportarExcel.Image")));
             this.mnuExportarExcel.Name = "mnuExportarExcel";
             this.mnuExportarExcel.Size = new System.Drawing.Size(28, 20);
-            this.mnuExportarExcel.Visible = false;
+            this.mnuExportarExcel.ToolTipText = "Exportar tabela como planilha";
             // 
             // ListaPesquisa
             // 
