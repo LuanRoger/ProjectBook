@@ -42,7 +42,7 @@ namespace ProjectBook.GUI
                 }
             }
 
-            Configuracoes.config.AppSettings.Settings["usuarioLogado"].Value = infoUsuario.Rows[0][2].ToString();
+            Configuracoes.config.AppSettings.Settings["usuarioLogado"].Value = infoUsuario.Rows[0][1].ToString();
             Configuracoes.config.AppSettings.Settings["tipoUsuario"].Value = infoUsuario.Rows[0][3].ToString();
             Configuracoes.config.Save(ConfigurationSaveMode.Modified);
             ConfigurationManager.RefreshSection("appSettings");
