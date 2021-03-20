@@ -1,64 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<root>
-  <!-- 
-    Microsoft ResX Schema 
-    
-    Version 2.0
-    
-    The primary goals of this format is to allow a simple XML format 
-    that is mostly human readable. The generation and parsing of the 
-    various data types are done through the TypeConverter classes 
-    associated with the data types.
-    
-    Example:
-    
-    ... ado.net/XML headers & schema ...
-    <resheader name="resmimetype">text/microsoft-resx</resheader>
-    <resheader name="version">2.0</resheader>
-    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
-    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
-    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
-    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
-    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
-        <value>[base64 mime encoded serialized .NET Framework object]</value>
-    </data>
-    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
-        <comment>This is a comment</comment>
-    </data>
-                
-    There are any number of "resheader" rows that contain simple 
-    name/value pairs.
-    
-    Each data row contains a name, and value. The row also contains a 
-    type or mimetype. Type corresponds to a .NET class that support 
-    text/value conversion through the TypeConverter architecture. 
-    Classes that don't support this are serialized and stored with the 
-    mimetype set.
-    
-    The mimetype is used for serialized objects, and tells the 
-    ResXResourceReader how to depersist the object. This is currently not 
-    extensible. For a given mimetype the value must be set accordingly:
-    
-    Note - application/x-microsoft.net.object.binary.base64 is the format 
-    that the ResXResourceWriter will generate, however the reader can 
-    read any of the formats listed below.
-    
-    mimetype: application/x-microsoft.net.object.binary.base64
-    value   : The object must be serialized with 
-            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
-            : and then encoded with base64 encoding.
-    
-    mimetype: application/x-microsoft.net.object.soap.base64
-    value   : The object must be serialized with 
-            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
-            : and then encoded with base64 encoding.
-
-    mimetype: application/x-microsoft.net.object.bytearray.base64
-    value   : The object must be serialized into a byte array 
-            : using a System.ComponentModel.TypeConverter
-            : and then encoded with base64 encoding.
-    -->
+﻿<root>
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
@@ -117,4 +57,29 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing.Common" name="System.Drawing.Common, Version=4.0.2.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51" />
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing.Common" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAA
+        AAD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP//
+        /wD///8A////AP///wBpqN8NWlpaJT09PcRNTU3fSUlJ+EdHR/9HR0f/RUVF/0dHR+04ODjGVlZWKmmp
+        4Q3///8A////AP///wBtotN5JXnN+15eXv9PT0//hISE/4SEhP+AgID/VFRU/4ODg/+EhIT/SkpK/0VF
+        Rf8ufs74baLTg////wD///8AKX3R/oK67v9fX1//j4+P/3p6ev93d3f/bW1t/05OTv9ycnL/b29v/4SE
+        hP9VVVX/g7zv/yp3yv7///8A////ACh8zvx4s+r/enp6/4ODg/9+fn7/XV1d/0lJSf9MTEz/VVVV/2Rk
+        ZP9fX1//bW1t/3647f8pdMf4////AP///wBMTExsY2Nj/6SkpP9QUFD/UlJS/1tbW/+4uLj/wcHB/1dX
+        V/9NTU3/Wlpa/35+fv9gYGD+RkZGc////wD///8ASUlJAnd3d4lMTEz/Tk5O/5eXl/9ZWVn/q6ur/6Wl
+        pf9UVFT/hoaG/2JiYv9KSkr+REREeEhISAX///8A////AP///wBISEgOSUlJg0tLS/+YmJj/XFxc/1V8
+        o/9VfKP/TExM/5iYmP9OTk7/TExMhEhISAz///8A////AP///wD///8A////AGlGMgg9PT2rQW+e/5zM
+        +P+v1Pf/r9T3/6XP9v9Bdqb/Nzc3rGVCLgr///8A////AP///wD///8A////AP///wD///8AMF2PyKbK
+        7v+rzOr/p9D2/6jQ9v+rzOr/p83u/y5imsz///8A////AP///wD///8A////AP///wD///8A////ABhI
+        ePebt9H/o8nt/5/F6P90oc3/gbDd/5azzv8aTH75aqDSBv///wD///8A////AP///wD///8A////AP//
+        /wARNmf/Kktx/0x1nv87Y47/ETVb/yhSe/8cOVn/EDJV/1hzjgv///8A////AP///wD///8A////AP//
+        /wD///8AN1J5/yVak/8MPnb/JFSF/w4+c/8mVYT/Fj5p/xQwUP7///8A////AP///wD///8A////AP//
+        /wD///8A////AF9jaYAoTX3/LWGW/w9JiP8sYJP/DD5z/xs9YP9ZXmOO////AP///wD///8A////AP//
+        /wD///8A////AP///wD///8AVl1ojRM/ev8NPn3/DDx2/xI5af9OVmOd////AP///wD///8A////AP//
+        /wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP//
+        /wD///8A//8AAMADAACAAQAAgAEAAIABAACAAQAAgAEAAMADAADgBwAA8A8AAPAHAADwBwAA8A8AAPAP
+        AAD4HwAA//8AAA==
+</value>
+  </data>
 </root>

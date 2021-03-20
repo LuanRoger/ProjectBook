@@ -74,7 +74,7 @@ namespace ProjectBook
             }
             else
             {
-                DataRow usuario = usuarioDb.BuscarUsuarioNome(ConfigurationManager.AppSettings["usuarioLogado"]);
+                DataRow usuario = usuarioDb.BuscarUsuarioNome(ConfigurationManager.AppSettings["usuarioLogado"]).Rows[0];
                 Configuracoes.config.AppSettings.Settings["tipoUsuario"].Value = usuario[3].ToString();
                 Configuracoes.config.Save();
                 ConfigurationManager.RefreshSection("appSettings");
@@ -95,7 +95,23 @@ namespace ProjectBook
         {
             try
             {
-                if (Directory.Exists(pastaAplicacaoOneDrive)) Directory.Delete(pastaAplicacaoOneDrive, true);
+                if (Directory.Exists(pastaAplicacaoOneDrive))
+                {
+                    DialogResult dialogResult = MessageBox.Show("Já existe um banco de dados sincronizado, deseja sobrescrever?",
+                        Resources.informacao_MessageBox ,MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                    if(dialogResult == DialogResult.No)
+                    {
+                        Configuracoes.config.AppSettings.Settings["dbPadrao"].Value = "sqlserverlocaldb";
+                        Configuracoes.config.ConnectionStrings.ConnectionStrings["SqlConnectionString"].ConnectionString =
+                            $@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename ={ConfigurationManager.AppSettings["pastaDb"]}; Integrated Security = True";
+                        Configuracoes.config.Save();
+                        ConfigurationManager.RefreshSection("appSettings");
+
+                        AppManager.ReiniciarPrograma();
+                        return;
+                    }
+                }
 
                 //Mover pasta o OneDrive
                 Directory.Move(Directory

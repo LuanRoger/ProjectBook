@@ -58,10 +58,15 @@ namespace ProjectBook.GUI
             };
 
             mnuUsuario.Visible = ConfigurationManager.AppSettings["tipoUsuario"] == "ADM";
-            mnuUsuario.Click += (sender, e) =>
+            mnuGerenciarUsuario.Click += (sender, e) =>
             {
                 GerenciarUsuario gerenciarUsuario = new GerenciarUsuario();
                 gerenciarUsuario.Show();
+            };
+            mnuPesquisarUsuarios.Click += (sender, e) =>
+            {
+                PesquisarUsuario pesquisarUsuario = new PesquisarUsuario();
+                pesquisarUsuario.Show();
             };
             
             mnuExcluirLivro.Click += (sender, e) =>

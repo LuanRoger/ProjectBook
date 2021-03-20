@@ -66,6 +66,8 @@ namespace ProjectBook.GUI
             this.mnuCadastrarAluguel = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuEditarAluguel = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuUsuario = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuGerenciarUsuario = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuPesquisarUsuarios = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuPesquisar = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuTodosLivros = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuPesquisaSeletiva = new System.Windows.Forms.ToolStripMenuItem();
@@ -96,17 +98,17 @@ namespace ProjectBook.GUI
             this.toolStripStatusLabel5 = new System.Windows.Forms.ToolStripStatusLabel();
             this.tosSugestoes = new System.Windows.Forms.ToolStrip();
             this.mnuArCadastroLivro = new System.Windows.Forms.ToolStripButton();
-            this.mnuArCadastroCliente = new System.Windows.Forms.ToolStripButton();
-            this.mnuArCadastroAluguel = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuArEditarLivro = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuArCadastroCliente = new System.Windows.Forms.ToolStripButton();
             this.mnuArEditarCliente = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuArCadastroAluguel = new System.Windows.Forms.ToolStripButton();
             this.mnuArEditarAluguel = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuArUsuario = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuArBuscaRapida = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuInicio.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -327,9 +329,26 @@ namespace ProjectBook.GUI
             // 
             // mnuUsuario
             // 
+            this.mnuUsuario.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuGerenciarUsuario,
+            this.mnuPesquisarUsuarios});
             this.mnuUsuario.Name = "mnuUsuario";
             this.mnuUsuario.Size = new System.Drawing.Size(64, 20);
             this.mnuUsuario.Text = "Usuários";
+            // 
+            // mnuGerenciarUsuario
+            // 
+            this.mnuGerenciarUsuario.Image = global::ProjectBook.Properties.Resources.user_gray;
+            this.mnuGerenciarUsuario.Name = "mnuGerenciarUsuario";
+            this.mnuGerenciarUsuario.Size = new System.Drawing.Size(171, 22);
+            this.mnuGerenciarUsuario.Text = "Gerenciar usuario";
+            // 
+            // mnuPesquisarUsuarios
+            // 
+            this.mnuPesquisarUsuarios.Image = global::ProjectBook.Properties.Resources.zoom;
+            this.mnuPesquisarUsuarios.Name = "mnuPesquisarUsuarios";
+            this.mnuPesquisarUsuarios.Size = new System.Drawing.Size(171, 22);
+            this.mnuPesquisarUsuarios.Text = "Pesquisar usuários";
             // 
             // mnuPesquisar
             // 
@@ -615,29 +634,6 @@ namespace ProjectBook.GUI
             this.mnuArCadastroLivro.Size = new System.Drawing.Size(23, 22);
             this.mnuArCadastroLivro.Text = "Cadastrar livro";
             // 
-            // mnuArCadastroCliente
-            // 
-            this.mnuArCadastroCliente.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.mnuArCadastroCliente.Image = ((System.Drawing.Image)(resources.GetObject("mnuArCadastroCliente.Image")));
-            this.mnuArCadastroCliente.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.mnuArCadastroCliente.Name = "mnuArCadastroCliente";
-            this.mnuArCadastroCliente.Size = new System.Drawing.Size(23, 22);
-            this.mnuArCadastroCliente.Text = "Cadastrar cliente";
-            // 
-            // mnuArCadastroAluguel
-            // 
-            this.mnuArCadastroAluguel.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.mnuArCadastroAluguel.Image = ((System.Drawing.Image)(resources.GetObject("mnuArCadastroAluguel.Image")));
-            this.mnuArCadastroAluguel.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.mnuArCadastroAluguel.Name = "mnuArCadastroAluguel";
-            this.mnuArCadastroAluguel.Size = new System.Drawing.Size(23, 22);
-            this.mnuArCadastroAluguel.Text = "Cadastrar aluguel";
-            // 
-            // toolStripSeparator8
-            // 
-            this.toolStripSeparator8.Name = "toolStripSeparator8";
-            this.toolStripSeparator8.Size = new System.Drawing.Size(6, 25);
-            // 
             // mnuArEditarLivro
             // 
             this.mnuArEditarLivro.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -647,6 +643,20 @@ namespace ProjectBook.GUI
             this.mnuArEditarLivro.Size = new System.Drawing.Size(23, 22);
             this.mnuArEditarLivro.Text = "Editar livro";
             // 
+            // toolStripSeparator8
+            // 
+            this.toolStripSeparator8.Name = "toolStripSeparator8";
+            this.toolStripSeparator8.Size = new System.Drawing.Size(6, 25);
+            // 
+            // mnuArCadastroCliente
+            // 
+            this.mnuArCadastroCliente.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.mnuArCadastroCliente.Image = ((System.Drawing.Image)(resources.GetObject("mnuArCadastroCliente.Image")));
+            this.mnuArCadastroCliente.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.mnuArCadastroCliente.Name = "mnuArCadastroCliente";
+            this.mnuArCadastroCliente.Size = new System.Drawing.Size(23, 22);
+            this.mnuArCadastroCliente.Text = "Cadastrar cliente";
+            // 
             // mnuArEditarCliente
             // 
             this.mnuArEditarCliente.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -655,6 +665,20 @@ namespace ProjectBook.GUI
             this.mnuArEditarCliente.Name = "mnuArEditarCliente";
             this.mnuArEditarCliente.Size = new System.Drawing.Size(23, 22);
             this.mnuArEditarCliente.Text = "Editar cliente";
+            // 
+            // toolStripSeparator11
+            // 
+            this.toolStripSeparator11.Name = "toolStripSeparator11";
+            this.toolStripSeparator11.Size = new System.Drawing.Size(6, 25);
+            // 
+            // mnuArCadastroAluguel
+            // 
+            this.mnuArCadastroAluguel.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.mnuArCadastroAluguel.Image = ((System.Drawing.Image)(resources.GetObject("mnuArCadastroAluguel.Image")));
+            this.mnuArCadastroAluguel.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.mnuArCadastroAluguel.Name = "mnuArCadastroAluguel";
+            this.mnuArCadastroAluguel.Size = new System.Drawing.Size(23, 22);
+            this.mnuArCadastroAluguel.Text = "Cadastrar aluguel";
             // 
             // mnuArEditarAluguel
             // 
@@ -677,7 +701,7 @@ namespace ProjectBook.GUI
             this.mnuArUsuario.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.mnuArUsuario.Name = "mnuArUsuario";
             this.mnuArUsuario.Size = new System.Drawing.Size(23, 22);
-            this.mnuArUsuario.Text = "Usuario";
+            this.mnuArUsuario.Text = "Gerenciar usuário";
             // 
             // toolStripSeparator10
             // 
@@ -692,11 +716,6 @@ namespace ProjectBook.GUI
             this.mnuArBuscaRapida.Name = "mnuArBuscaRapida";
             this.mnuArBuscaRapida.Size = new System.Drawing.Size(23, 22);
             this.mnuArBuscaRapida.Text = "Busca rápida";
-            // 
-            // toolStripSeparator11
-            // 
-            this.toolStripSeparator11.Name = "toolStripSeparator11";
-            this.toolStripSeparator11.Size = new System.Drawing.Size(6, 25);
             // 
             // Inicio
             // 
@@ -807,6 +826,8 @@ namespace ProjectBook.GUI
         private System.Windows.Forms.ToolStripButton mnuArUsuario;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator10;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator11;
+        private System.Windows.Forms.ToolStripMenuItem mnuPesquisarUsuarios;
+        private System.Windows.Forms.ToolStripMenuItem mnuGerenciarUsuario;
     }
 }
 

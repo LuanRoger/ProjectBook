@@ -55,21 +55,6 @@ namespace ProjectBook.DB.SqlServerExpress
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        public DataTable LoginUsuario(string usuario, string senha)
-        {
-            DataTable dataTable = new DataTable();
-            try
-            {
-                AbrirConexaoDb();
-                SqlDataAdapter adapter = new SqlDataAdapter($"SELECT * FROM Usuarios WHERE Usuario = \'{usuario}\' AND Senha = \'{senha}\'", connection);
-                FechaConecxaoDb();
-                adapter.Fill(dataTable);
-            }
-            catch (SqlException e){ MessageBox.Show(e.Message, Resources.error_MessageBox,
-                MessageBoxButtons.OK, MessageBoxIcon.Error); }
-
-            return dataTable;
-        }
         public void AtualizarUsuarioId(string id, Usuario usuario)
         {
             SqlCommand command = new SqlCommand {Connection = connection};
@@ -93,7 +78,42 @@ namespace ProjectBook.DB.SqlServerExpress
             catch (SqlException e) { MessageBox.Show(e.Message, Resources.error_MessageBox,
                 MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
+        public DataTable LoginUsuario(string usuario, string senha)
+        {
+            DataTable dataTable = new DataTable();
+            try
+            {
+                AbrirConexaoDb();
+                SqlDataAdapter adapter = new SqlDataAdapter($"SELECT * FROM Usuarios WHERE Usuario = \'{usuario}\' AND Senha = \'{senha}\'", connection);
+                FechaConecxaoDb();
+                adapter.Fill(dataTable);
+            }
+            catch (SqlException e)
+            {
+                MessageBox.Show(e.Message, Resources.error_MessageBox,
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
+            return dataTable;
+        }
+        public DataTable LoginCodigo(string id, string senha)
+        {
+            DataTable dataTable = new DataTable();
+            try
+            {
+                AbrirConexaoDb();
+                SqlDataAdapter adapter = new SqlDataAdapter($"SELECT * FROM Usuarios WHERE ID = \'{id}\' AND Senha = \'{senha}\'", connection);
+                FechaConecxaoDb();
+                adapter.Fill(dataTable);
+            }
+            catch (SqlException e)
+            {
+                MessageBox.Show(e.Message, Resources.error_MessageBox,
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return dataTable;
+        }
         #region Buscar
         public DataTable BuscarUsuarioId(string id)
         {
@@ -110,7 +130,7 @@ namespace ProjectBook.DB.SqlServerExpress
 
             return table;
         }
-        public DataRow BuscarUsuarioNome(string nomeUsuario)
+        public DataTable BuscarUsuarioNome(string nomeUsuario)
         {
             DataTable table = new DataTable();
             try
@@ -122,7 +142,49 @@ namespace ProjectBook.DB.SqlServerExpress
             }
             catch (SqlException e) { MessageBox.Show(e.Message, Resources.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); }
 
-            return table.Rows[0];
+            return table;
+        }
+        public DataTable PesquisarUsuarioNome(string nomeUsuario)
+        {
+            DataTable table = new DataTable();
+            try
+            {
+                AbrirConexaoDb();
+                SqlDataAdapter adapter = new SqlDataAdapter($"SELECT * FROM Usuarios WHERE Usuario LIKE \'%{nomeUsuario}%\'", connection);
+                FechaConecxaoDb();
+                adapter.Fill(table);
+            }
+            catch (SqlException e) { MessageBox.Show(e.Message, Resources.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); }
+
+            return table;
+        }
+        public DataTable VerAdm()
+        {
+            DataTable table = new DataTable();
+            try
+            {
+                AbrirConexaoDb();
+                SqlDataAdapter adapter = new SqlDataAdapter($"SELECT * FROM Usuarios WHERE Tipo = \'{Tipos.TipoUsuário.ADM}\'", connection);
+                FechaConecxaoDb();
+                adapter.Fill(table);
+            }
+            catch (SqlException e) { MessageBox.Show(e.Message, Resources.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); }
+
+            return table;
+        }
+        public DataTable VerUsu()
+        {
+            DataTable table = new DataTable();
+            try
+            {
+                AbrirConexaoDb();
+                SqlDataAdapter adapter = new SqlDataAdapter($"SELECT * FROM Usuarios WHERE Tipo = \'{Tipos.TipoUsuário.USU}\'", connection);
+                FechaConecxaoDb();
+                adapter.Fill(table);
+            }
+            catch (SqlException e) { MessageBox.Show(e.Message, Resources.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); }
+
+            return table;
         }
         #endregion
     }

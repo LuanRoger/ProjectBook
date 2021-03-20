@@ -2,6 +2,7 @@
 using System.Data;
 using System.Windows.Forms;
 using ProjectBook.DB.SqlServerExpress;
+using ProjectBook.Properties;
 
 namespace ProjectBook.GUI
 {
@@ -18,7 +19,7 @@ namespace ProjectBook.GUI
             string termoPesquisa = txtPesquisarCliente.Text;
             if (Verificadores.VerificarStrings(termoPesquisa))
             {
-                MessageBox.Show(Properties.Resources.preencherCampoBusca_MessageBox, Properties.Resources.error_MessageBox,
+                MessageBox.Show(Resources.preencherCampoBusca_MessageBox, Resources.error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -29,7 +30,7 @@ namespace ProjectBook.GUI
 
             if (Verificadores.VerificarDataTable(dataTable))
             {
-                MessageBox.Show(Properties.Resources.clienteNaoExiste_MessageBox, Properties.Resources.error_MessageBox,
+                MessageBox.Show(Resources.clienteNaoExiste_MessageBox, Resources.error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }

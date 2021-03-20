@@ -17,12 +17,13 @@ namespace ProjectBook.GUI
         }
 
         private void btnFecharLogin_Click(object sender, EventArgs e) => Application.Exit();
-        
+        private void Login_FormClosing(object sender, FormClosingEventArgs e) => Application.Exit();
         private void btnEntrarLogin_Click(object sender, EventArgs e)
         {
-            if (Verificadores.VerificarStrings(txtLoginUsuario.Text, txtLoginSenha.Text))
+            if (Verificadores.VerificarStrings(txtLoginUsuario.Text, txtLoginSenha.Text) || 
+                Verificadores.VerificarStrings(txtLoginCodigo.Text, txtLoginSenha.Text))
             {
-                MessageBox.Show(Properties.Resources.preencherCampoBusca_MessageBox, Properties.Resources.error_MessageBox,
+                MessageBox.Show(Properties.Resources.preencherCampos, Properties.Resources.error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -31,18 +32,43 @@ namespace ProjectBook.GUI
             
             if (Verificadores.VerificarDataTable(infoUsuario))
             {
-                MessageBox.Show(Properties.Resources.informacoesIncorretas, Properties.Resources.error_MessageBox,
+                infoUsuario = usuarioDb.LoginCodigo(txtLoginCodigo.Text, txtLoginSenha.Text);
+
+                if(Verificadores.VerificarDataTable(infoUsuario))
+                {
+                    MessageBox.Show(Properties.Resources.informacoesIncorretas, Properties.Resources.error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                    return;
+                }
             }
 
-            Configuracoes.config.AppSettings.Settings["usuarioLogado"].Value = txtLoginUsuario.Text;
+            Configuracoes.config.AppSettings.Settings["usuarioLogado"].Value = infoUsuario.Rows[0][2].ToString();
             Configuracoes.config.AppSettings.Settings["tipoUsuario"].Value = infoUsuario.Rows[0][3].ToString();
             Configuracoes.config.Save(ConfigurationSaveMode.Modified);
             ConfigurationManager.RefreshSection("appSettings");
-            
-            Process.Start(Application.StartupPath + Assembly.GetExecutingAssembly().GetName().Name + ".exe");
-            Process.GetCurrentProcess().Kill();
+
+            AppManager.ReiniciarPrograma();
+        }
+        private void txtLoginCodigo_Leave(object sender, EventArgs e)
+        {
+            if (Verificadores.VerificarStrings(txtLoginCodigo.Text)) return;
+
+            DataTable codigoUsuario = usuarioDb.BuscarUsuarioId(txtLoginCodigo.Text);
+
+            if (Verificadores.VerificarDataTable(codigoUsuario)) return;
+
+            txtLoginUsuario.Text = codigoUsuario.Rows[0][1].ToString();
+        }
+
+        private void txtLoginUsuario_Leave(object sender, EventArgs e)
+        {
+            if (Verificadores.VerificarStrings(txtLoginUsuario.Text)) return;
+
+            DataTable nomeUsuario = usuarioDb.BuscarUsuarioNome(txtLoginUsuario.Text);
+
+            if (Verificadores.VerificarDataTable(nomeUsuario)) return;
+
+            txtLoginCodigo.Text = nomeUsuario.Rows[0][0].ToString();
         }
     }
 }

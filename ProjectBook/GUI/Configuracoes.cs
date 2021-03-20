@@ -104,9 +104,8 @@ namespace ProjectBook.GUI
             {
                 MessageBox.Show(Resources.mudancaConnectionString,
                     Resources.informacao_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                
-                Process.Start(Application.StartupPath + Assembly.GetExecutingAssembly().GetName().Name + ".exe");
-                Process.GetCurrentProcess().Kill();
+
+                AppManager.ReiniciarPrograma();
             }
         }
 
