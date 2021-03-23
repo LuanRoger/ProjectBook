@@ -70,5 +70,15 @@ namespace ProjectBook.GUI
 
             txtLoginCodigo.Text = nomeUsuario.Rows[0][0].ToString();
         }
+
+        private void txtLoginSenha_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch(e.KeyCode)
+            {
+                case Keys.Enter:
+                    btnEntrarLogin.PerformClick();
+                    break;
+            }
+        }
     }
 }

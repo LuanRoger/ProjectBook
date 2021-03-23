@@ -10,6 +10,9 @@ using System.Windows.Forms;
 using ProjectBook.DB.SqlServerExpress;
 using ProjectBook.GUI;
 using ProjectBook.Properties;
+using System.Threading.Tasks;
+using AutoUpdaterDotNET;
+using System.Reflection;
 
 namespace ProjectBook
 {
@@ -23,6 +26,7 @@ namespace ProjectBook
         {
             InitializeComponent();
 
+            //Aplicar fontes
             try
             {
                 PrivateFontCollection privateFont = new PrivateFontCollection();
@@ -48,18 +52,30 @@ namespace ProjectBook
                 MigrarOneDrive(pastaAplicacaoOneDrive);
             }
 
+            //Verificar conexão com o DB
             livrosDb.AbrirConexaoDb();
-            if (livrosDb.DbStatus() == "Open")
-            {
-                livrosDb.FechaConecxaoDb();
-                //Atualizar Status do aluguel
-                lblStatusCarregamento.Text = Resources.atualizando_banco_de_dados_splashscreen;
-                if (!string.IsNullOrEmpty(ConfigurationManager.AppSettings["usuarioLogado"])) AtualizarAtrasso();
+            if (livrosDb.DbStatus() != "Open") return;
+            livrosDb.FechaConecxaoDb();
 
-                //Verificar se existe usuário logado
-                lblStatusCarregamento.Text = Resources.realizando_verificações_de_segurança_splashscreen;
-                UsuarioLogado();
-            }
+            //Verificar se existe usuário logado
+            lblStatusCarregamento.Text = Resources.realizando_verificações_de_segurança_splashscreen;
+            UsuarioLogado();
+
+            if (string.IsNullOrEmpty(ConfigurationManager.AppSettings["usuarioLogado"])) return;
+
+            //Atualizar Status do aluguel
+            lblStatusCarregamento.Text = Resources.atualizando_banco_de_dados_splashscreen;
+            AtualizarAtrasso();
+
+            //Procurar atualizazções
+            lblStatusCarregamento.Text = "Procurando por atualizações...";
+            ProcurarAtualizacoes();
+
+            Task.Run(async () => 
+            {
+                await Task.Delay(2500);
+                this.Invoke((MethodInvoker)delegate { this.Close(); });
+            });
         }
         private void UsuarioLogado()
         {
@@ -136,6 +152,12 @@ namespace ProjectBook
                     string.Format(Resources.ocorreu_um_error___0___Volte_as_configurações_e_crie_uma_novo_string_de_conexão_, e.Message),
                     Resources.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+        private void ProcurarAtualizacoes()
+        {
+            AutoUpdater.ShowRemindLaterButton = false;
+            AutoUpdater.Start(ConfigurationManager.AppSettings["updateFileServer"],
+                Assembly.GetExecutingAssembly());
         }
     }
 }

@@ -3,7 +3,7 @@ using System.Configuration;
 using System.Diagnostics;
 using System.Drawing;
 using System.Reflection;
-using System.Threading.Tasks;
+using AutoUpdaterDotNET;
 using System.Windows.Forms;
 using ProjectBook.DB.SqlServerExpress;
 using ProjectBook.Properties;
@@ -131,6 +131,11 @@ namespace ProjectBook.GUI
                                 "\n" + Resources.uso_de_ícones_de_FAMFAMFAM__http___famfamfam_com,
                     Resources.sobre_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Information);
             };
+            mnuProcurarAtualizacoes.Click += (sender, e) =>
+            {
+                AutoUpdater.Start(ConfigurationManager.AppSettings["updateFileServer"], 
+                    Assembly.GetExecutingAssembly());
+            };
             #endregion
 
             #region Acesso rápido
@@ -197,24 +202,19 @@ namespace ProjectBook.GUI
             Process.GetCurrentProcess().Kill();
         }
 
-        private async void Inicio_Load(object sender, EventArgs e)
+        private void Inicio_Load(object sender, EventArgs e)
         {
-            //Deixar o form invisível enquanto a SplashScreen está carregando
+            //Deixar o Form invisível enquanto a SplashScreen está carregando
             Opacity = 0;
             ShowInTaskbar = false;
 
             SplashScreen splashScreen = new SplashScreen();
             splashScreen.Show();
-
-            livrosDb.AbrirConexaoDb();
-            if (!string.IsNullOrEmpty(ConfigurationManager.AppSettings["usuarioLogado"]) && livrosDb.DbStatus() == "Open")
+            splashScreen.FormClosed += delegate
             {
-                await Task.Delay(3000); // Delay para ver a Splash Screen
-                ShowInTaskbar = true;
                 Opacity = 100;
-                splashScreen.Close();
-                livrosDb.FechaConecxaoDb();
-            }
+                ShowInTaskbar = true;
+            };
 
             //Deixar o lblNomeUsuario trasnparente para evitar que sobreponha a imagem de fundo
             lblNomeUsuario.BackColor = Color.Transparent;

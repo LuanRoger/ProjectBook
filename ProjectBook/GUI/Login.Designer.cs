@@ -68,6 +68,7 @@ namespace ProjectBook.GUI
             this.txtLoginSenha.PasswordChar = '*';
             this.txtLoginSenha.Size = new System.Drawing.Size(233, 23);
             this.txtLoginSenha.TabIndex = 3;
+            this.txtLoginSenha.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtLoginSenha_KeyDown);
             // 
             // label2
             // 
@@ -133,6 +134,7 @@ namespace ProjectBook.GUI
             this.Controls.Add(this.txtLoginUsuario);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
             this.Location = new System.Drawing.Point(15, 15);
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.MaximizeBox = false;

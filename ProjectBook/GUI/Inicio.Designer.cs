@@ -82,7 +82,7 @@ namespace ProjectBook.GUI
             this.mnuExcluirCliente = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuExcluirAluguel = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuConfig = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuSobre = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuSobreTop = new System.Windows.Forms.ToolStripMenuItem();
             this.btnSairUsuario = new System.Windows.Forms.Button();
             this.lblNomeUsuario = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -109,6 +109,8 @@ namespace ProjectBook.GUI
             this.mnuArUsuario = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuArBuscaRapida = new System.Windows.Forms.ToolStripButton();
+            this.mnuSobre = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuProcurarAtualizacoes = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuInicio.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -250,7 +252,7 @@ namespace ProjectBook.GUI
             this.mnuPesquisar,
             this.mnuExcluir,
             this.mnuConfig,
-            this.mnuSobre});
+            this.mnuSobreTop});
             this.mnuInicio.Location = new System.Drawing.Point(0, 0);
             this.mnuInicio.Name = "mnuInicio";
             this.mnuInicio.Size = new System.Drawing.Size(714, 24);
@@ -454,11 +456,14 @@ namespace ProjectBook.GUI
             this.mnuConfig.Size = new System.Drawing.Size(96, 20);
             this.mnuConfig.Text = "Configurações";
             // 
-            // mnuSobre
+            // mnuSobreTop
             // 
-            this.mnuSobre.Name = "mnuSobre";
-            this.mnuSobre.Size = new System.Drawing.Size(49, 20);
-            this.mnuSobre.Text = "Sobre";
+            this.mnuSobreTop.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuSobre,
+            this.mnuProcurarAtualizacoes});
+            this.mnuSobreTop.Name = "mnuSobreTop";
+            this.mnuSobreTop.Size = new System.Drawing.Size(49, 20);
+            this.mnuSobreTop.Text = "Sobre";
             // 
             // btnSairUsuario
             // 
@@ -717,6 +722,18 @@ namespace ProjectBook.GUI
             this.mnuArBuscaRapida.Size = new System.Drawing.Size(23, 22);
             this.mnuArBuscaRapida.Text = "Busca rápida";
             // 
+            // mnuSobre
+            // 
+            this.mnuSobre.Name = "mnuSobre";
+            this.mnuSobre.Size = new System.Drawing.Size(186, 22);
+            this.mnuSobre.Text = "Sobre";
+            // 
+            // mnuProcurarAtualizacoes
+            // 
+            this.mnuProcurarAtualizacoes.Name = "mnuProcurarAtualizacoes";
+            this.mnuProcurarAtualizacoes.Size = new System.Drawing.Size(186, 22);
+            this.mnuProcurarAtualizacoes.Text = "Procurar atualizações";
+            // 
             // Inicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -778,7 +795,7 @@ namespace ProjectBook.GUI
         private System.Windows.Forms.ToolStripMenuItem mnuLivro;
         private System.Windows.Forms.ToolStripMenuItem mnuExcluir;
         private System.Windows.Forms.ToolStripMenuItem mnuPesquisar;
-        private System.Windows.Forms.ToolStripMenuItem mnuSobre;
+        private System.Windows.Forms.ToolStripMenuItem mnuSobreTop;
         private System.Windows.Forms.ToolStripMenuItem mnuTodosLivros;
         private System.Windows.Forms.ToolStripMenuItem mnuConfig;
         private System.Windows.Forms.ToolStripMenuItem mnuPesquisaSeletiva;
@@ -828,6 +845,8 @@ namespace ProjectBook.GUI
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator11;
         private System.Windows.Forms.ToolStripMenuItem mnuPesquisarUsuarios;
         private System.Windows.Forms.ToolStripMenuItem mnuGerenciarUsuario;
+        private System.Windows.Forms.ToolStripMenuItem mnuSobre;
+        private System.Windows.Forms.ToolStripMenuItem mnuProcurarAtualizacoes;
     }
 }
 
