@@ -2,6 +2,7 @@
 using System.Data;
 using System.Windows.Forms;
 using ProjectBook.DB.SqlServerExpress;
+using ProjectBook.Properties;
 
 namespace ProjectBook.GUI
 {
@@ -20,41 +21,35 @@ namespace ProjectBook.GUI
             
             if (Verificadores.VerificarStrings(termoBusca))
             {
-                MessageBox.Show(Properties.Resources.preencherCampoBusca_MessageBox, Properties.Resources.error_MessageBox,
+                MessageBox.Show(Resources.preencherCampoBusca_MessageBox, Resources.error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
-            if (rabExcluirAluguelCliente.Checked)
+            if(!rabExcluirAluguelTitulo.Checked && !rabExcluirAluguelCliente.Checked)
             {
-                data = aluguelDb.BuscarAluguelCliente(termoBusca);
+                MessageBox.Show(Resources.marcar_opcao_busca, Resources.error_MessageBox,
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
-            else if (rabExcluirAluguelTitulo.Checked)
-            {
-                data = aluguelDb.BuscarAluguelLivro(termoBusca);
-            }
+            
+            if (rabExcluirAluguelCliente.Checked) data = aluguelDb.BuscarAluguelCliente(termoBusca);
+            else if (rabExcluirAluguelTitulo.Checked) data = aluguelDb.BuscarAluguelLivro(termoBusca);
 
             if (Verificadores.VerificarDataTable(data))
             {
-                MessageBox.Show(Properties.Resources.clienteLivroNaoAlugados, Properties.Resources.error_MessageBox,
+                MessageBox.Show(Resources.clienteLivroNaoAlugados, Resources.error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             DialogResult resultadoExcluir = MessageBox.Show(
-            $@"{Properties.Resources.confirmarExclusao} {data.Rows[0][0]} {Properties.Resources.confirmarExclusaoAluguel2} {data.Rows[0][2]}",
-                Properties.Resources.excluir_MessageBox, MessageBoxButtons.YesNo, MessageBoxIcon.Stop);
+            $@"{Resources.confirmarExclusao} {data.Rows[0][0]} {Resources.confirmarExclusaoAluguel2} {data.Rows[0][2]}",
+                Resources.excluir_MessageBox, MessageBoxButtons.YesNo, MessageBoxIcon.Stop);
             
             if (resultadoExcluir == DialogResult.Yes)
             {
-                if (rabExcluirAluguelCliente.Checked)
-                {
-                    aluguelDb.DeletarAluguelCliente(data.Rows[0][2].ToString());
-                }
-                else if (rabExcluirAluguelTitulo.Checked)
-                {
-                    aluguelDb.DeletarAluguelTitulo(data.Rows[0][0].ToString());
-                }
+                if (rabExcluirAluguelCliente.Checked) aluguelDb.DeletarAluguelCliente(data.Rows[0][2].ToString());
+                else if (rabExcluirAluguelTitulo.Checked) aluguelDb.DeletarAluguelTitulo(data.Rows[0][0].ToString());
                 txtBuscaAluguel.Clear();
             }
         }

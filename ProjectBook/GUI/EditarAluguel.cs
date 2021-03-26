@@ -3,6 +3,7 @@ using System.Data;
 using System.Windows.Forms;
 using ProjectBook.DB.SqlServerExpress;
 using ProjectBook.Livros;
+using ProjectBook.Properties;
 
 namespace ProjectBook.GUI
 {
@@ -54,9 +55,16 @@ namespace ProjectBook.GUI
         {
             string[] buscarEditarAluguel = txtBuscarAluguel.Text.Trim().Split("-");
 
+            if(!rabBuscarNomeCliente.Checked && !rabBuscarTituloLivro.Checked)
+            {
+                MessageBox.Show(Resources.marcar_opcao_busca, Resources.error_MessageBox,
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             if (Verificadores.VerificarStrings(txtBuscarAluguel.Text))
             {
-                MessageBox.Show(Properties.Resources.preencherCampoBusca_MessageBox, Properties.Resources.error_MessageBox,
+                MessageBox.Show(Resources.preencherCampoBusca_MessageBox, Resources.error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -78,7 +86,7 @@ namespace ProjectBook.GUI
             }
             catch
             {
-                MessageBox.Show(Properties.Resources.clienteLivroNaoAlugados, Properties.Resources.error_MessageBox,
+                MessageBox.Show(Resources.clienteLivroNaoAlugados, Resources.error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -93,7 +101,7 @@ namespace ProjectBook.GUI
 
             if (Verificadores.VerificarStrings(buscarLivro))
             {
-                MessageBox.Show(Properties.Resources.preencherCampoBusca_MessageBox, Properties.Resources.error_MessageBox,
+                MessageBox.Show(Resources.preencherCampoBusca_MessageBox, Resources.error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -109,7 +117,7 @@ namespace ProjectBook.GUI
 
             if (Verificadores.VerificarStrings(buscarCliete))
             {
-                MessageBox.Show(Properties.Resources.preencherCampoBusca_MessageBox, Properties.Resources.error_MessageBox,
+                MessageBox.Show(Resources.preencherCampoBusca_MessageBox, Resources.error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -126,7 +134,7 @@ namespace ProjectBook.GUI
 
             if (Verificadores.VerificarCamposAluguel(aluguel))
             {
-                MessageBox.Show(Properties.Resources.preencherCampoBusca_MessageBox, Properties.Resources.error_MessageBox,
+                MessageBox.Show(Resources.preencherCampoBusca_MessageBox, Resources.error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }

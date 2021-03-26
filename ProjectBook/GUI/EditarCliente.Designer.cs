@@ -29,7 +29,6 @@ namespace ProjectBook.GUI
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditarCliente));
             this.gpbBuscarCliente = new System.Windows.Forms.GroupBox();
             this.btnBucarCliente = new System.Windows.Forms.Button();
             this.txtBuscarClienteEditar = new System.Windows.Forms.TextBox();
@@ -74,7 +73,7 @@ namespace ProjectBook.GUI
             // 
             this.btnBucarCliente.FlatAppearance.BorderSize = 0;
             this.btnBucarCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBucarCliente.Image = ((System.Drawing.Image)(resources.GetObject("btnBucarCliente.Image")));
+            this.btnBucarCliente.Image = global::ProjectBook.Properties.Resources.zoom;
             this.btnBucarCliente.Location = new System.Drawing.Point(266, 48);
             this.btnBucarCliente.Name = "btnBucarCliente";
             this.btnBucarCliente.Size = new System.Drawing.Size(27, 23);

@@ -158,7 +158,7 @@ namespace ProjectBook.DB.SqlServerExpress
             try
             {
                 AbrirConexaoDb();
-                SqlDataAdapter adapter = new SqlDataAdapter($"SELECT * FROM Aluguel WHERE Status = \'{Tipos.StatusAluguel.Atrssado}\'", connection);
+                SqlDataAdapter adapter = new SqlDataAdapter($"SELECT * FROM Aluguel WHERE Status = \'{Tipos.StatusAluguel.Atrasado}\'", connection);
                 FechaConecxaoDb();
 
                 adapter.Fill(table);
@@ -225,7 +225,7 @@ namespace ProjectBook.DB.SqlServerExpress
         public void AtualizarStatusAtrasado(string alugadoPor)
         {
             SqlCommand command = new SqlCommand {Connection = connection};
-            command.CommandText = $"UPDATE Aluguel SET Status = \'{Tipos.StatusAluguel.Atrssado}\' WHERE [Alugado por] = \'{alugadoPor}\'";
+            command.CommandText = $"UPDATE Aluguel SET Status = \'{Tipos.StatusAluguel.Atrasado}\' WHERE [Alugado por] = \'{alugadoPor}\'";
 
             AbrirConexaoDb();
             command.ExecuteNonQuery();

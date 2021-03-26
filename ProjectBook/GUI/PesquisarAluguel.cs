@@ -15,7 +15,6 @@ namespace ProjectBook.GUI
             InitializeComponent();
 
             #region MenuClick
-
             mnuVerLivroAlugado.Click += (sender, e) =>
             {
                 ListaPesquisa lista = new ListaPesquisa(aluguelDb.PegarLivrosAlugados());
@@ -31,9 +30,22 @@ namespace ProjectBook.GUI
                 ListaPesquisa lista = new ListaPesquisa(aluguelDb.PegarLivroDevolvido());
                 lista.Show();
             };
-
             #endregion
         }
+        #region CheckChange
+        private void rabTituloLivro_CheckedChanged(object sender, EventArgs e)
+        {
+            AutoCompleteStringCollection aluguelSugestao = new AutoCompleteStringCollection();
+            foreach (DataRow livro in aluguelDb.VerTodosAluguel().Rows) aluguelSugestao.Add($"{livro[0]} - {livro[2]}");
+            txtBuscarAluguel.AutoCompleteCustomSource = aluguelSugestao;
+        }
+        private void rabNomeCliente_CheckedChanged(object sender, EventArgs e)
+        {
+            AutoCompleteStringCollection aluguelSugestao = new AutoCompleteStringCollection();
+            foreach (DataRow cliente in aluguelDb.VerTodosAluguel().Rows) aluguelSugestao.Add($"{cliente[2]} - {cliente[0]}");
+            txtBuscarAluguel.AutoCompleteCustomSource = aluguelSugestao;
+        }
+        #endregion
 
         private void btnBuscarClientePesquisaAluguel_Click(object sender, EventArgs e)
         {
@@ -47,14 +59,8 @@ namespace ProjectBook.GUI
                 return;
             }
             
-            if (rabNomeCliente.Checked)
-            {
-                data = aluguelDb.BuscarAluguelCliente(termoBusca[0].Trim());
-            }
-            else if (rabTituloLivro.Checked)
-            {
-                data = aluguelDb.BuscarAluguelLivro(termoBusca[0].Trim());
-            }
+            if (rabNomeCliente.Checked) data = aluguelDb.BuscarAluguelCliente(termoBusca[0].Trim());
+            else if (rabTituloLivro.Checked) data = aluguelDb.BuscarAluguelLivro(termoBusca[0].Trim());
 
             if(Verificadores.VerificarDataTable(data))
             {
@@ -68,7 +74,6 @@ namespace ProjectBook.GUI
         private void btnVerEmRelatorio_Click(object sender, EventArgs e)
         {
             string[] termoBusca = txtBuscarAluguel.Text.Split("-");
-            DataTable data = new DataTable();
 
             if (Verificadores.VerificarStrings(txtBuscarAluguel.Text))
             {
@@ -93,35 +98,19 @@ namespace ProjectBook.GUI
             LimaprCampos();
         }
 
-        #region CheckChange
-        private void rabTituloLivro_CheckedChanged(object sender, EventArgs e)
-        {
-            AutoCompleteStringCollection aluguelSugestao = new AutoCompleteStringCollection();
-            foreach (DataRow livro in aluguelDb.VerTodosAluguel().Rows) aluguelSugestao.Add($"{livro[0]} - {livro[2]}");
-            txtBuscarAluguel.AutoCompleteCustomSource = aluguelSugestao;
-        }
-        private void rabNomeCliente_CheckedChanged(object sender, EventArgs e)
-        {
-            AutoCompleteStringCollection aluguelSugestao = new AutoCompleteStringCollection();
-            foreach (DataRow cliente in aluguelDb.VerTodosAluguel().Rows) aluguelSugestao.Add($"{cliente[2]} - {cliente[0]}");
-            txtBuscarAluguel.AutoCompleteCustomSource = aluguelSugestao;
-        }
-        #endregion
-
         private void PreencherCampos(DataTable data)
         {
             txtResultadoCliete.Text = data.Rows[0][2].ToString();
             txtResultadoLivro.Text = data.Rows[0][0].ToString();
             txtResultadoStatus.Text = data.Rows[0][5].ToString();
-            if (txtResultadoStatus.Text != StatusAluguel.Devolvido.ToString())
-            {
-                DateTime hoje = DateTime.Now.Date;
-                DateTime devolucao = (DateTime)data.Rows[0][4];
-                txtAVencer.Text = Convert.ToInt32((devolucao.Date - hoje).Days) <= 0
-                    ? "-" : (devolucao.Date - hoje).Days.ToString();
-                txtAtraso.Text = Convert.ToInt32((hoje - devolucao.Date).Days) <= 0
-                    ? "-" : (hoje - devolucao.Date).Days.ToString();
-            }
+
+            if (txtResultadoStatus.Text == StatusAluguel.Devolvido.ToString()) return;
+            DateTime hoje = DateTime.Now.Date;
+            DateTime devolucao = (DateTime)data.Rows[0][4];
+            txtAVencer.Text = Convert.ToInt32((devolucao.Date - hoje).Days) <= 0
+                ? "-" : (devolucao.Date - hoje).Days.ToString();
+            txtAtraso.Text = Convert.ToInt32((hoje - devolucao.Date).Days) <= 0
+                ? "-" : (hoje - devolucao.Date).Days.ToString();
         }
 
         private void btnFecharPesquisaAluguel_Click(object sender, EventArgs e) => this.Close();

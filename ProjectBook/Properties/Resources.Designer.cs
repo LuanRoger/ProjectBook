@@ -455,6 +455,15 @@ namespace ProjectBook.Properties {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Marque uma opção de busca para continuar..
+        /// </summary>
+        internal static string marcar_opcao_busca {
+            get {
+                return ResourceManager.GetString("marcar_opcao_busca", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Migrando banco para o OneDrive....
         /// </summary>
         internal static string migrando_banco_para_o_OneDrive {

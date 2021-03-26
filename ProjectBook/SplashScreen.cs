@@ -98,6 +98,8 @@ namespace ProjectBook
         }
         private void AtualizarAtrasso()
         {
+            if (ConfigurationManager.AppSettings["atualizarStatusAluguel"] == "0") return;
+
             foreach (DataRow data in aluguelDb.PegarLivrosAlugados().Rows)
             {
                 DateTime hoje = DateTime.Now.Date;

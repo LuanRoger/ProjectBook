@@ -31,7 +31,7 @@ namespace ProjectBook.GUI
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Excluir));
             this.txtExcluirLivro = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnBuscarExcluirLivro = new System.Windows.Forms.Button();
             this.btnCancelarExcluirLivro = new System.Windows.Forms.Button();
             this.rabIdExcluirLivro = new System.Windows.Forms.RadioButton();
             this.rabExcluirTitulo = new System.Windows.Forms.RadioButton();
@@ -44,18 +44,18 @@ namespace ProjectBook.GUI
             this.txtExcluirLivro.Size = new System.Drawing.Size(209, 23);
             this.txtExcluirLivro.TabIndex = 1;
             // 
-            // button1
+            // btnBuscarExcluirLivro
             // 
-            this.button1.BackColor = System.Drawing.Color.Transparent;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(227, 38);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(28, 23);
-            this.button1.TabIndex = 2;
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnBuscarExcluirLivro.BackColor = System.Drawing.Color.Transparent;
+            this.btnBuscarExcluirLivro.FlatAppearance.BorderSize = 0;
+            this.btnBuscarExcluirLivro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBuscarExcluirLivro.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscarExcluirLivro.Image")));
+            this.btnBuscarExcluirLivro.Location = new System.Drawing.Point(227, 38);
+            this.btnBuscarExcluirLivro.Name = "btnBuscarExcluirLivro";
+            this.btnBuscarExcluirLivro.Size = new System.Drawing.Size(28, 23);
+            this.btnBuscarExcluirLivro.TabIndex = 2;
+            this.btnBuscarExcluirLivro.UseVisualStyleBackColor = false;
+            this.btnBuscarExcluirLivro.Click += new System.EventHandler(this.btnBuscarExcluirLivro_Click);
             // 
             // btnCancelarExcluirLivro
             // 
@@ -97,7 +97,7 @@ namespace ProjectBook.GUI
             this.Controls.Add(this.rabExcluirTitulo);
             this.Controls.Add(this.rabIdExcluirLivro);
             this.Controls.Add(this.btnCancelarExcluirLivro);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnBuscarExcluirLivro);
             this.Controls.Add(this.txtExcluirLivro);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
@@ -112,7 +112,7 @@ namespace ProjectBook.GUI
 
         #endregion
         private System.Windows.Forms.TextBox txtExcluirLivro;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnBuscarExcluirLivro;
         private System.Windows.Forms.Button btnCancelarExcluirLivro;
         private System.Windows.Forms.RadioButton rabIdExcluirLivro;
         private System.Windows.Forms.RadioButton rabExcluirTitulo;

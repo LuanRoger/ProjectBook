@@ -1,4 +1,4 @@
 ﻿namespace ProjectBook.Tipos
 {
-    public enum StatusAluguel { Devolvido, Alugado, Atrssado }
+    public enum StatusAluguel { Devolvido, Alugado, Atrasado }
 }

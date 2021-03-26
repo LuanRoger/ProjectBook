@@ -55,7 +55,7 @@ namespace ProjectBook.GUI
             this.txtEditarCodigo = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.txtEditarObservacoes = new System.Windows.Forms.RichTextBox();
-            this.txtEditarIsbn = new System.Windows.Forms.TextBox();
+            this.txtEditarIsbn = new System.Windows.Forms.MaskedTextBox();
             this.gpbBuscar.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -79,7 +79,7 @@ namespace ProjectBook.GUI
             // 
             // txtEditarAno
             // 
-            this.txtEditarAno.Location = new System.Drawing.Point(11, 256);
+            this.txtEditarAno.Location = new System.Drawing.Point(14, 256);
             this.txtEditarAno.Name = "txtEditarAno";
             this.txtEditarAno.Size = new System.Drawing.Size(103, 23);
             this.txtEditarAno.TabIndex = 10;
@@ -95,9 +95,9 @@ namespace ProjectBook.GUI
             // 
             // txtEditarEdicao
             // 
-            this.txtEditarEdicao.Location = new System.Drawing.Point(12, 212);
+            this.txtEditarEdicao.Location = new System.Drawing.Point(14, 212);
             this.txtEditarEdicao.Name = "txtEditarEdicao";
-            this.txtEditarEdicao.Size = new System.Drawing.Size(102, 23);
+            this.txtEditarEdicao.Size = new System.Drawing.Size(103, 23);
             this.txtEditarEdicao.TabIndex = 9;
             // 
             // label4
@@ -111,9 +111,9 @@ namespace ProjectBook.GUI
             // 
             // txtEditarEditora
             // 
-            this.txtEditarEditora.Location = new System.Drawing.Point(12, 168);
+            this.txtEditarEditora.Location = new System.Drawing.Point(14, 168);
             this.txtEditarEditora.Name = "txtEditarEditora";
-            this.txtEditarEditora.Size = new System.Drawing.Size(294, 23);
+            this.txtEditarEditora.Size = new System.Drawing.Size(295, 23);
             this.txtEditarEditora.TabIndex = 8;
             // 
             // label3
@@ -129,9 +129,9 @@ namespace ProjectBook.GUI
             // 
             this.txtEditarAutor.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.txtEditarAutor.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.txtEditarAutor.Location = new System.Drawing.Point(12, 124);
+            this.txtEditarAutor.Location = new System.Drawing.Point(14, 123);
             this.txtEditarAutor.Name = "txtEditarAutor";
-            this.txtEditarAutor.Size = new System.Drawing.Size(294, 23);
+            this.txtEditarAutor.Size = new System.Drawing.Size(295, 23);
             this.txtEditarAutor.TabIndex = 7;
             // 
             // label2
@@ -145,9 +145,9 @@ namespace ProjectBook.GUI
             // 
             // txtEditarTitulo
             // 
-            this.txtEditarTitulo.Location = new System.Drawing.Point(12, 75);
+            this.txtEditarTitulo.Location = new System.Drawing.Point(14, 75);
             this.txtEditarTitulo.Name = "txtEditarTitulo";
-            this.txtEditarTitulo.Size = new System.Drawing.Size(294, 23);
+            this.txtEditarTitulo.Size = new System.Drawing.Size(295, 23);
             this.txtEditarTitulo.TabIndex = 6;
             // 
             // label1
@@ -263,13 +263,13 @@ namespace ProjectBook.GUI
             this.cmbEditarGenero.FormattingEnabled = true;
             this.cmbEditarGenero.Location = new System.Drawing.Point(14, 300);
             this.cmbEditarGenero.Name = "cmbEditarGenero";
-            this.cmbEditarGenero.Size = new System.Drawing.Size(292, 23);
+            this.cmbEditarGenero.Size = new System.Drawing.Size(295, 23);
             this.cmbEditarGenero.TabIndex = 11;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(14, 12);
+            this.label8.Location = new System.Drawing.Point(12, 11);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(46, 15);
             this.label8.TabIndex = 32;
@@ -280,7 +280,7 @@ namespace ProjectBook.GUI
             this.txtEditarCodigo.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.txtEditarCodigo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.txtEditarCodigo.ForeColor = System.Drawing.Color.White;
-            this.txtEditarCodigo.Location = new System.Drawing.Point(14, 31);
+            this.txtEditarCodigo.Location = new System.Drawing.Point(14, 29);
             this.txtEditarCodigo.Name = "txtEditarCodigo";
             this.txtEditarCodigo.Size = new System.Drawing.Size(100, 23);
             this.txtEditarCodigo.TabIndex = 5;
@@ -305,9 +305,10 @@ namespace ProjectBook.GUI
             // txtEditarIsbn
             // 
             this.txtEditarIsbn.Location = new System.Drawing.Point(14, 344);
+            this.txtEditarIsbn.Mask = "999-9-99-999999-9";
             this.txtEditarIsbn.Name = "txtEditarIsbn";
             this.txtEditarIsbn.Size = new System.Drawing.Size(113, 23);
-            this.txtEditarIsbn.TabIndex = 36;
+            this.txtEditarIsbn.TabIndex = 35;
             // 
             // EditarLivro
             // 
@@ -376,6 +377,6 @@ namespace ProjectBook.GUI
         private System.Windows.Forms.TextBox txtEditarCodigo;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.RichTextBox txtEditarObservacoes;
-        private System.Windows.Forms.TextBox txtEditarIsbn;
+        private System.Windows.Forms.MaskedTextBox txtEditarIsbn;
     }
 }

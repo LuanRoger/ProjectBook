@@ -36,6 +36,9 @@ namespace ProjectBook.GUI
                 "" : Directory.GetParent(ConfigurationManager.AppSettings["pastaDb"]).ToString();
 
             if (ConfigurationManager.AppSettings["visualizarImpressao"] == "1") chbVisualizarImpressao.Checked = true;
+            if (ConfigurationManager.AppSettings["atualizarStatusAluguel"] == "1") chbAtualizarStatusAluguel.Checked = true;
+            if (ConfigurationManager.AppSettings["formatarCliente"] == "1") chbFormatarCliente.Checked = true;
+            if (ConfigurationManager.AppSettings["formatarLivro"] == "1") chbFormatarLivro.Checked = true;
             switch (ConfigurationManager.AppSettings["dbPadrao"])
             {
                 case "sqlserverexpress":
@@ -48,8 +51,6 @@ namespace ProjectBook.GUI
                     rabOneDrive.Checked = true;
                     break;
             }
-            if (ConfigurationManager.AppSettings["formatarCliente"] == "1") chbFormatarCliente.Checked = true;
-            if (ConfigurationManager.AppSettings["formatarLivro"] == "1") chbFormatarLivro.Checked = true;
             txtStringConexaoCaminhoDb.Text = ConfigurationManager.ConnectionStrings["SqlConnectionString"].ConnectionString;
         }
 
@@ -63,8 +64,10 @@ namespace ProjectBook.GUI
             
             //Formatação
             config.AppSettings.Settings["formatarCliente"].Value = chbFormatarCliente.Checked ? "1" : "0";
-
             config.AppSettings.Settings["formatarLivro"].Value = chbFormatarLivro.Checked ? "1" : "0";
+
+            //Preferencias de aluguel
+            config.AppSettings.Settings["atualizarStatusAluguel"].Value = chbAtualizarStatusAluguel.Checked ? "1" : "0";
 
             //String de conexão
             if (rabSqlServerExpress.Checked)

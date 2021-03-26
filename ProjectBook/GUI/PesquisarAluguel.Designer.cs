@@ -112,7 +112,7 @@ namespace ProjectBook.GUI
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(123, 59);
+            this.label6.Location = new System.Drawing.Point(123, 60);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(31, 15);
             this.label6.TabIndex = 4;
@@ -130,7 +130,7 @@ namespace ProjectBook.GUI
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(123, 27);
+            this.label4.Location = new System.Drawing.Point(123, 26);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(31, 15);
             this.label4.TabIndex = 2;
@@ -138,8 +138,9 @@ namespace ProjectBook.GUI
             // 
             // txtAtraso
             // 
+            this.txtAtraso.BackColor = System.Drawing.Color.Red;
             this.txtAtraso.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.txtAtraso.ForeColor = System.Drawing.Color.Red;
+            this.txtAtraso.ForeColor = System.Drawing.Color.White;
             this.txtAtraso.Location = new System.Drawing.Point(69, 56);
             this.txtAtraso.Name = "txtAtraso";
             this.txtAtraso.Size = new System.Drawing.Size(48, 23);
@@ -148,8 +149,9 @@ namespace ProjectBook.GUI
             // 
             // txtAVencer
             // 
+            this.txtAVencer.BackColor = System.Drawing.Color.ForestGreen;
             this.txtAVencer.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.txtAVencer.ForeColor = System.Drawing.Color.Green;
+            this.txtAVencer.ForeColor = System.Drawing.Color.White;
             this.txtAVencer.Location = new System.Drawing.Point(69, 22);
             this.txtAVencer.Name = "txtAVencer";
             this.txtAVencer.Size = new System.Drawing.Size(48, 23);

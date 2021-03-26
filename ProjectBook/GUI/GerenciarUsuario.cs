@@ -3,6 +3,7 @@ using System.Data;
 using System.Windows.Forms;
 using ProjectBook.DB.SqlServerExpress;
 using ProjectBook.Livros;
+using ProjectBook.Properties;
 using ProjectBook.Tipos;
 
 namespace ProjectBook.GUI
@@ -69,17 +70,17 @@ namespace ProjectBook.GUI
 
             if (Verificadores.VerificarDataTable(infoUsuario))
             {
-                MessageBox.Show(Properties.Resources.preencherCampoBusca_MessageBox, Properties.Resources.error_MessageBox,
+                MessageBox.Show(Resources.preencherCampoBusca_MessageBox, Resources.error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            DialogResult dialogResult = MessageBox.Show(Properties.Resources.confirmarExclusao + infoUsuario.Rows[0][1],
-                Properties.Resources.excluir_MessageBox,
+            DialogResult dialogResult = MessageBox.Show($"{Resources.confirmarExclusao} {infoUsuario.Rows[0][1]}",
+                Resources.excluir_MessageBox,
                 MessageBoxButtons.YesNo, MessageBoxIcon.Stop);
-            
-            if (dialogResult == DialogResult.Yes) usuarioDb.DeletarUsuarioId(txtIdDeletarUsuario.Text);
+            if (dialogResult == DialogResult.No) return;
 
+            usuarioDb.DeletarUsuarioId(txtIdDeletarUsuario.Text);
             LimparCampos();
         }
 

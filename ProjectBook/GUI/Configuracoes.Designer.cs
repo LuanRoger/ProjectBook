@@ -44,9 +44,12 @@ namespace ProjectBook.GUI
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.chbFormatarLivro = new System.Windows.Forms.CheckBox();
             this.chbFormatarCliente = new System.Windows.Forms.CheckBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.chbAtualizarStatusAluguel = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.gpbBancoDados.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -55,14 +58,14 @@ namespace ProjectBook.GUI
             this.groupBox1.Controls.Add(this.chbVisualizarImpressao);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(147, 79);
+            this.groupBox1.Size = new System.Drawing.Size(300, 51);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Impressão";
             // 
             // btnPersonalizarImpressao
             // 
-            this.btnPersonalizarImpressao.Location = new System.Drawing.Point(4, 47);
+            this.btnPersonalizarImpressao.Location = new System.Drawing.Point(152, 19);
             this.btnPersonalizarImpressao.Name = "btnPersonalizarImpressao";
             this.btnPersonalizarImpressao.Size = new System.Drawing.Size(140, 23);
             this.btnPersonalizarImpressao.TabIndex = 2;
@@ -82,7 +85,7 @@ namespace ProjectBook.GUI
             // 
             // btnSalvarConfiguracoes
             // 
-            this.btnSalvarConfiguracoes.Location = new System.Drawing.Point(390, 209);
+            this.btnSalvarConfiguracoes.Location = new System.Drawing.Point(457, 246);
             this.btnSalvarConfiguracoes.Name = "btnSalvarConfiguracoes";
             this.btnSalvarConfiguracoes.Size = new System.Drawing.Size(75, 23);
             this.btnSalvarConfiguracoes.TabIndex = 1;
@@ -99,7 +102,7 @@ namespace ProjectBook.GUI
             this.gpbBancoDados.Controls.Add(this.txtStringConexaoCaminhoDb);
             this.gpbBancoDados.Controls.Add(this.rabSqlServerExpress);
             this.gpbBancoDados.Enabled = false;
-            this.gpbBancoDados.Location = new System.Drawing.Point(12, 97);
+            this.gpbBancoDados.Location = new System.Drawing.Point(12, 127);
             this.gpbBancoDados.Name = "gpbBancoDados";
             this.gpbBancoDados.Size = new System.Drawing.Size(453, 105);
             this.gpbBancoDados.TabIndex = 2;
@@ -172,7 +175,7 @@ namespace ProjectBook.GUI
             // 
             this.groupBox3.Controls.Add(this.chbFormatarLivro);
             this.groupBox3.Controls.Add(this.chbFormatarCliente);
-            this.groupBox3.Location = new System.Drawing.Point(165, 12);
+            this.groupBox3.Location = new System.Drawing.Point(12, 69);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(300, 52);
             this.groupBox3.TabIndex = 3;
@@ -199,11 +202,32 @@ namespace ProjectBook.GUI
             this.chbFormatarCliente.Text = "Clientes (E-mail não incluso)";
             this.chbFormatarCliente.UseVisualStyleBackColor = true;
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.chbAtualizarStatusAluguel);
+            this.groupBox2.Location = new System.Drawing.Point(318, 12);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(212, 51);
+            this.groupBox2.TabIndex = 4;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Preferências de aluguel";
+            // 
+            // chbAtualizarStatusAluguel
+            // 
+            this.chbAtualizarStatusAluguel.AutoSize = true;
+            this.chbAtualizarStatusAluguel.Location = new System.Drawing.Point(7, 23);
+            this.chbAtualizarStatusAluguel.Name = "chbAtualizarStatusAluguel";
+            this.chbAtualizarStatusAluguel.Size = new System.Drawing.Size(203, 19);
+            this.chbAtualizarStatusAluguel.TabIndex = 0;
+            this.chbAtualizarStatusAluguel.Text = "Atualizar status automaticamente";
+            this.chbAtualizarStatusAluguel.UseVisualStyleBackColor = true;
+            // 
             // Configuracoes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(477, 240);
+            this.ClientSize = new System.Drawing.Size(544, 281);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.gpbBancoDados);
             this.Controls.Add(this.btnSalvarConfiguracoes);
@@ -221,6 +245,8 @@ namespace ProjectBook.GUI
             this.gpbBancoDados.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -241,5 +267,7 @@ namespace ProjectBook.GUI
         private System.Windows.Forms.Button btnSelecionarArquivoDb;
         private System.Windows.Forms.RadioButton rabOneDrive;
         private System.Windows.Forms.Button btnPersonalizarImpressao;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.CheckBox chbAtualizarStatusAluguel;
     }
 }

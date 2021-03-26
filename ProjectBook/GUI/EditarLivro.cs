@@ -4,6 +4,7 @@ using System.Data;
 using System.Windows.Forms;
 using ProjectBook.DB.SqlServerExpress;
 using ProjectBook.Livros;
+using ProjectBook.Properties;
 
 namespace ProjectBook.GUI
 {
@@ -46,7 +47,13 @@ namespace ProjectBook.GUI
 
             if(Verificadores.VerificarStrings(txtEditarBuscar.Text))
             {
-                MessageBox.Show(Properties.Resources.preencherCampoBusca_MessageBox, Properties.Resources.error_MessageBox,
+                MessageBox.Show(Resources.preencherCampoBusca_MessageBox, Resources.error_MessageBox,
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if(!rabEditarId.Checked && !rabEditarTitulo.Checked && !rabEditarAutor.Checked)
+            {
+                MessageBox.Show(Resources.marcar_opcao_busca, Resources.error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -109,7 +116,7 @@ namespace ProjectBook.GUI
             
             if (Verificadores.VerificarCamposLivros(livro))
             {
-                MessageBox.Show(Properties.Resources.preencherCampos, Properties.Resources.error_MessageBox,
+                MessageBox.Show(Resources.preencherCampos, Resources.error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -136,7 +143,7 @@ namespace ProjectBook.GUI
             } 
             catch
             {
-                MessageBox.Show(Properties.Resources.livroNaoExiste_MessageBox, Properties.Resources.error_MessageBox,
+                MessageBox.Show(Resources.livroNaoExiste_MessageBox, Resources.error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 gpbBuscar.Enabled = true;
             }
