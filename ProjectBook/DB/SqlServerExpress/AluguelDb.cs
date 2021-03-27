@@ -170,33 +170,7 @@ namespace ProjectBook.DB.SqlServerExpress
         #endregion
 
         #region Atualizar
-        public void AtualizarAluguelTitulo(Aluguel aluguel, string titulo)
-        {
-            SqlCommand command = new SqlCommand {Connection = connection};
-            #region Parâmetros
-            command.Parameters.AddWithValue("@titulo", aluguel.titulo);
-            command.Parameters.AddWithValue("@autor", aluguel.autor);
-            command.Parameters.AddWithValue("@alugadoPor", aluguel.alugadoPor);
-            command.Parameters.AddWithValue("@dataSaida", aluguel.dataEntrega);
-            command.Parameters.AddWithValue("@dataDevolucao", aluguel.dataDevolucao);
-            command.Parameters.AddWithValue("@status", aluguel.status);
-            #endregion
-            try
-            {
-                command.CommandText = "UPDATE Livros SET Titulo = @titulo, Autor = @autor, [Alugado por] = @alugadoPor," +
-                    $" [Data de saida] = @dataEntrega, [Data de devolucao] = @dataRecebimento, Status = @status WHERE Titulo = \'{titulo}\'";
-                
-                AbrirConexaoDb();
-                command.ExecuteNonQuery();
-                FechaConecxaoDb();
-
-                command.Dispose();
-
-                MessageBox.Show(Resources.informações_atualizadas, Resources.concluido_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (SqlException e) { MessageBox.Show(e.Message, Resources.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); }
-        }
-        public void AtualizarAluguelNomeCliente(Aluguel aluguel, string nomeCliente)
+        public void AtualizarAluguelNomeCliente(Aluguel aluguel, string nomeCliente, string nomeLivro)
         {
             SqlCommand command = new SqlCommand {Connection = connection};
             #region Parâmetros
@@ -210,7 +184,8 @@ namespace ProjectBook.DB.SqlServerExpress
             try
             {
                 command.CommandText = "UPDATE Aluguel SET Titulo = @titulo, Autor = @autor, [Alugado por] = @alugadoPor," +
-                    $" [Data de saida] = @dataSaida, [Data de devolucao] = @dataDevolucao, Status = @status WHERE [Alugado por] = \'{nomeCliente}\'";
+                    $" [Data de saida] = @dataSaida, [Data de devolucao] = @dataDevolucao, Status = @status WHERE [Alugado por] = \'{nomeCliente}\' " +
+                    $"AND Titulo = \'{nomeLivro}\'";
 
                 AbrirConexaoDb();
                 command.ExecuteNonQuery();

@@ -16,6 +16,9 @@ namespace ProjectBook.GUI
         private DataTable infoAluguel;
         private DataTable infoLivro;
         private DataTable infoCliente;
+
+        private string primeiroDono;
+        private string primeiroLivro;
         public EditarAluguel()
         {
             InitializeComponent();
@@ -91,6 +94,8 @@ namespace ProjectBook.GUI
                 return;
             }
 
+            primeiroLivro = infoAluguel.Rows[0][0].ToString();
+            primeiroDono = infoAluguel.Rows[0][2].ToString();
             PreencherCamposAluguel();
             PreencharCamposLivro();
             PreencherCamposCliente();
@@ -139,7 +144,7 @@ namespace ProjectBook.GUI
                 return;
             }
 
-            aluguelDb.AtualizarAluguelNomeCliente(aluguel, infoCliente.Rows[0][1].ToString());
+            aluguelDb.AtualizarAluguelNomeCliente(aluguel, primeiroDono, primeiroLivro);
 
             LimparCampos();
         }
