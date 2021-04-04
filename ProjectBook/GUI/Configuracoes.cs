@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Configuration;
-using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Management;
-using System.Reflection;
 using System.Windows.Forms;
 using ProjectBook.Properties;
 
@@ -95,7 +93,6 @@ namespace ProjectBook.GUI
                 config.ConnectionStrings.ConnectionStrings["SqlConnectionString"].ConnectionString = "";
             }
 
-            //Salvar
             config.Save(ConfigurationSaveMode.Modified);
             ConfigurationManager.RefreshSection("appSettings");
 
@@ -119,7 +116,7 @@ namespace ProjectBook.GUI
             lblInfoTxt.ForeColor = Color.Black;
             btnSelecionarArquivoDb.Visible = false;
             txtStringConexaoCaminhoDb.Visible = true;
-            txtStringConexaoCaminhoDb.Size = new Size(441, 23);
+            txtStringConexaoCaminhoDb.Size = new Size(506, 23);
         }
         private void rabSqlServerLocalDb_CheckedChanged(object sender, EventArgs e)
         {
@@ -127,7 +124,7 @@ namespace ProjectBook.GUI
             lblInfoTxt.ForeColor = Color.Black;
             btnSelecionarArquivoDb.Visible = true;
             txtStringConexaoCaminhoDb.Visible = true;
-            txtStringConexaoCaminhoDb.Size = new Size(408, 23);
+            txtStringConexaoCaminhoDb.Size = new Size(473, 23);
         }
         private void rabOneDrive_CheckedChanged(object sender, EventArgs e)
         {

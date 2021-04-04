@@ -104,7 +104,7 @@ namespace ProjectBook.GUI
             this.gpbBancoDados.Enabled = false;
             this.gpbBancoDados.Location = new System.Drawing.Point(12, 127);
             this.gpbBancoDados.Name = "gpbBancoDados";
-            this.gpbBancoDados.Size = new System.Drawing.Size(453, 105);
+            this.gpbBancoDados.Size = new System.Drawing.Size(518, 105);
             this.gpbBancoDados.TabIndex = 2;
             this.gpbBancoDados.TabStop = false;
             this.gpbBancoDados.Text = "Banco de dados";
@@ -123,7 +123,7 @@ namespace ProjectBook.GUI
             // 
             // btnSelecionarArquivoDb
             // 
-            this.btnSelecionarArquivoDb.Location = new System.Drawing.Point(420, 66);
+            this.btnSelecionarArquivoDb.Location = new System.Drawing.Point(485, 66);
             this.btnSelecionarArquivoDb.Name = "btnSelecionarArquivoDb";
             this.btnSelecionarArquivoDb.Size = new System.Drawing.Size(27, 23);
             this.btnSelecionarArquivoDb.TabIndex = 4;
@@ -156,7 +156,7 @@ namespace ProjectBook.GUI
             // 
             this.txtStringConexaoCaminhoDb.Location = new System.Drawing.Point(6, 66);
             this.txtStringConexaoCaminhoDb.Name = "txtStringConexaoCaminhoDb";
-            this.txtStringConexaoCaminhoDb.Size = new System.Drawing.Size(408, 23);
+            this.txtStringConexaoCaminhoDb.Size = new System.Drawing.Size(473, 23);
             this.txtStringConexaoCaminhoDb.TabIndex = 1;
             // 
             // rabSqlServerExpress

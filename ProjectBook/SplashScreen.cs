@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Configuration;
 using System.Data;
-using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Text;
 using System.IO;
@@ -13,6 +12,7 @@ using ProjectBook.Properties;
 using System.Threading.Tasks;
 using AutoUpdaterDotNET;
 using System.Reflection;
+using System.Net;
 
 namespace ProjectBook
 {
@@ -26,21 +26,12 @@ namespace ProjectBook
         {
             InitializeComponent();
 
-            //Aplicar fontes
-            try
-            {
-                PrivateFontCollection privateFont = new PrivateFontCollection();
-                privateFont.AddFontFile(Application.StartupPath + @"font\Montserrat-ExtraBold.ttf");
-                privateFont.AddFontFile(Application.StartupPath + @"font\Montserrat-ExtraLight.ttf");
-                label1.Font = new Font(privateFont.Families[0], 20, FontStyle.Bold);
-                label2.Font = new Font(privateFont.Families[1], 7, FontStyle.Regular);
-            }
-            catch
-            {
-                MessageBox.Show(Resources.está_faltando_arquivos_escenciais_para_abrir_o_programa__tente_reistalar_lo_novamente_,
-                    Resources.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Process.GetCurrentProcess().Kill();
-            }
+            BaixarArquivosEscenciais();
+            PrivateFontCollection privateFont = new PrivateFontCollection();
+            privateFont.AddFontFile(Application.StartupPath + @"font\Montserrat-ExtraBold.ttf");
+            privateFont.AddFontFile(Application.StartupPath + @"font\Montserrat-ExtraLight.ttf");
+            label1.Font = new Font(privateFont.Families[0], 20, FontStyle.Bold);
+            label2.Font = new Font(privateFont.Families[1], 7, FontStyle.Regular);
 
             //Sincronização OneDrive
             if (ConfigurationManager.AppSettings["dbPadrao"] == "onedrive" &&
@@ -71,11 +62,32 @@ namespace ProjectBook
             lblStatusCarregamento.Text = "Procurando por atualizações...";
             ProcurarAtualizacoes();
 
-            Task.Run(async () => 
+            Task.Run(async () =>
             {
                 await Task.Delay(2500);
                 this.Invoke((MethodInvoker)delegate { this.Close(); });
             });
+        }
+        private void BaixarArquivosEscenciais()
+        {
+            string[] fonts = new string[] { "Lato-Bold.ttf", "Montserrat-ExtraBold.ttf", "Montserrat-ExtraLight.ttf" };
+            string fontsDirecotry = Application.StartupPath + @"\font";
+            Directory.CreateDirectory(fontsDirecotry);
+
+            using (WebClient webClient = new WebClient())
+            {
+                foreach (string font in fonts)
+                {
+                    webClient.DownloadFile("https://github.com/LuanRoger/ProjectBook/raw/master/ProjectBook/assets/fontes/" + font,
+                    @$"{fontsDirecotry}\{font}");
+                }
+            }
+        }
+        private void ProcurarAtualizacoes()
+        {
+            AutoUpdater.ShowRemindLaterButton = false;
+            AutoUpdater.Start(ConfigurationManager.AppSettings["updateFileServer"],
+                Assembly.GetExecutingAssembly());
         }
         private void UsuarioLogado()
         {
@@ -105,7 +117,7 @@ namespace ProjectBook
                 DateTime hoje = DateTime.Now.Date;
                 DateTime devolucao = (DateTime)data[4];
                 if (Convert.ToInt32((hoje - devolucao).Days) >= 0)
-                   aluguelDb.AtualizarStatusAtrasado(data[2].ToString());
+                    aluguelDb.AtualizarStatusAtrasado(data[2].ToString());
             }
         }
 
@@ -116,9 +128,9 @@ namespace ProjectBook
                 if (Directory.Exists(pastaAplicacaoOneDrive))
                 {
                     DialogResult dialogResult = MessageBox.Show("Já existe um banco de dados sincronizado, deseja sobrescrever?",
-                        Resources.informacao_MessageBox ,MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        Resources.informacao_MessageBox, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                    if(dialogResult == DialogResult.No)
+                    if (dialogResult == DialogResult.No)
                     {
                         Configuracoes.config.AppSettings.Settings["dbPadrao"].Value = "sqlserverlocaldb";
                         Configuracoes.config.ConnectionStrings.ConnectionStrings["SqlConnectionString"].ConnectionString =
@@ -131,7 +143,6 @@ namespace ProjectBook
                     }
                 }
 
-                //Mover pasta o OneDrive
                 Directory.Move(Directory
                     .GetParent(ConfigurationManager.AppSettings["pastaDb"]).ToString(), pastaAplicacaoOneDrive);
 
@@ -140,7 +151,7 @@ namespace ProjectBook
                     .GetFiles(pastaAplicacaoOneDrive, "*.*", SearchOption.AllDirectories)
                     .First(mdf => mdf.Contains(".mdf"));
 
-                //Criar novo string de conexão
+                //Criar nova string de conexão
                 Configuracoes.config.ConnectionStrings.ConnectionStrings["SqlConnectionString"].ConnectionString =
                     $@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={diretorioDbOneDrive};Integrated Security=True";
 
@@ -154,12 +165,6 @@ namespace ProjectBook
                     string.Format(Resources.ocorreu_um_error___0___Volte_as_configurações_e_crie_uma_novo_string_de_conexão_, e.Message),
                     Resources.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-        private void ProcurarAtualizacoes()
-        {
-            AutoUpdater.ShowRemindLaterButton = false;
-            AutoUpdater.Start(ConfigurationManager.AppSettings["updateFileServer"],
-                Assembly.GetExecutingAssembly());
         }
     }
 }

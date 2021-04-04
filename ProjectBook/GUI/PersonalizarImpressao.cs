@@ -10,15 +10,17 @@ namespace ProjectBook.GUI
         public PersonalizarImpressao()
         {
             InitializeComponent();
-
             CarregarConfigurações();
         }
 
         private void CarregarConfigurações()
         {
             txtTituloPagina.Text = ConfigurationManager.AppSettings["TituloFolha"];
+            trbAlinhamentoTitulo.Value = int.Parse(ConfigurationManager.AppSettings["AlinhamentoTitulo"]);
             txtSubtituloPagina.Text = ConfigurationManager.AppSettings["SubtituloFolha"];
+            trbAlinhamentoSubtitulo.Value = int.Parse(ConfigurationManager.AppSettings["AlinhamentoSubtitulo"]);
             txtRodape.Text = ConfigurationManager.AppSettings["Rodape"];
+            trbAlinhamentoRodape.Value = int.Parse(ConfigurationManager.AppSettings["AlinhamentoRodape"]);
 
             chbExibirCodigo.Checked = ConfigurationManager.AppSettings["ExibirID"] == "1";
             chbNPagina.Checked = ConfigurationManager.AppSettings["NumeroPaginas"] == "1";
@@ -28,14 +30,17 @@ namespace ProjectBook.GUI
         {
             if (Verificadores.VerificarStrings(txtTituloPagina.Text))
             {
-                MessageBox.Show(Properties.Resources.preencherCamposObrigatorios_MessageBox, Properties.Resources.error_MessageBox,
+                MessageBox.Show(Resources.preencherCamposObrigatorios_MessageBox, Resources.error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             Configuracoes.config.AppSettings.Settings["TituloFolha"].Value = txtTituloPagina.Text;
+            Configuracoes.config.AppSettings.Settings["AlinhamentoTitulo"].Value = trbAlinhamentoTitulo.Value.ToString();
             Configuracoes.config.AppSettings.Settings["SubtituloFolha"].Value = txtSubtituloPagina.Text;
+            Configuracoes.config.AppSettings.Settings["AlinhamentoSubtitulo"].Value = trbAlinhamentoSubtitulo.Value.ToString();
             Configuracoes.config.AppSettings.Settings["Rodape"].Value = txtRodape.Text;
+            Configuracoes.config.AppSettings.Settings["AlinhamentoRodape"].Value = trbAlinhamentoRodape.Value.ToString();
             Configuracoes.config.AppSettings.Settings["ExibirID"].Value = chbExibirCodigo.Checked ? "1" : "0";
             Configuracoes.config.AppSettings.Settings["NumeroPaginas"].Value = chbNPagina.Checked ? "1" : "0";
 
