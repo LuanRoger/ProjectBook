@@ -40,17 +40,16 @@
 ![](https://github.com/LuanRoger/ProjectBook/blob/master/ProjectBook/assets/screenshots/PrintNovoAluguel.png)
 > Registrar aluguel.
 
-![](https://github.com/LuanRoger/ProjectBook/blob/master/ProjectBook/assets/screenshots/PrintConfigura%C3%A7%C3%B5es.png)
+![](https://github.com/LuanRoger/ProjectBook/blob/master/ProjectBook/assets/screenshots/PrintConfiguracoes.png)
 > Configurações.
 
 ![](https://github.com/LuanRoger/ProjectBook/blob/master/ProjectBook/assets/screenshots/PrintPesquisaRapida.png)
 > Pesquisa rápida.
 
 ## Pré-requisitos
-Para conseguir abrir o programa será necessário instalar o .NET Core 3.1 Runtime,
-e para conseguir rodar o banco de dados é preciso instalar o [SQL Server Local DB 2019](https://docs.microsoft.com/pt-br/sql/database-engine/configure-windows/sql-server-express-localdb)
-e o  [Microsoft Visual C++ Redistribuível](https://support.microsoft.com/pt-br/topic/os-downloads-do-visual-c-mais-recentes-com-suporte-2647da03-1eea-4433-9aff-95f26a218cc0).
-Depois é só executar o programa normalmente.
+- [.NET Desktop Runtime 5x](https://dotnet.microsoft.com/download/dotnet/5.0)
+- [SQL Server Local DB 2019](https://download.microsoft.com/download/7/c/1/7c14e92e-bdcb-4f89-b7cf-93543e7112d1/SqlLocalDB.msi)
+- [Microsoft Visual C++ Redistribuível](https://support.microsoft.com/pt-br/topic/os-downloads-do-visual-c-mais-recentes-com-suporte-2647da03-1eea-4433-9aff-95f26a218cc0).
 
 ### Configurando
 Logo quando abrir o programa verá um erro, pedindo para que inicie a String de conexão,
@@ -64,8 +63,9 @@ Se preferir baixe o [arquivo SQL](./DbModel/ModeloSQL.sql) e execute em seu banc
 <p>
 <img alt="onedrive" src="https://img.shields.io/badge/sync-onedrive-blue">
 </p>
-A integração com OneDrive só funciona no Windows 10 que esteja com o OneDrive instalado e atualizado,
-estando com todos os seus arquivos sincronizados. Deve também estar usando um banco de dados local
-Para migrar seu banco para o OneDrive basta ir nas Configurações e marcar “OneDrive” e salvar,
-irá aparecer um aviso, depois de ler, selecione “Sim” caso esteja de acordoe o programa
-será reiniciado automaticamente já com o banco de dados no seu OneDrive.
+A integração com OneDrive só funciona no Windows 10 que esteja com o OneDrive instalado e atualizado.
+Para migrar seu banco para o OneDrive:
+1. Vá em Configurações
+2. Em Banco de dados marque OneDrive
+3. Salve
+O programa irá reiniciar e já estará sincronizado.
