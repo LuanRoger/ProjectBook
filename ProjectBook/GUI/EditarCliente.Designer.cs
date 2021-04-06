@@ -253,31 +253,40 @@ namespace ProjectBook.GUI
             // 
             // btnSalvarEditarCliente
             // 
+            this.btnSalvarEditarCliente.Image = global::ProjectBook.Properties.Resources.save;
+            this.btnSalvarEditarCliente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSalvarEditarCliente.Location = new System.Drawing.Point(12, 310);
             this.btnSalvarEditarCliente.Name = "btnSalvarEditarCliente";
-            this.btnSalvarEditarCliente.Size = new System.Drawing.Size(75, 23);
+            this.btnSalvarEditarCliente.Size = new System.Drawing.Size(64, 23);
             this.btnSalvarEditarCliente.TabIndex = 17;
             this.btnSalvarEditarCliente.Text = "Salvar";
+            this.btnSalvarEditarCliente.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSalvarEditarCliente.UseVisualStyleBackColor = true;
             this.btnSalvarEditarCliente.Click += new System.EventHandler(this.btnSalvarEditarCliente_Click);
             // 
             // btnLimparEditarCliente
             // 
-            this.btnLimparEditarCliente.Location = new System.Drawing.Point(129, 310);
+            this.btnLimparEditarCliente.Image = global::ProjectBook.Properties.Resources.textfield;
+            this.btnLimparEditarCliente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLimparEditarCliente.Location = new System.Drawing.Point(162, 310);
             this.btnLimparEditarCliente.Name = "btnLimparEditarCliente";
-            this.btnLimparEditarCliente.Size = new System.Drawing.Size(75, 23);
+            this.btnLimparEditarCliente.Size = new System.Drawing.Size(69, 23);
             this.btnLimparEditarCliente.TabIndex = 18;
             this.btnLimparEditarCliente.Text = "Limpar";
+            this.btnLimparEditarCliente.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnLimparEditarCliente.UseVisualStyleBackColor = true;
             this.btnLimparEditarCliente.Click += new System.EventHandler(this.btnLimparEditarCliente_Click);
             // 
             // btnCancelarEditarCliente
             // 
+            this.btnCancelarEditarCliente.Image = global::ProjectBook.Properties.Resources.cancel;
+            this.btnCancelarEditarCliente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCancelarEditarCliente.Location = new System.Drawing.Point(237, 310);
             this.btnCancelarEditarCliente.Name = "btnCancelarEditarCliente";
             this.btnCancelarEditarCliente.Size = new System.Drawing.Size(75, 23);
             this.btnCancelarEditarCliente.TabIndex = 19;
             this.btnCancelarEditarCliente.Text = "Cancelar";
+            this.btnCancelarEditarCliente.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCancelarEditarCliente.UseVisualStyleBackColor = true;
             this.btnCancelarEditarCliente.Click += new System.EventHandler(this.btnCancelarEditarCliente_Click);
             // 

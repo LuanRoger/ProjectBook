@@ -168,34 +168,43 @@ namespace ProjectBook.GUI
             // 
             // btnSalvarLivro
             // 
+            this.btnSalvarLivro.Image = global::ProjectBook.Properties.Resources.save;
+            this.btnSalvarLivro.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSalvarLivro.Location = new System.Drawing.Point(12, 467);
             this.btnSalvarLivro.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnSalvarLivro.Name = "btnSalvarLivro";
-            this.btnSalvarLivro.Size = new System.Drawing.Size(75, 23);
+            this.btnSalvarLivro.Size = new System.Drawing.Size(64, 23);
             this.btnSalvarLivro.TabIndex = 10;
             this.btnSalvarLivro.Text = "Salvar";
+            this.btnSalvarLivro.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSalvarLivro.UseVisualStyleBackColor = true;
             this.btnSalvarLivro.Click += new System.EventHandler(this.btnSalvarLivro_Click);
             // 
             // btnLimparTxtLivros
             // 
-            this.btnLimparTxtLivros.Location = new System.Drawing.Point(149, 467);
+            this.btnLimparTxtLivros.Image = global::ProjectBook.Properties.Resources.textfield;
+            this.btnLimparTxtLivros.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLimparTxtLivros.Location = new System.Drawing.Point(156, 467);
             this.btnLimparTxtLivros.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnLimparTxtLivros.Name = "btnLimparTxtLivros";
-            this.btnLimparTxtLivros.Size = new System.Drawing.Size(75, 23);
+            this.btnLimparTxtLivros.Size = new System.Drawing.Size(68, 23);
             this.btnLimparTxtLivros.TabIndex = 11;
             this.btnLimparTxtLivros.Text = "Limpar";
+            this.btnLimparTxtLivros.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnLimparTxtLivros.UseVisualStyleBackColor = true;
             this.btnLimparTxtLivros.Click += new System.EventHandler(this.btnLimparTxtLivros_Click);
             // 
             // btnFecharCadastro
             // 
+            this.btnFecharCadastro.Image = global::ProjectBook.Properties.Resources.cancel;
+            this.btnFecharCadastro.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnFecharCadastro.Location = new System.Drawing.Point(232, 467);
             this.btnFecharCadastro.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnFecharCadastro.Name = "btnFecharCadastro";
             this.btnFecharCadastro.Size = new System.Drawing.Size(75, 23);
             this.btnFecharCadastro.TabIndex = 12;
             this.btnFecharCadastro.Text = "Cancelar";
+            this.btnFecharCadastro.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnFecharCadastro.UseVisualStyleBackColor = true;
             this.btnFecharCadastro.Click += new System.EventHandler(this.btnFecharCadastro_Click);
             // 

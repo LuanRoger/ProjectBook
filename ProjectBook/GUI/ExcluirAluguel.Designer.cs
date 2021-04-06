@@ -84,11 +84,14 @@ namespace ProjectBook.GUI
             // 
             // btnCancelarExcluirAluguel
             // 
+            this.btnCancelarExcluirAluguel.Image = global::ProjectBook.Properties.Resources.cancel;
+            this.btnCancelarExcluirAluguel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCancelarExcluirAluguel.Location = new System.Drawing.Point(184, 72);
             this.btnCancelarExcluirAluguel.Name = "btnCancelarExcluirAluguel";
             this.btnCancelarExcluirAluguel.Size = new System.Drawing.Size(75, 23);
             this.btnCancelarExcluirAluguel.TabIndex = 4;
             this.btnCancelarExcluirAluguel.Text = "Cancelar";
+            this.btnCancelarExcluirAluguel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCancelarExcluirAluguel.UseVisualStyleBackColor = true;
             this.btnCancelarExcluirAluguel.Click += new System.EventHandler(this.btnCancelarExcluirAluguel_Click);
             // 

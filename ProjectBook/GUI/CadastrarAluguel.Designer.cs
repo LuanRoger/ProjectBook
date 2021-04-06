@@ -192,11 +192,14 @@ namespace ProjectBook.GUI
             // 
             // btnSalvarAluguel
             // 
+            this.btnSalvarAluguel.Image = global::ProjectBook.Properties.Resources.save;
+            this.btnSalvarAluguel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSalvarAluguel.Location = new System.Drawing.Point(12, 399);
             this.btnSalvarAluguel.Name = "btnSalvarAluguel";
-            this.btnSalvarAluguel.Size = new System.Drawing.Size(75, 23);
+            this.btnSalvarAluguel.Size = new System.Drawing.Size(66, 23);
             this.btnSalvarAluguel.TabIndex = 3;
             this.btnSalvarAluguel.Text = "Salvar";
+            this.btnSalvarAluguel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSalvarAluguel.UseVisualStyleBackColor = true;
             this.btnSalvarAluguel.Click += new System.EventHandler(this.btnSalvarAluguel_Click);
             // 
@@ -320,21 +323,27 @@ namespace ProjectBook.GUI
             // 
             // btnLimparCadastroAluguel
             // 
-            this.btnLimparCadastroAluguel.Location = new System.Drawing.Point(415, 399);
+            this.btnLimparCadastroAluguel.Image = global::ProjectBook.Properties.Resources.textfield;
+            this.btnLimparCadastroAluguel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLimparCadastroAluguel.Location = new System.Drawing.Point(421, 399);
             this.btnLimparCadastroAluguel.Name = "btnLimparCadastroAluguel";
-            this.btnLimparCadastroAluguel.Size = new System.Drawing.Size(75, 23);
+            this.btnLimparCadastroAluguel.Size = new System.Drawing.Size(69, 23);
             this.btnLimparCadastroAluguel.TabIndex = 5;
             this.btnLimparCadastroAluguel.Text = "Limpar";
+            this.btnLimparCadastroAluguel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnLimparCadastroAluguel.UseVisualStyleBackColor = true;
             this.btnLimparCadastroAluguel.Click += new System.EventHandler(this.btnLimparCadastroAluguel_Click);
             // 
             // btnCancelarCadastroAluguel
             // 
+            this.btnCancelarCadastroAluguel.Image = global::ProjectBook.Properties.Resources.cancel;
+            this.btnCancelarCadastroAluguel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCancelarCadastroAluguel.Location = new System.Drawing.Point(496, 399);
             this.btnCancelarCadastroAluguel.Name = "btnCancelarCadastroAluguel";
             this.btnCancelarCadastroAluguel.Size = new System.Drawing.Size(75, 23);
             this.btnCancelarCadastroAluguel.TabIndex = 6;
             this.btnCancelarCadastroAluguel.Text = "Cancelar";
+            this.btnCancelarCadastroAluguel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCancelarCadastroAluguel.UseVisualStyleBackColor = true;
             this.btnCancelarCadastroAluguel.Click += new System.EventHandler(this.btnCancelarCadastroAluguel_Click);
             // 

@@ -81,23 +81,27 @@ namespace ProjectBook.GUI
             // 
             // btnEntrarLogin
             // 
+            this.btnEntrarLogin.Image = global::ProjectBook.Properties.Resources.enter_account;
+            this.btnEntrarLogin.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnEntrarLogin.Location = new System.Drawing.Point(14, 102);
             this.btnEntrarLogin.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnEntrarLogin.Name = "btnEntrarLogin";
             this.btnEntrarLogin.Size = new System.Drawing.Size(62, 22);
             this.btnEntrarLogin.TabIndex = 6;
             this.btnEntrarLogin.Text = "Entrar";
+            this.btnEntrarLogin.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnEntrarLogin.UseVisualStyleBackColor = true;
             this.btnEntrarLogin.Click += new System.EventHandler(this.btnEntrarLogin_Click);
             // 
             // btnFecharLogin
             // 
-            this.btnFecharLogin.Location = new System.Drawing.Point(185, 102);
+            this.btnFecharLogin.Location = new System.Drawing.Point(196, 102);
             this.btnFecharLogin.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnFecharLogin.Name = "btnFecharLogin";
-            this.btnFecharLogin.Size = new System.Drawing.Size(62, 22);
+            this.btnFecharLogin.Size = new System.Drawing.Size(51, 22);
             this.btnFecharLogin.TabIndex = 7;
             this.btnFecharLogin.Text = "Fechar";
+            this.btnFecharLogin.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnFecharLogin.UseVisualStyleBackColor = true;
             this.btnFecharLogin.Click += new System.EventHandler(this.btnFecharLogin_Click);
             // 

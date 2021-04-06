@@ -85,11 +85,14 @@ namespace ProjectBook.GUI
             // 
             // btnSalvarConfiguracoes
             // 
-            this.btnSalvarConfiguracoes.Location = new System.Drawing.Point(457, 246);
+            this.btnSalvarConfiguracoes.Image = global::ProjectBook.Properties.Resources.save;
+            this.btnSalvarConfiguracoes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSalvarConfiguracoes.Location = new System.Drawing.Point(468, 246);
             this.btnSalvarConfiguracoes.Name = "btnSalvarConfiguracoes";
-            this.btnSalvarConfiguracoes.Size = new System.Drawing.Size(75, 23);
+            this.btnSalvarConfiguracoes.Size = new System.Drawing.Size(64, 23);
             this.btnSalvarConfiguracoes.TabIndex = 1;
             this.btnSalvarConfiguracoes.Text = "Salvar";
+            this.btnSalvarConfiguracoes.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSalvarConfiguracoes.UseVisualStyleBackColor = true;
             this.btnSalvarConfiguracoes.Click += new System.EventHandler(this.btnSalvarConfiguracoes_Click);
             // 

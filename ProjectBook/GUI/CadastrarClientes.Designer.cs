@@ -182,23 +182,29 @@ namespace ProjectBook.GUI
             // 
             // btnSalvarCliente
             // 
+            this.btnSalvarCliente.Image = global::ProjectBook.Properties.Resources.save;
+            this.btnSalvarCliente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSalvarCliente.Location = new System.Drawing.Point(13, 223);
             this.btnSalvarCliente.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnSalvarCliente.Name = "btnSalvarCliente";
-            this.btnSalvarCliente.Size = new System.Drawing.Size(75, 23);
+            this.btnSalvarCliente.Size = new System.Drawing.Size(64, 23);
             this.btnSalvarCliente.TabIndex = 9;
             this.btnSalvarCliente.Text = "Salvar";
+            this.btnSalvarCliente.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSalvarCliente.UseVisualStyleBackColor = true;
             this.btnSalvarCliente.Click += new System.EventHandler(this.btnSalvarCliente_Click);
             // 
             // btnLimparCliente
             // 
-            this.btnLimparCliente.Location = new System.Drawing.Point(212, 223);
+            this.btnLimparCliente.Image = global::ProjectBook.Properties.Resources.textfield;
+            this.btnLimparCliente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLimparCliente.Location = new System.Drawing.Point(219, 223);
             this.btnLimparCliente.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnLimparCliente.Name = "btnLimparCliente";
-            this.btnLimparCliente.Size = new System.Drawing.Size(75, 23);
+            this.btnLimparCliente.Size = new System.Drawing.Size(68, 23);
             this.btnLimparCliente.TabIndex = 10;
             this.btnLimparCliente.Text = "Limpar";
+            this.btnLimparCliente.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnLimparCliente.UseVisualStyleBackColor = true;
             this.btnLimparCliente.Click += new System.EventHandler(this.btnLimparCliente_Click);
             // 
@@ -251,12 +257,15 @@ namespace ProjectBook.GUI
             // 
             // btnCancelarCadastrarClientes
             // 
+            this.btnCancelarCadastrarClientes.Image = global::ProjectBook.Properties.Resources.cancel;
+            this.btnCancelarCadastrarClientes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCancelarCadastrarClientes.Location = new System.Drawing.Point(294, 223);
             this.btnCancelarCadastrarClientes.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnCancelarCadastrarClientes.Name = "btnCancelarCadastrarClientes";
             this.btnCancelarCadastrarClientes.Size = new System.Drawing.Size(75, 23);
             this.btnCancelarCadastrarClientes.TabIndex = 11;
             this.btnCancelarCadastrarClientes.Text = "Cancelar";
+            this.btnCancelarCadastrarClientes.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCancelarCadastrarClientes.UseVisualStyleBackColor = true;
             this.btnCancelarCadastrarClientes.Click += new System.EventHandler(this.btnCancelarCadastrarClientes_Click);
             // 

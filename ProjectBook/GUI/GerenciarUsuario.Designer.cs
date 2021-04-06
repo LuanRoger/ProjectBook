@@ -31,11 +31,9 @@ namespace ProjectBook.GUI
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GerenciarUsuario));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.btnLimparCadastrarUsuario = new System.Windows.Forms.Button();
-            this.btnCadastrarUsuario = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtSenhaCadastrar = new System.Windows.Forms.TextBox();
@@ -58,6 +56,7 @@ namespace ProjectBook.GUI
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtIdDeletarUsuario = new System.Windows.Forms.TextBox();
+            this.btnCadastrarUsuario = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -80,8 +79,8 @@ namespace ProjectBook.GUI
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.btnLimparCadastrarUsuario);
             this.tabPage1.Controls.Add(this.btnCadastrarUsuario);
+            this.tabPage1.Controls.Add(this.btnLimparCadastrarUsuario);
             this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Controls.Add(this.txtSenhaCadastrar);
@@ -97,25 +96,17 @@ namespace ProjectBook.GUI
             // 
             // btnLimparCadastrarUsuario
             // 
-            this.btnLimparCadastrarUsuario.Location = new System.Drawing.Point(327, 202);
+            this.btnLimparCadastrarUsuario.Image = global::ProjectBook.Properties.Resources.textfield;
+            this.btnLimparCadastrarUsuario.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLimparCadastrarUsuario.Location = new System.Drawing.Point(347, 206);
             this.btnLimparCadastrarUsuario.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnLimparCadastrarUsuario.Name = "btnLimparCadastrarUsuario";
-            this.btnLimparCadastrarUsuario.Size = new System.Drawing.Size(88, 27);
+            this.btnLimparCadastrarUsuario.Size = new System.Drawing.Size(68, 23);
             this.btnLimparCadastrarUsuario.TabIndex = 3;
             this.btnLimparCadastrarUsuario.Text = "Limpar";
+            this.btnLimparCadastrarUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnLimparCadastrarUsuario.UseVisualStyleBackColor = true;
             this.btnLimparCadastrarUsuario.Click += new System.EventHandler(this.btnLimparCadastrarUsuario_Click);
-            // 
-            // btnCadastrarUsuario
-            // 
-            this.btnCadastrarUsuario.Location = new System.Drawing.Point(231, 202);
-            this.btnCadastrarUsuario.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btnCadastrarUsuario.Name = "btnCadastrarUsuario";
-            this.btnCadastrarUsuario.Size = new System.Drawing.Size(88, 27);
-            this.btnCadastrarUsuario.TabIndex = 2;
-            this.btnCadastrarUsuario.Text = "Cadastrar";
-            this.btnCadastrarUsuario.UseVisualStyleBackColor = true;
-            this.btnCadastrarUsuario.Click += new System.EventHandler(this.btnCadastrarUsuario_Click);
             // 
             // label2
             // 
@@ -173,12 +164,15 @@ namespace ProjectBook.GUI
             // 
             // btnLimparEditarUsuario
             // 
-            this.btnLimparEditarUsuario.Location = new System.Drawing.Point(327, 202);
+            this.btnLimparEditarUsuario.Image = global::ProjectBook.Properties.Resources.textfield;
+            this.btnLimparEditarUsuario.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLimparEditarUsuario.Location = new System.Drawing.Point(354, 206);
             this.btnLimparEditarUsuario.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnLimparEditarUsuario.Name = "btnLimparEditarUsuario";
-            this.btnLimparEditarUsuario.Size = new System.Drawing.Size(88, 27);
+            this.btnLimparEditarUsuario.Size = new System.Drawing.Size(68, 23);
             this.btnLimparEditarUsuario.TabIndex = 7;
             this.btnLimparEditarUsuario.Text = "Limpar";
+            this.btnLimparEditarUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnLimparEditarUsuario.UseVisualStyleBackColor = true;
             this.btnLimparEditarUsuario.Click += new System.EventHandler(this.btnLimparEditarUsuario_Click);
             // 
@@ -213,7 +207,7 @@ namespace ProjectBook.GUI
             // 
             this.btnBuscarUsuario.FlatAppearance.BorderSize = 0;
             this.btnBuscarUsuario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBuscarUsuario.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscarUsuario.Image")));
+            this.btnBuscarUsuario.Image = global::ProjectBook.Properties.Resources.zoom;
             this.btnBuscarUsuario.Location = new System.Drawing.Point(112, 37);
             this.btnBuscarUsuario.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnBuscarUsuario.Name = "btnBuscarUsuario";
@@ -276,12 +270,15 @@ namespace ProjectBook.GUI
             // 
             // btnSalvarEditarUsuario
             // 
-            this.btnSalvarEditarUsuario.Location = new System.Drawing.Point(231, 202);
+            this.btnSalvarEditarUsuario.Image = global::ProjectBook.Properties.Resources.save;
+            this.btnSalvarEditarUsuario.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSalvarEditarUsuario.Location = new System.Drawing.Point(282, 206);
             this.btnSalvarEditarUsuario.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnSalvarEditarUsuario.Name = "btnSalvarEditarUsuario";
-            this.btnSalvarEditarUsuario.Size = new System.Drawing.Size(88, 27);
+            this.btnSalvarEditarUsuario.Size = new System.Drawing.Size(64, 23);
             this.btnSalvarEditarUsuario.TabIndex = 6;
             this.btnSalvarEditarUsuario.Text = "Salvar";
+            this.btnSalvarEditarUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSalvarEditarUsuario.UseVisualStyleBackColor = true;
             this.btnSalvarEditarUsuario.Click += new System.EventHandler(this.btnSalvarEditarUsuario_Click);
             // 
@@ -308,12 +305,15 @@ namespace ProjectBook.GUI
             // 
             // btnDeletarUsuario
             // 
-            this.btnDeletarUsuario.Location = new System.Drawing.Point(327, 202);
+            this.btnDeletarUsuario.Image = global::ProjectBook.Properties.Resources.delete;
+            this.btnDeletarUsuario.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDeletarUsuario.Location = new System.Drawing.Point(348, 206);
             this.btnDeletarUsuario.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnDeletarUsuario.Name = "btnDeletarUsuario";
-            this.btnDeletarUsuario.Size = new System.Drawing.Size(88, 27);
+            this.btnDeletarUsuario.Size = new System.Drawing.Size(67, 23);
             this.btnDeletarUsuario.TabIndex = 2;
             this.btnDeletarUsuario.Text = "Deletar";
+            this.btnDeletarUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnDeletarUsuario.UseVisualStyleBackColor = true;
             this.btnDeletarUsuario.Click += new System.EventHandler(this.btnDeletarUsuario_Click);
             // 
@@ -346,6 +346,18 @@ namespace ProjectBook.GUI
             this.txtIdDeletarUsuario.Name = "txtIdDeletarUsuario";
             this.txtIdDeletarUsuario.Size = new System.Drawing.Size(393, 23);
             this.txtIdDeletarUsuario.TabIndex = 1;
+            // 
+            // btnCadastrarUsuario
+            // 
+            this.btnCadastrarUsuario.Image = global::ProjectBook.Properties.Resources.save;
+            this.btnCadastrarUsuario.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCadastrarUsuario.Location = new System.Drawing.Point(276, 206);
+            this.btnCadastrarUsuario.Name = "btnCadastrarUsuario";
+            this.btnCadastrarUsuario.Size = new System.Drawing.Size(64, 23);
+            this.btnCadastrarUsuario.TabIndex = 4;
+            this.btnCadastrarUsuario.Text = "Salvar";
+            this.btnCadastrarUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnCadastrarUsuario.UseVisualStyleBackColor = true;
             // 
             // GerenciarUsuario
             // 
@@ -397,8 +409,6 @@ namespace ProjectBook.GUI
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtIdBuscarUsuario;
-
-        private System.Windows.Forms.Button btnCadastrarUsuario;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TabPage tabPage3;
@@ -410,5 +420,6 @@ namespace ProjectBook.GUI
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.Button btnCadastrarUsuario;
     }
 }

@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="informacoesIncorretas" xml:space="preserve">
     <value>As informações estão incorretas.</value>
@@ -132,7 +132,7 @@
   <data name="excluir_MessageBox" xml:space="preserve">
     <value>Excluir</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="key" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\key.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -141,6 +141,9 @@
   </data>
   <data name="naoExisteLivroCliente" xml:space="preserve">
     <value>O livro ou o cliente não existem.</value>
+  </data>
+  <data name="save" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\img\save.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="page_excel" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\img\page_excel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -166,6 +169,9 @@
   <data name="configuracoesSalvas_MessageBox" xml:space="preserve">
     <value>Configurações salvas.</value>
   </data>
+  <data name="cancel" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\img\cancel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="é_necessário_fazer_uma_conexão_local_com_o_banco_de_dados_para_fazer_a_migração_para_o_OneDrive_" xml:space="preserve">
     <value>É necessário fazer uma conexão local com o banco de dados, indicando o caminho, para fazer a migração para o OneDrive.</value>
   </data>
@@ -180,6 +186,9 @@
   </data>
   <data name="page_go" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\img\page_go.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="license" xml:space="preserve">
+    <value>GNU General Public License v3.0</value>
   </data>
   <data name="está_faltando_arquivos_escenciais_para_abrir_o_programa__tente_reistalar_lo_novamente_" xml:space="preserve">
     <value>Está faltando arquivos escenciais para abrir o programa, tente reistalar-lo novamente.</value>
@@ -247,14 +256,23 @@
   <data name="aluguelStatus_Pendente" xml:space="preserve">
     <value>Alugado</value>
   </data>
+  <data name="table" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\img\table.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="page_add" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\img\page_add.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="confirmarExclusaoDe" xml:space="preserve">
     <value>de</value>
   </data>
+  <data name="delete" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\img\delete.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="error_MessageBox" xml:space="preserve">
     <value>Error</value>
+  </data>
+  <data name="confirmarExclusaoAluguel2" xml:space="preserve">
+    <value>alugado por </value>
   </data>
   <data name="string_de_conexão" xml:space="preserve">
     <value>String de conexão:</value>
@@ -270,6 +288,9 @@
   </data>
   <data name="uso_da_biblioteca_de_imagens_do_VS2019" xml:space="preserve">
     <value>Uso da biblioteca de imagens do VS2019.</value>
+  </data>
+  <data name="textfield" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\img\textfield.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="cliente_deletado_com_sucesso" xml:space="preserve">
     <value>Cliente deletado com sucesso.</value>
@@ -304,8 +325,8 @@
   <data name="user" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\user.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="confirmarExclusaoAluguel2" xml:space="preserve">
-    <value>alugado por </value>
+  <data name="marcar_opcao_busca" xml:space="preserve">
+    <value>Marque uma opção de busca para continuar.</value>
   </data>
   <data name="ocorreu_um_error___0___Volte_as_configurações_e_crie_uma_novo_string_de_conexão_" xml:space="preserve">
     <value>Ocorreu um error: {0}. Volte as configurações e crie uma novo string de conexão.</value>
@@ -322,13 +343,7 @@
   <data name="client_edit" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\img\client_edit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="table" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\assets\img\table.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="license" xml:space="preserve">
-    <value>GNU General Public License v3.0</value>
-  </data>
-  <data name="marcar_opcao_busca" xml:space="preserve">
-    <value>Marque uma opção de busca para continuar.</value>
+  <data name="enter_account" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\img\enter_account.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
