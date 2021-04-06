@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <item>
-    <version>0.5.0.2</version>
-    <url>https://github.com/LuanRoger/ProjectBook/releases/download/v0.5.2-beta/ProjectBook-v0.5.2-beta.zip</url>
-    <changelog>https://github.com/LuanRoger/ProjectBook/releases/tag/v0.5.2-beta</changelog>
+    <version>0.5.0.3</version>
+    <url>https://github.com/LuanRoger/ProjectBook/releases/download/v0.5.3-beta/ProjectBook-v0.5.3-beta.zip</url>
+    <changelog>https://github.com/LuanRoger/ProjectBook/releases/tag/v0.5.3-beta</changelog>
     <mandatory>false</mandatory>
 </item>
