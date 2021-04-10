@@ -11,7 +11,10 @@ namespace ProjectBook.DB.SqlServerExpress
     {
         protected static readonly SqlConnection connection = 
             new SqlConnection(ConfigurationManager.ConnectionStrings["SqlConnectionString"].ConnectionString);
-
+        /// <summary>
+        /// Verifica a conexão entre o programa e o banco de dados
+        /// </summary>
+        /// <returns>Retorna <c>Open</c> ou <c>Close</c> string</returns>
         public string DbStatus() => connection.State.ToString();
         #region Modificar conexão
         public void AbrirConexaoDb()

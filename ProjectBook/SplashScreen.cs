@@ -4,7 +4,7 @@ using System.Data;
 using System.Drawing;
 using System.Drawing.Text;
 using System.IO;
-using System.Linq;
+using ProjectBook.DB.Migration;
 using System.Windows.Forms;
 using ProjectBook.DB.SqlServerExpress;
 using ProjectBook.GUI;
@@ -40,7 +40,7 @@ namespace ProjectBook
                 lblStatusCarregamento.Text = Resources.migrando_banco_para_o_OneDrive;
                 string pastaAplicacaoOneDrive = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) +
                                                 @"\OneDrive\ProjectBook";
-                MigrarOneDrive(pastaAplicacaoOneDrive);
+                OneDrive.MigrarOneDrive(pastaAplicacaoOneDrive);
             }
 
             //Verificar conexão com o DB
@@ -51,7 +51,6 @@ namespace ProjectBook
             //Verificar se existe usuário logado
             lblStatusCarregamento.Text = Resources.realizando_verificações_de_segurança_splashscreen;
             UsuarioLogado();
-
             if (string.IsNullOrEmpty(ConfigurationManager.AppSettings["usuarioLogado"])) return;
 
             //Atualizar Status do aluguel
@@ -68,21 +67,7 @@ namespace ProjectBook
                 this.Invoke((MethodInvoker)delegate { this.Close(); });
             });
         }
-        private void BaixarArquivosEscenciais()
-        {
-            string[] fonts = new string[] { "Lato-Bold.ttf", "Montserrat-ExtraBold.ttf", "Montserrat-ExtraLight.ttf" };
-            string fontsDirecotry = Application.StartupPath + @"\font";
-            Directory.CreateDirectory(fontsDirecotry);
-
-            using (WebClient webClient = new WebClient())
-            {
-                foreach (string font in fonts)
-                {
-                    webClient.DownloadFile("https://github.com/LuanRoger/ProjectBook/raw/master/ProjectBook/assets/fontes/" + font,
-                    @$"{fontsDirecotry}\{font}");
-                }
-            }
-        }
+        private void BaixarArquivosEscenciais() => AppManager.DownloadFonts();
         private void ProcurarAtualizacoes()
         {
             AutoUpdater.ShowRemindLaterButton = false;
@@ -118,52 +103,6 @@ namespace ProjectBook
                 DateTime devolucao = (DateTime)data[4];
                 if (Convert.ToInt32((hoje - devolucao).Days) >= 0)
                     aluguelDb.AtualizarStatusAtrasado(data[2].ToString());
-            }
-        }
-
-        private void MigrarOneDrive(string pastaAplicacaoOneDrive)
-        {
-            try
-            {
-                if (Directory.Exists(pastaAplicacaoOneDrive))
-                {
-                    DialogResult dialogResult = MessageBox.Show("Já existe um banco de dados sincronizado, deseja sobrescrever?",
-                        Resources.informacao_MessageBox, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-                    if (dialogResult == DialogResult.No)
-                    {
-                        Configuracoes.config.AppSettings.Settings["dbPadrao"].Value = "sqlserverlocaldb";
-                        Configuracoes.config.ConnectionStrings.ConnectionStrings["SqlConnectionString"].ConnectionString =
-                            $@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename ={ConfigurationManager.AppSettings["pastaDb"]}; Integrated Security = True";
-                        Configuracoes.config.Save();
-                        ConfigurationManager.RefreshSection("appSettings");
-
-                        AppManager.ReiniciarPrograma();
-                        return;
-                    }
-                }
-
-                Directory.Move(Directory
-                    .GetParent(ConfigurationManager.AppSettings["pastaDb"]).ToString(), pastaAplicacaoOneDrive);
-
-                //Pegar o novo diretorio do banco de dados
-                string diretorioDbOneDrive = Directory
-                    .GetFiles(pastaAplicacaoOneDrive, "*.*", SearchOption.AllDirectories)
-                    .First(mdf => mdf.Contains(".mdf"));
-
-                //Criar nova string de conexão
-                Configuracoes.config.ConnectionStrings.ConnectionStrings["SqlConnectionString"].ConnectionString =
-                    $@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={diretorioDbOneDrive};Integrated Security=True";
-
-                Configuracoes.config.AppSettings.Settings["pastaDb"].Value = pastaAplicacaoOneDrive;
-                Configuracoes.config.Save();
-                ConfigurationManager.RefreshSection("connectionStrings");
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(
-                    string.Format(Resources.ocorreu_um_error___0___Volte_as_configurações_e_crie_uma_novo_string_de_conexão_, e.Message),
-                    Resources.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

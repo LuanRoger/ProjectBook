@@ -374,6 +374,15 @@ namespace ProjectBook.Properties {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Já existe um banco de dados sincronizado, deseja sobrescrever?.
+        /// </summary>
+        internal static string existePastaOneDrive {
+            get {
+                return ResourceManager.GetString("existePastaOneDrive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap exit_account {
@@ -416,16 +425,6 @@ namespace ProjectBook.Properties {
         internal static System.Drawing.Bitmap InicioBackground {
             get {
                 object obj = ResourceManager.GetObject("InicioBackground", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap key {
-            get {
-                object obj = ResourceManager.GetObject("key", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -697,16 +696,6 @@ namespace ProjectBook.Properties {
         internal static System.Drawing.Bitmap textfield {
             get {
                 object obj = ResourceManager.GetObject("textfield", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap user {
-            get {
-                object obj = ResourceManager.GetObject("user", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
