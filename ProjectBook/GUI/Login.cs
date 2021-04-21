@@ -4,6 +4,7 @@ using System.Data;
 using System.Diagnostics;
 using System.Reflection;
 using System.Windows.Forms;
+using ProjectBook.Properties.Languages;
 using ProjectBook.DB.SqlServerExpress;
 
 namespace ProjectBook.GUI
@@ -23,7 +24,7 @@ namespace ProjectBook.GUI
             if (Verificadores.VerificarStrings(txtLoginUsuario.Text, txtLoginSenha.Text) || 
                 Verificadores.VerificarStrings(txtLoginCodigo.Text, txtLoginSenha.Text))
             {
-                MessageBox.Show(Properties.Resources.preencherCampos, Properties.Resources.error_MessageBox,
+                MessageBox.Show(Strings.preencherCampos, Strings.error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -36,7 +37,7 @@ namespace ProjectBook.GUI
 
                 if(Verificadores.VerificarDataTable(infoUsuario))
                 {
-                    MessageBox.Show(Properties.Resources.informacoesIncorretas, Properties.Resources.error_MessageBox,
+                    MessageBox.Show(Strings.informacoesIncorretas, Strings.error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }

@@ -84,7 +84,7 @@ namespace ProjectBook.GUI
             // 
             // btnCancelarExcluirAluguel
             // 
-            this.btnCancelarExcluirAluguel.Image = global::ProjectBook.Properties.Resources.cancel;
+            this.btnCancelarExcluirAluguel.Image = global::ProjectBook.Properties.Images.Images.cancel;
             this.btnCancelarExcluirAluguel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCancelarExcluirAluguel.Location = new System.Drawing.Point(184, 72);
             this.btnCancelarExcluirAluguel.Name = "btnCancelarExcluirAluguel";

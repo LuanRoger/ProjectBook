@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Windows.Forms;
 using ProjectBook.DB.SqlServerExpress;
-using ProjectBook.Properties;
-using ProjectBook.GUI;
+using ProjectBook.Properties.Languages;
 
 namespace ProjectBook.GUI
 {
@@ -35,7 +32,7 @@ namespace ProjectBook.GUI
         {
             if (Verificadores.VerificarStrings(txtNomeUsuarioBusca.Text))
             {
-                MessageBox.Show(Resources.preencherCampoBusca_MessageBox, Resources.error_MessageBox,
+                MessageBox.Show(Strings.preencherCampoBusca_MessageBox, Strings.error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }

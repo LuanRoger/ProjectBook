@@ -93,7 +93,7 @@ namespace ProjectBook.GUI
             // 
             // btnCancelarPesquisarCliente
             // 
-            this.btnCancelarPesquisarCliente.Image = global::ProjectBook.Properties.Resources.cancel;
+            this.btnCancelarPesquisarCliente.Image = global::ProjectBook.Properties.Images.Images.cancel;
             this.btnCancelarPesquisarCliente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCancelarPesquisarCliente.Location = new System.Drawing.Point(161, 106);
             this.btnCancelarPesquisarCliente.Name = "btnCancelarPesquisarCliente";

@@ -192,7 +192,7 @@ namespace ProjectBook.GUI
             // 
             // btnSalvarAluguel
             // 
-            this.btnSalvarAluguel.Image = global::ProjectBook.Properties.Resources.save;
+            this.btnSalvarAluguel.Image = global::ProjectBook.Properties.Images.Images.save;
             this.btnSalvarAluguel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSalvarAluguel.Location = new System.Drawing.Point(12, 399);
             this.btnSalvarAluguel.Name = "btnSalvarAluguel";
@@ -323,7 +323,7 @@ namespace ProjectBook.GUI
             // 
             // btnLimparCadastroAluguel
             // 
-            this.btnLimparCadastroAluguel.Image = global::ProjectBook.Properties.Resources.textfield;
+            this.btnLimparCadastroAluguel.Image = global::ProjectBook.Properties.Images.Images.textfield;
             this.btnLimparCadastroAluguel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnLimparCadastroAluguel.Location = new System.Drawing.Point(421, 399);
             this.btnLimparCadastroAluguel.Name = "btnLimparCadastroAluguel";
@@ -336,7 +336,7 @@ namespace ProjectBook.GUI
             // 
             // btnCancelarCadastroAluguel
             // 
-            this.btnCancelarCadastroAluguel.Image = global::ProjectBook.Properties.Resources.cancel;
+            this.btnCancelarCadastroAluguel.Image = global::ProjectBook.Properties.Images.Images.cancel;
             this.btnCancelarCadastroAluguel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCancelarCadastroAluguel.Location = new System.Drawing.Point(496, 399);
             this.btnCancelarCadastroAluguel.Name = "btnCancelarCadastroAluguel";

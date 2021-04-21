@@ -3,6 +3,7 @@ using System.Data;
 using System.Windows.Forms;
 using ProjectBook.DB.SqlServerExpress;
 using ProjectBook.Livros;
+using ProjectBook.Properties.Languages;
 
 namespace ProjectBook.GUI
 {
@@ -41,7 +42,7 @@ namespace ProjectBook.GUI
 
             if(Verificadores.VerificarStrings(tituloParaBusca))
             {
-                MessageBox.Show(Properties.Resources.preencherCampoBusca_MessageBox, Properties.Resources.error_MessageBox ,
+                MessageBox.Show(Strings.preencherCampoBusca_MessageBox, Strings.error_MessageBox ,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -55,7 +56,7 @@ namespace ProjectBook.GUI
 
             if(Verificadores.VerificarStrings(clienteParaBuscar))
             {
-                MessageBox.Show(Properties.Resources.preencherCampoBusca_MessageBox, Properties.Resources.error_MessageBox,
+                MessageBox.Show(Strings.preencherCampoBusca_MessageBox, Strings.error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -75,7 +76,7 @@ namespace ProjectBook.GUI
             
             if (Verificadores.VerificarCamposAluguel(aluguel))
             {
-                MessageBox.Show(Properties.Resources.preencherCampoBusca_MessageBox, Properties.Resources.error_MessageBox,
+                MessageBox.Show(Strings.preencherCampoBusca_MessageBox, Strings.error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -96,7 +97,7 @@ namespace ProjectBook.GUI
             }
             catch
             {
-                MessageBox.Show(Properties.Resources.livroNaoExiste_MessageBox, Properties.Resources.error_MessageBox,
+                MessageBox.Show(Strings.livroNaoExiste_MessageBox, Strings.error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -113,7 +114,7 @@ namespace ProjectBook.GUI
             }
             catch
             {
-                MessageBox.Show(Properties.Resources.clienteNaoExiste_MessageBox, Properties.Resources.error_MessageBox,
+                MessageBox.Show(Strings.clienteNaoExiste_MessageBox, Strings.error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

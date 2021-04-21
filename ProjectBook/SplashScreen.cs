@@ -3,21 +3,20 @@ using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Text;
-using System.IO;
 using ProjectBook.DB.Migration;
 using System.Windows.Forms;
 using ProjectBook.DB.SqlServerExpress;
 using ProjectBook.GUI;
-using ProjectBook.Properties;
+using ProjectBook.Properties.Languages;
 using System.Threading.Tasks;
-using AutoUpdaterDotNET;
-using System.Reflection;
-using System.Net;
 
 namespace ProjectBook
 {
     public partial class SplashScreen : Form
     {
+        private readonly string _fontMontserratExtraBold = Application.StartupPath + @"font\Montserrat-ExtraBold.ttf";
+        private readonly string _fontMontserratExtraLight = Application.StartupPath + @"font\Montserrat-ExtraLight.ttf";
+
         private LivrosDb livrosDb = new LivrosDb();
         private AluguelDb aluguelDb = new AluguelDb();
         private UsuarioDb usuarioDb = new UsuarioDb();
@@ -28,38 +27,36 @@ namespace ProjectBook
 
             BaixarArquivosEscenciais();
             PrivateFontCollection privateFont = new PrivateFontCollection();
-            privateFont.AddFontFile(Application.StartupPath + @"font\Montserrat-ExtraBold.ttf");
-            privateFont.AddFontFile(Application.StartupPath + @"font\Montserrat-ExtraLight.ttf");
+            privateFont.AddFontFile(_fontMontserratExtraBold);
+            privateFont.AddFontFile(_fontMontserratExtraLight);
             label1.Font = new Font(privateFont.Families[0], 20, FontStyle.Bold);
             label2.Font = new Font(privateFont.Families[1], 7, FontStyle.Regular);
 
             //Sincronização OneDrive
             if (ConfigurationManager.AppSettings["dbPadrao"] == "onedrive" &&
-                ConfigurationManager.ConnectionStrings["SqlConnectionString"].ConnectionString == "")
+                string.IsNullOrEmpty(ConfigurationManager.ConnectionStrings["SqlConnectionString"].ConnectionString))
             {
-                lblStatusCarregamento.Text = Resources.migrando_banco_para_o_OneDrive;
-                string pastaAplicacaoOneDrive = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) +
-                                                @"\OneDrive\ProjectBook";
-                OneDrive.MigrarOneDrive(pastaAplicacaoOneDrive);
+                lblStatusCarregamento.Text = Strings.migrando_banco_para_o_OneDrive;
+                OneDrive.MigrarOneDrive();
             }
 
             //Verificar conexão com o DB
             livrosDb.AbrirConexaoDb();
-            if (livrosDb.DbStatus() != "Open") return;
+            if (livrosDb.DbStatus() != ConnectionState.Open) return;
             livrosDb.FechaConecxaoDb();
 
             //Verificar se existe usuário logado
-            lblStatusCarregamento.Text = Resources.realizando_verificações_de_segurança_splashscreen;
+            lblStatusCarregamento.Text = Strings.realizando_verificações_de_segurança_splashscreen;
             UsuarioLogado();
             if (string.IsNullOrEmpty(ConfigurationManager.AppSettings["usuarioLogado"])) return;
 
             //Atualizar Status do aluguel
-            lblStatusCarregamento.Text = Resources.atualizando_banco_de_dados_splashscreen;
+            lblStatusCarregamento.Text = Strings.atualizando_banco_de_dados_splashscreen;
             AtualizarAtrasso();
 
             //Procurar atualizazções
             lblStatusCarregamento.Text = "Procurando por atualizações...";
-            ProcurarAtualizacoes();
+            AppManager.ProcurarAtualizacoes();
 
             Task.Run(async () =>
             {
@@ -68,12 +65,6 @@ namespace ProjectBook
             });
         }
         private void BaixarArquivosEscenciais() => AppManager.DownloadFonts();
-        private void ProcurarAtualizacoes()
-        {
-            AutoUpdater.ShowRemindLaterButton = false;
-            AutoUpdater.Start(ConfigurationManager.AppSettings["updateFileServer"],
-                Assembly.GetExecutingAssembly());
-        }
         private void UsuarioLogado()
         {
             if (string.IsNullOrEmpty(ConfigurationManager.AppSettings["usuarioLogado"]))

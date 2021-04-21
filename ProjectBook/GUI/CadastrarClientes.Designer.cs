@@ -182,7 +182,7 @@ namespace ProjectBook.GUI
             // 
             // btnSalvarCliente
             // 
-            this.btnSalvarCliente.Image = global::ProjectBook.Properties.Resources.save;
+            this.btnSalvarCliente.Image = global::ProjectBook.Properties.Images.Images.save;
             this.btnSalvarCliente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSalvarCliente.Location = new System.Drawing.Point(13, 223);
             this.btnSalvarCliente.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -196,7 +196,7 @@ namespace ProjectBook.GUI
             // 
             // btnLimparCliente
             // 
-            this.btnLimparCliente.Image = global::ProjectBook.Properties.Resources.textfield;
+            this.btnLimparCliente.Image = global::ProjectBook.Properties.Images.Images.textfield;
             this.btnLimparCliente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnLimparCliente.Location = new System.Drawing.Point(219, 223);
             this.btnLimparCliente.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -257,7 +257,7 @@ namespace ProjectBook.GUI
             // 
             // btnCancelarCadastrarClientes
             // 
-            this.btnCancelarCadastrarClientes.Image = global::ProjectBook.Properties.Resources.cancel;
+            this.btnCancelarCadastrarClientes.Image = global::ProjectBook.Properties.Images.Images.cancel;
             this.btnCancelarCadastrarClientes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCancelarCadastrarClientes.Location = new System.Drawing.Point(294, 223);
             this.btnCancelarCadastrarClientes.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);

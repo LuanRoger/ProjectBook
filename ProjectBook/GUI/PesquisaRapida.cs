@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using ProjectBook.DB.SqlServerExpress;
 using Color = System.Drawing.Color;
+using ProjectBook.Properties.Languages;
 
 namespace ProjectBook.GUI
 {
@@ -39,7 +40,7 @@ namespace ProjectBook.GUI
 
             if (Verificadores.VerificarStrings(termoPesquisa))
             {
-                MessageBox.Show(Properties.Resources.preencherCampoBusca_MessageBox, Properties.Resources.error_MessageBox,
+                MessageBox.Show(Strings.preencherCampoBusca_MessageBox, Strings.error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -51,7 +52,7 @@ namespace ProjectBook.GUI
 
             if (Verificadores.VerificarDataTable(resultado))
             {
-                MessageBox.Show(Properties.Resources.naoExisteLivroCliente, Properties.Resources.error_MessageBox,
+                MessageBox.Show(Strings.naoExisteLivroCliente, Strings.error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }

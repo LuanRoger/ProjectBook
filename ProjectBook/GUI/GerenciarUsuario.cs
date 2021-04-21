@@ -3,7 +3,7 @@ using System.Data;
 using System.Windows.Forms;
 using ProjectBook.DB.SqlServerExpress;
 using ProjectBook.Livros;
-using ProjectBook.Properties;
+using ProjectBook.Properties.Languages;
 using ProjectBook.Tipos;
 
 namespace ProjectBook.GUI
@@ -21,7 +21,7 @@ namespace ProjectBook.GUI
             Usuario usuario = new Usuario(txtUsuarioCadastrar.Text, txtSenhaCadastrar.Text, TipoUsuário.USU.ToString());
             if (Verificadores.VerificarCamposUsuario(usuario))
             {
-                MessageBox.Show(Properties.Resources.preencherCampoBusca_MessageBox, Properties.Resources.error_MessageBox,
+                MessageBox.Show(Strings.preencherCampoBusca_MessageBox, Strings.error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -36,7 +36,7 @@ namespace ProjectBook.GUI
             Usuario usuario = new Usuario(txtNovoUsuario.Text, txtNovoSenhaUsuario.Text, cmdNovoStatus.Text);
             if (Verificadores.VerificarCamposUsuario(usuario))
             {
-                MessageBox.Show(Properties.Resources.preencherCampoBusca_MessageBox, Properties.Resources.error_MessageBox,
+                MessageBox.Show(Strings.preencherCampoBusca_MessageBox, Strings.error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -54,7 +54,7 @@ namespace ProjectBook.GUI
 
             if (Verificadores.VerificarDataTable(infoUsuario))
             {
-                MessageBox.Show(Properties.Resources.preencherCampoBusca_MessageBox, Properties.Resources.error_MessageBox,
+                MessageBox.Show(Strings.preencherCampoBusca_MessageBox, Strings.error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -70,13 +70,13 @@ namespace ProjectBook.GUI
 
             if (Verificadores.VerificarDataTable(infoUsuario))
             {
-                MessageBox.Show(Resources.preencherCampoBusca_MessageBox, Resources.error_MessageBox,
+                MessageBox.Show(Strings.preencherCampoBusca_MessageBox, Strings.error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            DialogResult dialogResult = MessageBox.Show($"{Resources.confirmarExclusao} {infoUsuario.Rows[0][1]}",
-                Resources.excluir_MessageBox,
+            DialogResult dialogResult = MessageBox.Show($"{Strings.confirmarExclusao} {infoUsuario.Rows[0][1]}",
+                Strings.excluir_MessageBox,
                 MessageBoxButtons.YesNo, MessageBoxIcon.Stop);
             if (dialogResult == DialogResult.No) return;
 

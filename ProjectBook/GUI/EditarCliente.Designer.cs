@@ -73,7 +73,7 @@ namespace ProjectBook.GUI
             // 
             this.btnBucarCliente.FlatAppearance.BorderSize = 0;
             this.btnBucarCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBucarCliente.Image = global::ProjectBook.Properties.Resources.zoom;
+            this.btnBucarCliente.Image = global::ProjectBook.Properties.Images.Images.zoom;
             this.btnBucarCliente.Location = new System.Drawing.Point(266, 48);
             this.btnBucarCliente.Name = "btnBucarCliente";
             this.btnBucarCliente.Size = new System.Drawing.Size(27, 23);
@@ -253,7 +253,7 @@ namespace ProjectBook.GUI
             // 
             // btnSalvarEditarCliente
             // 
-            this.btnSalvarEditarCliente.Image = global::ProjectBook.Properties.Resources.save;
+            this.btnSalvarEditarCliente.Image = global::ProjectBook.Properties.Images.Images.save;
             this.btnSalvarEditarCliente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSalvarEditarCliente.Location = new System.Drawing.Point(12, 310);
             this.btnSalvarEditarCliente.Name = "btnSalvarEditarCliente";
@@ -266,7 +266,7 @@ namespace ProjectBook.GUI
             // 
             // btnLimparEditarCliente
             // 
-            this.btnLimparEditarCliente.Image = global::ProjectBook.Properties.Resources.textfield;
+            this.btnLimparEditarCliente.Image = global::ProjectBook.Properties.Images.Images.textfield;
             this.btnLimparEditarCliente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnLimparEditarCliente.Location = new System.Drawing.Point(162, 310);
             this.btnLimparEditarCliente.Name = "btnLimparEditarCliente";
@@ -279,7 +279,7 @@ namespace ProjectBook.GUI
             // 
             // btnCancelarEditarCliente
             // 
-            this.btnCancelarEditarCliente.Image = global::ProjectBook.Properties.Resources.cancel;
+            this.btnCancelarEditarCliente.Image = global::ProjectBook.Properties.Images.Images.cancel;
             this.btnCancelarEditarCliente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCancelarEditarCliente.Location = new System.Drawing.Point(237, 310);
             this.btnCancelarEditarCliente.Name = "btnCancelarEditarCliente";

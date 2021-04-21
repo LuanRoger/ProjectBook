@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Text;
 using System.Windows.Forms;
-using ProjectBook.Properties;
+using ProjectBook.Properties.Languages;
 using ClosedXML.Excel;
 
 namespace ProjectBook.GUI
@@ -31,8 +31,8 @@ namespace ProjectBook.GUI
             }
             catch
             {
-                MessageBox.Show(Resources.está_faltando_arquivos_escenciais_para_abrir_o_programa__tente_reistalar_lo_novamente_,
-                    Resources.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(Strings.está_faltando_arquivos_escenciais_para_abrir_o_programa__tente_reistalar_lo_novamente_,
+                    Strings.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Process.GetCurrentProcess().Kill();
             }
 
@@ -93,7 +93,7 @@ namespace ProjectBook.GUI
 
                 workbook.SaveAs(saveFileDialog.FileName);
 
-                MessageBox.Show("Planilha salva com sucesso", Resources.informacao_MessageBox, MessageBoxButtons.OK,
+                MessageBox.Show("Planilha salva com sucesso", Strings.informacao_MessageBox, MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
             };
         }

@@ -3,6 +3,7 @@ using System.Configuration;
 using System.Windows.Forms;
 using ProjectBook.DB.SqlServerExpress;
 using ProjectBook.Livros;
+using ProjectBook.Properties.Languages;
 
 namespace ProjectBook.GUI
 {
@@ -45,7 +46,7 @@ namespace ProjectBook.GUI
 
             if (Verificadores.VerificarCamposCliente(cliente))
             {
-                MessageBox.Show(Properties.Resources.preencherCamposObrigatorios_MessageBox, Properties.Resources.error_MessageBox,
+                MessageBox.Show(Strings.preencherCamposObrigatorios_MessageBox, Strings.error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
