@@ -210,7 +210,7 @@ namespace ProjectBook.GUI
             };
 
             lblNomeUsuario.BackColor = Color.Transparent;
-            this.BringToFront();
+            BringToFront();
         }
 
         private void Inicio_KeyDown(object sender, KeyEventArgs e)
@@ -222,7 +222,7 @@ namespace ProjectBook.GUI
                     pesquisaRapida.Show();
                     break;
                 case Keys.F6: 
-                    this.Close(); 
+                    Close(); 
                     break;
                 case Keys.F7:
                     btnSairUsuario.PerformClick();

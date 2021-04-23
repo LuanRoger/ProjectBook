@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Configuration;
 using System.Data;
+using System.Linq;
 using System.Drawing;
 using System.Drawing.Text;
 using ProjectBook.DB.Migration;
@@ -19,13 +20,13 @@ namespace ProjectBook
 
         private LivrosDb livrosDb = new LivrosDb();
         private AluguelDb aluguelDb = new AluguelDb();
-        private UsuarioDb usuarioDb = new UsuarioDb();
 
         public SplashScreen()
         {
             InitializeComponent();
 
             BaixarArquivosEscenciais();
+
             PrivateFontCollection privateFont = new PrivateFontCollection();
             privateFont.AddFontFile(_fontMontserratExtraBold);
             privateFont.AddFontFile(_fontMontserratExtraLight);
@@ -47,8 +48,11 @@ namespace ProjectBook
 
             //Verificar se existe usuário logado
             lblStatusCarregamento.Text = Strings.realizando_verificações_de_segurança_splashscreen;
-            UsuarioLogado();
-            if (string.IsNullOrEmpty(ConfigurationManager.AppSettings["usuarioLogado"])) return;
+            if (string.IsNullOrEmpty(ConfigurationManager.AppSettings["usuarioLogado"]))
+            {
+                UsuarioLogado();
+                return;
+            }
 
             //Atualizar Status do aluguel
             lblStatusCarregamento.Text = Strings.atualizando_banco_de_dados_splashscreen;
@@ -60,29 +64,20 @@ namespace ProjectBook
 
             Task.Run(async () =>
             {
-                await Task.Delay(2500);
-                this.Invoke((MethodInvoker)delegate { this.Close(); });
+                await Task.Delay(Consts.SPLASH_SCREEN_LOADTIME);
+                Invoke((MethodInvoker)delegate { Close(); });
             });
         }
         private void BaixarArquivosEscenciais() => AppManager.DownloadFonts();
         private void UsuarioLogado()
         {
-            if (string.IsNullOrEmpty(ConfigurationManager.AppSettings["usuarioLogado"]))
+            if (Application.OpenForms.Count < 2)
             {
-                if (Application.OpenForms.Count < 2)
-                {
-                    Login login = new Login();
-                    login.BringToFront();
-                    login.Show();
-                }
+                Login login = new Login();
+                login.BringToFront();
+                login.Show();
             }
-            else
-            {
-                DataRow usuario = usuarioDb.BuscarUsuarioNome(ConfigurationManager.AppSettings["usuarioLogado"]).Rows[0];
-                Configuracoes.config.AppSettings.Settings["tipoUsuario"].Value = usuario[3].ToString();
-                Configuracoes.config.Save();
-                ConfigurationManager.RefreshSection("appSettings");
-            }
+            else { /*Configurações aberta*/ }
         }
         private void AtualizarAtrasso()
         {

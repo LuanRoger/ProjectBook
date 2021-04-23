@@ -45,6 +45,7 @@ namespace ProjectBook.GUI
             this.btnLimparTxtEditar = new System.Windows.Forms.Button();
             this.btnSalvarEditar = new System.Windows.Forms.Button();
             this.gpbBuscar = new System.Windows.Forms.GroupBox();
+            this.btnBuscarEditar = new System.Windows.Forms.Button();
             this.txtEditarBuscar = new System.Windows.Forms.TextBox();
             this.rabEditarAutor = new System.Windows.Forms.RadioButton();
             this.rabEditarTitulo = new System.Windows.Forms.RadioButton();
@@ -55,7 +56,6 @@ namespace ProjectBook.GUI
             this.label9 = new System.Windows.Forms.Label();
             this.txtEditarObservacoes = new System.Windows.Forms.RichTextBox();
             this.txtEditarIsbn = new System.Windows.Forms.MaskedTextBox();
-            this.btnBuscarEditar = new System.Windows.Forms.Button();
             this.gpbBuscar.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -213,6 +213,18 @@ namespace ProjectBook.GUI
             this.gpbBuscar.TabStop = false;
             this.gpbBuscar.Text = "Bucar";
             // 
+            // btnBuscarEditar
+            // 
+            this.btnBuscarEditar.FlatAppearance.BorderSize = 0;
+            this.btnBuscarEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBuscarEditar.Image = global::ProjectBook.Properties.Images.Images.zoom;
+            this.btnBuscarEditar.Location = new System.Drawing.Point(263, 44);
+            this.btnBuscarEditar.Name = "btnBuscarEditar";
+            this.btnBuscarEditar.Size = new System.Drawing.Size(29, 23);
+            this.btnBuscarEditar.TabIndex = 5;
+            this.btnBuscarEditar.UseVisualStyleBackColor = true;
+            this.btnBuscarEditar.Click += new System.EventHandler(this.btnBuscarEditar_Click);
+            // 
             // txtEditarBuscar
             // 
             this.txtEditarBuscar.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
@@ -309,17 +321,6 @@ namespace ProjectBook.GUI
             this.txtEditarIsbn.Name = "txtEditarIsbn";
             this.txtEditarIsbn.Size = new System.Drawing.Size(113, 23);
             this.txtEditarIsbn.TabIndex = 35;
-            // 
-            // btnBuscarEditar
-            // 
-            this.btnBuscarEditar.FlatAppearance.BorderSize = 0;
-            this.btnBuscarEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBuscarEditar.Image = global::ProjectBook.Properties.Images.Images.zoom;
-            this.btnBuscarEditar.Location = new System.Drawing.Point(263, 44);
-            this.btnBuscarEditar.Name = "btnBuscarEditar";
-            this.btnBuscarEditar.Size = new System.Drawing.Size(29, 23);
-            this.btnBuscarEditar.TabIndex = 5;
-            this.btnBuscarEditar.UseVisualStyleBackColor = true;
             // 
             // EditarLivro
             // 

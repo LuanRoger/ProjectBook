@@ -31,13 +31,11 @@ namespace ProjectBook
         {
             Directory.CreateDirectory(FONTS_FOLDER);
 
-            using (WebClient webClient = new WebClient())
+            using WebClient webClient = new WebClient();
+            foreach (string font in FONTS_DOWNLOAD)
             {
-                foreach (string font in FONTS_DOWNLOAD)
-                {
-                    webClient.DownloadFile(URI_ATUALIZACAO + font,
-                    @$"{FONTS_FOLDER}\{font}");
-                }
+                webClient.DownloadFile(URI_ATUALIZACAO + font,
+                @$"{FONTS_FOLDER}\{font}");
             }
         }
 
@@ -64,5 +62,10 @@ namespace ProjectBook
 
             ReiniciarPrograma();
         }
+    }
+
+    public static class Consts
+    {
+        public const int SPLASH_SCREEN_LOADTIME = 2500;
     }
 }
