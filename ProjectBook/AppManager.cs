@@ -19,7 +19,7 @@ namespace ProjectBook
         private static readonly string[] FONTS_DOWNLOAD = 
             new string[] { "Lato-Bold.ttf", "Montserrat-ExtraBold.ttf", "Montserrat-ExtraLight.ttf" };
         private static readonly string FONTS_FOLDER = Application.StartupPath + @"\font";
-        private static readonly string URI_ATUALIZACAO = "https://github.com/LuanRoger/ProjectBook/raw/master/ProjectBook/assets/fontes/";
+        private static readonly string URI_DOWNLADFONTS = "https://github.com/LuanRoger/ProjectBook/raw/master/ProjectBook/Properties/assets/fontes/";
 
         public static void ReiniciarPrograma()
         {
@@ -29,12 +29,14 @@ namespace ProjectBook
 
         public static void DownloadFonts()
         {
+            if (File.Exists(@$"{FONTS_FOLDER}\{FONTS_DOWNLOAD[0]}") && File.Exists(@$"{FONTS_FOLDER}\{FONTS_DOWNLOAD[1]}") &&
+                File.Exists(@$"{FONTS_FOLDER}\{FONTS_DOWNLOAD[2]}")) return;
             Directory.CreateDirectory(FONTS_FOLDER);
 
             using WebClient webClient = new WebClient();
             foreach (string font in FONTS_DOWNLOAD)
             {
-                webClient.DownloadFile(URI_ATUALIZACAO + font,
+                webClient.DownloadFile(URI_DOWNLADFONTS + font,
                 @$"{FONTS_FOLDER}\{font}");
             }
         }

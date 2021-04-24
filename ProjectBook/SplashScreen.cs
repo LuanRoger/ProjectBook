@@ -18,16 +18,16 @@ namespace ProjectBook
         private readonly string _fontMontserratExtraBold = Application.StartupPath + @"font\Montserrat-ExtraBold.ttf";
         private readonly string _fontMontserratExtraLight = Application.StartupPath + @"font\Montserrat-ExtraLight.ttf";
 
-        private LivrosDb livrosDb = new LivrosDb();
-        private AluguelDb aluguelDb = new AluguelDb();
+        private LivrosDb livrosDb = new();
+        private AluguelDb aluguelDb = new();
 
         public SplashScreen()
         {
             InitializeComponent();
 
-            BaixarArquivosEscenciais();
+            AppManager.DownloadFonts();
 
-            PrivateFontCollection privateFont = new PrivateFontCollection();
+            PrivateFontCollection privateFont = new();
             privateFont.AddFontFile(_fontMontserratExtraBold);
             privateFont.AddFontFile(_fontMontserratExtraLight);
             label1.Font = new Font(privateFont.Families[0], 20, FontStyle.Bold);
@@ -56,7 +56,7 @@ namespace ProjectBook
 
             //Atualizar Status do aluguel
             lblStatusCarregamento.Text = Strings.atualizando_banco_de_dados_splashscreen;
-            AtualizarAtrasso();
+            if (ConfigurationManager.AppSettings["atualizarStatusAluguel"] == "1") AtualizarAtrasso();
 
             //Procurar atualizazções
             lblStatusCarregamento.Text = "Procurando por atualizações...";
@@ -68,12 +68,11 @@ namespace ProjectBook
                 Invoke((MethodInvoker)delegate { Close(); });
             });
         }
-        private void BaixarArquivosEscenciais() => AppManager.DownloadFonts();
         private void UsuarioLogado()
         {
             if (Application.OpenForms.Count < 2)
             {
-                Login login = new Login();
+                Login login = new();
                 login.BringToFront();
                 login.Show();
             }
@@ -81,8 +80,6 @@ namespace ProjectBook
         }
         private void AtualizarAtrasso()
         {
-            if (ConfigurationManager.AppSettings["atualizarStatusAluguel"] == "0") return;
-
             foreach (DataRow data in aluguelDb.PegarLivrosAlugados().Rows)
             {
                 DateTime hoje = DateTime.Now.Date;

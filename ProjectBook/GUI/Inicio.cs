@@ -132,11 +132,7 @@ namespace ProjectBook.GUI
                                 "\n" + Strings.uso_de_ícones_de_FAMFAMFAM__http___famfamfam_com,
                     Strings.sobre_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Information);
             };
-            mnuProcurarAtualizacoes.Click += (sender, e) =>
-            {
-                AutoUpdater.Start(ConfigurationManager.AppSettings["updateFileServer"], 
-                    Assembly.GetExecutingAssembly());
-            };
+            mnuProcurarAtualizacoes.Click += (sender, e) => AppManager.ProcurarAtualizacoes();
             #endregion
 
             #region Acesso rápido
