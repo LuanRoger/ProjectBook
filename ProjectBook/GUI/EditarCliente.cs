@@ -39,13 +39,13 @@ namespace ProjectBook.GUI
 
             if (Verificadores.VerificarStrings(termoBuscaCliente))
             {
-                MessageBox.Show(Strings.preencherCampoBusca_MessageBox, Strings.error_MessageBox,
+                MessageBox.Show(Strings.PreecherCampoBusca, Strings.MessageBoxError,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             if(!rabBuscarClienteId.Checked && !rabBuscarClienteNome.Checked)
             {
-                MessageBox.Show(Strings.marcar_opcao_busca, Strings.error_MessageBox,
+                MessageBox.Show(Strings.MarcarOpcao, Strings.MessageBoxError,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -55,7 +55,7 @@ namespace ProjectBook.GUI
 
             if (Verificadores.VerificarDataTable(infoCliente))
             {
-                MessageBox.Show(Strings.clienteNaoExiste_MessageBox, Strings.error_MessageBox,
+                MessageBox.Show(Strings.ClienteNExiste, Strings.MessageBoxError,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -94,7 +94,7 @@ namespace ProjectBook.GUI
 
             if (Verificadores.VerificarCamposCliente(cliente) || Verificadores.VerificarDataTable(infoCliente))
             {
-                MessageBox.Show(Strings.preencherCampoBusca_MessageBox, Strings.error_MessageBox,
+                MessageBox.Show(Strings.PreecherCampoBusca, Strings.MessageBoxError,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }

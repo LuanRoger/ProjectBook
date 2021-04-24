@@ -46,7 +46,7 @@ namespace ProjectBook.GUI
 
             if (Verificadores.VerificarCamposCliente(cliente))
             {
-                MessageBox.Show(Strings.preencherCamposObrigatorios_MessageBox, Strings.error_MessageBox,
+                MessageBox.Show(Strings.PreecherCampoBusca, Strings.MessageBoxError,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }

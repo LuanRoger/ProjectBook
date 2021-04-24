@@ -21,13 +21,13 @@ namespace ProjectBook.GUI
             
             if (Verificadores.VerificarStrings(termoBusca))
             {
-                MessageBox.Show(Strings.preencherCampoBusca_MessageBox, Strings.error_MessageBox,
+                MessageBox.Show(Strings.PreecherCampoBusca, Strings.MessageBoxError,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             if(!rabExcluirAluguelTitulo.Checked && !rabExcluirAluguelCliente.Checked)
             {
-                MessageBox.Show(Strings.marcar_opcao_busca, Strings.error_MessageBox,
+                MessageBox.Show(Strings.MarcarOpcao, Strings.MessageBoxError,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -37,14 +37,14 @@ namespace ProjectBook.GUI
 
             if (Verificadores.VerificarDataTable(data))
             {
-                MessageBox.Show(Strings.clienteLivroNaoAlugados, Strings.error_MessageBox,
+                MessageBox.Show(Strings.LivroNAlugadoCliente, Strings.MessageBoxError,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             DialogResult resultadoExcluir = MessageBox.Show(
-            $@"{Strings.confirmarExclusao} {data.Rows[0][0]} {Strings.confirmarExclusaoAluguel2} {data.Rows[0][2]}",
-                Strings.excluir_MessageBox, MessageBoxButtons.YesNo, MessageBoxIcon.Stop);
+           string.Format(Strings.ConfirmarExclusao2, data.Rows[0][2], data.Rows[0][0]),
+                Strings.MessageBoxExcluir, MessageBoxButtons.YesNo, MessageBoxIcon.Stop);
             
             if (resultadoExcluir == DialogResult.Yes)
             {

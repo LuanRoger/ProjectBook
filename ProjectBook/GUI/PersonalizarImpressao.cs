@@ -30,7 +30,7 @@ namespace ProjectBook.GUI
         {
             if (Verificadores.VerificarStrings(txtTituloPagina.Text))
             {
-                MessageBox.Show(Strings.preencherCamposObrigatorios_MessageBox, Strings.error_MessageBox,
+                MessageBox.Show(Strings.PreencherCamposObrigatorios, Strings.MessageBoxError,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -47,7 +47,7 @@ namespace ProjectBook.GUI
             Configuracoes.config.Save(ConfigurationSaveMode.Modified);
             ConfigurationManager.RefreshSection("appSettings");
 
-            MessageBox.Show(Strings.configuracoesSalvas_MessageBox, Strings.concluido_MessageBox,
+            MessageBox.Show(Strings.ConfiguracoesSalvas, Strings.MessageBoxConcluido,
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }

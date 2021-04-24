@@ -26,8 +26,8 @@ namespace ProjectBook.DB.SqlServerExpress
                 if (Application.OpenForms.Count < 2)
                 {
                     DialogResult dialogResult = MessageBox.Show(
-                        string.Format(Strings.não_foi_possivel_conectar_se_a_base_de_dados___0___Deseja_abrir_a_configurações_, e.Message),
-                        Strings.error_MessageBox,
+                        string.Format(Strings.ErrorConectarDb, e.Message),
+                        Strings.MessageBoxError,
                         MessageBoxButtons.YesNo, MessageBoxIcon.Error);
 
                     if (dialogResult == DialogResult.Yes)

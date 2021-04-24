@@ -37,7 +37,7 @@ namespace ProjectBook
             if (ConfigurationManager.AppSettings["dbPadrao"] == "onedrive" &&
                 string.IsNullOrEmpty(ConfigurationManager.ConnectionStrings["SqlConnectionString"].ConnectionString))
             {
-                lblStatusCarregamento.Text = Strings.migrando_banco_para_o_OneDrive;
+                lblStatusCarregamento.Text = Strings.MigrandoOneDrive;
                 OneDrive.MigrarOneDrive();
             }
 
@@ -47,7 +47,7 @@ namespace ProjectBook
             livrosDb.FechaConecxaoDb();
 
             //Verificar se existe usuário logado
-            lblStatusCarregamento.Text = Strings.realizando_verificações_de_segurança_splashscreen;
+            lblStatusCarregamento.Text = Strings.VerificacoesSegurancaSplashScreen;
             if (string.IsNullOrEmpty(ConfigurationManager.AppSettings["usuarioLogado"]))
             {
                 UsuarioLogado();
@@ -55,11 +55,11 @@ namespace ProjectBook
             }
 
             //Atualizar Status do aluguel
-            lblStatusCarregamento.Text = Strings.atualizando_banco_de_dados_splashscreen;
+            lblStatusCarregamento.Text = Strings.AtualizandoBancoDadosSpashScreen;
             if (ConfigurationManager.AppSettings["atualizarStatusAluguel"] == "1") AtualizarAtrasso();
 
             //Procurar atualizazções
-            lblStatusCarregamento.Text = "Procurando por atualizações...";
+            lblStatusCarregamento.Text = Strings.ProcurandoAtualizacoesSplashScreen;
             AppManager.ProcurarAtualizacoes();
 
             Task.Run(async () =>

@@ -35,10 +35,10 @@ namespace ProjectBook.DB.SqlServerExpress
 
                 command.Dispose();
 
-                MessageBox.Show(Strings.livro_registrado_com_sucesso, Strings.concluido_MessageBox,
+                MessageBox.Show(Strings.LivroRegistrado, Strings.MessageBoxConcluido,
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch(SqlException e) { MessageBox.Show(e.Message, Strings.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error);  }
+            catch(SqlException e) { MessageBox.Show(e.Message, Strings.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error);  }
         }
 
         #region Deletar
@@ -56,10 +56,10 @@ namespace ProjectBook.DB.SqlServerExpress
 
                 command.Dispose();
 
-                MessageBox.Show(Strings.livro_deletado_com_sucesso, Strings.concluido_MessageBox,
+                MessageBox.Show(Strings.LivroDeletado, Strings.MessageBoxConcluido,
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch (SqlException e) { MessageBox.Show(e.Message, Strings.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            catch (SqlException e) { MessageBox.Show(e.Message, Strings.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
         public void DeletarLivroTitulo(string tituloLivro)
         {
@@ -75,10 +75,10 @@ namespace ProjectBook.DB.SqlServerExpress
 
                 command.Dispose();
 
-                MessageBox.Show(Strings.livro_deletado_com_sucesso, Strings.concluido_MessageBox,
+                MessageBox.Show(Strings.LivroDeletado, Strings.MessageBoxConcluido,
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch (SqlException e) { MessageBox.Show(e.Message, Strings.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            catch (SqlException e) { MessageBox.Show(e.Message, Strings.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
         #endregion
         
@@ -93,7 +93,7 @@ namespace ProjectBook.DB.SqlServerExpress
 
                 adapter.Fill(table);
             }
-            catch (SqlException e) { MessageBox.Show(e.Message, Strings.error_MessageBox,
+            catch (SqlException e) { MessageBox.Show(e.Message, Strings.MessageBoxError,
                 MessageBoxButtons.OK, MessageBoxIcon.Error); }
             
             return table;
@@ -110,7 +110,7 @@ namespace ProjectBook.DB.SqlServerExpress
 
                 adapter.Fill(table);
             }
-            catch (SqlException e) { MessageBox.Show(e.Message, Strings.error_MessageBox,
+            catch (SqlException e) { MessageBox.Show(e.Message, Strings.MessageBoxError,
                 MessageBoxButtons.OK, MessageBoxIcon.Error); }
 
             return table;
@@ -127,7 +127,7 @@ namespace ProjectBook.DB.SqlServerExpress
                 FechaConecxaoDb();
                 adapter.Fill(table);
             }
-            catch (SqlException e) { MessageBox.Show(e.Message, Strings.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            catch (SqlException e) { MessageBox.Show(e.Message, Strings.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error); }
 
             return table;
         }
@@ -141,7 +141,7 @@ namespace ProjectBook.DB.SqlServerExpress
                 FechaConecxaoDb();
                 adapter.Fill(table);
             }
-            catch (SqlException e) { MessageBox.Show(e.Message, Strings.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            catch (SqlException e) { MessageBox.Show(e.Message, Strings.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error); }
 
             return table;
         }
@@ -156,7 +156,7 @@ namespace ProjectBook.DB.SqlServerExpress
 
                 adapter.Fill(table);
             }
-            catch (SqlException e) { MessageBox.Show(e.Message, Strings.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            catch (SqlException e) { MessageBox.Show(e.Message, Strings.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error); }
 
             return table;
         }
@@ -171,7 +171,7 @@ namespace ProjectBook.DB.SqlServerExpress
 
                 adapter.Fill(table);
             }
-            catch (SqlException e) { MessageBox.Show(e.Message, Strings.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            catch (SqlException e) { MessageBox.Show(e.Message, Strings.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error); }
 
             return table;
         }
@@ -203,9 +203,9 @@ namespace ProjectBook.DB.SqlServerExpress
 
                 command.Dispose();
 
-                MessageBox.Show(Strings.informações_atualizadas, Strings.concluido_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(Strings.InformacoesAtualizadas, Strings.MessageBoxConcluido, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch (SqlException e) { MessageBox.Show(e.Message, Strings.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            catch (SqlException e) { MessageBox.Show(e.Message, Strings.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
         public void AtualizarViaTitulo(string titulo, Livro livro)
         {
@@ -232,9 +232,9 @@ namespace ProjectBook.DB.SqlServerExpress
 
                 command.Dispose();
 
-                MessageBox.Show(Strings.informações_atualizadas, Strings.concluido_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(Strings.InformacoesAtualizadas, Strings.MessageBoxConcluido, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch (SqlException e) { MessageBox.Show(e.Message, Strings.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            catch (SqlException e) { MessageBox.Show(e.Message, Strings.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
         public void AtualizarViaAutor(string autor, Livro livro)
         {
@@ -261,9 +261,9 @@ namespace ProjectBook.DB.SqlServerExpress
 
                 command.Dispose();
 
-                MessageBox.Show(Strings.informações_atualizadas, Strings.concluido_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(Strings.InformacoesAtualizadas, Strings.MessageBoxConcluido, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch (SqlException e) { MessageBox.Show(e.Message, Strings.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            catch (SqlException e) { MessageBox.Show(e.Message, Strings.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
         #endregion
     }

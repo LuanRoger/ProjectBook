@@ -63,7 +63,7 @@
   </data>
   <assembly alias="System.Drawing.Primitives" name="System.Drawing.Primitives, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing.Primitives">
-    <value>13, 58</value>
+    <value>122, 13</value>
   </data>
   <assembly alias="System.Windows.Forms.Primitives" name="System.Windows.Forms.Primitives, Version=5.0.5.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="label1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms.Primitives">
@@ -91,13 +91,13 @@
     <value>20</value>
   </data>
   <data name="txtTituloLivro.Location" type="System.Drawing.Point, System.Drawing.Primitives">
-    <value>13, 76</value>
+    <value>122, 31</value>
   </data>
   <data name="txtTituloLivro.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms.Primitives">
     <value>4, 3, 4, 3</value>
   </data>
   <data name="txtTituloLivro.Size" type="System.Drawing.Size, System.Drawing.Primitives">
-    <value>294, 23</value>
+    <value>224, 23</value>
   </data>
   <data name="txtTituloLivro.TabIndex" type="System.Int32, System.Private.CoreLib">
     <value>2</value>
@@ -118,7 +118,7 @@
     <value>True</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing.Primitives">
-    <value>13, 106</value>
+    <value>13, 58</value>
   </data>
   <data name="label2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms.Primitives">
     <value>4, 0, 4, 0</value>
@@ -145,13 +145,13 @@
     <value>18</value>
   </data>
   <data name="txtAutorLivro.Location" type="System.Drawing.Point, System.Drawing.Primitives">
-    <value>13, 125</value>
+    <value>13, 77</value>
   </data>
   <data name="txtAutorLivro.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms.Primitives">
     <value>4, 3, 4, 3</value>
   </data>
   <data name="txtAutorLivro.Size" type="System.Drawing.Size, System.Drawing.Primitives">
-    <value>294, 23</value>
+    <value>333, 23</value>
   </data>
   <data name="txtAutorLivro.TabIndex" type="System.Int32, System.Private.CoreLib">
     <value>3</value>
@@ -169,13 +169,13 @@
     <value>17</value>
   </data>
   <data name="txtEditoraLivro.Location" type="System.Drawing.Point, System.Drawing.Primitives">
-    <value>13, 168</value>
+    <value>13, 120</value>
   </data>
   <data name="txtEditoraLivro.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms.Primitives">
     <value>4, 3, 4, 3</value>
   </data>
   <data name="txtEditoraLivro.Size" type="System.Drawing.Size, System.Drawing.Primitives">
-    <value>294, 23</value>
+    <value>333, 23</value>
   </data>
   <data name="txtEditoraLivro.TabIndex" type="System.Int32, System.Private.CoreLib">
     <value>4</value>
@@ -196,7 +196,7 @@
     <value>True</value>
   </data>
   <data name="label3.Location" type="System.Drawing.Point, System.Drawing.Primitives">
-    <value>13, 151</value>
+    <value>13, 103</value>
   </data>
   <data name="label3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms.Primitives">
     <value>4, 0, 4, 0</value>
@@ -223,7 +223,7 @@
     <value>16</value>
   </data>
   <data name="txtEdicaoLivro.Location" type="System.Drawing.Point, System.Drawing.Primitives">
-    <value>13, 213</value>
+    <value>13, 164</value>
   </data>
   <data name="txtEdicaoLivro.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms.Primitives">
     <value>4, 3, 4, 3</value>
@@ -250,7 +250,7 @@
     <value>True</value>
   </data>
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing.Primitives">
-    <value>13, 195</value>
+    <value>13, 146</value>
   </data>
   <data name="label4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms.Primitives">
     <value>4, 0, 4, 0</value>
@@ -277,7 +277,7 @@
     <value>14</value>
   </data>
   <data name="txtAno.Location" type="System.Drawing.Point, System.Drawing.Primitives">
-    <value>12, 257</value>
+    <value>121, 164</value>
   </data>
   <data name="txtAno.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms.Primitives">
     <value>4, 3, 4, 3</value>
@@ -304,7 +304,7 @@
     <value>True</value>
   </data>
   <data name="label5.Location" type="System.Drawing.Point, System.Drawing.Primitives">
-    <value>13, 239</value>
+    <value>122, 146</value>
   </data>
   <data name="label5.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms.Primitives">
     <value>4, 0, 4, 0</value>
@@ -334,7 +334,7 @@
     <value>True</value>
   </data>
   <data name="label6.Location" type="System.Drawing.Point, System.Drawing.Primitives">
-    <value>13, 283</value>
+    <value>13, 190</value>
   </data>
   <data name="label6.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms.Primitives">
     <value>4, 0, 4, 0</value>
@@ -364,7 +364,7 @@
     <value>True</value>
   </data>
   <data name="label7.Location" type="System.Drawing.Point, System.Drawing.Primitives">
-    <value>13, 327</value>
+    <value>232, 146</value>
   </data>
   <data name="label7.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms.Primitives">
     <value>4, 0, 4, 0</value>
@@ -395,7 +395,7 @@
     <value>MiddleLeft</value>
   </data>
   <data name="btnSalvarLivro.Location" type="System.Drawing.Point, System.Drawing.Primitives">
-    <value>12, 467</value>
+    <value>13, 341</value>
   </data>
   <data name="btnSalvarLivro.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms.Primitives">
     <value>4, 3, 4, 3</value>
@@ -428,7 +428,7 @@
     <value>MiddleLeft</value>
   </data>
   <data name="btnLimparTxtLivros.Location" type="System.Drawing.Point, System.Drawing.Primitives">
-    <value>156, 467</value>
+    <value>189, 341</value>
   </data>
   <data name="btnLimparTxtLivros.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms.Primitives">
     <value>4, 3, 4, 3</value>
@@ -461,7 +461,7 @@
     <value>MiddleLeft</value>
   </data>
   <data name="btnFecharCadastro.Location" type="System.Drawing.Point, System.Drawing.Primitives">
-    <value>232, 467</value>
+    <value>265, 341</value>
   </data>
   <data name="btnFecharCadastro.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms.Primitives">
     <value>4, 3, 4, 3</value>
@@ -491,16 +491,16 @@
     <value>6</value>
   </data>
   <data name="cmbGenero.Location" type="System.Drawing.Point, System.Drawing.Primitives">
-    <value>13, 301</value>
+    <value>13, 208</value>
   </data>
   <data name="cmbGenero.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms.Primitives">
     <value>4, 3, 4, 3</value>
   </data>
   <data name="cmbGenero.Size" type="System.Drawing.Size, System.Drawing.Primitives">
-    <value>294, 23</value>
+    <value>333, 23</value>
   </data>
   <data name="cmbGenero.TabIndex" type="System.Int32, System.Private.CoreLib">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="&gt;&gt;cmbGenero.Name" xml:space="preserve">
     <value>cmbGenero</value>
@@ -566,7 +566,7 @@
     <value>3</value>
   </data>
   <data name="txtIsbn.Location" type="System.Drawing.Point, System.Drawing.Primitives">
-    <value>14, 345</value>
+    <value>233, 164</value>
   </data>
   <data name="txtIsbn.Mask" xml:space="preserve">
     <value>999-9-99-999999-9</value>
@@ -575,7 +575,7 @@
     <value>113, 23</value>
   </data>
   <data name="txtIsbn.TabIndex" type="System.Int32, System.Private.CoreLib">
-    <value>8</value>
+    <value>7</value>
   </data>
   <data name="&gt;&gt;txtIsbn.Name" xml:space="preserve">
     <value>txtIsbn</value>
@@ -593,7 +593,7 @@
     <value>True</value>
   </data>
   <data name="label10.Location" type="System.Drawing.Point, System.Drawing.Primitives">
-    <value>14, 375</value>
+    <value>13, 234</value>
   </data>
   <data name="label10.Size" type="System.Drawing.Size, System.Drawing.Primitives">
     <value>77, 15</value>
@@ -617,10 +617,10 @@
     <value>1</value>
   </data>
   <data name="txtObservacoesCadastro.Location" type="System.Drawing.Point, System.Drawing.Primitives">
-    <value>15, 393</value>
+    <value>14, 252</value>
   </data>
   <data name="txtObservacoesCadastro.Size" type="System.Drawing.Size, System.Drawing.Primitives">
-    <value>292, 68</value>
+    <value>332, 79</value>
   </data>
   <data name="txtObservacoesCadastro.TabIndex" type="System.Int32, System.Private.CoreLib">
     <value>9</value>
@@ -647,7 +647,7 @@
     <value>7, 15</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing.Primitives">
-    <value>319, 502</value>
+    <value>353, 376</value>
   </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms.Primitives">
     <value>4, 3, 4, 3</value>

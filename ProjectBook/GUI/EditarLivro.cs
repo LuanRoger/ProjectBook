@@ -47,13 +47,13 @@ namespace ProjectBook.GUI
 
             if(Verificadores.VerificarStrings(txtEditarBuscar.Text))
             {
-                MessageBox.Show(Strings.preencherCampoBusca_MessageBox, Strings.error_MessageBox,
+                MessageBox.Show(Strings.PreecherCampoBusca, Strings.MessageBoxError,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             if(!rabEditarId.Checked && !rabEditarTitulo.Checked && !rabEditarAutor.Checked)
             {
-                MessageBox.Show(Strings.marcar_opcao_busca, Strings.error_MessageBox,
+                MessageBox.Show(Strings.MarcarOpcao, Strings.MessageBoxError,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -116,7 +116,7 @@ namespace ProjectBook.GUI
             
             if (Verificadores.VerificarCamposLivros(livro))
             {
-                MessageBox.Show(Strings.preencherCampos, Strings.error_MessageBox,
+                MessageBox.Show(Strings.PreecherCampoBusca, Strings.MessageBoxError,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -143,7 +143,7 @@ namespace ProjectBook.GUI
             } 
             catch
             {
-                MessageBox.Show(Strings.livroNaoExiste_MessageBox, Strings.error_MessageBox,
+                MessageBox.Show(Strings.LivroNExiste, Strings.MessageBoxError,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 gpbBuscar.Enabled = true;
             }

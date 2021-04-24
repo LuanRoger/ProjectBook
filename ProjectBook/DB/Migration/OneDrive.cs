@@ -20,8 +20,8 @@ namespace ProjectBook.DB.Migration
             {
                 if (Directory.Exists(_oneDriveFolder))
                 {
-                    DialogResult dialogResult = MessageBox.Show(Strings.existePastaOneDrive,
-                        Strings.informacao_MessageBox, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    DialogResult dialogResult = MessageBox.Show(Strings.ExistePastaOneDrive,
+                        Strings.MessageBoxInformacao, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                     if (dialogResult == DialogResult.No)
                     {
@@ -55,8 +55,8 @@ namespace ProjectBook.DB.Migration
             catch (Exception e)
             {
                 MessageBox.Show(
-                    string.Format(Strings.ocorreu_um_error___0___Volte_as_configurações_e_crie_uma_novo_string_de_conexão_, e.Message),
-                    Strings.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    string.Format(Strings.ErrorMigrarOneDrive, e.Message),
+                    Strings.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

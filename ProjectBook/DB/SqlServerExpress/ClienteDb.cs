@@ -32,10 +32,10 @@ namespace ProjectBook.DB.SqlServerExpress
 
                 command.Dispose();
 
-                MessageBox.Show(Strings.cliente_registrado_com_sucesso, Strings.concluido_MessageBox,
+                MessageBox.Show(Strings.ClienteRegistrado, Strings.MessageBoxConcluido,
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch (SqlException e) { MessageBox.Show(e.Message, Strings.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            catch (SqlException e) { MessageBox.Show(e.Message, Strings.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
         public DataTable VerTodosClientes()
         {
@@ -48,7 +48,7 @@ namespace ProjectBook.DB.SqlServerExpress
 
                 adapter.Fill(table);
             }
-            catch (SqlException e) { MessageBox.Show(e.Message, Strings.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            catch (SqlException e) { MessageBox.Show(e.Message, Strings.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error); }
 
             return table;
         }
@@ -67,10 +67,10 @@ namespace ProjectBook.DB.SqlServerExpress
 
                 command.Dispose();
 
-                MessageBox.Show(Strings.cliente_deletado_com_sucesso, Strings.concluido_MessageBox,
+                MessageBox.Show(Strings.ClienteDeletado, Strings.MessageBoxConcluido,
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch (SqlException e) { MessageBox.Show(e.Message, Strings.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            catch (SqlException e) { MessageBox.Show(e.Message, Strings.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
         public void DeletarClienteNome(string nome)
         {
@@ -84,10 +84,10 @@ namespace ProjectBook.DB.SqlServerExpress
                 FechaConecxaoDb();
                 command.Dispose();
 
-                MessageBox.Show(Strings.cliente_deletado_com_sucesso, Strings.concluido_MessageBox,
+                MessageBox.Show(Strings.ClienteDeletado, Strings.MessageBoxConcluido,
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch (SqlException e) { MessageBox.Show(e.Message, Strings.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            catch (SqlException e) { MessageBox.Show(e.Message, Strings.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
         #endregion
         
@@ -104,7 +104,7 @@ namespace ProjectBook.DB.SqlServerExpress
 
                 adapter.Fill(table);
             }
-            catch (SqlException e) { MessageBox.Show(e.Message, Strings.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            catch (SqlException e) { MessageBox.Show(e.Message, Strings.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error); }
 
             return table;
         }
@@ -120,7 +120,7 @@ namespace ProjectBook.DB.SqlServerExpress
 
                 adapter.Fill(table);
             }
-            catch (SqlException e) { MessageBox.Show(e.Message, Strings.preencherCampoBusca_MessageBox,
+            catch (SqlException e) { MessageBox.Show(e.Message, Strings.PreecherCampoBusca,
                 MessageBoxButtons.OK, MessageBoxIcon.Error); }
 
             return table;
@@ -152,9 +152,9 @@ namespace ProjectBook.DB.SqlServerExpress
 
                 command.Dispose();
 
-                MessageBox.Show(Strings.informações_atualizadas, Strings.concluido_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(Strings.InformacoesAtualizadas, Strings.MessageBoxConcluido, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch (SqlException e) { MessageBox.Show(e.Message, Strings.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            catch (SqlException e) { MessageBox.Show(e.Message, Strings.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
         #endregion
     }

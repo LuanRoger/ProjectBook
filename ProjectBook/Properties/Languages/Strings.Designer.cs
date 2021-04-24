@@ -63,426 +63,387 @@ namespace ProjectBook.Properties.Languages {
         /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Aluguel registrado com sucesso..
         /// </summary>
-        internal static string aluguel_registrado_com_sucesso {
+        internal static string AluguelRegistrado {
             get {
-                return ResourceManager.GetString("aluguel_registrado_com_sucesso", resourceCulture);
+                return ResourceManager.GetString("AluguelRegistrado", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Alugado.
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Atualiazando status dos alugueis....
         /// </summary>
-        internal static string aluguelStatus_Pendente {
+        internal static string AtualizandoBancoDadosSpashScreen {
             get {
-                return ResourceManager.GetString("aluguelStatus_Pendente", resourceCulture);
+                return ResourceManager.GetString("AtualizandoBancoDadosSpashScreen", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Atualizando banco de dados....
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Banco de dados sincronizado com o OneDrive..
         /// </summary>
-        internal static string atualizando_banco_de_dados_splashscreen {
+        internal static string BancoSincronizadoOneDrive {
             get {
-                return ResourceManager.GetString("atualizando_banco_de_dados_splashscreen", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Banco de dados sincronizado com o OneDrive.
-        /// </summary>
-        internal static string banco_de_dados_sincronizado_com_o_OneDrive {
-            get {
-                return ResourceManager.GetString("banco_de_dados_sincronizado_com_o_OneDrive", resourceCulture);
+                return ResourceManager.GetString("BancoSincronizadoOneDrive", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Caminho do banco de dados:.
         /// </summary>
-        internal static string caminho_do_banco_de_dados {
+        internal static string CaminhoBanco {
             get {
-                return ResourceManager.GetString("caminho_do_banco_de_dados", resourceCulture);
+                return ResourceManager.GetString("CaminhoBanco", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Cliente deletado com sucesso..
         /// </summary>
-        internal static string cliente_deletado_com_sucesso {
+        internal static string ClienteDeletado {
             get {
-                return ResourceManager.GetString("cliente_deletado_com_sucesso", resourceCulture);
+                return ResourceManager.GetString("ClienteDeletado", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Cliente registrado com sucesso.
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Este cliente não existe..
         /// </summary>
-        internal static string cliente_registrado_com_sucesso {
+        internal static string ClienteNExiste {
             get {
-                return ResourceManager.GetString("cliente_registrado_com_sucesso", resourceCulture);
+                return ResourceManager.GetString("ClienteNExiste", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Este livro não foi alugado ou o cliente não alugou nenhum livro..
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Cliente registrado com sucesso..
         /// </summary>
-        internal static string clienteLivroNaoAlugados {
+        internal static string ClienteRegistrado {
             get {
-                return ResourceManager.GetString("clienteLivroNaoAlugados", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Este cliente não está cadastrado, verifique se a informação de busca foi digitada corretamente..
-        /// </summary>
-        internal static string clienteNaoExiste_MessageBox {
-            get {
-                return ResourceManager.GetString("clienteNaoExiste_MessageBox", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Concluido.
-        /// </summary>
-        internal static string concluido_MessageBox {
-            get {
-                return ResourceManager.GetString("concluido_MessageBox", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Configurações salvas..
-        /// </summary>
-        internal static string configuracoesSalvas_MessageBox {
-            get {
-                return ResourceManager.GetString("configuracoesSalvas_MessageBox", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Deseja realmente excluir.
-        /// </summary>
-        internal static string confirmarExclusao {
-            get {
-                return ResourceManager.GetString("confirmarExclusao", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a alugado por .
-        /// </summary>
-        internal static string confirmarExclusaoAluguel2 {
-            get {
-                return ResourceManager.GetString("confirmarExclusaoAluguel2", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a de.
-        /// </summary>
-        internal static string confirmarExclusaoDe {
-            get {
-                return ResourceManager.GetString("confirmarExclusaoDe", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Deseja realmente sair?.
-        /// </summary>
-        internal static string deseja_realmente_sair_ {
-            get {
-                return ResourceManager.GetString("deseja_realmente_sair_", resourceCulture);
+                return ResourceManager.GetString("ClienteRegistrado", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a É necessário fazer uma conexão local com o banco de dados, indicando o caminho, para fazer a migração para o OneDrive..
         /// </summary>
-        internal static string é_necessário_fazer_uma_conexão_local_com_o_banco_de_dados_para_fazer_a_migração_para_o_OneDrive_ {
+        internal static string ConexaoLocalMigrarOneDrive {
             get {
-                return ResourceManager.GetString("é_necessário_fazer_uma_conexão_local_com_o_banco_de_dados_para_fazer_a_migração_p" +
-                        "ara_o_OneDrive_", resourceCulture);
+                return ResourceManager.GetString("ConexaoLocalMigrarOneDrive", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Error.
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Configurações salvas..
         /// </summary>
-        internal static string error_MessageBox {
+        internal static string ConfiguracoesSalvas {
             get {
-                return ResourceManager.GetString("error_MessageBox", resourceCulture);
+                return ResourceManager.GetString("ConfiguracoesSalvas", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Está faltando arquivos escenciais para abrir o programa, tente reistalar-lo novamente..
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Deseja realmente excluir {0}?.
         /// </summary>
-        internal static string está_faltando_arquivos_escenciais_para_abrir_o_programa__tente_reistalar_lo_novamente_ {
+        internal static string ConfirmarExcluisao1 {
             get {
-                return ResourceManager.GetString("está_faltando_arquivos_escenciais_para_abrir_o_programa__tente_reistalar_lo_novam" +
-                        "ente_", resourceCulture);
+                return ResourceManager.GetString("ConfirmarExcluisao1", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Excluir.
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Deseja realmente excluir {0} alugado por {1}?.
         /// </summary>
-        internal static string excluir_MessageBox {
+        internal static string ConfirmarExclusao2 {
             get {
-                return ResourceManager.GetString("excluir_MessageBox", resourceCulture);
+                return ResourceManager.GetString("ConfirmarExclusao2", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Já existe um banco de dados sincronizado, deseja sobrescrever?.
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Deseja sair?.
         /// </summary>
-        internal static string existePastaOneDrive {
+        internal static string ConfirmarSair {
             get {
-                return ResourceManager.GetString("existePastaOneDrive", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Informação.
-        /// </summary>
-        internal static string informacao_MessageBox {
-            get {
-                return ResourceManager.GetString("informacao_MessageBox", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Informações atualizadas.
-        /// </summary>
-        internal static string informações_atualizadas {
-            get {
-                return ResourceManager.GetString("informações_atualizadas", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a As informações estão incorretas..
-        /// </summary>
-        internal static string informacoesIncorretas {
-            get {
-                return ResourceManager.GetString("informacoesIncorretas", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a GNU General Public License v3.0.
-        /// </summary>
-        internal static string license {
-            get {
-                return ResourceManager.GetString("license", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Livro deletado com sucesso..
-        /// </summary>
-        internal static string livro_deletado_com_sucesso {
-            get {
-                return ResourceManager.GetString("livro_deletado_com_sucesso", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Livro registrado com sucesso.
-        /// </summary>
-        internal static string livro_registrado_com_sucesso {
-            get {
-                return ResourceManager.GetString("livro_registrado_com_sucesso", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Este cliente não tem livro alugado..
-        /// </summary>
-        internal static string livroNaoAlugado {
-            get {
-                return ResourceManager.GetString("livroNaoAlugado", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Este livro não existe, verifique se a informação de busca foi digitada corretamente..
-        /// </summary>
-        internal static string livroNaoExiste_MessageBox {
-            get {
-                return ResourceManager.GetString("livroNaoExiste_MessageBox", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Luan Roger© 2021.
-        /// </summary>
-        internal static string luanroger {
-            get {
-                return ResourceManager.GetString("luanroger", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Marque uma opção de busca para continuar..
-        /// </summary>
-        internal static string marcar_opcao_busca {
-            get {
-                return ResourceManager.GetString("marcar_opcao_busca", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Migrando banco para o OneDrive....
-        /// </summary>
-        internal static string migrando_banco_para_o_OneDrive {
-            get {
-                return ResourceManager.GetString("migrando_banco_para_o_OneDrive", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Houve uma mudança na String de conexão, o programa será reiniciado..
-        /// </summary>
-        internal static string mudancaConnectionString {
-            get {
-                return ResourceManager.GetString("mudancaConnectionString", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Não foi possivel conectar-se a base de dados: {0}. Deseja abrir a configurações?.
-        /// </summary>
-        internal static string não_foi_possivel_conectar_se_a_base_de_dados___0___Deseja_abrir_a_configurações_ {
-            get {
-                return ResourceManager.GetString("não_foi_possivel_conectar_se_a_base_de_dados___0___Deseja_abrir_a_configurações_", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a O livro ou o cliente não existem..
-        /// </summary>
-        internal static string naoExisteLivroCliente {
-            get {
-                return ResourceManager.GetString("naoExisteLivroCliente", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Ocorreu um error: {0}. Volte as configurações e crie uma novo string de conexão..
-        /// </summary>
-        internal static string ocorreu_um_error___0___Volte_as_configurações_e_crie_uma_novo_string_de_conexão_ {
-            get {
-                return ResourceManager.GetString("ocorreu_um_error___0___Volte_as_configurações_e_crie_uma_novo_string_de_conexão_", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Faça uma pesquisa para continuar..
-        /// </summary>
-        internal static string preencherCampoBusca_MessageBox {
-            get {
-                return ResourceManager.GetString("preencherCampoBusca_MessageBox", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Preencha todos e/ou verifique todos os campos para continuar..
-        /// </summary>
-        internal static string preencherCampos {
-            get {
-                return ResourceManager.GetString("preencherCampos", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Preencha todos os campos obrigatórios.
-        /// </summary>
-        internal static string preencherCamposObrigatorios_MessageBox {
-            get {
-                return ResourceManager.GetString("preencherCamposObrigatorios_MessageBox", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Realizando verificações de segurança....
-        /// </summary>
-        internal static string realizando_verificações_de_segurança_splashscreen {
-            get {
-                return ResourceManager.GetString("realizando_verificações_de_segurança_splashscreen", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Para que as alterações do banco de dados sejam aplicadas será nescessário reiniciar o programa. Desseja reiniciar?.
-        /// </summary>
-        internal static string reiniciarPrograma_MessageBox {
-            get {
-                return ResourceManager.GetString("reiniciarPrograma_MessageBox", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Sobre.
-        /// </summary>
-        internal static string sobre_MessageBox {
-            get {
-                return ResourceManager.GetString("sobre_MessageBox", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a String de conexão:.
-        /// </summary>
-        internal static string string_de_conexão {
-            get {
-                return ResourceManager.GetString("string_de_conexão", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Uso da biblioteca de imagens do VS2019..
-        /// </summary>
-        internal static string uso_da_biblioteca_de_imagens_do_VS2019 {
-            get {
-                return ResourceManager.GetString("uso_da_biblioteca_de_imagens_do_VS2019", resourceCulture);
+                return ResourceManager.GetString("ConfirmarSair", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Uso de ícones de FAMFAMFAM: http://famfamfam.com.
         /// </summary>
-        internal static string uso_de_ícones_de_FAMFAMFAM__http___famfamfam_com {
+        internal static string CreditosIcons {
             get {
-                return ResourceManager.GetString("uso_de_ícones_de_FAMFAMFAM__http___famfamfam_com", resourceCulture);
+                return ResourceManager.GetString("CreditosIcons", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Usuário deletado com sucesso.
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Não foi possivel conectar-se a base de dados: {0}. Deseja abrir a configurações?.
         /// </summary>
-        internal static string usuário_deletado_com_sucesso {
+        internal static string ErrorConectarDb {
             get {
-                return ResourceManager.GetString("usuário_deletado_com_sucesso", resourceCulture);
+                return ResourceManager.GetString("ErrorConectarDb", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Usuário registrado com sucesso.
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Ocorreu um error: {0}. Volte as configurações e crie uma novo string de conexão..
         /// </summary>
-        internal static string usuário_registrado_com_sucesso {
+        internal static string ErrorMigrarOneDrive {
             get {
-                return ResourceManager.GetString("usuário_registrado_com_sucesso", resourceCulture);
+                return ResourceManager.GetString("ErrorMigrarOneDrive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Já existe um banco de dados sincronizado, deseja sobrescrever?.
+        /// </summary>
+        internal static string ExistePastaOneDrive {
+            get {
+                return ResourceManager.GetString("ExistePastaOneDrive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Está faltando arquivos escenciais para abrir o programa, tente reistalar-lo novamente..
+        /// </summary>
+        internal static string FaltaArquivoEscenciaisParaContinuar {
+            get {
+                return ResourceManager.GetString("FaltaArquivoEscenciaisParaContinuar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Informações atualizadas..
+        /// </summary>
+        internal static string InformacoesAtualizadas {
+            get {
+                return ResourceManager.GetString("InformacoesAtualizadas", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a As informações estão incorretas..
+        /// </summary>
+        internal static string InformacoesIncorretasLogin {
+            get {
+                return ResourceManager.GetString("InformacoesIncorretasLogin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a GNU General Public License v3.0.
+        /// </summary>
+        internal static string Licensa {
+            get {
+                return ResourceManager.GetString("Licensa", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a O livro ou o cliente não existem..
+        /// </summary>
+        internal static string LivroClienteNExistem {
+            get {
+                return ResourceManager.GetString("LivroClienteNExistem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Livro deletado com sucesso..
+        /// </summary>
+        internal static string LivroDeletado {
+            get {
+                return ResourceManager.GetString("LivroDeletado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Este cliente não alugou este livro..
+        /// </summary>
+        internal static string LivroNAlugado {
+            get {
+                return ResourceManager.GetString("LivroNAlugado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Este livro não foi alugado ou o cliente não alugou nenhum livro..
+        /// </summary>
+        internal static string LivroNAlugadoCliente {
+            get {
+                return ResourceManager.GetString("LivroNAlugadoCliente", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Este livro não existe..
+        /// </summary>
+        internal static string LivroNExiste {
+            get {
+                return ResourceManager.GetString("LivroNExiste", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Livro registrado com sucesso..
+        /// </summary>
+        internal static string LivroRegistrado {
+            get {
+                return ResourceManager.GetString("LivroRegistrado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Marque uma opção de busca para continuar..
+        /// </summary>
+        internal static string MarcarOpcao {
+            get {
+                return ResourceManager.GetString("MarcarOpcao", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Concluido.
+        /// </summary>
+        internal static string MessageBoxConcluido {
+            get {
+                return ResourceManager.GetString("MessageBoxConcluido", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Error.
+        /// </summary>
+        internal static string MessageBoxError {
+            get {
+                return ResourceManager.GetString("MessageBoxError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Excluir.
+        /// </summary>
+        internal static string MessageBoxExcluir {
+            get {
+                return ResourceManager.GetString("MessageBoxExcluir", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Informação.
+        /// </summary>
+        internal static string MessageBoxInformacao {
+            get {
+                return ResourceManager.GetString("MessageBoxInformacao", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Sobre.
+        /// </summary>
+        internal static string MessageBoxSobre {
+            get {
+                return ResourceManager.GetString("MessageBoxSobre", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Migrando para o OneDrive....
+        /// </summary>
+        internal static string MigrandoOneDrive {
+            get {
+                return ResourceManager.GetString("MigrandoOneDrive", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Você deseja migrar o banco de dados para seu OneDrive? Para que a sincronização funcione você deve estar com o aplicativo do OneDrive sempre atualizado..
         /// </summary>
-        internal static string você_deseja_migrar_o_banco_de_dados_para_seu_OneDrive__Para_que_a_sincronização_funcione_você_deve_estar_com_o_aplicativo_do_OneDrive_sempre_atualizado_ {
+        internal static string MigrarOneDriveExplicacao {
             get {
-                return ResourceManager.GetString("você_deseja_migrar_o_banco_de_dados_para_seu_OneDrive__Para_que_a_sincronização_f" +
-                        "uncione_você_deve_estar_com_o_aplicativo_do_OneDrive_sempre_atualizado_", resourceCulture);
+                return ResourceManager.GetString("MigrarOneDriveExplicacao", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Houve uma mudança na String de conexão, o programa será reiniciado..
+        /// </summary>
+        internal static string MudancaStringConexao {
+            get {
+                return ResourceManager.GetString("MudancaStringConexao", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Preencha o cambo de busca..
+        /// </summary>
+        internal static string PreecherCampoBusca {
+            get {
+                return ResourceManager.GetString("PreecherCampoBusca", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Preencha todos os campos obrigatórios..
+        /// </summary>
+        internal static string PreencherCamposObrigatorios {
+            get {
+                return ResourceManager.GetString("PreencherCamposObrigatorios", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Procurando por atualizações....
+        /// </summary>
+        internal static string ProcurandoAtualizacoesSplashScreen {
+            get {
+                return ResourceManager.GetString("ProcurandoAtualizacoesSplashScreen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a String de conexão:.
+        /// </summary>
+        internal static string StringConexaoConfiguracoes {
+            get {
+                return ResourceManager.GetString("StringConexaoConfiguracoes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Luan Roger© 2021.
+        /// </summary>
+        internal static string TheCreator {
+            get {
+                return ResourceManager.GetString("TheCreator", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Usuário deletado com sucesso..
+        /// </summary>
+        internal static string UsuarioDeletado {
+            get {
+                return ResourceManager.GetString("UsuarioDeletado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Usuário registrado com sucesso..
+        /// </summary>
+        internal static string UsusarioRegistrado {
+            get {
+                return ResourceManager.GetString("UsusarioRegistrado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Realizando verificações de segurança....
+        /// </summary>
+        internal static string VerificacoesSegurancaSplashScreen {
+            get {
+                return ResourceManager.GetString("VerificacoesSegurancaSplashScreen", resourceCulture);
             }
         }
     }

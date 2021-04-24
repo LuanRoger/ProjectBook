@@ -31,8 +31,8 @@ namespace ProjectBook.GUI
             }
             catch
             {
-                MessageBox.Show(Strings.está_faltando_arquivos_escenciais_para_abrir_o_programa__tente_reistalar_lo_novamente_,
-                    Strings.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(Strings.FaltaArquivoEscenciaisParaContinuar,
+                    Strings.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Process.GetCurrentProcess().Kill();
             }
 
@@ -93,7 +93,7 @@ namespace ProjectBook.GUI
 
                 workbook.SaveAs(saveFileDialog.FileName);
 
-                MessageBox.Show("Planilha salva com sucesso", Strings.informacao_MessageBox, MessageBoxButtons.OK,
+                MessageBox.Show("Planilha salva com sucesso", Strings.MessageBoxInformacao, MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
             };
         }

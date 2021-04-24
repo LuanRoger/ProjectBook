@@ -40,7 +40,7 @@ namespace ProjectBook.GUI
 
             if (Verificadores.VerificarStrings(termoPesquisa))
             {
-                MessageBox.Show(Strings.preencherCampoBusca_MessageBox, Strings.error_MessageBox,
+                MessageBox.Show(Strings.PreecherCampoBusca, Strings.MessageBoxError,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -52,7 +52,7 @@ namespace ProjectBook.GUI
 
             if (Verificadores.VerificarDataTable(resultado))
             {
-                MessageBox.Show(Strings.naoExisteLivroCliente, Strings.error_MessageBox,
+                MessageBox.Show(Strings.LivroClienteNExistem, Strings.MessageBoxError,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }

@@ -78,7 +78,7 @@ namespace ProjectBook.GUI
             
             if (Verificadores.VerificarCamposLivros(livro))
             {
-                MessageBox.Show(Strings.preencherCampos, Strings.error_MessageBox,
+                MessageBox.Show(Strings.PreencherCamposObrigatorios, Strings.MessageBoxError,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }

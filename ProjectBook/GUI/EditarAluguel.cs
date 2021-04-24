@@ -60,14 +60,14 @@ namespace ProjectBook.GUI
 
             if(!rabBuscarNomeCliente.Checked && !rabBuscarTituloLivro.Checked)
             {
-                MessageBox.Show(Strings.marcar_opcao_busca, Strings.error_MessageBox,
+                MessageBox.Show(Strings.MarcarOpcao, Strings.MessageBoxError,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             if (Verificadores.VerificarStrings(txtBuscarAluguel.Text))
             {
-                MessageBox.Show(Strings.preencherCampoBusca_MessageBox, Strings.error_MessageBox,
+                MessageBox.Show(Strings.PreecherCampoBusca, Strings.MessageBoxError,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -89,7 +89,7 @@ namespace ProjectBook.GUI
             }
             catch
             {
-                MessageBox.Show(Strings.clienteLivroNaoAlugados, Strings.error_MessageBox,
+                MessageBox.Show(Strings.LivroNAlugadoCliente, Strings.MessageBoxError,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -106,7 +106,7 @@ namespace ProjectBook.GUI
 
             if (Verificadores.VerificarStrings(buscarLivro))
             {
-                MessageBox.Show(Strings.preencherCampoBusca_MessageBox, Strings.error_MessageBox,
+                MessageBox.Show(Strings.PreecherCampoBusca, Strings.MessageBoxError,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -122,7 +122,7 @@ namespace ProjectBook.GUI
 
             if (Verificadores.VerificarStrings(buscarCliete))
             {
-                MessageBox.Show(Strings.preencherCampoBusca_MessageBox, Strings.error_MessageBox,
+                MessageBox.Show(Strings.PreecherCampoBusca, Strings.MessageBoxError,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -139,7 +139,7 @@ namespace ProjectBook.GUI
 
             if (Verificadores.VerificarCamposAluguel(aluguel))
             {
-                MessageBox.Show(Strings.preencherCampoBusca_MessageBox, Strings.error_MessageBox,
+                MessageBox.Show(Strings.PreecherCampoBusca, Strings.MessageBoxError,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }

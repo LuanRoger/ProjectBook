@@ -32,7 +32,7 @@ namespace ProjectBook.GUI
         {
             if (Verificadores.VerificarStrings(txtNomeUsuarioBusca.Text))
             {
-                MessageBox.Show(Strings.preencherCampoBusca_MessageBox, Strings.error_MessageBox,
+                MessageBox.Show(Strings.PreecherCampoBusca, Strings.MessageBoxError,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }

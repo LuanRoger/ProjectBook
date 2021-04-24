@@ -42,7 +42,7 @@ namespace ProjectBook.GUI
 
             if(Verificadores.VerificarStrings(tituloParaBusca))
             {
-                MessageBox.Show(Strings.preencherCampoBusca_MessageBox, Strings.error_MessageBox ,
+                MessageBox.Show(Strings.PreecherCampoBusca, Strings.MessageBoxError,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -56,7 +56,7 @@ namespace ProjectBook.GUI
 
             if(Verificadores.VerificarStrings(clienteParaBuscar))
             {
-                MessageBox.Show(Strings.preencherCampoBusca_MessageBox, Strings.error_MessageBox,
+                MessageBox.Show(Strings.PreecherCampoBusca, Strings.MessageBoxError,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -76,7 +76,7 @@ namespace ProjectBook.GUI
             
             if (Verificadores.VerificarCamposAluguel(aluguel))
             {
-                MessageBox.Show(Strings.preencherCampoBusca_MessageBox, Strings.error_MessageBox,
+                MessageBox.Show(Strings.PreecherCampoBusca, Strings.MessageBoxError,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -97,7 +97,7 @@ namespace ProjectBook.GUI
             }
             catch
             {
-                MessageBox.Show(Strings.livroNaoExiste_MessageBox, Strings.error_MessageBox,
+                MessageBox.Show(Strings.LivroNExiste, Strings.MessageBoxError,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -114,7 +114,7 @@ namespace ProjectBook.GUI
             }
             catch
             {
-                MessageBox.Show(Strings.clienteNaoExiste_MessageBox, Strings.error_MessageBox,
+                MessageBox.Show(Strings.ClienteNExiste, Strings.MessageBoxError,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

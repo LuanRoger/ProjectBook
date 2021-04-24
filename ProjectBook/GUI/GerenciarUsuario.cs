@@ -21,7 +21,7 @@ namespace ProjectBook.GUI
             Usuario usuario = new Usuario(txtUsuarioCadastrar.Text, txtSenhaCadastrar.Text, TipoUsuário.USU.ToString());
             if (Verificadores.VerificarCamposUsuario(usuario))
             {
-                MessageBox.Show(Strings.preencherCampoBusca_MessageBox, Strings.error_MessageBox,
+                MessageBox.Show(Strings.PreecherCampoBusca, Strings.MessageBoxError,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -36,7 +36,7 @@ namespace ProjectBook.GUI
             Usuario usuario = new Usuario(txtNovoUsuario.Text, txtNovoSenhaUsuario.Text, cmdNovoStatus.Text);
             if (Verificadores.VerificarCamposUsuario(usuario))
             {
-                MessageBox.Show(Strings.preencherCampoBusca_MessageBox, Strings.error_MessageBox,
+                MessageBox.Show(Strings.PreecherCampoBusca, Strings.MessageBoxError,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -54,7 +54,7 @@ namespace ProjectBook.GUI
 
             if (Verificadores.VerificarDataTable(infoUsuario))
             {
-                MessageBox.Show(Strings.preencherCampoBusca_MessageBox, Strings.error_MessageBox,
+                MessageBox.Show(Strings.PreecherCampoBusca, Strings.MessageBoxError,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -70,13 +70,13 @@ namespace ProjectBook.GUI
 
             if (Verificadores.VerificarDataTable(infoUsuario))
             {
-                MessageBox.Show(Strings.preencherCampoBusca_MessageBox, Strings.error_MessageBox,
+                MessageBox.Show(Strings.PreecherCampoBusca, Strings.MessageBoxError,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            DialogResult dialogResult = MessageBox.Show($"{Strings.confirmarExclusao} {infoUsuario.Rows[0][1]}",
-                Strings.excluir_MessageBox,
+            DialogResult dialogResult = MessageBox.Show(string.Format(Strings.ConfirmarExcluisao1, infoUsuario.Rows[0][1]),
+                Strings.MessageBoxError,
                 MessageBoxButtons.YesNo, MessageBoxIcon.Stop);
             if (dialogResult == DialogResult.No) return;
 

@@ -89,8 +89,8 @@ namespace ProjectBook.GUI
             else if (rabOneDrive.Checked && !ConfigurationManager.AppSettings["pastaDb"].Contains("OneDrive"))
             {
                 DialogResult dialogResult = MessageBox
-                    .Show(Strings.você_deseja_migrar_o_banco_de_dados_para_seu_OneDrive__Para_que_a_sincronização_funcione_você_deve_estar_com_o_aplicativo_do_OneDrive_sempre_atualizado_,
-                    Strings.informacao_MessageBox, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    .Show(Strings.MigrarOneDriveExplicacao,
+                    Strings.MessageBoxInformacao, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (dialogResult != DialogResult.Yes) return;
 
@@ -101,14 +101,14 @@ namespace ProjectBook.GUI
             config.Save(ConfigurationSaveMode.Modified);
             ConfigurationManager.RefreshSection("appSettings");
 
-            MessageBox.Show(Strings.configuracoesSalvas_MessageBox, Strings.concluido_MessageBox,
+            MessageBox.Show(Strings.ConfiguracoesSalvas, Strings.MessageBoxConcluido,
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             //Se o usuário mudou a string de conexão o programa deve ser reinicado
             if (!stringConexaoAtual.Equals(config.ConnectionStrings.ConnectionStrings["SqlConnectionString"].ConnectionString))
             {
-                MessageBox.Show(Strings.mudancaConnectionString,
-                    Strings.informacao_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(Strings.MudancaStringConexao,
+                    Strings.MessageBoxInformacao, MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 AppManager.ReiniciarPrograma();
             }
@@ -117,7 +117,7 @@ namespace ProjectBook.GUI
         #region CheckedChanged
         private void rabSqlServerExpress_CheckedChanged(object sender, EventArgs e)
         {
-            lblInfoTxt.Text = Strings.string_de_conexão;
+            lblInfoTxt.Text = Strings.StringConexaoConfiguracoes;
             lblInfoTxt.ForeColor = Color.Black;
             btnSelecionarArquivoDb.Visible = false;
             txtStringConexaoCaminhoDb.Visible = true;
@@ -125,7 +125,7 @@ namespace ProjectBook.GUI
         }
         private void rabSqlServerLocalDb_CheckedChanged(object sender, EventArgs e)
         {
-            lblInfoTxt.Text = Strings.caminho_do_banco_de_dados;
+            lblInfoTxt.Text = Strings.CaminhoBanco;
             lblInfoTxt.ForeColor = Color.Black;
             btnSelecionarArquivoDb.Visible = true;
             txtStringConexaoCaminhoDb.Visible = true;
@@ -143,8 +143,8 @@ namespace ProjectBook.GUI
             if(directoryInfo == null && directoryInfo.Parent == null)
             {
                 MessageBox.Show(
-                    Strings.é_necessário_fazer_uma_conexão_local_com_o_banco_de_dados_para_fazer_a_migração_para_o_OneDrive_,
-                    Strings.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Strings.ConexaoLocalMigrarOneDrive,
+                    Strings.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 rabSqlServerLocalDb.Checked = true;
                 return;
             }
@@ -152,7 +152,7 @@ namespace ProjectBook.GUI
                 ConfigurationManager.AppSettings["dbPadrao"] == "onedrive")
             {
                 lblInfoTxt.Visible = true;
-                lblInfoTxt.Text = Strings.banco_de_dados_sincronizado_com_o_OneDrive;
+                lblInfoTxt.Text = Strings.BancoSincronizadoOneDrive;
                 lblInfoTxt.ForeColor = Color.Green;
             }
         }

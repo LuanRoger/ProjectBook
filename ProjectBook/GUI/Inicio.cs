@@ -127,10 +127,10 @@ namespace ProjectBook.GUI
             {
                 MessageBox.Show("Project Book v" +
                                 Assembly.GetExecutingAssembly().GetName().Version + 
-                                "\n" + Strings.luanroger +
-                                "\n" + Strings.license +
-                                "\n" + Strings.uso_de_ícones_de_FAMFAMFAM__http___famfamfam_com,
-                    Strings.sobre_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                "\n" + Strings.TheCreator +
+                                "\n" + Strings.Licensa +
+                                "\n" + Strings.CreditosIcons,
+                    Strings.MessageBoxSobre, MessageBoxButtons.OK, MessageBoxIcon.Information);
             };
             mnuProcurarAtualizacoes.Click += (sender, e) => AppManager.ProcurarAtualizacoes();
             #endregion
@@ -228,7 +228,7 @@ namespace ProjectBook.GUI
 
         private void Inicio_FormClosing(object sender, FormClosingEventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show(Strings.deseja_realmente_sair_, Strings.informacao_MessageBox,
+            DialogResult dialogResult = MessageBox.Show(Strings.ConfirmarSair, Strings.MessageBoxInformacao,
                 MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
 
             e.Cancel = dialogResult != DialogResult.Yes;
