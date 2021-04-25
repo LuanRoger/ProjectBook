@@ -14,7 +14,7 @@ namespace ProjectBook
         private static readonly string[] FONTS_DOWNLOAD = 
             new string[] { "Lato-Bold.ttf", "Montserrat-ExtraBold.ttf", "Montserrat-ExtraLight.ttf" };
         private static readonly string FONTS_FOLDER = Application.StartupPath + @"\font";
-        private static readonly string URI_DOWNLADFONTS = "https://github.com/LuanRoger/ProjectBook/blob/master/ProjectBook/assets/fontes/";
+        private static readonly string URI_DOWNLADFONTS = "https://github.com/LuanRoger/ProjectBook/raw/master/ProjectBook/assets/fontes/";
 
         public static void ReiniciarPrograma()
         {
