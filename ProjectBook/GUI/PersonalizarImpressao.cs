@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Configuration;
 using System.Windows.Forms;
-using ProjectBook.Properties.Languages;
+using ProjectBook.Properties;
 
 namespace ProjectBook.GUI
 {
@@ -30,7 +30,11 @@ namespace ProjectBook.GUI
         {
             if (Verificadores.VerificarStrings(txtTituloPagina.Text))
             {
+<<<<<<< HEAD
                 MessageBox.Show(Strings.PreencherCamposObrigatorios, Strings.MessageBoxError,
+=======
+                MessageBox.Show(Resources.preencherCamposObrigatorios_MessageBox, Resources.error_MessageBox,
+>>>>>>> parent of e20e8c2 (v0.5.4-beta)
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -47,7 +51,11 @@ namespace ProjectBook.GUI
             Configuracoes.config.Save(ConfigurationSaveMode.Modified);
             ConfigurationManager.RefreshSection("appSettings");
 
+<<<<<<< HEAD
             MessageBox.Show(Strings.ConfiguracoesSalvas, Strings.MessageBoxConcluido,
+=======
+            MessageBox.Show(Resources.configuracoesSalvas_MessageBox, Resources.concluido_MessageBox,
+>>>>>>> parent of e20e8c2 (v0.5.4-beta)
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }

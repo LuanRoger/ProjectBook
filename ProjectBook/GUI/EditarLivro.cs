@@ -4,7 +4,7 @@ using System.Data;
 using System.Windows.Forms;
 using ProjectBook.DB.SqlServerExpress;
 using ProjectBook.Livros;
-using ProjectBook.Properties.Languages;
+using ProjectBook.Properties;
 
 namespace ProjectBook.GUI
 {
@@ -47,13 +47,21 @@ namespace ProjectBook.GUI
 
             if(Verificadores.VerificarStrings(txtEditarBuscar.Text))
             {
+<<<<<<< HEAD
                 MessageBox.Show(Strings.PreecherCampoBusca, Strings.MessageBoxError,
+=======
+                MessageBox.Show(Resources.preencherCampoBusca_MessageBox, Resources.error_MessageBox,
+>>>>>>> parent of e20e8c2 (v0.5.4-beta)
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             if(!rabEditarId.Checked && !rabEditarTitulo.Checked && !rabEditarAutor.Checked)
             {
+<<<<<<< HEAD
                 MessageBox.Show(Strings.MarcarOpcao, Strings.MessageBoxError,
+=======
+                MessageBox.Show(Resources.marcar_opcao_busca, Resources.error_MessageBox,
+>>>>>>> parent of e20e8c2 (v0.5.4-beta)
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -116,7 +124,11 @@ namespace ProjectBook.GUI
             
             if (Verificadores.VerificarCamposLivros(livro))
             {
+<<<<<<< HEAD
                 MessageBox.Show(Strings.PreecherCampoBusca, Strings.MessageBoxError,
+=======
+                MessageBox.Show(Resources.preencherCampos, Resources.error_MessageBox,
+>>>>>>> parent of e20e8c2 (v0.5.4-beta)
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -143,7 +155,11 @@ namespace ProjectBook.GUI
             } 
             catch
             {
+<<<<<<< HEAD
                 MessageBox.Show(Strings.LivroNExiste, Strings.MessageBoxError,
+=======
+                MessageBox.Show(Resources.livroNaoExiste_MessageBox, Resources.error_MessageBox,
+>>>>>>> parent of e20e8c2 (v0.5.4-beta)
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 gpbBuscar.Enabled = true;
             }

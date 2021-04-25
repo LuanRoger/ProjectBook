@@ -3,7 +3,6 @@ using System.Data;
 using System.Windows.Forms;
 using ProjectBook.DB.SqlServerExpress;
 using ProjectBook.Tipos;
-using ProjectBook.Properties.Languages;
 
 namespace ProjectBook.GUI
 {
@@ -55,7 +54,11 @@ namespace ProjectBook.GUI
             
             if (Verificadores.VerificarStrings(txtBuscarAluguel.Text))
             {
+<<<<<<< HEAD
                 MessageBox.Show(Strings.PreecherCampoBusca, Strings.MessageBoxError,
+=======
+                MessageBox.Show(Properties.Resources.preencherCampoBusca_MessageBox, Properties.Resources.error_MessageBox,
+>>>>>>> parent of e20e8c2 (v0.5.4-beta)
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -65,7 +68,11 @@ namespace ProjectBook.GUI
 
             if(Verificadores.VerificarDataTable(data))
             {
+<<<<<<< HEAD
                 MessageBox.Show(Strings.LivroNAlugado, Strings.MessageBoxError,
+=======
+                MessageBox.Show(Properties.Resources.livroNaoAlugado, Properties.Resources.error_MessageBox,
+>>>>>>> parent of e20e8c2 (v0.5.4-beta)
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -78,7 +85,11 @@ namespace ProjectBook.GUI
 
             if (Verificadores.VerificarStrings(txtBuscarAluguel.Text))
             {
+<<<<<<< HEAD
                 MessageBox.Show(Strings.PreecherCampoBusca, Strings.MessageBoxError,
+=======
+                MessageBox.Show(Properties.Resources.preencherCampoBusca_MessageBox, Properties.Resources.error_MessageBox,
+>>>>>>> parent of e20e8c2 (v0.5.4-beta)
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }

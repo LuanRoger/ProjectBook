@@ -161,7 +161,7 @@ namespace ProjectBook.GUI
             // 
             // btnFecharEdicao
             // 
-            this.btnFecharEdicao.Image = global::ProjectBook.Properties.Images.Images.cancel;
+            this.btnFecharEdicao.Image = global::ProjectBook.Properties.Resources.cancel;
             this.btnFecharEdicao.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnFecharEdicao.Location = new System.Drawing.Point(237, 373);
             this.btnFecharEdicao.Name = "btnFecharEdicao";
@@ -174,7 +174,7 @@ namespace ProjectBook.GUI
             // 
             // btnLimparTxtEditar
             // 
-            this.btnLimparTxtEditar.Image = global::ProjectBook.Properties.Images.Images.textfield;
+            this.btnLimparTxtEditar.Image = global::ProjectBook.Properties.Resources.textfield;
             this.btnLimparTxtEditar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnLimparTxtEditar.Location = new System.Drawing.Point(161, 373);
             this.btnLimparTxtEditar.Name = "btnLimparTxtEditar";
@@ -187,7 +187,7 @@ namespace ProjectBook.GUI
             // 
             // btnSalvarEditar
             // 
-            this.btnSalvarEditar.Image = global::ProjectBook.Properties.Images.Images.save;
+            this.btnSalvarEditar.Image = global::ProjectBook.Properties.Resources.save;
             this.btnSalvarEditar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSalvarEditar.Location = new System.Drawing.Point(12, 373);
             this.btnSalvarEditar.Name = "btnSalvarEditar";
@@ -319,7 +319,22 @@ namespace ProjectBook.GUI
             this.txtEditarIsbn.Mask = "999-9-99-999999-9";
             this.txtEditarIsbn.Name = "txtEditarIsbn";
             this.txtEditarIsbn.Size = new System.Drawing.Size(113, 23);
+<<<<<<< HEAD
             this.txtEditarIsbn.TabIndex = 12;
+=======
+            this.txtEditarIsbn.TabIndex = 35;
+            // 
+            // btnBuscarEditar
+            // 
+            this.btnBuscarEditar.FlatAppearance.BorderSize = 0;
+            this.btnBuscarEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBuscarEditar.Image = global::ProjectBook.Properties.Resources.zoom;
+            this.btnBuscarEditar.Location = new System.Drawing.Point(263, 44);
+            this.btnBuscarEditar.Name = "btnBuscarEditar";
+            this.btnBuscarEditar.Size = new System.Drawing.Size(29, 23);
+            this.btnBuscarEditar.TabIndex = 5;
+            this.btnBuscarEditar.UseVisualStyleBackColor = true;
+>>>>>>> parent of e20e8c2 (v0.5.4-beta)
             // 
             // EditarLivro
             // 

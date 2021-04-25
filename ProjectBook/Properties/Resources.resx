@@ -1,0 +1,411 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AluguelRegistrado" xml:space="preserve">
+    <value>Aluguel registrado com sucesso.</value>
+  </data>
+  <data name="AtualizandoBancoDadosSpashScreen" xml:space="preserve">
+    <value>Atualiazando status dos alugueis...</value>
+  </data>
+  <data name="BancoSincronizadoOneDrive" xml:space="preserve">
+    <value>Banco de dados sincronizado com o OneDrive.</value>
+  </data>
+  <data name="CaminhoBanco" xml:space="preserve">
+    <value>Caminho do banco de dados:</value>
+  </data>
+<<<<<<< HEAD:ProjectBook/Properties/Languages/Strings.resx
+  <data name="ClienteDeletado" xml:space="preserve">
+    <value>Cliente deletado com sucesso.</value>
+=======
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="save" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\img\save.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="page_excel" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\img\page_excel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="client_delete" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\img\client_delete.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="realizando_verificações_de_segurança_splashscreen" xml:space="preserve">
+    <value>Realizando verificações de segurança...</value>
+>>>>>>> parent of e20e8c2 (v0.5.4-beta):ProjectBook/Properties/Resources.resx
+  </data>
+  <data name="ClienteNExiste" xml:space="preserve">
+    <value>Este cliente não existe.</value>
+  </data>
+  <data name="ClienteRegistrado" xml:space="preserve">
+    <value>Cliente registrado com sucesso.</value>
+  </data>
+  <data name="ConexaoLocalMigrarOneDrive" xml:space="preserve">
+    <value>É necessário fazer uma conexão local com o banco de dados, indicando o caminho, para fazer a migração para o OneDrive.</value>
+  </data>
+  <data name="ConfiguracoesSalvas" xml:space="preserve">
+    <value>Configurações salvas.</value>
+  </data>
+<<<<<<< HEAD:ProjectBook/Properties/Languages/Strings.resx
+  <data name="ConfirmarExcluisao1" xml:space="preserve">
+    <value>Deseja realmente excluir {0}?</value>
+=======
+  <data name="cancel" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\img\cancel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="é_necessário_fazer_uma_conexão_local_com_o_banco_de_dados_para_fazer_a_migração_para_o_OneDrive_" xml:space="preserve">
+    <value>É necessário fazer uma conexão local com o banco de dados, indicando o caminho, para fazer a migração para o OneDrive.</value>
+>>>>>>> parent of e20e8c2 (v0.5.4-beta):ProjectBook/Properties/Resources.resx
+  </data>
+  <data name="ConfirmarExclusao2" xml:space="preserve">
+    <value>Deseja realmente excluir {0} alugado por {1}?</value>
+  </data>
+<<<<<<< HEAD:ProjectBook/Properties/Languages/Strings.resx
+  <data name="ConfirmarSair" xml:space="preserve">
+    <value>Deseja sair?</value>
+  </data>
+  <data name="CreditosIcons" xml:space="preserve">
+    <value>Uso de ícones de FAMFAMFAM: http://famfamfam.com</value>
+=======
+  <data name="database-error-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\img\database-error-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="clienteNaoExiste_MessageBox" xml:space="preserve">
+    <value>Este cliente não está cadastrado, verifique se a informação de busca foi digitada corretamente.</value>
+  </data>
+  <data name="page_go" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\img\page_go.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="license" xml:space="preserve">
+    <value>GNU General Public License v3.0</value>
+>>>>>>> parent of e20e8c2 (v0.5.4-beta):ProjectBook/Properties/Resources.resx
+  </data>
+  <data name="ErrorConectarDb" xml:space="preserve">
+    <value>Não foi possivel conectar-se a base de dados: {0}. Deseja abrir a configurações?</value>
+  </data>
+  <data name="ErrorMigrarOneDrive" xml:space="preserve">
+    <value>Ocorreu um error: {0}. Volte as configurações e crie uma novo string de conexão.</value>
+  </data>
+<<<<<<< HEAD:ProjectBook/Properties/Languages/Strings.resx
+  <data name="ExistePastaOneDrive" xml:space="preserve">
+    <value>Já existe um banco de dados sincronizado, deseja sobrescrever?</value>
+=======
+  <data name="book_add" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\img\book_add.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SplashScreen" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\img\SplashScreen.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="exit_account" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\img\exit_account.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="não_foi_possivel_conectar_se_a_base_de_dados___0___Deseja_abrir_a_configurações_" xml:space="preserve">
+    <value>Não foi possivel conectar-se a base de dados: {0}. Deseja abrir a configurações?</value>
+>>>>>>> parent of e20e8c2 (v0.5.4-beta):ProjectBook/Properties/Resources.resx
+  </data>
+  <data name="FaltaArquivoEscenciaisParaContinuar" xml:space="preserve">
+    <value>Está faltando arquivos escenciais para abrir o programa, tente reistalar-lo novamente.</value>
+  </data>
+<<<<<<< HEAD:ProjectBook/Properties/Languages/Strings.resx
+  <data name="InformacoesAtualizadas" xml:space="preserve">
+    <value>Informações atualizadas.</value>
+=======
+  <data name="InicioBackground" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\img\InicioBackground.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="zoom" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\img\zoom.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mudancaConnectionString" xml:space="preserve">
+    <value>Houve uma mudança na String de conexão, o programa será reiniciado.</value>
+>>>>>>> parent of e20e8c2 (v0.5.4-beta):ProjectBook/Properties/Resources.resx
+  </data>
+  <data name="InformacoesIncorretasLogin" xml:space="preserve">
+    <value>As informações estão incorretas.</value>
+  </data>
+<<<<<<< HEAD:ProjectBook/Properties/Languages/Strings.resx
+  <data name="Licensa" xml:space="preserve">
+    <value>GNU General Public License v3.0</value>
+=======
+  <data name="client_go" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\img\client_go.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="preencherCamposObrigatorios_MessageBox" xml:space="preserve">
+    <value>Preencha todos os campos obrigatórios</value>
+>>>>>>> parent of e20e8c2 (v0.5.4-beta):ProjectBook/Properties/Resources.resx
+  </data>
+  <data name="LivroClienteNExistem" xml:space="preserve">
+    <value>O livro ou o cliente não existem.</value>
+  </data>
+  <data name="LivroDeletado" xml:space="preserve">
+    <value>Livro deletado com sucesso.</value>
+  </data>
+<<<<<<< HEAD:ProjectBook/Properties/Languages/Strings.resx
+  <data name="LivroNAlugado" xml:space="preserve">
+    <value>Este cliente não alugou este livro.</value>
+  </data>
+  <data name="LivroNAlugadoCliente" xml:space="preserve">
+=======
+  <data name="database-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\img\database-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="reiniciarPrograma_MessageBox" xml:space="preserve">
+    <value>Para que as alterações do banco de dados sejam aplicadas será nescessário reiniciar o programa. Desseja reiniciar?</value>
+  </data>
+  <data name="bullet_go" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\img\bullet_go.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="clienteLivroNaoAlugados" xml:space="preserve">
+>>>>>>> parent of e20e8c2 (v0.5.4-beta):ProjectBook/Properties/Resources.resx
+    <value>Este livro não foi alugado ou o cliente não alugou nenhum livro.</value>
+  </data>
+  <data name="LivroNExiste" xml:space="preserve">
+    <value>Este livro não existe.</value>
+  </data>
+  <data name="LivroRegistrado" xml:space="preserve">
+    <value>Livro registrado com sucesso.</value>
+  </data>
+  <data name="MarcarOpcao" xml:space="preserve">
+    <value>Marque uma opção de busca para continuar.</value>
+  </data>
+<<<<<<< HEAD:ProjectBook/Properties/Languages/Strings.resx
+  <data name="MessageBoxConcluido" xml:space="preserve">
+    <value>Concluido</value>
+  </data>
+  <data name="MessageBoxError" xml:space="preserve">
+=======
+  <data name="table" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\img\table.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="page_add" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\img\page_add.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="confirmarExclusaoDe" xml:space="preserve">
+    <value>de</value>
+  </data>
+  <data name="delete" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\img\delete.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="error_MessageBox" xml:space="preserve">
+>>>>>>> parent of e20e8c2 (v0.5.4-beta):ProjectBook/Properties/Resources.resx
+    <value>Error</value>
+  </data>
+  <data name="MessageBoxExcluir" xml:space="preserve">
+    <value>Excluir</value>
+  </data>
+  <data name="MessageBoxInformacao" xml:space="preserve">
+    <value>Informação</value>
+  </data>
+<<<<<<< HEAD:ProjectBook/Properties/Languages/Strings.resx
+  <data name="MessageBoxSobre" xml:space="preserve">
+=======
+  <data name="page_delete" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\img\page_delete.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="book_go" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\img\book_go.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="sobre_MessageBox" xml:space="preserve">
+>>>>>>> parent of e20e8c2 (v0.5.4-beta):ProjectBook/Properties/Resources.resx
+    <value>Sobre</value>
+  </data>
+  <data name="MigrandoOneDrive" xml:space="preserve">
+    <value>Migrando para o OneDrive...</value>
+  </data>
+<<<<<<< HEAD:ProjectBook/Properties/Languages/Strings.resx
+  <data name="MigrarOneDriveExplicacao" xml:space="preserve">
+    <value>Você deseja migrar o banco de dados para seu OneDrive? Para que a sincronização funcione você deve estar com o aplicativo do OneDrive sempre atualizado.</value>
+  </data>
+  <data name="MudancaStringConexao" xml:space="preserve">
+    <value>Houve uma mudança na String de conexão, o programa será reiniciado.</value>
+=======
+  <data name="textfield" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\img\textfield.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cliente_deletado_com_sucesso" xml:space="preserve">
+    <value>Cliente deletado com sucesso.</value>
+  </data>
+  <data name="client_add" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\img\client_add.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="informações_atualizadas" xml:space="preserve">
+    <value>Informações atualizadas</value>
+>>>>>>> parent of e20e8c2 (v0.5.4-beta):ProjectBook/Properties/Resources.resx
+  </data>
+  <data name="PreecherCampoBusca" xml:space="preserve">
+    <value>Preencha o cambo de busca.</value>
+  </data>
+<<<<<<< HEAD:ProjectBook/Properties/Languages/Strings.resx
+  <data name="PreencherCamposObrigatorios" xml:space="preserve">
+    <value>Preencha todos os campos obrigatórios.</value>
+=======
+  <data name="printer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\img\printer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="preencherCampoBusca_MessageBox" xml:space="preserve">
+    <value>Faça uma pesquisa para continuar.</value>
+>>>>>>> parent of e20e8c2 (v0.5.4-beta):ProjectBook/Properties/Resources.resx
+  </data>
+  <data name="ProcurandoAtualizacoesSplashScreen" xml:space="preserve">
+    <value>Procurando por atualizações...</value>
+  </data>
+  <data name="StringConexaoConfiguracoes" xml:space="preserve">
+    <value>String de conexão:</value>
+  </data>
+<<<<<<< HEAD:ProjectBook/Properties/Languages/Strings.resx
+  <data name="TheCreator" xml:space="preserve">
+    <value>Luan Roger© 2021</value>
+=======
+  <data name="book_delete" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\img\book_delete.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="user_gray" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\img\user_gray.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="marcar_opcao_busca" xml:space="preserve">
+    <value>Marque uma opção de busca para continuar.</value>
+>>>>>>> parent of e20e8c2 (v0.5.4-beta):ProjectBook/Properties/Resources.resx
+  </data>
+  <data name="UsuarioDeletado" xml:space="preserve">
+    <value>Usuário deletado com sucesso.</value>
+  </data>
+<<<<<<< HEAD:ProjectBook/Properties/Languages/Strings.resx
+  <data name="UsusarioRegistrado" xml:space="preserve">
+    <value>Usuário registrado com sucesso.</value>
+  </data>
+  <data name="VerificacoesSegurancaSplashScreen" xml:space="preserve">
+    <value>Realizando verificações de segurança...</value>
+=======
+  <data name="book_edit" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\img\book_edit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="page_edit" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\img\page_edit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="concluido_MessageBox" xml:space="preserve">
+    <value>Concluido</value>
+  </data>
+  <data name="client_edit" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\img\client_edit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="enter_account" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\img\enter_account.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="existePastaOneDrive" xml:space="preserve">
+    <value>Já existe um banco de dados sincronizado, deseja sobrescrever?</value>
+>>>>>>> parent of e20e8c2 (v0.5.4-beta):ProjectBook/Properties/Resources.resx
+  </data>
+</root>

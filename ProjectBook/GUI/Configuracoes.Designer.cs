@@ -1,5 +1,4 @@
-﻿using ProjectBook.Properties.Languages;
-
+﻿
 namespace ProjectBook.GUI
 {
     partial class Configuracoes
@@ -47,8 +46,6 @@ namespace ProjectBook.GUI
             this.chbFormatarCliente = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.chbAtualizarStatusAluguel = new System.Windows.Forms.CheckBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.cmbIdioma = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.gpbBancoDados.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -88,7 +85,7 @@ namespace ProjectBook.GUI
             // 
             // btnSalvarConfiguracoes
             // 
-            this.btnSalvarConfiguracoes.Image = global::ProjectBook.Properties.Images.Images.save;
+            this.btnSalvarConfiguracoes.Image = global::ProjectBook.Properties.Resources.save;
             this.btnSalvarConfiguracoes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSalvarConfiguracoes.Location = new System.Drawing.Point(468, 246);
             this.btnSalvarConfiguracoes.Name = "btnSalvarConfiguracoes";
@@ -228,32 +225,11 @@ namespace ProjectBook.GUI
             this.chbAtualizarStatusAluguel.Text = "Atualizar status automaticamente";
             this.chbAtualizarStatusAluguel.UseVisualStyleBackColor = true;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(318, 69);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(47, 15);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Idioma:";
-            // 
-            // cmbIdioma
-            // 
-            this.cmbIdioma.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbIdioma.FormattingEnabled = true;
-            this.cmbIdioma.Location = new System.Drawing.Point(318, 87);
-            this.cmbIdioma.Name = "cmbIdioma";
-            this.cmbIdioma.Size = new System.Drawing.Size(212, 23);
-            this.cmbIdioma.TabIndex = 6;
-            this.cmbIdioma.Items.AddRange(Languages.LANG_STRING);
-            // 
             // Configuracoes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(544, 281);
-            this.Controls.Add(this.cmbIdioma);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.gpbBancoDados);
@@ -275,7 +251,6 @@ namespace ProjectBook.GUI
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -297,7 +272,5 @@ namespace ProjectBook.GUI
         private System.Windows.Forms.Button btnPersonalizarImpressao;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.CheckBox chbAtualizarStatusAluguel;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox cmbIdioma;
     }
 }

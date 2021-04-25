@@ -4,7 +4,7 @@ using System.Data;
 using System.Windows.Forms;
 using ProjectBook.DB.SqlServerExpress;
 using ProjectBook.Livros;
-using ProjectBook.Properties.Languages;
+using ProjectBook.Properties;
 
 namespace ProjectBook.GUI
 {
@@ -39,13 +39,21 @@ namespace ProjectBook.GUI
 
             if (Verificadores.VerificarStrings(termoBuscaCliente))
             {
+<<<<<<< HEAD
                 MessageBox.Show(Strings.PreecherCampoBusca, Strings.MessageBoxError,
+=======
+                MessageBox.Show(Resources.preencherCampoBusca_MessageBox, Resources.error_MessageBox,
+>>>>>>> parent of e20e8c2 (v0.5.4-beta)
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             if(!rabBuscarClienteId.Checked && !rabBuscarClienteNome.Checked)
             {
+<<<<<<< HEAD
                 MessageBox.Show(Strings.MarcarOpcao, Strings.MessageBoxError,
+=======
+                MessageBox.Show(Resources.marcar_opcao_busca, Resources.error_MessageBox,
+>>>>>>> parent of e20e8c2 (v0.5.4-beta)
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -55,7 +63,11 @@ namespace ProjectBook.GUI
 
             if (Verificadores.VerificarDataTable(infoCliente))
             {
+<<<<<<< HEAD
                 MessageBox.Show(Strings.ClienteNExiste, Strings.MessageBoxError,
+=======
+                MessageBox.Show(Resources.clienteNaoExiste_MessageBox, Resources.error_MessageBox,
+>>>>>>> parent of e20e8c2 (v0.5.4-beta)
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -94,7 +106,11 @@ namespace ProjectBook.GUI
 
             if (Verificadores.VerificarCamposCliente(cliente) || Verificadores.VerificarDataTable(infoCliente))
             {
+<<<<<<< HEAD
                 MessageBox.Show(Strings.PreecherCampoBusca, Strings.MessageBoxError,
+=======
+                MessageBox.Show(Resources.preencherCampoBusca_MessageBox, Resources.error_MessageBox,
+>>>>>>> parent of e20e8c2 (v0.5.4-beta)
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }

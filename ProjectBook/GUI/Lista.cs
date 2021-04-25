@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Text;
 using System.Windows.Forms;
-using ProjectBook.Properties.Languages;
+using ProjectBook.Properties;
 using ClosedXML.Excel;
 
 namespace ProjectBook.GUI
@@ -31,8 +31,13 @@ namespace ProjectBook.GUI
             }
             catch
             {
+<<<<<<< HEAD
                 MessageBox.Show(Strings.FaltaArquivoEscenciaisParaContinuar,
                     Strings.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+=======
+                MessageBox.Show(Resources.está_faltando_arquivos_escenciais_para_abrir_o_programa__tente_reistalar_lo_novamente_,
+                    Resources.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error);
+>>>>>>> parent of e20e8c2 (v0.5.4-beta)
                 Process.GetCurrentProcess().Kill();
             }
 
@@ -93,7 +98,11 @@ namespace ProjectBook.GUI
 
                 workbook.SaveAs(saveFileDialog.FileName);
 
+<<<<<<< HEAD
                 MessageBox.Show("Planilha salva com sucesso", Strings.MessageBoxInformacao, MessageBoxButtons.OK,
+=======
+                MessageBox.Show("Planilha salva com sucesso", Resources.informacao_MessageBox, MessageBoxButtons.OK,
+>>>>>>> parent of e20e8c2 (v0.5.4-beta)
                     MessageBoxIcon.Information);
             };
         }

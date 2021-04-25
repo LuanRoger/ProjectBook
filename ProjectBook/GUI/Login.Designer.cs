@@ -81,7 +81,7 @@ namespace ProjectBook.GUI
             // 
             // btnEntrarLogin
             // 
-            this.btnEntrarLogin.Image = global::ProjectBook.Properties.Images.Images.enter_account;
+            this.btnEntrarLogin.Image = global::ProjectBook.Properties.Resources.enter_account;
             this.btnEntrarLogin.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnEntrarLogin.Location = new System.Drawing.Point(14, 102);
             this.btnEntrarLogin.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);

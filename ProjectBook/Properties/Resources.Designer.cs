@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ProjectBook.Properties.Languages {
+namespace ProjectBook.Properties {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace ProjectBook.Properties.Languages {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Strings {
+    internal class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Strings() {
+        internal Resources() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace ProjectBook.Properties.Languages {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ProjectBook.Properties.Languages.Strings", typeof(Strings).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ProjectBook.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -88,11 +88,111 @@ namespace ProjectBook.Properties.Languages {
         }
         
         /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap book_add {
+            get {
+                object obj = ResourceManager.GetObject("book_add", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap book_delete {
+            get {
+                object obj = ResourceManager.GetObject("book_delete", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap book_edit {
+            get {
+                object obj = ResourceManager.GetObject("book_edit", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap book_go {
+            get {
+                object obj = ResourceManager.GetObject("book_go", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap bullet_go {
+            get {
+                object obj = ResourceManager.GetObject("bullet_go", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Caminho do banco de dados:.
         /// </summary>
         internal static string CaminhoBanco {
             get {
                 return ResourceManager.GetString("CaminhoBanco", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap cancel {
+            get {
+                object obj = ResourceManager.GetObject("cancel", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap client_add {
+            get {
+                object obj = ResourceManager.GetObject("client_add", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap client_delete {
+            get {
+                object obj = ResourceManager.GetObject("client_delete", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap client_edit {
+            get {
+                object obj = ResourceManager.GetObject("client_edit", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap client_go {
+            get {
+                object obj = ResourceManager.GetObject("client_go", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -169,7 +269,70 @@ namespace ProjectBook.Properties.Languages {
         }
         
         /// <summary>
+<<<<<<< HEAD:ProjectBook/Properties/Languages/Strings.Designer.cs
         ///   Consulta uma cadeia de caracteres localizada semelhante a Uso de ícones de FAMFAMFAM: http://famfamfam.com.
+=======
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap database_error_icon {
+            get {
+                object obj = ResourceManager.GetObject("database-error-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap database_icon {
+            get {
+                object obj = ResourceManager.GetObject("database-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap delete {
+            get {
+                object obj = ResourceManager.GetObject("delete", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Deseja realmente sair?.
+        /// </summary>
+        internal static string deseja_realmente_sair_ {
+            get {
+                return ResourceManager.GetString("deseja_realmente_sair_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a É necessário fazer uma conexão local com o banco de dados, indicando o caminho, para fazer a migração para o OneDrive..
+        /// </summary>
+        internal static string é_necessário_fazer_uma_conexão_local_com_o_banco_de_dados_para_fazer_a_migração_para_o_OneDrive_ {
+            get {
+                return ResourceManager.GetString("é_necessário_fazer_uma_conexão_local_com_o_banco_de_dados_para_fazer_a_migração_p" +
+                        "ara_o_OneDrive_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap enter_account {
+            get {
+                object obj = ResourceManager.GetObject("enter_account", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Error.
+>>>>>>> parent of e20e8c2 (v0.5.4-beta):ProjectBook/Properties/Resources.Designer.cs
         /// </summary>
         internal static string CreditosIcons {
             get {
@@ -205,7 +368,21 @@ namespace ProjectBook.Properties.Languages {
         }
         
         /// <summary>
+<<<<<<< HEAD:ProjectBook/Properties/Languages/Strings.Designer.cs
         ///   Consulta uma cadeia de caracteres localizada semelhante a Está faltando arquivos escenciais para abrir o programa, tente reistalar-lo novamente..
+=======
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap exit_account {
+            get {
+                object obj = ResourceManager.GetObject("exit_account", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Informação.
+>>>>>>> parent of e20e8c2 (v0.5.4-beta):ProjectBook/Properties/Resources.Designer.cs
         /// </summary>
         internal static string FaltaArquivoEscenciaisParaContinuar {
             get {
@@ -228,6 +405,16 @@ namespace ProjectBook.Properties.Languages {
         internal static string InformacoesIncorretasLogin {
             get {
                 return ResourceManager.GetString("InformacoesIncorretasLogin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap InicioBackground {
+            get {
+                object obj = ResourceManager.GetObject("InicioBackground", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -340,7 +527,61 @@ namespace ProjectBook.Properties.Languages {
         }
         
         /// <summary>
+<<<<<<< HEAD:ProjectBook/Properties/Languages/Strings.Designer.cs
         ///   Consulta uma cadeia de caracteres localizada semelhante a Sobre.
+=======
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap page_add {
+            get {
+                object obj = ResourceManager.GetObject("page_add", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap page_delete {
+            get {
+                object obj = ResourceManager.GetObject("page_delete", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap page_edit {
+            get {
+                object obj = ResourceManager.GetObject("page_edit", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap page_excel {
+            get {
+                object obj = ResourceManager.GetObject("page_excel", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap page_go {
+            get {
+                object obj = ResourceManager.GetObject("page_go", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Faça uma pesquisa para continuar..
+>>>>>>> parent of e20e8c2 (v0.5.4-beta):ProjectBook/Properties/Resources.Designer.cs
         /// </summary>
         internal static string MessageBoxSobre {
             get {
@@ -367,7 +608,21 @@ namespace ProjectBook.Properties.Languages {
         }
         
         /// <summary>
+<<<<<<< HEAD:ProjectBook/Properties/Languages/Strings.Designer.cs
         ///   Consulta uma cadeia de caracteres localizada semelhante a Houve uma mudança na String de conexão, o programa será reiniciado..
+=======
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap printer {
+            get {
+                object obj = ResourceManager.GetObject("printer", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Realizando verificações de segurança....
+>>>>>>> parent of e20e8c2 (v0.5.4-beta):ProjectBook/Properties/Resources.Designer.cs
         /// </summary>
         internal static string MudancaStringConexao {
             get {
@@ -385,7 +640,21 @@ namespace ProjectBook.Properties.Languages {
         }
         
         /// <summary>
+<<<<<<< HEAD:ProjectBook/Properties/Languages/Strings.Designer.cs
         ///   Consulta uma cadeia de caracteres localizada semelhante a Preencha todos os campos obrigatórios..
+=======
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap save {
+            get {
+                object obj = ResourceManager.GetObject("save", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Sobre.
+>>>>>>> parent of e20e8c2 (v0.5.4-beta):ProjectBook/Properties/Resources.Designer.cs
         /// </summary>
         internal static string PreencherCamposObrigatorios {
             get {
@@ -394,7 +663,21 @@ namespace ProjectBook.Properties.Languages {
         }
         
         /// <summary>
+<<<<<<< HEAD:ProjectBook/Properties/Languages/Strings.Designer.cs
         ///   Consulta uma cadeia de caracteres localizada semelhante a Procurando por atualizações....
+=======
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap SplashScreen {
+            get {
+                object obj = ResourceManager.GetObject("SplashScreen", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a String de conexão:.
+>>>>>>> parent of e20e8c2 (v0.5.4-beta):ProjectBook/Properties/Resources.Designer.cs
         /// </summary>
         internal static string ProcurandoAtualizacoesSplashScreen {
             get {
@@ -403,7 +686,41 @@ namespace ProjectBook.Properties.Languages {
         }
         
         /// <summary>
+<<<<<<< HEAD:ProjectBook/Properties/Languages/Strings.Designer.cs
         ///   Consulta uma cadeia de caracteres localizada semelhante a String de conexão:.
+=======
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap table {
+            get {
+                object obj = ResourceManager.GetObject("table", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap textfield {
+            get {
+                object obj = ResourceManager.GetObject("textfield", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap user_gray {
+            get {
+                object obj = ResourceManager.GetObject("user_gray", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Uso da biblioteca de imagens do VS2019..
+>>>>>>> parent of e20e8c2 (v0.5.4-beta):ProjectBook/Properties/Resources.Designer.cs
         /// </summary>
         internal static string StringConexaoConfiguracoes {
             get {
@@ -444,6 +761,16 @@ namespace ProjectBook.Properties.Languages {
         internal static string VerificacoesSegurancaSplashScreen {
             get {
                 return ResourceManager.GetString("VerificacoesSegurancaSplashScreen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap zoom {
+            get {
+                object obj = ResourceManager.GetObject("zoom", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }

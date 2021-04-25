@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Configuration;
-using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 using ProjectBook.GUI;
-using ProjectBook.Properties.Languages;
+using ProjectBook.Properties;
 
 namespace ProjectBook.DB.SqlServerExpress
 {
@@ -16,7 +15,7 @@ namespace ProjectBook.DB.SqlServerExpress
         /// Verifica a conexão entre o programa e o banco de dados
         /// </summary>
         /// <returns>Retorna <c>Open</c> ou <c>Close</c> string</returns>
-        public ConnectionState DbStatus() => connection.State;
+        public string DbStatus() => connection.State.ToString();
         #region Modificar conexão
         public void AbrirConexaoDb()
         {
@@ -26,8 +25,13 @@ namespace ProjectBook.DB.SqlServerExpress
                 if (Application.OpenForms.Count < 2)
                 {
                     DialogResult dialogResult = MessageBox.Show(
+<<<<<<< HEAD
                         string.Format(Strings.ErrorConectarDb, e.Message),
                         Strings.MessageBoxError,
+=======
+                        string.Format(Resources.não_foi_possivel_conectar_se_a_base_de_dados___0___Deseja_abrir_a_configurações_, e.Message),
+                        Resources.error_MessageBox,
+>>>>>>> parent of e20e8c2 (v0.5.4-beta)
                         MessageBoxButtons.YesNo, MessageBoxIcon.Error);
 
                     if (dialogResult == DialogResult.Yes)

@@ -5,17 +5,16 @@ using System.Drawing;
 using System.Reflection;
 using AutoUpdaterDotNET;
 using System.Windows.Forms;
-using System.Data;
 using ProjectBook.DB.SqlServerExpress;
-using ProjectBook.Properties.Languages;
+using ProjectBook.Properties;
 
 namespace ProjectBook.GUI
 {
     public partial class Inicio : Form
     {
-        private LivrosDb livrosDb = new();
-        private AluguelDb aluguelDb = new();
-        private ClienteDb clienteDb = new();
+        private LivrosDb livrosDb = new LivrosDb();
+        private AluguelDb aluguelDb = new AluguelDb();
+        private ClienteDb clienteDb = new ClienteDb();
 
         public Inicio()
         {
@@ -26,100 +25,100 @@ namespace ProjectBook.GUI
             #region MenuClick
             mnuNovoLivro.Click += (sender, e) =>
             {
-                CadastroLivro cadastroLivro = new();
+                CadastroLivro cadastroLivro = new CadastroLivro();
                 cadastroLivro.Show();
             };
 
             mnuEditarLivro.Click += (sender, e) => 
             {
-                EditarLivro editarLivro = new();
+                EditarLivro editarLivro = new EditarLivro();
                 editarLivro.Show();
             };
 
             mnuCadastrarAluguel.Click += (sender, e) =>
             {
-                CadastrarAluguel cadastrarAluguel = new();
+                CadastrarAluguel cadastrarAluguel = new CadastrarAluguel();
                 cadastrarAluguel.Show();
             };
             mnuEditarAluguel.Click += (sender, e) =>
             {
-                EditarAluguel editarAluguel = new();
+                EditarAluguel editarAluguel = new EditarAluguel();
                 editarAluguel.Show();
             };
 
             mnuCadastrarCliente.Click += (sender, e) =>
             {
-                CadastrarClientes cadastrarClientes = new();
+                CadastrarClientes cadastrarClientes = new CadastrarClientes();
                 cadastrarClientes.Show();
             };
             mnuEditarClientes.Click += (sender, e) =>
             {
-                EditarCliente editarCliente = new();
+                EditarCliente editarCliente = new EditarCliente();
                 editarCliente.Show();
             };
 
             mnuUsuario.Visible = ConfigurationManager.AppSettings["tipoUsuario"] == "ADM";
             mnuGerenciarUsuario.Click += (sender, e) =>
             {
-                GerenciarUsuario gerenciarUsuario = new();
+                GerenciarUsuario gerenciarUsuario = new GerenciarUsuario();
                 gerenciarUsuario.Show();
             };
             mnuPesquisarUsuarios.Click += (sender, e) =>
             {
-                PesquisarUsuario pesquisarUsuario = new();
+                PesquisarUsuario pesquisarUsuario = new PesquisarUsuario();
                 pesquisarUsuario.Show();
             };
             
             mnuExcluirLivro.Click += (sender, e) =>
             {
-                Excluir excluir = new();
+                Excluir excluir = new Excluir();
                 excluir.Show();
             };
             mnuExcluirCliente.Click += (sender, e) =>
             {
-                ExcluirCliente excluirCliente = new();
+                ExcluirCliente excluirCliente = new ExcluirCliente();
                 excluirCliente.Show();
             };
             mnuExcluirAluguel.Click += (sender, e) =>
             {
-                ExcluirAluguel excluirAluguel = new();
+                ExcluirAluguel excluirAluguel = new ExcluirAluguel();
                 excluirAluguel.Show();
             };
 
             mnuTodosLivros.Click += (sender, e) =>
             {
-                ListaPesquisa listaPesquisa = new(livrosDb.VerTodosLivros());
+                ListaPesquisa listaPesquisa = new ListaPesquisa(livrosDb.VerTodosLivros());
                 listaPesquisa.Show();
             };
             mnuPesquisaSeletiva.Click += (sender, e) =>
             {
-                PesquisaSeletiva pesquisaSeletiva = new();
+                PesquisaSeletiva pesquisaSeletiva = new PesquisaSeletiva();
                 pesquisaSeletiva.Show();
             };
             mnuLivrosAlugados.Click += (sender, e) => 
             {
-                ListaPesquisa listaPesquisa = new(aluguelDb.VerTodosAluguel());
+                ListaPesquisa listaPesquisa = new ListaPesquisa(aluguelDb.VerTodosAluguel());
                 listaPesquisa.Show();
             };
             mnuPesquisarAluguel.Click += (sender, e) =>
             {
-                PesquisarAluguel pesquisarAluguel = new();
+                PesquisarAluguel pesquisarAluguel = new PesquisarAluguel();
                 pesquisarAluguel.Show();
             };
             mnuTodosClientes.Click += (sender, e) =>
             {
-                ListaPesquisa listaPesquisa = new(clienteDb.VerTodosClientes());
+                ListaPesquisa listaPesquisa = new ListaPesquisa(clienteDb.VerTodosClientes());
                 listaPesquisa.Show();
             };
             mnuPesquisarCliente.Click += (sender, e) =>
             {
-                PesquisarCliente pesquisarCliente = new();
+                PesquisarCliente pesquisarCliente = new PesquisarCliente();
                 pesquisarCliente.Show();
             };
 
             mnuConfig.Click += (sender, e) => 
             {
-                Configuracoes configuracoes = new();
+                Configuracoes configuracoes = new Configuracoes();
                 configuracoes.Show();
             };
 
@@ -127,10 +126,22 @@ namespace ProjectBook.GUI
             {
                 MessageBox.Show("Project Book v" +
                                 Assembly.GetExecutingAssembly().GetName().Version + 
+<<<<<<< HEAD
                                 "\n" + Strings.TheCreator +
                                 "\n" + Strings.Licensa +
                                 "\n" + Strings.CreditosIcons,
                     Strings.MessageBoxSobre, MessageBoxButtons.OK, MessageBoxIcon.Information);
+=======
+                                "\n" + Resources.luanroger +
+                                "\n" + Resources.license +
+                                "\n" + Resources.uso_de_ícones_de_FAMFAMFAM__http___famfamfam_com,
+                    Resources.sobre_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            };
+            mnuProcurarAtualizacoes.Click += (sender, e) =>
+            {
+                AutoUpdater.Start(ConfigurationManager.AppSettings["updateFileServer"], 
+                    Assembly.GetExecutingAssembly());
+>>>>>>> parent of e20e8c2 (v0.5.4-beta)
             };
             mnuProcurarAtualizacoes.Click += (sender, e) => AppManager.ProcurarAtualizacoes();
             #endregion
@@ -138,42 +149,42 @@ namespace ProjectBook.GUI
             #region Acesso rápido
             mnuArCadastroLivro.Click += (sender, e) =>
             {
-                CadastroLivro cadastroLivro = new();
+                CadastroLivro cadastroLivro = new CadastroLivro();
                 cadastroLivro.Show();
             };
             mnuArCadastroCliente.Click += (sender, e) =>
             {
-                CadastrarClientes cadastrarClientes = new();
+                CadastrarClientes cadastrarClientes = new CadastrarClientes();
                 cadastrarClientes.Show();
             };
             mnuArCadastroAluguel.Click += (sender, e) =>
             {
-                CadastrarAluguel cadastrarAluguel = new();
+                CadastrarAluguel cadastrarAluguel = new CadastrarAluguel();
                 cadastrarAluguel.Show();
             };
             mnuArEditarLivro.Click += (sender, e) =>
             {
-                EditarLivro editarLivro = new();
+                EditarLivro editarLivro = new EditarLivro();
                 editarLivro.Show();
             };
             mnuArEditarCliente.Click += (sender, e) =>
             {
-                EditarCliente editarCliente = new();
+                EditarCliente editarCliente = new EditarCliente();
                 editarCliente.Show();
             };
             mnuArEditarAluguel.Click += (sender, e) =>
             {
-                EditarAluguel editarAluguel = new();
+                EditarAluguel editarAluguel = new EditarAluguel();
                 editarAluguel.Show();
             };
             mnuArUsuario.Click += (sender, e) =>
             {
-                GerenciarUsuario gerenciarUsuario = new();
+                GerenciarUsuario gerenciarUsuario = new GerenciarUsuario();
                 gerenciarUsuario.Show();
             };
             mnuArBuscaRapida.Click += (sender, e) =>
             {
-                PesquisaRapida pesquisaRapida = new();
+                PesquisaRapida pesquisaRapida = new PesquisaRapida();
                 pesquisaRapida.Show();
             };
         }
@@ -183,21 +194,29 @@ namespace ProjectBook.GUI
         {
             //Carregar informações
             livrosDb.AbrirConexaoDb();
-            if (livrosDb.DbStatus() != ConnectionState.Open) return;
+            if (livrosDb.DbStatus() != "Open") return;
             livrosDb.FechaConecxaoDb();
 
             lblLivrosCadastrados.Text = livrosDb.VerTodosLivros().Rows.Count.ToString();
             lblClientesCadastrados.Text = clienteDb.VerTodosClientes().Rows.Count.ToString();
             lblAlugueisRegistrados.Text = aluguelDb.VerTodosAluguel().Rows.Count.ToString();
         }
-        private void btnSairUsuario_Click(object sender, EventArgs e) => AppManager.UnlogUser();
+        private void btnSairUsuario_Click(object sender, EventArgs e)
+        {
+            Configuracoes.config.AppSettings.Settings["usuarioLogado"].Value = "";
+            Configuracoes.config.Save();
+
+            Process.Start(Application.StartupPath + Assembly.GetExecutingAssembly().GetName().Name + ".exe");
+            Process.GetCurrentProcess().Kill();
+        }
 
         private void Inicio_Load(object sender, EventArgs e)
         {
+            //Deixar o Form invisível enquanto a SplashScreen está carregando
             Opacity = 0;
             ShowInTaskbar = false;
 
-            SplashScreen splashScreen = new();
+            SplashScreen splashScreen = new SplashScreen();
             splashScreen.Show();
             splashScreen.FormClosed += delegate
             {
@@ -205,8 +224,14 @@ namespace ProjectBook.GUI
                 ShowInTaskbar = true;
             };
 
+            //Deixar o lblNomeUsuario trasnparente para evitar que sobreponha a imagem de fundo
             lblNomeUsuario.BackColor = Color.Transparent;
+<<<<<<< HEAD
             BringToFront();
+=======
+
+            this.BringToFront();
+>>>>>>> parent of e20e8c2 (v0.5.4-beta)
         }
 
         private void Inicio_KeyDown(object sender, KeyEventArgs e)
@@ -214,7 +239,7 @@ namespace ProjectBook.GUI
             switch (e.KeyCode)
             {
                 case Keys.F1:
-                    PesquisaRapida pesquisaRapida = new();
+                    PesquisaRapida pesquisaRapida = new PesquisaRapida();
                     pesquisaRapida.Show();
                     break;
                 case Keys.F6: 
@@ -228,7 +253,11 @@ namespace ProjectBook.GUI
 
         private void Inicio_FormClosing(object sender, FormClosingEventArgs e)
         {
+<<<<<<< HEAD
             DialogResult dialogResult = MessageBox.Show(Strings.ConfirmarSair, Strings.MessageBoxInformacao,
+=======
+            DialogResult dialogResult = MessageBox.Show(Resources.deseja_realmente_sair_, Resources.informacao_MessageBox,
+>>>>>>> parent of e20e8c2 (v0.5.4-beta)
                 MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
 
             e.Cancel = dialogResult != DialogResult.Yes;

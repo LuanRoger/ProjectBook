@@ -4,24 +4,26 @@ using System.Linq;
 using ProjectBook.GUI;
 using System.IO;
 using System.Windows.Forms;
-using ProjectBook.Properties.Languages;
+using ProjectBook.Properties;
 using System.Configuration;
 
 namespace ProjectBook.DB.Migration
 {
     static class OneDrive
     {
-        public readonly static string _oneDriveFolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) +
-                                                        @"\OneDrive\ProjectBook";
-
-        public static void MigrarOneDrive()
+        public static void MigrarOneDrive(string pastaAplicacaoOneDrive)
         {
             try
             {
-                if (Directory.Exists(_oneDriveFolder))
+                if (Directory.Exists(pastaAplicacaoOneDrive))
                 {
+<<<<<<< HEAD
                     DialogResult dialogResult = MessageBox.Show(Strings.ExistePastaOneDrive,
                         Strings.MessageBoxInformacao, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+=======
+                    DialogResult dialogResult = MessageBox.Show(Resources.existePastaOneDrive,
+                        Resources.informacao_MessageBox, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+>>>>>>> parent of e20e8c2 (v0.5.4-beta)
 
                     if (dialogResult == DialogResult.No)
                     {
@@ -37,26 +39,31 @@ namespace ProjectBook.DB.Migration
                 }
 
                 Directory.Move(Directory
-                    .GetParent(ConfigurationManager.AppSettings["pastaDb"]).ToString(), _oneDriveFolder);
+                    .GetParent(ConfigurationManager.AppSettings["pastaDb"]).ToString(), pastaAplicacaoOneDrive);
 
                 //Pegar o novo diretorio do banco de dados
                 string diretorioDbOneDrive = Directory
-                    .GetFiles(_oneDriveFolder, "*.*", SearchOption.AllDirectories)
+                    .GetFiles(pastaAplicacaoOneDrive, "*.*", SearchOption.AllDirectories)
                     .First(mdf => mdf.Contains(".mdf"));
 
                 //Criar nova string de conexão
                 Configuracoes.config.ConnectionStrings.ConnectionStrings["SqlConnectionString"].ConnectionString =
                     $@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={diretorioDbOneDrive};Integrated Security=True";
 
-                Configuracoes.config.AppSettings.Settings["pastaDb"].Value = _oneDriveFolder;
+                Configuracoes.config.AppSettings.Settings["pastaDb"].Value = pastaAplicacaoOneDrive;
                 Configuracoes.config.Save();
                 ConfigurationManager.RefreshSection("connectionStrings");
             }
             catch (Exception e)
             {
                 MessageBox.Show(
+<<<<<<< HEAD
                     string.Format(Strings.ErrorMigrarOneDrive, e.Message),
                     Strings.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+=======
+                    string.Format(Resources.ocorreu_um_error___0___Volte_as_configurações_e_crie_uma_novo_string_de_conexão_, e.Message),
+                    Resources.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error);
+>>>>>>> parent of e20e8c2 (v0.5.4-beta)
             }
         }
     }

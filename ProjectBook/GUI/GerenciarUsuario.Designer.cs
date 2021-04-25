@@ -96,7 +96,7 @@ namespace ProjectBook.GUI
             // 
             // btnLimparCadastrarUsuario
             // 
-            this.btnLimparCadastrarUsuario.Image = global::ProjectBook.Properties.Images.Images.textfield;
+            this.btnLimparCadastrarUsuario.Image = global::ProjectBook.Properties.Resources.textfield;
             this.btnLimparCadastrarUsuario.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnLimparCadastrarUsuario.Location = new System.Drawing.Point(347, 206);
             this.btnLimparCadastrarUsuario.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -164,7 +164,7 @@ namespace ProjectBook.GUI
             // 
             // btnLimparEditarUsuario
             // 
-            this.btnLimparEditarUsuario.Image = global::ProjectBook.Properties.Images.Images.textfield;
+            this.btnLimparEditarUsuario.Image = global::ProjectBook.Properties.Resources.textfield;
             this.btnLimparEditarUsuario.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnLimparEditarUsuario.Location = new System.Drawing.Point(354, 206);
             this.btnLimparEditarUsuario.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -207,7 +207,7 @@ namespace ProjectBook.GUI
             // 
             this.btnBuscarUsuario.FlatAppearance.BorderSize = 0;
             this.btnBuscarUsuario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBuscarUsuario.Image = global::ProjectBook.Properties.Images.Images.zoom;
+            this.btnBuscarUsuario.Image = global::ProjectBook.Properties.Resources.zoom;
             this.btnBuscarUsuario.Location = new System.Drawing.Point(112, 37);
             this.btnBuscarUsuario.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnBuscarUsuario.Name = "btnBuscarUsuario";
@@ -270,7 +270,7 @@ namespace ProjectBook.GUI
             // 
             // btnSalvarEditarUsuario
             // 
-            this.btnSalvarEditarUsuario.Image = global::ProjectBook.Properties.Images.Images.save;
+            this.btnSalvarEditarUsuario.Image = global::ProjectBook.Properties.Resources.save;
             this.btnSalvarEditarUsuario.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSalvarEditarUsuario.Location = new System.Drawing.Point(282, 206);
             this.btnSalvarEditarUsuario.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -305,7 +305,7 @@ namespace ProjectBook.GUI
             // 
             // btnDeletarUsuario
             // 
-            this.btnDeletarUsuario.Image = global::ProjectBook.Properties.Images.Images.delete;
+            this.btnDeletarUsuario.Image = global::ProjectBook.Properties.Resources.delete;
             this.btnDeletarUsuario.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnDeletarUsuario.Location = new System.Drawing.Point(348, 206);
             this.btnDeletarUsuario.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -349,7 +349,7 @@ namespace ProjectBook.GUI
             // 
             // btnCadastrarUsuario
             // 
-            this.btnCadastrarUsuario.Image = global::ProjectBook.Properties.Images.Images.save;
+            this.btnCadastrarUsuario.Image = global::ProjectBook.Properties.Resources.save;
             this.btnCadastrarUsuario.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCadastrarUsuario.Location = new System.Drawing.Point(276, 206);
             this.btnCadastrarUsuario.Name = "btnCadastrarUsuario";

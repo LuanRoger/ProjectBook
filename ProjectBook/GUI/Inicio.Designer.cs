@@ -340,14 +340,14 @@ namespace ProjectBook.GUI
             // 
             // mnuGerenciarUsuario
             // 
-            this.mnuGerenciarUsuario.Image = global::ProjectBook.Properties.Images.Images.user_gray;
+            this.mnuGerenciarUsuario.Image = global::ProjectBook.Properties.Resources.user_gray;
             this.mnuGerenciarUsuario.Name = "mnuGerenciarUsuario";
             this.mnuGerenciarUsuario.Size = new System.Drawing.Size(171, 22);
             this.mnuGerenciarUsuario.Text = "Gerenciar usuario";
             // 
             // mnuPesquisarUsuarios
             // 
-            this.mnuPesquisarUsuarios.Image = global::ProjectBook.Properties.Images.Images.zoom;
+            this.mnuPesquisarUsuarios.Image = global::ProjectBook.Properties.Resources.zoom;
             this.mnuPesquisarUsuarios.Name = "mnuPesquisarUsuarios";
             this.mnuPesquisarUsuarios.Size = new System.Drawing.Size(171, 22);
             this.mnuPesquisarUsuarios.Text = "Pesquisar usuários";

@@ -76,7 +76,7 @@ namespace ProjectBook.GUI
             // 
             this.bntBuscarUsuario.FlatAppearance.BorderSize = 0;
             this.bntBuscarUsuario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bntBuscarUsuario.Image = global::ProjectBook.Properties.Images.Images.zoom;
+            this.bntBuscarUsuario.Image = global::ProjectBook.Properties.Resources.zoom;
             this.bntBuscarUsuario.Location = new System.Drawing.Point(253, 57);
             this.bntBuscarUsuario.Name = "bntBuscarUsuario";
             this.bntBuscarUsuario.Size = new System.Drawing.Size(25, 23);
@@ -86,7 +86,7 @@ namespace ProjectBook.GUI
             // 
             // btnCancelarBuscaUsuario
             // 
-            this.btnCancelarBuscaUsuario.Image = global::ProjectBook.Properties.Images.Images.cancel;
+            this.btnCancelarBuscaUsuario.Image = global::ProjectBook.Properties.Resources.cancel;
             this.btnCancelarBuscaUsuario.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCancelarBuscaUsuario.Location = new System.Drawing.Point(204, 97);
             this.btnCancelarBuscaUsuario.Name = "btnCancelarBuscaUsuario";

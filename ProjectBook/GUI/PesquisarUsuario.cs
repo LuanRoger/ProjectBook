@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Windows.Forms;
 using ProjectBook.DB.SqlServerExpress;
-using ProjectBook.Properties.Languages;
+using ProjectBook.Properties;
+using ProjectBook.GUI;
 
 namespace ProjectBook.GUI
 {
@@ -32,7 +35,11 @@ namespace ProjectBook.GUI
         {
             if (Verificadores.VerificarStrings(txtNomeUsuarioBusca.Text))
             {
+<<<<<<< HEAD
                 MessageBox.Show(Strings.PreecherCampoBusca, Strings.MessageBoxError,
+=======
+                MessageBox.Show(Resources.preencherCampoBusca_MessageBox, Resources.error_MessageBox,
+>>>>>>> parent of e20e8c2 (v0.5.4-beta)
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }

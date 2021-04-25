@@ -4,7 +4,7 @@ using System.Drawing;
 using System.IO;
 using System.Management;
 using System.Windows.Forms;
-using ProjectBook.Properties.Languages;
+using ProjectBook.Properties;
 
 namespace ProjectBook.GUI
 {
@@ -37,8 +37,6 @@ namespace ProjectBook.GUI
             if (ConfigurationManager.AppSettings["atualizarStatusAluguel"] == "1") chbAtualizarStatusAluguel.Checked = true;
             if (ConfigurationManager.AppSettings["formatarCliente"] == "1") chbFormatarCliente.Checked = true;
             if (ConfigurationManager.AppSettings["formatarLivro"] == "1") chbFormatarLivro.Checked = true;
-            _ = Enum.TryParse(ConfigurationManager.AppSettings["language"].ToString(), out LangCode langCode);
-            cmbIdioma.Text = Languages.LANG_STRING[(int)langCode];
             switch (ConfigurationManager.AppSettings["dbPadrao"])
             {
                 case "sqlserverexpress":
@@ -66,9 +64,6 @@ namespace ProjectBook.GUI
             config.AppSettings.Settings["formatarCliente"].Value = chbFormatarCliente.Checked ? "1" : "0";
             config.AppSettings.Settings["formatarLivro"].Value = chbFormatarLivro.Checked ? "1" : "0";
 
-            // Idioma
-            AppManager.SetLanguage((LangCode)cmbIdioma.SelectedIndex);
-
             //Preferencias de aluguel
             config.AppSettings.Settings["atualizarStatusAluguel"].Value = chbAtualizarStatusAluguel.Checked ? "1" : "0";
 
@@ -89,8 +84,13 @@ namespace ProjectBook.GUI
             else if (rabOneDrive.Checked && !ConfigurationManager.AppSettings["pastaDb"].Contains("OneDrive"))
             {
                 DialogResult dialogResult = MessageBox
+<<<<<<< HEAD
                     .Show(Strings.MigrarOneDriveExplicacao,
                     Strings.MessageBoxInformacao, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+=======
+                    .Show(Resources.você_deseja_migrar_o_banco_de_dados_para_seu_OneDrive__Para_que_a_sincronização_funcione_você_deve_estar_com_o_aplicativo_do_OneDrive_sempre_atualizado_,
+                    Resources.informacao_MessageBox, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+>>>>>>> parent of e20e8c2 (v0.5.4-beta)
 
                 if (dialogResult != DialogResult.Yes) return;
 
@@ -101,14 +101,23 @@ namespace ProjectBook.GUI
             config.Save(ConfigurationSaveMode.Modified);
             ConfigurationManager.RefreshSection("appSettings");
 
+<<<<<<< HEAD
             MessageBox.Show(Strings.ConfiguracoesSalvas, Strings.MessageBoxConcluido,
+=======
+            MessageBox.Show(Resources.configuracoesSalvas_MessageBox, Resources.concluido_MessageBox,
+>>>>>>> parent of e20e8c2 (v0.5.4-beta)
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             //Se o usuário mudou a string de conexão o programa deve ser reinicado
             if (!stringConexaoAtual.Equals(config.ConnectionStrings.ConnectionStrings["SqlConnectionString"].ConnectionString))
             {
+<<<<<<< HEAD
                 MessageBox.Show(Strings.MudancaStringConexao,
                     Strings.MessageBoxInformacao, MessageBoxButtons.OK, MessageBoxIcon.Information);
+=======
+                MessageBox.Show(Resources.mudancaConnectionString,
+                    Resources.informacao_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Information);
+>>>>>>> parent of e20e8c2 (v0.5.4-beta)
 
                 AppManager.ReiniciarPrograma();
             }
@@ -117,7 +126,11 @@ namespace ProjectBook.GUI
         #region CheckedChanged
         private void rabSqlServerExpress_CheckedChanged(object sender, EventArgs e)
         {
+<<<<<<< HEAD
             lblInfoTxt.Text = Strings.StringConexaoConfiguracoes;
+=======
+            lblInfoTxt.Text = Resources.string_de_conexão;
+>>>>>>> parent of e20e8c2 (v0.5.4-beta)
             lblInfoTxt.ForeColor = Color.Black;
             btnSelecionarArquivoDb.Visible = false;
             txtStringConexaoCaminhoDb.Visible = true;
@@ -125,7 +138,11 @@ namespace ProjectBook.GUI
         }
         private void rabSqlServerLocalDb_CheckedChanged(object sender, EventArgs e)
         {
+<<<<<<< HEAD
             lblInfoTxt.Text = Strings.CaminhoBanco;
+=======
+            lblInfoTxt.Text = Resources.caminho_do_banco_de_dados;
+>>>>>>> parent of e20e8c2 (v0.5.4-beta)
             lblInfoTxt.ForeColor = Color.Black;
             btnSelecionarArquivoDb.Visible = true;
             txtStringConexaoCaminhoDb.Visible = true;
@@ -143,8 +160,13 @@ namespace ProjectBook.GUI
             if(directoryInfo == null && directoryInfo.Parent == null)
             {
                 MessageBox.Show(
+<<<<<<< HEAD
                     Strings.ConexaoLocalMigrarOneDrive,
                     Strings.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+=======
+                    Resources.é_necessário_fazer_uma_conexão_local_com_o_banco_de_dados_para_fazer_a_migração_para_o_OneDrive_,
+                    Resources.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error);
+>>>>>>> parent of e20e8c2 (v0.5.4-beta)
                 rabSqlServerLocalDb.Checked = true;
                 return;
             }
@@ -152,7 +174,11 @@ namespace ProjectBook.GUI
                 ConfigurationManager.AppSettings["dbPadrao"] == "onedrive")
             {
                 lblInfoTxt.Visible = true;
+<<<<<<< HEAD
                 lblInfoTxt.Text = Strings.BancoSincronizadoOneDrive;
+=======
+                lblInfoTxt.Text = Resources.banco_de_dados_sincronizado_com_o_OneDrive;
+>>>>>>> parent of e20e8c2 (v0.5.4-beta)
                 lblInfoTxt.ForeColor = Color.Green;
             }
         }
