@@ -35,11 +35,7 @@ namespace ProjectBook.GUI
         {
             if (Verificadores.VerificarStrings(txtNomeUsuarioBusca.Text))
             {
-<<<<<<< HEAD
-                MessageBox.Show(Strings.PreecherCampoBusca, Strings.MessageBoxError,
-=======
-                MessageBox.Show(Resources.preencherCampoBusca_MessageBox, Resources.error_MessageBox,
->>>>>>> parent of e20e8c2 (v0.5.4-beta)
+                MessageBox.Show(Resources.PreecherCampoBusca, Resources.MessageBoxError,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }

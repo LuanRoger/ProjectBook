@@ -29,7 +29,6 @@ namespace ProjectBook.GUI
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PesquisarCliente));
             this.btnPesquisarCliente = new System.Windows.Forms.Button();
             this.txtPesquisarCliente = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -43,7 +42,7 @@ namespace ProjectBook.GUI
             // 
             this.btnPesquisarCliente.FlatAppearance.BorderSize = 0;
             this.btnPesquisarCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPesquisarCliente.Image = ((System.Drawing.Image)(resources.GetObject("btnPesquisarCliente.Image")));
+            this.btnPesquisarCliente.Image = ProjectBook.Properties.Resources.zoom;
             this.btnPesquisarCliente.Location = new System.Drawing.Point(206, 69);
             this.btnPesquisarCliente.Name = "btnPesquisarCliente";
             this.btnPesquisarCliente.Size = new System.Drawing.Size(23, 23);

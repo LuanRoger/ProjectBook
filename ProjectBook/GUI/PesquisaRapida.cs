@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using ProjectBook.DB.SqlServerExpress;
 using Color = System.Drawing.Color;
+using ProjectBook.Properties;
 
 namespace ProjectBook.GUI
 {
@@ -19,10 +20,7 @@ namespace ProjectBook.GUI
 
         private void tableLayoutPanel1_CellPaint(object sender, TableLayoutCellPaintEventArgs e)
         {
-            if (e.Row == 0)
-            {
-                e.Graphics.FillRectangle(new SolidBrush(Color.CornflowerBlue), e.CellBounds);
-            }
+            if (e.Row == 0) e.Graphics.FillRectangle(new SolidBrush(Color.CornflowerBlue), e.CellBounds);
         }
 
         private void PesquisaRapida_Load(object sender, EventArgs e) => lblParaCaixaTexto.BackColor = Color.Transparent;
@@ -39,11 +37,7 @@ namespace ProjectBook.GUI
 
             if (Verificadores.VerificarStrings(termoPesquisa))
             {
-<<<<<<< HEAD
-                MessageBox.Show(Strings.PreecherCampoBusca, Strings.MessageBoxError,
-=======
-                MessageBox.Show(Properties.Resources.preencherCampoBusca_MessageBox, Properties.Resources.error_MessageBox,
->>>>>>> parent of e20e8c2 (v0.5.4-beta)
+                MessageBox.Show(Resources.PreecherCampoBusca, Resources.MessageBoxError,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -55,11 +49,7 @@ namespace ProjectBook.GUI
 
             if (Verificadores.VerificarDataTable(resultado))
             {
-<<<<<<< HEAD
-                MessageBox.Show(Strings.LivroClienteNExistem, Strings.MessageBoxError,
-=======
-                MessageBox.Show(Properties.Resources.naoExisteLivroCliente, Properties.Resources.error_MessageBox,
->>>>>>> parent of e20e8c2 (v0.5.4-beta)
+                MessageBox.Show(Resources.LivroClienteNExistem, Resources.MessageBoxError,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }

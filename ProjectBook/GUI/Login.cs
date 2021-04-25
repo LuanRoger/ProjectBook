@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Reflection;
 using System.Windows.Forms;
 using ProjectBook.DB.SqlServerExpress;
+using ProjectBook.Properties;
 
 namespace ProjectBook.GUI
 {
@@ -23,11 +24,7 @@ namespace ProjectBook.GUI
             if (Verificadores.VerificarStrings(txtLoginUsuario.Text, txtLoginSenha.Text) || 
                 Verificadores.VerificarStrings(txtLoginCodigo.Text, txtLoginSenha.Text))
             {
-<<<<<<< HEAD
-                MessageBox.Show(Strings.PreencherCamposObrigatorios, Strings.MessageBoxError,
-=======
-                MessageBox.Show(Properties.Resources.preencherCampos, Properties.Resources.error_MessageBox,
->>>>>>> parent of e20e8c2 (v0.5.4-beta)
+                MessageBox.Show(Resources.preencherCamposObrigatorios_MessageBox, Resources.MessageBoxError,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -40,11 +37,7 @@ namespace ProjectBook.GUI
 
                 if(Verificadores.VerificarDataTable(infoUsuario))
                 {
-<<<<<<< HEAD
-                    MessageBox.Show(Strings.InformacoesIncorretasLogin, Strings.MessageBoxError,
-=======
-                    MessageBox.Show(Properties.Resources.informacoesIncorretas, Properties.Resources.error_MessageBox,
->>>>>>> parent of e20e8c2 (v0.5.4-beta)
+                    MessageBox.Show(Resources.InformacoesIncorretasLogin, Resources.MessageBoxError,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }

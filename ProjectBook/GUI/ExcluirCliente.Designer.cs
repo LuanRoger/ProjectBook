@@ -29,7 +29,6 @@ namespace ProjectBook.GUI
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ExcluirCliente));
             this.txtBuscarExcluirCliente = new System.Windows.Forms.TextBox();
             this.btnExcluirCliente = new System.Windows.Forms.Button();
             this.btnCancelarExcluirCliente = new System.Windows.Forms.Button();
@@ -48,7 +47,7 @@ namespace ProjectBook.GUI
             // 
             this.btnExcluirCliente.FlatAppearance.BorderSize = 0;
             this.btnExcluirCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExcluirCliente.Image = ((System.Drawing.Image)(resources.GetObject("btnExcluirCliente.Image")));
+            this.btnExcluirCliente.Image = ProjectBook.Properties.Resources.cancel;
             this.btnExcluirCliente.Location = new System.Drawing.Point(219, 37);
             this.btnExcluirCliente.Name = "btnExcluirCliente";
             this.btnExcluirCliente.Size = new System.Drawing.Size(27, 23);

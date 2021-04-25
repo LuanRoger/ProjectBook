@@ -30,7 +30,6 @@ namespace ProjectBook.GUI
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PesquisarAluguel));
             this.label1 = new System.Windows.Forms.Label();
             this.txtBuscarAluguel = new System.Windows.Forms.TextBox();
             this.btnBuscarClientePesquisaAluguel = new System.Windows.Forms.Button();
@@ -86,7 +85,7 @@ namespace ProjectBook.GUI
             // 
             this.btnBuscarClientePesquisaAluguel.FlatAppearance.BorderSize = 0;
             this.btnBuscarClientePesquisaAluguel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBuscarClientePesquisaAluguel.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscarClientePesquisaAluguel.Image")));
+            this.btnBuscarClientePesquisaAluguel.Image = global::ProjectBook.Properties.Resources.zoom;
             this.btnBuscarClientePesquisaAluguel.Location = new System.Drawing.Point(191, 72);
             this.btnBuscarClientePesquisaAluguel.Name = "btnBuscarClientePesquisaAluguel";
             this.btnBuscarClientePesquisaAluguel.Size = new System.Drawing.Size(26, 23);
@@ -235,21 +234,27 @@ namespace ProjectBook.GUI
             // 
             // btnCancelarPesquisaAluguel
             // 
+            this.btnCancelarPesquisaAluguel.Image = global::ProjectBook.Properties.Resources.cancel;
+            this.btnCancelarPesquisaAluguel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCancelarPesquisaAluguel.Location = new System.Drawing.Point(337, 302);
             this.btnCancelarPesquisaAluguel.Name = "btnCancelarPesquisaAluguel";
             this.btnCancelarPesquisaAluguel.Size = new System.Drawing.Size(75, 23);
             this.btnCancelarPesquisaAluguel.TabIndex = 7;
             this.btnCancelarPesquisaAluguel.Text = "Cancelar";
+            this.btnCancelarPesquisaAluguel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCancelarPesquisaAluguel.UseVisualStyleBackColor = true;
             this.btnCancelarPesquisaAluguel.Click += new System.EventHandler(this.btnFecharPesquisaAluguel_Click);
             // 
             // btnLimparPequisaAluguel
             // 
-            this.btnLimparPequisaAluguel.Location = new System.Drawing.Point(259, 302);
+            this.btnLimparPequisaAluguel.Image = global::ProjectBook.Properties.Resources.textfield;
+            this.btnLimparPequisaAluguel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLimparPequisaAluguel.Location = new System.Drawing.Point(263, 302);
             this.btnLimparPequisaAluguel.Name = "btnLimparPequisaAluguel";
-            this.btnLimparPequisaAluguel.Size = new System.Drawing.Size(75, 23);
+            this.btnLimparPequisaAluguel.Size = new System.Drawing.Size(68, 23);
             this.btnLimparPequisaAluguel.TabIndex = 8;
             this.btnLimparPequisaAluguel.Text = "Limpar";
+            this.btnLimparPequisaAluguel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnLimparPequisaAluguel.UseVisualStyleBackColor = true;
             this.btnLimparPequisaAluguel.Click += new System.EventHandler(this.btnLimparPequisaAluguel_Click);
             // 
@@ -319,7 +324,7 @@ namespace ProjectBook.GUI
             // 
             this.btnVerEmRelatorio.FlatAppearance.BorderSize = 0;
             this.btnVerEmRelatorio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnVerEmRelatorio.Image = ((System.Drawing.Image)(resources.GetObject("btnVerEmRelatorio.Image")));
+            this.btnVerEmRelatorio.Image = global::ProjectBook.Properties.Resources.table;
             this.btnVerEmRelatorio.Location = new System.Drawing.Point(223, 70);
             this.btnVerEmRelatorio.Name = "btnVerEmRelatorio";
             this.btnVerEmRelatorio.Size = new System.Drawing.Size(23, 26);

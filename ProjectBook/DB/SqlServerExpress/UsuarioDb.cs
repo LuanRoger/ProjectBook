@@ -27,17 +27,10 @@ namespace ProjectBook.DB.SqlServerExpress
 
                 command.Dispose();
 
-<<<<<<< HEAD
-                MessageBox.Show(Strings.UsusarioRegistrado, Strings.MessageBoxConcluido,
+                MessageBox.Show(Resources.UsuarioRegistrado, Resources.concluido_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch (SqlException e) { MessageBox.Show(e.Message, Strings.MessageBoxError,
-=======
-                MessageBox.Show(Resources.usuário_registrado_com_sucesso, Resources.concluido_MessageBox,
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (SqlException e) { MessageBox.Show(e.Message, Resources.error_MessageBox,
->>>>>>> parent of e20e8c2 (v0.5.4-beta)
+            catch (SqlException e) { MessageBox.Show(e.Message, Resources.MessageBoxError,
                 MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
         public void DeletarUsuarioId(string id)
@@ -53,21 +46,12 @@ namespace ProjectBook.DB.SqlServerExpress
 
                 command.Dispose();
 
-<<<<<<< HEAD
-                MessageBox.Show(Strings.UsuarioDeletado, Strings.MessageBoxConcluido,
-=======
-                MessageBox.Show(Resources.usuário_deletado_com_sucesso, Resources.concluido_MessageBox,
->>>>>>> parent of e20e8c2 (v0.5.4-beta)
+                MessageBox.Show(Resources.UsuarioDeletado, Resources.concluido_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (SqlException e)
             {
-<<<<<<< HEAD
-                MessageBox.Show(e.Message, Strings.MessageBoxError,
-=======
-                MessageBox.Show(e.Message, Resources.error_MessageBox,
->>>>>>> parent of e20e8c2 (v0.5.4-beta)
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(e.Message, Resources.ErrorConectarDb, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         public void AtualizarUsuarioId(string id, Usuario usuario)
@@ -88,15 +72,9 @@ namespace ProjectBook.DB.SqlServerExpress
 
                 command.Dispose();
 
-<<<<<<< HEAD
-                MessageBox.Show(Strings.InformacoesAtualizadas, Strings.MessageBoxConcluido, MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (SqlException e) { MessageBox.Show(e.Message, Strings.MessageBoxError,
-=======
                 MessageBox.Show(Resources.informações_atualizadas, Resources.concluido_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch (SqlException e) { MessageBox.Show(e.Message, Resources.error_MessageBox,
->>>>>>> parent of e20e8c2 (v0.5.4-beta)
+            catch (SqlException e) { MessageBox.Show(e.Message, Resources.MessageBoxError,
                 MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
         public DataTable LoginUsuario(string usuario, string senha)
@@ -111,11 +89,7 @@ namespace ProjectBook.DB.SqlServerExpress
             }
             catch (SqlException e)
             {
-<<<<<<< HEAD
-                MessageBox.Show(e.Message, Strings.MessageBoxError,
-=======
-                MessageBox.Show(e.Message, Resources.error_MessageBox,
->>>>>>> parent of e20e8c2 (v0.5.4-beta)
+                MessageBox.Show(e.Message, Resources.MessageBoxError,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
@@ -133,11 +107,7 @@ namespace ProjectBook.DB.SqlServerExpress
             }
             catch (SqlException e)
             {
-<<<<<<< HEAD
-                MessageBox.Show(e.Message, Strings.MessageBoxError,
-=======
-                MessageBox.Show(e.Message, Resources.error_MessageBox,
->>>>>>> parent of e20e8c2 (v0.5.4-beta)
+                MessageBox.Show(e.Message, Resources.MessageBoxError,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
@@ -155,11 +125,7 @@ namespace ProjectBook.DB.SqlServerExpress
                 FechaConecxaoDb();
                 adapter.Fill(table);
             }
-<<<<<<< HEAD
-            catch (SqlException e) { MessageBox.Show(e.Message, Strings.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error); }
-=======
-            catch (SqlException e) { MessageBox.Show(e.Message, Resources.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); }
->>>>>>> parent of e20e8c2 (v0.5.4-beta)
+            catch (SqlException e) { MessageBox.Show(e.Message, Resources.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error); }
 
             return table;
         }
@@ -173,11 +139,7 @@ namespace ProjectBook.DB.SqlServerExpress
                 FechaConecxaoDb();
                 adapter.Fill(table);
             }
-<<<<<<< HEAD
-            catch (SqlException e) { MessageBox.Show(e.Message, Strings.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error); }
-=======
-            catch (SqlException e) { MessageBox.Show(e.Message, Resources.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); }
->>>>>>> parent of e20e8c2 (v0.5.4-beta)
+            catch (SqlException e) { MessageBox.Show(e.Message, Resources.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error); }
 
             return table;
         }
@@ -191,11 +153,7 @@ namespace ProjectBook.DB.SqlServerExpress
                 FechaConecxaoDb();
                 adapter.Fill(table);
             }
-<<<<<<< HEAD
-            catch (SqlException e) { MessageBox.Show(e.Message, Strings.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error); }
-=======
-            catch (SqlException e) { MessageBox.Show(e.Message, Resources.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); }
->>>>>>> parent of e20e8c2 (v0.5.4-beta)
+            catch (SqlException e) { MessageBox.Show(e.Message, Resources.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error); }
 
             return table;
         }
@@ -209,11 +167,7 @@ namespace ProjectBook.DB.SqlServerExpress
                 FechaConecxaoDb();
                 adapter.Fill(table);
             }
-<<<<<<< HEAD
-            catch (SqlException e) { MessageBox.Show(e.Message, Strings.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error); }
-=======
-            catch (SqlException e) { MessageBox.Show(e.Message, Resources.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); }
->>>>>>> parent of e20e8c2 (v0.5.4-beta)
+            catch (SqlException e) { MessageBox.Show(e.Message, Resources.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error); }
 
             return table;
         }
@@ -227,11 +181,7 @@ namespace ProjectBook.DB.SqlServerExpress
                 FechaConecxaoDb();
                 adapter.Fill(table);
             }
-<<<<<<< HEAD
-            catch (SqlException e) { MessageBox.Show(e.Message, Strings.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error); }
-=======
-            catch (SqlException e) { MessageBox.Show(e.Message, Resources.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); }
->>>>>>> parent of e20e8c2 (v0.5.4-beta)
+            catch (SqlException e) { MessageBox.Show(e.Message, Resources.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error); }
 
             return table;
         }

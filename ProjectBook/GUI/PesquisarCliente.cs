@@ -19,11 +19,7 @@ namespace ProjectBook.GUI
             string termoPesquisa = txtPesquisarCliente.Text;
             if (Verificadores.VerificarStrings(termoPesquisa))
             {
-<<<<<<< HEAD
-                MessageBox.Show(Strings.PreecherCampoBusca, Strings.MessageBoxError,
-=======
-                MessageBox.Show(Resources.preencherCampoBusca_MessageBox, Resources.error_MessageBox,
->>>>>>> parent of e20e8c2 (v0.5.4-beta)
+                MessageBox.Show(Resources.PreecherCampoBusca, Resources.MessageBoxError,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -34,11 +30,7 @@ namespace ProjectBook.GUI
 
             if (Verificadores.VerificarDataTable(dataTable))
             {
-<<<<<<< HEAD
-                MessageBox.Show(Strings.ClienteNExiste, Strings.MessageBoxError,
-=======
-                MessageBox.Show(Resources.clienteNaoExiste_MessageBox, Resources.error_MessageBox,
->>>>>>> parent of e20e8c2 (v0.5.4-beta)
+                MessageBox.Show(Resources.ClienteNExiste, Resources.MessageBoxError,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }

@@ -33,6 +33,7 @@ namespace ProjectBook.GUI
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.btnCadastrarUsuario = new System.Windows.Forms.Button();
             this.btnLimparCadastrarUsuario = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -56,7 +57,6 @@ namespace ProjectBook.GUI
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtIdDeletarUsuario = new System.Windows.Forms.TextBox();
-            this.btnCadastrarUsuario = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -93,6 +93,19 @@ namespace ProjectBook.GUI
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Cadastrar usuário";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // btnCadastrarUsuario
+            // 
+            this.btnCadastrarUsuario.Image = global::ProjectBook.Properties.Resources.save;
+            this.btnCadastrarUsuario.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCadastrarUsuario.Location = new System.Drawing.Point(276, 206);
+            this.btnCadastrarUsuario.Name = "btnCadastrarUsuario";
+            this.btnCadastrarUsuario.Size = new System.Drawing.Size(64, 23);
+            this.btnCadastrarUsuario.TabIndex = 4;
+            this.btnCadastrarUsuario.Text = "Salvar";
+            this.btnCadastrarUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnCadastrarUsuario.UseVisualStyleBackColor = true;
+            this.btnCadastrarUsuario.Click += new System.EventHandler(this.btnCadastrarUsuario_Click);
             // 
             // btnLimparCadastrarUsuario
             // 
@@ -346,18 +359,6 @@ namespace ProjectBook.GUI
             this.txtIdDeletarUsuario.Name = "txtIdDeletarUsuario";
             this.txtIdDeletarUsuario.Size = new System.Drawing.Size(393, 23);
             this.txtIdDeletarUsuario.TabIndex = 1;
-            // 
-            // btnCadastrarUsuario
-            // 
-            this.btnCadastrarUsuario.Image = global::ProjectBook.Properties.Resources.save;
-            this.btnCadastrarUsuario.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCadastrarUsuario.Location = new System.Drawing.Point(276, 206);
-            this.btnCadastrarUsuario.Name = "btnCadastrarUsuario";
-            this.btnCadastrarUsuario.Size = new System.Drawing.Size(64, 23);
-            this.btnCadastrarUsuario.TabIndex = 4;
-            this.btnCadastrarUsuario.Text = "Salvar";
-            this.btnCadastrarUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnCadastrarUsuario.UseVisualStyleBackColor = true;
             // 
             // GerenciarUsuario
             // 

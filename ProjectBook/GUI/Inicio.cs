@@ -126,22 +126,10 @@ namespace ProjectBook.GUI
             {
                 MessageBox.Show("Project Book v" +
                                 Assembly.GetExecutingAssembly().GetName().Version + 
-<<<<<<< HEAD
-                                "\n" + Strings.TheCreator +
-                                "\n" + Strings.Licensa +
-                                "\n" + Strings.CreditosIcons,
-                    Strings.MessageBoxSobre, MessageBoxButtons.OK, MessageBoxIcon.Information);
-=======
-                                "\n" + Resources.luanroger +
-                                "\n" + Resources.license +
-                                "\n" + Resources.uso_de_ícones_de_FAMFAMFAM__http___famfamfam_com,
+                                "\n" + Resources.TheCreator +
+                                "\n" + Resources.Licensa +
+                                "\n" + Resources.CreditosIcones,
                     Resources.sobre_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Information);
-            };
-            mnuProcurarAtualizacoes.Click += (sender, e) =>
-            {
-                AutoUpdater.Start(ConfigurationManager.AppSettings["updateFileServer"], 
-                    Assembly.GetExecutingAssembly());
->>>>>>> parent of e20e8c2 (v0.5.4-beta)
             };
             mnuProcurarAtualizacoes.Click += (sender, e) => AppManager.ProcurarAtualizacoes();
             #endregion
@@ -226,12 +214,7 @@ namespace ProjectBook.GUI
 
             //Deixar o lblNomeUsuario trasnparente para evitar que sobreponha a imagem de fundo
             lblNomeUsuario.BackColor = Color.Transparent;
-<<<<<<< HEAD
             BringToFront();
-=======
-
-            this.BringToFront();
->>>>>>> parent of e20e8c2 (v0.5.4-beta)
         }
 
         private void Inicio_KeyDown(object sender, KeyEventArgs e)
@@ -253,11 +236,7 @@ namespace ProjectBook.GUI
 
         private void Inicio_FormClosing(object sender, FormClosingEventArgs e)
         {
-<<<<<<< HEAD
-            DialogResult dialogResult = MessageBox.Show(Strings.ConfirmarSair, Strings.MessageBoxInformacao,
-=======
-            DialogResult dialogResult = MessageBox.Show(Resources.deseja_realmente_sair_, Resources.informacao_MessageBox,
->>>>>>> parent of e20e8c2 (v0.5.4-beta)
+            DialogResult dialogResult = MessageBox.Show(Resources.ConfirmarSair, Resources.MessageBoxInformacao,
                 MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
 
             e.Cancel = dialogResult != DialogResult.Yes;

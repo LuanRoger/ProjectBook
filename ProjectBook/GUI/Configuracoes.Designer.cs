@@ -28,8 +28,7 @@ namespace ProjectBook.GUI
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
-        {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Configuracoes));
+        {;
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnPersonalizarImpressao = new System.Windows.Forms.Button();
             this.chbVisualizarImpressao = new System.Windows.Forms.CheckBox();
@@ -236,7 +235,6 @@ namespace ProjectBook.GUI
             this.Controls.Add(this.btnSalvarConfiguracoes);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Configuracoes";
             this.ShowIcon = false;

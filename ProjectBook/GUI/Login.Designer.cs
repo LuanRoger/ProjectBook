@@ -31,7 +31,6 @@ namespace ProjectBook.GUI
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             this.txtLoginUsuario = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtLoginSenha = new System.Windows.Forms.TextBox();
@@ -137,7 +136,7 @@ namespace ProjectBook.GUI
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtLoginUsuario);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Icon = ProjectBook.Properties.Resources.UserGrayIcons;
             this.KeyPreview = true;
             this.Location = new System.Drawing.Point(15, 15);
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);

@@ -31,7 +31,6 @@ namespace ProjectBook.GUI
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ListaPesquisa));
             this.dgvLista = new System.Windows.Forms.DataGridView();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.mnuImprimirLista = new System.Windows.Forms.ToolStripMenuItem();
@@ -81,14 +80,14 @@ namespace ProjectBook.GUI
             // 
             // mnuImprimirLista
             // 
-            this.mnuImprimirLista.Image = ((System.Drawing.Image)(resources.GetObject("mnuImprimirLista.Image")));
+            this.mnuImprimirLista.Image = ProjectBook.Properties.Resources.printer;
             this.mnuImprimirLista.Name = "mnuImprimirLista";
             this.mnuImprimirLista.Size = new System.Drawing.Size(28, 20);
             this.mnuImprimirLista.ToolTipText = "Imprimir";
             // 
             // mnuExportarExcel
             // 
-            this.mnuExportarExcel.Image = ((System.Drawing.Image)(resources.GetObject("mnuExportarExcel.Image")));
+            this.mnuExportarExcel.Image = ProjectBook.Properties.Resources.page_excel;
             this.mnuExportarExcel.Name = "mnuExportarExcel";
             this.mnuExportarExcel.Size = new System.Drawing.Size(28, 20);
             this.mnuExportarExcel.ToolTipText = "Exportar tabela como planilha";
@@ -100,7 +99,6 @@ namespace ProjectBook.GUI
             this.ClientSize = new System.Drawing.Size(822, 496);
             this.Controls.Add(this.dgvLista);
             this.Controls.Add(this.menuStrip1);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "ListaPesquisa";
             this.ShowIcon = false;

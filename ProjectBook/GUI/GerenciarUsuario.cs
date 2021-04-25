@@ -21,11 +21,7 @@ namespace ProjectBook.GUI
             Usuario usuario = new Usuario(txtUsuarioCadastrar.Text, txtSenhaCadastrar.Text, TipoUsuário.USU.ToString());
             if (Verificadores.VerificarCamposUsuario(usuario))
             {
-<<<<<<< HEAD
-                MessageBox.Show(Strings.PreecherCampoBusca, Strings.MessageBoxError,
-=======
-                MessageBox.Show(Properties.Resources.preencherCampoBusca_MessageBox, Properties.Resources.error_MessageBox,
->>>>>>> parent of e20e8c2 (v0.5.4-beta)
+                MessageBox.Show(Resources.PreecherCampoBusca, Resources.MessageBoxError,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -40,11 +36,7 @@ namespace ProjectBook.GUI
             Usuario usuario = new Usuario(txtNovoUsuario.Text, txtNovoSenhaUsuario.Text, cmdNovoStatus.Text);
             if (Verificadores.VerificarCamposUsuario(usuario))
             {
-<<<<<<< HEAD
-                MessageBox.Show(Strings.PreecherCampoBusca, Strings.MessageBoxError,
-=======
-                MessageBox.Show(Properties.Resources.preencherCampoBusca_MessageBox, Properties.Resources.error_MessageBox,
->>>>>>> parent of e20e8c2 (v0.5.4-beta)
+                MessageBox.Show(Resources.PreecherCampoBusca, Resources.MessageBoxError,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -62,11 +54,7 @@ namespace ProjectBook.GUI
 
             if (Verificadores.VerificarDataTable(infoUsuario))
             {
-<<<<<<< HEAD
-                MessageBox.Show(Strings.PreecherCampoBusca, Strings.MessageBoxError,
-=======
-                MessageBox.Show(Properties.Resources.preencherCampoBusca_MessageBox, Properties.Resources.error_MessageBox,
->>>>>>> parent of e20e8c2 (v0.5.4-beta)
+                MessageBox.Show(Resources.PreecherCampoBusca, Resources.MessageBoxError,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -82,22 +70,13 @@ namespace ProjectBook.GUI
 
             if (Verificadores.VerificarDataTable(infoUsuario))
             {
-<<<<<<< HEAD
-                MessageBox.Show(Strings.PreecherCampoBusca, Strings.MessageBoxError,
-=======
-                MessageBox.Show(Resources.preencherCampoBusca_MessageBox, Resources.error_MessageBox,
->>>>>>> parent of e20e8c2 (v0.5.4-beta)
+                MessageBox.Show(Resources.PreecherCampoBusca, Resources.MessageBoxError,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-<<<<<<< HEAD
-            DialogResult dialogResult = MessageBox.Show(string.Format(Strings.ConfirmarExcluisao1, infoUsuario.Rows[0][1]),
-                Strings.MessageBoxError,
-=======
-            DialogResult dialogResult = MessageBox.Show($"{Resources.confirmarExclusao} {infoUsuario.Rows[0][1]}",
-                Resources.excluir_MessageBox,
->>>>>>> parent of e20e8c2 (v0.5.4-beta)
+            DialogResult dialogResult = MessageBox.Show(string.Format(Resources.ConfirmarExclusao1, infoUsuario.Rows[0][1]),
+                Resources.MessageBoxError,
                 MessageBoxButtons.YesNo, MessageBoxIcon.Stop);
             if (dialogResult == DialogResult.No) return;
 
@@ -116,6 +95,7 @@ namespace ProjectBook.GUI
             txtNovoSenhaUsuario.Clear();
             cmdNovoStatus.Text = "";
             txtIdBuscarUsuario.Enabled = true;
+            txtIdBuscarUsuario.Clear();
             txtIdDeletarUsuario.Clear();
         }
     }

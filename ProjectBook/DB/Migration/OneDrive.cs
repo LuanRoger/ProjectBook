@@ -17,13 +17,8 @@ namespace ProjectBook.DB.Migration
             {
                 if (Directory.Exists(pastaAplicacaoOneDrive))
                 {
-<<<<<<< HEAD
-                    DialogResult dialogResult = MessageBox.Show(Strings.ExistePastaOneDrive,
-                        Strings.MessageBoxInformacao, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-=======
                     DialogResult dialogResult = MessageBox.Show(Resources.existePastaOneDrive,
-                        Resources.informacao_MessageBox, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
->>>>>>> parent of e20e8c2 (v0.5.4-beta)
+                        Resources.MessageBoxInformacao, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                     if (dialogResult == DialogResult.No)
                     {
@@ -57,13 +52,8 @@ namespace ProjectBook.DB.Migration
             catch (Exception e)
             {
                 MessageBox.Show(
-<<<<<<< HEAD
-                    string.Format(Strings.ErrorMigrarOneDrive, e.Message),
-                    Strings.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error);
-=======
-                    string.Format(Resources.ocorreu_um_error___0___Volte_as_configurações_e_crie_uma_novo_string_de_conexão_, e.Message),
-                    Resources.error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error);
->>>>>>> parent of e20e8c2 (v0.5.4-beta)
+                    string.Format(Resources.ErrorMigrarOneDrive, e.Message),
+                    Resources.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

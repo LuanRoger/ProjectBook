@@ -29,7 +29,6 @@ namespace ProjectBook.GUI
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Excluir));
             this.txtExcluirLivro = new System.Windows.Forms.TextBox();
             this.btnBuscarExcluirLivro = new System.Windows.Forms.Button();
             this.btnCancelarExcluirLivro = new System.Windows.Forms.Button();
@@ -49,7 +48,7 @@ namespace ProjectBook.GUI
             this.btnBuscarExcluirLivro.BackColor = System.Drawing.Color.Transparent;
             this.btnBuscarExcluirLivro.FlatAppearance.BorderSize = 0;
             this.btnBuscarExcluirLivro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBuscarExcluirLivro.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscarExcluirLivro.Image")));
+            this.btnBuscarExcluirLivro.Image = global::ProjectBook.Properties.Resources.zoom;
             this.btnBuscarExcluirLivro.Location = new System.Drawing.Point(227, 38);
             this.btnBuscarExcluirLivro.Name = "btnBuscarExcluirLivro";
             this.btnBuscarExcluirLivro.Size = new System.Drawing.Size(28, 23);

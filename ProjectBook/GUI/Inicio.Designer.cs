@@ -29,7 +29,6 @@ namespace ProjectBook.GUI
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Inicio));
             this.contentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.indexToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.searchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -83,6 +82,8 @@ namespace ProjectBook.GUI
             this.mnuExcluirAluguel = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuConfig = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuSobreTop = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuSobre = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuProcurarAtualizacoes = new System.Windows.Forms.ToolStripMenuItem();
             this.btnSairUsuario = new System.Windows.Forms.Button();
             this.lblNomeUsuario = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -109,8 +110,6 @@ namespace ProjectBook.GUI
             this.mnuArUsuario = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuArBuscaRapida = new System.Windows.Forms.ToolStripButton();
-            this.mnuSobre = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuProcurarAtualizacoes = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuInicio.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -271,14 +270,14 @@ namespace ProjectBook.GUI
             // mnuNovoLivro
             // 
             this.mnuNovoLivro.BackColor = System.Drawing.SystemColors.Control;
-            this.mnuNovoLivro.Image = ((System.Drawing.Image)(resources.GetObject("mnuNovoLivro.Image")));
+            this.mnuNovoLivro.Image = global::ProjectBook.Properties.Resources.book_add;
             this.mnuNovoLivro.Name = "mnuNovoLivro";
             this.mnuNovoLivro.Size = new System.Drawing.Size(130, 22);
             this.mnuNovoLivro.Text = "Novo livro";
             // 
             // mnuEditarLivro
             // 
-            this.mnuEditarLivro.Image = ((System.Drawing.Image)(resources.GetObject("mnuEditarLivro.Image")));
+            this.mnuEditarLivro.Image = global::ProjectBook.Properties.Resources.book_edit;
             this.mnuEditarLivro.Name = "mnuEditarLivro";
             this.mnuEditarLivro.Size = new System.Drawing.Size(130, 22);
             this.mnuEditarLivro.Text = "Editar livro";
@@ -294,14 +293,14 @@ namespace ProjectBook.GUI
             // 
             // mnuCadastrarCliente
             // 
-            this.mnuCadastrarCliente.Image = ((System.Drawing.Image)(resources.GetObject("mnuCadastrarCliente.Image")));
+            this.mnuCadastrarCliente.Image = global::ProjectBook.Properties.Resources.client_add;
             this.mnuCadastrarCliente.Name = "mnuCadastrarCliente";
             this.mnuCadastrarCliente.Size = new System.Drawing.Size(147, 22);
             this.mnuCadastrarCliente.Text = "Novo cliente";
             // 
             // mnuEditarClientes
             // 
-            this.mnuEditarClientes.Image = ((System.Drawing.Image)(resources.GetObject("mnuEditarClientes.Image")));
+            this.mnuEditarClientes.Image = global::ProjectBook.Properties.Resources.client_edit;
             this.mnuEditarClientes.Name = "mnuEditarClientes";
             this.mnuEditarClientes.Size = new System.Drawing.Size(147, 22);
             this.mnuEditarClientes.Text = "Editar clientes";
@@ -317,14 +316,14 @@ namespace ProjectBook.GUI
             // 
             // mnuCadastrarAluguel
             // 
-            this.mnuCadastrarAluguel.Image = ((System.Drawing.Image)(resources.GetObject("mnuCadastrarAluguel.Image")));
+            this.mnuCadastrarAluguel.Image = global::ProjectBook.Properties.Resources.page_add;
             this.mnuCadastrarAluguel.Name = "mnuCadastrarAluguel";
             this.mnuCadastrarAluguel.Size = new System.Drawing.Size(146, 22);
             this.mnuCadastrarAluguel.Text = "Novo aluguel";
             // 
             // mnuEditarAluguel
             // 
-            this.mnuEditarAluguel.Image = ((System.Drawing.Image)(resources.GetObject("mnuEditarAluguel.Image")));
+            this.mnuEditarAluguel.Image = global::ProjectBook.Properties.Resources.page_edit;
             this.mnuEditarAluguel.Name = "mnuEditarAluguel";
             this.mnuEditarAluguel.Size = new System.Drawing.Size(146, 22);
             this.mnuEditarAluguel.Text = "Editar aluguel";
@@ -369,14 +368,14 @@ namespace ProjectBook.GUI
             // 
             // mnuTodosLivros
             // 
-            this.mnuTodosLivros.Image = ((System.Drawing.Image)(resources.GetObject("mnuTodosLivros.Image")));
+            this.mnuTodosLivros.Image = global::ProjectBook.Properties.Resources.zoom;
             this.mnuTodosLivros.Name = "mnuTodosLivros";
             this.mnuTodosLivros.Size = new System.Drawing.Size(196, 22);
             this.mnuTodosLivros.Text = "Ver todos os livros";
             // 
             // mnuPesquisaSeletiva
             // 
-            this.mnuPesquisaSeletiva.Image = ((System.Drawing.Image)(resources.GetObject("mnuPesquisaSeletiva.Image")));
+            this.mnuPesquisaSeletiva.Image = global::ProjectBook.Properties.Resources.bullet_go;
             this.mnuPesquisaSeletiva.Name = "mnuPesquisaSeletiva";
             this.mnuPesquisaSeletiva.Size = new System.Drawing.Size(196, 22);
             this.mnuPesquisaSeletiva.Text = "Pesquisar livro";
@@ -388,14 +387,14 @@ namespace ProjectBook.GUI
             // 
             // mnuTodosClientes
             // 
-            this.mnuTodosClientes.Image = ((System.Drawing.Image)(resources.GetObject("mnuTodosClientes.Image")));
+            this.mnuTodosClientes.Image = global::ProjectBook.Properties.Resources.zoom;
             this.mnuTodosClientes.Name = "mnuTodosClientes";
             this.mnuTodosClientes.Size = new System.Drawing.Size(196, 22);
             this.mnuTodosClientes.Text = "Ver todos os clientes";
             // 
             // mnuPesquisarCliente
             // 
-            this.mnuPesquisarCliente.Image = ((System.Drawing.Image)(resources.GetObject("mnuPesquisarCliente.Image")));
+            this.mnuPesquisarCliente.Image = global::ProjectBook.Properties.Resources.client_go;
             this.mnuPesquisarCliente.Name = "mnuPesquisarCliente";
             this.mnuPesquisarCliente.Size = new System.Drawing.Size(196, 22);
             this.mnuPesquisarCliente.Text = "Pesquisar cliente";
@@ -407,14 +406,14 @@ namespace ProjectBook.GUI
             // 
             // mnuLivrosAlugados
             // 
-            this.mnuLivrosAlugados.Image = ((System.Drawing.Image)(resources.GetObject("mnuLivrosAlugados.Image")));
+            this.mnuLivrosAlugados.Image = global::ProjectBook.Properties.Resources.page_go;
             this.mnuLivrosAlugados.Name = "mnuLivrosAlugados";
             this.mnuLivrosAlugados.Size = new System.Drawing.Size(196, 22);
             this.mnuLivrosAlugados.Text = "Ver livros alugados";
             // 
             // mnuPesquisarAluguel
             // 
-            this.mnuPesquisarAluguel.Image = ((System.Drawing.Image)(resources.GetObject("mnuPesquisarAluguel.Image")));
+            this.mnuPesquisarAluguel.Image = global::ProjectBook.Properties.Resources.zoom;
             this.mnuPesquisarAluguel.Name = "mnuPesquisarAluguel";
             this.mnuPesquisarAluguel.Size = new System.Drawing.Size(196, 22);
             this.mnuPesquisarAluguel.Text = "Pesquisar livro alugado";
@@ -431,21 +430,21 @@ namespace ProjectBook.GUI
             // 
             // mnuExcluirLivro
             // 
-            this.mnuExcluirLivro.Image = ((System.Drawing.Image)(resources.GetObject("mnuExcluirLivro.Image")));
+            this.mnuExcluirLivro.Image = global::ProjectBook.Properties.Resources.book_delete;
             this.mnuExcluirLivro.Name = "mnuExcluirLivro";
             this.mnuExcluirLivro.Size = new System.Drawing.Size(151, 22);
             this.mnuExcluirLivro.Text = "Excluir livro";
             // 
             // mnuExcluirCliente
             // 
-            this.mnuExcluirCliente.Image = ((System.Drawing.Image)(resources.GetObject("mnuExcluirCliente.Image")));
+            this.mnuExcluirCliente.Image = global::ProjectBook.Properties.Resources.client_delete;
             this.mnuExcluirCliente.Name = "mnuExcluirCliente";
             this.mnuExcluirCliente.Size = new System.Drawing.Size(151, 22);
             this.mnuExcluirCliente.Text = "Excluir cliente";
             // 
             // mnuExcluirAluguel
             // 
-            this.mnuExcluirAluguel.Image = ((System.Drawing.Image)(resources.GetObject("mnuExcluirAluguel.Image")));
+            this.mnuExcluirAluguel.Image = global::ProjectBook.Properties.Resources.page_delete;
             this.mnuExcluirAluguel.Name = "mnuExcluirAluguel";
             this.mnuExcluirAluguel.Size = new System.Drawing.Size(151, 22);
             this.mnuExcluirAluguel.Text = "Excluir aluguel";
@@ -465,12 +464,24 @@ namespace ProjectBook.GUI
             this.mnuSobreTop.Size = new System.Drawing.Size(49, 20);
             this.mnuSobreTop.Text = "Sobre";
             // 
+            // mnuSobre
+            // 
+            this.mnuSobre.Name = "mnuSobre";
+            this.mnuSobre.Size = new System.Drawing.Size(186, 22);
+            this.mnuSobre.Text = "Sobre";
+            // 
+            // mnuProcurarAtualizacoes
+            // 
+            this.mnuProcurarAtualizacoes.Name = "mnuProcurarAtualizacoes";
+            this.mnuProcurarAtualizacoes.Size = new System.Drawing.Size(186, 22);
+            this.mnuProcurarAtualizacoes.Text = "Procurar atualizações";
+            // 
             // btnSairUsuario
             // 
             this.btnSairUsuario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnSairUsuario.FlatAppearance.BorderSize = 0;
             this.btnSairUsuario.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnSairUsuario.Image = ((System.Drawing.Image)(resources.GetObject("btnSairUsuario.Image")));
+            this.btnSairUsuario.Image = global::ProjectBook.Properties.Resources.exit_account;
             this.btnSairUsuario.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSairUsuario.Location = new System.Drawing.Point(3, 372);
             this.btnSairUsuario.Name = "btnSairUsuario";
@@ -496,7 +507,7 @@ namespace ProjectBook.GUI
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.BackColor = System.Drawing.Color.White;
-            this.tableLayoutPanel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tableLayoutPanel1.BackgroundImage")));
+            this.tableLayoutPanel1.BackgroundImage = global::ProjectBook.Properties.Resources.InicioBackground;
             this.tableLayoutPanel1.ColumnCount = 4;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
@@ -633,7 +644,7 @@ namespace ProjectBook.GUI
             // mnuArCadastroLivro
             // 
             this.mnuArCadastroLivro.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.mnuArCadastroLivro.Image = ((System.Drawing.Image)(resources.GetObject("mnuArCadastroLivro.Image")));
+            this.mnuArCadastroLivro.Image = global::ProjectBook.Properties.Resources.book_add;
             this.mnuArCadastroLivro.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.mnuArCadastroLivro.Name = "mnuArCadastroLivro";
             this.mnuArCadastroLivro.Size = new System.Drawing.Size(23, 22);
@@ -642,7 +653,7 @@ namespace ProjectBook.GUI
             // mnuArEditarLivro
             // 
             this.mnuArEditarLivro.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.mnuArEditarLivro.Image = ((System.Drawing.Image)(resources.GetObject("mnuArEditarLivro.Image")));
+            this.mnuArEditarLivro.Image = global::ProjectBook.Properties.Resources.book_edit;
             this.mnuArEditarLivro.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.mnuArEditarLivro.Name = "mnuArEditarLivro";
             this.mnuArEditarLivro.Size = new System.Drawing.Size(23, 22);
@@ -656,7 +667,7 @@ namespace ProjectBook.GUI
             // mnuArCadastroCliente
             // 
             this.mnuArCadastroCliente.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.mnuArCadastroCliente.Image = ((System.Drawing.Image)(resources.GetObject("mnuArCadastroCliente.Image")));
+            this.mnuArCadastroCliente.Image = global::ProjectBook.Properties.Resources.client_add;
             this.mnuArCadastroCliente.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.mnuArCadastroCliente.Name = "mnuArCadastroCliente";
             this.mnuArCadastroCliente.Size = new System.Drawing.Size(23, 22);
@@ -665,7 +676,7 @@ namespace ProjectBook.GUI
             // mnuArEditarCliente
             // 
             this.mnuArEditarCliente.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.mnuArEditarCliente.Image = ((System.Drawing.Image)(resources.GetObject("mnuArEditarCliente.Image")));
+            this.mnuArEditarCliente.Image = global::ProjectBook.Properties.Resources.client_edit;
             this.mnuArEditarCliente.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.mnuArEditarCliente.Name = "mnuArEditarCliente";
             this.mnuArEditarCliente.Size = new System.Drawing.Size(23, 22);
@@ -679,7 +690,7 @@ namespace ProjectBook.GUI
             // mnuArCadastroAluguel
             // 
             this.mnuArCadastroAluguel.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.mnuArCadastroAluguel.Image = ((System.Drawing.Image)(resources.GetObject("mnuArCadastroAluguel.Image")));
+            this.mnuArCadastroAluguel.Image = global::ProjectBook.Properties.Resources.page_add;
             this.mnuArCadastroAluguel.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.mnuArCadastroAluguel.Name = "mnuArCadastroAluguel";
             this.mnuArCadastroAluguel.Size = new System.Drawing.Size(23, 22);
@@ -688,7 +699,7 @@ namespace ProjectBook.GUI
             // mnuArEditarAluguel
             // 
             this.mnuArEditarAluguel.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.mnuArEditarAluguel.Image = ((System.Drawing.Image)(resources.GetObject("mnuArEditarAluguel.Image")));
+            this.mnuArEditarAluguel.Image = global::ProjectBook.Properties.Resources.page_edit;
             this.mnuArEditarAluguel.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.mnuArEditarAluguel.Name = "mnuArEditarAluguel";
             this.mnuArEditarAluguel.Size = new System.Drawing.Size(23, 22);
@@ -702,7 +713,7 @@ namespace ProjectBook.GUI
             // mnuArUsuario
             // 
             this.mnuArUsuario.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.mnuArUsuario.Image = ((System.Drawing.Image)(resources.GetObject("mnuArUsuario.Image")));
+            this.mnuArUsuario.Image = global::ProjectBook.Properties.Resources.user_gray;
             this.mnuArUsuario.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.mnuArUsuario.Name = "mnuArUsuario";
             this.mnuArUsuario.Size = new System.Drawing.Size(23, 22);
@@ -716,23 +727,11 @@ namespace ProjectBook.GUI
             // mnuArBuscaRapida
             // 
             this.mnuArBuscaRapida.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.mnuArBuscaRapida.Image = ((System.Drawing.Image)(resources.GetObject("mnuArBuscaRapida.Image")));
+            this.mnuArBuscaRapida.Image = global::ProjectBook.Properties.Resources.bullet_go;
             this.mnuArBuscaRapida.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.mnuArBuscaRapida.Name = "mnuArBuscaRapida";
             this.mnuArBuscaRapida.Size = new System.Drawing.Size(23, 22);
             this.mnuArBuscaRapida.Text = "Busca rápida";
-            // 
-            // mnuSobre
-            // 
-            this.mnuSobre.Name = "mnuSobre";
-            this.mnuSobre.Size = new System.Drawing.Size(186, 22);
-            this.mnuSobre.Text = "Sobre";
-            // 
-            // mnuProcurarAtualizacoes
-            // 
-            this.mnuProcurarAtualizacoes.Name = "mnuProcurarAtualizacoes";
-            this.mnuProcurarAtualizacoes.Size = new System.Drawing.Size(186, 22);
-            this.mnuProcurarAtualizacoes.Text = "Procurar atualizações";
             // 
             // Inicio
             // 
@@ -743,7 +742,7 @@ namespace ProjectBook.GUI
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.tosSugestoes);
             this.Controls.Add(this.mnuInicio);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Icon = ProjectBook.Properties.Resources.MainIcon;
             this.KeyPreview = true;
             this.Name = "Inicio";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

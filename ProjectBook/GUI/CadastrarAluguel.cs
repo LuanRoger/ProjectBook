@@ -41,11 +41,7 @@ namespace ProjectBook.GUI
 
             if(Verificadores.VerificarStrings(tituloParaBusca))
             {
-<<<<<<< HEAD
-                MessageBox.Show(Strings.PreecherCampoBusca, Strings.MessageBoxError,
-=======
-                MessageBox.Show(Properties.Resources.preencherCampoBusca_MessageBox, Properties.Resources.error_MessageBox ,
->>>>>>> parent of e20e8c2 (v0.5.4-beta)
+                MessageBox.Show(Properties.Resources.preencherCampoBusca_MessageBox, Properties.Resources.MessageBoxError ,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -59,11 +55,7 @@ namespace ProjectBook.GUI
 
             if(Verificadores.VerificarStrings(clienteParaBuscar))
             {
-<<<<<<< HEAD
-                MessageBox.Show(Strings.PreecherCampoBusca, Strings.MessageBoxError,
-=======
-                MessageBox.Show(Properties.Resources.preencherCampoBusca_MessageBox, Properties.Resources.error_MessageBox,
->>>>>>> parent of e20e8c2 (v0.5.4-beta)
+                MessageBox.Show(Properties.Resources.preencherCampoBusca_MessageBox, Properties.Resources.MessageBoxError,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -83,11 +75,7 @@ namespace ProjectBook.GUI
             
             if (Verificadores.VerificarCamposAluguel(aluguel))
             {
-<<<<<<< HEAD
-                MessageBox.Show(Strings.PreecherCampoBusca, Strings.MessageBoxError,
-=======
-                MessageBox.Show(Properties.Resources.preencherCampoBusca_MessageBox, Properties.Resources.error_MessageBox,
->>>>>>> parent of e20e8c2 (v0.5.4-beta)
+                MessageBox.Show(Properties.Resources.preencherCampoBusca_MessageBox, Properties.Resources.MessageBoxError,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -108,11 +96,7 @@ namespace ProjectBook.GUI
             }
             catch
             {
-<<<<<<< HEAD
-                MessageBox.Show(Strings.LivroNExiste, Strings.MessageBoxError,
-=======
-                MessageBox.Show(Properties.Resources.livroNaoExiste_MessageBox, Properties.Resources.error_MessageBox,
->>>>>>> parent of e20e8c2 (v0.5.4-beta)
+                MessageBox.Show(Properties.Resources.LivroNExiste, Properties.Resources.MessageBoxError,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -129,11 +113,7 @@ namespace ProjectBook.GUI
             }
             catch
             {
-<<<<<<< HEAD
-                MessageBox.Show(Strings.ClienteNExiste, Strings.MessageBoxError,
-=======
-                MessageBox.Show(Properties.Resources.clienteNaoExiste_MessageBox, Properties.Resources.error_MessageBox,
->>>>>>> parent of e20e8c2 (v0.5.4-beta)
+                MessageBox.Show(Properties.Resources.clienteNaoExiste_MessageBox, Properties.Resources.MessageBoxError,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

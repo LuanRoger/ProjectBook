@@ -29,7 +29,6 @@ namespace ProjectBook.GUI
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CadastrarAluguel));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtBuscarLivroAluguel = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -110,7 +109,7 @@ namespace ProjectBook.GUI
             // 
             this.btnBuscarLivroAluguel.FlatAppearance.BorderSize = 0;
             this.btnBuscarLivroAluguel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBuscarLivroAluguel.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscarLivroAluguel.Image")));
+            this.btnBuscarLivroAluguel.Image = ProjectBook.Properties.Resources.zoom;
             this.btnBuscarLivroAluguel.Location = new System.Drawing.Point(374, 19);
             this.btnBuscarLivroAluguel.Name = "btnBuscarLivroAluguel";
             this.btnBuscarLivroAluguel.Size = new System.Drawing.Size(23, 23);
@@ -313,7 +312,7 @@ namespace ProjectBook.GUI
             // 
             this.btnBuscarCliente.FlatAppearance.BorderSize = 0;
             this.btnBuscarCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBuscarCliente.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscarCliente.Image")));
+            this.btnBuscarCliente.Image = ProjectBook.Properties.Resources.zoom;
             this.btnBuscarCliente.Location = new System.Drawing.Point(374, 23);
             this.btnBuscarCliente.Name = "btnBuscarCliente";
             this.btnBuscarCliente.Size = new System.Drawing.Size(23, 23);

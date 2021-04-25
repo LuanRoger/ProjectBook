@@ -29,7 +29,6 @@ namespace ProjectBook.GUI
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ExcluirAluguel));
             this.rabExcluirAluguelTitulo = new System.Windows.Forms.RadioButton();
             this.rabExcluirAluguelCliente = new System.Windows.Forms.RadioButton();
             this.txtBuscaAluguel = new System.Windows.Forms.TextBox();
@@ -74,7 +73,7 @@ namespace ProjectBook.GUI
             // 
             this.btnBuscarExcluirAluguel.FlatAppearance.BorderSize = 0;
             this.btnBuscarExcluirAluguel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBuscarExcluirAluguel.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscarExcluirAluguel.Image")));
+            this.btnBuscarExcluirAluguel.Image = ProjectBook.Properties.Resources.cancel;
             this.btnBuscarExcluirAluguel.Location = new System.Drawing.Point(233, 36);
             this.btnBuscarExcluirAluguel.Name = "btnBuscarExcluirAluguel";
             this.btnBuscarExcluirAluguel.Size = new System.Drawing.Size(26, 23);
