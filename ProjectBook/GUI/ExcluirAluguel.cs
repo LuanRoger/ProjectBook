@@ -8,7 +8,7 @@ namespace ProjectBook.GUI
 {
     public partial class ExcluirAluguel : Form
     {
-        AluguelDb aluguelDb = new AluguelDb();
+        AluguelDb aluguelDb = new();
         public ExcluirAluguel()
         {
             InitializeComponent();
@@ -17,7 +17,7 @@ namespace ProjectBook.GUI
         private void btnBuscarExcluirAluguel_Click(object sender, EventArgs e)
         {
             string termoBusca = txtBuscaAluguel.Text;
-            DataTable data = new DataTable();
+            DataTable data = new();
             
             if (Verificadores.VerificarStrings(termoBusca))
             {
@@ -57,14 +57,14 @@ namespace ProjectBook.GUI
 
         private void rabExcluirAluguelTitulo_CheckedChanged(object sender, EventArgs e)
         {
-            AutoCompleteStringCollection livrosSugestoes = new AutoCompleteStringCollection();
+            AutoCompleteStringCollection livrosSugestoes = new();
             foreach (DataRow livro in aluguelDb.VerTodosAluguel().Rows) livrosSugestoes.Add(livro[0].ToString());
             txtBuscaAluguel.AutoCompleteCustomSource = livrosSugestoes;
         }
 
         private void rabExcluirAluguelCliente_CheckedChanged(object sender, EventArgs e)
         {
-            AutoCompleteStringCollection livrosSugestoes = new AutoCompleteStringCollection();
+            AutoCompleteStringCollection livrosSugestoes = new();
             foreach (DataRow livro in aluguelDb.VerTodosAluguel().Rows) livrosSugestoes.Add(livro[2].ToString());
             txtBuscaAluguel.AutoCompleteCustomSource = livrosSugestoes;
         }

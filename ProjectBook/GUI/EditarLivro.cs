@@ -10,7 +10,7 @@ namespace ProjectBook.GUI
 {
     public partial class EditarLivro : Form
     {
-        private LivrosDb livrosDb = new LivrosDb();
+        private LivrosDb livrosDb = new();
         private DataTable infoLivro;
 
         public EditarLivro()
@@ -24,14 +24,14 @@ namespace ProjectBook.GUI
         private void rabEditarTitulo_CheckedChanged(object sender, EventArgs e)
         {
             // Sugerir de acordo com o titulo do livro
-            AutoCompleteStringCollection tituloSugestao = new AutoCompleteStringCollection();
+            AutoCompleteStringCollection tituloSugestao = new();
             foreach (DataRow livro in livrosDb.VerTodosLivros().Rows) tituloSugestao.Add($"{livro[1]} - {livro[2]}"); // Titulo - Autor
             txtEditarBuscar.AutoCompleteCustomSource = tituloSugestao;
         }
         private void rabEditarAutor_CheckedChanged(object sender, EventArgs e)
         {
             // Sugerir de acordo com o autor
-            AutoCompleteStringCollection autorSugestao = new AutoCompleteStringCollection();
+            AutoCompleteStringCollection autorSugestao = new();
             foreach (DataRow livro in livrosDb.VerTodosLivros().Rows) autorSugestao.Add($"{livro[2]} - {livro[1]}"); //Auto - Titulo
             txtEditarBuscar.AutoCompleteCustomSource = autorSugestao;
         }
@@ -153,7 +153,7 @@ namespace ProjectBook.GUI
         {
             txtEditarAutor.AutoCompleteCustomSource.Clear();
 
-            AutoCompleteStringCollection autorSugestoes = new AutoCompleteStringCollection();
+            AutoCompleteStringCollection autorSugestoes = new();
             foreach (DataRow autor in livrosDb.VerTodosLivros().Rows) autorSugestoes.Add(autor[2].ToString());
             txtEditarAutor.AutoCompleteCustomSource = autorSugestoes;
         }

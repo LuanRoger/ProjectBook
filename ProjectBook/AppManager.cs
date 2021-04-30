@@ -28,7 +28,7 @@ namespace ProjectBook
                 File.Exists(@$"{FONTS_FOLDER}\{FONTS_DOWNLOAD[2]}")) return;
             Directory.CreateDirectory(FONTS_FOLDER);
 
-            using WebClient webClient = new WebClient();
+            using WebClient webClient = new();
             foreach (string font in FONTS_DOWNLOAD)
             {
                 webClient.DownloadFile(URI_DOWNLADFONTS + font,

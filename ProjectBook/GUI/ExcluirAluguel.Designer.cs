@@ -73,7 +73,7 @@ namespace ProjectBook.GUI
             // 
             this.btnBuscarExcluirAluguel.FlatAppearance.BorderSize = 0;
             this.btnBuscarExcluirAluguel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBuscarExcluirAluguel.Image = ProjectBook.Properties.Resources.cancel;
+            this.btnBuscarExcluirAluguel.Image = ProjectBook.Properties.Resources.zoom;
             this.btnBuscarExcluirAluguel.Location = new System.Drawing.Point(233, 36);
             this.btnBuscarExcluirAluguel.Name = "btnBuscarExcluirAluguel";
             this.btnBuscarExcluirAluguel.Size = new System.Drawing.Size(26, 23);

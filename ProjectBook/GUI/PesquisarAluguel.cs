@@ -9,7 +9,7 @@ namespace ProjectBook.GUI
 {
     public partial class PesquisarAluguel : Form
     {
-        private AluguelDb aluguelDb = new AluguelDb();
+        private AluguelDb aluguelDb = new();
 
         public PesquisarAluguel()
         {
@@ -18,17 +18,17 @@ namespace ProjectBook.GUI
             #region MenuClick
             mnuVerLivroAlugado.Click += (sender, e) =>
             {
-                ListaPesquisa lista = new ListaPesquisa(aluguelDb.PegarLivrosAlugados());
+                ListaPesquisa lista = new(aluguelDb.PegarLivrosAlugados());
                 lista.Show();
             };
             mnuVerLivrosAtasados.Click += (sender, e) =>
             {
-                ListaPesquisa lista = new ListaPesquisa(aluguelDb.PegarLivroAtrassado());
+                ListaPesquisa lista = new(aluguelDb.PegarLivroAtrassado());
                 lista.Show();
             };
             mnuVerLivrosDevolvidos.Click += (sender, e) =>
             {
-                ListaPesquisa lista = new ListaPesquisa(aluguelDb.PegarLivroDevolvido());
+                ListaPesquisa lista = new(aluguelDb.PegarLivroDevolvido());
                 lista.Show();
             };
             #endregion
@@ -36,13 +36,13 @@ namespace ProjectBook.GUI
         #region CheckChange
         private void rabTituloLivro_CheckedChanged(object sender, EventArgs e)
         {
-            AutoCompleteStringCollection aluguelSugestao = new AutoCompleteStringCollection();
+            AutoCompleteStringCollection aluguelSugestao = new();
             foreach (DataRow livro in aluguelDb.VerTodosAluguel().Rows) aluguelSugestao.Add($"{livro[0]} - {livro[2]}");
             txtBuscarAluguel.AutoCompleteCustomSource = aluguelSugestao;
         }
         private void rabNomeCliente_CheckedChanged(object sender, EventArgs e)
         {
-            AutoCompleteStringCollection aluguelSugestao = new AutoCompleteStringCollection();
+            AutoCompleteStringCollection aluguelSugestao = new();
             foreach (DataRow cliente in aluguelDb.VerTodosAluguel().Rows) aluguelSugestao.Add($"{cliente[2]} - {cliente[0]}");
             txtBuscarAluguel.AutoCompleteCustomSource = aluguelSugestao;
         }
@@ -51,7 +51,7 @@ namespace ProjectBook.GUI
         private void btnBuscarClientePesquisaAluguel_Click(object sender, EventArgs e)
         {
             string[] termoBusca = txtBuscarAluguel.Text.Split("-");
-            DataTable data = new DataTable();
+            DataTable data = new();
             
             if (Verificadores.VerificarStrings(txtBuscarAluguel.Text))
             {

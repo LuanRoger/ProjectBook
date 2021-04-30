@@ -4,20 +4,22 @@ using System.Data.SqlClient;
 using System.Windows.Forms;
 using ProjectBook.GUI;
 using ProjectBook.Properties;
+using System.Data;
 
 namespace ProjectBook.DB.SqlServerExpress
 {
-    internal abstract class Db
+    abstract class Db
     {
         protected static readonly SqlConnection connection = 
-            new SqlConnection(ConfigurationManager.ConnectionStrings["SqlConnectionString"].ConnectionString);
+            new(ConfigurationManager.ConnectionStrings["SqlConnectionString"].ConnectionString);
         /// <summary>
         /// Verifica a conexão entre o programa e o banco de dados
         /// </summary>
         /// <returns>Retorna <c>Open</c> ou <c>Close</c> string</returns>
-        public string DbStatus() => connection.State.ToString();
+        public ConnectionState DbStatus() => connection.State;
+
         #region Modificar conexão
-        public void AbrirConexaoDb()
+        protected void AbrirConexaoDb()
         {
             try { connection.Open(); }
             catch(Exception e)
@@ -36,7 +38,7 @@ namespace ProjectBook.DB.SqlServerExpress
                         Configuracoes.config.Save();
                         ConfigurationManager.RefreshSection("appSettings");
 
-                        Configuracoes configuracoes = new Configuracoes();
+                        Configuracoes configuracoes = new();
                         configuracoes.Closing += delegate
                         {
                             //Evitar softlock
@@ -52,7 +54,18 @@ namespace ProjectBook.DB.SqlServerExpress
             }
 
         }
-        public void FechaConecxaoDb() => connection.Close();
+        protected void FechaConecxaoDb() => connection.Close();
+
+        public bool VerificarConexaoDb()
+        {
+            AbrirConexaoDb();
+            if (DbStatus() == ConnectionState.Open)
+            {
+                FechaConecxaoDb();
+                return true;
+            }
+            else return false;
+        }
         #endregion
     }
 }

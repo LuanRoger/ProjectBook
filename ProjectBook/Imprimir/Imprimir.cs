@@ -7,7 +7,7 @@ namespace ProjectBook
 {
     class Imprimir
     {
-        private DGVPrinter printer = new DGVPrinter();
+        private DGVPrinter printer = new();
 
         public void ImprimirModelo(DataGridView dataGrid)
         {

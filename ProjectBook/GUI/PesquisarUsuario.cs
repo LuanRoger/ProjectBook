@@ -11,7 +11,7 @@ namespace ProjectBook.GUI
 {
     public partial class PesquisarUsuario : Form
     {
-        private UsuarioDb usuarioDb = new UsuarioDb();
+        private UsuarioDb usuarioDb = new();
         public PesquisarUsuario()
         {
             InitializeComponent();
@@ -19,12 +19,12 @@ namespace ProjectBook.GUI
             #region MenuClick
             mnuVerAdm.Click += (sender, e) =>
             {
-                ListaPesquisa listaPesquisa = new ListaPesquisa(usuarioDb.VerAdm());
+                ListaPesquisa listaPesquisa = new(usuarioDb.VerAdm());
                 listaPesquisa.Show();
             };
             mnuVerUsuarios.Click += (sender, e) =>
             {
-                ListaPesquisa listaPesquisa = new ListaPesquisa(usuarioDb.VerUsu());
+                ListaPesquisa listaPesquisa = new(usuarioDb.VerUsu());
                 listaPesquisa.Show();
             };
             #endregion
@@ -40,11 +40,11 @@ namespace ProjectBook.GUI
                 return;
             }
 
-            DataTable infoUsuario = new DataTable();
+            DataTable infoUsuario = new();
             if (rabCodigoUsuario.Checked) infoUsuario = usuarioDb.BuscarUsuarioId(txtNomeUsuarioBusca.Text);
             else if (rabUsuarioNome.Checked) infoUsuario = usuarioDb.PesquisarUsuarioNome(txtNomeUsuarioBusca.Text);
 
-            ListaPesquisa lista = new ListaPesquisa(infoUsuario);
+            ListaPesquisa lista = new(infoUsuario);
             lista.Show();
         }
     }

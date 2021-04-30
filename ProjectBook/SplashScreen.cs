@@ -43,10 +43,7 @@ namespace ProjectBook
                                                 @"\OneDrive\ProjectBook");
             }
 
-            //Verificar conexão com o DB
-            livrosDb.AbrirConexaoDb();
-            if (livrosDb.DbStatus() != "Open") return;
-            livrosDb.FechaConecxaoDb();
+            if (!livrosDb.VerificarConexaoDb()) return;
 
             //Verificar se existe usuário logado
             lblStatusCarregamento.Text = Resources.realizando_verificações_de_segurança_splashscreen;

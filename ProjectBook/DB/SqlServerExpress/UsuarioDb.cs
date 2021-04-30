@@ -10,7 +10,7 @@ namespace ProjectBook.DB.SqlServerExpress
     {
         public void CadastrarUsuario(Usuario usuario)
         {
-            SqlCommand command = new SqlCommand {Connection = connection};
+            SqlCommand command = new() { Connection = connection};
             #region Parâmetros
             command.Parameters.AddWithValue("@usuario", usuario.usuario);
             command.Parameters.AddWithValue("@senha", usuario.senha);
@@ -35,7 +35,7 @@ namespace ProjectBook.DB.SqlServerExpress
         }
         public void DeletarUsuarioId(string id)
         {
-            SqlCommand command = new SqlCommand { Connection = connection };
+            SqlCommand command = new() { Connection = connection };
             try
             {
                 command.CommandText = $"DELETE FROM Usuarios WHERE ID = {id}";
@@ -56,7 +56,7 @@ namespace ProjectBook.DB.SqlServerExpress
         }
         public void AtualizarUsuarioId(string id, Usuario usuario)
         {
-            SqlCommand command = new SqlCommand {Connection = connection};
+            SqlCommand command = new() { Connection = connection};
             #region Parâmetros
             command.Parameters.AddWithValue("@usuario", usuario.usuario);
             command.Parameters.AddWithValue("@senha", usuario.senha);
@@ -79,11 +79,11 @@ namespace ProjectBook.DB.SqlServerExpress
         }
         public DataTable LoginUsuario(string usuario, string senha)
         {
-            DataTable dataTable = new DataTable();
+            DataTable dataTable = new();
             try
             {
                 AbrirConexaoDb();
-                SqlDataAdapter adapter = new SqlDataAdapter($"SELECT * FROM Usuarios WHERE Usuario = \'{usuario}\' AND Senha = \'{senha}\'", connection);
+                SqlDataAdapter adapter = new($"SELECT * FROM Usuarios WHERE Usuario = \'{usuario}\' AND Senha = \'{senha}\'", connection);
                 FechaConecxaoDb();
                 adapter.Fill(dataTable);
             }
@@ -97,11 +97,11 @@ namespace ProjectBook.DB.SqlServerExpress
         }
         public DataTable LoginCodigo(string id, string senha)
         {
-            DataTable dataTable = new DataTable();
+            DataTable dataTable = new();
             try
             {
                 AbrirConexaoDb();
-                SqlDataAdapter adapter = new SqlDataAdapter($"SELECT * FROM Usuarios WHERE ID = \'{id}\' AND Senha = \'{senha}\'", connection);
+                SqlDataAdapter adapter = new($"SELECT * FROM Usuarios WHERE ID = \'{id}\' AND Senha = \'{senha}\'", connection);
                 FechaConecxaoDb();
                 adapter.Fill(dataTable);
             }
@@ -116,12 +116,12 @@ namespace ProjectBook.DB.SqlServerExpress
         #region Buscar
         public DataTable BuscarUsuarioId(string id)
         {
-            DataTable table = new DataTable();
+            DataTable table = new();
 
             try
             {
                 AbrirConexaoDb();
-                SqlDataAdapter adapter = new SqlDataAdapter($"SELECT * FROM Usuarios WHERE ID = {id}", connection);
+                SqlDataAdapter adapter = new($"SELECT * FROM Usuarios WHERE ID = {id}", connection);
                 FechaConecxaoDb();
                 adapter.Fill(table);
             }
@@ -131,11 +131,11 @@ namespace ProjectBook.DB.SqlServerExpress
         }
         public DataTable BuscarUsuarioNome(string nomeUsuario)
         {
-            DataTable table = new DataTable();
+            DataTable table = new();
             try
             {
                 AbrirConexaoDb();
-                SqlDataAdapter adapter = new SqlDataAdapter($"SELECT * FROM Usuarios WHERE Usuario = \'{nomeUsuario}\'", connection);
+                SqlDataAdapter adapter = new($"SELECT * FROM Usuarios WHERE Usuario = \'{nomeUsuario}\'", connection);
                 FechaConecxaoDb();
                 adapter.Fill(table);
             }
@@ -145,11 +145,11 @@ namespace ProjectBook.DB.SqlServerExpress
         }
         public DataTable PesquisarUsuarioNome(string nomeUsuario)
         {
-            DataTable table = new DataTable();
+            DataTable table = new();
             try
             {
                 AbrirConexaoDb();
-                SqlDataAdapter adapter = new SqlDataAdapter($"SELECT * FROM Usuarios WHERE Usuario LIKE \'%{nomeUsuario}%\'", connection);
+                SqlDataAdapter adapter = new($"SELECT * FROM Usuarios WHERE Usuario LIKE \'%{nomeUsuario}%\'", connection);
                 FechaConecxaoDb();
                 adapter.Fill(table);
             }
@@ -159,11 +159,11 @@ namespace ProjectBook.DB.SqlServerExpress
         }
         public DataTable VerAdm()
         {
-            DataTable table = new DataTable();
+            DataTable table = new();
             try
             {
                 AbrirConexaoDb();
-                SqlDataAdapter adapter = new SqlDataAdapter($"SELECT * FROM Usuarios WHERE Tipo = \'{Tipos.TipoUsuário.ADM}\'", connection);
+                SqlDataAdapter adapter = new($"SELECT * FROM Usuarios WHERE Tipo = \'{Tipos.TipoUsuário.ADM}\'", connection);
                 FechaConecxaoDb();
                 adapter.Fill(table);
             }
@@ -173,11 +173,11 @@ namespace ProjectBook.DB.SqlServerExpress
         }
         public DataTable VerUsu()
         {
-            DataTable table = new DataTable();
+            DataTable table = new();
             try
             {
                 AbrirConexaoDb();
-                SqlDataAdapter adapter = new SqlDataAdapter($"SELECT * FROM Usuarios WHERE Tipo = \'{Tipos.TipoUsuário.USU}\'", connection);
+                SqlDataAdapter adapter = new($"SELECT * FROM Usuarios WHERE Tipo = \'{Tipos.TipoUsuário.USU}\'", connection);
                 FechaConecxaoDb();
                 adapter.Fill(table);
             }

@@ -76,7 +76,7 @@ namespace DGVPrinterHelper //AllocationRequest
         public void Log(Categories category, String msg)
         {
             // get call stack
-            StackTrace stackTrace = new StackTrace();
+            StackTrace stackTrace = new();
 
             // get calling method name
             String caller = stackTrace.GetFrame(useFrame).GetMethod().Name;
@@ -145,7 +145,7 @@ namespace DGVPrinterHelper //AllocationRequest
         /// <param name="name"></param>
         public static void Write(String from, LogManager.Categories category, String msg, String path, String name)
         {
-            StringBuilder line = new StringBuilder();
+            StringBuilder line = new();
             line.Append(DateTime.Now.ToShortDateString().ToString());
             line.Append("-");
             line.Append(DateTime.Now.ToLongTimeString().ToString());
@@ -155,7 +155,7 @@ namespace DGVPrinterHelper //AllocationRequest
             line.Append(from.PadRight(13, ' '));
             line.Append(",");
             line.Append(msg);
-            StreamWriter w = new StreamWriter(path + "\\" + LogFileName(name), true);
+            StreamWriter w = new(path + "\\" + LogFileName(name), true);
             w.WriteLine(line.ToString());
             w.Flush();
             w.Close();
@@ -497,7 +497,7 @@ namespace DGVPrinterHelper //AllocationRequest
         /// <summary>
         /// expose settings for the PrintDialog displayed to the user
         /// </summary>
-        private PrintDialogSettingsClass printDialogSettings = new PrintDialogSettingsClass();
+        private PrintDialogSettingsClass printDialogSettings = new();
         public PrintDialogSettingsClass PrintDialogSettings
         {
             get { return printDialogSettings; }
@@ -1288,7 +1288,7 @@ namespace DGVPrinterHelper //AllocationRequest
         /// Allow override of the header cell format object
         /// </summary>
         private Dictionary<string, DataGridViewCellStyle> columnheaderstyles =
-            new Dictionary<string, DataGridViewCellStyle>();
+            new();
         public Dictionary<string, DataGridViewCellStyle> ColumnHeaderStyles
         {
             get { return columnheaderstyles; }
@@ -1393,8 +1393,8 @@ namespace DGVPrinterHelper //AllocationRequest
         /// <summary>
         /// allow the user to override the column width calcs with their own defaults
         /// </summary>
-        private List<float> colwidthsoverride = new List<float>();
-        private Dictionary<string, float> publicwidthoverrides = new Dictionary<string, float>();
+        private List<float> colwidthsoverride = new();
+        private Dictionary<string, float> publicwidthoverrides = new();
         public Dictionary<string, float> ColumnWidths
         {
             get { return publicwidthoverrides; }
@@ -1404,7 +1404,7 @@ namespace DGVPrinterHelper //AllocationRequest
         /// Allow per column style overrides
         /// </summary>
         private Dictionary<string, DataGridViewCellStyle> colstyles =
-            new Dictionary<string, DataGridViewCellStyle>();
+            new();
         public Dictionary<string, DataGridViewCellStyle> ColumnStyles
         {
             get { return colstyles; }
@@ -1414,7 +1414,7 @@ namespace DGVPrinterHelper //AllocationRequest
         /// Allow per column style overrides
         /// </summary>
         private Dictionary<string, DataGridViewCellStyle> altrowcolstyles =
-            new Dictionary<string, DataGridViewCellStyle>();
+            new();
         public Dictionary<string, DataGridViewCellStyle> AlternatingRowColumnStyles
         {
             get { return altrowcolstyles; }
@@ -1424,8 +1424,8 @@ namespace DGVPrinterHelper //AllocationRequest
         /// Allow the user to set columns that appear on every pageset. Only used when 
         /// the printout is wider than one page.
         /// </summary>
-        private List<int> fixedcolumns = new List<int>();
-        private List<string> fixedcolumnnames = new List<string>();
+        private List<int> fixedcolumns = new();
+        private List<string> fixedcolumnnames = new();
         public List<string> FixedColumns
         {
             get { return fixedcolumnnames; }
@@ -1434,7 +1434,7 @@ namespace DGVPrinterHelper //AllocationRequest
         /// <summary>
         /// List of columns to not display in the grid view printout.
         /// </summary>
-        private List<String> hidecolumns = new List<string>();
+        private List<String> hidecolumns = new();
         public List<String> HideColumns
         {
             get { return hidecolumns; }
@@ -1760,7 +1760,7 @@ namespace DGVPrinterHelper //AllocationRequest
         {
             if (EnableLogging) Logger.LogInfoMsg("DisplayPrintDialog process started");
             // create new print dialog and set options
-            PrintDialog pd = new PrintDialog();
+            PrintDialog pd = new();
             pd.UseEXDialog = printDialogSettings.UseEXDialog;
             pd.AllowSelection = printDialogSettings.AllowSelection;
             pd.AllowSomePages = printDialogSettings.AllowSomePages;
@@ -2352,7 +2352,7 @@ namespace DGVPrinterHelper //AllocationRequest
             float basewidth, float overridewidth, StringFormat format)
         {
             // Start with the grid view cell size
-            SizeF size = new SizeF(cell.Size);
+            SizeF size = new(cell.Size);
 
             // If we need to do any calculated cell sizes, we need to measure the cell contents
             if ((RowHeightSetting.DataHeight == RowHeight) ||
@@ -2384,7 +2384,7 @@ namespace DGVPrinterHelper //AllocationRequest
                     {
                         // if it's not an "image" type (i.e. loaded from a database to a bound column)
                         // convert the underlying byte array to an image
-                        ImageConverter ic = new ImageConverter();
+                        ImageConverter ic = new();
                         img = (Image)ic.ConvertFrom((byte[])cell.Value);
                     }
                     else
@@ -3378,7 +3378,7 @@ namespace DGVPrinterHelper //AllocationRequest
             SizeF printsize = g.MeasureString(text, font, pageset.printWidth, format);
 
             // build area to print within
-            RectangleF printarea = new RectangleF((float)pageset.margins.Left, pos, (float)pageset.printWidth,
+            RectangleF printarea = new((float)pageset.margins.Left, pos, (float)pageset.printWidth,
                printsize.Height);
 
             // draw a background, if a Brush has been provided
@@ -3426,7 +3426,7 @@ namespace DGVPrinterHelper //AllocationRequest
             float xcoord = pageset.margins.Left + rowheaderwidth;
 
             // set the pen for drawing the grid lines
-            Pen lines = new Pen(dgv.GridColor, 1);
+            Pen lines = new(dgv.GridColor, 1);
 
             //-----------------------------------------------------------------
             // Print the column headers
@@ -3449,7 +3449,7 @@ namespace DGVPrinterHelper //AllocationRequest
 
                 // set print area for this individual cell, account for cells larger
                 // than the print area!
-                RectangleF cellprintarea = new RectangleF(xcoord, pos, cellwidth, colheaderheight);
+                RectangleF cellprintarea = new(xcoord, pos, cellwidth, colheaderheight);
 
                 DrawCell(g, cellprintarea, style, col.HeaderCell, 0, columnheadercellformat, lines);
 
@@ -3478,7 +3478,7 @@ namespace DGVPrinterHelper //AllocationRequest
             float pos = finalpos;
 
             // set the pen for drawing the grid lines
-            Pen lines = new Pen(dgv.GridColor, 1);
+            Pen lines = new(dgv.GridColor, 1);
 
             // calc row width, account for columns wider than the print area!
             float rowwidth = (pageset.coltotalwidth > pageset.printWidth ? pageset.printWidth : pageset.coltotalwidth);
@@ -3496,7 +3496,7 @@ namespace DGVPrinterHelper //AllocationRequest
             DataGridViewCellStyle headerstyle = row.HeaderCell.InheritedStyle.Clone();
 
             // define print rectangle
-            RectangleF printarea = new RectangleF(xcoord, pos, rowwidth,
+            RectangleF printarea = new(xcoord, pos, rowwidth,
                 rowheight);
 
             // fill in the row background as the default color
@@ -3508,7 +3508,7 @@ namespace DGVPrinterHelper //AllocationRequest
             if ((bool)PrintRowHeaders)
             {
                 // set print area for this individual cell
-                RectangleF headercellprintarea = new RectangleF(xcoord, pos,
+                RectangleF headercellprintarea = new(xcoord, pos,
                     rowheaderwidth, rowheight);
 
                 DrawCell(g, headercellprintarea, headerstyle, row.HeaderCell, startlocation,
@@ -3546,7 +3546,7 @@ namespace DGVPrinterHelper //AllocationRequest
                     cellfont = colstyle.Font;
 
                     // set overall print area for this individual cell 
-                    RectangleF cellprintarea = new RectangleF(xcoord, pos, cellwidth,
+                    RectangleF cellprintarea = new(xcoord, pos, cellwidth,
                         rowheight);
 
                     DrawCell(g, cellprintarea, colstyle, cell, startlocation, finalformat, lines);
@@ -3574,7 +3574,7 @@ namespace DGVPrinterHelper //AllocationRequest
         Boolean DrawOwnerDrawCell(Graphics g, int rowindex, int columnindex, RectangleF rectf,
             DataGridViewCellStyle style)
         {
-            DGVCellDrawingEventArgs args = new DGVCellDrawingEventArgs(g, rectf, style,
+            DGVCellDrawingEventArgs args = new(g, rectf, style,
                 rowindex, columnindex);
             OnCellOwnerDraw(args);
             return args.Handled;
@@ -3604,7 +3604,7 @@ namespace DGVPrinterHelper //AllocationRequest
                 g.FillRectangle(new SolidBrush(style.BackColor), cellprintarea);
 
                 // reset print area for this individual cell, adjusting 'inward' for cell padding
-                RectangleF paddedcellprintarea = new RectangleF(cellprintarea.X + style.Padding.Left,
+                RectangleF paddedcellprintarea = new(cellprintarea.X + style.Padding.Left,
                     cellprintarea.Y + style.Padding.Top,
                     cellprintarea.Width - style.Padding.Right - style.Padding.Left,
                     cellprintarea.Height - style.Padding.Bottom - style.Padding.Top);
@@ -3614,7 +3614,7 @@ namespace DGVPrinterHelper //AllocationRequest
 
                 // define the *actual* print area based on the given startlocation. Offset the start by 
                 // minus the start location, increase the print area height by the startlocation
-                RectangleF actualprint = new RectangleF(paddedcellprintarea.X, paddedcellprintarea.Y - startlocation,
+                RectangleF actualprint = new(paddedcellprintarea.X, paddedcellprintarea.Y - startlocation,
                     paddedcellprintarea.Width, paddedcellprintarea.Height + startlocation);
 
                 // draw content based on cell style, but only for "body" cells
@@ -3761,7 +3761,7 @@ namespace DGVPrinterHelper //AllocationRequest
             {
                 // if it's not an "image" type (i.e. loaded from a database to a bound column)
                 // convert the underlying byte array to an image
-                ImageConverter ic = new ImageConverter();
+                ImageConverter ic = new();
                 img = (Image)ic.ConvertFrom((byte[])imagecell.Value);
             }
             else
@@ -3769,7 +3769,7 @@ namespace DGVPrinterHelper //AllocationRequest
                     imagecell.ValueType.Name, imagecell.ColumnIndex));
 
             // clipping bounds. This is the portion of the image to fit into the drawing rectangle
-            Rectangle src = new Rectangle();
+            Rectangle src = new();
 
             // calculate deltas
             int dx = 0;

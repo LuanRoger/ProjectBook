@@ -10,7 +10,7 @@ namespace ProjectBook.GUI
 {
     public partial class EditarCliente : Form
     {
-        private ClienteDb clienteDb = new ClienteDb();
+        private ClienteDb clienteDb = new();
         private DataTable infoCliente;
 
         public EditarCliente()
@@ -27,7 +27,7 @@ namespace ProjectBook.GUI
             //Preparar sugestões
             txtBuscarClienteEditar.AutoCompleteSource = AutoCompleteSource.CustomSource;
 
-            AutoCompleteStringCollection autoCompleteStringCollection = new AutoCompleteStringCollection();
+            AutoCompleteStringCollection autoCompleteStringCollection = new();
             foreach (DataRow cliente in clienteDb.VerTodosClientes().Rows) autoCompleteStringCollection.Add(cliente[1].ToString());
             txtBuscarClienteEditar.AutoCompleteCustomSource = autoCompleteStringCollection;
         }

@@ -8,7 +8,7 @@ namespace ProjectBook.GUI
 {
     public partial class Excluir : Form
     {
-        LivrosDb livrosDb = new LivrosDb();
+        LivrosDb livrosDb = new();
         public Excluir()
         {
             InitializeComponent();
@@ -17,7 +17,7 @@ namespace ProjectBook.GUI
         private void btnBuscarExcluirLivro_Click(object sender, EventArgs e)
         {
             string termoBusca = txtExcluirLivro.Text;
-            DataTable data = new DataTable();
+            DataTable data = new();
             
             if (Verificadores.VerificarStrings(termoBusca))
             {

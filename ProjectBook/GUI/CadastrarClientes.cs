@@ -49,7 +49,7 @@ namespace ProjectBook.GUI
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            ClienteDb clienteDb = new ClienteDb();
+            ClienteDb clienteDb = new();
             clienteDb.CadastrarCliente(cliente);
 
             LimparCampos();

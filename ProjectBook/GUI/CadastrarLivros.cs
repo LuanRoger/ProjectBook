@@ -9,7 +9,7 @@ namespace ProjectBook.GUI
 {
     public partial class CadastroLivro : Form
     {
-        LivrosDb livrosDb = new LivrosDb();
+        LivrosDb livrosDb = new();
 
         public CadastroLivro()
         {
@@ -97,7 +97,7 @@ namespace ProjectBook.GUI
         {
             txtAutorLivro.AutoCompleteCustomSource.Clear();
 
-            AutoCompleteStringCollection autorSugestoes = new AutoCompleteStringCollection();
+            AutoCompleteStringCollection autorSugestoes = new();
             foreach (DataRow autor in livrosDb.VerTodosLivros().Rows) autorSugestoes.Add(autor[2].ToString());
             txtAutorLivro.AutoCompleteCustomSource = autorSugestoes;
         }
@@ -105,7 +105,7 @@ namespace ProjectBook.GUI
         {
             txtEditoraLivro.AutoCompleteCustomSource.Clear();
 
-            AutoCompleteStringCollection editoraAutoCompleteString = new AutoCompleteStringCollection();
+            AutoCompleteStringCollection editoraAutoCompleteString = new();
             foreach (DataRow editora in livrosDb.VerTodosLivros().Rows) editoraAutoCompleteString.Add(editora[3].ToString());
             txtEditoraLivro.AutoCompleteCustomSource = editoraAutoCompleteString;
         }

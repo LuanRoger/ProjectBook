@@ -47,7 +47,7 @@ namespace ProjectBook.GUI
             // 
             this.btnExcluirCliente.FlatAppearance.BorderSize = 0;
             this.btnExcluirCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExcluirCliente.Image = ProjectBook.Properties.Resources.cancel;
+            this.btnExcluirCliente.Image = ProjectBook.Properties.Resources.zoom;
             this.btnExcluirCliente.Location = new System.Drawing.Point(219, 37);
             this.btnExcluirCliente.Name = "btnExcluirCliente";
             this.btnExcluirCliente.Size = new System.Drawing.Size(27, 23);

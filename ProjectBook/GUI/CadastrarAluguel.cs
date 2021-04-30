@@ -8,9 +8,9 @@ namespace ProjectBook.GUI
 {
     public partial class CadastrarAluguel : Form
     {
-        private AluguelDb aluguelDb = new AluguelDb();
-        private LivrosDb livrosDb = new LivrosDb();
-        private ClienteDb clienteDb = new ClienteDb();
+        private AluguelDb aluguelDb = new();
+        private LivrosDb livrosDb = new();
+        private ClienteDb clienteDb = new();
 
         private DataTable livro;
         private DataTable cliente;
@@ -65,7 +65,7 @@ namespace ProjectBook.GUI
 
         private void btnSalvarAluguel_Click(object sender, EventArgs e)
         {
-            Aluguel aluguel = new Aluguel(
+            Aluguel aluguel = new(
                 txtTituloLivroAluguel.Text,
                 txtAutorLivroAluguel.Text,
                 txtNomeClienteAluguel.Text,

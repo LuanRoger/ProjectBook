@@ -10,7 +10,7 @@ namespace ProjectBook.DB.SqlServerExpress
     {
         public void CadastrarAluguel(Aluguel aluguel)
         {
-            SqlCommand command = new SqlCommand {Connection = connection};
+            SqlCommand command = new() { Connection = connection};
             #region Parâmetros
             command.Parameters.AddWithValue("@titulo", aluguel.titulo);
             command.Parameters.AddWithValue("@autor", aluguel.autor);
@@ -37,11 +37,11 @@ namespace ProjectBook.DB.SqlServerExpress
         }
         public DataTable VerTodosAluguel()
         {
-            DataTable table = new DataTable();
+            DataTable table = new();
             try
             {
                 AbrirConexaoDb();
-                SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM Aluguel", connection);
+                SqlDataAdapter adapter = new("SELECT * FROM Aluguel", connection);
                 FechaConecxaoDb();
 
                 adapter.Fill(table);
@@ -55,7 +55,7 @@ namespace ProjectBook.DB.SqlServerExpress
         #region Deletar
         public void DeletarAluguelTitulo(string titulo)
         {
-            SqlCommand command = new SqlCommand {Connection = connection};
+            SqlCommand command = new() { Connection = connection};
 
             try
             {
@@ -73,7 +73,7 @@ namespace ProjectBook.DB.SqlServerExpress
         }
         public void DeletarAluguelCliente(string nomeCliente)
         {
-            SqlCommand command = new SqlCommand {Connection = connection}; 
+            SqlCommand command = new() { Connection = connection}; 
 
             try
             {
@@ -93,11 +93,11 @@ namespace ProjectBook.DB.SqlServerExpress
         #region Buscar
         public DataTable BuscarAluguelLivro(string titulo)
         {
-            DataTable table = new DataTable();
+            DataTable table = new();
             try
             {
                 AbrirConexaoDb();
-                SqlDataAdapter adapter = new SqlDataAdapter($"SELECT * FROM Aluguel WHERE Titulo LIKE \'%{titulo}%\'", connection);
+                SqlDataAdapter adapter = new($"SELECT * FROM Aluguel WHERE Titulo LIKE \'%{titulo}%\'", connection);
                 FechaConecxaoDb();
 
                 adapter.Fill(table);
@@ -108,11 +108,11 @@ namespace ProjectBook.DB.SqlServerExpress
         }
         public DataTable BuscarAluguelCliente(string nomeCliente)
         {
-            DataTable table = new DataTable();
+            DataTable table = new();
             try
             {
                 AbrirConexaoDb();
-                SqlDataAdapter adapter = new SqlDataAdapter($"SELECT * FROM Aluguel WHERE [Alugado por] LIKE \'%{nomeCliente}%\'", connection);
+                SqlDataAdapter adapter = new($"SELECT * FROM Aluguel WHERE [Alugado por] LIKE \'%{nomeCliente}%\'", connection);
                 FechaConecxaoDb();
 
                 adapter.Fill(table);
@@ -123,11 +123,11 @@ namespace ProjectBook.DB.SqlServerExpress
         }
         public DataTable PegarLivrosAlugados()
         {
-            DataTable table = new DataTable();
+            DataTable table = new();
             try
             {
                 AbrirConexaoDb();
-                SqlDataAdapter adapter = new SqlDataAdapter($"SELECT * FROM Aluguel WHERE Status = \'{Tipos.StatusAluguel.Alugado}\'", connection);
+                SqlDataAdapter adapter = new($"SELECT * FROM Aluguel WHERE Status = \'{Tipos.StatusAluguel.Alugado}\'", connection);
                 FechaConecxaoDb();
 
                 adapter.Fill(table);
@@ -139,11 +139,11 @@ namespace ProjectBook.DB.SqlServerExpress
 
         public DataTable PegarLivroDevolvido()
         {
-            DataTable table = new DataTable();
+            DataTable table = new();
             try
             {
                 AbrirConexaoDb();
-                SqlDataAdapter adapter = new SqlDataAdapter($"SELECT * FROM Aluguel WHERE Status = \'{Tipos.StatusAluguel.Devolvido}\'", connection);
+                SqlDataAdapter adapter = new($"SELECT * FROM Aluguel WHERE Status = \'{Tipos.StatusAluguel.Devolvido}\'", connection);
                 FechaConecxaoDb();
 
                 adapter.Fill(table);
@@ -155,11 +155,11 @@ namespace ProjectBook.DB.SqlServerExpress
 
         public DataTable PegarLivroAtrassado()
         {
-            DataTable table = new DataTable();
+            DataTable table = new();
             try
             {
                 AbrirConexaoDb();
-                SqlDataAdapter adapter = new SqlDataAdapter($"SELECT * FROM Aluguel WHERE Status = \'{Tipos.StatusAluguel.Atrasado}\'", connection);
+                SqlDataAdapter adapter = new($"SELECT * FROM Aluguel WHERE Status = \'{Tipos.StatusAluguel.Atrasado}\'", connection);
                 FechaConecxaoDb();
 
                 adapter.Fill(table);
@@ -173,7 +173,7 @@ namespace ProjectBook.DB.SqlServerExpress
         #region Atualizar
         public void AtualizarAluguelNomeCliente(Aluguel aluguel, string nomeCliente, string nomeLivro)
         {
-            SqlCommand command = new SqlCommand {Connection = connection};
+            SqlCommand command = new() { Connection = connection};
             #region Parâmetros
             command.Parameters.AddWithValue("@titulo", aluguel.titulo);
             command.Parameters.AddWithValue("@autor", aluguel.autor);
@@ -200,7 +200,7 @@ namespace ProjectBook.DB.SqlServerExpress
         }
         public void AtualizarStatusAtrasado(string alugadoPor)
         {
-            SqlCommand command = new SqlCommand {Connection = connection};
+            SqlCommand command = new() { Connection = connection};
             command.CommandText = $"UPDATE Aluguel SET Status = \'{Tipos.StatusAluguel.Atrasado}\' WHERE [Alugado por] = \'{alugadoPor}\'";
 
             AbrirConexaoDb();

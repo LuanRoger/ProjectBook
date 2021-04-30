@@ -10,7 +10,7 @@ namespace ProjectBook.DB.SqlServerExpress
     {
         public void CadastrarCliente(Cliente cliente)
         {
-            SqlCommand command = new SqlCommand {Connection = connection};
+            SqlCommand command = new() { Connection = connection};
             #region Parâmetros
             command.Parameters.AddWithValue("@nomeCompleto", cliente.nomeCompleto);
             command.Parameters.AddWithValue("@endereco", cliente.endereco);
@@ -39,11 +39,11 @@ namespace ProjectBook.DB.SqlServerExpress
         }
         public DataTable VerTodosClientes()
         {
-            DataTable table = new DataTable();
+            DataTable table = new();
             try
             {
                 AbrirConexaoDb();
-                SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM Clientes", connection);
+                SqlDataAdapter adapter = new("SELECT * FROM Clientes", connection);
                 FechaConecxaoDb();
 
                 adapter.Fill(table);
@@ -56,7 +56,7 @@ namespace ProjectBook.DB.SqlServerExpress
         #region Deletar
         public void DeletarClienteId(string id)
         {
-            SqlCommand command = new SqlCommand {Connection = connection};
+            SqlCommand command = new() { Connection = connection};
 
             try
             {
@@ -74,7 +74,7 @@ namespace ProjectBook.DB.SqlServerExpress
         }
         public void DeletarClienteNome(string nome)
         {
-            SqlCommand command = new SqlCommand {Connection = connection};
+            SqlCommand command = new() { Connection = connection};
 
             try
             {
@@ -94,12 +94,12 @@ namespace ProjectBook.DB.SqlServerExpress
         #region Buscar
         public DataTable BuscarClienteId(string id)
         {
-            DataTable table = new DataTable();
+            DataTable table = new();
 
             try
             {
                 AbrirConexaoDb();
-                SqlDataAdapter adapter = new SqlDataAdapter($"SELECT * FROM Clientes WHERE ID = {id}", connection);
+                SqlDataAdapter adapter = new($"SELECT * FROM Clientes WHERE ID = {id}", connection);
                 FechaConecxaoDb();
 
                 adapter.Fill(table);
@@ -110,12 +110,12 @@ namespace ProjectBook.DB.SqlServerExpress
         }
         public DataTable BuscarClienteNome(string nomeCompleto)
         {
-            DataTable table = new DataTable();
+            DataTable table = new();
 
             try
             {
                 AbrirConexaoDb();
-                SqlDataAdapter adapter = new SqlDataAdapter($"SELECT * FROM Clientes WHERE [Nome completo] LIKE \'%{nomeCompleto}%\'", connection);
+                SqlDataAdapter adapter = new($"SELECT * FROM Clientes WHERE [Nome completo] LIKE \'%{nomeCompleto}%\'", connection);
                 FechaConecxaoDb();
 
                 adapter.Fill(table);
@@ -130,7 +130,7 @@ namespace ProjectBook.DB.SqlServerExpress
         #region Atualizar
         public void AtualizarClienteId(string id, Cliente cliente)
         {
-            SqlCommand command = new SqlCommand {Connection = connection};
+            SqlCommand command = new() { Connection = connection};
             #region Parâmetros
             command.Parameters.AddWithValue("@nomeCompleto", cliente.nomeCompleto);
             command.Parameters.AddWithValue("@endereco", cliente.endereco);

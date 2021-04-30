@@ -7,7 +7,7 @@ namespace ProjectBook.GUI
 {
     public partial class PesquisaSeletiva : Form
     {
-        LivrosDb livrosDb = new LivrosDb();
+        LivrosDb livrosDb = new();
         public PesquisaSeletiva()
         {
             InitializeComponent();
@@ -23,7 +23,7 @@ namespace ProjectBook.GUI
             txtTermoPesquisa.Clear();
             txtTermoPesquisa.AutoCompleteMode = AutoCompleteMode.Suggest;
 
-            AutoCompleteStringCollection autores = new AutoCompleteStringCollection();
+            AutoCompleteStringCollection autores = new();
             foreach (DataRow autor in livrosDb.VerTodosLivros().Rows) autores.Add(autor[2].ToString());
             txtTermoPesquisa.AutoCompleteCustomSource = autores;
         }
@@ -33,7 +33,7 @@ namespace ProjectBook.GUI
             txtTermoPesquisa.AutoCompleteCustomSource.Clear();
             txtTermoPesquisa.AutoCompleteMode = AutoCompleteMode.Suggest;
 
-            AutoCompleteStringCollection generos = new AutoCompleteStringCollection();
+            AutoCompleteStringCollection generos = new();
             foreach (DataRow genero in livrosDb.PegarGeneros().Rows) generos.Add(genero[0].ToString());
             txtTermoPesquisa.AutoCompleteCustomSource = generos;
         }
@@ -50,7 +50,7 @@ namespace ProjectBook.GUI
             else if (rabPesquisarGenero.Checked) resultadoPesquisa = livrosDb.BuscarLivrosGenero(termoPesquisa);
             else return;
 
-            ListaPesquisa listaPesquisa = new ListaPesquisa(resultadoPesquisa);
+            ListaPesquisa listaPesquisa = new(resultadoPesquisa);
             listaPesquisa.Show();
 
             txtTermoPesquisa.Clear();

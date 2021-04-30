@@ -254,7 +254,7 @@ namespace ProjectBook.GUI
             this.mnuSobreTop});
             this.mnuInicio.Location = new System.Drawing.Point(0, 0);
             this.mnuInicio.Name = "mnuInicio";
-            this.mnuInicio.Size = new System.Drawing.Size(714, 24);
+            this.mnuInicio.Size = new System.Drawing.Size(727, 24);
             this.mnuInicio.TabIndex = 2;
             this.mnuInicio.Text = "Cadastro";
             // 
@@ -375,7 +375,7 @@ namespace ProjectBook.GUI
             // 
             // mnuPesquisaSeletiva
             // 
-            this.mnuPesquisaSeletiva.Image = global::ProjectBook.Properties.Resources.bullet_go;
+            this.mnuPesquisaSeletiva.Image = global::ProjectBook.Properties.Resources.book_go;
             this.mnuPesquisaSeletiva.Name = "mnuPesquisaSeletiva";
             this.mnuPesquisaSeletiva.Size = new System.Drawing.Size(196, 22);
             this.mnuPesquisaSeletiva.Text = "Pesquisar livro";
@@ -406,14 +406,14 @@ namespace ProjectBook.GUI
             // 
             // mnuLivrosAlugados
             // 
-            this.mnuLivrosAlugados.Image = global::ProjectBook.Properties.Resources.page_go;
+            this.mnuLivrosAlugados.Image = global::ProjectBook.Properties.Resources.zoom;
             this.mnuLivrosAlugados.Name = "mnuLivrosAlugados";
             this.mnuLivrosAlugados.Size = new System.Drawing.Size(196, 22);
             this.mnuLivrosAlugados.Text = "Ver livros alugados";
             // 
             // mnuPesquisarAluguel
             // 
-            this.mnuPesquisarAluguel.Image = global::ProjectBook.Properties.Resources.zoom;
+            this.mnuPesquisarAluguel.Image = global::ProjectBook.Properties.Resources.page_go;
             this.mnuPesquisarAluguel.Name = "mnuPesquisarAluguel";
             this.mnuPesquisarAluguel.Size = new System.Drawing.Size(196, 22);
             this.mnuPesquisarAluguel.Text = "Pesquisar livro alugado";
@@ -521,7 +521,7 @@ namespace ProjectBook.GUI
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(714, 427);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(727, 427);
             this.tableLayoutPanel1.TabIndex = 12;
             // 
             // statusStrip1
@@ -539,7 +539,7 @@ namespace ProjectBook.GUI
             this.statusStrip1.Location = new System.Drawing.Point(0, 452);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.ManagerRenderMode;
-            this.statusStrip1.Size = new System.Drawing.Size(714, 24);
+            this.statusStrip1.Size = new System.Drawing.Size(727, 24);
             this.statusStrip1.TabIndex = 13;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -602,7 +602,7 @@ namespace ProjectBook.GUI
             // toolStripStatusLabel4
             // 
             this.toolStripStatusLabel4.Name = "toolStripStatusLabel4";
-            this.toolStripStatusLabel4.Size = new System.Drawing.Size(121, 19);
+            this.toolStripStatusLabel4.Size = new System.Drawing.Size(134, 19);
             this.toolStripStatusLabel4.Spring = true;
             this.toolStripStatusLabel4.Text = "[F1] - Pesquisa rápida";
             this.toolStripStatusLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -637,7 +637,7 @@ namespace ProjectBook.GUI
             this.mnuArBuscaRapida});
             this.tosSugestoes.Location = new System.Drawing.Point(0, 24);
             this.tosSugestoes.Name = "tosSugestoes";
-            this.tosSugestoes.Size = new System.Drawing.Size(714, 25);
+            this.tosSugestoes.Size = new System.Drawing.Size(727, 25);
             this.tosSugestoes.TabIndex = 12;
             this.tosSugestoes.Text = "toolStrip1";
             // 
@@ -737,12 +737,12 @@ namespace ProjectBook.GUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(714, 476);
+            this.ClientSize = new System.Drawing.Size(727, 476);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.tosSugestoes);
             this.Controls.Add(this.mnuInicio);
-            this.Icon = ProjectBook.Properties.Resources.MainIcon;
+            this.Icon = global::ProjectBook.Properties.Resources.MainIcon;
             this.KeyPreview = true;
             this.Name = "Inicio";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

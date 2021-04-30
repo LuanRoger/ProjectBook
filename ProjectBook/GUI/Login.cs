@@ -11,7 +11,7 @@ namespace ProjectBook.GUI
 {
     public partial class Login : Form
     {
-        private UsuarioDb usuarioDb = new UsuarioDb();
+        private UsuarioDb usuarioDb = new();
         public Login()
         {
             InitializeComponent();

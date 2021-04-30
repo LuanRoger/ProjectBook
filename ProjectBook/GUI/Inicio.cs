@@ -12,9 +12,9 @@ namespace ProjectBook.GUI
 {
     public partial class Inicio : Form
     {
-        private LivrosDb livrosDb = new LivrosDb();
-        private AluguelDb aluguelDb = new AluguelDb();
-        private ClienteDb clienteDb = new ClienteDb();
+        private LivrosDb livrosDb = new();
+        private AluguelDb aluguelDb = new();
+        private ClienteDb clienteDb = new();
 
         public Inicio()
         {
@@ -25,100 +25,100 @@ namespace ProjectBook.GUI
             #region MenuClick
             mnuNovoLivro.Click += (sender, e) =>
             {
-                CadastroLivro cadastroLivro = new CadastroLivro();
+                CadastroLivro cadastroLivro = new();
                 cadastroLivro.Show();
             };
 
             mnuEditarLivro.Click += (sender, e) => 
             {
-                EditarLivro editarLivro = new EditarLivro();
+                EditarLivro editarLivro = new();
                 editarLivro.Show();
             };
 
             mnuCadastrarAluguel.Click += (sender, e) =>
             {
-                CadastrarAluguel cadastrarAluguel = new CadastrarAluguel();
+                CadastrarAluguel cadastrarAluguel = new();
                 cadastrarAluguel.Show();
             };
             mnuEditarAluguel.Click += (sender, e) =>
             {
-                EditarAluguel editarAluguel = new EditarAluguel();
+                EditarAluguel editarAluguel = new();
                 editarAluguel.Show();
             };
 
             mnuCadastrarCliente.Click += (sender, e) =>
             {
-                CadastrarClientes cadastrarClientes = new CadastrarClientes();
+                CadastrarClientes cadastrarClientes = new();
                 cadastrarClientes.Show();
             };
             mnuEditarClientes.Click += (sender, e) =>
             {
-                EditarCliente editarCliente = new EditarCliente();
+                EditarCliente editarCliente = new();
                 editarCliente.Show();
             };
 
             mnuUsuario.Visible = ConfigurationManager.AppSettings["tipoUsuario"] == "ADM";
             mnuGerenciarUsuario.Click += (sender, e) =>
             {
-                GerenciarUsuario gerenciarUsuario = new GerenciarUsuario();
+                GerenciarUsuario gerenciarUsuario = new();
                 gerenciarUsuario.Show();
             };
             mnuPesquisarUsuarios.Click += (sender, e) =>
             {
-                PesquisarUsuario pesquisarUsuario = new PesquisarUsuario();
+                PesquisarUsuario pesquisarUsuario = new();
                 pesquisarUsuario.Show();
             };
             
             mnuExcluirLivro.Click += (sender, e) =>
             {
-                Excluir excluir = new Excluir();
+                Excluir excluir = new();
                 excluir.Show();
             };
             mnuExcluirCliente.Click += (sender, e) =>
             {
-                ExcluirCliente excluirCliente = new ExcluirCliente();
+                ExcluirCliente excluirCliente = new();
                 excluirCliente.Show();
             };
             mnuExcluirAluguel.Click += (sender, e) =>
             {
-                ExcluirAluguel excluirAluguel = new ExcluirAluguel();
+                ExcluirAluguel excluirAluguel = new();
                 excluirAluguel.Show();
             };
 
             mnuTodosLivros.Click += (sender, e) =>
             {
-                ListaPesquisa listaPesquisa = new ListaPesquisa(livrosDb.VerTodosLivros());
+                ListaPesquisa listaPesquisa = new(livrosDb.VerTodosLivros());
                 listaPesquisa.Show();
             };
             mnuPesquisaSeletiva.Click += (sender, e) =>
             {
-                PesquisaSeletiva pesquisaSeletiva = new PesquisaSeletiva();
+                PesquisaSeletiva pesquisaSeletiva = new();
                 pesquisaSeletiva.Show();
             };
             mnuLivrosAlugados.Click += (sender, e) => 
             {
-                ListaPesquisa listaPesquisa = new ListaPesquisa(aluguelDb.VerTodosAluguel());
+                ListaPesquisa listaPesquisa = new(aluguelDb.VerTodosAluguel());
                 listaPesquisa.Show();
             };
             mnuPesquisarAluguel.Click += (sender, e) =>
             {
-                PesquisarAluguel pesquisarAluguel = new PesquisarAluguel();
+                PesquisarAluguel pesquisarAluguel = new();
                 pesquisarAluguel.Show();
             };
             mnuTodosClientes.Click += (sender, e) =>
             {
-                ListaPesquisa listaPesquisa = new ListaPesquisa(clienteDb.VerTodosClientes());
+                ListaPesquisa listaPesquisa = new(clienteDb.VerTodosClientes());
                 listaPesquisa.Show();
             };
             mnuPesquisarCliente.Click += (sender, e) =>
             {
-                PesquisarCliente pesquisarCliente = new PesquisarCliente();
+                PesquisarCliente pesquisarCliente = new();
                 pesquisarCliente.Show();
             };
 
             mnuConfig.Click += (sender, e) => 
             {
-                Configuracoes configuracoes = new Configuracoes();
+                Configuracoes configuracoes = new();
                 configuracoes.Show();
             };
 
@@ -137,42 +137,42 @@ namespace ProjectBook.GUI
             #region Acesso rápido
             mnuArCadastroLivro.Click += (sender, e) =>
             {
-                CadastroLivro cadastroLivro = new CadastroLivro();
+                CadastroLivro cadastroLivro = new();
                 cadastroLivro.Show();
             };
             mnuArCadastroCliente.Click += (sender, e) =>
             {
-                CadastrarClientes cadastrarClientes = new CadastrarClientes();
+                CadastrarClientes cadastrarClientes = new();
                 cadastrarClientes.Show();
             };
             mnuArCadastroAluguel.Click += (sender, e) =>
             {
-                CadastrarAluguel cadastrarAluguel = new CadastrarAluguel();
+                CadastrarAluguel cadastrarAluguel = new();
                 cadastrarAluguel.Show();
             };
             mnuArEditarLivro.Click += (sender, e) =>
             {
-                EditarLivro editarLivro = new EditarLivro();
+                EditarLivro editarLivro = new();
                 editarLivro.Show();
             };
             mnuArEditarCliente.Click += (sender, e) =>
             {
-                EditarCliente editarCliente = new EditarCliente();
+                EditarCliente editarCliente = new();
                 editarCliente.Show();
             };
             mnuArEditarAluguel.Click += (sender, e) =>
             {
-                EditarAluguel editarAluguel = new EditarAluguel();
+                EditarAluguel editarAluguel = new();
                 editarAluguel.Show();
             };
             mnuArUsuario.Click += (sender, e) =>
             {
-                GerenciarUsuario gerenciarUsuario = new GerenciarUsuario();
+                GerenciarUsuario gerenciarUsuario = new();
                 gerenciarUsuario.Show();
             };
             mnuArBuscaRapida.Click += (sender, e) =>
             {
-                PesquisaRapida pesquisaRapida = new PesquisaRapida();
+                PesquisaRapida pesquisaRapida = new();
                 pesquisaRapida.Show();
             };
         }
@@ -180,14 +180,11 @@ namespace ProjectBook.GUI
 
         private void Inicio_Activated(object sender, EventArgs e)
         {
-            //Carregar informações
-            livrosDb.AbrirConexaoDb();
-            if (livrosDb.DbStatus() != "Open") return;
-            livrosDb.FechaConecxaoDb();
-
             lblLivrosCadastrados.Text = livrosDb.VerTodosLivros().Rows.Count.ToString();
             lblClientesCadastrados.Text = clienteDb.VerTodosClientes().Rows.Count.ToString();
             lblAlugueisRegistrados.Text = aluguelDb.VerTodosAluguel().Rows.Count.ToString();
+
+            GC.Collect();
         }
         private void btnSairUsuario_Click(object sender, EventArgs e)
         {
@@ -204,7 +201,7 @@ namespace ProjectBook.GUI
             Opacity = 0;
             ShowInTaskbar = false;
 
-            SplashScreen splashScreen = new SplashScreen();
+            SplashScreen splashScreen = new();
             splashScreen.Show();
             splashScreen.FormClosed += delegate
             {
@@ -222,7 +219,7 @@ namespace ProjectBook.GUI
             switch (e.KeyCode)
             {
                 case Keys.F1:
-                    PesquisaRapida pesquisaRapida = new PesquisaRapida();
+                    PesquisaRapida pesquisaRapida = new();
                     pesquisaRapida.Show();
                     break;
                 case Keys.F6: 

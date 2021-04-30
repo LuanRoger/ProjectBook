@@ -9,9 +9,9 @@ namespace ProjectBook.GUI
 {
     public partial class EditarAluguel : Form
     {
-        private AluguelDb aluguelDb = new AluguelDb();
-        private LivrosDb livrosDb = new LivrosDb();
-        private ClienteDb clienteDb = new ClienteDb();
+        private AluguelDb aluguelDb = new();
+        private LivrosDb livrosDb = new();
+        private ClienteDb clienteDb = new();
 
         private DataTable infoAluguel;
         private DataTable infoLivro;
@@ -42,13 +42,13 @@ namespace ProjectBook.GUI
         }
         private void rabBuscarNomeCliente_CheckedChanged(object sender, EventArgs e)
         {
-            AutoCompleteStringCollection aluguelSugestao = new AutoCompleteStringCollection();
+            AutoCompleteStringCollection aluguelSugestao = new();
             foreach (DataRow cliente in aluguelDb.VerTodosAluguel().Rows) aluguelSugestao.Add($"{cliente[2]} - {cliente[0]}"); // Cliente - Livro
             txtBuscarAluguel.AutoCompleteCustomSource = aluguelSugestao;
         }
         private void rabBuscarTituloLivro_CheckedChanged(object sender, EventArgs e)
         {
-            AutoCompleteStringCollection aluguelSugestao = new AutoCompleteStringCollection();
+            AutoCompleteStringCollection aluguelSugestao = new();
             foreach (DataRow livro in aluguelDb.VerTodosAluguel().Rows) aluguelSugestao.Add($"{livro[0]} - {livro[2]}"); // Livro - Cliente
             txtBuscarAluguel.AutoCompleteCustomSource = aluguelSugestao;
         }
@@ -134,7 +134,7 @@ namespace ProjectBook.GUI
 
         private void btnSalvarEditarAluguel_Click(object sender, EventArgs e)
         {
-            Aluguel aluguel = new Aluguel(txtNovoTituloLivroAluguel.Text, txtNovoAutorAluguel.Text, txtNovoClienteAluguel.Text,
+            Aluguel aluguel = new(txtNovoTituloLivroAluguel.Text, txtNovoAutorAluguel.Text, txtNovoClienteAluguel.Text,
                 dtpEditarDataEntrega.Value, dtpEditarDataRecebimento.Value, cmbNovoStatus.Text);
 
             if (Verificadores.VerificarCamposAluguel(aluguel))

@@ -8,7 +8,7 @@ namespace ProjectBook.GUI
 {
     public partial class PesquisarCliente : Form
     {
-        private ClienteDb clienteDb = new ClienteDb();
+        private ClienteDb clienteDb = new();
         public PesquisarCliente()
         {
             InitializeComponent();
@@ -23,7 +23,7 @@ namespace ProjectBook.GUI
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            DataTable dataTable = new DataTable();
+            DataTable dataTable = new();
 
             if (rabPesquisarId.Checked) dataTable = clienteDb.BuscarClienteId(termoPesquisa);
             else if (rabPesquisarNome.Checked) dataTable = clienteDb.BuscarClienteNome(termoPesquisa);
@@ -35,7 +35,7 @@ namespace ProjectBook.GUI
                 return;
             }
             
-            ListaPesquisa listaPesquisa = new ListaPesquisa(dataTable);
+            ListaPesquisa listaPesquisa = new(dataTable);
             listaPesquisa.Show();
             
             txtPesquisarCliente.Clear();

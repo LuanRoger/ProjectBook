@@ -10,7 +10,7 @@ namespace ProjectBook.GUI
 {
     public partial class GerenciarUsuario : Form
     {
-        private UsuarioDb usuarioDb = new UsuarioDb();
+        private UsuarioDb usuarioDb = new();
         public GerenciarUsuario()
         {
             InitializeComponent();
@@ -18,7 +18,7 @@ namespace ProjectBook.GUI
 
         private void btnCadastrarUsuario_Click(object sender, EventArgs e)
         {
-            Usuario usuario = new Usuario(txtUsuarioCadastrar.Text, txtSenhaCadastrar.Text, TipoUsuário.USU.ToString());
+            Usuario usuario = new(txtUsuarioCadastrar.Text, txtSenhaCadastrar.Text, TipoUsuário.USU.ToString());
             if (Verificadores.VerificarCamposUsuario(usuario))
             {
                 MessageBox.Show(Resources.PreecherCampoBusca, Resources.MessageBoxError,
@@ -33,7 +33,7 @@ namespace ProjectBook.GUI
 
         private void btnSalvarEditarUsuario_Click(object sender, EventArgs e)
         {
-            Usuario usuario = new Usuario(txtNovoUsuario.Text, txtNovoSenhaUsuario.Text, cmdNovoStatus.Text);
+            Usuario usuario = new(txtNovoUsuario.Text, txtNovoSenhaUsuario.Text, cmdNovoStatus.Text);
             if (Verificadores.VerificarCamposUsuario(usuario))
             {
                 MessageBox.Show(Resources.PreecherCampoBusca, Resources.MessageBoxError,

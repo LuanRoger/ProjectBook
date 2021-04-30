@@ -22,7 +22,7 @@ namespace ProjectBook.GUI
 
             //Verificar sistema operacional
             string so = null;
-            using ManagementObjectSearcher searcher = new ManagementObjectSearcher("SELECT * FROM Win32_OperatingSystem");
+            using ManagementObjectSearcher searcher = new("SELECT * FROM Win32_OperatingSystem");
             foreach (var infos in searcher.Get()) so = infos["Caption"].ToString();
 
             if (string.IsNullOrEmpty(so) || !so.Contains("Windows 10")) rabOneDrive.Visible = false;
@@ -154,8 +154,7 @@ namespace ProjectBook.GUI
 
         private void btnSelecionarArquivoDb_Click(object sender, EventArgs e)
         {
-            OpenFileDialog caminho = new OpenFileDialog 
-                { Filter = "Arquivo MDF (*.mdf)|*.mdf", Multiselect = false };
+            OpenFileDialog caminho = new() { Filter = "Arquivo MDF (*.mdf)|*.mdf", Multiselect = false };
             DialogResult dialogResult = caminho.ShowDialog();
             if (dialogResult != DialogResult.OK) return;
 
@@ -168,7 +167,7 @@ namespace ProjectBook.GUI
 
         private void btnPersonalizarImpressao_Click(object sender, EventArgs e)
         {
-            PersonalizarImpressao personalizarImpressao = new PersonalizarImpressao();
+            PersonalizarImpressao personalizarImpressao = new();
             personalizarImpressao.Show();
         }
     }

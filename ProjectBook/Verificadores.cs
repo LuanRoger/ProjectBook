@@ -64,7 +64,7 @@ namespace ProjectBook
         /// <returns>Retorna <c>error</c></returns>
         public static bool VerificarIdLivro(int id)
         {
-            LivrosDb livrosDb = new LivrosDb();
+            LivrosDb livrosDb = new();
 
             DataTable ids = livrosDb.BuscarLivrosId(id.ToString());
 

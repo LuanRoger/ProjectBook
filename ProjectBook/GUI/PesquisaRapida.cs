@@ -10,8 +10,8 @@ namespace ProjectBook.GUI
 {
     public partial class PesquisaRapida : Form
     {
-        private LivrosDb livrosDb = new LivrosDb();
-        private ClienteDb clienteDb = new ClienteDb();
+        private LivrosDb livrosDb = new();
+        private ClienteDb clienteDb = new();
 
         public PesquisaRapida()
         {
@@ -33,7 +33,7 @@ namespace ProjectBook.GUI
         private void Pesquisar()
         {
             string termoPesquisa = txtPesquisaRapida.Text;
-            DataTable resultado = new DataTable();
+            DataTable resultado = new();
 
             if (Verificadores.VerificarStrings(termoPesquisa))
             {
@@ -54,7 +54,7 @@ namespace ProjectBook.GUI
                 return;
             }
 
-            ListaPesquisa listaPesquisa = new ListaPesquisa(resultado);
+            ListaPesquisa listaPesquisa = new(resultado);
             listaPesquisa.Show();
             listaPesquisa.BringToFront();
         }
@@ -64,7 +64,7 @@ namespace ProjectBook.GUI
         {
             txtPesquisaRapida.AutoCompleteMode = AutoCompleteMode.Suggest;
 
-            AutoCompleteStringCollection livroSugestao = new AutoCompleteStringCollection();
+            AutoCompleteStringCollection livroSugestao = new();
             foreach (DataRow livro in livrosDb.VerTodosLivros().Rows) livroSugestao.Add(livro[1].ToString());
 
             txtPesquisaRapida.AutoCompleteCustomSource = livroSugestao;
@@ -73,7 +73,7 @@ namespace ProjectBook.GUI
         {
             txtPesquisaRapida.AutoCompleteMode = AutoCompleteMode.Suggest;
 
-            AutoCompleteStringCollection clienteSugestao = new AutoCompleteStringCollection();
+            AutoCompleteStringCollection clienteSugestao = new();
             foreach (DataRow cliente in clienteDb.VerTodosClientes().Rows) clienteSugestao.Add(cliente[1].ToString());
 
             txtPesquisaRapida.AutoCompleteCustomSource = clienteSugestao;

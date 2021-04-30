@@ -11,7 +11,7 @@ namespace ProjectBook.DB.SqlServerExpress
     {
         public void AdicionarLivro(Livro livro)
         {
-            SqlCommand command = new SqlCommand {Connection = connection};
+            SqlCommand command = new() { Connection = connection};
             #region Parâmetros
             command.Parameters.AddWithValue("@id", livro.id);
             command.Parameters.AddWithValue("@titulo", livro.titulo);
@@ -44,7 +44,7 @@ namespace ProjectBook.DB.SqlServerExpress
         #region Deletar
         public void DeletarLivroId(string id)
         {
-            SqlCommand command = new SqlCommand {Connection = connection};
+            SqlCommand command = new() { Connection = connection};
 
             try
             {
@@ -63,7 +63,7 @@ namespace ProjectBook.DB.SqlServerExpress
         }
         public void DeletarLivroTitulo(string tituloLivro)
         {
-            SqlCommand command = new SqlCommand {Connection = connection};
+            SqlCommand command = new() { Connection = connection};
 
             try
             {
@@ -84,11 +84,11 @@ namespace ProjectBook.DB.SqlServerExpress
         
         public DataTable VerTodosLivros()
         {
-            DataTable table = new DataTable();
+            DataTable table = new();
             try
             {
                 AbrirConexaoDb();
-                SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM Livros", connection);
+                SqlDataAdapter adapter = new("SELECT * FROM Livros", connection);
                 FechaConecxaoDb();
 
                 adapter.Fill(table);
@@ -101,11 +101,11 @@ namespace ProjectBook.DB.SqlServerExpress
 
         public DataTable PegarGeneros()
         {
-            DataTable table = new DataTable();
+            DataTable table = new();
             try
             {
                 AbrirConexaoDb();
-                SqlDataAdapter adapter = new SqlDataAdapter("SELECT DISTINCT Genero FROM Livros", connection);
+                SqlDataAdapter adapter = new("SELECT DISTINCT Genero FROM Livros", connection);
                 FechaConecxaoDb();
 
                 adapter.Fill(table);
@@ -119,11 +119,11 @@ namespace ProjectBook.DB.SqlServerExpress
         #region Buscar
         public DataTable BuscarLivrosId(string id)
         {
-            DataTable table = new DataTable();
+            DataTable table = new();
             try
             {
                 AbrirConexaoDb();
-                SqlDataAdapter adapter = new SqlDataAdapter($"SELECT * FROM Livros WHERE ID = ${id}", connection);
+                SqlDataAdapter adapter = new($"SELECT * FROM Livros WHERE ID = ${id}", connection);
                 FechaConecxaoDb();
                 adapter.Fill(table);
             }
@@ -133,11 +133,11 @@ namespace ProjectBook.DB.SqlServerExpress
         }
         public DataTable BuscarLivrosTitulo(string titulo)
         {
-            DataTable table = new DataTable();
+            DataTable table = new();
             try
             {
                 AbrirConexaoDb();
-                SqlDataAdapter adapter = new SqlDataAdapter($"SELECT * FROM Livros WHERE Titulo LIKE \'%{titulo}%\'", connection);
+                SqlDataAdapter adapter = new($"SELECT * FROM Livros WHERE Titulo LIKE \'%{titulo}%\'", connection);
                 FechaConecxaoDb();
                 adapter.Fill(table);
             }
@@ -147,11 +147,11 @@ namespace ProjectBook.DB.SqlServerExpress
         }
         public DataTable BuscarLivrosAutor(string autor)
         {
-            DataTable table = new DataTable();
+            DataTable table = new();
             try
             {
                 AbrirConexaoDb();
-                SqlDataAdapter adapter = new SqlDataAdapter($"SELECT * FROM Livros WHERE Autor LIKE \'%{autor}%\'", connection);
+                SqlDataAdapter adapter = new($"SELECT * FROM Livros WHERE Autor LIKE \'%{autor}%\'", connection);
                 FechaConecxaoDb();
 
                 adapter.Fill(table);
@@ -162,11 +162,11 @@ namespace ProjectBook.DB.SqlServerExpress
         }
         public DataTable BuscarLivrosGenero(string genero)
         {
-            DataTable table = new DataTable();
+            DataTable table = new();
             try
             {
                 AbrirConexaoDb();
-                SqlDataAdapter adapter = new SqlDataAdapter($"SELECT * FROM Livros WHERE Genero = \'{genero}\'", connection);
+                SqlDataAdapter adapter = new($"SELECT * FROM Livros WHERE Genero = \'{genero}\'", connection);
                 FechaConecxaoDb();
 
                 adapter.Fill(table);
@@ -180,7 +180,7 @@ namespace ProjectBook.DB.SqlServerExpress
         #region Atualizar
         public void AtualizarViaId(string id, Livro livro)
         {
-            SqlCommand command = new SqlCommand {Connection = connection};
+            SqlCommand command = new() { Connection = connection};
             #region Parâmetros
             command.Parameters.AddWithValue("@titulo", livro.titulo);
             command.Parameters.AddWithValue("@autor", livro.autor);
@@ -209,7 +209,7 @@ namespace ProjectBook.DB.SqlServerExpress
         }
         public void AtualizarViaTitulo(string titulo, Livro livro)
         {
-            SqlCommand command = new SqlCommand {Connection = connection};
+            SqlCommand command = new() { Connection = connection};
             #region Parâmetros
             command.Parameters.AddWithValue("@titulo", livro.titulo);
             command.Parameters.AddWithValue("@autor", livro.autor);
@@ -238,7 +238,7 @@ namespace ProjectBook.DB.SqlServerExpress
         }
         public void AtualizarViaAutor(string autor, Livro livro)
         {
-            SqlCommand command = new SqlCommand {Connection = connection};
+            SqlCommand command = new() { Connection = connection};
             #region Parâmetros
             command.Parameters.AddWithValue("@titulo", livro.titulo);
             command.Parameters.AddWithValue("@autor", livro.autor);

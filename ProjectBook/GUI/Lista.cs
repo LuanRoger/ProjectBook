@@ -19,9 +19,9 @@ namespace ProjectBook.GUI
 
             try
             {
-                PrivateFontCollection privateFont = new PrivateFontCollection();
+                PrivateFontCollection privateFont = new();
                 privateFont.AddFontFile(Application.StartupPath + @"font\Lato-Bold.ttf");
-                Font lato = new Font(privateFont.Families[0], 8, FontStyle.Bold);
+                Font lato = new(privateFont.Families[0], 8, FontStyle.Bold);
 
                 int columnQuantidade = dgvLista.ColumnCount;
                 for (int i = 0; i < columnQuantidade; i++)
@@ -38,7 +38,7 @@ namespace ProjectBook.GUI
 
             mnuImprimirLista.Click += (sender, e) =>
             {
-                Imprimir imprimir = new Imprimir();
+                Imprimir imprimir = new();
                 imprimir.ImprimirModelo(dgvLista);
             };
             mnuExportarExcel.Click += (sender, e) =>
@@ -86,7 +86,7 @@ namespace ProjectBook.GUI
                     }
                 }
 
-                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                SaveFileDialog saveFileDialog = new();
                 saveFileDialog.Filter = "Arquivo XLSX (*.xlsx) |*.xlsx| Arquivo XLSM (*.xlsm) |*.xlsm";
                 if (saveFileDialog.ShowDialog() != DialogResult.OK) return;
                 
