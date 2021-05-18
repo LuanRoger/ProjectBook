@@ -296,6 +296,15 @@ namespace ProjectBook.Properties {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Você deseja criar uma cópia do banco de dados no OneDrive..
+        /// </summary>
+        internal static string CreateCopyOneDrive {
+            get {
+                return ResourceManager.GetString("CreateCopyOneDrive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Uso de ícones de FAMFAMFAM: http://famfamfam.com.
         /// </summary>
         internal static string CreditosIcones {
@@ -360,6 +369,24 @@ namespace ProjectBook.Properties {
         internal static string ErrorConectarDb {
             get {
                 return ResourceManager.GetString("ErrorConectarDb", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Houve um problema ao tentar conectar-se com o banco de dados, verifique a situação e tente novamente..
+        /// </summary>
+        internal static string ErrorFatalConectarDb {
+            get {
+                return ResourceManager.GetString("ErrorFatalConectarDb", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Houve um error ao tentar recuperar o caminho do banco de dados..
+        /// </summary>
+        internal static string ErrorGetSourceDb {
+            get {
+                return ResourceManager.GetString("ErrorGetSourceDb", resourceCulture);
             }
         }
         
@@ -520,6 +547,15 @@ namespace ProjectBook.Properties {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Concluido.
+        /// </summary>
+        internal static string MessageBoxConcluido {
+            get {
+                return ResourceManager.GetString("MessageBoxConcluido", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Error.
         /// </summary>
         internal static string MessageBoxError {
@@ -543,6 +579,15 @@ namespace ProjectBook.Properties {
         internal static string MessageBoxInformacao {
             get {
                 return ResourceManager.GetString("MessageBoxInformacao", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Pergunta.
+        /// </summary>
+        internal static string MessageBoxPergunta {
+            get {
+                return ResourceManager.GetString("MessageBoxPergunta", resourceCulture);
             }
         }
         
@@ -647,6 +692,16 @@ namespace ProjectBook.Properties {
         internal static string preencherCamposObrigatorios_MessageBox {
             get {
                 return ResourceManager.GetString("preencherCamposObrigatorios_MessageBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Icon semelhante a (Ícone).
+        /// </summary>
+        internal static System.Drawing.Icon PrinteIcons {
+            get {
+                object obj = ResourceManager.GetObject("PrinteIcons", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
             }
         }
         

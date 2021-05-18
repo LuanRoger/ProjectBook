@@ -4,6 +4,7 @@ using System.Drawing;
 using System.IO;
 using System.Management;
 using System.Windows.Forms;
+using ProjectBook.DB.OneDrive;
 using ProjectBook.Properties;
 
 namespace ProjectBook.GUI
@@ -20,12 +21,7 @@ namespace ProjectBook.GUI
             if (ConfigurationManager.AppSettings["tipoUsuario"] ==
                 Tipos.TipoUsuário.ADM.ToString()) gpbBancoDados.Enabled = true;
 
-            //Verificar sistema operacional
-            string so = null;
-            using ManagementObjectSearcher searcher = new("SELECT * FROM Win32_OperatingSystem");
-            foreach (var infos in searcher.Get()) so = infos["Caption"].ToString();
-
-            if (string.IsNullOrEmpty(so) || !so.Contains("Windows 10")) rabOneDrive.Visible = false;
+            rabOneDrive.Visible = Verificadores.IsWin10();
         }
 
         private void CarregarConfiguracoes()
@@ -37,6 +33,8 @@ namespace ProjectBook.GUI
             if (ConfigurationManager.AppSettings["atualizarStatusAluguel"] == "1") chbAtualizarStatusAluguel.Checked = true;
             if (ConfigurationManager.AppSettings["formatarCliente"] == "1") chbFormatarCliente.Checked = true;
             if (ConfigurationManager.AppSettings["formatarLivro"] == "1") chbFormatarLivro.Checked = true;
+            var d = ConfigurationManager.AppSettings["dbPadrao"];
+
             switch (ConfigurationManager.AppSettings["dbPadrao"])
             {
                 case "sqlserverexpress":
@@ -142,7 +140,7 @@ namespace ProjectBook.GUI
                 rabSqlServerLocalDb.Checked = true;
                 return;
             }
-            else if (directoryInfo.ToString().Contains("OneDrive") &&
+            if (directoryInfo.ToString().Contains("OneDrive") &&
                 ConfigurationManager.AppSettings["dbPadrao"] == "onedrive")
             {
                 lblInfoTxt.Visible = true;

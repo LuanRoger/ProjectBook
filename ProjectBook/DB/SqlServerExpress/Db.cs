@@ -2,9 +2,11 @@
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Windows.Forms;
-using ProjectBook.GUI;
 using ProjectBook.Properties;
 using System.Data;
+using System.Diagnostics;
+using System.IO;
+using System.Management.Automation;
 
 namespace ProjectBook.DB.SqlServerExpress
 {
@@ -22,34 +24,26 @@ namespace ProjectBook.DB.SqlServerExpress
         protected void AbrirConexaoDb()
         {
             try { connection.Open(); }
-            catch(Exception e)
+            catch
             {
-                if (Application.OpenForms.Count < 2)
+                PowerShell ps = PowerShell.Create()
+                    .AddScript(File.ReadAllText(Application.StartupPath + @"scripts\startdb_instance.ps1"), true);
+                ps.Invoke();
+
+                try
+                { connection.Open(); }
+                catch(Exception exception)
                 {
-                    DialogResult dialogResult = MessageBox.Show(
-                        string.Format(Resources.ErrorConectarDb, e.Message),
-                        Resources.MessageBoxError,
-                        MessageBoxButtons.YesNo, MessageBoxIcon.Error);
-
-                    if (dialogResult == DialogResult.Yes)
+                    if (Application.OpenForms.Count < 2)
                     {
-                        // Fazer com que o tipo de usuario seja alterado para ADM para que possa editar a string de conexão
-                        Configuracoes.config.AppSettings.Settings["tipoUsuario"].Value = Tipos.TipoUsuário.ADM.ToString();
-                        Configuracoes.config.Save();
-                        ConfigurationManager.RefreshSection("appSettings");
+                        DialogResult dialogResult = MessageBox.Show(
+                            string.Format(Resources.ErrorConectarDb, exception.Message),
+                            Resources.MessageBoxError,
+                            MessageBoxButtons.YesNo, MessageBoxIcon.Error);
 
-                        Configuracoes configuracoes = new();
-                        configuracoes.Closing += delegate
-                        {
-                            //Evitar softlock
-                            if (string.IsNullOrEmpty(ConfigurationManager.AppSettings["usuarioLogado"]) ||
-                                string.IsNullOrEmpty(ConfigurationManager.ConnectionStrings["SqlConnectionString"].ConnectionString))
-                                Environment.Exit(1);
-                        };
-                        configuracoes.Show();
-                        configuracoes.BringToFront();
+                        if (dialogResult == DialogResult.Yes) AppManager.GiveAdm();
+                        else Process.GetCurrentProcess().Kill();
                     }
-                    else Environment.Exit(0);
                 }
             }
 
@@ -64,7 +58,7 @@ namespace ProjectBook.DB.SqlServerExpress
                 FechaConecxaoDb();
                 return true;
             }
-            else return false;
+            return false;
         }
         #endregion
     }

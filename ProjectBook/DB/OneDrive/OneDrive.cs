@@ -1,17 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using ProjectBook.GUI;
-using System.IO;
-using System.Windows.Forms;
-using ProjectBook.Properties;
 using System.Configuration;
+using System.IO;
+using System.Linq;
+using System.Windows.Forms;
+using ProjectBook.DB.SqlServerExpress;
+using ProjectBook.GUI;
+using ProjectBook.Properties;
 
-namespace ProjectBook.DB.Migration
+namespace ProjectBook.DB.OneDrive
 {
-    static class OneDrive
+    public static class OneDrive
     {
-        public static void MigrarOneDrive(string pastaAplicacaoOneDrive)
+        private static readonly string pastaAplicacaoOneDrive = 
+            Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\OneDrive\ProjectBook";
+
+        public static void MigrarOneDrive()
         {
             try
             {
@@ -24,13 +27,15 @@ namespace ProjectBook.DB.Migration
                     {
                         Configuracoes.config.AppSettings.Settings["dbPadrao"].Value = "sqlserverlocaldb";
                         Configuracoes.config.ConnectionStrings.ConnectionStrings["SqlConnectionString"].ConnectionString =
-                            $@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename ={ConfigurationManager.AppSettings["pastaDb"]}; Integrated Security = True";
+                            $@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = {ConfigurationManager.AppSettings["pastaDb"]}; Integrated Security = True";
                         Configuracoes.config.Save();
                         ConfigurationManager.RefreshSection("appSettings");
 
                         AppManager.ReiniciarPrograma();
                         return;
                     }
+
+                    Directory.Delete(pastaAplicacaoOneDrive);
                 }
 
                 Directory.Move(Directory
@@ -38,8 +43,8 @@ namespace ProjectBook.DB.Migration
 
                 //Pegar o novo diretorio do banco de dados
                 string diretorioDbOneDrive = Directory
-                    .GetFiles(pastaAplicacaoOneDrive, "*.*", SearchOption.AllDirectories)
-                    .First(mdf => mdf.Contains(".mdf"));
+                    .GetFiles(pastaAplicacaoOneDrive, "*.mdf", SearchOption.TopDirectoryOnly)
+                    .First();
 
                 //Criar nova string de conexão
                 Configuracoes.config.ConnectionStrings.ConnectionStrings["SqlConnectionString"].ConnectionString =

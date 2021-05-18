@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Reflection;
 using AutoUpdaterDotNET;
 using System.Windows.Forms;
+using ProjectBook.DB.OneDrive;
 using ProjectBook.DB.SqlServerExpress;
 using ProjectBook.Properties;
 
@@ -180,9 +181,12 @@ namespace ProjectBook.GUI
 
         private void Inicio_Activated(object sender, EventArgs e)
         {
-            lblLivrosCadastrados.Text = livrosDb.VerTodosLivros().Rows.Count.ToString();
-            lblClientesCadastrados.Text = clienteDb.VerTodosClientes().Rows.Count.ToString();
-            lblAlugueisRegistrados.Text = aluguelDb.VerTodosAluguel().Rows.Count.ToString();
+            if (livrosDb.VerificarConexaoDb())
+            {
+                lblLivrosCadastrados.Text = livrosDb.VerTodosLivros().Rows.Count.ToString();
+                lblClientesCadastrados.Text = clienteDb.VerTodosClientes().Rows.Count.ToString();
+                lblAlugueisRegistrados.Text = aluguelDb.VerTodosAluguel().Rows.Count.ToString();
+            }
 
             GC.Collect();
         }
@@ -209,7 +213,6 @@ namespace ProjectBook.GUI
                 ShowInTaskbar = true;
             };
 
-            //Deixar o lblNomeUsuario trasnparente para evitar que sobreponha a imagem de fundo
             lblNomeUsuario.BackColor = Color.Transparent;
             BringToFront();
         }

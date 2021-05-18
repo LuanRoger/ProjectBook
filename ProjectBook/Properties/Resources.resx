@@ -355,4 +355,22 @@
   <data name="UserGrayIcons" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\img\user_gray.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="PrinteIcons" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\img\printer.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ErrorFatalConectarDb" xml:space="preserve">
+    <value>Houve um problema ao tentar conectar-se com o banco de dados, verifique a situação e tente novamente.</value>
+  </data>
+  <data name="ErrorGetSourceDb" xml:space="preserve">
+    <value>Houve um error ao tentar recuperar o caminho do banco de dados.</value>
+  </data>
+  <data name="CreateCopyOneDrive" xml:space="preserve">
+    <value>Você deseja criar uma cópia do banco de dados no OneDrive.</value>
+  </data>
+  <data name="MessageBoxConcluido" xml:space="preserve">
+    <value>Concluido</value>
+  </data>
+  <data name="MessageBoxPergunta" xml:space="preserve">
+    <value>Pergunta</value>
+  </data>
 </root>

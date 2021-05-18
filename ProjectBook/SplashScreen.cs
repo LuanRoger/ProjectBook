@@ -4,12 +4,12 @@ using System.Data;
 using System.Linq;
 using System.Drawing;
 using System.Drawing.Text;
-using ProjectBook.DB.Migration;
 using System.Windows.Forms;
 using ProjectBook.DB.SqlServerExpress;
 using ProjectBook.GUI;
 using ProjectBook.Properties;
 using System.Threading.Tasks;
+using ProjectBook.DB.OneDrive;
 
 namespace ProjectBook
 {
@@ -39,8 +39,7 @@ namespace ProjectBook
                 ConfigurationManager.ConnectionStrings["SqlConnectionString"].ConnectionString == "")
             {
                 lblStatusCarregamento.Text = Resources.MigrandoOneDrive;
-                OneDrive.MigrarOneDrive(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) +
-                                                @"\OneDrive\ProjectBook");
+                OneDrive.MigrarOneDrive();
             }
 
             if (!livrosDb.VerificarConexaoDb()) return;

@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Windows.Forms;
 using AutoUpdaterDotNET;
 using System.Configuration;
+using ProjectBook.GUI;
 
 namespace ProjectBook
 {
@@ -14,7 +15,8 @@ namespace ProjectBook
         private static readonly string[] FONTS_DOWNLOAD = 
             new string[] { "Lato-Bold.ttf", "Montserrat-ExtraBold.ttf", "Montserrat-ExtraLight.ttf" };
         private static readonly string FONTS_FOLDER = Application.StartupPath + @"\font";
-        private static readonly string URI_DOWNLADFONTS = "https://github.com/LuanRoger/ProjectBook/raw/master/ProjectBook/assets/fontes/";
+        private static readonly string URI_DOWNLAD_FONTS = "https://github.com/LuanRoger/ProjectBook/raw/master/ProjectBook/assets/fontes/";
+        private static readonly string URL_DOWNLOAD_SCRIPTS = "";
 
         public static void ReiniciarPrograma()
         {
@@ -31,7 +33,7 @@ namespace ProjectBook
             using WebClient webClient = new();
             foreach (string font in FONTS_DOWNLOAD)
             {
-                webClient.DownloadFile(URI_DOWNLADFONTS + font,
+                webClient.DownloadFile(URI_DOWNLAD_FONTS + font,
                 @$"{FONTS_FOLDER}\{font}");
             }
         }
@@ -41,6 +43,24 @@ namespace ProjectBook
 
             AutoUpdater.Start(ConfigurationManager.AppSettings["updateFileServer"],
                 Assembly.GetExecutingAssembly());
+        }
+        public static void GiveAdm()
+        {
+            // Fazer com que o tipo de usuario seja alterado para ADM para que possa editar a string de conexão
+            Configuracoes.config.AppSettings.Settings["tipoUsuario"].Value = Tipos.TipoUsuário.ADM.ToString();
+            Configuracoes.config.Save();
+            ConfigurationManager.RefreshSection("appSettings");
+
+            Configuracoes configuracoes = new();
+            configuracoes.Closing += delegate
+            {
+                //Evitar softlock
+                if (string.IsNullOrEmpty(ConfigurationManager.AppSettings["usuarioLogado"]) ||
+                    string.IsNullOrEmpty(ConfigurationManager.ConnectionStrings["SqlConnectionString"].ConnectionString))
+                    Environment.Exit(1);
+            };
+            configuracoes.Show();
+            configuracoes.BringToFront();
         }
     }
 

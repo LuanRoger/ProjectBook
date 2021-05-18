@@ -38,8 +38,8 @@ namespace ProjectBook.GUI
 
             mnuImprimirLista.Click += (sender, e) =>
             {
-                Imprimir imprimir = new();
-                imprimir.ImprimirModelo(dgvLista);
+                easyhtmlReports1.AddDatagridView(dgvLista);
+                easyhtmlReports1.ShowPrintPreviewDialog();
             };
             mnuExportarExcel.Click += (sender, e) =>
             {

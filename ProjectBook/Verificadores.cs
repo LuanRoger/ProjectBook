@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Management;
 using ProjectBook.Livros;
 using ProjectBook.DB.SqlServerExpress;
 
@@ -69,6 +70,19 @@ namespace ProjectBook
             DataTable ids = livrosDb.BuscarLivrosId(id.ToString());
 
             return ids.Rows.Count > 0;
+        }
+
+        /// <summary>
+        /// Verifica se o sistema usado é o Windows 10
+        /// </summary>
+        /// <returns>true ou false</returns>
+        public static bool IsWin10()
+        {
+            string so = null;
+            using ManagementObjectSearcher searcher = new("SELECT * FROM Win32_OperatingSystem");
+            foreach (var infos in searcher.Get()) so = infos["Caption"].ToString();
+
+            return so.Contains("Windows 10");
         }
 
         #region Verificar strings

@@ -22,48 +22,74 @@ namespace ProjectBook.GUI
         public EditarAluguel()
         {
             InitializeComponent();
-            PrepararSugestaoLivroCliente();
+
+            btnVerTodosAlugueis.Click += (sender, args) =>
+            {
+                ListaPesquisa listaPesquisa = new ListaPesquisa(aluguelDb.VerTodosAluguel());
+                listaPesquisa.Show();
+            };
+            btnVerTodosLivros.Click += (sender, args) =>
+            {
+                ListaPesquisa listaPesquisa = new ListaPesquisa(livrosDb.VerTodosLivros());
+                listaPesquisa.Show();
+            };
+            btnVerTodosClientes.Click += (sender, args) =>
+            {
+                ListaPesquisa listaPesquisa = new ListaPesquisa(clienteDb.VerTodosClientes());
+                listaPesquisa.Show();
+            };
         }
 
         #region CheckedChanged & Sugestões
-        private void PrepararSugestaoLivroCliente()
-        {
-            AutoCompleteStringCollection aluguelSugestao;
-
-            //Livro
-            aluguelSugestao = new AutoCompleteStringCollection();
-            foreach (DataRow livro in livrosDb.VerTodosLivros().Rows) aluguelSugestao.Add(livro[1].ToString());
-            txtMudarLivroAluguel.AutoCompleteCustomSource = aluguelSugestao;
-
-            //Cliente
-            aluguelSugestao = new AutoCompleteStringCollection();
-            foreach (DataRow cliente in clienteDb.VerTodosClientes().Rows) aluguelSugestao.Add(cliente[1].ToString());
-            txtMudarClienteAluguel.AutoCompleteCustomSource = aluguelSugestao;
-        }
         private void rabBuscarNomeCliente_CheckedChanged(object sender, EventArgs e)
         {
             AutoCompleteStringCollection aluguelSugestao = new();
-            foreach (DataRow cliente in aluguelDb.VerTodosAluguel().Rows) aluguelSugestao.Add($"{cliente[2]} - {cliente[0]}"); // Cliente - Livro
+            foreach (DataRow aluguel in aluguelDb.VerTodosAluguel().Rows) aluguelSugestao.Add($"{aluguel[2]} - {aluguel[0]}"); // Cliente - Livro
             txtBuscarAluguel.AutoCompleteCustomSource = aluguelSugestao;
         }
         private void rabBuscarTituloLivro_CheckedChanged(object sender, EventArgs e)
         {
             AutoCompleteStringCollection aluguelSugestao = new();
-            foreach (DataRow livro in aluguelDb.VerTodosAluguel().Rows) aluguelSugestao.Add($"{livro[0]} - {livro[2]}"); // Livro - Cliente
+            foreach (DataRow aluguel in aluguelDb.VerTodosAluguel().Rows) aluguelSugestao.Add($"{aluguel[0]} - {aluguel[2]}"); // Livro - Cliente
             txtBuscarAluguel.AutoCompleteCustomSource = aluguelSugestao;
+        }
+
+        private void rabBuscarNovoLivroCodigo_CheckedChanged(object sender, EventArgs e) =>
+            txtMudarLivroAluguel.AutoCompleteMode = AutoCompleteMode.None;
+
+        private void rabBuscarNovoLivroTitulo_CheckedChanged(object sender, EventArgs e)
+        {
+            AutoCompleteStringCollection livrosSugestao = new AutoCompleteStringCollection();
+            txtMudarLivroAluguel.AutoCompleteMode = AutoCompleteMode.Suggest;
+
+            foreach (DataRow livro in livrosDb.VerTodosLivros().Rows) livrosSugestao.Add(livro[1].ToString()); // Titulo livro
+            txtMudarLivroAluguel.AutoCompleteCustomSource = livrosSugestao;
+        }
+        private void rabBuscarNovoLivroAutor_CheckedChanged(object sender, EventArgs e)
+        {
+            AutoCompleteStringCollection livrosSugestao = new AutoCompleteStringCollection();
+            txtMudarLivroAluguel.AutoCompleteMode = AutoCompleteMode.Suggest;
+
+            foreach (DataRow livro in livrosDb.VerTodosLivros().Rows) livrosSugestao.Add(livro[2].ToString()); // Autor livro
+            txtMudarLivroAluguel.AutoCompleteCustomSource = livrosSugestao;
+        }
+
+        private void rabBuscarNovoClienteCodigo_CheckedChanged(object sender, EventArgs e) =>
+            txtMudarClienteAluguel.AutoCompleteMode = AutoCompleteMode.None;
+
+        private void rabBuscarNovoClienteNome_CheckedChanged(object sender, EventArgs e)
+        {
+            AutoCompleteStringCollection clienteSugestao = new AutoCompleteStringCollection();
+            txtMudarClienteAluguel.AutoCompleteMode = AutoCompleteMode.Suggest;
+
+            foreach (DataRow cliente in clienteDb.VerTodosClientes().Rows) clienteSugestao.Add(cliente[1].ToString()); // Nome cliente
+            txtMudarClienteAluguel.AutoCompleteCustomSource = clienteSugestao;
         }
         #endregion
 
         private void btnBuscarEditarAluguel_Click(object sender, EventArgs e)
         {
             string[] buscarEditarAluguel = txtBuscarAluguel.Text.Trim().Split("-");
-
-            if(!rabBuscarNomeCliente.Checked && !rabBuscarTituloLivro.Checked)
-            {
-                MessageBox.Show(Resources.MarcarOpcao, Resources.MessageBoxError,
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
 
             if (Verificadores.VerificarStrings(txtBuscarAluguel.Text))
             {
@@ -111,7 +137,9 @@ namespace ProjectBook.GUI
                 return;
             }
 
-            infoLivro = livrosDb.BuscarLivrosTitulo(buscarLivro);
+            if (rabBuscarNovoLivroCodigo.Checked) infoLivro = livrosDb.BuscarLivrosId(buscarLivro);
+            else if (rabBuscarNovoLivroTitulo.Checked) infoLivro = livrosDb.BuscarLivrosTitulo(buscarLivro);
+            else infoLivro = livrosDb.BuscarLivrosAutor(buscarLivro);
 
             PreencharCamposLivro();
         }
@@ -127,7 +155,8 @@ namespace ProjectBook.GUI
                 return;
             }
 
-            infoCliente = clienteDb.BuscarClienteNome(buscarCliete);
+            infoCliente = rabBuscarNovoClienteCodigo.Checked ? 
+                clienteDb.BuscarClienteId(buscarCliete) : clienteDb.BuscarClienteNome(buscarCliete);
             
             PreencherCamposCliente();
         }
@@ -151,8 +180,8 @@ namespace ProjectBook.GUI
 
         private void PreencherCamposAluguel()
         {
-            txtNovoTituloLivroAluguel.Text = infoAluguel.Rows[0][0].ToString();
-            txtNovoAutorAluguel.Text = infoAluguel.Rows[0][1].ToString();
+            txtTituloLivroAluguel.Text = infoAluguel.Rows[0][0].ToString();
+            txtAlugadoPorAluguel.Text = infoAluguel.Rows[0][2].ToString();
             dtpEditarDataEntrega.Value = Convert.ToDateTime(infoAluguel.Rows[0][3]);
             dtpEditarDataRecebimento.Value = Convert.ToDateTime(infoAluguel.Rows[0][4]);
             cmbNovoStatus.Text = infoAluguel.Rows[0][5].ToString();
@@ -161,6 +190,8 @@ namespace ProjectBook.GUI
         {
             txtNovoTituloLivroAluguel.Text = infoLivro.Rows[0][1].ToString();
             txtNovoAutorAluguel.Text = infoLivro.Rows[0][2].ToString();
+            txtNovoEditoraLivro.Text = infoLivro.Rows[0][3].ToString();
+            txtNovoEdicaoLivro.Text = infoLivro.Rows[0][4].ToString();
         }
         private void PreencherCamposCliente()
         {
@@ -171,23 +202,30 @@ namespace ProjectBook.GUI
         }
 
         private void btnLimparTxtAluguel_Click(object sender, EventArgs e) => LimparCampos();
-        private void btnCancelarEditarAluguel_Click(object sender, EventArgs e) => this.Close();
+        private void btnCancelarEditarAluguel_Click(object sender, EventArgs e) => Close();
         private void LimparCampos()
         {
             infoAluguel.Clear();
             infoLivro.Clear();
             infoCliente.Clear();
 
+            primeiroDono = string.Empty;
+            primeiroLivro = string.Empty;
+
+            txtTituloLivroAluguel.Clear();
+            txtAlugadoPorAluguel.Clear();
             txtBuscarAluguel.Clear();
             txtMudarLivroAluguel.Clear();
             txtNovoTituloLivroAluguel.Clear();
             txtNovoAutorAluguel.Clear();
+            txtNovoEditoraLivro.Clear();
+            txtNovoEdicaoLivro.Clear();
             txtMudarClienteAluguel.Clear();
             txtNovoClienteAluguel.Clear();
             txtNovoEnderecoAluguel.Clear();
             txtNovoTelefoneAluguel.Clear();
             txtNovoEmailAluguel.Clear();
-            cmbNovoStatus.Text = "";
+            cmbNovoStatus.Text = string.Empty;
         }
     }
 }

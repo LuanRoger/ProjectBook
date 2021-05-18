@@ -107,10 +107,10 @@ namespace ProjectBook.GUI
             this.rabBuscarClienteId.AutoSize = true;
             this.rabBuscarClienteId.Location = new System.Drawing.Point(7, 23);
             this.rabBuscarClienteId.Name = "rabBuscarClienteId";
-            this.rabBuscarClienteId.Size = new System.Drawing.Size(36, 19);
+            this.rabBuscarClienteId.Size = new System.Drawing.Size(64, 19);
             this.rabBuscarClienteId.TabIndex = 0;
             this.rabBuscarClienteId.TabStop = true;
-            this.rabBuscarClienteId.Text = "ID";
+            this.rabBuscarClienteId.Text = "Código";
             this.rabBuscarClienteId.UseVisualStyleBackColor = true;
             this.rabBuscarClienteId.CheckedChanged += new System.EventHandler(this.rabBuscarClienteId_CheckedChanged);
             // 

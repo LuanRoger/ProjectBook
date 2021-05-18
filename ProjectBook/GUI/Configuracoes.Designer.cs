@@ -28,7 +28,7 @@ namespace ProjectBook.GUI
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
-        {;
+        {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnPersonalizarImpressao = new System.Windows.Forms.Button();
             this.chbVisualizarImpressao = new System.Windows.Forms.CheckBox();
@@ -86,7 +86,7 @@ namespace ProjectBook.GUI
             // 
             this.btnSalvarConfiguracoes.Image = global::ProjectBook.Properties.Resources.save;
             this.btnSalvarConfiguracoes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSalvarConfiguracoes.Location = new System.Drawing.Point(468, 246);
+            this.btnSalvarConfiguracoes.Location = new System.Drawing.Point(466, 244);
             this.btnSalvarConfiguracoes.Name = "btnSalvarConfiguracoes";
             this.btnSalvarConfiguracoes.Size = new System.Drawing.Size(64, 23);
             this.btnSalvarConfiguracoes.TabIndex = 1;
@@ -106,7 +106,7 @@ namespace ProjectBook.GUI
             this.gpbBancoDados.Enabled = false;
             this.gpbBancoDados.Location = new System.Drawing.Point(12, 127);
             this.gpbBancoDados.Name = "gpbBancoDados";
-            this.gpbBancoDados.Size = new System.Drawing.Size(518, 105);
+            this.gpbBancoDados.Size = new System.Drawing.Size(518, 99);
             this.gpbBancoDados.TabIndex = 2;
             this.gpbBancoDados.TabStop = false;
             this.gpbBancoDados.Text = "Banco de dados";
@@ -228,7 +228,7 @@ namespace ProjectBook.GUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(544, 281);
+            this.ClientSize = new System.Drawing.Size(544, 272);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.gpbBancoDados);
