@@ -93,8 +93,8 @@ namespace ProjectBook.GUI
             };
             mnuPesquisaSeletiva.Click += (sender, e) =>
             {
-                PesquisaSeletiva pesquisaSeletiva = new();
-                pesquisaSeletiva.Show();
+                PesquisarLivro pesquisarLivro = new();
+                pesquisarLivro.Show();
             };
             mnuLivrosAlugados.Click += (sender, e) => 
             {

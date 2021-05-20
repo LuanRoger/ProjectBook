@@ -16,6 +16,17 @@ namespace ProjectBook.GUI
         public EditarCliente()
         {
             InitializeComponent();
+
+            btnVerClientes.Click += delegate
+            {
+                ListaPesquisa listaPesquisa = new(clienteDb.VerTodosClientes());
+                listaPesquisa.Show();
+            };
+            btnPesquisarCliente.Click += delegate
+            {
+                PesquisarCliente pesquisarCliente = new();
+                pesquisarCliente.Show();
+            };
         }
 
         #region CheckedChanged

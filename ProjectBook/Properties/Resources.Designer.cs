@@ -456,6 +456,16 @@ namespace ProjectBook.Properties {
         }
         
         /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap InicioBackground2 {
+            get {
+                object obj = ResourceManager.GetObject("InicioBackground2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a GNU General Public License v3.0.
         /// </summary>
         internal static string Licensa {

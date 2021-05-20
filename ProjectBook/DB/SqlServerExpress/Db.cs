@@ -7,6 +7,9 @@ using System.Data;
 using System.Diagnostics;
 using System.IO;
 using System.Management.Automation;
+using System.Management.Automation.Remoting;
+using Accessibility;
+using ProjectBook.GUI;
 
 namespace ProjectBook.DB.SqlServerExpress
 {
@@ -14,6 +17,7 @@ namespace ProjectBook.DB.SqlServerExpress
     {
         protected static readonly SqlConnection connection = 
             new(ConfigurationManager.ConnectionStrings["SqlConnectionString"].ConnectionString);
+
         /// <summary>
         /// Verifica a conexão entre o programa e o banco de dados
         /// </summary>
@@ -41,7 +45,15 @@ namespace ProjectBook.DB.SqlServerExpress
                             Resources.MessageBoxError,
                             MessageBoxButtons.YesNo, MessageBoxIcon.Error);
 
-                        if (dialogResult == DialogResult.Yes) AppManager.GiveAdm();
+                        if (dialogResult == DialogResult.Yes)
+                        {
+                            AppManager.GiveAdm();
+
+                            Configuracoes configuracoes = new();
+                            configuracoes.Closing += (_, _) => Environment.Exit(1);
+                            configuracoes.Show();
+                            configuracoes.BringToFront();
+                        }
                         else Process.GetCurrentProcess().Kill();
                     }
                 }

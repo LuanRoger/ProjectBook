@@ -8,9 +8,22 @@ namespace ProjectBook.GUI
 {
     public partial class CadastrarClientes : Form
     {
+        ClienteDb clienteDb = new();
+
         public CadastrarClientes()
         {
             InitializeComponent();
+
+            btnVerClientes.Click += delegate
+            {
+                ListaPesquisa listaPesquisa = new(clienteDb.VerTodosClientes());
+                listaPesquisa.Show();
+            };
+            btnPesquisarCliente.Click += delegate
+            {
+                PesquisarCliente pesquisarCliente = new();
+                pesquisarCliente.Show();
+            };
         }
 
         private void btnSalvarCliente_Click(object sender, EventArgs e)
@@ -49,7 +62,6 @@ namespace ProjectBook.GUI
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            ClienteDb clienteDb = new();
             clienteDb.CadastrarCliente(cliente);
 
             LimparCampos();

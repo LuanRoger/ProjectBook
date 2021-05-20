@@ -17,6 +17,17 @@ namespace ProjectBook.GUI
             SugerirAutores();
             SugerirEditora();
             ColocarGeneros();
+
+            btnVerLivros.Click += delegate
+            {
+                ListaPesquisa listaPesquisa = new(livrosDb.VerTodosLivros());
+                listaPesquisa.Show();
+            };
+            btnPesquisarLivros.Click += delegate
+            {
+                PesquisarLivro pesquisarLivro = new();
+                pesquisarLivro.Show();
+            };
         }
 
         private void btnSalvarLivro_Click(object sender, EventArgs e)

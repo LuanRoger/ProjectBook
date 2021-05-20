@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Configuration;
 using System.Data;
+using System.IO;
+using System.Linq;
 using System.Management;
 using ProjectBook.Livros;
 using ProjectBook.DB.SqlServerExpress;
@@ -85,6 +88,12 @@ namespace ProjectBook
             return so.Contains("Windows 10");
         }
 
+        public static bool HasSyncOneDrive(DirectoryInfo directoryInfo)
+        {
+            return directoryInfo.FullName.Contains("OneDrive") && 
+                   directoryInfo.GetFiles("*.mdf", SearchOption.AllDirectories).Length >= 1 &&
+                   ConfigurationManager.AppSettings["dbPadrao"] == "onedrive";
+        }
         #region Verificar strings
         /// <summary>
         /// Verifica se <c>string.IsNullOrEmpty(valor1)</c>

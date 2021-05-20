@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 using ProjectBook.Livros;
@@ -109,6 +110,24 @@ namespace ProjectBook.DB.SqlServerExpress
             {
                 MessageBox.Show(e.Message, Resources.MessageBoxError,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return dataTable;
+        }
+        public DataTable ReceberTipoUsuario(string usuario)
+        {
+            DataTable dataTable = new();
+            try
+            {
+                AbrirConexaoDb();
+                SqlDataAdapter adapter = new($"SELECT Tipo FROM Usuarios WHERE Usuario = '{usuario}'", connection);
+                FechaConecxaoDb();
+                adapter.Fill(dataTable);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, Resources.MessageBoxError,
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);;
             }
 
             return dataTable;

@@ -16,17 +16,17 @@ namespace ProjectBook.GUI
             InitializeComponent();
 
             #region MenuClick
-            mnuVerLivroAlugado.Click += (sender, e) =>
+            mnuVerLivroAlugado.Click += (_, _) =>
             {
                 ListaPesquisa lista = new(aluguelDb.PegarLivrosAlugados());
                 lista.Show();
             };
-            mnuVerLivrosAtasados.Click += (sender, e) =>
+            mnuVerLivrosAtasados.Click += (_, _) =>
             {
                 ListaPesquisa lista = new(aluguelDb.PegarLivroAtrassado());
                 lista.Show();
             };
-            mnuVerLivrosDevolvidos.Click += (sender, e) =>
+            mnuVerLivrosDevolvidos.Click += (_, _) =>
             {
                 ListaPesquisa lista = new(aluguelDb.PegarLivroDevolvido());
                 lista.Show();
@@ -96,7 +96,7 @@ namespace ProjectBook.GUI
                 lista.Show();
             }
 
-            LimaprCampos();
+            LimparCampos();
         }
 
         private void PreencherCampos(DataTable data)
@@ -115,9 +115,9 @@ namespace ProjectBook.GUI
         }
 
         private void btnFecharPesquisaAluguel_Click(object sender, EventArgs e) => this.Close();
-        private void btnLimparPequisaAluguel_Click(object sender, EventArgs e) => LimaprCampos();
+        private void btnLimparPequisaAluguel_Click(object sender, EventArgs e) => LimparCampos();
         
-        private void LimaprCampos()
+        private void LimparCampos()
         {
             txtBuscarAluguel.Clear();
             txtAtraso.Clear();

@@ -50,12 +50,16 @@ namespace ProjectBook.GUI
             this.txtIsbn = new System.Windows.Forms.MaskedTextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.txtObservacoesCadastro = new System.Windows.Forms.RichTextBox();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.btnVerLivros = new System.Windows.Forms.ToolStripButton();
+            this.btnPesquisarLivros = new System.Windows.Forms.ToolStripButton();
+            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(69, 13);
+            this.label1.Location = new System.Drawing.Point(68, 25);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(42, 15);
@@ -64,7 +68,7 @@ namespace ProjectBook.GUI
             // 
             // txtTituloLivro
             // 
-            this.txtTituloLivro.Location = new System.Drawing.Point(69, 31);
+            this.txtTituloLivro.Location = new System.Drawing.Point(68, 43);
             this.txtTituloLivro.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtTituloLivro.Name = "txtTituloLivro";
             this.txtTituloLivro.Size = new System.Drawing.Size(253, 23);
@@ -73,7 +77,7 @@ namespace ProjectBook.GUI
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 58);
+            this.label2.Location = new System.Drawing.Point(12, 70);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(42, 15);
@@ -84,7 +88,7 @@ namespace ProjectBook.GUI
             // 
             this.txtAutorLivro.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.txtAutorLivro.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.txtAutorLivro.Location = new System.Drawing.Point(13, 77);
+            this.txtAutorLivro.Location = new System.Drawing.Point(12, 89);
             this.txtAutorLivro.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtAutorLivro.Name = "txtAutorLivro";
             this.txtAutorLivro.Size = new System.Drawing.Size(309, 23);
@@ -94,7 +98,7 @@ namespace ProjectBook.GUI
             // 
             this.txtEditoraLivro.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.txtEditoraLivro.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.txtEditoraLivro.Location = new System.Drawing.Point(13, 120);
+            this.txtEditoraLivro.Location = new System.Drawing.Point(12, 132);
             this.txtEditoraLivro.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtEditoraLivro.Name = "txtEditoraLivro";
             this.txtEditoraLivro.Size = new System.Drawing.Size(309, 23);
@@ -103,7 +107,7 @@ namespace ProjectBook.GUI
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(13, 103);
+            this.label3.Location = new System.Drawing.Point(12, 115);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(49, 15);
@@ -112,7 +116,7 @@ namespace ProjectBook.GUI
             // 
             // txtEdicaoLivro
             // 
-            this.txtEdicaoLivro.Location = new System.Drawing.Point(13, 164);
+            this.txtEdicaoLivro.Location = new System.Drawing.Point(12, 176);
             this.txtEdicaoLivro.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtEdicaoLivro.Name = "txtEdicaoLivro";
             this.txtEdicaoLivro.Size = new System.Drawing.Size(78, 23);
@@ -121,7 +125,7 @@ namespace ProjectBook.GUI
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(13, 146);
+            this.label4.Location = new System.Drawing.Point(12, 158);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(42, 15);
@@ -130,7 +134,7 @@ namespace ProjectBook.GUI
             // 
             // txtAno
             // 
-            this.txtAno.Location = new System.Drawing.Point(99, 164);
+            this.txtAno.Location = new System.Drawing.Point(98, 176);
             this.txtAno.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtAno.Name = "txtAno";
             this.txtAno.Size = new System.Drawing.Size(103, 23);
@@ -139,7 +143,7 @@ namespace ProjectBook.GUI
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(99, 146);
+            this.label5.Location = new System.Drawing.Point(98, 158);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(34, 15);
@@ -149,7 +153,7 @@ namespace ProjectBook.GUI
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(13, 190);
+            this.label6.Location = new System.Drawing.Point(12, 202);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(45, 15);
@@ -159,7 +163,7 @@ namespace ProjectBook.GUI
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(209, 146);
+            this.label7.Location = new System.Drawing.Point(208, 158);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(32, 15);
@@ -170,7 +174,7 @@ namespace ProjectBook.GUI
             // 
             this.btnSalvarLivro.Image = global::ProjectBook.Properties.Resources.save;
             this.btnSalvarLivro.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSalvarLivro.Location = new System.Drawing.Point(13, 326);
+            this.btnSalvarLivro.Location = new System.Drawing.Point(12, 338);
             this.btnSalvarLivro.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnSalvarLivro.Name = "btnSalvarLivro";
             this.btnSalvarLivro.Size = new System.Drawing.Size(64, 23);
@@ -184,7 +188,7 @@ namespace ProjectBook.GUI
             // 
             this.btnLimparTxtLivros.Image = global::ProjectBook.Properties.Resources.textfield;
             this.btnLimparTxtLivros.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLimparTxtLivros.Location = new System.Drawing.Point(171, 326);
+            this.btnLimparTxtLivros.Location = new System.Drawing.Point(170, 338);
             this.btnLimparTxtLivros.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnLimparTxtLivros.Name = "btnLimparTxtLivros";
             this.btnLimparTxtLivros.Size = new System.Drawing.Size(68, 23);
@@ -198,7 +202,7 @@ namespace ProjectBook.GUI
             // 
             this.btnFecharCadastro.Image = global::ProjectBook.Properties.Resources.cancel;
             this.btnFecharCadastro.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnFecharCadastro.Location = new System.Drawing.Point(247, 326);
+            this.btnFecharCadastro.Location = new System.Drawing.Point(246, 338);
             this.btnFecharCadastro.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnFecharCadastro.Name = "btnFecharCadastro";
             this.btnFecharCadastro.Size = new System.Drawing.Size(75, 23);
@@ -211,7 +215,7 @@ namespace ProjectBook.GUI
             // cmbGenero
             // 
             this.cmbGenero.FormattingEnabled = true;
-            this.cmbGenero.Location = new System.Drawing.Point(13, 208);
+            this.cmbGenero.Location = new System.Drawing.Point(12, 220);
             this.cmbGenero.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmbGenero.Name = "cmbGenero";
             this.cmbGenero.Size = new System.Drawing.Size(309, 23);
@@ -220,7 +224,7 @@ namespace ProjectBook.GUI
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(13, 13);
+            this.label8.Location = new System.Drawing.Point(12, 25);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(49, 15);
             this.label8.TabIndex = 13;
@@ -231,14 +235,14 @@ namespace ProjectBook.GUI
             this.txtCodigoLivro.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.txtCodigoLivro.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.txtCodigoLivro.ForeColor = System.Drawing.Color.White;
-            this.txtCodigoLivro.Location = new System.Drawing.Point(13, 32);
+            this.txtCodigoLivro.Location = new System.Drawing.Point(12, 44);
             this.txtCodigoLivro.Name = "txtCodigoLivro";
             this.txtCodigoLivro.Size = new System.Drawing.Size(49, 23);
             this.txtCodigoLivro.TabIndex = 1;
             // 
             // txtIsbn
             // 
-            this.txtIsbn.Location = new System.Drawing.Point(209, 164);
+            this.txtIsbn.Location = new System.Drawing.Point(208, 176);
             this.txtIsbn.Mask = "999-9-99-999999-9";
             this.txtIsbn.Name = "txtIsbn";
             this.txtIsbn.Size = new System.Drawing.Size(113, 23);
@@ -247,7 +251,7 @@ namespace ProjectBook.GUI
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(13, 234);
+            this.label10.Location = new System.Drawing.Point(12, 246);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(77, 15);
             this.label10.TabIndex = 17;
@@ -255,17 +259,47 @@ namespace ProjectBook.GUI
             // 
             // txtObservacoesCadastro
             // 
-            this.txtObservacoesCadastro.Location = new System.Drawing.Point(14, 252);
+            this.txtObservacoesCadastro.Location = new System.Drawing.Point(13, 264);
             this.txtObservacoesCadastro.Name = "txtObservacoesCadastro";
             this.txtObservacoesCadastro.Size = new System.Drawing.Size(308, 68);
             this.txtObservacoesCadastro.TabIndex = 9;
             this.txtObservacoesCadastro.Text = "";
             // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnVerLivros,
+            this.btnPesquisarLivros});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(328, 25);
+            this.toolStrip1.TabIndex = 18;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // btnVerLivros
+            // 
+            this.btnVerLivros.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnVerLivros.Image = global::ProjectBook.Properties.Resources.book_go;
+            this.btnVerLivros.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnVerLivros.Name = "btnVerLivros";
+            this.btnVerLivros.Size = new System.Drawing.Size(23, 22);
+            this.btnVerLivros.Text = "Ver todos os livros";
+            // 
+            // btnPesquisarLivros
+            // 
+            this.btnPesquisarLivros.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnPesquisarLivros.Image = global::ProjectBook.Properties.Resources.zoom;
+            this.btnPesquisarLivros.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnPesquisarLivros.Name = "btnPesquisarLivros";
+            this.btnPesquisarLivros.Size = new System.Drawing.Size(23, 22);
+            this.btnPesquisarLivros.Text = "Pesquisar livro";
+            // 
             // CadastroLivro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(328, 357);
+            this.ClientSize = new System.Drawing.Size(328, 373);
+            this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.txtObservacoesCadastro);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.txtIsbn);
@@ -294,6 +328,8 @@ namespace ProjectBook.GUI
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastrar livro";
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -322,5 +358,8 @@ namespace ProjectBook.GUI
         private System.Windows.Forms.MaskedTextBox txtIsbn;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.RichTextBox txtObservacoesCadastro;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripButton btnVerLivros;
+        private System.Windows.Forms.ToolStripButton btnPesquisarLivros;
     }
 }

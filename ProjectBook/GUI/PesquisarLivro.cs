@@ -5,10 +5,10 @@ using ProjectBook.DB.SqlServerExpress;
 
 namespace ProjectBook.GUI
 {
-    public partial class PesquisaSeletiva : Form
+    public partial class PesquisarLivro : Form
     {
         LivrosDb livrosDb = new();
-        public PesquisaSeletiva()
+        public PesquisarLivro()
         {
             InitializeComponent();
         }

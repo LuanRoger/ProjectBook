@@ -507,7 +507,8 @@ namespace ProjectBook.GUI
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.BackColor = System.Drawing.Color.White;
-            this.tableLayoutPanel1.BackgroundImage = global::ProjectBook.Properties.Resources.InicioBackground;
+            this.tableLayoutPanel1.BackgroundImage = global::ProjectBook.Properties.Resources.InicioBackground2;
+            this.tableLayoutPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.tableLayoutPanel1.ColumnCount = 4;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());

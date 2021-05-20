@@ -1,9 +1,11 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Configuration;
 using System.Data;
 using System.Linq;
 using System.Drawing;
 using System.Drawing.Text;
+using System.Threading;
 using System.Windows.Forms;
 using ProjectBook.DB.SqlServerExpress;
 using ProjectBook.GUI;
@@ -15,21 +17,21 @@ namespace ProjectBook
 {
     public partial class SplashScreen : Form
     {
-        private readonly string _fontMontserratExtraBold = Application.StartupPath + @"font\Montserrat-ExtraBold.ttf";
-        private readonly string _fontMontserratExtraLight = Application.StartupPath + @"font\Montserrat-ExtraLight.ttf";
+        private readonly string FONTMONTSERRATEXTRABOLD = Application.StartupPath + @"font\Montserrat-ExtraBold.ttf";
+        private readonly string FONTMONTSERRATEXTRALIGHT = Application.StartupPath + @"font\Montserrat-ExtraLight.ttf";
 
         private LivrosDb livrosDb = new();
-        private AluguelDb aluguelDb = new();
 
         public SplashScreen()
         {
             InitializeComponent();
 
             AppManager.DownloadFonts();
+            AppManager.DownloadScripts();
 
             PrivateFontCollection privateFont = new();
-            privateFont.AddFontFile(_fontMontserratExtraBold);
-            privateFont.AddFontFile(_fontMontserratExtraLight);
+            privateFont.AddFontFile(FONTMONTSERRATEXTRABOLD);
+            privateFont.AddFontFile(FONTMONTSERRATEXTRALIGHT);
 
             label1.Font = new Font(privateFont.Families[0], 20, FontStyle.Bold);
             label2.Font = new Font(privateFont.Families[1], 7, FontStyle.Regular);
@@ -51,9 +53,11 @@ namespace ProjectBook
                 UsuarioLogado();
                 return;
             }
+            else UpdateUserInfo();
 
             //Atualizar Status do aluguel
             lblStatusCarregamento.Text = Resources.AtualizandoBancoDadosSpashScreen;
+            var d = ConfigurationManager.AppSettings["atualizarStatusAluguel"];
             if (ConfigurationManager.AppSettings["atualizarStatusAluguel"] == "1") AtualizarAtrasso();
 
             //Procurar atualizazções
@@ -63,9 +67,10 @@ namespace ProjectBook
             Task.Run(async () =>
             {
                 await Task.Delay(Consts.SPLASH_SCREEN_LOADTIME);
-                Invoke((MethodInvoker)delegate { Close(); });
+                Invoke((MethodInvoker)Close);
             });
         }
+
         private void UsuarioLogado()
         {
             if (Application.OpenForms.Count < 2)
@@ -74,10 +79,23 @@ namespace ProjectBook
                 login.BringToFront();
                 login.Show();
             }
-            else { /*Configurações aberta*/ }
+            else AppManager.ReiniciarPrograma();
+        }
+        private void UpdateUserInfo()
+        {
+            var d = new UsuarioDb().ReceberTipoUsuario(ConfigurationManager.AppSettings["usuarioLogado"]).Rows[0][0].ToString();
+            
+            Configuracoes.config.AppSettings.Settings["tipoUsuario"].Value = 
+                new UsuarioDb().ReceberTipoUsuario(ConfigurationManager.AppSettings["usuarioLogado"]).Rows[0][0].ToString();
+            Configuracoes.config.Save();
+            ConfigurationManager.RefreshSection("appSettings");
         }
         private void AtualizarAtrasso()
         {
+            AluguelDb aluguelDb = new();
+
+            var d = aluguelDb.PegarLivrosAlugados().Rows;
+
             foreach (DataRow data in aluguelDb.PegarLivrosAlugados().Rows)
             {
                 DateTime hoje = DateTime.Now.Date;

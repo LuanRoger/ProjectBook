@@ -30,7 +30,6 @@ namespace ProjectBook.GUI
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnPersonalizarImpressao = new System.Windows.Forms.Button();
             this.chbVisualizarImpressao = new System.Windows.Forms.CheckBox();
             this.btnSalvarConfiguracoes = new System.Windows.Forms.Button();
             this.gpbBancoDados = new System.Windows.Forms.GroupBox();
@@ -45,6 +44,7 @@ namespace ProjectBook.GUI
             this.chbFormatarCliente = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.chbAtualizarStatusAluguel = new System.Windows.Forms.CheckBox();
+            this.chbExibirCodigo = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.gpbBancoDados.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -53,24 +53,14 @@ namespace ProjectBook.GUI
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.btnPersonalizarImpressao);
+            this.groupBox1.Controls.Add(this.chbExibirCodigo);
             this.groupBox1.Controls.Add(this.chbVisualizarImpressao);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(300, 51);
+            this.groupBox1.Size = new System.Drawing.Size(253, 51);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Impressão";
-            // 
-            // btnPersonalizarImpressao
-            // 
-            this.btnPersonalizarImpressao.Location = new System.Drawing.Point(152, 19);
-            this.btnPersonalizarImpressao.Name = "btnPersonalizarImpressao";
-            this.btnPersonalizarImpressao.Size = new System.Drawing.Size(140, 23);
-            this.btnPersonalizarImpressao.TabIndex = 2;
-            this.btnPersonalizarImpressao.Text = "Personalizar impressão";
-            this.btnPersonalizarImpressao.UseVisualStyleBackColor = true;
-            this.btnPersonalizarImpressao.Click += new System.EventHandler(this.btnPersonalizarImpressao_Click);
             // 
             // chbVisualizarImpressao
             // 
@@ -86,7 +76,7 @@ namespace ProjectBook.GUI
             // 
             this.btnSalvarConfiguracoes.Image = global::ProjectBook.Properties.Resources.save;
             this.btnSalvarConfiguracoes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSalvarConfiguracoes.Location = new System.Drawing.Point(466, 244);
+            this.btnSalvarConfiguracoes.Location = new System.Drawing.Point(417, 237);
             this.btnSalvarConfiguracoes.Name = "btnSalvarConfiguracoes";
             this.btnSalvarConfiguracoes.Size = new System.Drawing.Size(64, 23);
             this.btnSalvarConfiguracoes.TabIndex = 1;
@@ -106,7 +96,7 @@ namespace ProjectBook.GUI
             this.gpbBancoDados.Enabled = false;
             this.gpbBancoDados.Location = new System.Drawing.Point(12, 127);
             this.gpbBancoDados.Name = "gpbBancoDados";
-            this.gpbBancoDados.Size = new System.Drawing.Size(518, 99);
+            this.gpbBancoDados.Size = new System.Drawing.Size(471, 99);
             this.gpbBancoDados.TabIndex = 2;
             this.gpbBancoDados.TabStop = false;
             this.gpbBancoDados.Text = "Banco de dados";
@@ -114,7 +104,7 @@ namespace ProjectBook.GUI
             // rabOneDrive
             // 
             this.rabOneDrive.AutoSize = true;
-            this.rabOneDrive.Location = new System.Drawing.Point(317, 22);
+            this.rabOneDrive.Location = new System.Drawing.Point(391, 22);
             this.rabOneDrive.Name = "rabOneDrive";
             this.rabOneDrive.Size = new System.Drawing.Size(74, 19);
             this.rabOneDrive.TabIndex = 5;
@@ -125,7 +115,7 @@ namespace ProjectBook.GUI
             // 
             // btnSelecionarArquivoDb
             // 
-            this.btnSelecionarArquivoDb.Location = new System.Drawing.Point(485, 66);
+            this.btnSelecionarArquivoDb.Location = new System.Drawing.Point(438, 66);
             this.btnSelecionarArquivoDb.Name = "btnSelecionarArquivoDb";
             this.btnSelecionarArquivoDb.Size = new System.Drawing.Size(27, 23);
             this.btnSelecionarArquivoDb.TabIndex = 4;
@@ -136,7 +126,7 @@ namespace ProjectBook.GUI
             // rabSqlServerLocalDb
             // 
             this.rabSqlServerLocalDb.AutoSize = true;
-            this.rabSqlServerLocalDb.Location = new System.Drawing.Point(135, 22);
+            this.rabSqlServerLocalDb.Location = new System.Drawing.Point(172, 22);
             this.rabSqlServerLocalDb.Name = "rabSqlServerLocalDb";
             this.rabSqlServerLocalDb.Size = new System.Drawing.Size(176, 19);
             this.rabSqlServerLocalDb.TabIndex = 3;
@@ -158,7 +148,7 @@ namespace ProjectBook.GUI
             // 
             this.txtStringConexaoCaminhoDb.Location = new System.Drawing.Point(6, 66);
             this.txtStringConexaoCaminhoDb.Name = "txtStringConexaoCaminhoDb";
-            this.txtStringConexaoCaminhoDb.Size = new System.Drawing.Size(473, 23);
+            this.txtStringConexaoCaminhoDb.Size = new System.Drawing.Size(426, 23);
             this.txtStringConexaoCaminhoDb.TabIndex = 1;
             // 
             // rabSqlServerExpress
@@ -179,7 +169,7 @@ namespace ProjectBook.GUI
             this.groupBox3.Controls.Add(this.chbFormatarCliente);
             this.groupBox3.Location = new System.Drawing.Point(12, 69);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(300, 52);
+            this.groupBox3.Size = new System.Drawing.Size(253, 52);
             this.groupBox3.TabIndex = 3;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Formatar em maiúsculo";
@@ -207,7 +197,7 @@ namespace ProjectBook.GUI
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.chbAtualizarStatusAluguel);
-            this.groupBox2.Location = new System.Drawing.Point(318, 12);
+            this.groupBox2.Location = new System.Drawing.Point(271, 12);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(212, 51);
             this.groupBox2.TabIndex = 4;
@@ -224,11 +214,21 @@ namespace ProjectBook.GUI
             this.chbAtualizarStatusAluguel.Text = "Atualizar status automaticamente";
             this.chbAtualizarStatusAluguel.UseVisualStyleBackColor = true;
             // 
+            // chbExibirCodigo
+            // 
+            this.chbExibirCodigo.AutoSize = true;
+            this.chbExibirCodigo.Location = new System.Drawing.Point(152, 22);
+            this.chbExibirCodigo.Name = "chbExibirCodigo";
+            this.chbExibirCodigo.Size = new System.Drawing.Size(95, 19);
+            this.chbExibirCodigo.TabIndex = 5;
+            this.chbExibirCodigo.Text = "Exibir código";
+            this.chbExibirCodigo.UseVisualStyleBackColor = true;
+            // 
             // Configuracoes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(544, 272);
+            this.ClientSize = new System.Drawing.Size(493, 272);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.gpbBancoDados);
@@ -267,8 +267,8 @@ namespace ProjectBook.GUI
         private System.Windows.Forms.RadioButton rabSqlServerLocalDb;
         private System.Windows.Forms.Button btnSelecionarArquivoDb;
         private System.Windows.Forms.RadioButton rabOneDrive;
-        private System.Windows.Forms.Button btnPersonalizarImpressao;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.CheckBox chbAtualizarStatusAluguel;
+        private System.Windows.Forms.CheckBox chbExibirCodigo;
     }
 }

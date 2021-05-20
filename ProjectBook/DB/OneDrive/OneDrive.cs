@@ -3,7 +3,6 @@ using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using ProjectBook.DB.SqlServerExpress;
 using ProjectBook.GUI;
 using ProjectBook.Properties;
 

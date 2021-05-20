@@ -1,7 +1,7 @@
 ﻿
 namespace ProjectBook.GUI
 {
-    partial class PesquisaSeletiva
+    partial class PesquisarLivro
     {
         /// <summary>
         /// Required designer variable.
@@ -136,7 +136,7 @@ namespace ProjectBook.GUI
             this.btnCancelarPesquisaLivro.UseVisualStyleBackColor = true;
             this.btnCancelarPesquisaLivro.Click += new System.EventHandler(this.btnFecharPesquisaLivro_Click);
             // 
-            // PesquisaSeletiva
+            // PesquisarLivro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -147,7 +147,7 @@ namespace ProjectBook.GUI
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
-            this.Name = "PesquisaSeletiva";
+            this.Name = "PesquisarLivro";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Pesquisar livro";

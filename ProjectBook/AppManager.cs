@@ -6,6 +6,8 @@ using System.Reflection;
 using System.Windows.Forms;
 using AutoUpdaterDotNET;
 using System.Configuration;
+using System.Threading.Tasks;
+using DocumentFormat.OpenXml.Drawing;
 using ProjectBook.GUI;
 
 namespace ProjectBook
@@ -13,10 +15,13 @@ namespace ProjectBook
     static class AppManager
     {
         private static readonly string[] FONTS_DOWNLOAD = 
-            new string[] { "Lato-Bold.ttf", "Montserrat-ExtraBold.ttf", "Montserrat-ExtraLight.ttf" };
+            { "Lato-Bold.ttf", "Montserrat-ExtraBold.ttf", "Montserrat-ExtraLight.ttf" };
         private static readonly string FONTS_FOLDER = Application.StartupPath + @"\font";
         private static readonly string URI_DOWNLAD_FONTS = "https://github.com/LuanRoger/ProjectBook/raw/master/ProjectBook/assets/fontes/";
-        private static readonly string URL_DOWNLOAD_SCRIPTS = "";
+
+        private static readonly string[] SCRIPTS_DOWNLOAD = {"startdb_instance.ps1"};
+        private static readonly string SCRIPTS_FOLDER = Application.StartupPath + @"\scripts";
+        private static readonly string URI_DOWNLOAD_SCRIPTS = "https://github.com/LuanRoger/ProjectBook/raw/master/scripts/";
 
         public static void ReiniciarPrograma()
         {
@@ -33,8 +38,20 @@ namespace ProjectBook
             using WebClient webClient = new();
             foreach (string font in FONTS_DOWNLOAD)
             {
-                webClient.DownloadFile(URI_DOWNLAD_FONTS + font,
+                webClient.DownloadFile(new Uri(URI_DOWNLAD_FONTS + font),
                 @$"{FONTS_FOLDER}\{font}");
+            }
+        }
+        public static void DownloadScripts()
+        {
+            if (File.Exists(@$"{SCRIPTS_FOLDER}\{SCRIPTS_DOWNLOAD[0]}")) return;
+            Directory.CreateDirectory(SCRIPTS_FOLDER);
+
+            using WebClient webClient = new();
+            foreach (var script in SCRIPTS_DOWNLOAD)
+            {
+                webClient.DownloadFile(new Uri(URI_DOWNLOAD_SCRIPTS + script),
+                    @$"{SCRIPTS_FOLDER}\{script}");
             }
         }
         public static void ProcurarAtualizacoes()
@@ -46,21 +63,15 @@ namespace ProjectBook
         }
         public static void GiveAdm()
         {
-            // Fazer com que o tipo de usuario seja alterado para ADM para que possa editar a string de conexão
             Configuracoes.config.AppSettings.Settings["tipoUsuario"].Value = Tipos.TipoUsuário.ADM.ToString();
             Configuracoes.config.Save();
             ConfigurationManager.RefreshSection("appSettings");
-
-            Configuracoes configuracoes = new();
-            configuracoes.Closing += delegate
-            {
-                //Evitar softlock
-                if (string.IsNullOrEmpty(ConfigurationManager.AppSettings["usuarioLogado"]) ||
-                    string.IsNullOrEmpty(ConfigurationManager.ConnectionStrings["SqlConnectionString"].ConnectionString))
-                    Environment.Exit(1);
-            };
-            configuracoes.Show();
-            configuracoes.BringToFront();
+        }
+        public static void RemoveAdm()
+        {
+            Configuracoes.config.AppSettings.Settings["tipoUsuario"].Value = Tipos.TipoUsuário.USU.ToString();
+            Configuracoes.config.Save();
+            ConfigurationManager.RefreshSection("appSettings");
         }
     }
 

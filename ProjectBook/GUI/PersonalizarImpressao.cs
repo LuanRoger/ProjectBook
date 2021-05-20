@@ -22,7 +22,7 @@ namespace ProjectBook.GUI
             txtRodape.Text = ConfigurationManager.AppSettings["Rodape"];
             trbAlinhamentoRodape.Value = int.Parse(ConfigurationManager.AppSettings["AlinhamentoRodape"]);
 
-            chbExibirCodigo.Checked = ConfigurationManager.AppSettings["ExibirID"] == "1";
+            
             chbNPagina.Checked = ConfigurationManager.AppSettings["NumeroPaginas"] == "1";
         }
 
@@ -41,7 +41,6 @@ namespace ProjectBook.GUI
             Configuracoes.config.AppSettings.Settings["AlinhamentoSubtitulo"].Value = trbAlinhamentoSubtitulo.Value.ToString();
             Configuracoes.config.AppSettings.Settings["Rodape"].Value = txtRodape.Text;
             Configuracoes.config.AppSettings.Settings["AlinhamentoRodape"].Value = trbAlinhamentoRodape.Value.ToString();
-            Configuracoes.config.AppSettings.Settings["ExibirID"].Value = chbExibirCodigo.Checked ? "1" : "0";
             Configuracoes.config.AppSettings.Settings["NumeroPaginas"].Value = chbNPagina.Checked ? "1" : "0";
 
             Configuracoes.config.Save(ConfigurationSaveMode.Modified);

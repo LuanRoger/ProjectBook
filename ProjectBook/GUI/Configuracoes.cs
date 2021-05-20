@@ -2,9 +2,7 @@
 using System.Configuration;
 using System.Drawing;
 using System.IO;
-using System.Management;
 using System.Windows.Forms;
-using ProjectBook.DB.OneDrive;
 using ProjectBook.Properties;
 
 namespace ProjectBook.GUI
@@ -33,7 +31,7 @@ namespace ProjectBook.GUI
             if (ConfigurationManager.AppSettings["atualizarStatusAluguel"] == "1") chbAtualizarStatusAluguel.Checked = true;
             if (ConfigurationManager.AppSettings["formatarCliente"] == "1") chbFormatarCliente.Checked = true;
             if (ConfigurationManager.AppSettings["formatarLivro"] == "1") chbFormatarLivro.Checked = true;
-            var d = ConfigurationManager.AppSettings["dbPadrao"];
+            chbExibirCodigo.Checked = ConfigurationManager.AppSettings["ExibirID"] == "1";
 
             switch (ConfigurationManager.AppSettings["dbPadrao"])
             {
@@ -57,6 +55,7 @@ namespace ProjectBook.GUI
 
             //Preferencias de impressão
             config.AppSettings.Settings["visualizarImpressao"].Value = chbVisualizarImpressao.Checked ? "1" : "0";
+            config.AppSettings.Settings["ExibirID"].Value = chbExibirCodigo.Checked ? "1" : "0";
             
             //Formatação
             config.AppSettings.Settings["formatarCliente"].Value = chbFormatarCliente.Checked ? "1" : "0";
@@ -114,7 +113,7 @@ namespace ProjectBook.GUI
             lblInfoTxt.ForeColor = Color.Black;
             btnSelecionarArquivoDb.Visible = false;
             txtStringConexaoCaminhoDb.Visible = true;
-            txtStringConexaoCaminhoDb.Size = new Size(506, 23);
+            txtStringConexaoCaminhoDb.Size = new Size(459, 23);
         }
         private void rabSqlServerLocalDb_CheckedChanged(object sender, EventArgs e)
         {
@@ -122,7 +121,7 @@ namespace ProjectBook.GUI
             lblInfoTxt.ForeColor = Color.Black;
             btnSelecionarArquivoDb.Visible = true;
             txtStringConexaoCaminhoDb.Visible = true;
-            txtStringConexaoCaminhoDb.Size = new Size(473, 23);
+            txtStringConexaoCaminhoDb.Size = new Size(426, 23);
         }
         private void rabOneDrive_CheckedChanged(object sender, EventArgs e)
         {
@@ -140,8 +139,7 @@ namespace ProjectBook.GUI
                 rabSqlServerLocalDb.Checked = true;
                 return;
             }
-            if (directoryInfo.ToString().Contains("OneDrive") &&
-                ConfigurationManager.AppSettings["dbPadrao"] == "onedrive")
+            if (Verificadores.HasSyncOneDrive(directoryInfo))
             {
                 lblInfoTxt.Visible = true;
                 lblInfoTxt.Text = Resources.BancoSincronizadoOneDrive;
@@ -161,12 +159,6 @@ namespace ProjectBook.GUI
             ConfigurationManager.RefreshSection("appSettings");
             txtStringConexaoCaminhoDb.Text =
                 $@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={caminho.FileName};Integrated Security=True";
-        }
-
-        private void btnPersonalizarImpressao_Click(object sender, EventArgs e)
-        {
-            PersonalizarImpressao personalizarImpressao = new();
-            personalizarImpressao.Show();
         }
     }
 }

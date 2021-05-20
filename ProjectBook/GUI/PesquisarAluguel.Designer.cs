@@ -261,6 +261,7 @@ namespace ProjectBook.GUI
             // rabTituloLivro
             // 
             this.rabTituloLivro.AutoSize = true;
+            this.rabTituloLivro.Checked = true;
             this.rabTituloLivro.Location = new System.Drawing.Point(5, 31);
             this.rabTituloLivro.Name = "rabTituloLivro";
             this.rabTituloLivro.Size = new System.Drawing.Size(98, 19);
@@ -277,7 +278,6 @@ namespace ProjectBook.GUI
             this.rabNomeCliente.Name = "rabNomeCliente";
             this.rabNomeCliente.Size = new System.Drawing.Size(113, 19);
             this.rabNomeCliente.TabIndex = 10;
-            this.rabNomeCliente.TabStop = true;
             this.rabNomeCliente.Text = "Nome do cliente";
             this.rabNomeCliente.UseVisualStyleBackColor = true;
             this.rabNomeCliente.CheckedChanged += new System.EventHandler(this.rabNomeCliente_CheckedChanged);
@@ -318,7 +318,7 @@ namespace ProjectBook.GUI
             // 
             this.mnuVerLivrosAtasados.Name = "mnuVerLivrosAtasados";
             this.mnuVerLivrosAtasados.Size = new System.Drawing.Size(181, 22);
-            this.mnuVerLivrosAtasados.Text = "Ver livros atrassados";
+            this.mnuVerLivrosAtasados.Text = "Ver livros atrasados";
             // 
             // btnVerEmRelatorio
             // 

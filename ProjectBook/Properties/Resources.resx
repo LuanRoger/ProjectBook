@@ -112,47 +112,47 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AluguelRegistrado" xml:space="preserve">
-    <value>Aluguel registrado com sucesso.</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="delete" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\img\delete.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="AtualizandoBancoDadosSpashScreen" xml:space="preserve">
-    <value>Atualiazando status dos alugueis...</value>
+  <data name="MarcarOpcao" xml:space="preserve">
+    <value>Marque uma opção de busca para continuar.</value>
   </data>
-  <data name="BancoSincronizadoOneDrive" xml:space="preserve">
-    <value>Banco de dados sincronizado com o OneDrive.</value>
+  <data name="ErrorMigrarOneDrive" xml:space="preserve">
+    <value>Ocorreu um error: {0}. Volte as configurações e crie uma novo string de conexão.</value>
   </data>
-  <data name="CaminhoBanco" xml:space="preserve">
-    <value>Caminho do banco de dados:</value>
+  <data name="ConfirmarExclusao2" xml:space="preserve">
+    <value>Deseja realmente excluir {0} alugado por {1}?</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="save" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\img\save.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="page_excel" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\img\page_excel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="SplashScreen" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\img\SplashScreen.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="client_delete" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\img\client_delete.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="realizando_verificações_de_segurança_splashscreen" xml:space="preserve">
-    <value>Realizando verificações de segurança...</value>
+  <data name="ProcurandoAtualizacoesSplashScreen" xml:space="preserve">
+    <value>Procurando por atualizações...</value>
   </data>
-  <data name="ClienteNExiste" xml:space="preserve">
-    <value>Este cliente não existe.</value>
+  <data name="MigrandoOneDrive" xml:space="preserve">
+    <value>Migrando para o OneDrive...</value>
   </data>
-  <data name="ClienteRegistrado" xml:space="preserve">
-    <value>Cliente registrado com sucesso.</value>
+  <data name="table" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\img\table.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ConexaoLocalMigrarOneDrive" xml:space="preserve">
-    <value>É necessário fazer uma conexão local com o banco de dados, indicando o caminho, para fazer a migração para o OneDrive.</value>
-  </data>
-  <data name="ConfiguracoesSalvas" xml:space="preserve">
-    <value>Configurações salvas.</value>
+  <data name="enter_account" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\img\enter_account.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="cancel" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\img\cancel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -160,11 +160,17 @@
   <data name="é_necessário_fazer_uma_conexão_local_com_o_banco_de_dados_para_fazer_a_migração_para_o_OneDrive_" xml:space="preserve">
     <value>É necessário fazer uma conexão local com o banco de dados, indicando o caminho, para fazer a migração para o OneDrive.</value>
   </data>
-  <data name="ConfirmarExclusao2" xml:space="preserve">
-    <value>Deseja realmente excluir {0} alugado por {1}?</value>
+  <data name="existePastaOneDrive" xml:space="preserve">
+    <value>Já existe um banco de dados sincronizado, deseja sobrescrever?</value>
+  </data>
+  <data name="Licensa" xml:space="preserve">
+    <value>GNU General Public License v3.0</value>
   </data>
   <data name="database-error-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\img\database-error-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MessageBoxError" xml:space="preserve">
+    <value>Error</value>
   </data>
   <data name="clienteNaoExiste_MessageBox" xml:space="preserve">
     <value>Este cliente não está cadastrado, verifique se a informação de busca foi digitada corretamente.</value>
@@ -172,20 +178,38 @@
   <data name="page_go" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\img\page_go.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="UsuarioDeletado" xml:space="preserve">
+    <value>Usuário deletado com sucesso.</value>
+  </data>
+  <data name="CaminhoBanco" xml:space="preserve">
+    <value>Caminho do banco de dados:</value>
+  </data>
   <data name="license" xml:space="preserve">
     <value>GNU General Public License v3.0</value>
+  </data>
+  <data name="TheCreator" xml:space="preserve">
+    <value>LuanRoger© 2021</value>
+  </data>
+  <data name="StringConexaoConfiguracoes" xml:space="preserve">
+    <value>String de conexão:</value>
   </data>
   <data name="ErrorConectarDb" xml:space="preserve">
     <value>Não foi possivel conectar-se a base de dados: {0}. Deseja abrir a configurações?</value>
   </data>
-  <data name="ErrorMigrarOneDrive" xml:space="preserve">
-    <value>Ocorreu um error: {0}. Volte as configurações e crie uma novo string de conexão.</value>
-  </data>
   <data name="book_add" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\img\book_add.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="SplashScreen" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\assets\img\SplashScreen.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="MessageBoxExcluir" xml:space="preserve">
+    <value>Excluir</value>
+  </data>
+  <data name="LivroDeletado" xml:space="preserve">
+    <value>Livro deletado com sucesso.</value>
+  </data>
+  <data name="BancoSincronizadoOneDrive" xml:space="preserve">
+    <value>Banco de dados sincronizado com o OneDrive.</value>
+  </data>
+  <data name="CreditosIcones" xml:space="preserve">
+    <value>Uso de ícones de FAMFAMFAM: http://famfamfam.com</value>
   </data>
   <data name="exit_account" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\img\exit_account.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -193,8 +217,14 @@
   <data name="não_foi_possivel_conectar_se_a_base_de_dados___0___Deseja_abrir_a_configurações_" xml:space="preserve">
     <value>Não foi possivel conectar-se a base de dados: {0}. Deseja abrir a configurações?</value>
   </data>
-  <data name="FaltaArquivoEscenciaisParaContinuar" xml:space="preserve">
-    <value>Está faltando arquivos escenciais para abrir o programa, tente reistalar-lo novamente.</value>
+  <data name="LivroRegistrado" xml:space="preserve">
+    <value>Livro registrado com sucesso.</value>
+  </data>
+  <data name="InformacoesIncorretasLogin" xml:space="preserve">
+    <value>As informações estão incorretas.</value>
+  </data>
+  <data name="ErrorGetSourceDb" xml:space="preserve">
+    <value>Houve um error ao tentar recuperar o caminho do banco de dados.</value>
   </data>
   <data name="InicioBackground" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\img\InicioBackground.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -202,11 +232,20 @@
   <data name="zoom" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\img\zoom.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="AluguelRegistrado" xml:space="preserve">
+    <value>Aluguel registrado com sucesso.</value>
+  </data>
   <data name="mudancaConnectionString" xml:space="preserve">
     <value>Houve uma mudança na String de conexão, o programa será reiniciado.</value>
   </data>
-  <data name="InformacoesIncorretasLogin" xml:space="preserve">
-    <value>As informações estão incorretas.</value>
+  <data name="ErrorFatalConectarDb" xml:space="preserve">
+    <value>Houve um problema ao tentar conectar-se com o banco de dados, verifique a situação e tente novamente.</value>
+  </data>
+  <data name="LivroNAluguado" xml:space="preserve">
+    <value>Este livro não foi alugado.</value>
+  </data>
+  <data name="MainIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\img\MainIcon.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="client_go" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\img\client_go.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -214,11 +253,17 @@
   <data name="preencherCamposObrigatorios_MessageBox" xml:space="preserve">
     <value>Preencha todos os campos obrigatórios</value>
   </data>
-  <data name="LivroClienteNExistem" xml:space="preserve">
-    <value>O livro ou o cliente não existem.</value>
+  <data name="ClienteRegistrado" xml:space="preserve">
+    <value>Cliente registrado com sucesso.</value>
   </data>
-  <data name="LivroDeletado" xml:space="preserve">
-    <value>Livro deletado com sucesso.</value>
+  <data name="book_edit" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\img\book_edit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="UsuarioRegistrado" xml:space="preserve">
+    <value>Usuário cadastrado com sucesso.</value>
+  </data>
+  <data name="MessageBoxInformacao" xml:space="preserve">
+    <value>Informação</value>
   </data>
   <data name="database-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\img\database-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -226,41 +271,32 @@
   <data name="reiniciarPrograma_MessageBox" xml:space="preserve">
     <value>Para que as alterações do banco de dados sejam aplicadas será nescessário reiniciar o programa. Desseja reiniciar?</value>
   </data>
+  <data name="MessageBoxPergunta" xml:space="preserve">
+    <value>Pergunta</value>
+  </data>
   <data name="bullet_go" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\img\bullet_go.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="clienteLivroNaoAlugados" xml:space="preserve">
     <value>Este livro não foi alugado ou o cliente não alugou nenhum livro.</value>
   </data>
-  <data name="LivroNExiste" xml:space="preserve">
-    <value>Este livro não existe.</value>
+  <data name="MessageBoxConcluido" xml:space="preserve">
+    <value>Concluido</value>
   </data>
-  <data name="LivroRegistrado" xml:space="preserve">
-    <value>Livro registrado com sucesso.</value>
+  <data name="PrinteIcons" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\img\printer.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="MarcarOpcao" xml:space="preserve">
-    <value>Marque uma opção de busca para continuar.</value>
-  </data>
-  <data name="table" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\assets\img\table.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="PreecherCampoBusca" xml:space="preserve">
+    <value>Preencha o cambo de busca.</value>
   </data>
   <data name="page_add" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\img\page_add.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ConfirmarExclusao1" xml:space="preserve">
-    <value>Deseja realmente excluir {0}</value>
+  <data name="FaltaArquivoEscenciaisParaContinuar" xml:space="preserve">
+    <value>Está faltando arquivos escenciais para abrir o programa, tente reistalar-lo novamente.</value>
   </data>
-  <data name="delete" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\assets\img\delete.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="MessageBoxError" xml:space="preserve">
-    <value>Error</value>
-  </data>
-  <data name="MessageBoxExcluir" xml:space="preserve">
-    <value>Excluir</value>
-  </data>
-  <data name="MessageBoxInformacao" xml:space="preserve">
-    <value>Informação</value>
+  <data name="ClienteNExiste" xml:space="preserve">
+    <value>Este cliente não existe.</value>
   </data>
   <data name="page_delete" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\img\page_delete.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -268,17 +304,29 @@
   <data name="book_go" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\img\book_go.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="AtualizandoBancoDadosSpashScreen" xml:space="preserve">
+    <value>Atualiazando status dos alugueis...</value>
+  </data>
+  <data name="realizando_verificações_de_segurança_splashscreen" xml:space="preserve">
+    <value>Realizando verificações de segurança...</value>
+  </data>
   <data name="sobre_MessageBox" xml:space="preserve">
     <value>Sobre</value>
-  </data>
-  <data name="MigrandoOneDrive" xml:space="preserve">
-    <value>Migrando para o OneDrive...</value>
   </data>
   <data name="textfield" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\img\textfield.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="ConexaoLocalMigrarOneDrive" xml:space="preserve">
+    <value>É necessário fazer uma conexão local com o banco de dados, indicando o caminho, para fazer a migração para o OneDrive.</value>
+  </data>
+  <data name="ConfirmarExclusao1" xml:space="preserve">
+    <value>Deseja realmente excluir {0}</value>
+  </data>
   <data name="cliente_deletado_com_sucesso" xml:space="preserve">
     <value>Cliente deletado com sucesso.</value>
+  </data>
+  <data name="LivroNExiste" xml:space="preserve">
+    <value>Este livro não existe.</value>
   </data>
   <data name="client_add" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\img\client_add.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -286,35 +334,32 @@
   <data name="informações_atualizadas" xml:space="preserve">
     <value>Informações atualizadas</value>
   </data>
-  <data name="PreecherCampoBusca" xml:space="preserve">
-    <value>Preencha o cambo de busca.</value>
-  </data>
   <data name="printer" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\img\printer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="preencherCampoBusca_MessageBox" xml:space="preserve">
-    <value>Faça uma pesquisa para continuar.</value>
+  <data name="LivroClienteNExistem" xml:space="preserve">
+    <value>O livro ou o cliente não existem.</value>
   </data>
-  <data name="ProcurandoAtualizacoesSplashScreen" xml:space="preserve">
-    <value>Procurando por atualizações...</value>
-  </data>
-  <data name="StringConexaoConfiguracoes" xml:space="preserve">
-    <value>String de conexão:</value>
+  <data name="ConfiguracoesSalvas" xml:space="preserve">
+    <value>Configurações salvas.</value>
   </data>
   <data name="book_delete" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\img\book_delete.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="preencherCampoBusca_MessageBox" xml:space="preserve">
+    <value>Faça uma pesquisa para continuar.</value>
+  </data>
   <data name="user_gray" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\img\user_gray.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ConfirmarSair" xml:space="preserve">
+    <value>Deseja realmente sair?</value>
   </data>
   <data name="marcar_opcao_busca" xml:space="preserve">
     <value>Marque uma opção de busca para continuar.</value>
   </data>
-  <data name="UsuarioDeletado" xml:space="preserve">
-    <value>Usuário deletado com sucesso.</value>
-  </data>
-  <data name="book_edit" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\assets\img\book_edit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="CreateCopyOneDrive" xml:space="preserve">
+    <value>Você deseja criar uma cópia do banco de dados no OneDrive.</value>
   </data>
   <data name="page_edit" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\img\page_edit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -325,52 +370,10 @@
   <data name="client_edit" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\img\client_edit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="enter_account" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\assets\img\enter_account.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="existePastaOneDrive" xml:space="preserve">
-    <value>Já existe um banco de dados sincronizado, deseja sobrescrever?</value>
-  </data>
-  <data name="ConfirmarSair" xml:space="preserve">
-    <value>Deseja realmente sair?</value>
-  </data>
-  <data name="CreditosIcones" xml:space="preserve">
-    <value>Uso de ícones de FAMFAMFAM: http://famfamfam.com</value>
-  </data>
-  <data name="Licensa" xml:space="preserve">
-    <value>GNU General Public License v3.0</value>
-  </data>
-  <data name="LivroNAluguado" xml:space="preserve">
-    <value>Este livro não foi alugado.</value>
-  </data>
-  <data name="TheCreator" xml:space="preserve">
-    <value>LuanRoger© 2021</value>
-  </data>
-  <data name="UsuarioRegistrado" xml:space="preserve">
-    <value>Usuário cadastrado com sucesso.</value>
-  </data>
-  <data name="MainIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\assets\img\MainIcon.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="UserGrayIcons" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\img\user_gray.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="PrinteIcons" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\assets\img\printer.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ErrorFatalConectarDb" xml:space="preserve">
-    <value>Houve um problema ao tentar conectar-se com o banco de dados, verifique a situação e tente novamente.</value>
-  </data>
-  <data name="ErrorGetSourceDb" xml:space="preserve">
-    <value>Houve um error ao tentar recuperar o caminho do banco de dados.</value>
-  </data>
-  <data name="CreateCopyOneDrive" xml:space="preserve">
-    <value>Você deseja criar uma cópia do banco de dados no OneDrive.</value>
-  </data>
-  <data name="MessageBoxConcluido" xml:space="preserve">
-    <value>Concluido</value>
-  </data>
-  <data name="MessageBoxPergunta" xml:space="preserve">
-    <value>Pergunta</value>
+  <data name="InicioBackground2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\img\InicioBackground2.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

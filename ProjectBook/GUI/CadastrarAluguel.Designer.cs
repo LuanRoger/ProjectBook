@@ -503,7 +503,7 @@ namespace ProjectBook.GUI
             this.btnVerLivros.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnVerLivros.Name = "btnVerLivros";
             this.btnVerLivros.Size = new System.Drawing.Size(23, 22);
-            this.btnVerLivros.Text = "toolStripButton1";
+            this.btnVerLivros.Text = "Ver todos os livros";
             // 
             // btnVerClientes
             // 
@@ -512,7 +512,7 @@ namespace ProjectBook.GUI
             this.btnVerClientes.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnVerClientes.Name = "btnVerClientes";
             this.btnVerClientes.Size = new System.Drawing.Size(23, 22);
-            this.btnVerClientes.Text = "toolStripButton1";
+            this.btnVerClientes.Text = "Ver todos os clientes";
             // 
             // CadastrarAluguel
             // 
