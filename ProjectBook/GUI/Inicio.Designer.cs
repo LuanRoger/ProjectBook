@@ -29,6 +29,7 @@ namespace ProjectBook.GUI
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Inicio));
             this.contentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.indexToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.searchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -743,7 +744,7 @@ namespace ProjectBook.GUI
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.tosSugestoes);
             this.Controls.Add(this.mnuInicio);
-            this.Icon = global::ProjectBook.Properties.Resources.MainIcon;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Name = "Inicio";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

@@ -12,20 +12,20 @@ namespace ProjectBook.GUI
         private LivrosDb livrosDb = new();
         private ClienteDb clienteDb = new();
 
-        private DataTable livro;
-        private DataTable cliente;
+        private DataTable livro = new();
+        private DataTable cliente = new();
         public CadastrarAluguel()
         {
             InitializeComponent();
 
-            btnVerLivros.Click += (sender, args) =>
+            btnVerLivros.Click += (_, _) =>
             {
-                ListaPesquisa listaPesquisa = new ListaPesquisa(livrosDb.VerTodosLivros());
+                ListaPesquisa listaPesquisa = new(livrosDb.VerTodosLivros());
                 listaPesquisa.Show();
             };
-            btnVerClientes.Click += (sender, args) =>
+            btnVerClientes.Click += (_, _) =>
             {
-                ListaPesquisa listaPesquisa = new ListaPesquisa(clienteDb.VerTodosClientes());
+                ListaPesquisa listaPesquisa = new(clienteDb.VerTodosClientes());
                 listaPesquisa.Show();
             };
         }
@@ -161,6 +161,7 @@ namespace ProjectBook.GUI
         {
             livro.Clear();
             cliente.Clear();
+
             txtBuscarLivroAluguel.Clear();
             txtTituloLivroAluguel.Clear();
             txtAutorLivroAluguel.Clear();

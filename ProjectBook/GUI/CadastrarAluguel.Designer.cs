@@ -484,6 +484,7 @@ namespace ProjectBook.GUI
             this.cmbStatusAluguel.Name = "cmbStatusAluguel";
             this.cmbStatusAluguel.Size = new System.Drawing.Size(226, 23);
             this.cmbStatusAluguel.TabIndex = 10;
+            this.cmbStatusAluguel.SelectedIndex = 0;
             // 
             // toolStrip1
             // 

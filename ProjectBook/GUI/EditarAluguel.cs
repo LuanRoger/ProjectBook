@@ -13,9 +13,9 @@ namespace ProjectBook.GUI
         private LivrosDb livrosDb = new();
         private ClienteDb clienteDb = new();
 
-        private DataTable infoAluguel;
-        private DataTable infoLivro;
-        private DataTable infoCliente;
+        private DataTable infoAluguel = new();
+        private DataTable infoLivro = new();
+        private DataTable infoCliente = new();
 
         private string primeiroDono;
         private string primeiroLivro;

@@ -261,12 +261,10 @@ namespace ProjectBook.GUI
             // rabTituloLivro
             // 
             this.rabTituloLivro.AutoSize = true;
-            this.rabTituloLivro.Checked = true;
             this.rabTituloLivro.Location = new System.Drawing.Point(5, 31);
             this.rabTituloLivro.Name = "rabTituloLivro";
             this.rabTituloLivro.Size = new System.Drawing.Size(98, 19);
             this.rabTituloLivro.TabIndex = 9;
-            this.rabTituloLivro.TabStop = true;
             this.rabTituloLivro.Text = "Titulo do livro";
             this.rabTituloLivro.UseVisualStyleBackColor = true;
             this.rabTituloLivro.CheckedChanged += new System.EventHandler(this.rabTituloLivro_CheckedChanged);

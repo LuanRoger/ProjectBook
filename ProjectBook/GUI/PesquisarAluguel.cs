@@ -33,6 +33,7 @@ namespace ProjectBook.GUI
             };
             #endregion
         }
+
         #region CheckChange
         private void rabTituloLivro_CheckedChanged(object sender, EventArgs e)
         {

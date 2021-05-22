@@ -43,17 +43,16 @@ namespace ProjectBook.GUI
             }
 
             DialogResult resultadoExcluir = MessageBox.Show(
-           string.Format(Resources.ConfirmarExclusao2, data.Rows[0][2], data.Rows[0][0]),
+           string.Format(Resources.ConfirmarExclusao2, data.Rows[0][0], data.Rows[0][2]),
                 Resources.MessageBoxExcluir, MessageBoxButtons.YesNo, MessageBoxIcon.Stop);
-            
-            if (resultadoExcluir == DialogResult.Yes)
-            {
-                if (rabExcluirAluguelCliente.Checked) aluguelDb.DeletarAluguelCliente(data.Rows[0][2].ToString());
-                else if (rabExcluirAluguelTitulo.Checked) aluguelDb.DeletarAluguelTitulo(data.Rows[0][0].ToString());
-                txtBuscaAluguel.Clear();
-            }
+
+            if (resultadoExcluir != DialogResult.Yes) return;
+
+            if (rabExcluirAluguelCliente.Checked) aluguelDb.DeletarAluguelCliente(data.Rows[0][2].ToString());
+            else if (rabExcluirAluguelTitulo.Checked) aluguelDb.DeletarAluguelTitulo(data.Rows[0][0].ToString());
+            txtBuscaAluguel.Clear();
         }
-        private void btnCancelarExcluirAluguel_Click(object sender, EventArgs e) => this.Close();
+        private void btnCancelarExcluirAluguel_Click(object sender, EventArgs e) => Close();
 
         private void rabExcluirAluguelTitulo_CheckedChanged(object sender, EventArgs e)
         {

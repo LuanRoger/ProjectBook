@@ -95,12 +95,10 @@ namespace ProjectBook.GUI
             // rabBuscarNomeCliente
             // 
             this.rabBuscarNomeCliente.AutoSize = true;
-            this.rabBuscarNomeCliente.Checked = true;
             this.rabBuscarNomeCliente.Location = new System.Drawing.Point(6, 21);
             this.rabBuscarNomeCliente.Name = "rabBuscarNomeCliente";
             this.rabBuscarNomeCliente.Size = new System.Drawing.Size(113, 19);
             this.rabBuscarNomeCliente.TabIndex = 0;
-            this.rabBuscarNomeCliente.TabStop = true;
             this.rabBuscarNomeCliente.Text = "Nome do cliente";
             this.rabBuscarNomeCliente.UseVisualStyleBackColor = true;
             this.rabBuscarNomeCliente.CheckedChanged += new System.EventHandler(this.rabBuscarNomeCliente_CheckedChanged);
@@ -469,6 +467,7 @@ namespace ProjectBook.GUI
             this.cmbNovoStatus.Name = "cmbNovoStatus";
             this.cmbNovoStatus.Size = new System.Drawing.Size(232, 23);
             this.cmbNovoStatus.TabIndex = 12;
+            this.cmbNovoStatus.SelectedIndex = 0;
             // 
             // groupBox2
             // 
