@@ -72,6 +72,7 @@ namespace ProjectBook.GUI
             // rabIdExcluirLivro
             // 
             this.rabIdExcluirLivro.AutoSize = true;
+            this.rabIdExcluirLivro.Checked = true;
             this.rabIdExcluirLivro.Location = new System.Drawing.Point(13, 13);
             this.rabIdExcluirLivro.Name = "rabIdExcluirLivro";
             this.rabIdExcluirLivro.Size = new System.Drawing.Size(64, 19);
@@ -87,7 +88,6 @@ namespace ProjectBook.GUI
             this.rabExcluirTitulo.Name = "rabExcluirTitulo";
             this.rabExcluirTitulo.Size = new System.Drawing.Size(55, 19);
             this.rabExcluirTitulo.TabIndex = 5;
-            this.rabExcluirTitulo.TabStop = true;
             this.rabExcluirTitulo.Text = "Titulo";
             this.rabExcluirTitulo.UseVisualStyleBackColor = true;
             // 

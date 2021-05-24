@@ -18,25 +18,38 @@ namespace ProjectBook.GUI
             InitializeComponent();
             SugerirAutores();
             ColocarGeneros();
+
+            btnVerLivros.Click += (_, _) =>
+            {
+                ListaPesquisa listaPesquisa = new ListaPesquisa(livrosDb.VerTodosLivros());
+                listaPesquisa.Show();
+            };
+            btnPesquisarLivros.Click += (_, _) =>
+            {
+                PesquisarLivro pesquisarLivro = new PesquisarLivro();
+                pesquisarLivro.Show();
+            };
         }
 
         #region CheckedChanged
         private void rabEditarTitulo_CheckedChanged(object sender, EventArgs e)
         {
-            // Sugerir de acordo com o titulo do livro
+            txtEditarBuscar.AutoCompleteMode = AutoCompleteMode.Suggest;
             AutoCompleteStringCollection tituloSugestao = new();
+
             foreach (DataRow livro in livrosDb.VerTodosLivros().Rows) tituloSugestao.Add($"{livro[1]} - {livro[2]}"); // Titulo - Autor
             txtEditarBuscar.AutoCompleteCustomSource = tituloSugestao;
         }
         private void rabEditarAutor_CheckedChanged(object sender, EventArgs e)
         {
-            // Sugerir de acordo com o autor
+            txtEditarBuscar.AutoCompleteMode = AutoCompleteMode.Suggest;
             AutoCompleteStringCollection autorSugestao = new();
-            foreach (DataRow livro in livrosDb.VerTodosLivros().Rows) autorSugestao.Add($"{livro[2]} - {livro[1]}"); //Auto - Titulo
+
+            foreach (DataRow livro in livrosDb.VerTodosLivros().Rows) autorSugestao.Add($"{livro[2]} - {livro[1]}"); //Autor - Titulo
             txtEditarBuscar.AutoCompleteCustomSource = autorSugestao;
         }
         private void rabEditarId_CheckedChanged(object sender, EventArgs e) =>
-            txtEditarBuscar.AutoCompleteCustomSource = null;
+            txtEditarBuscar.AutoCompleteMode = AutoCompleteMode.None;
         #endregion
 
         private void btnFecharEdicao_Click(object sender, EventArgs e) => this.Close();
@@ -123,9 +136,9 @@ namespace ProjectBook.GUI
 
             livrosDb.AtualizarViaId(infoLivro.Rows[0][0].ToString(), livro);
 
-            LimparCamposEditar();
             SugerirAutores();
             ColocarGeneros();
+            LimparCamposEditar();
         }
         private void PreencherCampos(DataTable info)
         {
@@ -151,17 +164,15 @@ namespace ProjectBook.GUI
 
         private void SugerirAutores()
         {
-            txtEditarAutor.AutoCompleteCustomSource.Clear();
-
             AutoCompleteStringCollection autorSugestoes = new();
             foreach (DataRow autor in livrosDb.VerTodosLivros().Rows) autorSugestoes.Add(autor[2].ToString());
+
             txtEditarAutor.AutoCompleteCustomSource = autorSugestoes;
         }
         private void ColocarGeneros()
         {
             cmbEditarGenero.Items.Clear();
 
-            //Colocar todos os generos no combobox
             foreach(DataRow itens in livrosDb.PegarGeneros().Rows) cmbEditarGenero.Items.Add(itens["Genero"]);
         }
 

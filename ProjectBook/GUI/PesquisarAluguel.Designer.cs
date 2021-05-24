@@ -176,7 +176,7 @@ namespace ProjectBook.GUI
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Location = new System.Drawing.Point(5, 128);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(407, 159);
+            this.groupBox2.Size = new System.Drawing.Size(407, 151);
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Informações";
@@ -236,7 +236,7 @@ namespace ProjectBook.GUI
             // 
             this.btnCancelarPesquisaAluguel.Image = global::ProjectBook.Properties.Resources.cancel;
             this.btnCancelarPesquisaAluguel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCancelarPesquisaAluguel.Location = new System.Drawing.Point(337, 302);
+            this.btnCancelarPesquisaAluguel.Location = new System.Drawing.Point(334, 285);
             this.btnCancelarPesquisaAluguel.Name = "btnCancelarPesquisaAluguel";
             this.btnCancelarPesquisaAluguel.Size = new System.Drawing.Size(75, 23);
             this.btnCancelarPesquisaAluguel.TabIndex = 7;
@@ -249,7 +249,7 @@ namespace ProjectBook.GUI
             // 
             this.btnLimparPequisaAluguel.Image = global::ProjectBook.Properties.Resources.textfield;
             this.btnLimparPequisaAluguel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLimparPequisaAluguel.Location = new System.Drawing.Point(263, 302);
+            this.btnLimparPequisaAluguel.Location = new System.Drawing.Point(260, 285);
             this.btnLimparPequisaAluguel.Name = "btnLimparPequisaAluguel";
             this.btnLimparPequisaAluguel.Size = new System.Drawing.Size(68, 23);
             this.btnLimparPequisaAluguel.TabIndex = 8;
@@ -339,7 +339,7 @@ namespace ProjectBook.GUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(421, 334);
+            this.ClientSize = new System.Drawing.Size(421, 320);
             this.Controls.Add(this.btnVerEmRelatorio);
             this.Controls.Add(this.rabNomeCliente);
             this.Controls.Add(this.rabTituloLivro);

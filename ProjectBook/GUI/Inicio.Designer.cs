@@ -549,7 +549,6 @@ namespace ProjectBook.GUI
             // 
             this.toolStripStatusLabel1.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)(((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
             | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
-            this.toolStripStatusLabel1.BorderStyle = System.Windows.Forms.Border3DStyle.RaisedInner;
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(111, 19);
             this.toolStripStatusLabel1.Text = "Livros cadastrados:";
@@ -558,7 +557,6 @@ namespace ProjectBook.GUI
             // 
             this.lblLivrosCadastrados.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)(((System.Windows.Forms.ToolStripStatusLabelBorderSides.Top | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
             | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
-            this.lblLivrosCadastrados.BorderStyle = System.Windows.Forms.Border3DStyle.RaisedInner;
             this.lblLivrosCadastrados.Name = "lblLivrosCadastrados";
             this.lblLivrosCadastrados.Size = new System.Drawing.Size(17, 19);
             this.lblLivrosCadastrados.Text = "0";
@@ -567,7 +565,6 @@ namespace ProjectBook.GUI
             // 
             this.toolStripStatusLabel2.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)(((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
             | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
-            this.toolStripStatusLabel2.BorderStyle = System.Windows.Forms.Border3DStyle.RaisedInner;
             this.toolStripStatusLabel2.Margin = new System.Windows.Forms.Padding(5, 3, 0, 2);
             this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
             this.toolStripStatusLabel2.Size = new System.Drawing.Size(122, 19);
@@ -577,7 +574,6 @@ namespace ProjectBook.GUI
             // 
             this.lblClientesCadastrados.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)(((System.Windows.Forms.ToolStripStatusLabelBorderSides.Top | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
             | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
-            this.lblClientesCadastrados.BorderStyle = System.Windows.Forms.Border3DStyle.RaisedInner;
             this.lblClientesCadastrados.Name = "lblClientesCadastrados";
             this.lblClientesCadastrados.Size = new System.Drawing.Size(17, 19);
             this.lblClientesCadastrados.Text = "0";
@@ -586,7 +582,6 @@ namespace ProjectBook.GUI
             // 
             this.toolStripStatusLabel3.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)(((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
             | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
-            this.toolStripStatusLabel3.BorderStyle = System.Windows.Forms.Border3DStyle.RaisedInner;
             this.toolStripStatusLabel3.Margin = new System.Windows.Forms.Padding(5, 3, 0, 2);
             this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
             this.toolStripStatusLabel3.Size = new System.Drawing.Size(121, 19);
@@ -596,7 +591,6 @@ namespace ProjectBook.GUI
             // 
             this.lblAlugueisRegistrados.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)(((System.Windows.Forms.ToolStripStatusLabelBorderSides.Top | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
             | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
-            this.lblAlugueisRegistrados.BorderStyle = System.Windows.Forms.Border3DStyle.RaisedInner;
             this.lblAlugueisRegistrados.Name = "lblAlugueisRegistrados";
             this.lblAlugueisRegistrados.Size = new System.Drawing.Size(17, 19);
             this.lblAlugueisRegistrados.Text = "0";

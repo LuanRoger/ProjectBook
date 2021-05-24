@@ -14,6 +14,22 @@ namespace ProjectBook.GUI
             InitializeComponent();
         }
 
+        #region CheckedChanged
+        private void rabExcluirAluguelTitulo_CheckedChanged(object sender, EventArgs e)
+        {
+            AutoCompleteStringCollection livrosSugestoes = new();
+            foreach (DataRow livro in aluguelDb.VerTodosAluguel().Rows) livrosSugestoes.Add(livro[0].ToString());
+            txtBuscaAluguel.AutoCompleteCustomSource = livrosSugestoes;
+        }
+
+        private void rabExcluirAluguelCliente_CheckedChanged(object sender, EventArgs e)
+        {
+            AutoCompleteStringCollection livrosSugestoes = new();
+            foreach (DataRow livro in aluguelDb.VerTodosAluguel().Rows) livrosSugestoes.Add(livro[2].ToString());
+            txtBuscaAluguel.AutoCompleteCustomSource = livrosSugestoes;
+        }
+        #endregion
+
         private void btnBuscarExcluirAluguel_Click(object sender, EventArgs e)
         {
             string termoBusca = txtBuscaAluguel.Text;
@@ -52,20 +68,7 @@ namespace ProjectBook.GUI
             else if (rabExcluirAluguelTitulo.Checked) aluguelDb.DeletarAluguelTitulo(data.Rows[0][0].ToString());
             txtBuscaAluguel.Clear();
         }
+
         private void btnCancelarExcluirAluguel_Click(object sender, EventArgs e) => Close();
-
-        private void rabExcluirAluguelTitulo_CheckedChanged(object sender, EventArgs e)
-        {
-            AutoCompleteStringCollection livrosSugestoes = new();
-            foreach (DataRow livro in aluguelDb.VerTodosAluguel().Rows) livrosSugestoes.Add(livro[0].ToString());
-            txtBuscaAluguel.AutoCompleteCustomSource = livrosSugestoes;
-        }
-
-        private void rabExcluirAluguelCliente_CheckedChanged(object sender, EventArgs e)
-        {
-            AutoCompleteStringCollection livrosSugestoes = new();
-            foreach (DataRow livro in aluguelDb.VerTodosAluguel().Rows) livrosSugestoes.Add(livro[2].ToString());
-            txtBuscaAluguel.AutoCompleteCustomSource = livrosSugestoes;
-        }
     }
 }

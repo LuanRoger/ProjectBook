@@ -38,7 +38,9 @@ namespace ProjectBook.GUI
             this.txtNomeUsuarioBusca = new System.Windows.Forms.TextBox();
             this.rabUsuarioNome = new System.Windows.Forms.RadioButton();
             this.rabCodigoUsuario = new System.Windows.Forms.RadioButton();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.menuStrip1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -47,7 +49,7 @@ namespace ProjectBook.GUI
             this.mnuRelatorioUsuairo});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(291, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(682, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -77,7 +79,7 @@ namespace ProjectBook.GUI
             this.bntBuscarUsuario.FlatAppearance.BorderSize = 0;
             this.bntBuscarUsuario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bntBuscarUsuario.Image = global::ProjectBook.Properties.Resources.zoom;
-            this.bntBuscarUsuario.Location = new System.Drawing.Point(253, 57);
+            this.bntBuscarUsuario.Location = new System.Drawing.Point(222, 85);
             this.bntBuscarUsuario.Name = "bntBuscarUsuario";
             this.bntBuscarUsuario.Size = new System.Drawing.Size(25, 23);
             this.bntBuscarUsuario.TabIndex = 2;
@@ -88,7 +90,7 @@ namespace ProjectBook.GUI
             // 
             this.btnCancelarBuscaUsuario.Image = global::ProjectBook.Properties.Resources.cancel;
             this.btnCancelarBuscaUsuario.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCancelarBuscaUsuario.Location = new System.Drawing.Point(204, 97);
+            this.btnCancelarBuscaUsuario.Location = new System.Drawing.Point(172, 125);
             this.btnCancelarBuscaUsuario.Name = "btnCancelarBuscaUsuario";
             this.btnCancelarBuscaUsuario.Size = new System.Drawing.Size(75, 23);
             this.btnCancelarBuscaUsuario.TabIndex = 3;
@@ -99,15 +101,15 @@ namespace ProjectBook.GUI
             // 
             // txtNomeUsuarioBusca
             // 
-            this.txtNomeUsuarioBusca.Location = new System.Drawing.Point(12, 58);
+            this.txtNomeUsuarioBusca.Location = new System.Drawing.Point(12, 86);
             this.txtNomeUsuarioBusca.Name = "txtNomeUsuarioBusca";
-            this.txtNomeUsuarioBusca.Size = new System.Drawing.Size(235, 23);
+            this.txtNomeUsuarioBusca.Size = new System.Drawing.Size(204, 23);
             this.txtNomeUsuarioBusca.TabIndex = 4;
             // 
             // rabUsuarioNome
             // 
             this.rabUsuarioNome.AutoSize = true;
-            this.rabUsuarioNome.Location = new System.Drawing.Point(189, 33);
+            this.rabUsuarioNome.Location = new System.Drawing.Point(171, 22);
             this.rabUsuarioNome.Name = "rabUsuarioNome";
             this.rabUsuarioNome.Size = new System.Drawing.Size(58, 19);
             this.rabUsuarioNome.TabIndex = 5;
@@ -118,7 +120,7 @@ namespace ProjectBook.GUI
             // rabCodigoUsuario
             // 
             this.rabCodigoUsuario.AutoSize = true;
-            this.rabCodigoUsuario.Location = new System.Drawing.Point(12, 33);
+            this.rabCodigoUsuario.Location = new System.Drawing.Point(6, 22);
             this.rabCodigoUsuario.Name = "rabCodigoUsuario";
             this.rabCodigoUsuario.Size = new System.Drawing.Size(64, 19);
             this.rabCodigoUsuario.TabIndex = 6;
@@ -126,13 +128,23 @@ namespace ProjectBook.GUI
             this.rabCodigoUsuario.Text = "Código";
             this.rabCodigoUsuario.UseVisualStyleBackColor = true;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.rabCodigoUsuario);
+            this.groupBox1.Controls.Add(this.rabUsuarioNome);
+            this.groupBox1.Location = new System.Drawing.Point(12, 26);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(235, 54);
+            this.groupBox1.TabIndex = 7;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Pesquisar por:";
+            // 
             // PesquisarUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(291, 132);
-            this.Controls.Add(this.rabCodigoUsuario);
-            this.Controls.Add(this.rabUsuarioNome);
+            this.ClientSize = new System.Drawing.Size(262, 161);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.txtNomeUsuarioBusca);
             this.Controls.Add(this.btnCancelarBuscaUsuario);
             this.Controls.Add(this.bntBuscarUsuario);
@@ -141,9 +153,11 @@ namespace ProjectBook.GUI
             this.Name = "PesquisarUsuario";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Pesquisar usuario";
+            this.Text = "Pesquisar usuário";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -160,5 +174,6 @@ namespace ProjectBook.GUI
         private System.Windows.Forms.TextBox txtNomeUsuarioBusca;
         private System.Windows.Forms.RadioButton rabUsuarioNome;
         private System.Windows.Forms.RadioButton rabCodigoUsuario;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }

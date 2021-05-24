@@ -35,8 +35,16 @@ namespace ProjectBook.GUI
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.mnuImprimirLista = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuExportarExcel = new System.Windows.Forms.ToolStripMenuItem();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lblQItensExibidos = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lblQColunas = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLista)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvLista
@@ -58,12 +66,12 @@ namespace ProjectBook.GUI
             this.dgvLista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvLista.Cursor = System.Windows.Forms.Cursors.Default;
             this.dgvLista.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvLista.Location = new System.Drawing.Point(0, 24);
+            this.dgvLista.Location = new System.Drawing.Point(3, 3);
             this.dgvLista.Name = "dgvLista";
             this.dgvLista.ReadOnly = true;
             this.dgvLista.RowTemplate.Height = 25;
             this.dgvLista.RowTemplate.ReadOnly = true;
-            this.dgvLista.Size = new System.Drawing.Size(822, 472);
+            this.dgvLista.Size = new System.Drawing.Size(816, 442);
             this.dgvLista.TabIndex = 0;
             // 
             // menuStrip1
@@ -92,12 +100,73 @@ namespace ProjectBook.GUI
             this.mnuExportarExcel.Size = new System.Drawing.Size(28, 20);
             this.mnuExportarExcel.ToolTipText = "Exportar tabela como planilha";
             // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1,
+            this.lblQItensExibidos,
+            this.toolStripStatusLabel2,
+            this.lblQColunas});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 472);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(822, 24);
+            this.statusStrip1.TabIndex = 2;
+            this.statusStrip1.Text = "Informações da lista";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)(((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(86, 19);
+            this.toolStripStatusLabel1.Text = "Itens exibidos:";
+            // 
+            // lblQItensExibidos
+            // 
+            this.lblQItensExibidos.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)(((System.Windows.Forms.ToolStripStatusLabelBorderSides.Top | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.lblQItensExibidos.Margin = new System.Windows.Forms.Padding(-1, 3, 0, 2);
+            this.lblQItensExibidos.Name = "lblQItensExibidos";
+            this.lblQItensExibidos.Size = new System.Drawing.Size(17, 19);
+            this.lblQItensExibidos.Text = "0";
+            // 
+            // toolStripStatusLabel2
+            // 
+            this.toolStripStatusLabel2.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)(((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(85, 19);
+            this.toolStripStatusLabel2.Text = "N° de colunas";
+            // 
+            // lblQColunas
+            // 
+            this.lblQColunas.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)(((System.Windows.Forms.ToolStripStatusLabelBorderSides.Top | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.lblQColunas.Margin = new System.Windows.Forms.Padding(-1, 3, 0, 2);
+            this.lblQColunas.Name = "lblQColunas";
+            this.lblQColunas.Size = new System.Drawing.Size(17, 19);
+            this.lblQColunas.Text = "0";
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.dgvLista, 0, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 24);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(822, 448);
+            this.tableLayoutPanel1.TabIndex = 3;
+            // 
             // ListaPesquisa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(822, 496);
-            this.Controls.Add(this.dgvLista);
+            this.Controls.Add(this.tableLayoutPanel1);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "ListaPesquisa";
@@ -107,6 +176,9 @@ namespace ProjectBook.GUI
             ((System.ComponentModel.ISupportInitialize)(this.dgvLista)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -118,5 +190,11 @@ namespace ProjectBook.GUI
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem mnuImprimirLista;
         private System.Windows.Forms.ToolStripMenuItem mnuExportarExcel;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.ToolStripStatusLabel lblQItensExibidos;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
+        private System.Windows.Forms.ToolStripStatusLabel lblQColunas;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     }
 }

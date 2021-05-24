@@ -31,10 +31,10 @@ namespace ProjectBook.GUI
         {
             this.btnPesquisarCliente = new System.Windows.Forms.Button();
             this.txtPesquisarCliente = new System.Windows.Forms.TextBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.rabPesquisarNome = new System.Windows.Forms.RadioButton();
             this.rabPesquisarId = new System.Windows.Forms.RadioButton();
             this.btnCancelarPesquisarCliente = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -42,7 +42,7 @@ namespace ProjectBook.GUI
             // 
             this.btnPesquisarCliente.FlatAppearance.BorderSize = 0;
             this.btnPesquisarCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPesquisarCliente.Image = ProjectBook.Properties.Resources.zoom;
+            this.btnPesquisarCliente.Image = global::ProjectBook.Properties.Resources.zoom;
             this.btnPesquisarCliente.Location = new System.Drawing.Point(206, 69);
             this.btnPesquisarCliente.Name = "btnPesquisarCliente";
             this.btnPesquisarCliente.Size = new System.Drawing.Size(23, 23);
@@ -56,17 +56,6 @@ namespace ProjectBook.GUI
             this.txtPesquisarCliente.Name = "txtPesquisarCliente";
             this.txtPesquisarCliente.Size = new System.Drawing.Size(189, 23);
             this.txtPesquisarCliente.TabIndex = 3;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.rabPesquisarNome);
-            this.groupBox1.Controls.Add(this.rabPesquisarId);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(217, 51);
-            this.groupBox1.TabIndex = 4;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Pesquisar por:";
             // 
             // rabPesquisarNome
             // 
@@ -84,10 +73,10 @@ namespace ProjectBook.GUI
             this.rabPesquisarId.AutoSize = true;
             this.rabPesquisarId.Location = new System.Drawing.Point(6, 22);
             this.rabPesquisarId.Name = "rabPesquisarId";
-            this.rabPesquisarId.Size = new System.Drawing.Size(36, 19);
+            this.rabPesquisarId.Size = new System.Drawing.Size(64, 19);
             this.rabPesquisarId.TabIndex = 0;
             this.rabPesquisarId.TabStop = true;
-            this.rabPesquisarId.Text = "ID";
+            this.rabPesquisarId.Text = "Código";
             this.rabPesquisarId.UseVisualStyleBackColor = true;
             // 
             // btnCancelarPesquisarCliente
@@ -102,6 +91,17 @@ namespace ProjectBook.GUI
             this.btnCancelarPesquisarCliente.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCancelarPesquisarCliente.UseVisualStyleBackColor = true;
             this.btnCancelarPesquisarCliente.Click += new System.EventHandler(this.btnCancelarPesquisarCliente_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.rabPesquisarNome);
+            this.groupBox1.Controls.Add(this.rabPesquisarId);
+            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(217, 51);
+            this.groupBox1.TabIndex = 4;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Pesquisar por:";
             // 
             // PesquisarCliente
             // 
@@ -128,9 +128,9 @@ namespace ProjectBook.GUI
         #endregion
         private System.Windows.Forms.Button btnPesquisarCliente;
         private System.Windows.Forms.TextBox txtPesquisarCliente;
-        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton rabPesquisarNome;
         private System.Windows.Forms.RadioButton rabPesquisarId;
         private System.Windows.Forms.Button btnCancelarPesquisarCliente;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }

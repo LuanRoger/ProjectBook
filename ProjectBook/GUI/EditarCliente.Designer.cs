@@ -54,8 +54,8 @@ namespace ProjectBook.GUI
             this.txtNovoTelefone1 = new System.Windows.Forms.MaskedTextBox();
             this.txtNovoTelefone2 = new System.Windows.Forms.MaskedTextBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.btnPesquisarCliente = new System.Windows.Forms.ToolStripButton();
             this.btnVerClientes = new System.Windows.Forms.ToolStripButton();
+            this.btnPesquisarCliente = new System.Windows.Forms.ToolStripButton();
             this.gpbBuscarCliente.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -66,7 +66,7 @@ namespace ProjectBook.GUI
             this.gpbBuscarCliente.Controls.Add(this.txtBuscarClienteEditar);
             this.gpbBuscarCliente.Controls.Add(this.rabBuscarClienteNome);
             this.gpbBuscarCliente.Controls.Add(this.rabBuscarClienteId);
-            this.gpbBuscarCliente.Location = new System.Drawing.Point(13, 53);
+            this.gpbBuscarCliente.Location = new System.Drawing.Point(13, 28);
             this.gpbBuscarCliente.Name = "gpbBuscarCliente";
             this.gpbBuscarCliente.Size = new System.Drawing.Size(299, 83);
             this.gpbBuscarCliente.TabIndex = 0;
@@ -109,6 +109,7 @@ namespace ProjectBook.GUI
             // rabBuscarClienteId
             // 
             this.rabBuscarClienteId.AutoSize = true;
+            this.rabBuscarClienteId.Checked = true;
             this.rabBuscarClienteId.Location = new System.Drawing.Point(7, 23);
             this.rabBuscarClienteId.Name = "rabBuscarClienteId";
             this.rabBuscarClienteId.Size = new System.Drawing.Size(64, 19);
@@ -121,7 +122,7 @@ namespace ProjectBook.GUI
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 153);
+            this.label1.Location = new System.Drawing.Point(12, 114);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(48, 15);
             this.label1.TabIndex = 1;
@@ -129,7 +130,7 @@ namespace ProjectBook.GUI
             // 
             // txtNovoNome
             // 
-            this.txtNovoNome.Location = new System.Drawing.Point(12, 172);
+            this.txtNovoNome.Location = new System.Drawing.Point(12, 133);
             this.txtNovoNome.Name = "txtNovoNome";
             this.txtNovoNome.Size = new System.Drawing.Size(300, 23);
             this.txtNovoNome.TabIndex = 2;
@@ -137,7 +138,7 @@ namespace ProjectBook.GUI
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 202);
+            this.label2.Location = new System.Drawing.Point(12, 163);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(64, 15);
             this.label2.TabIndex = 3;
@@ -145,7 +146,7 @@ namespace ProjectBook.GUI
             // 
             // txtNovoEndereco
             // 
-            this.txtNovoEndereco.Location = new System.Drawing.Point(12, 220);
+            this.txtNovoEndereco.Location = new System.Drawing.Point(12, 181);
             this.txtNovoEndereco.Name = "txtNovoEndereco";
             this.txtNovoEndereco.Size = new System.Drawing.Size(225, 23);
             this.txtNovoEndereco.TabIndex = 4;
@@ -153,7 +154,7 @@ namespace ProjectBook.GUI
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 250);
+            this.label3.Location = new System.Drawing.Point(12, 211);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(52, 15);
             this.label3.TabIndex = 5;
@@ -161,7 +162,7 @@ namespace ProjectBook.GUI
             // 
             // txtNovoCidade
             // 
-            this.txtNovoCidade.Location = new System.Drawing.Point(12, 269);
+            this.txtNovoCidade.Location = new System.Drawing.Point(12, 230);
             this.txtNovoCidade.Name = "txtNovoCidade";
             this.txtNovoCidade.Size = new System.Drawing.Size(225, 23);
             this.txtNovoCidade.TabIndex = 6;
@@ -169,7 +170,7 @@ namespace ProjectBook.GUI
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(243, 202);
+            this.label4.Location = new System.Drawing.Point(243, 163);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(24, 15);
             this.label4.TabIndex = 7;
@@ -207,7 +208,7 @@ namespace ProjectBook.GUI
             "SE",
             "TO",
             "DF"});
-            this.cmbNovoUf.Location = new System.Drawing.Point(243, 220);
+            this.cmbNovoUf.Location = new System.Drawing.Point(243, 181);
             this.cmbNovoUf.Name = "cmbNovoUf";
             this.cmbNovoUf.Size = new System.Drawing.Size(69, 23);
             this.cmbNovoUf.TabIndex = 8;
@@ -215,7 +216,7 @@ namespace ProjectBook.GUI
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(243, 250);
+            this.label5.Location = new System.Drawing.Point(243, 211);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(31, 15);
             this.label5.TabIndex = 9;
@@ -224,7 +225,7 @@ namespace ProjectBook.GUI
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(12, 299);
+            this.label6.Location = new System.Drawing.Point(12, 260);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(68, 15);
             this.label6.TabIndex = 11;
@@ -233,7 +234,7 @@ namespace ProjectBook.GUI
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(106, 299);
+            this.label7.Location = new System.Drawing.Point(106, 260);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(63, 15);
             this.label7.TabIndex = 13;
@@ -242,7 +243,7 @@ namespace ProjectBook.GUI
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(200, 299);
+            this.label8.Location = new System.Drawing.Point(200, 260);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(44, 15);
             this.label8.TabIndex = 15;
@@ -250,7 +251,7 @@ namespace ProjectBook.GUI
             // 
             // txtNovoEmail
             // 
-            this.txtNovoEmail.Location = new System.Drawing.Point(198, 316);
+            this.txtNovoEmail.Location = new System.Drawing.Point(198, 277);
             this.txtNovoEmail.Name = "txtNovoEmail";
             this.txtNovoEmail.Size = new System.Drawing.Size(114, 23);
             this.txtNovoEmail.TabIndex = 16;
@@ -259,7 +260,7 @@ namespace ProjectBook.GUI
             // 
             this.btnSalvarEditarCliente.Image = global::ProjectBook.Properties.Resources.save;
             this.btnSalvarEditarCliente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSalvarEditarCliente.Location = new System.Drawing.Point(12, 364);
+            this.btnSalvarEditarCliente.Location = new System.Drawing.Point(12, 320);
             this.btnSalvarEditarCliente.Name = "btnSalvarEditarCliente";
             this.btnSalvarEditarCliente.Size = new System.Drawing.Size(64, 23);
             this.btnSalvarEditarCliente.TabIndex = 17;
@@ -272,7 +273,7 @@ namespace ProjectBook.GUI
             // 
             this.btnLimparEditarCliente.Image = global::ProjectBook.Properties.Resources.textfield;
             this.btnLimparEditarCliente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLimparEditarCliente.Location = new System.Drawing.Point(162, 364);
+            this.btnLimparEditarCliente.Location = new System.Drawing.Point(162, 320);
             this.btnLimparEditarCliente.Name = "btnLimparEditarCliente";
             this.btnLimparEditarCliente.Size = new System.Drawing.Size(69, 23);
             this.btnLimparEditarCliente.TabIndex = 18;
@@ -285,7 +286,7 @@ namespace ProjectBook.GUI
             // 
             this.btnCancelarEditarCliente.Image = global::ProjectBook.Properties.Resources.cancel;
             this.btnCancelarEditarCliente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCancelarEditarCliente.Location = new System.Drawing.Point(237, 364);
+            this.btnCancelarEditarCliente.Location = new System.Drawing.Point(237, 320);
             this.btnCancelarEditarCliente.Name = "btnCancelarEditarCliente";
             this.btnCancelarEditarCliente.Size = new System.Drawing.Size(75, 23);
             this.btnCancelarEditarCliente.TabIndex = 19;
@@ -296,7 +297,7 @@ namespace ProjectBook.GUI
             // 
             // txtNovoCep
             // 
-            this.txtNovoCep.Location = new System.Drawing.Point(243, 268);
+            this.txtNovoCep.Location = new System.Drawing.Point(243, 229);
             this.txtNovoCep.Mask = "00000-000";
             this.txtNovoCep.Name = "txtNovoCep";
             this.txtNovoCep.Size = new System.Drawing.Size(69, 23);
@@ -304,7 +305,7 @@ namespace ProjectBook.GUI
             // 
             // txtNovoTelefone1
             // 
-            this.txtNovoTelefone1.Location = new System.Drawing.Point(13, 316);
+            this.txtNovoTelefone1.Location = new System.Drawing.Point(13, 277);
             this.txtNovoTelefone1.Mask = "(99) 00000-0000";
             this.txtNovoTelefone1.Name = "txtNovoTelefone1";
             this.txtNovoTelefone1.Size = new System.Drawing.Size(87, 23);
@@ -312,7 +313,7 @@ namespace ProjectBook.GUI
             // 
             // txtNovoTelefone2
             // 
-            this.txtNovoTelefone2.Location = new System.Drawing.Point(106, 316);
+            this.txtNovoTelefone2.Location = new System.Drawing.Point(106, 277);
             this.txtNovoTelefone2.Mask = "(99) 00000-0000";
             this.txtNovoTelefone2.Name = "txtNovoTelefone2";
             this.txtNovoTelefone2.Size = new System.Drawing.Size(87, 23);
@@ -329,15 +330,6 @@ namespace ProjectBook.GUI
             this.toolStrip1.TabIndex = 23;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // btnPesquisarCliente
-            // 
-            this.btnPesquisarCliente.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnPesquisarCliente.Image = global::ProjectBook.Properties.Resources.zoom;
-            this.btnPesquisarCliente.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnPesquisarCliente.Name = "btnPesquisarCliente";
-            this.btnPesquisarCliente.Size = new System.Drawing.Size(23, 22);
-            this.btnPesquisarCliente.Text = "Pesquisar cliente";
-            // 
             // btnVerClientes
             // 
             this.btnVerClientes.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -347,11 +339,20 @@ namespace ProjectBook.GUI
             this.btnVerClientes.Size = new System.Drawing.Size(23, 22);
             this.btnVerClientes.Text = "Ver todos os clientes";
             // 
+            // btnPesquisarCliente
+            // 
+            this.btnPesquisarCliente.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnPesquisarCliente.Image = global::ProjectBook.Properties.Resources.zoom;
+            this.btnPesquisarCliente.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnPesquisarCliente.Name = "btnPesquisarCliente";
+            this.btnPesquisarCliente.Size = new System.Drawing.Size(23, 22);
+            this.btnPesquisarCliente.Text = "Pesquisar cliente";
+            // 
             // EditarCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(324, 399);
+            this.ClientSize = new System.Drawing.Size(324, 355);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.txtNovoTelefone2);
             this.Controls.Add(this.txtNovoTelefone1);

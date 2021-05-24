@@ -47,7 +47,7 @@ namespace ProjectBook.GUI
             // 
             this.btnExcluirCliente.FlatAppearance.BorderSize = 0;
             this.btnExcluirCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExcluirCliente.Image = ProjectBook.Properties.Resources.zoom;
+            this.btnExcluirCliente.Image = global::ProjectBook.Properties.Resources.zoom;
             this.btnExcluirCliente.Location = new System.Drawing.Point(219, 37);
             this.btnExcluirCliente.Name = "btnExcluirCliente";
             this.btnExcluirCliente.Size = new System.Drawing.Size(27, 23);
@@ -71,12 +71,13 @@ namespace ProjectBook.GUI
             // rabBsucarIdCliente
             // 
             this.rabBsucarIdCliente.AutoSize = true;
+            this.rabBsucarIdCliente.Checked = true;
             this.rabBsucarIdCliente.Location = new System.Drawing.Point(12, 12);
             this.rabBsucarIdCliente.Name = "rabBsucarIdCliente";
-            this.rabBsucarIdCliente.Size = new System.Drawing.Size(36, 19);
+            this.rabBsucarIdCliente.Size = new System.Drawing.Size(64, 19);
             this.rabBsucarIdCliente.TabIndex = 4;
             this.rabBsucarIdCliente.TabStop = true;
-            this.rabBsucarIdCliente.Text = "ID";
+            this.rabBsucarIdCliente.Text = "Código";
             this.rabBsucarIdCliente.UseVisualStyleBackColor = true;
             // 
             // rabBuscarNome
@@ -86,7 +87,6 @@ namespace ProjectBook.GUI
             this.rabBuscarNome.Name = "rabBuscarNome";
             this.rabBuscarNome.Size = new System.Drawing.Size(58, 19);
             this.rabBuscarNome.TabIndex = 5;
-            this.rabBuscarNome.TabStop = true;
             this.rabBuscarNome.Text = "Nome";
             this.rabBuscarNome.UseVisualStyleBackColor = true;
             // 

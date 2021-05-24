@@ -394,7 +394,7 @@ namespace ProjectBook.GUI
             // rabPesquisarLivroAutor
             // 
             this.rabPesquisarLivroAutor.AutoSize = true;
-            this.rabPesquisarLivroAutor.Location = new System.Drawing.Point(165, 23);
+            this.rabPesquisarLivroAutor.Location = new System.Drawing.Point(138, 23);
             this.rabPesquisarLivroAutor.Name = "rabPesquisarLivroAutor";
             this.rabPesquisarLivroAutor.Size = new System.Drawing.Size(55, 19);
             this.rabPesquisarLivroAutor.TabIndex = 9;
@@ -405,7 +405,7 @@ namespace ProjectBook.GUI
             // rabPesquisarLivroTitulo
             // 
             this.rabPesquisarLivroTitulo.AutoSize = true;
-            this.rabPesquisarLivroTitulo.Location = new System.Drawing.Point(88, 23);
+            this.rabPesquisarLivroTitulo.Location = new System.Drawing.Point(77, 23);
             this.rabPesquisarLivroTitulo.Name = "rabPesquisarLivroTitulo";
             this.rabPesquisarLivroTitulo.Size = new System.Drawing.Size(55, 19);
             this.rabPesquisarLivroTitulo.TabIndex = 8;
@@ -442,7 +442,7 @@ namespace ProjectBook.GUI
             // rabPesquisarClienteNome
             // 
             this.rabPesquisarClienteNome.AutoSize = true;
-            this.rabPesquisarClienteNome.Location = new System.Drawing.Point(162, 24);
+            this.rabPesquisarClienteNome.Location = new System.Drawing.Point(135, 23);
             this.rabPesquisarClienteNome.Name = "rabPesquisarClienteNome";
             this.rabPesquisarClienteNome.Size = new System.Drawing.Size(58, 19);
             this.rabPesquisarClienteNome.TabIndex = 6;
@@ -484,7 +484,6 @@ namespace ProjectBook.GUI
             this.cmbStatusAluguel.Name = "cmbStatusAluguel";
             this.cmbStatusAluguel.Size = new System.Drawing.Size(226, 23);
             this.cmbStatusAluguel.TabIndex = 10;
-            this.cmbStatusAluguel.SelectedIndex = 0;
             // 
             // toolStrip1
             // 

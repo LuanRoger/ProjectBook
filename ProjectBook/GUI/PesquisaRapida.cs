@@ -16,15 +16,14 @@ namespace ProjectBook.GUI
         public PesquisaRapida()
         {
             InitializeComponent();
+
         }
 
-        private void tableLayoutPanel1_CellPaint(object sender, TableLayoutCellPaintEventArgs e)
-        {
-            if (e.Row == 0) e.Graphics.FillRectangle(new SolidBrush(Color.CornflowerBlue), e.CellBounds);
-        }
+        private void tableLayoutPanel1_CellPaint(object sender, TableLayoutCellPaintEventArgs e) =>
+            e.Graphics.FillRectangle(new SolidBrush(Color.CornflowerBlue), e.CellBounds);
 
         private void PesquisaRapida_Load(object sender, EventArgs e) => lblParaCaixaTexto.BackColor = Color.Transparent;
-        private void PesquisaRapida_Deactivate(object sender, EventArgs e) => this.Close();
+        private void PesquisaRapida_Deactivate(object sender, EventArgs e) => Close();
 
         private void txtPesquisaRapida_KeyDown(object sender, KeyEventArgs e)
         {
@@ -87,6 +86,9 @@ namespace ProjectBook.GUI
         {
             switch (e.KeyCode)
             {
+                case Keys.F1 or Keys.Escape:
+                    Close();
+                    break;
                 case Keys.NumPad1:
                 case Keys.D1:
                     rabLivroId.Checked = true;

@@ -36,14 +36,20 @@ namespace ProjectBook.GUI
                 Process.GetCurrentProcess().Kill();
             }
 
+            lblQItensExibidos.Text = dgvLista.Rows.Count.ToString();
+            lblQColunas.Text = dgvLista.ColumnCount.ToString();
+
             mnuImprimirLista.Click += (sender, e) =>
             {
                 Imprimir imprimir = new Imprimir();
                 imprimir.ImprimirModelo(dgvLista);
             };
-            mnuExportarExcel.Click += (sender, e) =>
-            {
-                var workbook = new XLWorkbook();
+            mnuExportarExcel.Click += (sender, e) => ExportToSheets();
+        }
+
+        private void ExportToSheets()
+        {
+            var workbook = new XLWorkbook();
                 var worksheet = workbook.Worksheets.Add("Pagina 1");
 
                 //Colocar o cabeçalho
@@ -94,7 +100,6 @@ namespace ProjectBook.GUI
                 workbook.SaveAs(saveFileDialog.FileName);
                 MessageBox.Show("Planilha salva com sucesso", Resources.MessageBoxInformacao, MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
-            };
         }
     }
 }

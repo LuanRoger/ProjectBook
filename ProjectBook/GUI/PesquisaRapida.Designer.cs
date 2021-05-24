@@ -51,7 +51,7 @@ namespace ProjectBook.GUI
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(401, 28);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(408, 28);
             this.tableLayoutPanel1.TabIndex = 0;
             this.tableLayoutPanel1.CellPaint += new System.Windows.Forms.TableLayoutCellPaintEventHandler(this.tableLayoutPanel1_CellPaint);
             // 
@@ -60,7 +60,7 @@ namespace ProjectBook.GUI
             this.lblParaCaixaTexto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.lblParaCaixaTexto.AutoSize = true;
             this.lblParaCaixaTexto.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblParaCaixaTexto.Location = new System.Drawing.Point(135, 0);
+            this.lblParaCaixaTexto.Location = new System.Drawing.Point(139, 0);
             this.lblParaCaixaTexto.Name = "lblParaCaixaTexto";
             this.lblParaCaixaTexto.Size = new System.Drawing.Size(130, 28);
             this.lblParaCaixaTexto.TabIndex = 0;
@@ -118,9 +118,9 @@ namespace ProjectBook.GUI
             // 
             this.txtPesquisaRapida.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.txtPesquisaRapida.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.txtPesquisaRapida.Location = new System.Drawing.Point(12, 60);
+            this.txtPesquisaRapida.Location = new System.Drawing.Point(4, 60);
             this.txtPesquisaRapida.Name = "txtPesquisaRapida";
-            this.txtPesquisaRapida.Size = new System.Drawing.Size(381, 23);
+            this.txtPesquisaRapida.Size = new System.Drawing.Size(400, 23);
             this.txtPesquisaRapida.TabIndex = 5;
             this.txtPesquisaRapida.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPesquisaRapida_KeyDown);
             // 
@@ -129,7 +129,7 @@ namespace ProjectBook.GUI
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.ClientSize = new System.Drawing.Size(401, 84);
+            this.ClientSize = new System.Drawing.Size(408, 88);
             this.ControlBox = false;
             this.Controls.Add(this.txtPesquisaRapida);
             this.Controls.Add(this.rabClienteNome);
