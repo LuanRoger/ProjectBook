@@ -83,8 +83,6 @@ namespace ProjectBook
         }
         private void UpdateUserInfo()
         {
-            var d = new UsuarioDb().ReceberTipoUsuario(ConfigurationManager.AppSettings["usuarioLogado"]).Rows[0][0].ToString();
-            
             Configuracoes.config.AppSettings.Settings["tipoUsuario"].Value = 
                 new UsuarioDb().ReceberTipoUsuario(ConfigurationManager.AppSettings["usuarioLogado"]).Rows[0][0].ToString();
             Configuracoes.config.Save();

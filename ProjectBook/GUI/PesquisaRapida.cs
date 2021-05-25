@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Drawing;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using ProjectBook.DB.SqlServerExpress;
 using Color = System.Drawing.Color;
@@ -13,17 +14,24 @@ namespace ProjectBook.GUI
         private LivrosDb livrosDb = new();
         private ClienteDb clienteDb = new();
 
+        private DataTable resultado = new();
         public PesquisaRapida()
         {
             InitializeComponent();
-
         }
 
         private void tableLayoutPanel1_CellPaint(object sender, TableLayoutCellPaintEventArgs e) =>
             e.Graphics.FillRectangle(new SolidBrush(Color.CornflowerBlue), e.CellBounds);
 
         private void PesquisaRapida_Load(object sender, EventArgs e) => lblParaCaixaTexto.BackColor = Color.Transparent;
-        private void PesquisaRapida_Deactivate(object sender, EventArgs e) => Close();
+        private void PesquisaRapida_Deactivate(object sender, EventArgs e)
+        {
+            Task.Run(async () =>
+            {
+                await Task.Delay(1000);
+                Invoke((MethodInvoker)Close);
+            });
+        }
 
         private void txtPesquisaRapida_KeyDown(object sender, KeyEventArgs e)
         {
@@ -32,7 +40,6 @@ namespace ProjectBook.GUI
         private void Pesquisar()
         {
             string termoPesquisa = txtPesquisaRapida.Text;
-            DataTable resultado = new();
 
             if (Verificadores.VerificarStrings(termoPesquisa))
             {
@@ -61,7 +68,7 @@ namespace ProjectBook.GUI
         #region CheckChange
         private void rabLivroNome_CheckedChanged(object sender, EventArgs e)
         {
-            txtPesquisaRapida.AutoCompleteMode = AutoCompleteMode.Suggest;
+            txtPesquisaRapida.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
 
             AutoCompleteStringCollection livroSugestao = new();
             foreach (DataRow livro in livrosDb.VerTodosLivros().Rows) livroSugestao.Add(livro[1].ToString());
@@ -70,7 +77,7 @@ namespace ProjectBook.GUI
         }
         private void rabClienteNome_CheckedChanged(object sender, EventArgs e)
         {
-            txtPesquisaRapida.AutoCompleteMode = AutoCompleteMode.Suggest;
+            txtPesquisaRapida.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
 
             AutoCompleteStringCollection clienteSugestao = new();
             foreach (DataRow cliente in clienteDb.VerTodosClientes().Rows) clienteSugestao.Add(cliente[1].ToString());

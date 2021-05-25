@@ -3,9 +3,7 @@ using System.Configuration;
 using System.Diagnostics;
 using System.Drawing;
 using System.Reflection;
-using AutoUpdaterDotNET;
 using System.Windows.Forms;
-using ProjectBook.DB.OneDrive;
 using ProjectBook.DB.SqlServerExpress;
 using ProjectBook.Properties;
 
@@ -176,8 +174,8 @@ namespace ProjectBook.GUI
                 PesquisaRapida pesquisaRapida = new();
                 pesquisaRapida.Show();
             };
+            #endregion
         }
-        #endregion
 
         private void Inicio_Activated(object sender, EventArgs e)
         {
