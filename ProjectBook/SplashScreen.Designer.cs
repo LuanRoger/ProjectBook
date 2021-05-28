@@ -38,7 +38,7 @@ namespace ProjectBook
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = ProjectBook.Properties.Resources.SplashScreen;
+            this.pictureBox1.Image = global::ProjectBook.Properties.Resources.SplashScreen;
             this.pictureBox1.Location = new System.Drawing.Point(0, -1);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(676, 236);
@@ -88,6 +88,7 @@ namespace ProjectBook
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Activated += new System.EventHandler(this.SplashScreen_Activated_1);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

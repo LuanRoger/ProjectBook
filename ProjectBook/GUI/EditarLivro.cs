@@ -32,6 +32,8 @@ namespace ProjectBook.GUI
         }
 
         #region CheckedChanged
+        private void rabEditarId_CheckedChanged(object sender, EventArgs e) =>
+            txtEditarBuscar.AutoCompleteMode = AutoCompleteMode.None;
         private void rabEditarTitulo_CheckedChanged(object sender, EventArgs e)
         {
             txtEditarBuscar.AutoCompleteMode = AutoCompleteMode.Suggest;
@@ -48,8 +50,6 @@ namespace ProjectBook.GUI
             foreach (DataRow livro in livrosDb.VerTodosLivros().Rows) autorSugestao.Add($"{livro[2]} - {livro[1]}"); //Autor - Titulo
             txtEditarBuscar.AutoCompleteCustomSource = autorSugestao;
         }
-        private void rabEditarId_CheckedChanged(object sender, EventArgs e) =>
-            txtEditarBuscar.AutoCompleteMode = AutoCompleteMode.None;
         #endregion
 
         private void btnFecharEdicao_Click(object sender, EventArgs e) => this.Close();

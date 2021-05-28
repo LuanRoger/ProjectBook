@@ -179,7 +179,7 @@ namespace ProjectBook.GUI
 
         private void Inicio_Activated(object sender, EventArgs e)
         {
-            if (livrosDb.VerificarConexaoDb())
+            if (Opacity != 0 && livrosDb.VerificarConexaoDb())
             {
                 lblLivrosCadastrados.Text = livrosDb.VerTodosLivros().Rows.Count.ToString();
                 lblClientesCadastrados.Text = clienteDb.VerTodosClientes().Rows.Count.ToString();
@@ -209,6 +209,7 @@ namespace ProjectBook.GUI
             {
                 Opacity = 100;
                 ShowInTaskbar = true;
+                splashScreen.Dispose();
             };
 
             lblNomeUsuario.BackColor = Color.Transparent;

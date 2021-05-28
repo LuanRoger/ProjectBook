@@ -6,8 +6,7 @@ using System.Reflection;
 using System.Windows.Forms;
 using AutoUpdaterDotNET;
 using System.Configuration;
-using System.Threading.Tasks;
-using DocumentFormat.OpenXml.Drawing;
+using ProjectBook.DB.SqlServerExpress;
 using ProjectBook.GUI;
 
 namespace ProjectBook
@@ -70,6 +69,13 @@ namespace ProjectBook
         public static void RemoveAdm()
         {
             Configuracoes.config.AppSettings.Settings["tipoUsuario"].Value = Tipos.TipoUsuário.USU.ToString();
+            Configuracoes.config.Save();
+            ConfigurationManager.RefreshSection("appSettings");
+        }
+        public static void UpdateUserInfo()
+        {
+            Configuracoes.config.AppSettings.Settings["tipoUsuario"].Value = 
+                new UsuarioDb().ReceberTipoUsuario(ConfigurationManager.AppSettings["usuarioLogado"]).Rows[0][0].ToString();
             Configuracoes.config.Save();
             ConfigurationManager.RefreshSection("appSettings");
         }

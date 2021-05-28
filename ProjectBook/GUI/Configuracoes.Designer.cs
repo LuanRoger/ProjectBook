@@ -30,6 +30,7 @@ namespace ProjectBook.GUI
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.chbExibirCodigo = new System.Windows.Forms.CheckBox();
             this.chbVisualizarImpressao = new System.Windows.Forms.CheckBox();
             this.btnSalvarConfiguracoes = new System.Windows.Forms.Button();
             this.gpbBancoDados = new System.Windows.Forms.GroupBox();
@@ -44,7 +45,6 @@ namespace ProjectBook.GUI
             this.chbFormatarCliente = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.chbAtualizarStatusAluguel = new System.Windows.Forms.CheckBox();
-            this.chbExibirCodigo = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.gpbBancoDados.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -61,6 +61,16 @@ namespace ProjectBook.GUI
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Impressão";
+            // 
+            // chbExibirCodigo
+            // 
+            this.chbExibirCodigo.AutoSize = true;
+            this.chbExibirCodigo.Location = new System.Drawing.Point(152, 22);
+            this.chbExibirCodigo.Name = "chbExibirCodigo";
+            this.chbExibirCodigo.Size = new System.Drawing.Size(95, 19);
+            this.chbExibirCodigo.TabIndex = 5;
+            this.chbExibirCodigo.Text = "Exibir código";
+            this.chbExibirCodigo.UseVisualStyleBackColor = true;
             // 
             // chbVisualizarImpressao
             // 
@@ -214,21 +224,11 @@ namespace ProjectBook.GUI
             this.chbAtualizarStatusAluguel.Text = "Atualizar status automaticamente";
             this.chbAtualizarStatusAluguel.UseVisualStyleBackColor = true;
             // 
-            // chbExibirCodigo
-            // 
-            this.chbExibirCodigo.AutoSize = true;
-            this.chbExibirCodigo.Location = new System.Drawing.Point(152, 22);
-            this.chbExibirCodigo.Name = "chbExibirCodigo";
-            this.chbExibirCodigo.Size = new System.Drawing.Size(95, 19);
-            this.chbExibirCodigo.TabIndex = 5;
-            this.chbExibirCodigo.Text = "Exibir código";
-            this.chbExibirCodigo.UseVisualStyleBackColor = true;
-            // 
             // Configuracoes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(493, 272);
+            this.ClientSize = new System.Drawing.Size(493, 270);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.gpbBancoDados);

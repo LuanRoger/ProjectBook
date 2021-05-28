@@ -31,12 +31,11 @@ namespace ProjectBook.GUI
 
         #region CheckedChanged
         private void rabBuscarClienteId_CheckedChanged(object sender, EventArgs e) => txtBuscarClienteEditar
-            .AutoCompleteSource = AutoCompleteSource.None;
+            .AutoCompleteMode = AutoCompleteMode.None;
 
         private void rabBuscarClienteNome_CheckedChanged(object sender, EventArgs e)
         {
-            //Preparar sugestões
-            txtBuscarClienteEditar.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            txtBuscarClienteEditar.AutoCompleteMode = AutoCompleteMode.Suggest;
 
             AutoCompleteStringCollection autoCompleteStringCollection = new();
             foreach (DataRow cliente in clienteDb.VerTodosClientes().Rows) autoCompleteStringCollection.Add(cliente[1].ToString());

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
 using System.Data;
@@ -11,6 +12,7 @@ using ProjectBook.DB.SqlServerExpress;
 using ProjectBook.GUI;
 using ProjectBook.Properties;
 using System.Threading.Tasks;
+using DocumentFormat.OpenXml.Office2010.ExcelAc;
 using ProjectBook.DB.OneDrive;
 
 namespace ProjectBook
@@ -35,40 +37,47 @@ namespace ProjectBook
 
             label1.Font = new Font(privateFont.Families[0], 20, FontStyle.Bold);
             label2.Font = new Font(privateFont.Families[1], 7, FontStyle.Regular);
-
-            //Sincronização OneDrive
-            if (ConfigurationManager.AppSettings["dbPadrao"] == "onedrive" &&
-                ConfigurationManager.ConnectionStrings["SqlConnectionString"].ConnectionString == "")
-            {
-                lblStatusCarregamento.Text = Resources.MigrandoOneDrive;
-                OneDrive.MigrarOneDrive();
-            }
-
+        }
+        private async void SplashScreen_Activated_1(object sender, EventArgs e)
+        {
             if (!livrosDb.VerificarConexaoDb()) return;
 
-            //Verificar se existe usuário logado
             lblStatusCarregamento.Text = Resources.realizando_verificações_de_segurança_splashscreen;
             if (string.IsNullOrEmpty(ConfigurationManager.AppSettings["usuarioLogado"]))
             {
                 UsuarioLogado();
                 return;
             }
-            else UpdateUserInfo();
+            else AppManager.UpdateUserInfo();
 
-            //Atualizar Status do aluguel
-            lblStatusCarregamento.Text = Resources.AtualizandoBancoDadosSpashScreen;
-            var d = ConfigurationManager.AppSettings["atualizarStatusAluguel"];
-            if (ConfigurationManager.AppSettings["atualizarStatusAluguel"] == "1") AtualizarAtrasso();
+            List<Task> inicializeTasks = new();
+            inicializeTasks.Add(SyncOneDrive());
+            inicializeTasks.Add(SearchForUpdates());
+            inicializeTasks.Add(AtualizarAluguel());
+            inicializeTasks.Add(Task.Delay(Consts.SPLASH_SCREEN_LOADTIME));
+            await Task.WhenAll(inicializeTasks.ToArray());
 
-            //Procurar atualizazções
-            lblStatusCarregamento.Text = Resources.ProcurandoAtualizacoesSplashScreen;
-            AppManager.ProcurarAtualizacoes();
+            Close();
+        }
 
-            Task.Run(async () =>
+        private async Task SyncOneDrive()
+        {
+            if (ConfigurationManager.AppSettings["dbPadrao"] == "onedrive" &&
+                ConfigurationManager.ConnectionStrings["SqlConnectionString"].ConnectionString == "")
             {
-                await Task.Delay(Consts.SPLASH_SCREEN_LOADTIME);
-                Invoke((MethodInvoker)Close);
-            });
+                lblStatusCarregamento.Text = Resources.MigrandoOneDrive;
+                await Task.Run(OneDrive.MigrarOneDrive);
+            }
+        }
+        private async Task SearchForUpdates()
+        {
+            lblStatusCarregamento.Text = Resources.ProcurandoAtualizacoesSplashScreen;
+            await Task.Run(AppManager.ProcurarAtualizacoes);
+        }
+        private async Task AtualizarAluguel()
+        {
+            lblStatusCarregamento.Text = Resources.AtualizandoBancoDadosSpashScreen;
+            if (ConfigurationManager.AppSettings["atualizarStatusAluguel"] == "1") await Task.Run(AtualizarAtrasso);
         }
 
         private void UsuarioLogado()
@@ -81,18 +90,9 @@ namespace ProjectBook
             }
             else AppManager.ReiniciarPrograma();
         }
-        private void UpdateUserInfo()
-        {
-            Configuracoes.config.AppSettings.Settings["tipoUsuario"].Value = 
-                new UsuarioDb().ReceberTipoUsuario(ConfigurationManager.AppSettings["usuarioLogado"]).Rows[0][0].ToString();
-            Configuracoes.config.Save();
-            ConfigurationManager.RefreshSection("appSettings");
-        }
         private void AtualizarAtrasso()
         {
             AluguelDb aluguelDb = new();
-
-            var d = aluguelDb.PegarLivrosAlugados().Rows;
 
             foreach (DataRow data in aluguelDb.PegarLivrosAlugados().Rows)
             {
