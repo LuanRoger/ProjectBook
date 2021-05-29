@@ -820,6 +820,15 @@ namespace ProjectBook.Properties {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a https://github.com/LuanRoger/ProjectBook.
+        /// </summary>
+        internal static string UrlProjeto {
+            get {
+                return ResourceManager.GetString("UrlProjeto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap user_gray {

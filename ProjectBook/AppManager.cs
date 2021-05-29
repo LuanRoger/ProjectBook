@@ -18,10 +18,6 @@ namespace ProjectBook
         private static readonly string FONTS_FOLDER = Application.StartupPath + @"\font";
         private static readonly string URI_DOWNLAD_FONTS = "https://github.com/LuanRoger/ProjectBook/raw/master/ProjectBook/assets/fontes/";
 
-        private static readonly string[] SCRIPTS_DOWNLOAD = {"startdb_instance.ps1"};
-        private static readonly string SCRIPTS_FOLDER = Application.StartupPath + @"\scripts";
-        private static readonly string URI_DOWNLOAD_SCRIPTS = "https://github.com/LuanRoger/ProjectBook/raw/master/scripts/";
-
         public static void ReiniciarPrograma()
         {
             Process.Start(Application.StartupPath + Assembly.GetExecutingAssembly().GetName().Name + ".exe");
@@ -39,18 +35,6 @@ namespace ProjectBook
             {
                 webClient.DownloadFile(new Uri(URI_DOWNLAD_FONTS + font),
                 @$"{FONTS_FOLDER}\{font}");
-            }
-        }
-        public static void DownloadScripts()
-        {
-            if (File.Exists(@$"{SCRIPTS_FOLDER}\{SCRIPTS_DOWNLOAD[0]}")) return;
-            Directory.CreateDirectory(SCRIPTS_FOLDER);
-
-            using WebClient webClient = new();
-            foreach (var script in SCRIPTS_DOWNLOAD)
-            {
-                webClient.DownloadFile(new Uri(URI_DOWNLOAD_SCRIPTS + script),
-                    @$"{SCRIPTS_FOLDER}\{script}");
             }
         }
         public static void ProcurarAtualizacoes()

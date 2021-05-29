@@ -29,7 +29,6 @@ namespace ProjectBook
             InitializeComponent();
 
             AppManager.DownloadFonts();
-            AppManager.DownloadScripts();
 
             PrivateFontCollection privateFont = new();
             privateFont.AddFontFile(FONTMONTSERRATEXTRABOLD);

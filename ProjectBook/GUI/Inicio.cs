@@ -2,6 +2,7 @@
 using System.Configuration;
 using System.Diagnostics;
 using System.Drawing;
+using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
 using ProjectBook.DB.SqlServerExpress;
@@ -124,9 +125,10 @@ namespace ProjectBook.GUI
             mnuSobre.Click += (sender, e) =>
             {
                 MessageBox.Show("Project Book v" +
-                                Assembly.GetExecutingAssembly().GetName().Version + 
+                                Assembly.GetExecutingAssembly().GetName().Version +
                                 "\n" + Resources.TheCreator +
                                 "\n" + Resources.Licensa +
+                                "\n" + Resources.UrlProjeto +
                                 "\n" + Resources.CreditosIcones,
                     Resources.sobre_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Information);
             };
@@ -179,7 +181,7 @@ namespace ProjectBook.GUI
 
         private void Inicio_Activated(object sender, EventArgs e)
         {
-            if (Opacity != 0 && livrosDb.VerificarConexaoDb())
+            if (Opacity != 0)
             {
                 lblLivrosCadastrados.Text = livrosDb.VerTodosLivros().Rows.Count.ToString();
                 lblClientesCadastrados.Text = clienteDb.VerTodosClientes().Rows.Count.ToString();
