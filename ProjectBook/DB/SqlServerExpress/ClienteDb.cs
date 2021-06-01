@@ -3,6 +3,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 using ProjectBook.Properties;
+using ProjectBook.AppInsight;
 
 namespace ProjectBook.DB.SqlServerExpress
 {
@@ -35,7 +36,8 @@ namespace ProjectBook.DB.SqlServerExpress
                 MessageBox.Show(Resources.ClienteRegistrado, Resources.concluido_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch (SqlException e) { MessageBox.Show(e.Message, Resources.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            catch (SqlException e) { MessageBox.Show(e.Message, Resources.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error); 
+                AppInsightMetrics.SendError(e); }
         }
         public DataTable VerTodosClientes()
         {
@@ -48,7 +50,8 @@ namespace ProjectBook.DB.SqlServerExpress
 
                 adapter.Fill(table);
             }
-            catch (SqlException e) { MessageBox.Show(e.Message, Resources.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            catch (SqlException e) { MessageBox.Show(e.Message, Resources.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error); 
+                AppInsightMetrics.SendError(e); }
 
             return table;
         }
@@ -70,7 +73,8 @@ namespace ProjectBook.DB.SqlServerExpress
                 MessageBox.Show(Resources.cliente_deletado_com_sucesso, Resources.cliente_deletado_com_sucesso,
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch (SqlException e) { MessageBox.Show(e.Message, Resources.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            catch (SqlException e) { MessageBox.Show(e.Message, Resources.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error); 
+                AppInsightMetrics.SendError(e); }
         }
         public void DeletarClienteNome(string nome)
         {
@@ -87,7 +91,8 @@ namespace ProjectBook.DB.SqlServerExpress
                 MessageBox.Show(Resources.cliente_deletado_com_sucesso, Resources.concluido_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch (SqlException e) { MessageBox.Show(e.Message, Resources.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            catch (SqlException e) { MessageBox.Show(e.Message, Resources.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error); 
+                AppInsightMetrics.SendError(e); }
         }
         #endregion
         
@@ -104,7 +109,8 @@ namespace ProjectBook.DB.SqlServerExpress
 
                 adapter.Fill(table);
             }
-            catch (SqlException e) { MessageBox.Show(e.Message, Resources.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            catch (SqlException e) { MessageBox.Show(e.Message, Resources.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error); 
+                AppInsightMetrics.SendError(e); }
 
             return table;
         }
@@ -120,8 +126,8 @@ namespace ProjectBook.DB.SqlServerExpress
 
                 adapter.Fill(table);
             }
-            catch (SqlException e) { MessageBox.Show(e.Message, Resources.PreecherCampoBusca,
-                MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            catch (SqlException e) { MessageBox.Show(e.Message, Resources.PreecherCampoBusca, MessageBoxButtons.OK, MessageBoxIcon.Error); 
+                AppInsightMetrics.SendError(e); }
 
             return table;
         }
@@ -154,7 +160,8 @@ namespace ProjectBook.DB.SqlServerExpress
 
                 MessageBox.Show(Resources.informações_atualizadas, Resources.concluido_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch (SqlException e) { MessageBox.Show(e.Message, Resources.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            catch (SqlException e) { MessageBox.Show(e.Message, Resources.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error); 
+                AppInsightMetrics.SendError(e);}
         }
         #endregion
     }

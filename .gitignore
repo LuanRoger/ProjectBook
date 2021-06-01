@@ -36,3 +36,4 @@ msbuild.wrn
 # Visual Studio 2015
 .vs/
 ProjectBook/Properties/PublishProfiles/FolderProfile.pubxml
+ProjectBook/ApiKeys.cs

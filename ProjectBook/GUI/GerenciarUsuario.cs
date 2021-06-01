@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Windows.Forms;
+using ProjectBook.AppInsight;
 using ProjectBook.DB.SqlServerExpress;
 using ProjectBook.Livros;
 using ProjectBook.Properties;
@@ -14,6 +15,8 @@ namespace ProjectBook.GUI
         public GerenciarUsuario()
         {
             InitializeComponent();
+
+            Load += (_, _) => AppInsightMetrics.TrackForm("GerenciarUsuario");
         }
 
         private void btnCadastrarUsuario_Click(object sender, EventArgs e)

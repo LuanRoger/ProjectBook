@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using ProjectBook.DB.SqlServerExpress;
 using Color = System.Drawing.Color;
 using ProjectBook.Properties;
+using ProjectBook.AppInsight;
 
 namespace ProjectBook.GUI
 {
@@ -18,6 +19,8 @@ namespace ProjectBook.GUI
         public PesquisaRapida()
         {
             InitializeComponent();
+
+            Load += (_, _) => AppInsightMetrics.TrackForm("PesquisaRapida");
         }
 
         private void tableLayoutPanel1_CellPaint(object sender, TableLayoutCellPaintEventArgs e) =>

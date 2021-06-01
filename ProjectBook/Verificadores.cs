@@ -1,8 +1,6 @@
-﻿using System;
-using System.Configuration;
+﻿using System.Configuration;
 using System.Data;
 using System.IO;
-using System.Linq;
 using System.Management;
 using ProjectBook.Livros;
 using ProjectBook.DB.SqlServerExpress;
@@ -87,6 +85,8 @@ namespace ProjectBook
 
             return so.Contains("Windows 10");
         }
+
+        public static bool EnviarTelimetria() => ConfigurationManager.AppSettings["telemetry"] == "1" ? true : false;
 
         public static bool HasSyncOneDrive(DirectoryInfo directoryInfo)
         {

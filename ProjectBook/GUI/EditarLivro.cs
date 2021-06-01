@@ -2,6 +2,7 @@
 using System.Configuration;
 using System.Data;
 using System.Windows.Forms;
+using ProjectBook.AppInsight;
 using ProjectBook.DB.SqlServerExpress;
 using ProjectBook.Livros;
 using ProjectBook.Properties;
@@ -29,6 +30,7 @@ namespace ProjectBook.GUI
                 PesquisarLivro pesquisarLivro = new PesquisarLivro();
                 pesquisarLivro.Show();
             };
+            Load += (_, _) => AppInsightMetrics.TrackForm("EditarLivro");
         }
 
         #region CheckedChanged

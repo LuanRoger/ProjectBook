@@ -27,11 +27,12 @@ namespace ProjectBook.GUI
             var directoryInfo = string.IsNullOrEmpty(ConfigurationManager.AppSettings["pastaDb"]) ?
                 "" : Directory.GetParent(ConfigurationManager.AppSettings["pastaDb"]).ToString();
 
-            if (ConfigurationManager.AppSettings["visualizarImpressao"] == "1") chbVisualizarImpressao.Checked = true;
-            if (ConfigurationManager.AppSettings["atualizarStatusAluguel"] == "1") chbAtualizarStatusAluguel.Checked = true;
-            if (ConfigurationManager.AppSettings["formatarCliente"] == "1") chbFormatarCliente.Checked = true;
-            if (ConfigurationManager.AppSettings["formatarLivro"] == "1") chbFormatarLivro.Checked = true;
+            chbVisualizarImpressao.Checked = ConfigurationManager.AppSettings["visualizarImpressao"] == "1";
+            chbAtualizarStatusAluguel.Checked = ConfigurationManager.AppSettings["atualizarStatusAluguel"] == "1";
+            chbFormatarCliente.Checked =  ConfigurationManager.AppSettings["formatarCliente"] == "1";
+            chbFormatarLivro.Checked = ConfigurationManager.AppSettings["formatarLivro"] == "1";
             chbExibirCodigo.Checked = ConfigurationManager.AppSettings["ExibirID"] == "1";
+            chbTelemetria.Checked = ConfigurationManager.AppSettings["telemetry"] == "1";
 
             switch (ConfigurationManager.AppSettings["dbPadrao"])
             {
@@ -64,6 +65,9 @@ namespace ProjectBook.GUI
             //Preferencias de aluguel
             config.AppSettings.Settings["atualizarStatusAluguel"].Value = chbAtualizarStatusAluguel.Checked ? "1" : "0";
 
+            //Telemetria
+            config.AppSettings.Settings["telemetry"].Value = chbTelemetria.Checked ? "1" : "0";
+
             //String de conexão
             if (rabSqlServerExpress.Checked)
             {
@@ -95,7 +99,7 @@ namespace ProjectBook.GUI
             MessageBox.Show(Resources.ConfiguracoesSalvas, Resources.concluido_MessageBox,
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            //Se o usuário mudou a string de conexão o programa deve ser reinicado
+            // Se o usuário mudou a string de conexão o programa deve ser reinicado
             if (!stringConexaoAtual.Equals(config.ConnectionStrings.ConnectionStrings["SqlConnectionString"].ConnectionString))
             {
                 MessageBox.Show(Resources.mudancaConnectionString,

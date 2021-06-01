@@ -743,7 +743,7 @@ namespace ProjectBook.GUI
             this.Name = "Inicio";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Project Book";
-            this.Activated += new System.EventHandler(this.Inicio_Activated);
+            this.Activated += new System.EventHandler(this.Inicio_ActivatedAsync);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Inicio_FormClosing);
             this.Load += new System.EventHandler(this.Inicio_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Inicio_KeyDown);

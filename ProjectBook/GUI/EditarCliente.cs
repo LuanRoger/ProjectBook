@@ -2,6 +2,7 @@
 using System.Configuration;
 using System.Data;
 using System.Windows.Forms;
+using ProjectBook.AppInsight;
 using ProjectBook.DB.SqlServerExpress;
 using ProjectBook.Livros;
 using ProjectBook.Properties;
@@ -27,6 +28,7 @@ namespace ProjectBook.GUI
                 PesquisarCliente pesquisarCliente = new();
                 pesquisarCliente.Show();
             };
+            Load += (_, _) => AppInsightMetrics.TrackForm("EditarCliente");
         }
 
         #region CheckedChanged

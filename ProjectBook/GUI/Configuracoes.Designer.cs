@@ -45,10 +45,13 @@ namespace ProjectBook.GUI
             this.chbFormatarCliente = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.chbAtualizarStatusAluguel = new System.Windows.Forms.CheckBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.chbTelemetria = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.gpbBancoDados.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -224,11 +227,32 @@ namespace ProjectBook.GUI
             this.chbAtualizarStatusAluguel.Text = "Atualizar status automaticamente";
             this.chbAtualizarStatusAluguel.UseVisualStyleBackColor = true;
             // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.chbTelemetria);
+            this.groupBox4.Location = new System.Drawing.Point(271, 69);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(212, 52);
+            this.groupBox4.TabIndex = 5;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Telemetria";
+            // 
+            // chbTelemetria
+            // 
+            this.chbTelemetria.AutoSize = true;
+            this.chbTelemetria.Location = new System.Drawing.Point(7, 22);
+            this.chbTelemetria.Name = "chbTelemetria";
+            this.chbTelemetria.Size = new System.Drawing.Size(124, 19);
+            this.chbTelemetria.TabIndex = 0;
+            this.chbTelemetria.Text = "Permitir telemetria";
+            this.chbTelemetria.UseVisualStyleBackColor = true;
+            // 
             // Configuracoes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(493, 270);
+            this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.gpbBancoDados);
@@ -248,6 +272,8 @@ namespace ProjectBook.GUI
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -270,5 +296,7 @@ namespace ProjectBook.GUI
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.CheckBox chbAtualizarStatusAluguel;
         private System.Windows.Forms.CheckBox chbExibirCodigo;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.CheckBox chbTelemetria;
     }
 }

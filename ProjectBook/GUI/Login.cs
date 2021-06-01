@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Configuration;
 using System.Data;
-using System.Diagnostics;
-using System.Reflection;
 using System.Windows.Forms;
 using ProjectBook.DB.SqlServerExpress;
 using ProjectBook.Properties;
@@ -43,6 +41,7 @@ namespace ProjectBook.GUI
                 }
             }
 
+            Configuracoes.config.AppSettings.Settings["idUsuario"].Value = infoUsuario.Rows[0][0].ToString();
             Configuracoes.config.AppSettings.Settings["usuarioLogado"].Value = infoUsuario.Rows[0][1].ToString();
             Configuracoes.config.AppSettings.Settings["tipoUsuario"].Value = infoUsuario.Rows[0][3].ToString();
             Configuracoes.config.Save(ConfigurationSaveMode.Modified);

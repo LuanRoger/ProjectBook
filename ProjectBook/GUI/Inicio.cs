@@ -2,11 +2,11 @@
 using System.Configuration;
 using System.Diagnostics;
 using System.Drawing;
-using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
 using ProjectBook.DB.SqlServerExpress;
 using ProjectBook.Properties;
+using ProjectBook.AppInsight;
 
 namespace ProjectBook.GUI
 {
@@ -27,34 +27,46 @@ namespace ProjectBook.GUI
             {
                 CadastroLivro cadastroLivro = new();
                 cadastroLivro.Show();
+
+                AppInsightMetrics.TrackEvent("AbrirCadastroLivroMenu");
             };
 
             mnuEditarLivro.Click += (sender, e) => 
             {
                 EditarLivro editarLivro = new();
                 editarLivro.Show();
+
+                AppInsightMetrics.TrackEvent("AbrirEditarLivroMenu");
             };
 
             mnuCadastrarAluguel.Click += (sender, e) =>
             {
                 CadastrarAluguel cadastrarAluguel = new();
                 cadastrarAluguel.Show();
+
+                AppInsightMetrics.TrackEvent("AbrirCadastrarAluguelMenu");
             };
             mnuEditarAluguel.Click += (sender, e) =>
             {
                 EditarAluguel editarAluguel = new();
                 editarAluguel.Show();
+
+                AppInsightMetrics.TrackEvent("AbrirEditarAluguelMenu");
             };
 
             mnuCadastrarCliente.Click += (sender, e) =>
             {
                 CadastrarClientes cadastrarClientes = new();
                 cadastrarClientes.Show();
+
+                AppInsightMetrics.TrackEvent("AbrirCadastrarClienteMenu");
             };
             mnuEditarClientes.Click += (sender, e) =>
             {
                 EditarCliente editarCliente = new();
                 editarCliente.Show();
+
+                AppInsightMetrics.TrackEvent("AbrirEditarClienteMenu");
             };
 
             mnuUsuario.Visible = ConfigurationManager.AppSettings["tipoUsuario"] == "ADM";
@@ -62,64 +74,88 @@ namespace ProjectBook.GUI
             {
                 GerenciarUsuario gerenciarUsuario = new();
                 gerenciarUsuario.Show();
+
+                AppInsightMetrics.TrackEvent("AbrirGerenciarUsuariosMenu");
             };
             mnuPesquisarUsuarios.Click += (sender, e) =>
             {
                 PesquisarUsuario pesquisarUsuario = new();
                 pesquisarUsuario.Show();
+
+                AppInsightMetrics.TrackEvent("AbrirPesquisarUsuarioMenu");
             };
             
             mnuExcluirLivro.Click += (sender, e) =>
             {
                 Excluir excluir = new();
                 excluir.Show();
+
+                AppInsightMetrics.TrackEvent("AbrirExcluirLivroMenu");
             };
             mnuExcluirCliente.Click += (sender, e) =>
             {
                 ExcluirCliente excluirCliente = new();
                 excluirCliente.Show();
+
+                AppInsightMetrics.TrackEvent("AbrirExcluirClienteMenu");
             };
             mnuExcluirAluguel.Click += (sender, e) =>
             {
                 ExcluirAluguel excluirAluguel = new();
                 excluirAluguel.Show();
+
+                AppInsightMetrics.TrackEvent("AbrirExcluirAluguelMenu");
             };
 
             mnuTodosLivros.Click += (sender, e) =>
             {
                 ListaPesquisa listaPesquisa = new(livrosDb.VerTodosLivros());
                 listaPesquisa.Show();
+
+                AppInsightMetrics.TrackEvent("AbrirVerTodosLivrosMenu");
             };
             mnuPesquisaSeletiva.Click += (sender, e) =>
             {
                 PesquisarLivro pesquisarLivro = new();
                 pesquisarLivro.Show();
+
+                AppInsightMetrics.TrackEvent("AbrirPesquisarLivroMenu");
             };
             mnuLivrosAlugados.Click += (sender, e) => 
             {
                 ListaPesquisa listaPesquisa = new(aluguelDb.VerTodosAluguel());
                 listaPesquisa.Show();
+
+                AppInsightMetrics.TrackEvent("AbrirVerTodosAlugueisMenu");
             };
             mnuPesquisarAluguel.Click += (sender, e) =>
             {
                 PesquisarAluguel pesquisarAluguel = new();
                 pesquisarAluguel.Show();
+
+                AppInsightMetrics.TrackEvent("AbrirPesquisarAluguelMenu");
             };
             mnuTodosClientes.Click += (sender, e) =>
             {
                 ListaPesquisa listaPesquisa = new(clienteDb.VerTodosClientes());
                 listaPesquisa.Show();
+
+                AppInsightMetrics.TrackEvent("AbrirVerTodosClientesMenu");
             };
             mnuPesquisarCliente.Click += (sender, e) =>
             {
                 PesquisarCliente pesquisarCliente = new();
                 pesquisarCliente.Show();
+
+                AppInsightMetrics.TrackEvent("AbrirPesquisarClienteMenu");
             };
 
             mnuConfig.Click += (sender, e) => 
             {
                 Configuracoes configuracoes = new();
                 configuracoes.Show();
+
+                AppInsightMetrics.TrackEvent("AbrirConfiguracoesMenu");
             };
 
             mnuSobre.Click += (sender, e) =>
@@ -140,46 +176,62 @@ namespace ProjectBook.GUI
             {
                 CadastroLivro cadastroLivro = new();
                 cadastroLivro.Show();
+
+                AppInsightMetrics.TrackEvent("AbrirCadastroLivroAr");
             };
             mnuArCadastroCliente.Click += (sender, e) =>
             {
                 CadastrarClientes cadastrarClientes = new();
                 cadastrarClientes.Show();
+
+                AppInsightMetrics.TrackEvent("AbrirCadastroClienteAr");
             };
             mnuArCadastroAluguel.Click += (sender, e) =>
             {
                 CadastrarAluguel cadastrarAluguel = new();
                 cadastrarAluguel.Show();
+
+                AppInsightMetrics.TrackEvent("AbrirCadastroAluguelAr");
             };
             mnuArEditarLivro.Click += (sender, e) =>
             {
                 EditarLivro editarLivro = new();
                 editarLivro.Show();
+
+                AppInsightMetrics.TrackEvent("AbrirEditarLivroAr");
             };
             mnuArEditarCliente.Click += (sender, e) =>
             {
                 EditarCliente editarCliente = new();
                 editarCliente.Show();
+
+                AppInsightMetrics.TrackEvent("AbrirEditarClienteAr");
             };
             mnuArEditarAluguel.Click += (sender, e) =>
             {
                 EditarAluguel editarAluguel = new();
                 editarAluguel.Show();
+
+                AppInsightMetrics.TrackEvent("AbrirEditarAluguelAr");
             };
             mnuArUsuario.Click += (sender, e) =>
             {
                 GerenciarUsuario gerenciarUsuario = new();
                 gerenciarUsuario.Show();
+
+                AppInsightMetrics.TrackEvent("AbrirGerenciarUsuarioAr");
             };
             mnuArBuscaRapida.Click += (sender, e) =>
             {
                 PesquisaRapida pesquisaRapida = new();
                 pesquisaRapida.Show();
+
+                AppInsightMetrics.TrackEvent("AbrirPesquisaRapidaAr");
             };
             #endregion
         }
 
-        private void Inicio_Activated(object sender, EventArgs e)
+        private void Inicio_ActivatedAsync(object sender, EventArgs e)
         {
             if (Opacity != 0)
             {
@@ -187,6 +239,10 @@ namespace ProjectBook.GUI
                 lblClientesCadastrados.Text = clienteDb.VerTodosClientes().Rows.Count.ToString();
                 lblAlugueisRegistrados.Text = aluguelDb.VerTodosAluguel().Rows.Count.ToString();
             }
+
+            AppInsightMetrics.SendMetric("LivrosRegistrados", int.Parse(lblLivrosCadastrados.Text));
+            AppInsightMetrics.SendMetric("ClientesCadastrados", int.Parse(lblClientesCadastrados.Text));
+            AppInsightMetrics.SendMetric("AlugueisRegistrados", int.Parse(lblAlugueisRegistrados.Text));
 
             GC.Collect();
         }
@@ -214,6 +270,9 @@ namespace ProjectBook.GUI
                 splashScreen.Dispose();
             };
 
+            AppInsightMetrics.InicializarInsights();
+            AppInsightMetrics.TrackForm("Inicio");
+
             lblNomeUsuario.BackColor = Color.Transparent;
             BringToFront();
         }
@@ -225,6 +284,7 @@ namespace ProjectBook.GUI
                 case Keys.F1:
                     PesquisaRapida pesquisaRapida = new();
                     pesquisaRapida.Show();
+                    AppInsightMetrics.TrackEvent("AbrirPesquisaRapidaAtalho");
                     break;
                 case Keys.F6: 
                     Close(); 
@@ -241,6 +301,7 @@ namespace ProjectBook.GUI
                 MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
 
             e.Cancel = dialogResult != DialogResult.Yes;
+            if(!e.Cancel) AppInsightMetrics.FlushTelemetry();
         }
     }
 }

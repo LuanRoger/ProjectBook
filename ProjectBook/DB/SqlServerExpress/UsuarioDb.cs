@@ -2,6 +2,7 @@
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
+using ProjectBook.AppInsight;
 using ProjectBook.Livros;
 using ProjectBook.Properties;
 
@@ -31,8 +32,8 @@ namespace ProjectBook.DB.SqlServerExpress
                 MessageBox.Show(Resources.UsuarioRegistrado, Resources.concluido_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch (SqlException e) { MessageBox.Show(e.Message, Resources.MessageBoxError,
-                MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            catch (SqlException e) { MessageBox.Show(e.Message, Resources.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error); 
+                AppInsightMetrics.SendError(e); }
         }
         public void DeletarUsuarioId(string id)
         {
@@ -50,10 +51,8 @@ namespace ProjectBook.DB.SqlServerExpress
                 MessageBox.Show(Resources.UsuarioDeletado, Resources.concluido_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch (SqlException e)
-            {
-                MessageBox.Show(e.Message, Resources.ErrorConectarDb, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            catch (SqlException e){ MessageBox.Show(e.Message, Resources.ErrorConectarDb, MessageBoxButtons.OK, MessageBoxIcon.Error); 
+                AppInsightMetrics.SendError(e); }
         }
         public void AtualizarUsuarioId(string id, Usuario usuario)
         {
@@ -75,9 +74,11 @@ namespace ProjectBook.DB.SqlServerExpress
 
                 MessageBox.Show(Resources.informações_atualizadas, Resources.concluido_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch (SqlException e) { MessageBox.Show(e.Message, Resources.MessageBoxError,
-                MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            catch (SqlException e) { MessageBox.Show(e.Message, Resources.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error); 
+                AppInsightMetrics.SendError(e);}
         }
+
+        #region Login
         public DataTable LoginUsuario(string usuario, string senha)
         {
             DataTable dataTable = new();
@@ -88,11 +89,8 @@ namespace ProjectBook.DB.SqlServerExpress
                 FechaConecxaoDb();
                 adapter.Fill(dataTable);
             }
-            catch (SqlException e)
-            {
-                MessageBox.Show(e.Message, Resources.MessageBoxError,
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            catch (SqlException e) { MessageBox.Show(e.Message, Resources.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error); 
+                AppInsightMetrics.SendError(e); }
 
             return dataTable;
         }
@@ -106,14 +104,13 @@ namespace ProjectBook.DB.SqlServerExpress
                 FechaConecxaoDb();
                 adapter.Fill(dataTable);
             }
-            catch (SqlException e)
-            {
-                MessageBox.Show(e.Message, Resources.MessageBoxError,
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            catch (SqlException e){ MessageBox.Show(e.Message, Resources.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error); 
+                AppInsightMetrics.SendError(e); }
 
             return dataTable;
         }
+        #endregion
+
         public DataTable ReceberTipoUsuario(string usuario)
         {
             DataTable dataTable = new();
@@ -124,11 +121,8 @@ namespace ProjectBook.DB.SqlServerExpress
                 FechaConecxaoDb();
                 adapter.Fill(dataTable);
             }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message, Resources.MessageBoxError,
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);;
-            }
+            catch (Exception e){ MessageBox.Show(e.Message, Resources.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error); 
+                AppInsightMetrics.SendError(e);}
 
             return dataTable;
         }
@@ -144,7 +138,8 @@ namespace ProjectBook.DB.SqlServerExpress
                 FechaConecxaoDb();
                 adapter.Fill(table);
             }
-            catch (SqlException e) { MessageBox.Show(e.Message, Resources.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            catch (SqlException e) { MessageBox.Show(e.Message, Resources.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error); 
+                AppInsightMetrics.SendError(e); }
 
             return table;
         }
@@ -158,7 +153,8 @@ namespace ProjectBook.DB.SqlServerExpress
                 FechaConecxaoDb();
                 adapter.Fill(table);
             }
-            catch (SqlException e) { MessageBox.Show(e.Message, Resources.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            catch (SqlException e) { MessageBox.Show(e.Message, Resources.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error); 
+                AppInsightMetrics.SendError(e); }
 
             return table;
         }
@@ -172,7 +168,8 @@ namespace ProjectBook.DB.SqlServerExpress
                 FechaConecxaoDb();
                 adapter.Fill(table);
             }
-            catch (SqlException e) { MessageBox.Show(e.Message, Resources.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            catch (SqlException e) { MessageBox.Show(e.Message, Resources.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error); 
+                AppInsightMetrics.SendError(e); }
 
             return table;
         }
@@ -186,7 +183,8 @@ namespace ProjectBook.DB.SqlServerExpress
                 FechaConecxaoDb();
                 adapter.Fill(table);
             }
-            catch (SqlException e) { MessageBox.Show(e.Message, Resources.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            catch (SqlException e) { MessageBox.Show(e.Message, Resources.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error); 
+                AppInsightMetrics.SendError(e); }
 
             return table;
         }
@@ -200,7 +198,8 @@ namespace ProjectBook.DB.SqlServerExpress
                 FechaConecxaoDb();
                 adapter.Fill(table);
             }
-            catch (SqlException e) { MessageBox.Show(e.Message, Resources.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            catch (SqlException e) { MessageBox.Show(e.Message, Resources.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error); 
+                AppInsightMetrics.SendError(e); }
 
             return table;
         }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Configuration;
 using System.Windows.Forms;
+using ProjectBook.AppInsight;
 using ProjectBook.DB.SqlServerExpress;
 using ProjectBook.Livros;
 
@@ -24,6 +25,7 @@ namespace ProjectBook.GUI
                 PesquisarCliente pesquisarCliente = new();
                 pesquisarCliente.Show();
             };
+            Load += (_, _) => AppInsightMetrics.TrackForm("CadastrarCliente");
         }
 
         private void btnSalvarCliente_Click(object sender, EventArgs e)

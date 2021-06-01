@@ -8,6 +8,7 @@ using AutoUpdaterDotNET;
 using System.Configuration;
 using ProjectBook.DB.SqlServerExpress;
 using ProjectBook.GUI;
+using ProjectBook.AppInsight;
 
 namespace ProjectBook
 {
@@ -20,6 +21,8 @@ namespace ProjectBook
 
         public static void ReiniciarPrograma()
         {
+            AppInsight.AppInsightMetrics.FlushTelemetry();
+
             Process.Start(Application.StartupPath + Assembly.GetExecutingAssembly().GetName().Name + ".exe");
             Process.GetCurrentProcess().Kill();
         }
@@ -58,14 +61,20 @@ namespace ProjectBook
         }
         public static void UpdateUserInfo()
         {
+            UsuarioDb usuarioDb = new();
+
             Configuracoes.config.AppSettings.Settings["tipoUsuario"].Value = 
-                new UsuarioDb().ReceberTipoUsuario(ConfigurationManager.AppSettings["usuarioLogado"]).Rows[0][0].ToString();
+                usuarioDb.ReceberTipoUsuario(ConfigurationManager.AppSettings["usuarioLogado"]).Rows[0][0].ToString();
             Configuracoes.config.Save();
             ConfigurationManager.RefreshSection("appSettings");
+
+            AppInsightMetrics.SendUserInfo(
+                Configuracoes.config.AppSettings.Settings["idUsuario"].Value,
+                Configuracoes.config.AppSettings.Settings["usuarioLogado"].Value,
+                Configuracoes.config.AppSettings.Settings["tipoUsuario"].Value);
         }
     }
-
-    public static class Consts
+    public class Consts
     {
         public const int SPLASH_SCREEN_LOADTIME = 2500;
     }

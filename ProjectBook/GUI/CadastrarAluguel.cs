@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Windows.Forms;
+using ProjectBook.AppInsight;
 using ProjectBook.DB.SqlServerExpress;
 using ProjectBook.Livros;
 
@@ -28,6 +29,7 @@ namespace ProjectBook.GUI
                 ListaPesquisa listaPesquisa = new(clienteDb.VerTodosClientes());
                 listaPesquisa.Show();
             };
+            Load += (_, _) => AppInsightMetrics.TrackForm("CadastrarAluguel");
         }
 
         #region CheckedChanged & Sugestões

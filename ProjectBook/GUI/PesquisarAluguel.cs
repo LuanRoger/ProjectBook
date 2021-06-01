@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using ProjectBook.DB.SqlServerExpress;
 using ProjectBook.Tipos;
 using ProjectBook.Properties;
+using ProjectBook.AppInsight;
 
 namespace ProjectBook.GUI
 {
@@ -32,6 +33,8 @@ namespace ProjectBook.GUI
                 lista.Show();
             };
             #endregion
+
+            Load += (_, _) => AppInsightMetrics.TrackForm("PesquisarAluguel");
         }
 
         #region CheckChange

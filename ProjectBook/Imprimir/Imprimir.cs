@@ -1,7 +1,4 @@
-﻿using System;
-using System.Configuration;
-using System.Drawing;
-using System.Threading.Tasks;
+﻿using System.Configuration;
 using System.Windows.Forms;
 using KimToo;
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Windows.Forms;
+using ProjectBook.AppInsight;
 using ProjectBook.DB.SqlServerExpress;
 using ProjectBook.Properties;
 
@@ -12,6 +13,8 @@ namespace ProjectBook.GUI
         public Excluir()
         {
             InitializeComponent();
+
+            Load += (_, _) => AppInsightMetrics.TrackForm("ExcluirLivro");
         }
 
         private void btnBuscarExcluirLivro_Click(object sender, EventArgs e)

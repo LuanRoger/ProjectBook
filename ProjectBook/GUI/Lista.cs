@@ -1,11 +1,11 @@
-﻿using System;
-using System.Data;
+﻿using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Text;
 using System.Windows.Forms;
 using ProjectBook.Properties;
 using ClosedXML.Excel;
+using ProjectBook.AppInsight;
 
 namespace ProjectBook.GUI
 {
@@ -45,6 +45,8 @@ namespace ProjectBook.GUI
                 imprimir.ImprimirModelo(dgvLista);
             };
             mnuExportarExcel.Click += (sender, e) => ExportToSheets();
+
+            Load += (_, _) => AppInsightMetrics.TrackForm("Lista");
         }
 
         private void ExportToSheets()

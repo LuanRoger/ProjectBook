@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Windows.Forms;
+using ProjectBook.AppInsight;
 using ProjectBook.DB.SqlServerExpress;
 
 namespace ProjectBook.GUI
@@ -11,6 +12,8 @@ namespace ProjectBook.GUI
         public PesquisarLivro()
         {
             InitializeComponent();
+
+            Load += (_, _) => AppInsightMetrics.TrackForm("PesquisarLivro");
         }
 
         #region CheckedChanged

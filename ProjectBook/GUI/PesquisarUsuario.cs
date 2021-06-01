@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Windows.Forms;
 using ProjectBook.DB.SqlServerExpress;
 using ProjectBook.Properties;
-using ProjectBook.GUI;
+using ProjectBook.AppInsight;
 
 namespace ProjectBook.GUI
 {
@@ -28,9 +26,11 @@ namespace ProjectBook.GUI
                 listaPesquisa.Show();
             };
             #endregion
+
+            Load += (_, _) => AppInsightMetrics.TrackForm("PesquisarUsuario");
         }
 
-        private void btnCancelarBuscaUsuario_Click(object sender, EventArgs e) => this.Close();
+        private void btnCancelarBuscaUsuario_Click(object sender, EventArgs e) => Close();
         private void bntBuscarUsuario_Click(object sender, EventArgs e)
         {
             if (Verificadores.VerificarStrings(txtNomeUsuarioBusca.Text))

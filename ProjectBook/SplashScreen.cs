@@ -1,18 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Configuration;
 using System.Data;
-using System.Linq;
 using System.Drawing;
 using System.Drawing.Text;
-using System.Threading;
 using System.Windows.Forms;
 using ProjectBook.DB.SqlServerExpress;
 using ProjectBook.GUI;
 using ProjectBook.Properties;
 using System.Threading.Tasks;
-using DocumentFormat.OpenXml.Office2010.ExcelAc;
 using ProjectBook.DB.OneDrive;
 
 namespace ProjectBook
@@ -37,7 +33,7 @@ namespace ProjectBook
             label1.Font = new Font(privateFont.Families[0], 20, FontStyle.Bold);
             label2.Font = new Font(privateFont.Families[1], 7, FontStyle.Regular);
         }
-        private async void SplashScreen_Activated_1(object sender, EventArgs e)
+        private async void SplashScreen_Activated(object sender, EventArgs e)
         {
             if (!livrosDb.VerificarConexaoDb()) return;
 
