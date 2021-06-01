@@ -59,6 +59,6 @@ namespace ProjectBook.GUI
             txtTermoPesquisa.Clear();
         }
 
-        private void btnFecharPesquisaLivro_Click(object sender, EventArgs e) => this.Close();
+        private void btnFecharPesquisaLivro_Click(object sender, EventArgs e) => Close();
     }
 }

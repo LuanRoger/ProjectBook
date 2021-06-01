@@ -1,7 +1,7 @@
 ﻿
 namespace ProjectBook.GUI
 {
-    partial class Excluir
+    partial class ExcluirLivro
     {
         /// <summary>
         /// Required designer variable.
@@ -91,7 +91,7 @@ namespace ProjectBook.GUI
             this.rabExcluirTitulo.Text = "Titulo";
             this.rabExcluirTitulo.UseVisualStyleBackColor = true;
             // 
-            // Excluir
+            // ExcluirLivro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;

@@ -3,18 +3,20 @@ using Microsoft.ApplicationInsights.Extensibility;
 using Microsoft.ApplicationInsights;
 using System.Reflection;
 using System.Threading;
+using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector;
 
 namespace ProjectBook.AppInsight
 {
     public static class AppInsightMetrics
     {
         private static TelemetryClient telemetryClient;
+        private static TelemetryConfiguration telemetryConfiguration;
 
         public static void InicializarInsights()
         {
             if(!Verificadores.EnviarTelimetria()) return;
 
-            TelemetryConfiguration telemetryConfiguration = TelemetryConfiguration.CreateDefault();
+            telemetryConfiguration = TelemetryConfiguration.CreateDefault();
             telemetryConfiguration.ConnectionString = ApiKeys.TELEMETRY_CONNECTION;
 
             telemetryClient = new TelemetryClient(telemetryConfiguration);
@@ -38,6 +40,16 @@ namespace ProjectBook.AppInsight
             telemetryClient.TrackException(exception);
             FlushTelemetry();
         }
+        public static void SendProcessInfo()
+        {
+            if(telemetryClient == null) return;
+
+            var perfCollectorModule = new PerformanceCollectorModule();
+            perfCollectorModule.Counters.Add(new PerformanceCounterCollectionRequest(
+                @"\Process(ProjectBook.exe)\Page Faults/sec", "PageFaultsPerfSec"));
+
+            perfCollectorModule.Initialize(telemetryConfiguration);
+        }
         public static void SendMetric(string metricId, int metricValue)
         {
             if(telemetryClient == null) return;
@@ -48,7 +60,8 @@ namespace ProjectBook.AppInsight
         {
             if(telemetryClient == null) return;
 
-            telemetryClient.Context.User.AccountId = Guid.NewGuid().ToString();
+            telemetryClient.Context.User.Id = userName;
+            telemetryClient.Context.User.AccountId = userId;
             telemetryClient.Context.User.AuthenticatedUserId = userName;
             telemetryClient.Context.User.UserAgent = userType;
         }

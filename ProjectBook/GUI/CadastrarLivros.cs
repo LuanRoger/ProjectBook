@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using ProjectBook.AppInsight;
 using ProjectBook.DB.SqlServerExpress;
 using ProjectBook.Livros;
+using ProjectBook.Properties;
 
 namespace ProjectBook.GUI
 {
@@ -40,10 +41,7 @@ namespace ProjectBook.GUI
             {
                 int codigo = new Random().Next(0, 999);
 
-                while (Verificadores.VerificarIdLivro(codigo))
-                {
-                    codigo = new Random().Next(0, 999);
-                }
+                while (Verificadores.VerificarIdLivro(codigo)) codigo = new Random().Next(0, 999);
 
                 txtCodigoLivro.Text = codigo.ToString();
             }
@@ -56,6 +54,10 @@ namespace ProjectBook.GUI
                 }
             }
             #endregion
+
+            try { int.Parse(txtAno.Text); }
+            catch { MessageBox.Show(string.Format(Resources.TypeError, "Ano"), Resources.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error); 
+                AppInsightMetrics.SendError(new Exception(string.Format(Resources.TypeError, "Ano"))); return;}
 
             Livro livro;
             //Aplicar a formatação na instânciação do livro

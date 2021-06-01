@@ -7,10 +7,10 @@ using ProjectBook.Properties;
 
 namespace ProjectBook.GUI
 {
-    public partial class Excluir : Form
+    public partial class ExcluirLivro : Form
     {
         LivrosDb livrosDb = new();
-        public Excluir()
+        public ExcluirLivro()
         {
             InitializeComponent();
 

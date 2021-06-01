@@ -364,6 +364,16 @@ namespace ProjectBook.Properties {
         }
         
         /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap error {
+            get {
+                object obj = ResourceManager.GetObject("error", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Não foi possivel conectar-se a base de dados: {0}. Deseja abrir a configurações?.
         /// </summary>
         internal static string ErrorConectarDb {
@@ -816,6 +826,15 @@ namespace ProjectBook.Properties {
         internal static string TheCreator {
             get {
                 return ResourceManager.GetString("TheCreator", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a O valor digitado em {0} não pode ser um carácter.
+        /// </summary>
+        internal static string TypeError {
+            get {
+                return ResourceManager.GetString("TypeError", resourceCulture);
             }
         }
         

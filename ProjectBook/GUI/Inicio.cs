@@ -21,6 +21,7 @@ namespace ProjectBook.GUI
             InitializeComponent();
 
             lblNomeUsuario.Text = ConfigurationManager.AppSettings["usuarioLogado"];
+            btnAccountError.Visible = lblNomeUsuario.Text == "admin";
 
             #region MenuClick
             mnuNovoLivro.Click += (sender, e) =>
@@ -87,7 +88,7 @@ namespace ProjectBook.GUI
             
             mnuExcluirLivro.Click += (sender, e) =>
             {
-                Excluir excluir = new();
+                ExcluirLivro excluir = new();
                 excluir.Show();
 
                 AppInsightMetrics.TrackEvent("AbrirExcluirLivroMenu");
@@ -231,6 +232,19 @@ namespace ProjectBook.GUI
             #endregion
         }
 
+        private void btnAccountError_Click(object sender, EventArgs e) => new GerenciarUsuario().Show();
+        private void btnSairUsuario_Click(object sender, EventArgs e)
+        {
+            Configuracoes.config.AppSettings.Settings["usuarioLogado"].Value = "";
+            Configuracoes.config.AppSettings.Settings["idUsuario"].Value = "";
+            Configuracoes.config.Save();
+
+            AppInsightMetrics.TrackEvent("SairUsuario");
+
+            Process.Start(Application.StartupPath + Assembly.GetExecutingAssembly().GetName().Name + ".exe");
+            Process.GetCurrentProcess().Kill();
+        }
+
         private void Inicio_ActivatedAsync(object sender, EventArgs e)
         {
             if (Opacity != 0)
@@ -238,23 +252,14 @@ namespace ProjectBook.GUI
                 lblLivrosCadastrados.Text = livrosDb.VerTodosLivros().Rows.Count.ToString();
                 lblClientesCadastrados.Text = clienteDb.VerTodosClientes().Rows.Count.ToString();
                 lblAlugueisRegistrados.Text = aluguelDb.VerTodosAluguel().Rows.Count.ToString();
-            }
 
-            AppInsightMetrics.SendMetric("LivrosRegistrados", int.Parse(lblLivrosCadastrados.Text));
-            AppInsightMetrics.SendMetric("ClientesCadastrados", int.Parse(lblClientesCadastrados.Text));
-            AppInsightMetrics.SendMetric("AlugueisRegistrados", int.Parse(lblAlugueisRegistrados.Text));
+                AppInsightMetrics.SendMetric("LivrosRegistrados", int.Parse(lblLivrosCadastrados.Text));
+                AppInsightMetrics.SendMetric("ClientesCadastrados", int.Parse(lblClientesCadastrados.Text));
+                AppInsightMetrics.SendMetric("AlugueisRegistrados", int.Parse(lblAlugueisRegistrados.Text));
+            }
 
             GC.Collect();
         }
-        private void btnSairUsuario_Click(object sender, EventArgs e)
-        {
-            Configuracoes.config.AppSettings.Settings["usuarioLogado"].Value = "";
-            Configuracoes.config.Save();
-
-            Process.Start(Application.StartupPath + Assembly.GetExecutingAssembly().GetName().Name + ".exe");
-            Process.GetCurrentProcess().Kill();
-        }
-
         private void Inicio_Load(object sender, EventArgs e)
         {
             //Deixar o Form invisível enquanto a SplashScreen está carregando
@@ -274,6 +279,7 @@ namespace ProjectBook.GUI
             AppInsightMetrics.TrackForm("Inicio");
 
             lblNomeUsuario.BackColor = Color.Transparent;
+            AppInsightMetrics.SendProcessInfo();
             BringToFront();
         }
 

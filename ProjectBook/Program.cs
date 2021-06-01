@@ -13,7 +13,11 @@ namespace ProjectBook
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            Application.Run(new Inicio());
+            try
+            {
+                Application.Run(new Inicio());
+            }
+            catch(Exception e) { AppInsight.AppInsightMetrics.SendError(e); }
         }
     }
 }

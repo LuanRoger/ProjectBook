@@ -29,6 +29,7 @@ namespace ProjectBook.GUI
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Inicio));
             this.contentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.indexToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -86,8 +87,9 @@ namespace ProjectBook.GUI
             this.mnuSobre = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuProcurarAtualizacoes = new System.Windows.Forms.ToolStripMenuItem();
             this.btnSairUsuario = new System.Windows.Forms.Button();
-            this.lblNomeUsuario = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.lblNomeUsuario = new System.Windows.Forms.Label();
+            this.btnAccountError = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblLivrosCadastrados = new System.Windows.Forms.ToolStripStatusLabel();
@@ -111,6 +113,7 @@ namespace ProjectBook.GUI
             this.mnuArUsuario = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuArBuscaRapida = new System.Windows.Forms.ToolStripButton();
+            this.totAccountError = new System.Windows.Forms.ToolTip(this.components);
             this.mnuInicio.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -493,6 +496,27 @@ namespace ProjectBook.GUI
             this.btnSairUsuario.UseVisualStyleBackColor = true;
             this.btnSairUsuario.Click += new System.EventHandler(this.btnSairUsuario_Click);
             // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.BackColor = System.Drawing.Color.White;
+            this.tableLayoutPanel1.BackgroundImage = global::ProjectBook.Properties.Resources.InicioBackground2;
+            this.tableLayoutPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 617F));
+            this.tableLayoutPanel1.Controls.Add(this.btnSairUsuario, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.lblNomeUsuario, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnAccountError, 2, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 49);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(727, 427);
+            this.tableLayoutPanel1.TabIndex = 12;
+            // 
             // lblNomeUsuario
             // 
             this.lblNomeUsuario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -505,26 +529,22 @@ namespace ProjectBook.GUI
             this.lblNomeUsuario.TabIndex = 11;
             this.lblNomeUsuario.Text = "usuario";
             // 
-            // tableLayoutPanel1
+            // btnAccountError
             // 
-            this.tableLayoutPanel1.BackColor = System.Drawing.Color.White;
-            this.tableLayoutPanel1.BackgroundImage = global::ProjectBook.Properties.Resources.InicioBackground2;
-            this.tableLayoutPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.tableLayoutPanel1.ColumnCount = 4;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 620F));
-            this.tableLayoutPanel1.Controls.Add(this.btnSairUsuario, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.lblNomeUsuario, 1, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 49);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(727, 427);
-            this.tableLayoutPanel1.TabIndex = 12;
+            this.btnAccountError.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnAccountError.BackColor = System.Drawing.Color.Transparent;
+            this.btnAccountError.FlatAppearance.BorderSize = 0;
+            this.btnAccountError.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAccountError.Image = global::ProjectBook.Properties.Resources.error;
+            this.btnAccountError.Location = new System.Drawing.Point(107, 372);
+            this.btnAccountError.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
+            this.btnAccountError.Name = "btnAccountError";
+            this.btnAccountError.Size = new System.Drawing.Size(27, 23);
+            this.btnAccountError.TabIndex = 12;
+            this.totAccountError.SetToolTip(this.btnAccountError, "Você está usando a conta padrão do sistema, é recomendado que crie uma própria pa" +
+        "ra evitar problemas de segurança.\r\nClique aqui para ir para Gerenciar Usuários.");
+            this.btnAccountError.UseVisualStyleBackColor = false;
+            this.btnAccountError.Click += new System.EventHandler(this.btnAccountError_Click);
             // 
             // statusStrip1
             // 
@@ -729,6 +749,11 @@ namespace ProjectBook.GUI
             this.mnuArBuscaRapida.Size = new System.Drawing.Size(23, 22);
             this.mnuArBuscaRapida.Text = "Busca rápida";
             // 
+            // totAccountError
+            // 
+            this.totAccountError.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Warning;
+            this.totAccountError.ToolTipTitle = "Problema com conta";
+            // 
             // Inicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -811,7 +836,6 @@ namespace ProjectBook.GUI
         private System.Windows.Forms.ToolStripMenuItem mnuPesquisarCliente;
         private System.Windows.Forms.ToolStripMenuItem mnuUsuario;
         private System.Windows.Forms.Button btnSairUsuario;
-        private System.Windows.Forms.Label lblNomeUsuario;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
@@ -842,6 +866,9 @@ namespace ProjectBook.GUI
         private System.Windows.Forms.ToolStripMenuItem mnuGerenciarUsuario;
         private System.Windows.Forms.ToolStripMenuItem mnuSobre;
         private System.Windows.Forms.ToolStripMenuItem mnuProcurarAtualizacoes;
+        private System.Windows.Forms.Label lblNomeUsuario;
+        private System.Windows.Forms.Button btnAccountError;
+        private System.Windows.Forms.ToolTip totAccountError;
     }
 }
 
