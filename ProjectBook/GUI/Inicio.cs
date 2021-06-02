@@ -276,10 +276,10 @@ namespace ProjectBook.GUI
             };
 
             AppInsightMetrics.InicializarInsights();
+            AppInsightMetrics.SendProcessInfo();
             AppInsightMetrics.TrackForm("Inicio");
 
             lblNomeUsuario.BackColor = Color.Transparent;
-            AppInsightMetrics.SendProcessInfo();
             BringToFront();
         }
 

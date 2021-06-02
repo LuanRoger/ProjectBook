@@ -54,7 +54,7 @@ namespace ProjectBook.GUI
 
         private void btnBuscarClientePesquisaAluguel_Click(object sender, EventArgs e)
         {
-            string[] termoBusca = txtBuscarAluguel.Text.Split("-");
+            string[] termoBusca = txtBuscarAluguel.Text.Split("-", 2, StringSplitOptions.TrimEntries);
             DataTable data = new();
             
             if (Verificadores.VerificarStrings(txtBuscarAluguel.Text))
@@ -64,8 +64,18 @@ namespace ProjectBook.GUI
                 return;
             }
             
-            if (rabNomeCliente.Checked) data = aluguelDb.BuscarAluguelCliente(termoBusca[0].Trim());
-            else if (rabTituloLivro.Checked) data = aluguelDb.BuscarAluguelLivro(termoBusca[0].Trim());
+            if(termoBusca.Length == 1)
+            {
+                if (rabNomeCliente.Checked) data = aluguelDb.BuscarAluguelCliente(termoBusca[0].Trim());
+                else if (rabTituloLivro.Checked) data = aluguelDb.BuscarAluguelLivro(termoBusca[0].Trim());
+            }
+            else
+            {
+                string titulo = rabTituloLivro.Checked ? termoBusca[0] : termoBusca[1];
+                string nomeCliente = rabNomeCliente.Checked ? termoBusca[0] : termoBusca[1];
+
+                data = aluguelDb.BuscarAluguelLivroCliente(titulo, nomeCliente);
+            }
 
             if(Verificadores.VerificarDataTable(data))
             {

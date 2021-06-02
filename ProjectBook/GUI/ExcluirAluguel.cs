@@ -21,24 +21,24 @@ namespace ProjectBook.GUI
         private void rabExcluirAluguelTitulo_CheckedChanged(object sender, EventArgs e)
         {
             AutoCompleteStringCollection livrosSugestoes = new();
-            foreach (DataRow livro in aluguelDb.VerTodosAluguel().Rows) livrosSugestoes.Add(livro[0].ToString());
+            foreach (DataRow livro in aluguelDb.VerTodosAluguel().Rows) livrosSugestoes.Add($"{livro[0]} - {livro[2]}");
             txtBuscaAluguel.AutoCompleteCustomSource = livrosSugestoes;
         }
 
         private void rabExcluirAluguelCliente_CheckedChanged(object sender, EventArgs e)
         {
             AutoCompleteStringCollection livrosSugestoes = new();
-            foreach (DataRow livro in aluguelDb.VerTodosAluguel().Rows) livrosSugestoes.Add(livro[2].ToString());
+            foreach (DataRow livro in aluguelDb.VerTodosAluguel().Rows) livrosSugestoes.Add($"{livro[2]} - {livro[0]}");
             txtBuscaAluguel.AutoCompleteCustomSource = livrosSugestoes;
         }
         #endregion
 
         private void btnBuscarExcluirAluguel_Click(object sender, EventArgs e)
         {
-            string termoBusca = txtBuscaAluguel.Text;
-            DataTable data = new();
-            
-            if (Verificadores.VerificarStrings(termoBusca))
+            string[] termoBusca = txtBuscaAluguel.Text.Split('-', 2, StringSplitOptions.TrimEntries);
+            DataTable infoAluguel = new();
+
+            if (Verificadores.VerificarStrings(txtBuscaAluguel.Text))
             {
                 MessageBox.Show(Resources.PreecherCampoBusca, Resources.MessageBoxError,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -51,10 +51,20 @@ namespace ProjectBook.GUI
                 return;
             }
             
-            if (rabExcluirAluguelCliente.Checked) data = aluguelDb.BuscarAluguelCliente(termoBusca);
-            else if (rabExcluirAluguelTitulo.Checked) data = aluguelDb.BuscarAluguelLivro(termoBusca);
+            if(termoBusca.Length == 1)
+            {
+                if (rabExcluirAluguelCliente.Checked) infoAluguel = aluguelDb.BuscarAluguelCliente(termoBusca[0]);
+                else if (rabExcluirAluguelTitulo.Checked) infoAluguel = aluguelDb.BuscarAluguelLivro(termoBusca[0]);
+            }
+            else 
+            {
+                string titulo = rabExcluirAluguelTitulo.Checked ? termoBusca[0] : termoBusca[1];
+                string nomeCliente = rabExcluirAluguelCliente.Checked ? termoBusca[0] : termoBusca[1];
 
-            if (Verificadores.VerificarDataTable(data))
+                infoAluguel = aluguelDb.BuscarAluguelLivroCliente(titulo, nomeCliente);
+            }
+
+            if(Verificadores.VerificarDataTable(infoAluguel))
             {
                 MessageBox.Show(Resources.clienteLivroNaoAlugados, Resources.MessageBoxError,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -62,13 +72,17 @@ namespace ProjectBook.GUI
             }
 
             DialogResult resultadoExcluir = MessageBox.Show(
-           string.Format(Resources.ConfirmarExclusao2, data.Rows[0][0], data.Rows[0][2]),
+           string.Format(Resources.ConfirmarExclusao2, infoAluguel.Rows[0][2], infoAluguel.Rows[0][0]),
                 Resources.MessageBoxExcluir, MessageBoxButtons.YesNo, MessageBoxIcon.Stop);
 
             if (resultadoExcluir != DialogResult.Yes) return;
 
-            if (rabExcluirAluguelCliente.Checked) aluguelDb.DeletarAluguelCliente(data.Rows[0][2].ToString());
-            else if (rabExcluirAluguelTitulo.Checked) aluguelDb.DeletarAluguelTitulo(data.Rows[0][0].ToString());
+            if(termoBusca.Length == 1)
+            {
+                if (rabExcluirAluguelCliente.Checked) aluguelDb.DeletarAluguelCliente(infoAluguel.Rows[0][2].ToString());
+                else if (rabExcluirAluguelTitulo.Checked) aluguelDb.DeletarAluguelTitulo(infoAluguel.Rows[0][0].ToString());
+            }else aluguelDb.DeletarAluguelTituloLivro(infoAluguel.Rows[0][0].ToString(), infoAluguel.Rows[0][2].ToString());
+
             txtBuscaAluguel.Clear();
         }
 

@@ -72,19 +72,17 @@ namespace ProjectBook.GUI
             // rabIdExcluirLivro
             // 
             this.rabIdExcluirLivro.AutoSize = true;
-            this.rabIdExcluirLivro.Checked = true;
-            this.rabIdExcluirLivro.Location = new System.Drawing.Point(13, 13);
+            this.rabIdExcluirLivro.Location = new System.Drawing.Point(12, 12);
             this.rabIdExcluirLivro.Name = "rabIdExcluirLivro";
             this.rabIdExcluirLivro.Size = new System.Drawing.Size(64, 19);
             this.rabIdExcluirLivro.TabIndex = 4;
-            this.rabIdExcluirLivro.TabStop = true;
             this.rabIdExcluirLivro.Text = "Código";
             this.rabIdExcluirLivro.UseVisualStyleBackColor = true;
             // 
             // rabExcluirTitulo
             // 
             this.rabExcluirTitulo.AutoSize = true;
-            this.rabExcluirTitulo.Location = new System.Drawing.Point(166, 13);
+            this.rabExcluirTitulo.Location = new System.Drawing.Point(166, 12);
             this.rabExcluirTitulo.Name = "rabExcluirTitulo";
             this.rabExcluirTitulo.Size = new System.Drawing.Size(55, 19);
             this.rabExcluirTitulo.TabIndex = 5;
@@ -103,7 +101,7 @@ namespace ProjectBook.GUI
             this.Controls.Add(this.txtExcluirLivro);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
-            this.Name = "Excluir";
+            this.Name = "ExcluirLivro";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Excluir livro";

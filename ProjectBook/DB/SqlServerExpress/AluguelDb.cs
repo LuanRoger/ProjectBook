@@ -93,6 +93,24 @@ namespace ProjectBook.DB.SqlServerExpress
             catch (SqlException e) { MessageBox.Show(e.Message, Resources.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error); 
                 AppInsightMetrics.SendError(e); }
         }
+        public void DeletarAluguelTituloLivro(string titulo, string nomeCliente)
+        {
+            SqlCommand command = new() { Connection = connection}; 
+
+            try
+            {
+                command.CommandText = $"DELETE FROM Aluguel WHERE [Titulo] LIKE \'%{titulo}%\' AND [Alugado por] LIKE \'%{nomeCliente}%\'";
+                AbrirConexaoDb();
+                command.ExecuteNonQuery();
+                FechaConecxaoDb();
+                command.Dispose();
+
+                MessageBox.Show(Resources.LivroDeletado, Resources.concluido_MessageBox,
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (SqlException e) { MessageBox.Show(e.Message, Resources.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error); 
+                AppInsightMetrics.SendError(e); }
+        }
         #endregion
 
         #region Buscar
@@ -119,6 +137,22 @@ namespace ProjectBook.DB.SqlServerExpress
             {
                 AbrirConexaoDb();
                 SqlDataAdapter adapter = new($"SELECT * FROM Aluguel WHERE [Alugado por] LIKE \'%{nomeCliente}%\'", connection);
+                FechaConecxaoDb();
+
+                adapter.Fill(table);
+            }
+            catch (SqlException e) { MessageBox.Show(e.Message, Resources.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error); 
+                AppInsightMetrics.SendError(e); }
+
+            return table;
+        }
+        public DataTable BuscarAluguelLivroCliente(string titulo, string nomeCliente)
+        {
+            DataTable table = new();
+            try
+            {
+                AbrirConexaoDb();
+                SqlDataAdapter adapter = new($"SELECT * FROM Aluguel WHERE [Titulo] LIKE \'%{titulo}%\' AND [Alugado por] LIKE \'%{nomeCliente}%\'", connection);
                 FechaConecxaoDb();
 
                 adapter.Fill(table);

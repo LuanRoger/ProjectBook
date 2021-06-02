@@ -689,7 +689,7 @@ namespace ProjectBook.Properties {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Preencha o cambo de busca..
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Preencha o campo de busca primeiro..
         /// </summary>
         internal static string PreecherCampoBusca {
             get {

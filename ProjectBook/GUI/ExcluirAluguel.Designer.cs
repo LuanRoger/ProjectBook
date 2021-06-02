@@ -43,7 +43,6 @@ namespace ProjectBook.GUI
             this.rabExcluirAluguelTitulo.Name = "rabExcluirAluguelTitulo";
             this.rabExcluirAluguelTitulo.Size = new System.Drawing.Size(98, 19);
             this.rabExcluirAluguelTitulo.TabIndex = 0;
-            this.rabExcluirAluguelTitulo.TabStop = true;
             this.rabExcluirAluguelTitulo.Text = "Titulo do livro";
             this.rabExcluirAluguelTitulo.UseVisualStyleBackColor = true;
             this.rabExcluirAluguelTitulo.CheckedChanged += new System.EventHandler(this.rabExcluirAluguelTitulo_CheckedChanged);
@@ -55,7 +54,6 @@ namespace ProjectBook.GUI
             this.rabExcluirAluguelCliente.Name = "rabExcluirAluguelCliente";
             this.rabExcluirAluguelCliente.Size = new System.Drawing.Size(113, 19);
             this.rabExcluirAluguelCliente.TabIndex = 1;
-            this.rabExcluirAluguelCliente.TabStop = true;
             this.rabExcluirAluguelCliente.Text = "Nome do cliente";
             this.rabExcluirAluguelCliente.UseVisualStyleBackColor = true;
             this.rabExcluirAluguelCliente.CheckedChanged += new System.EventHandler(this.rabExcluirAluguelCliente_CheckedChanged);
@@ -73,8 +71,8 @@ namespace ProjectBook.GUI
             // 
             this.btnBuscarExcluirAluguel.FlatAppearance.BorderSize = 0;
             this.btnBuscarExcluirAluguel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBuscarExcluirAluguel.Image = ProjectBook.Properties.Resources.zoom;
-            this.btnBuscarExcluirAluguel.Location = new System.Drawing.Point(233, 36);
+            this.btnBuscarExcluirAluguel.Image = global::ProjectBook.Properties.Resources.zoom;
+            this.btnBuscarExcluirAluguel.Location = new System.Drawing.Point(233, 37);
             this.btnBuscarExcluirAluguel.Name = "btnBuscarExcluirAluguel";
             this.btnBuscarExcluirAluguel.Size = new System.Drawing.Size(26, 23);
             this.btnBuscarExcluirAluguel.TabIndex = 3;

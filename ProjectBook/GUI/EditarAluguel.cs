@@ -14,12 +14,10 @@ namespace ProjectBook.GUI
         private LivrosDb livrosDb = new();
         private ClienteDb clienteDb = new();
 
-        private DataTable infoAluguel = new();
+        private DataTable infoAluguelAntigo;
         private DataTable infoLivro = new();
         private DataTable infoCliente = new();
 
-        private string primeiroDono;
-        private string primeiroLivro;
         public EditarAluguel()
         {
             InitializeComponent();
@@ -91,7 +89,8 @@ namespace ProjectBook.GUI
 
         private void btnBuscarEditarAluguel_Click(object sender, EventArgs e)
         {
-            string[] buscarEditarAluguel = txtBuscarAluguel.Text.Trim().Split("-");
+            string[] buscarEditarAluguel = txtBuscarAluguel.Text.Split('-', 2, StringSplitOptions.TrimEntries);
+            DataTable infoAluguel = new();
 
             if (Verificadores.VerificarStrings(txtBuscarAluguel.Text))
             {
@@ -100,39 +99,49 @@ namespace ProjectBook.GUI
                 return;
             }
 
-            try
+            if (buscarEditarAluguel.Length == 1)
             {
                 if (rabBuscarNomeCliente.Checked)
                 {
-                    infoAluguel = aluguelDb.BuscarAluguelCliente(buscarEditarAluguel[0].Trim());
-                    infoLivro = livrosDb.BuscarLivrosTitulo(buscarEditarAluguel[1].Trim());
-                    infoCliente = clienteDb.BuscarClienteNome(buscarEditarAluguel[0].Trim());
+                    infoAluguel = aluguelDb.BuscarAluguelCliente(buscarEditarAluguel[0]);
+                    infoLivro = livrosDb.BuscarLivrosTitulo(infoAluguel.Rows[0][0].ToString());
+                    infoCliente = clienteDb.BuscarClienteNome(infoAluguel.Rows[0][2].ToString());
                 }
                 else if (rabBuscarTituloLivro.Checked)
                 {
-                    infoAluguel = aluguelDb.BuscarAluguelLivro(buscarEditarAluguel[0].Trim());
-                    infoLivro = livrosDb.BuscarLivrosTitulo(buscarEditarAluguel[0].Trim());
-                    infoCliente = clienteDb.BuscarClienteNome(buscarEditarAluguel[1].Trim());
+                    infoAluguel = aluguelDb.BuscarAluguelLivro(buscarEditarAluguel[0]);
+                    infoLivro = livrosDb.BuscarLivrosTitulo(infoAluguel.Rows[0][0].ToString());
+                    infoCliente = clienteDb.BuscarClienteNome(infoAluguel.Rows[0][2].ToString());
                 }
             }
-            catch
+            else
+            {
+                string titulo = rabBuscarTituloLivro.Checked ? buscarEditarAluguel[0] : buscarEditarAluguel[1];
+                string nomeCliente = rabBuscarNomeCliente.Checked ? buscarEditarAluguel[0] : buscarEditarAluguel[2];
+
+                infoAluguel = aluguelDb.BuscarAluguelLivroCliente(titulo, nomeCliente);
+                infoLivro = livrosDb.BuscarLivrosTitulo(titulo);
+                infoCliente = clienteDb.BuscarClienteNome(nomeCliente);
+            }
+
+            if(Verificadores.VerificarDataTable(infoAluguel))
             {
                 MessageBox.Show(Resources.clienteLivroNaoAlugados, Resources.MessageBoxError,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            primeiroLivro = infoAluguel.Rows[0][0].ToString();
-            primeiroDono = infoAluguel.Rows[0][2].ToString();
-            PreencherCamposAluguel();
-            PreencharCamposLivro();
-            PreencherCamposCliente();
+            infoAluguelAntigo = infoAluguel;
+            PreencherCamposAluguel(infoAluguel);
+            PreencharCamposLivro(infoLivro);
+            PreencherCamposCliente(infoCliente);
         }
+
         private void btnBuscarNovoLivro_Click(object sender, EventArgs e)
         {
             string buscarLivro = txtMudarLivroAluguel.Text;
 
-            if (Verificadores.VerificarStrings(buscarLivro))
+            if (Verificadores.VerificarStrings(buscarLivro) || infoAluguelAntigo == null)
             {
                 MessageBox.Show(Resources.PreecherCampoBusca, Resources.MessageBoxError,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -143,24 +152,37 @@ namespace ProjectBook.GUI
             else if (rabBuscarNovoLivroTitulo.Checked) infoLivro = livrosDb.BuscarLivrosTitulo(buscarLivro);
             else infoLivro = livrosDb.BuscarLivrosAutor(buscarLivro);
 
-            PreencharCamposLivro();
-        }
+            if(Verificadores.VerificarDataTable(infoLivro))
+            {
+                MessageBox.Show(Resources.clienteLivroNaoAlugados, Resources.MessageBoxError,
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
+            PreencharCamposLivro(infoLivro);
+        }
         private void btnBuscarNovoCliente_Click(object sender, EventArgs e)
         {
             string buscarCliete = txtMudarClienteAluguel.Text;
 
-            if (Verificadores.VerificarStrings(buscarCliete))
+            if (Verificadores.VerificarStrings(buscarCliete) || infoAluguelAntigo == null)
             {
                 MessageBox.Show(Resources.PreecherCampoBusca, Resources.MessageBoxError,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            infoCliente = rabBuscarNovoClienteCodigo.Checked ? 
+            infoCliente = rabBuscarNovoClienteCodigo.Checked ?
                 clienteDb.BuscarClienteId(buscarCliete) : clienteDb.BuscarClienteNome(buscarCliete);
-            
-            PreencherCamposCliente();
+
+            if(Verificadores.VerificarDataTable(infoCliente))
+            {
+                MessageBox.Show(Resources.clienteLivroNaoAlugados, Resources.MessageBoxError,
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            PreencherCamposCliente(infoCliente);
         }
 
         private void btnSalvarEditarAluguel_Click(object sender, EventArgs e)
@@ -168,19 +190,20 @@ namespace ProjectBook.GUI
             Aluguel aluguel = new(txtNovoTituloLivroAluguel.Text, txtNovoAutorAluguel.Text, txtNovoClienteAluguel.Text,
                 dtpEditarDataEntrega.Value, dtpEditarDataRecebimento.Value, cmbNovoStatus.Text);
 
-            if (Verificadores.VerificarCamposAluguel(aluguel))
+            if (Verificadores.VerificarCamposAluguel(aluguel) || infoAluguelAntigo == null)
             {
                 MessageBox.Show(Resources.PreecherCampoBusca, Resources.MessageBoxError,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            aluguelDb.AtualizarAluguelNomeCliente(aluguel, primeiroDono, primeiroLivro);
+            aluguelDb.AtualizarAluguelNomeCliente(aluguel, 
+                infoAluguelAntigo.Rows[0][2].ToString(), infoAluguelAntigo.Rows[0][0].ToString());
 
             LimparCampos();
         }
 
-        private void PreencherCamposAluguel()
+        private void PreencherCamposAluguel(DataTable infoAluguel)
         {
             txtTituloLivroAluguel.Text = infoAluguel.Rows[0][0].ToString();
             txtAlugadoPorAluguel.Text = infoAluguel.Rows[0][2].ToString();
@@ -188,14 +211,14 @@ namespace ProjectBook.GUI
             dtpEditarDataRecebimento.Value = Convert.ToDateTime(infoAluguel.Rows[0][4]);
             cmbNovoStatus.Text = infoAluguel.Rows[0][5].ToString();
         }
-        private void PreencharCamposLivro()
+        private void PreencharCamposLivro(DataTable infoLivro)
         {
             txtNovoTituloLivroAluguel.Text = infoLivro.Rows[0][1].ToString();
             txtNovoAutorAluguel.Text = infoLivro.Rows[0][2].ToString();
             txtNovoEditoraLivro.Text = infoLivro.Rows[0][3].ToString();
             txtNovoEdicaoLivro.Text = infoLivro.Rows[0][4].ToString();
         }
-        private void PreencherCamposCliente()
+        private void PreencherCamposCliente(DataTable infoCliente)
         {
             txtNovoClienteAluguel.Text = infoCliente.Rows[0][1].ToString();
             txtNovoEnderecoAluguel.Text = infoCliente.Rows[0][2].ToString();
@@ -207,12 +230,7 @@ namespace ProjectBook.GUI
         private void btnCancelarEditarAluguel_Click(object sender, EventArgs e) => Close();
         private void LimparCampos()
         {
-            infoAluguel.Clear();
-            infoLivro.Clear();
-            infoCliente.Clear();
-
-            primeiroDono = string.Empty;
-            primeiroLivro = string.Empty;
+            infoAluguelAntigo = null;
 
             txtTituloLivroAluguel.Clear();
             txtAlugadoPorAluguel.Clear();

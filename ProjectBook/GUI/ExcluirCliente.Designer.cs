@@ -71,12 +71,10 @@ namespace ProjectBook.GUI
             // rabBsucarIdCliente
             // 
             this.rabBsucarIdCliente.AutoSize = true;
-            this.rabBsucarIdCliente.Checked = true;
             this.rabBsucarIdCliente.Location = new System.Drawing.Point(12, 12);
             this.rabBsucarIdCliente.Name = "rabBsucarIdCliente";
             this.rabBsucarIdCliente.Size = new System.Drawing.Size(64, 19);
             this.rabBsucarIdCliente.TabIndex = 4;
-            this.rabBsucarIdCliente.TabStop = true;
             this.rabBsucarIdCliente.Text = "Código";
             this.rabBsucarIdCliente.UseVisualStyleBackColor = true;
             // 
