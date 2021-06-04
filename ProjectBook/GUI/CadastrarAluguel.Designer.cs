@@ -170,7 +170,7 @@ namespace ProjectBook.GUI
             this.txtBuscarLivroAluguel.Location = new System.Drawing.Point(6, 48);
             this.txtBuscarLivroAluguel.Name = "txtBuscarLivroAluguel";
             this.txtBuscarLivroAluguel.Size = new System.Drawing.Size(187, 23);
-            this.txtBuscarLivroAluguel.TabIndex = 6;
+            this.txtBuscarLivroAluguel.TabIndex = 1;
             // 
             // btnBuscarLivroAluguel
             // 
@@ -203,7 +203,7 @@ namespace ProjectBook.GUI
             this.dtpDataRecebimento.Location = new System.Drawing.Point(7, 89);
             this.dtpDataRecebimento.Name = "dtpDataRecebimento";
             this.dtpDataRecebimento.Size = new System.Drawing.Size(213, 23);
-            this.dtpDataRecebimento.TabIndex = 3;
+            this.dtpDataRecebimento.TabIndex = 4;
             // 
             // label6
             // 
@@ -220,7 +220,7 @@ namespace ProjectBook.GUI
             this.dtpDataEntrega.Location = new System.Drawing.Point(6, 41);
             this.dtpDataEntrega.Name = "dtpDataEntrega";
             this.dtpDataEntrega.Size = new System.Drawing.Size(214, 23);
-            this.dtpDataEntrega.TabIndex = 1;
+            this.dtpDataEntrega.TabIndex = 3;
             // 
             // label5
             // 
@@ -238,7 +238,7 @@ namespace ProjectBook.GUI
             this.btnSalvarAluguel.Location = new System.Drawing.Point(12, 424);
             this.btnSalvarAluguel.Name = "btnSalvarAluguel";
             this.btnSalvarAluguel.Size = new System.Drawing.Size(66, 23);
-            this.btnSalvarAluguel.TabIndex = 3;
+            this.btnSalvarAluguel.TabIndex = 6;
             this.btnSalvarAluguel.Text = "Salvar";
             this.btnSalvarAluguel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSalvarAluguel.UseVisualStyleBackColor = true;
@@ -337,7 +337,7 @@ namespace ProjectBook.GUI
             this.txtBuscarClienteAluguel.Location = new System.Drawing.Point(6, 46);
             this.txtBuscarClienteAluguel.Name = "txtBuscarClienteAluguel";
             this.txtBuscarClienteAluguel.Size = new System.Drawing.Size(187, 23);
-            this.txtBuscarClienteAluguel.TabIndex = 1;
+            this.txtBuscarClienteAluguel.TabIndex = 2;
             // 
             // btnBuscarCliente
             // 
@@ -483,7 +483,7 @@ namespace ProjectBook.GUI
             this.cmbStatusAluguel.Location = new System.Drawing.Point(12, 349);
             this.cmbStatusAluguel.Name = "cmbStatusAluguel";
             this.cmbStatusAluguel.Size = new System.Drawing.Size(226, 23);
-            this.cmbStatusAluguel.TabIndex = 10;
+            this.cmbStatusAluguel.TabIndex = 5;
             // 
             // toolStrip1
             // 

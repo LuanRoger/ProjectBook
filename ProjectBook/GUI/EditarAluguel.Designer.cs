@@ -121,7 +121,7 @@ namespace ProjectBook.GUI
             this.txtBuscarAluguel.Location = new System.Drawing.Point(6, 46);
             this.txtBuscarAluguel.Name = "txtBuscarAluguel";
             this.txtBuscarAluguel.Size = new System.Drawing.Size(187, 23);
-            this.txtBuscarAluguel.TabIndex = 2;
+            this.txtBuscarAluguel.TabIndex = 1;
             // 
             // groupBox1
             // 
@@ -251,7 +251,7 @@ namespace ProjectBook.GUI
             this.txtMudarLivroAluguel.Location = new System.Drawing.Point(7, 48);
             this.txtMudarLivroAluguel.Name = "txtMudarLivroAluguel";
             this.txtMudarLivroAluguel.Size = new System.Drawing.Size(187, 23);
-            this.txtMudarLivroAluguel.TabIndex = 1;
+            this.txtMudarLivroAluguel.TabIndex = 2;
             // 
             // groupBox4
             // 
@@ -358,7 +358,7 @@ namespace ProjectBook.GUI
             this.txtMudarClienteAluguel.Location = new System.Drawing.Point(7, 48);
             this.txtMudarClienteAluguel.Name = "txtMudarClienteAluguel";
             this.txtMudarClienteAluguel.Size = new System.Drawing.Size(187, 23);
-            this.txtMudarClienteAluguel.TabIndex = 1;
+            this.txtMudarClienteAluguel.TabIndex = 3;
             // 
             // btnSalvarEditarAluguel
             // 
@@ -418,7 +418,7 @@ namespace ProjectBook.GUI
             this.dtpEditarDataRecebimento.Location = new System.Drawing.Point(7, 88);
             this.dtpEditarDataRecebimento.Name = "dtpEditarDataRecebimento";
             this.dtpEditarDataRecebimento.Size = new System.Drawing.Size(216, 23);
-            this.dtpEditarDataRecebimento.TabIndex = 3;
+            this.dtpEditarDataRecebimento.TabIndex = 5;
             // 
             // label14
             // 
@@ -444,7 +444,7 @@ namespace ProjectBook.GUI
             this.dtpEditarDataEntrega.Location = new System.Drawing.Point(7, 39);
             this.dtpEditarDataEntrega.Name = "dtpEditarDataEntrega";
             this.dtpEditarDataEntrega.Size = new System.Drawing.Size(216, 23);
-            this.dtpEditarDataEntrega.TabIndex = 0;
+            this.dtpEditarDataEntrega.TabIndex = 4;
             // 
             // label1
             // 
@@ -466,7 +466,7 @@ namespace ProjectBook.GUI
             this.cmbNovoStatus.Location = new System.Drawing.Point(12, 442);
             this.cmbNovoStatus.Name = "cmbNovoStatus";
             this.cmbNovoStatus.Size = new System.Drawing.Size(232, 23);
-            this.cmbNovoStatus.TabIndex = 12;
+            this.cmbNovoStatus.TabIndex = 6;
             // 
             // groupBox2
             // 

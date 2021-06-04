@@ -72,8 +72,8 @@ namespace ProjectBook.GUI
             }
 
             DialogResult resultadoExcluir = MessageBox.Show(
-           string.Format(Resources.ConfirmarExclusao2, infoAluguel.Rows[0][2], infoAluguel.Rows[0][0]),
-                Resources.MessageBoxExcluir, MessageBoxButtons.YesNo, MessageBoxIcon.Stop);
+           string.Format(Resources.ConfirmarExclusao2, infoAluguel.Rows[0][0], infoAluguel.Rows[0][2]),
+                Resources.MessageBoxExcluir, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
             if (resultadoExcluir != DialogResult.Yes) return;
 

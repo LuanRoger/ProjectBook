@@ -38,6 +38,7 @@ namespace ProjectBook.GUI
             // 
             // txtExcluirLivro
             // 
+            this.txtExcluirLivro.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txtExcluirLivro.Location = new System.Drawing.Point(12, 38);
             this.txtExcluirLivro.Name = "txtExcluirLivro";
             this.txtExcluirLivro.Size = new System.Drawing.Size(209, 23);
@@ -78,6 +79,7 @@ namespace ProjectBook.GUI
             this.rabIdExcluirLivro.TabIndex = 4;
             this.rabIdExcluirLivro.Text = "Código";
             this.rabIdExcluirLivro.UseVisualStyleBackColor = true;
+            this.rabIdExcluirLivro.CheckedChanged += new System.EventHandler(this.rabIdExcluirLivro_CheckedChanged);
             // 
             // rabExcluirTitulo
             // 
@@ -88,6 +90,7 @@ namespace ProjectBook.GUI
             this.rabExcluirTitulo.TabIndex = 5;
             this.rabExcluirTitulo.Text = "Titulo";
             this.rabExcluirTitulo.UseVisualStyleBackColor = true;
+            this.rabExcluirTitulo.CheckedChanged += new System.EventHandler(this.rabExcluirTitulo_CheckedChanged);
             // 
             // ExcluirLivro
             // 

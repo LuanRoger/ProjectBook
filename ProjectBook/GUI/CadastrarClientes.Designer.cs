@@ -239,7 +239,7 @@ namespace ProjectBook.GUI
             this.txtTelefone1Cliente.Mask = "(99) 00000-0000";
             this.txtTelefone1Cliente.Name = "txtTelefone1Cliente";
             this.txtTelefone1Cliente.Size = new System.Drawing.Size(87, 23);
-            this.txtTelefone1Cliente.TabIndex = 21;
+            this.txtTelefone1Cliente.TabIndex = 6;
             // 
             // txtTelefone2Cliente
             // 
@@ -248,7 +248,7 @@ namespace ProjectBook.GUI
             this.txtTelefone2Cliente.Mask = "(99) 00000-0000";
             this.txtTelefone2Cliente.Name = "txtTelefone2Cliente";
             this.txtTelefone2Cliente.Size = new System.Drawing.Size(87, 23);
-            this.txtTelefone2Cliente.TabIndex = 22;
+            this.txtTelefone2Cliente.TabIndex = 7;
             // 
             // txtCepCliente
             // 
@@ -257,7 +257,7 @@ namespace ProjectBook.GUI
             this.txtCepCliente.Mask = "00000-000";
             this.txtCepCliente.Name = "txtCepCliente";
             this.txtCepCliente.Size = new System.Drawing.Size(61, 23);
-            this.txtCepCliente.TabIndex = 23;
+            this.txtCepCliente.TabIndex = 5;
             // 
             // btnCancelarCadastrarClientes
             // 

@@ -38,6 +38,7 @@ namespace ProjectBook.GUI
             // 
             // txtBuscarExcluirCliente
             // 
+            this.txtBuscarExcluirCliente.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txtBuscarExcluirCliente.Location = new System.Drawing.Point(12, 37);
             this.txtBuscarExcluirCliente.Name = "txtBuscarExcluirCliente";
             this.txtBuscarExcluirCliente.Size = new System.Drawing.Size(206, 23);
@@ -77,6 +78,7 @@ namespace ProjectBook.GUI
             this.rabBsucarIdCliente.TabIndex = 4;
             this.rabBsucarIdCliente.Text = "Código";
             this.rabBsucarIdCliente.UseVisualStyleBackColor = true;
+            this.rabBsucarIdCliente.CheckedChanged += new System.EventHandler(this.rabBsucarIdCliente_CheckedChanged);
             // 
             // rabBuscarNome
             // 
@@ -87,6 +89,7 @@ namespace ProjectBook.GUI
             this.rabBuscarNome.TabIndex = 5;
             this.rabBuscarNome.Text = "Nome";
             this.rabBuscarNome.UseVisualStyleBackColor = true;
+            this.rabBuscarNome.CheckedChanged += new System.EventHandler(this.rabBuscarNome_CheckedChanged);
             // 
             // ExcluirCliente
             // 

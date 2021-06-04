@@ -86,7 +86,7 @@ namespace ProjectBook.GUI
             this.txtEditarAno.Location = new System.Drawing.Point(87, 215);
             this.txtEditarAno.Name = "txtEditarAno";
             this.txtEditarAno.Size = new System.Drawing.Size(52, 23);
-            this.txtEditarAno.TabIndex = 11;
+            this.txtEditarAno.TabIndex = 7;
             // 
             // label5
             // 
@@ -102,7 +102,7 @@ namespace ProjectBook.GUI
             this.txtEditarEdicao.Location = new System.Drawing.Point(12, 215);
             this.txtEditarEdicao.Name = "txtEditarEdicao";
             this.txtEditarEdicao.Size = new System.Drawing.Size(69, 23);
-            this.txtEditarEdicao.TabIndex = 10;
+            this.txtEditarEdicao.TabIndex = 6;
             // 
             // label4
             // 
@@ -118,7 +118,7 @@ namespace ProjectBook.GUI
             this.txtEditarEditora.Location = new System.Drawing.Point(169, 171);
             this.txtEditarEditora.Name = "txtEditarEditora";
             this.txtEditarEditora.Size = new System.Drawing.Size(141, 23);
-            this.txtEditarEditora.TabIndex = 9;
+            this.txtEditarEditora.TabIndex = 5;
             // 
             // label3
             // 
@@ -136,7 +136,7 @@ namespace ProjectBook.GUI
             this.txtEditarAutor.Location = new System.Drawing.Point(12, 171);
             this.txtEditarAutor.Name = "txtEditarAutor";
             this.txtEditarAutor.Size = new System.Drawing.Size(151, 23);
-            this.txtEditarAutor.TabIndex = 8;
+            this.txtEditarAutor.TabIndex = 4;
             // 
             // label2
             // 
@@ -152,7 +152,7 @@ namespace ProjectBook.GUI
             this.txtEditarTitulo.Location = new System.Drawing.Point(120, 127);
             this.txtEditarTitulo.Name = "txtEditarTitulo";
             this.txtEditarTitulo.Size = new System.Drawing.Size(190, 23);
-            this.txtEditarTitulo.TabIndex = 7;
+            this.txtEditarTitulo.TabIndex = 3;
             // 
             // label1
             // 
@@ -196,7 +196,7 @@ namespace ProjectBook.GUI
             this.btnSalvarEditar.Location = new System.Drawing.Point(12, 389);
             this.btnSalvarEditar.Name = "btnSalvarEditar";
             this.btnSalvarEditar.Size = new System.Drawing.Size(63, 23);
-            this.btnSalvarEditar.TabIndex = 13;
+            this.btnSalvarEditar.TabIndex = 11;
             this.btnSalvarEditar.Text = "Salvar";
             this.btnSalvarEditar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSalvarEditar.UseVisualStyleBackColor = true;
@@ -278,7 +278,7 @@ namespace ProjectBook.GUI
             this.cmbEditarGenero.Location = new System.Drawing.Point(12, 259);
             this.cmbEditarGenero.Name = "cmbEditarGenero";
             this.cmbEditarGenero.Size = new System.Drawing.Size(298, 23);
-            this.cmbEditarGenero.TabIndex = 13;
+            this.cmbEditarGenero.TabIndex = 9;
             // 
             // label8
             // 
@@ -297,7 +297,7 @@ namespace ProjectBook.GUI
             this.txtEditarCodigo.Location = new System.Drawing.Point(12, 127);
             this.txtEditarCodigo.Name = "txtEditarCodigo";
             this.txtEditarCodigo.Size = new System.Drawing.Size(100, 23);
-            this.txtEditarCodigo.TabIndex = 6;
+            this.txtEditarCodigo.TabIndex = 2;
             // 
             // label9
             // 
@@ -313,7 +313,7 @@ namespace ProjectBook.GUI
             this.txtEditarObservacoes.Location = new System.Drawing.Point(12, 303);
             this.txtEditarObservacoes.Name = "txtEditarObservacoes";
             this.txtEditarObservacoes.Size = new System.Drawing.Size(298, 71);
-            this.txtEditarObservacoes.TabIndex = 14;
+            this.txtEditarObservacoes.TabIndex = 10;
             this.txtEditarObservacoes.Text = "";
             // 
             // txtEditarIsbn
@@ -322,7 +322,7 @@ namespace ProjectBook.GUI
             this.txtEditarIsbn.Mask = "999-9-99-999999-9";
             this.txtEditarIsbn.Name = "txtEditarIsbn";
             this.txtEditarIsbn.Size = new System.Drawing.Size(113, 23);
-            this.txtEditarIsbn.TabIndex = 12;
+            this.txtEditarIsbn.TabIndex = 8;
             // 
             // toolStrip1
             // 

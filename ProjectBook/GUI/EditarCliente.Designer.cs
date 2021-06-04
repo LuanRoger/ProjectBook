@@ -92,7 +92,7 @@ namespace ProjectBook.GUI
             this.txtBuscarClienteEditar.Location = new System.Drawing.Point(7, 48);
             this.txtBuscarClienteEditar.Name = "txtBuscarClienteEditar";
             this.txtBuscarClienteEditar.Size = new System.Drawing.Size(253, 23);
-            this.txtBuscarClienteEditar.TabIndex = 2;
+            this.txtBuscarClienteEditar.TabIndex = 1;
             // 
             // rabBuscarClienteNome
             // 
@@ -149,7 +149,7 @@ namespace ProjectBook.GUI
             this.txtNovoEndereco.Location = new System.Drawing.Point(12, 181);
             this.txtNovoEndereco.Name = "txtNovoEndereco";
             this.txtNovoEndereco.Size = new System.Drawing.Size(225, 23);
-            this.txtNovoEndereco.TabIndex = 4;
+            this.txtNovoEndereco.TabIndex = 3;
             // 
             // label3
             // 
@@ -165,7 +165,7 @@ namespace ProjectBook.GUI
             this.txtNovoCidade.Location = new System.Drawing.Point(12, 230);
             this.txtNovoCidade.Name = "txtNovoCidade";
             this.txtNovoCidade.Size = new System.Drawing.Size(225, 23);
-            this.txtNovoCidade.TabIndex = 6;
+            this.txtNovoCidade.TabIndex = 5;
             // 
             // label4
             // 
@@ -211,7 +211,7 @@ namespace ProjectBook.GUI
             this.cmbNovoUf.Location = new System.Drawing.Point(243, 181);
             this.cmbNovoUf.Name = "cmbNovoUf";
             this.cmbNovoUf.Size = new System.Drawing.Size(69, 23);
-            this.cmbNovoUf.TabIndex = 8;
+            this.cmbNovoUf.TabIndex = 4;
             // 
             // label5
             // 
@@ -254,7 +254,7 @@ namespace ProjectBook.GUI
             this.txtNovoEmail.Location = new System.Drawing.Point(198, 277);
             this.txtNovoEmail.Name = "txtNovoEmail";
             this.txtNovoEmail.Size = new System.Drawing.Size(114, 23);
-            this.txtNovoEmail.TabIndex = 16;
+            this.txtNovoEmail.TabIndex = 8;
             // 
             // btnSalvarEditarCliente
             // 
@@ -263,7 +263,7 @@ namespace ProjectBook.GUI
             this.btnSalvarEditarCliente.Location = new System.Drawing.Point(12, 320);
             this.btnSalvarEditarCliente.Name = "btnSalvarEditarCliente";
             this.btnSalvarEditarCliente.Size = new System.Drawing.Size(64, 23);
-            this.btnSalvarEditarCliente.TabIndex = 17;
+            this.btnSalvarEditarCliente.TabIndex = 9;
             this.btnSalvarEditarCliente.Text = "Salvar";
             this.btnSalvarEditarCliente.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSalvarEditarCliente.UseVisualStyleBackColor = true;
@@ -301,7 +301,7 @@ namespace ProjectBook.GUI
             this.txtNovoCep.Mask = "00000-000";
             this.txtNovoCep.Name = "txtNovoCep";
             this.txtNovoCep.Size = new System.Drawing.Size(69, 23);
-            this.txtNovoCep.TabIndex = 20;
+            this.txtNovoCep.TabIndex = 6;
             // 
             // txtNovoTelefone1
             // 
@@ -309,7 +309,7 @@ namespace ProjectBook.GUI
             this.txtNovoTelefone1.Mask = "(99) 00000-0000";
             this.txtNovoTelefone1.Name = "txtNovoTelefone1";
             this.txtNovoTelefone1.Size = new System.Drawing.Size(87, 23);
-            this.txtNovoTelefone1.TabIndex = 21;
+            this.txtNovoTelefone1.TabIndex = 7;
             // 
             // txtNovoTelefone2
             // 
@@ -317,7 +317,7 @@ namespace ProjectBook.GUI
             this.txtNovoTelefone2.Mask = "(99) 00000-0000";
             this.txtNovoTelefone2.Name = "txtNovoTelefone2";
             this.txtNovoTelefone2.Size = new System.Drawing.Size(87, 23);
-            this.txtNovoTelefone2.TabIndex = 22;
+            this.txtNovoTelefone2.TabIndex = 8;
             // 
             // toolStrip1
             // 

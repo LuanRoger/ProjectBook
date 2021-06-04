@@ -17,6 +17,21 @@ namespace ProjectBook.GUI
             Load += (_, _) => AppInsightMetrics.TrackForm("ExcluirCliente");
         }
 
+        #region CheckChange
+        private void rabBsucarIdCliente_CheckedChanged(object sender, EventArgs e) => 
+            txtBuscarExcluirCliente.AutoCompleteMode = AutoCompleteMode.None;
+
+        private void rabBuscarNome_CheckedChanged(object sender, EventArgs e)
+        {
+            AutoCompleteStringCollection sugestaoCliente = new();
+            txtBuscarExcluirCliente.AutoCompleteMode = AutoCompleteMode.Suggest;
+
+            foreach(DataRow cliente in clienteDb.VerTodosClientes().Rows) sugestaoCliente.Add(cliente[1].ToString());
+
+            txtBuscarExcluirCliente.AutoCompleteCustomSource = sugestaoCliente;
+        }
+        #endregion
+
         private void btnExcluirCliente_Click(object sender, EventArgs e)
         {
             string termoBusca = txtBuscarExcluirCliente.Text;
@@ -47,7 +62,7 @@ namespace ProjectBook.GUI
 
             DialogResult resultadoExcluir = MessageBox.Show(
                 string.Format(Resources.ConfirmarExclusao1, data.Rows[0][1]),
-                Resources.MessageBoxExcluir, MessageBoxButtons.YesNo, MessageBoxIcon.Stop);
+                Resources.MessageBoxExcluir, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             
             if (resultadoExcluir == DialogResult.Yes)
             {
@@ -56,6 +71,6 @@ namespace ProjectBook.GUI
                 txtBuscarExcluirCliente.Clear();
             }
         }
-        private void btnCancelarExcluirCliente_Click(object sender, EventArgs e) => this.Close();
+        private void btnCancelarExcluirCliente_Click(object sender, EventArgs e) => Close();
     }
 }

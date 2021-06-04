@@ -62,9 +62,9 @@ namespace ProjectBook.GUI
             this.label1.Location = new System.Drawing.Point(68, 25);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(42, 15);
+            this.label1.Size = new System.Drawing.Size(45, 15);
             this.label1.TabIndex = 0;
-            this.label1.Text = "*Titulo";
+            this.label1.Text = "*Titulo:";
             // 
             // txtTituloLivro
             // 
@@ -80,9 +80,9 @@ namespace ProjectBook.GUI
             this.label2.Location = new System.Drawing.Point(12, 70);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(42, 15);
+            this.label2.Size = new System.Drawing.Size(45, 15);
             this.label2.TabIndex = 2;
-            this.label2.Text = "*Autor";
+            this.label2.Text = "*Autor:";
             // 
             // txtAutorLivro
             // 
@@ -110,9 +110,9 @@ namespace ProjectBook.GUI
             this.label3.Location = new System.Drawing.Point(12, 115);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(49, 15);
+            this.label3.Size = new System.Drawing.Size(52, 15);
             this.label3.TabIndex = 4;
-            this.label3.Text = "*Editora";
+            this.label3.Text = "*Editora:";
             // 
             // txtEdicaoLivro
             // 
@@ -128,9 +128,9 @@ namespace ProjectBook.GUI
             this.label4.Location = new System.Drawing.Point(12, 158);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(42, 15);
+            this.label4.Size = new System.Drawing.Size(45, 15);
             this.label4.TabIndex = 6;
-            this.label4.Text = "Edição";
+            this.label4.Text = "Edição:";
             // 
             // txtAno
             // 
@@ -146,9 +146,9 @@ namespace ProjectBook.GUI
             this.label5.Location = new System.Drawing.Point(98, 158);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(34, 15);
+            this.label5.Size = new System.Drawing.Size(37, 15);
             this.label5.TabIndex = 8;
-            this.label5.Text = "*Ano";
+            this.label5.Text = "*Ano:";
             // 
             // label6
             // 
@@ -156,9 +156,9 @@ namespace ProjectBook.GUI
             this.label6.Location = new System.Drawing.Point(12, 202);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(45, 15);
+            this.label6.Size = new System.Drawing.Size(48, 15);
             this.label6.TabIndex = 10;
-            this.label6.Text = "Gênero";
+            this.label6.Text = "Gênero:";
             // 
             // label7
             // 
@@ -166,9 +166,9 @@ namespace ProjectBook.GUI
             this.label7.Location = new System.Drawing.Point(208, 158);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(32, 15);
+            this.label7.Size = new System.Drawing.Size(35, 15);
             this.label7.TabIndex = 12;
-            this.label7.Text = "ISBN";
+            this.label7.Text = "ISBN:";
             // 
             // btnSalvarLivro
             // 
@@ -219,7 +219,7 @@ namespace ProjectBook.GUI
             this.cmbGenero.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmbGenero.Name = "cmbGenero";
             this.cmbGenero.Size = new System.Drawing.Size(309, 23);
-            this.cmbGenero.TabIndex = 7;
+            this.cmbGenero.TabIndex = 8;
             // 
             // label8
             // 
@@ -246,7 +246,7 @@ namespace ProjectBook.GUI
             this.txtIsbn.Mask = "999-9-99-999999-9";
             this.txtIsbn.Name = "txtIsbn";
             this.txtIsbn.Size = new System.Drawing.Size(113, 23);
-            this.txtIsbn.TabIndex = 8;
+            this.txtIsbn.TabIndex = 7;
             // 
             // label10
             // 

@@ -17,6 +17,19 @@ namespace ProjectBook.GUI
             Load += (_, _) => AppInsightMetrics.TrackForm("ExcluirLivro");
         }
 
+        #region CheckChange
+        private void rabIdExcluirLivro_CheckedChanged(object sender, EventArgs e) => txtExcluirLivro.AutoCompleteMode = AutoCompleteMode.None;
+        private void rabExcluirTitulo_CheckedChanged(object sender, EventArgs e)
+        {
+            AutoCompleteStringCollection sugestaoLivro = new();
+            txtExcluirLivro.AutoCompleteMode = AutoCompleteMode.Suggest;
+
+            foreach(DataRow livro in livrosDb.VerTodosLivros().Rows) sugestaoLivro.Add(livro[1].ToString());
+
+            txtExcluirLivro.AutoCompleteCustomSource = sugestaoLivro;
+        }
+        #endregion
+
         private void btnBuscarExcluirLivro_Click(object sender, EventArgs e)
         {
             string termoBusca = txtExcluirLivro.Text;
@@ -47,7 +60,7 @@ namespace ProjectBook.GUI
 
             DialogResult resultadoExcluir = MessageBox.Show(
                 string.Format(Resources.ConfirmarExclusao1, data.Rows[0][1]),
-                Resources.MessageBoxExcluir, MessageBoxButtons.YesNo, MessageBoxIcon.Stop);
+                Resources.MessageBoxExcluir, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             
             if (resultadoExcluir == DialogResult.Yes)
             {
@@ -57,6 +70,6 @@ namespace ProjectBook.GUI
 
             txtExcluirLivro.Clear();
         }
-        private void btnCancelarExcluirLivro_Click(object sender, EventArgs e) => this.Close();
+        private void btnCancelarExcluirLivro_Click(object sender, EventArgs e) => Close();
     }
 }
