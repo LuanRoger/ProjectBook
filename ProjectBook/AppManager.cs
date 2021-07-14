@@ -44,34 +44,29 @@ namespace ProjectBook
         {
             AutoUpdater.ShowRemindLaterButton = false;
 
-            AutoUpdater.Start(ConfigurationManager.AppSettings["updateFileServer"],
+            AutoUpdater.Start(AppConfigurationManager.updateFileServer,
                 Assembly.GetExecutingAssembly());
         }
         public static void GiveAdm()
         {
-            Configuracoes.config.AppSettings.Settings["tipoUsuario"].Value = Tipos.TipoUsuário.ADM.ToString();
-            Configuracoes.config.Save();
-            ConfigurationManager.RefreshSection("appSettings");
+            AppConfigurationManager.tipoUsuario = Tipos.TipoUsuário.ADM;
         }
         public static void RemoveAdm()
         {
-            Configuracoes.config.AppSettings.Settings["tipoUsuario"].Value = Tipos.TipoUsuário.USU.ToString();
-            Configuracoes.config.Save();
-            ConfigurationManager.RefreshSection("appSettings");
+            AppConfigurationManager.tipoUsuario = Tipos.TipoUsuário.USU;
         }
         public static void UpdateUserInfo()
         {
             UsuarioDb usuarioDb = new();
 
-            Configuracoes.config.AppSettings.Settings["tipoUsuario"].Value = 
-                usuarioDb.ReceberTipoUsuario(ConfigurationManager.AppSettings["usuarioLogado"]).Rows[0][0].ToString();
-            Configuracoes.config.Save();
-            ConfigurationManager.RefreshSection("appSettings");
+            AppConfigurationManager.tipoUsuario = 
+                usuarioDb.ReceberTipoUsuario(AppConfigurationManager.usuarioLogado).ToString() == "ADM" ? 
+                Tipos.TipoUsuário.ADM : Tipos.TipoUsuário.USU;
 
             AppInsightMetrics.SendUserInfo(
-                Configuracoes.config.AppSettings.Settings["idUsuario"].Value,
-                Configuracoes.config.AppSettings.Settings["usuarioLogado"].Value,
-                Configuracoes.config.AppSettings.Settings["tipoUsuario"].Value);
+                AppConfigurationManager.idUsuario,
+                AppConfigurationManager.usuarioLogado,
+                AppConfigurationManager.tipoUsuario.ToString());
         }
     }
     public class Consts

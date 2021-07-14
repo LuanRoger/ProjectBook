@@ -41,11 +41,9 @@ namespace ProjectBook.GUI
                 }
             }
 
-            Configuracoes.config.AppSettings.Settings["idUsuario"].Value = infoUsuario.Rows[0][0].ToString();
-            Configuracoes.config.AppSettings.Settings["usuarioLogado"].Value = infoUsuario.Rows[0][1].ToString();
-            Configuracoes.config.AppSettings.Settings["tipoUsuario"].Value = infoUsuario.Rows[0][3].ToString();
-            Configuracoes.config.Save(ConfigurationSaveMode.Modified);
-            ConfigurationManager.RefreshSection("appSettings");
+            AppConfigurationManager.idUsuario = infoUsuario.Rows[0][0].ToString();
+            AppConfigurationManager.usuarioLogado = infoUsuario.Rows[0][1].ToString();
+            AppConfigurationManager.tipoUsuario = infoUsuario.Rows[0][3].ToString() == "ADM" ? Tipos.TipoUsuário.ADM : Tipos.TipoUsuário.USU;
 
             AppManager.ReiniciarPrograma();
         }

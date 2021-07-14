@@ -78,7 +78,7 @@ namespace ProjectBook.GUI
         {
             Cliente cliente;
             //Aplicar a formatação na instânciação do cliente
-            if (ConfigurationManager.AppSettings["formatarCliente"] == "1")
+            if (AppConfigurationManager.formatarCliente)
             {
                 cliente = new Cliente(
                     txtNovoNome.Text.ToUpper(),

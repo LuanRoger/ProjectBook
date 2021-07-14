@@ -86,13 +86,11 @@ namespace ProjectBook
             return so.Contains("Windows 10");
         }
 
-        public static bool EnviarTelimetria() => ConfigurationManager.AppSettings["telemetry"] == "1" ? true : false;
-
         public static bool HasSyncOneDrive(DirectoryInfo directoryInfo)
         {
             return directoryInfo.FullName.Contains("OneDrive") && 
                    directoryInfo.GetFiles("*.mdf", SearchOption.AllDirectories).Length >= 1 &&
-                   ConfigurationManager.AppSettings["dbPadrao"] == "onedrive";
+                   AppConfigurationManager.dbPadrao == Tipos.DatabaseType.OneDrive;
         }
         #region Verificar strings
         /// <summary>

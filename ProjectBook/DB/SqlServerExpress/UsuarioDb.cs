@@ -111,7 +111,7 @@ namespace ProjectBook.DB.SqlServerExpress
         }
         #endregion
 
-        public DataTable ReceberTipoUsuario(string usuario)
+        public DataRow ReceberTipoUsuario(string usuario)
         {
             DataTable dataTable = new();
             try
@@ -124,7 +124,7 @@ namespace ProjectBook.DB.SqlServerExpress
             catch (Exception e){ MessageBox.Show(e.Message, Resources.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error); 
                 AppInsightMetrics.SendError(e);}
 
-            return dataTable;
+            return dataTable.Rows[0];
         }
         #region Buscar
         public DataTable BuscarUsuarioId(string id)

@@ -100,7 +100,7 @@ namespace ProjectBook.GUI
 
             Livro livro;
             //Aplicar a formatação na instânciação do livro
-            if (ConfigurationManager.AppSettings["formatarLivro"] == "1")
+            if (AppConfigurationManager.formatarLivro)
             {
                 livro = new Livro(
                     txtEditarCodigo.Text,

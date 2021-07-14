@@ -114,6 +114,7 @@ namespace ProjectBook.GUI
             this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuArBuscaRapida = new System.Windows.Forms.ToolStripButton();
             this.totAccountError = new System.Windows.Forms.ToolTip(this.components);
+            this.bgwInicioActivated = new System.ComponentModel.BackgroundWorker();
             this.mnuInicio.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -504,7 +505,7 @@ namespace ProjectBook.GUI
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 617F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 620F));
             this.tableLayoutPanel1.Controls.Add(this.btnSairUsuario, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblNomeUsuario, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnAccountError, 2, 0);
@@ -754,6 +755,10 @@ namespace ProjectBook.GUI
             this.totAccountError.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Warning;
             this.totAccountError.ToolTipTitle = "Problema com conta";
             // 
+            // bgwInicioActivated
+            // 
+            this.bgwInicioActivated.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwInicioActivated_DoWork);
+            // 
             // Inicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -869,6 +874,7 @@ namespace ProjectBook.GUI
         private System.Windows.Forms.Label lblNomeUsuario;
         private System.Windows.Forms.Button btnAccountError;
         private System.Windows.Forms.ToolTip totAccountError;
+        private System.ComponentModel.BackgroundWorker bgwInicioActivated;
     }
 }
 

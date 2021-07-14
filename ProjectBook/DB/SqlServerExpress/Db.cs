@@ -13,7 +13,7 @@ namespace ProjectBook.DB.SqlServerExpress
     abstract class Db
     {
         protected static readonly SqlConnection connection = 
-            new(ConfigurationManager.ConnectionStrings["SqlConnectionString"].ConnectionString);
+            new(AppConfigurationManager.SqlConnectionString);
 
         /// <summary>
         /// Verifica a conexão entre o programa e o banco de dados

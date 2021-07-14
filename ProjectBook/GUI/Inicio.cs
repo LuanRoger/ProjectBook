@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Configuration;
 using System.Diagnostics;
-using System.Drawing;
 using System.Reflection;
 using System.Windows.Forms;
 using ProjectBook.DB.SqlServerExpress;
 using ProjectBook.Properties;
 using ProjectBook.AppInsight;
+using System.ComponentModel;
 
 namespace ProjectBook.GUI
 {
@@ -20,7 +19,7 @@ namespace ProjectBook.GUI
         {
             InitializeComponent();
 
-            lblNomeUsuario.Text = ConfigurationManager.AppSettings["usuarioLogado"];
+            lblNomeUsuario.Text = AppConfigurationManager.usuarioLogado;
             btnAccountError.Visible = lblNomeUsuario.Text == "admin";
 
             #region MenuClick
@@ -32,7 +31,7 @@ namespace ProjectBook.GUI
                 AppInsightMetrics.TrackEvent("AbrirCadastroLivroMenu");
             };
 
-            mnuEditarLivro.Click += (sender, e) => 
+            mnuEditarLivro.Click += (sender, e) =>
             {
                 EditarLivro editarLivro = new();
                 editarLivro.Show();
@@ -70,7 +69,7 @@ namespace ProjectBook.GUI
                 AppInsightMetrics.TrackEvent("AbrirEditarClienteMenu");
             };
 
-            mnuUsuario.Visible = ConfigurationManager.AppSettings["tipoUsuario"] == "ADM";
+            mnuUsuario.Visible = AppConfigurationManager.tipoUsuario == Tipos.TipoUsuário.ADM;
             mnuGerenciarUsuario.Click += (sender, e) =>
             {
                 GerenciarUsuario gerenciarUsuario = new();
@@ -85,7 +84,7 @@ namespace ProjectBook.GUI
 
                 AppInsightMetrics.TrackEvent("AbrirPesquisarUsuarioMenu");
             };
-            
+
             mnuExcluirLivro.Click += (sender, e) =>
             {
                 ExcluirLivro excluir = new();
@@ -122,7 +121,7 @@ namespace ProjectBook.GUI
 
                 AppInsightMetrics.TrackEvent("AbrirPesquisarLivroMenu");
             };
-            mnuLivrosAlugados.Click += (sender, e) => 
+            mnuLivrosAlugados.Click += (sender, e) =>
             {
                 ListaPesquisa listaPesquisa = new(aluguelDb.VerTodosAluguel());
                 listaPesquisa.Show();
@@ -151,7 +150,7 @@ namespace ProjectBook.GUI
                 AppInsightMetrics.TrackEvent("AbrirPesquisarClienteMenu");
             };
 
-            mnuConfig.Click += (sender, e) => 
+            mnuConfig.Click += (sender, e) =>
             {
                 Configuracoes configuracoes = new();
                 configuracoes.Show();
@@ -235,9 +234,8 @@ namespace ProjectBook.GUI
         private void btnAccountError_Click(object sender, EventArgs e) => new GerenciarUsuario().Show();
         private void btnSairUsuario_Click(object sender, EventArgs e)
         {
-            Configuracoes.config.AppSettings.Settings["usuarioLogado"].Value = "";
-            Configuracoes.config.AppSettings.Settings["idUsuario"].Value = "";
-            Configuracoes.config.Save();
+            AppConfigurationManager.usuarioLogado = "";
+            AppConfigurationManager.usuarioLogado = "";
 
             AppInsightMetrics.TrackEvent("SairUsuario");
 
@@ -245,7 +243,7 @@ namespace ProjectBook.GUI
             Process.GetCurrentProcess().Kill();
         }
 
-        private void Inicio_ActivatedAsync(object sender, EventArgs e)
+        private void bgwInicioActivated_DoWork(object sender, DoWorkEventArgs e)
         {
             if (Opacity != 0)
             {
@@ -260,6 +258,7 @@ namespace ProjectBook.GUI
 
             GC.Collect();
         }
+        private void Inicio_ActivatedAsync(object sender, EventArgs e) => bgwInicioActivated.RunWorkerAsync();
         private void Inicio_Load(object sender, EventArgs e)
         {
             //Deixar o Form invisível enquanto a SplashScreen está carregando
@@ -279,7 +278,6 @@ namespace ProjectBook.GUI
             AppInsightMetrics.SendProcessInfo();
             AppInsightMetrics.TrackForm("Inicio");
 
-            lblNomeUsuario.BackColor = Color.Transparent;
             BringToFront();
         }
 
@@ -289,11 +287,12 @@ namespace ProjectBook.GUI
             {
                 case Keys.F1:
                     PesquisaRapida pesquisaRapida = new();
+                    pesquisaRapida.FormClosed += (_, _) => pesquisaRapida.Dispose();
                     pesquisaRapida.Show();
                     AppInsightMetrics.TrackEvent("AbrirPesquisaRapidaAtalho");
                     break;
-                case Keys.F6: 
-                    Close(); 
+                case Keys.F6:
+                    Close();
                     break;
                 case Keys.F7:
                     btnSairUsuario.PerformClick();
@@ -307,7 +306,7 @@ namespace ProjectBook.GUI
                 MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
 
             e.Cancel = dialogResult != DialogResult.Yes;
-            if(!e.Cancel) AppInsightMetrics.FlushTelemetry();
+            if (!e.Cancel) AppInsightMetrics.FlushTelemetry();
         }
     }
 }

@@ -38,7 +38,7 @@ namespace ProjectBook
             if (!livrosDb.VerificarConexaoDb()) return;
 
             lblStatusCarregamento.Text = Resources.realizando_verificações_de_segurança_splashscreen;
-            if (string.IsNullOrEmpty(ConfigurationManager.AppSettings["usuarioLogado"]))
+            if (string.IsNullOrEmpty(AppConfigurationManager.usuarioLogado))
             {
                 UsuarioLogado();
                 return;
@@ -57,8 +57,8 @@ namespace ProjectBook
 
         private async Task SyncOneDrive()
         {
-            if (ConfigurationManager.AppSettings["dbPadrao"] == "onedrive" &&
-                ConfigurationManager.ConnectionStrings["SqlConnectionString"].ConnectionString == "")
+            if (AppConfigurationManager.dbPadrao == Tipos.DatabaseType.OneDrive &&
+                AppConfigurationManager.SqlConnectionString == "")
             {
                 lblStatusCarregamento.Text = Resources.MigrandoOneDrive;
                 await Task.Run(OneDrive.MigrarOneDrive);
@@ -72,7 +72,7 @@ namespace ProjectBook
         private async Task AtualizarAluguel()
         {
             lblStatusCarregamento.Text = Resources.AtualizandoBancoDadosSpashScreen;
-            if (ConfigurationManager.AppSettings["atualizarStatusAluguel"] == "1") await Task.Run(AtualizarAtrasso);
+            if (AppConfigurationManager.atualizarStatusAluguel) await Task.Run(AtualizarAtrasso);
         }
 
         private void UsuarioLogado()

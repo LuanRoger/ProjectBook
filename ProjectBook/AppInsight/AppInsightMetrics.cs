@@ -14,7 +14,7 @@ namespace ProjectBook.AppInsight
 
         public static void InicializarInsights()
         {
-            if(!Verificadores.EnviarTelimetria()) return;
+            if(AppConfigurationManager.telemetry) return;
 
             telemetryConfiguration = TelemetryConfiguration.CreateDefault();
             telemetryConfiguration.ConnectionString = ApiKeys.TELEMETRY_CONNECTION;

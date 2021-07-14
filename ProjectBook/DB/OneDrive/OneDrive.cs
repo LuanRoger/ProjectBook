@@ -24,11 +24,9 @@ namespace ProjectBook.DB.OneDrive
 
                     if (dialogResult == DialogResult.No)
                     {
-                        Configuracoes.config.AppSettings.Settings["dbPadrao"].Value = "sqlserverlocaldb";
-                        Configuracoes.config.ConnectionStrings.ConnectionStrings["SqlConnectionString"].ConnectionString =
-                            $@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = {ConfigurationManager.AppSettings["pastaDb"]}; Integrated Security = True";
-                        Configuracoes.config.Save();
-                        ConfigurationManager.RefreshSection("appSettings");
+                        AppConfigurationManager.dbPadrao = Tipos.DatabaseType.SqlServerLocalDb;
+                        AppConfigurationManager.SqlConnectionString =
+                            $@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = {AppConfigurationManager.pastaDb}; Integrated Security = True";
 
                         AppManager.ReiniciarPrograma();
                         return;
@@ -38,7 +36,7 @@ namespace ProjectBook.DB.OneDrive
                 }
 
                 Directory.Move(Directory
-                    .GetParent(ConfigurationManager.AppSettings["pastaDb"]).ToString(), pastaAplicacaoOneDrive);
+                    .GetParent(AppConfigurationManager.pastaDb).ToString(), pastaAplicacaoOneDrive);
 
                 //Pegar o novo diretorio do banco de dados
                 string diretorioDbOneDrive = Directory
@@ -46,12 +44,10 @@ namespace ProjectBook.DB.OneDrive
                     .First();
 
                 //Criar nova string de conexão
-                Configuracoes.config.ConnectionStrings.ConnectionStrings["SqlConnectionString"].ConnectionString =
+                AppConfigurationManager.SqlConnectionString =
                     $@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={diretorioDbOneDrive};Integrated Security=True";
 
-                Configuracoes.config.AppSettings.Settings["pastaDb"].Value = pastaAplicacaoOneDrive;
-                Configuracoes.config.Save();
-                ConfigurationManager.RefreshSection("connectionStrings");
+                AppConfigurationManager.pastaDb = pastaAplicacaoOneDrive;
             }
             catch (Exception e)
             {
