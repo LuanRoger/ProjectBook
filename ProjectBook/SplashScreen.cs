@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Text;
@@ -38,7 +37,9 @@ namespace ProjectBook
             if (!livrosDb.VerificarConexaoDb()) return;
 
             lblStatusCarregamento.Text = Resources.realizando_verificações_de_segurança_splashscreen;
-            if (string.IsNullOrEmpty(AppConfigurationManager.usuarioLogado))
+
+            AppManager.LoadUser();
+            if (!Verificadores.VerificarUsuarioLogado())
             {
                 UsuarioLogado();
                 return;
@@ -46,10 +47,12 @@ namespace ProjectBook
             else AppManager.UpdateUserInfo();
 
             List<Task> inicializeTasks = new();
+
             inicializeTasks.Add(SyncOneDrive());
             inicializeTasks.Add(SearchForUpdates());
             inicializeTasks.Add(AtualizarAluguel());
             inicializeTasks.Add(Task.Delay(Consts.SPLASH_SCREEN_LOADTIME));
+
             await Task.WhenAll(inicializeTasks.ToArray());
 
             Close();
@@ -57,7 +60,7 @@ namespace ProjectBook
 
         private async Task SyncOneDrive()
         {
-            if (AppConfigurationManager.dbPadrao == Tipos.DatabaseType.OneDrive &&
+            if (AppConfigurationManager.dbPadrao == Tipos.TipoDatabase.OneDrive &&
                 AppConfigurationManager.SqlConnectionString == "")
             {
                 lblStatusCarregamento.Text = Resources.MigrandoOneDrive;
@@ -85,6 +88,7 @@ namespace ProjectBook
             }
             else AppManager.ReiniciarPrograma();
         }
+
         private void AtualizarAtrasso()
         {
             AluguelDb aluguelDb = new();

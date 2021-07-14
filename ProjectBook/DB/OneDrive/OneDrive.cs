@@ -24,7 +24,7 @@ namespace ProjectBook.DB.OneDrive
 
                     if (dialogResult == DialogResult.No)
                     {
-                        AppConfigurationManager.dbPadrao = Tipos.DatabaseType.SqlServerLocalDb;
+                        AppConfigurationManager.dbPadrao = Tipos.TipoDatabase.SqlServerLocalDb;
                         AppConfigurationManager.SqlConnectionString =
                             $@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = {AppConfigurationManager.pastaDb}; Integrated Security = True";
 

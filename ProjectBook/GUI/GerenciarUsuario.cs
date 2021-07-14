@@ -21,7 +21,7 @@ namespace ProjectBook.GUI
 
         private void btnCadastrarUsuario_Click(object sender, EventArgs e)
         {
-            Usuario usuario = new(txtUsuarioCadastrar.Text, txtSenhaCadastrar.Text, TipoUsuário.USU.ToString());
+            Usuario usuario = new(txtUsuarioCadastrar.Text, txtSenhaCadastrar.Text, TipoUsuario.USU.ToString());
             if (Verificadores.VerificarCamposUsuario(usuario))
             {
                 MessageBox.Show(Resources.PreecherCampoBusca, Resources.MessageBoxError,

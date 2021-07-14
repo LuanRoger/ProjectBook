@@ -6,6 +6,7 @@ using ProjectBook.DB.SqlServerExpress;
 using ProjectBook.Properties;
 using ProjectBook.AppInsight;
 using System.ComponentModel;
+using ProjectBook.Tipos;
 
 namespace ProjectBook.GUI
 {
@@ -18,9 +19,6 @@ namespace ProjectBook.GUI
         public Inicio()
         {
             InitializeComponent();
-
-            lblNomeUsuario.Text = AppConfigurationManager.usuarioLogado;
-            btnAccountError.Visible = lblNomeUsuario.Text == "admin";
 
             #region MenuClick
             mnuNovoLivro.Click += (sender, e) =>
@@ -69,7 +67,6 @@ namespace ProjectBook.GUI
                 AppInsightMetrics.TrackEvent("AbrirEditarClienteMenu");
             };
 
-            mnuUsuario.Visible = AppConfigurationManager.tipoUsuario == Tipos.TipoUsuário.ADM;
             mnuGerenciarUsuario.Click += (sender, e) =>
             {
                 GerenciarUsuario gerenciarUsuario = new();
@@ -160,13 +157,8 @@ namespace ProjectBook.GUI
 
             mnuSobre.Click += (sender, e) =>
             {
-                MessageBox.Show("Project Book v" +
-                                Assembly.GetExecutingAssembly().GetName().Version +
-                                "\n" + Resources.TheCreator +
-                                "\n" + Resources.Licensa +
-                                "\n" + Resources.UrlProjeto +
-                                "\n" + Resources.CreditosIcones,
-                    Resources.sobre_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Sobre sobre = new();
+                sobre.Show();
             };
             mnuProcurarAtualizacoes.Click += (sender, e) => AppManager.ProcurarAtualizacoes();
             #endregion
@@ -234,13 +226,12 @@ namespace ProjectBook.GUI
         private void btnAccountError_Click(object sender, EventArgs e) => new GerenciarUsuario().Show();
         private void btnSairUsuario_Click(object sender, EventArgs e)
         {
-            AppConfigurationManager.usuarioLogado = "";
-            AppConfigurationManager.usuarioLogado = "";
+            UserInfo.UserNowInstance.userName = "";
+            UserInfo.UserNowInstance.idUsuario = 0;
 
             AppInsightMetrics.TrackEvent("SairUsuario");
 
-            Process.Start(Application.StartupPath + Assembly.GetExecutingAssembly().GetName().Name + ".exe");
-            Process.GetCurrentProcess().Kill();
+            AppManager.ReiniciarPrograma();
         }
 
         private void bgwInicioActivated_DoWork(object sender, DoWorkEventArgs e)
@@ -258,10 +249,13 @@ namespace ProjectBook.GUI
 
             GC.Collect();
         }
-        private void Inicio_ActivatedAsync(object sender, EventArgs e) => bgwInicioActivated.RunWorkerAsync();
+        private void Inicio_ActivatedAsync(object sender, EventArgs e)
+        {
+            if(!bgwInicioActivated.IsBusy) bgwInicioActivated.RunWorkerAsync();
+        }
         private void Inicio_Load(object sender, EventArgs e)
         {
-            //Deixar o Form invisível enquanto a SplashScreen está carregando
+            // Deixar o Form invisível enquanto a SplashScreen está carregando
             Opacity = 0;
             ShowInTaskbar = false;
 
@@ -271,6 +265,16 @@ namespace ProjectBook.GUI
             {
                 Opacity = 100;
                 ShowInTaskbar = true;
+
+                lblNomeUsuario.Text = UserInfo.UserNowInstance.userName;
+                btnAccountError.Visible = lblNomeUsuario.Text == "admin";
+                if(UserInfo.UserNowInstance.tipoUsuario != TipoUsuario.ADM)
+                {
+                    mnuUsuario.Visible = false;
+                    mnuArUsuario.Visible = false;
+                    tssUsuario.Visible = false;
+                }
+
                 splashScreen.Dispose();
             };
 

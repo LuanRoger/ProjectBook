@@ -4,6 +4,7 @@ using System.IO;
 using System.Management;
 using ProjectBook.Livros;
 using ProjectBook.DB.SqlServerExpress;
+using ProjectBook.Tipos;
 
 namespace ProjectBook
 {
@@ -90,8 +91,23 @@ namespace ProjectBook
         {
             return directoryInfo.FullName.Contains("OneDrive") && 
                    directoryInfo.GetFiles("*.mdf", SearchOption.AllDirectories).Length >= 1 &&
-                   AppConfigurationManager.dbPadrao == Tipos.DatabaseType.OneDrive;
+                   AppConfigurationManager.dbPadrao == TipoDatabase.OneDrive;
         }
+
+        public static bool VerificarUsuarioLogado()
+        {
+            bool usuarioValido;
+
+            if (File.Exists(Consts.FILE_FULL_NAME))
+            {
+                usuarioValido = UserInfo.UserNowInstance.userName != "placeholder" &&
+                    !string.IsNullOrEmpty(UserInfo.UserNowInstance.userName);
+            }
+            else usuarioValido = false;
+
+            return usuarioValido;
+        }
+
         #region Verificar strings
         /// <summary>
         /// Verifica se <c>string.IsNullOrEmpty(valor1)</c>

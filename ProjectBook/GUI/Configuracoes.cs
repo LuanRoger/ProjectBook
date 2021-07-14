@@ -4,6 +4,7 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using ProjectBook.Properties;
+using ProjectBook.Tipos;
 
 namespace ProjectBook.GUI
 {
@@ -14,8 +15,7 @@ namespace ProjectBook.GUI
             InitializeComponent();
             CarregarConfiguracoes();
 
-            if (AppConfigurationManager.tipoUsuario == Tipos.TipoUsuário.ADM) 
-                gpbBancoDados.Enabled = true;
+            gpbBancoDados.Enabled = UserInfo.UserNowInstance.tipoUsuario == TipoUsuario.ADM;
 
             rabOneDrive.Visible = Verificadores.IsWin10();
         }
@@ -34,13 +34,13 @@ namespace ProjectBook.GUI
 
             switch (AppConfigurationManager.dbPadrao)
             {
-                case Tipos.DatabaseType.SqlServerExpress:
+                case Tipos.TipoDatabase.SqlServerExpress:
                     rabSqlServerExpress.Checked = true;
                     break;
-                case Tipos.DatabaseType.SqlServerLocalDb:
+                case Tipos.TipoDatabase.SqlServerLocalDb:
                     rabSqlServerLocalDb.Checked = true;
                     break;
-                case Tipos.DatabaseType.OneDrive when directoryInfo.Contains("OneDrive"):
+                case Tipos.TipoDatabase.OneDrive when directoryInfo.Contains("OneDrive"):
                     rabOneDrive.Checked = true;
                     break;
             }
@@ -69,14 +69,14 @@ namespace ProjectBook.GUI
             //String de conexão
             if (rabSqlServerExpress.Checked)
             {
-                AppConfigurationManager.dbPadrao = Tipos.DatabaseType.SqlServerExpress;
+                AppConfigurationManager.dbPadrao = Tipos.TipoDatabase.SqlServerExpress;
                 AppConfigurationManager.SqlConnectionString = txtStringConexaoCaminhoDb.Text;
                 AppConfigurationManager.pastaDb = "";
             }
             else if (rabSqlServerLocalDb.Checked)
             {
                 AppConfigurationManager.dbPadrao = AppConfigurationManager.pastaDb.Contains("OneDrive") ?
-                    Tipos.DatabaseType.OneDrive : Tipos.DatabaseType.SqlServerLocalDb;
+                    Tipos.TipoDatabase.OneDrive : Tipos.TipoDatabase.SqlServerLocalDb;
 
                 AppConfigurationManager.SqlConnectionString = txtStringConexaoCaminhoDb.Text;
             }

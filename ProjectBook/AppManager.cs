@@ -5,10 +5,9 @@ using System.Diagnostics;
 using System.Reflection;
 using System.Windows.Forms;
 using AutoUpdaterDotNET;
-using System.Configuration;
 using ProjectBook.DB.SqlServerExpress;
-using ProjectBook.GUI;
 using ProjectBook.AppInsight;
+using ProjectBook.Tipos;
 
 namespace ProjectBook
 {
@@ -21,7 +20,8 @@ namespace ProjectBook
 
         public static void ReiniciarPrograma()
         {
-            AppInsight.AppInsightMetrics.FlushTelemetry();
+            AppInsightMetrics.FlushTelemetry();
+            UserInfo.SerializeUserInstance();
 
             Process.Start(Application.StartupPath + Assembly.GetExecutingAssembly().GetName().Name + ".exe");
             Process.GetCurrentProcess().Kill();
@@ -49,28 +49,35 @@ namespace ProjectBook
         }
         public static void GiveAdm()
         {
-            AppConfigurationManager.tipoUsuario = Tipos.TipoUsuário.ADM;
+            UserInfo.UserNowInstance.tipoUsuario = TipoUsuario.ADM;
         }
         public static void RemoveAdm()
         {
-            AppConfigurationManager.tipoUsuario = Tipos.TipoUsuário.USU;
+            UserInfo.UserNowInstance.tipoUsuario = TipoUsuario.USU;
+        }
+        public static void LoadUser()
+        {
+            if(File.Exists(Consts.FILE_FULL_NAME)) UserInfo.DeserializeUserInstance();
         }
         public static void UpdateUserInfo()
         {
             UsuarioDb usuarioDb = new();
-
-            AppConfigurationManager.tipoUsuario = 
-                usuarioDb.ReceberTipoUsuario(AppConfigurationManager.usuarioLogado).ToString() == "ADM" ? 
-                Tipos.TipoUsuário.ADM : Tipos.TipoUsuário.USU;
+            
+            UserInfo.UserNowInstance.tipoUsuario = 
+                usuarioDb.ReceberTipoUsuario(UserInfo.UserNowInstance.userName);
 
             AppInsightMetrics.SendUserInfo(
-                AppConfigurationManager.idUsuario,
-                AppConfigurationManager.usuarioLogado,
-                AppConfigurationManager.tipoUsuario.ToString());
+                UserInfo.UserNowInstance.idUsuario,
+                UserInfo.UserNowInstance.userName,
+                UserInfo.UserNowInstance.tipoUsuario.ToString());
         }
     }
     public class Consts
     {
         public const int SPLASH_SCREEN_LOADTIME = 2500;
+
+        public const string USER_FORMAT = ".puf";
+        public const string USER_FILE_NAME = "UserInfo";
+        public const string FILE_FULL_NAME = USER_FILE_NAME + USER_FORMAT;
     }
 }

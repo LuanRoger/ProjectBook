@@ -109,7 +109,7 @@ namespace ProjectBook.GUI
             this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuArCadastroAluguel = new System.Windows.Forms.ToolStripButton();
             this.mnuArEditarAluguel = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
+            this.tssUsuario = new System.Windows.Forms.ToolStripSeparator();
             this.mnuArUsuario = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuArBuscaRapida = new System.Windows.Forms.ToolStripButton();
@@ -648,7 +648,7 @@ namespace ProjectBook.GUI
             this.toolStripSeparator11,
             this.mnuArCadastroAluguel,
             this.mnuArEditarAluguel,
-            this.toolStripSeparator9,
+            this.tssUsuario,
             this.mnuArUsuario,
             this.toolStripSeparator10,
             this.mnuArBuscaRapida});
@@ -722,10 +722,10 @@ namespace ProjectBook.GUI
             this.mnuArEditarAluguel.Size = new System.Drawing.Size(23, 22);
             this.mnuArEditarAluguel.Text = "Editar aluguel";
             // 
-            // toolStripSeparator9
+            // tssUsuario
             // 
-            this.toolStripSeparator9.Name = "toolStripSeparator9";
-            this.toolStripSeparator9.Size = new System.Drawing.Size(6, 25);
+            this.tssUsuario.Name = "tssUsuario";
+            this.tssUsuario.Size = new System.Drawing.Size(6, 25);
             // 
             // mnuArUsuario
             // 
@@ -857,7 +857,7 @@ namespace ProjectBook.GUI
         private System.Windows.Forms.ToolStripMenuItem mnuEditarLivro;
         private System.Windows.Forms.ToolStripButton mnuArEditarLivro;
         private System.Windows.Forms.ToolStripButton mnuArEditarCliente;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
+        private System.Windows.Forms.ToolStripSeparator tssUsuario;
         private System.Windows.Forms.ToolStripButton mnuArBuscaRapida;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel4;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel5;

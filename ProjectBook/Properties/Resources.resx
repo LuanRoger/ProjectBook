@@ -117,10 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="UrlProjeto" xml:space="preserve">
-    <value>https://github.com/LuanRoger/ProjectBook</value>
-  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="error" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\img\error.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="delete" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\img\delete.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -135,6 +135,9 @@
   </data>
   <data name="save" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\img\save.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="page_excel" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\img\page_excel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="SplashScreen" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\img\SplashScreen.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -169,6 +172,9 @@
   <data name="database-error-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\img\database-error-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="LivroRegistrado" xml:space="preserve">
+    <value>Livro registrado com sucesso.</value>
+  </data>
   <data name="MessageBoxError" xml:space="preserve">
     <value>Error</value>
   </data>
@@ -180,9 +186,6 @@
   </data>
   <data name="UsuarioDeletado" xml:space="preserve">
     <value>Usuário deletado com sucesso.</value>
-  </data>
-  <data name="sobre_MessageBox" xml:space="preserve">
-    <value>Sobre</value>
   </data>
   <data name="CaminhoBanco" xml:space="preserve">
     <value>Caminho do banco de dados:</value>
@@ -199,14 +202,11 @@
   <data name="ErrorConectarDb" xml:space="preserve">
     <value>Não foi possivel conectar-se a base de dados: {0}. Deseja abrir a configurações?</value>
   </data>
-  <data name="client_add" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\assets\img\client_add.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="book_add" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\img\book_add.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="printer" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\assets\img\printer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="bullet_go" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\img\bullet_go.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="PrinteIcons" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\img\printer.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -224,16 +224,13 @@
     <value>Não foi possivel conectar-se a base de dados: {0}. Deseja abrir a configurações?</value>
   </data>
   <data name="CreditosIcones" xml:space="preserve">
-    <value>Uso de ícones de FAMFAMFAM: http://famfamfam.com</value>
+    <value>Ícones de FAMFAMFAM: http://famfamfam.com</value>
   </data>
   <data name="TypeError" xml:space="preserve">
     <value>O valor digitado em {0} não pode ser um carácter</value>
   </data>
   <data name="InformacoesIncorretasLogin" xml:space="preserve">
     <value>As informações estão incorretas.</value>
-  </data>
-  <data name="InicioBackground" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\assets\img\InicioBackground.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="zoom" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\img\zoom.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -244,9 +241,6 @@
   <data name="mudancaConnectionString" xml:space="preserve">
     <value>Houve uma mudança na String de conexão, o programa será reiniciado.</value>
   </data>
-  <data name="informações_atualizadas" xml:space="preserve">
-    <value>Informações atualizadas</value>
-  </data>
   <data name="LivroNAluguado" xml:space="preserve">
     <value>Este livro não foi alugado.</value>
   </data>
@@ -256,8 +250,8 @@
   <data name="client_go" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\img\client_go.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="preencherCamposObrigatorios_MessageBox" xml:space="preserve">
-    <value>Preencha todos os campos obrigatórios</value>
+  <data name="UrlProjeto" xml:space="preserve">
+    <value>URL do projeto: https://github.com/LuanRoger/ProjectBook</value>
   </data>
   <data name="ClienteRegistrado" xml:space="preserve">
     <value>Cliente registrado com sucesso.</value>
@@ -267,6 +261,9 @@
   </data>
   <data name="book_edit" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\img\book_edit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="UsuarioRegistrado" xml:space="preserve">
+    <value>Usuário cadastrado com sucesso.</value>
   </data>
   <data name="MessageBoxInformacao" xml:space="preserve">
     <value>Informação</value>
@@ -280,11 +277,14 @@
   <data name="MessageBoxPergunta" xml:space="preserve">
     <value>Pergunta</value>
   </data>
-  <data name="bullet_go" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\assets\img\bullet_go.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="InicioBackground" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\img\InicioBackground.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="clienteLivroNaoAlugados" xml:space="preserve">
     <value>Este livro não foi alugado ou o cliente não alugou nenhum livro.</value>
+  </data>
+  <data name="MessageBoxConcluido" xml:space="preserve">
+    <value>Concluido</value>
   </data>
   <data name="ErrorGetSourceDb" xml:space="preserve">
     <value>Houve um error ao tentar recuperar o caminho do banco de dados.</value>
@@ -301,17 +301,20 @@
   <data name="ClienteNExiste" xml:space="preserve">
     <value>Este cliente não existe.</value>
   </data>
-  <data name="book_delete" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\assets\img\book_delete.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="page_delete" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\img\page_delete.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="book_go" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\img\book_go.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="AtualizandoBancoDadosSpashScreen" xml:space="preserve">
+    <value>Atualiazando status dos alugueis...</value>
+  </data>
   <data name="realizando_verificações_de_segurança_splashscreen" xml:space="preserve">
     <value>Realizando verificações de segurança...</value>
+  </data>
+  <data name="sobre_MessageBox" xml:space="preserve">
+    <value>Sobre</value>
   </data>
   <data name="textfield" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\img\textfield.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -328,17 +331,14 @@
   <data name="LivroNExiste" xml:space="preserve">
     <value>Este livro não existe.</value>
   </data>
-  <data name="LivroRegistrado" xml:space="preserve">
-    <value>Livro registrado com sucesso.</value>
+  <data name="client_add" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\img\client_add.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="page_excel" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\assets\img\page_excel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="informações_atualizadas" xml:space="preserve">
+    <value>Informações atualizadas</value>
   </data>
-  <data name="user_gray" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\assets\img\user_gray.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="AtualizandoBancoDadosSpashScreen" xml:space="preserve">
-    <value>Atualiazando status dos alugueis...</value>
+  <data name="printer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\img\printer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="LivroClienteNExistem" xml:space="preserve">
     <value>O livro ou o cliente não existem.</value>
@@ -349,14 +349,14 @@
   <data name="ConfiguracoesSalvas" xml:space="preserve">
     <value>Configurações salvas.</value>
   </data>
-  <data name="UsuarioRegistrado" xml:space="preserve">
-    <value>Usuário cadastrado com sucesso.</value>
+  <data name="book_delete" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\img\book_delete.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="preencherCampoBusca_MessageBox" xml:space="preserve">
     <value>Faça uma pesquisa para continuar.</value>
   </data>
-  <data name="MessageBoxConcluido" xml:space="preserve">
-    <value>Concluido</value>
+  <data name="user_gray" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\img\user_gray.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ConfirmarSair" xml:space="preserve">
     <value>Deseja realmente sair?</value>
@@ -364,11 +364,11 @@
   <data name="marcar_opcao_busca" xml:space="preserve">
     <value>Marque uma opção de busca para continuar.</value>
   </data>
+  <data name="preencherCamposObrigatorios_MessageBox" xml:space="preserve">
+    <value>Preencha todos os campos obrigatórios</value>
+  </data>
   <data name="CreateCopyOneDrive" xml:space="preserve">
     <value>Você deseja criar uma cópia do banco de dados no OneDrive.</value>
-  </data>
-  <data name="license" xml:space="preserve">
-    <value>GNU General Public License v3.0</value>
   </data>
   <data name="page_edit" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\img\page_edit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -382,7 +382,7 @@
   <data name="UserGrayIcons" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\img\user_gray.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="error" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\assets\img\error.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ProjectBookIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\img\ProjectBookIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

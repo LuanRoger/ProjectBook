@@ -305,7 +305,7 @@ namespace ProjectBook.Properties {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Uso de ícones de FAMFAMFAM: http://famfamfam.com.
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Ícones de FAMFAMFAM: http://famfamfam.com.
         /// </summary>
         internal static string CreditosIcones {
             get {
@@ -481,15 +481,6 @@ namespace ProjectBook.Properties {
         internal static string Licensa {
             get {
                 return ResourceManager.GetString("Licensa", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a GNU General Public License v3.0.
-        /// </summary>
-        internal static string license {
-            get {
-                return ResourceManager.GetString("license", resourceCulture);
             }
         }
         
@@ -745,6 +736,16 @@ namespace ProjectBook.Properties {
         }
         
         /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ProjectBookIcon {
+            get {
+                object obj = ResourceManager.GetObject("ProjectBookIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Realizando verificações de segurança....
         /// </summary>
         internal static string realizando_verificações_de_segurança_splashscreen {
@@ -839,7 +840,7 @@ namespace ProjectBook.Properties {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a https://github.com/LuanRoger/ProjectBook.
+        ///   Consulta uma cadeia de caracteres localizada semelhante a URL do projeto: https://github.com/LuanRoger/ProjectBook.
         /// </summary>
         internal static string UrlProjeto {
             get {

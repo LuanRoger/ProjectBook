@@ -56,12 +56,12 @@ namespace ProjectBook.AppInsight
 
             telemetryClient.GetMetric(metricId).TrackValue(metricValue);
         }
-        public static void SendUserInfo(string userId, string userName, string userType)
+        public static void SendUserInfo(int userId, string userName, string userType)
         {
             if(telemetryClient == null) return;
 
             telemetryClient.Context.User.Id = userName;
-            telemetryClient.Context.User.AccountId = userId;
+            telemetryClient.Context.User.AccountId = userId.ToString();
             telemetryClient.Context.User.AuthenticatedUserId = userName;
             telemetryClient.Context.User.UserAgent = userType;
         }

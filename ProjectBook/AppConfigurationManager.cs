@@ -106,34 +106,7 @@ namespace ProjectBook
                 SaveConfig();
             }
         }
-        public static string idUsuario
-        {
-            get => ConfigurationManager.AppSettings["idUsuario"];
-            set
-            {
-                config.AppSettings.Settings["idUsuario"].Value = value;
-                SaveConfig();
-            }
-        }
-        public static string usuarioLogado
-        {
-            get => ConfigurationManager.AppSettings["usuarioLogado"];
-            set
-            {
-                config.AppSettings.Settings["usuarioLogado"].Value = value;
-                SaveConfig();
-            }
-        }
-        public static Tipos.TipoUsuário tipoUsuario
-        {
-            get => ConfigurationManager.AppSettings["tipoUsuario"].ToTipoUsuário();
-            set
-            {
-                config.AppSettings.Settings["tipoUsuario"].Value = value.TipoUsuárioToString();
-                SaveConfig();
-            }
-        }
-        public static Tipos.DatabaseType dbPadrao
+        public static Tipos.TipoDatabase dbPadrao
         {
             get => ConfigurationManager.AppSettings["dbPadrao"].ToDatabaseType();
             set
@@ -190,35 +163,35 @@ namespace ProjectBook
         private static bool ToBool(this string toConvert) => toConvert == "1" ? true : false;
         private static string ToStringBool(this bool toConvert) => toConvert ? "1" : "0";
 
-        private static Tipos.TipoUsuário ToTipoUsuário(this string toConvert) =>
+        private static Tipos.TipoUsuario ToTipoUsuário(this string toConvert) =>
             toConvert switch
             {
-                "ADM" => Tipos.TipoUsuário.ADM,
-                "USU" => Tipos.TipoUsuário.USU,
+                "ADM" => Tipos.TipoUsuario.ADM,
+                "USU" => Tipos.TipoUsuario.USU,
                 _ => throw new Exception("Isto não é um TipoUsuário")
             };
-        private static string TipoUsuárioToString(this Tipos.TipoUsuário tipoUsuário) =>
+        private static string TipoUsuárioToString(this Tipos.TipoUsuario tipoUsuário) =>
             tipoUsuário switch
             {
-                Tipos.TipoUsuário.ADM => "ADM",
-                Tipos.TipoUsuário.USU => "USU",
+                Tipos.TipoUsuario.ADM => "ADM",
+                Tipos.TipoUsuario.USU => "USU",
                 _ => throw new Exception("Isto não é um TipoUsuário")
             };
 
-        private static Tipos.DatabaseType ToDatabaseType(this string toConvert) =>
+        private static Tipos.TipoDatabase ToDatabaseType(this string toConvert) =>
             toConvert switch
             {
-                "OneDrive" => Tipos.DatabaseType.OneDrive,
-                "SqlServerLocalDb" => Tipos.DatabaseType.SqlServerLocalDb,
-                "SqlServerExpress" => Tipos.DatabaseType.SqlServerExpress,
+                "OneDrive" => Tipos.TipoDatabase.OneDrive,
+                "SqlServerLocalDb" => Tipos.TipoDatabase.SqlServerLocalDb,
+                "SqlServerExpress" => Tipos.TipoDatabase.SqlServerExpress,
                 _ => throw new Exception("Isto não é um DatabaseType"),
             };
-        private static string DatabaseTypeToString(this Tipos.DatabaseType databaseType) =>
+        private static string DatabaseTypeToString(this Tipos.TipoDatabase databaseType) =>
             databaseType switch
             {
-                Tipos.DatabaseType.OneDrive => "OneDrive",
-                Tipos.DatabaseType.SqlServerLocalDb => "SqlServerLocalDb",
-                Tipos.DatabaseType.SqlServerExpress => "SqlServerExpress",
+                Tipos.TipoDatabase.OneDrive => "OneDrive",
+                Tipos.TipoDatabase.SqlServerLocalDb => "SqlServerLocalDb",
+                Tipos.TipoDatabase.SqlServerExpress => "SqlServerExpress",
                 _ => throw new Exception("Isto não é um DatabaseType"),
             };
         #endregion

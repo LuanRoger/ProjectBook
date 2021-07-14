@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using ProjectBook.Properties;
 using ClosedXML.Excel;
 using ProjectBook.AppInsight;
+using System.Threading.Tasks;
 
 namespace ProjectBook.GUI
 {
@@ -36,26 +37,44 @@ namespace ProjectBook.GUI
                 Process.GetCurrentProcess().Kill();
             }
 
-            lblQItensExibidos.Text = dgvLista.Rows.Count.ToString();
-            lblQColunas.Text = dgvLista.ColumnCount.ToString();
-
-            mnuImprimirLista.Click += (sender, e) =>
+            #region MenuClick
+            mnuImprimirLista.Click += async (sender, e) =>
             {
-                Imprimir imprimir = new Imprimir();
-                imprimir.ImprimirModelo(dgvLista);
+                pgbAsyncTask.Visible = true;
+
+                Imprimir imprimir = new();
+                await imprimir.ImprimirModelo(dgvLista);
+
+                pgbAsyncTask.Visible = false;
             };
-            mnuExportarExcel.Click += (sender, e) => ExportToSheets();
+            mnuExportarExcel.Click += async (sender, e) =>
+            {
+                pgbAsyncTask.Visible = true;
+
+                await ExportToSheets();
+
+                pgbAsyncTask.Visible = false;
+            };
+            #endregion
 
             Load += (_, _) => AppInsightMetrics.TrackForm("Lista");
         }
 
-        private void ExportToSheets()
+        private void ListaPesquisa_Load(object sender, System.EventArgs e)
+        {
+            lblQItensExibidos.Text = dgvLista.Rows.Count.ToString();
+            lblQColunas.Text = dgvLista.ColumnCount.ToString();
+        }
+
+        private async Task ExportToSheets()
         {
             var workbook = new XLWorkbook();
-                var worksheet = workbook.Worksheets.Add("Pagina 1");
+            var worksheet = workbook.Worksheets.Add("Página 1");
 
-                //Colocar o cabeçalho
-                for(int c = 1; c != dgvLista.Columns.Count; c++)
+            // Colocar o cabeçalho
+            await Task.Run(() =>
+            {
+                for (int c = 1; c != dgvLista.Columns.Count; c++)
                 {
                     worksheet.Cell(1, c).Style.Font.FontName = "Lato";
                     worksheet.Cell(1, c).Style.Font.Bold = true;
@@ -70,11 +89,16 @@ namespace ProjectBook.GUI
                     worksheet.Cell(1, c).Style.Border.RightBorder = XLBorderStyleValues.Thin;
                     worksheet.Cell(1, c).Style.Border.RightBorderColor = XLColor.DarkGray;
 
-                    worksheet.Cell(1, c).Value = dgvLista.Columns[c-1].HeaderText;
+                    worksheet.Cell(1, c).Value = dgvLista.Columns[c - 1].HeaderText;
                 }
-                for(int r = 2; r != dgvLista.Rows.Count; r++)
+            });
+
+            // Colocar os valores
+            await Task.Run(() =>
+            {
+                for (int r = 2; r != dgvLista.Rows.Count; r++)
                 {
-                    for(int c = 1; c != dgvLista.Columns.Count; c++)
+                    for (int c = 1; c != dgvLista.Columns.Count; c++)
                     {
                         worksheet.Cell(r, c).Style.Font.FontName = "Lato";
 
@@ -90,18 +114,19 @@ namespace ProjectBook.GUI
                         worksheet.Cell(r, c).Style.Border.BottomBorder = XLBorderStyleValues.Thin;
                         worksheet.Cell(r, c).Style.Border.BottomBorderColor = XLColor.DarkGray;
 
-                        worksheet.Cell(r, c).Value = dgvLista.Rows[r-2].Cells[c-1].Value;
+                        worksheet.Cell(r, c).Value = dgvLista.Rows[r - 2].Cells[c - 1].Value;
                     }
                 }
+            });
 
-                SaveFileDialog saveFileDialog = new();
-                saveFileDialog.Filter = "Arquivo XLSX (*.xlsx) |*.xlsx| Arquivo XLSM (*.xlsm) |*.xlsm";
-                if (saveFileDialog.ShowDialog() != DialogResult.OK) return;
-                
+            SaveFileDialog saveFileDialog = new();
+            saveFileDialog.Filter = "Arquivo XLSX (*.xlsx) |*.xlsx| Arquivo XLSM (*.xlsm) |*.xlsm";
+            if (saveFileDialog.ShowDialog() != DialogResult.OK) return;
 
-                workbook.SaveAs(saveFileDialog.FileName);
-                MessageBox.Show("Planilha salva com sucesso", Resources.MessageBoxInformacao, MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
+
+            workbook.SaveAs(saveFileDialog.FileName);
+            MessageBox.Show("Planilha salva com sucesso", Resources.MessageBoxInformacao, MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
         }
     }
 }

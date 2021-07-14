@@ -4,6 +4,7 @@ using System.Data;
 using System.Windows.Forms;
 using ProjectBook.DB.SqlServerExpress;
 using ProjectBook.Properties;
+using ProjectBook.Tipos;
 
 namespace ProjectBook.GUI
 {
@@ -41,12 +42,17 @@ namespace ProjectBook.GUI
                 }
             }
 
-            AppConfigurationManager.idUsuario = infoUsuario.Rows[0][0].ToString();
-            AppConfigurationManager.usuarioLogado = infoUsuario.Rows[0][1].ToString();
-            AppConfigurationManager.tipoUsuario = infoUsuario.Rows[0][3].ToString() == "ADM" ? Tipos.TipoUsuário.ADM : Tipos.TipoUsuário.USU;
+            UserInfo.UserNowInstance = new UserInfo
+            {
+                idUsuario = int.Parse(infoUsuario.Rows[0][0].ToString()), 
+                userName = infoUsuario.Rows[0][1].ToString(), 
+                tipoUsuario = infoUsuario.Rows[0][3].ToString() == "ADM" ? TipoUsuario.ADM : TipoUsuario.USU
+            };
 
             AppManager.ReiniciarPrograma();
         }
+
+        #region txtLeave
         private void txtLoginCodigo_Leave(object sender, EventArgs e)
         {
             if (Verificadores.VerificarStrings(txtLoginCodigo.Text)) return;
@@ -57,7 +63,6 @@ namespace ProjectBook.GUI
 
             txtLoginUsuario.Text = codigoUsuario.Rows[0][1].ToString();
         }
-
         private void txtLoginUsuario_Leave(object sender, EventArgs e)
         {
             if (Verificadores.VerificarStrings(txtLoginUsuario.Text)) return;
@@ -68,6 +73,7 @@ namespace ProjectBook.GUI
 
             txtLoginCodigo.Text = nomeUsuario.Rows[0][0].ToString();
         }
+        #endregion
 
         private void txtLoginSenha_KeyDown(object sender, KeyEventArgs e)
         {

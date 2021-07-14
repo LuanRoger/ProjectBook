@@ -111,7 +111,7 @@ namespace ProjectBook.DB.SqlServerExpress
         }
         #endregion
 
-        public DataRow ReceberTipoUsuario(string usuario)
+        public Tipos.TipoUsuario ReceberTipoUsuario(string usuario)
         {
             DataTable dataTable = new();
             try
@@ -124,7 +124,7 @@ namespace ProjectBook.DB.SqlServerExpress
             catch (Exception e){ MessageBox.Show(e.Message, Resources.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error); 
                 AppInsightMetrics.SendError(e);}
 
-            return dataTable.Rows[0];
+            return dataTable.Rows[0][0].ToString() == "ADM" ? Tipos.TipoUsuario.ADM : Tipos.TipoUsuario.USU;;
         }
         #region Buscar
         public DataTable BuscarUsuarioId(string id)
@@ -179,7 +179,7 @@ namespace ProjectBook.DB.SqlServerExpress
             try
             {
                 AbrirConexaoDb();
-                SqlDataAdapter adapter = new($"SELECT * FROM Usuarios WHERE Tipo = \'{Tipos.TipoUsuário.ADM}\'", connection);
+                SqlDataAdapter adapter = new($"SELECT * FROM Usuarios WHERE Tipo = \'{Tipos.TipoUsuario.ADM}\'", connection);
                 FechaConecxaoDb();
                 adapter.Fill(table);
             }
@@ -194,7 +194,7 @@ namespace ProjectBook.DB.SqlServerExpress
             try
             {
                 AbrirConexaoDb();
-                SqlDataAdapter adapter = new($"SELECT * FROM Usuarios WHERE Tipo = \'{Tipos.TipoUsuário.USU}\'", connection);
+                SqlDataAdapter adapter = new($"SELECT * FROM Usuarios WHERE Tipo = \'{Tipos.TipoUsuario.USU}\'", connection);
                 FechaConecxaoDb();
                 adapter.Fill(table);
             }

@@ -40,6 +40,7 @@ namespace ProjectBook.GUI
             this.lblQItensExibidos = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblQColunas = new System.Windows.Forms.ToolStripStatusLabel();
+            this.pgbAsyncTask = new System.Windows.Forms.ToolStripProgressBar();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLista)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -106,7 +107,8 @@ namespace ProjectBook.GUI
             this.toolStripStatusLabel1,
             this.lblQItensExibidos,
             this.toolStripStatusLabel2,
-            this.lblQColunas});
+            this.lblQColunas,
+            this.pgbAsyncTask});
             this.statusStrip1.Location = new System.Drawing.Point(0, 472);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(822, 24);
@@ -147,6 +149,13 @@ namespace ProjectBook.GUI
             this.lblQColunas.Size = new System.Drawing.Size(17, 19);
             this.lblQColunas.Text = "0";
             // 
+            // pgbAsyncTask
+            // 
+            this.pgbAsyncTask.Name = "pgbAsyncTask";
+            this.pgbAsyncTask.Size = new System.Drawing.Size(100, 18);
+            this.pgbAsyncTask.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+            this.pgbAsyncTask.Visible = false;
+            // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
@@ -173,6 +182,7 @@ namespace ProjectBook.GUI
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Lista";
+            this.Load += new System.EventHandler(this.ListaPesquisa_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvLista)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -196,5 +206,6 @@ namespace ProjectBook.GUI
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
         private System.Windows.Forms.ToolStripStatusLabel lblQColunas;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.ToolStripProgressBar pgbAsyncTask;
     }
 }
