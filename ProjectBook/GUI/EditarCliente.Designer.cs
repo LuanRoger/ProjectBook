@@ -77,7 +77,7 @@ namespace ProjectBook.GUI
             // 
             this.btnBucarCliente.FlatAppearance.BorderSize = 0;
             this.btnBucarCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBucarCliente.Image = global::ProjectBook.Properties.Resources.zoom;
+            this.btnBucarCliente.Image = global::ProjectBook.Properties.Resources.search;
             this.btnBucarCliente.Location = new System.Drawing.Point(266, 48);
             this.btnBucarCliente.Name = "btnBucarCliente";
             this.btnBucarCliente.Size = new System.Drawing.Size(27, 23);
@@ -342,7 +342,7 @@ namespace ProjectBook.GUI
             // btnPesquisarCliente
             // 
             this.btnPesquisarCliente.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnPesquisarCliente.Image = global::ProjectBook.Properties.Resources.zoom;
+            this.btnPesquisarCliente.Image = global::ProjectBook.Properties.Resources.search;
             this.btnPesquisarCliente.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnPesquisarCliente.Name = "btnPesquisarCliente";
             this.btnPesquisarCliente.Size = new System.Drawing.Size(23, 22);

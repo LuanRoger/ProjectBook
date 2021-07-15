@@ -85,7 +85,7 @@ namespace ProjectBook.GUI
             // 
             this.btnBuscarClientePesquisaAluguel.FlatAppearance.BorderSize = 0;
             this.btnBuscarClientePesquisaAluguel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBuscarClientePesquisaAluguel.Image = global::ProjectBook.Properties.Resources.zoom;
+            this.btnBuscarClientePesquisaAluguel.Image = global::ProjectBook.Properties.Resources.search;
             this.btnBuscarClientePesquisaAluguel.Location = new System.Drawing.Point(191, 72);
             this.btnBuscarClientePesquisaAluguel.Name = "btnBuscarClientePesquisaAluguel";
             this.btnBuscarClientePesquisaAluguel.Size = new System.Drawing.Size(26, 23);

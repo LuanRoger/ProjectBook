@@ -1,8 +1,8 @@
 ﻿namespace ProjectBook.Livros
 {
-    class Cliente
+    class ClienteModel
     {
-        public Cliente(string nomeCompleto, string endereco, string cidade, string estado, string cep, string telefone1, string telefone2, string email)
+        public ClienteModel(string nomeCompleto, string endereco, string cidade, string estado, string cep, string telefone1, string telefone2, string email)
         {
             this.nomeCompleto = nomeCompleto;
             this.endereco = endereco;

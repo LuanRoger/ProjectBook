@@ -61,6 +61,16 @@ namespace ProjectBook.Properties {
         }
         
         /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap admin {
+            get {
+                object obj = ResourceManager.GetObject("admin", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Aluguel registrado com sucesso..
         /// </summary>
         internal static string AluguelRegistrado {
@@ -774,6 +784,16 @@ namespace ProjectBook.Properties {
         }
         
         /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap search {
+            get {
+                object obj = ResourceManager.GetObject("search", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Sobre.
         /// </summary>
         internal static string sobre_MessageBox {
@@ -849,16 +869,6 @@ namespace ProjectBook.Properties {
         }
         
         /// <summary>
-        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap user_gray {
-            get {
-                object obj = ResourceManager.GetObject("user_gray", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Icon semelhante a (Ícone).
         /// </summary>
         internal static System.Drawing.Icon UserGrayIcons {
@@ -883,16 +893,6 @@ namespace ProjectBook.Properties {
         internal static string UsuarioRegistrado {
             get {
                 return ResourceManager.GetString("UsuarioRegistrado", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap zoom {
-            get {
-                object obj = ResourceManager.GetObject("zoom", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }

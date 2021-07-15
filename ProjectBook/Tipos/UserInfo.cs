@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using ProjectBook.Managers;
 
 namespace ProjectBook.Tipos
 {
@@ -24,15 +25,6 @@ namespace ProjectBook.Tipos
                 return UserNow;
             }
             set => UserNow = value;
-        }
-        public static void SetUser(int idUsuario, string userName, TipoUsuario tipoUsuario)
-        {
-            UserNowInstance = new UserInfo
-            {
-                idUsuario = idUsuario,
-                userName = userName,
-                tipoUsuario = tipoUsuario
-            };
         }
         public int idUsuario { get; set; }
         public string userName { get; set; }

@@ -220,7 +220,7 @@ namespace ProjectBook.GUI
             // 
             this.btnBuscarEditar.FlatAppearance.BorderSize = 0;
             this.btnBuscarEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBuscarEditar.Image = global::ProjectBook.Properties.Resources.zoom;
+            this.btnBuscarEditar.Image = global::ProjectBook.Properties.Resources.search;
             this.btnBuscarEditar.Location = new System.Drawing.Point(263, 44);
             this.btnBuscarEditar.Name = "btnBuscarEditar";
             this.btnBuscarEditar.Size = new System.Drawing.Size(29, 23);
@@ -347,7 +347,7 @@ namespace ProjectBook.GUI
             // btnPesquisarLivros
             // 
             this.btnPesquisarLivros.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnPesquisarLivros.Image = global::ProjectBook.Properties.Resources.zoom;
+            this.btnPesquisarLivros.Image = global::ProjectBook.Properties.Resources.search;
             this.btnPesquisarLivros.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnPesquisarLivros.Name = "btnPesquisarLivros";
             this.btnPesquisarLivros.Size = new System.Drawing.Size(23, 22);

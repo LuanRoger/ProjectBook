@@ -1,9 +1,9 @@
 ﻿using System;
-using System.Configuration;
 using System.Windows.Forms;
 using ProjectBook.AppInsight;
 using ProjectBook.DB.SqlServerExpress;
 using ProjectBook.Livros;
+using ProjectBook.Managers;
 
 namespace ProjectBook.GUI
 {
@@ -30,12 +30,12 @@ namespace ProjectBook.GUI
 
         private void btnSalvarCliente_Click(object sender, EventArgs e)
         {
-            Cliente cliente;
+            ClienteModel cliente;
 
             //Aplicar a formatação na instânciação do cliente
             if (AppConfigurationManager.formatarCliente)
             {
-                cliente = new Cliente(
+                cliente = new ClienteModel(
                     txtNomeCliente.Text.ToUpper(),
                     txtEnderecoCliente.Text.ToUpper(),
                     txtCidadeCliente.Text.ToUpper(),
@@ -47,7 +47,7 @@ namespace ProjectBook.GUI
             }
             else
             {
-                cliente = new Cliente(
+                cliente = new ClienteModel(
                     txtNomeCliente.Text,
                     txtEnderecoCliente.Text,
                     txtCidadeCliente.Text,

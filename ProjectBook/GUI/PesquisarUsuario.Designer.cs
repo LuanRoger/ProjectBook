@@ -78,7 +78,7 @@ namespace ProjectBook.GUI
             // 
             this.bntBuscarUsuario.FlatAppearance.BorderSize = 0;
             this.bntBuscarUsuario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bntBuscarUsuario.Image = global::ProjectBook.Properties.Resources.zoom;
+            this.bntBuscarUsuario.Image = global::ProjectBook.Properties.Resources.search;
             this.bntBuscarUsuario.Location = new System.Drawing.Point(222, 85);
             this.bntBuscarUsuario.Name = "bntBuscarUsuario";
             this.bntBuscarUsuario.Size = new System.Drawing.Size(25, 23);

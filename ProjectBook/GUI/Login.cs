@@ -1,10 +1,10 @@
 ﻿using System;
-using System.Configuration;
 using System.Data;
 using System.Windows.Forms;
 using ProjectBook.DB.SqlServerExpress;
 using ProjectBook.Properties;
 using ProjectBook.Tipos;
+using ProjectBook.Managers;
 
 namespace ProjectBook.GUI
 {

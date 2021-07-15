@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Configuration;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 using ProjectBook.Properties;
@@ -7,6 +6,7 @@ using System.Data;
 using System.Diagnostics;
 using ProjectBook.GUI;
 using ProjectBook.AppInsight;
+using ProjectBook.Managers;
 
 namespace ProjectBook.DB.SqlServerExpress
 {

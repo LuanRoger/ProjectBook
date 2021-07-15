@@ -1,10 +1,11 @@
-﻿using System.Configuration;
-using System.Data;
+﻿using System.Data;
 using System.IO;
 using System.Management;
 using ProjectBook.Livros;
 using ProjectBook.DB.SqlServerExpress;
 using ProjectBook.Tipos;
+using ProjectBook.Managers;
+using System.Windows.Forms;
 
 namespace ProjectBook
 {
@@ -15,7 +16,7 @@ namespace ProjectBook
         /// </summary>
         /// <param name="livro"><c>Livro</c> que será analisado</param>.
         /// <returns>Retorna <c>error</c></returns>
-        public static bool VerificarCamposLivros(Livro livro)
+        public static bool VerificarCamposLivros(LivroModel livro)
         {
             return livro.titulo.Length == 0 || livro.autor.Length == 0 || livro.editora.Length == 0 || livro.ano.Length == 0;
         }
@@ -25,7 +26,7 @@ namespace ProjectBook
         /// </summary>
         /// <param name="aluguel"><c>Aluguel</c> que será analisado</param>.
         /// <returns>Retorna <c>error</c></returns>
-        public static bool VerificarCamposAluguel(Aluguel aluguel)
+        public static bool VerificarCamposAluguel(AluguelModel aluguel)
         {
             return aluguel.titulo.Length == 0 || aluguel.autor.Length == 0 || aluguel.alugadoPor.Length == 0;
         }
@@ -35,7 +36,7 @@ namespace ProjectBook
         /// </summary>
         /// <param name="cliente"><c>Cliente</c> que será analisado</param>.
         /// <returns>Retorna <c>error</c></returns>
-        public static bool VerificarCamposCliente(Cliente cliente)
+        public static bool VerificarCamposCliente(ClienteModel cliente)
         {
             return cliente.nomeCompleto.Length == 0 || cliente.cidade.Length == 0 || cliente.estado.Length == 0 || cliente.telefone1.Length == 0;
         }
@@ -45,7 +46,7 @@ namespace ProjectBook
         /// </summary>
         /// <param name="usuario"><c>Usuario</c> que será analisado</param>.
         /// <returns>Retorna <c>error</c></returns>
-        public static bool VerificarCamposUsuario(Usuario usuario)
+        public static bool VerificarCamposUsuario(UsuarioModel usuario)
         {
             return usuario.usuario.Length == 0 || usuario.senha.Length == 0 || usuario.tipo.Length == 0;
         }
@@ -59,6 +60,7 @@ namespace ProjectBook
         {
             return table.Rows.Count == 0;
         }
+        public static bool VerificarDataGrid(DataGridView dataGridView) => dataGridView.Rows.Count == 0;
 
         /// <summary>
         /// Verifica se já existe um mesmo <c>id</c> cadastrado.

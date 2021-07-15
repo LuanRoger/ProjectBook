@@ -21,7 +21,11 @@ namespace ProjectBook.GUI
 
         private void btnCadastrarUsuario_Click(object sender, EventArgs e)
         {
-            Usuario usuario = new(txtUsuarioCadastrar.Text, txtSenhaCadastrar.Text, TipoUsuario.USU.ToString());
+            UsuarioModel usuario = 
+                new(txtUsuarioCadastrar.Text,
+                txtSenhaCadastrar.Text,
+                TipoUsuario.USU.ToString());
+
             if (Verificadores.VerificarCamposUsuario(usuario))
             {
                 MessageBox.Show(Resources.PreecherCampoBusca, Resources.MessageBoxError,
@@ -36,7 +40,7 @@ namespace ProjectBook.GUI
 
         private void btnSalvarEditarUsuario_Click(object sender, EventArgs e)
         {
-            Usuario usuario = new(txtNovoUsuario.Text, txtNovoSenhaUsuario.Text, cmdNovoStatus.Text);
+            UsuarioModel usuario = new(txtNovoUsuario.Text, txtNovoSenhaUsuario.Text, cmbNovoStatus.Text);
             if (Verificadores.VerificarCamposUsuario(usuario))
             {
                 MessageBox.Show(Resources.PreecherCampoBusca, Resources.MessageBoxError,
@@ -64,27 +68,7 @@ namespace ProjectBook.GUI
 
             txtNovoUsuario.Text = infoUsuario.Rows[0][1].ToString();
             txtNovoSenhaUsuario.Text = infoUsuario.Rows[0][2].ToString();
-            cmdNovoStatus.Text = infoUsuario.Rows[0][3].ToString();
-        }
-
-        private void btnDeletarUsuario_Click(object sender, EventArgs e)
-        {
-            DataTable infoUsuario = usuarioDb.BuscarUsuarioId(txtIdDeletarUsuario.Text);
-
-            if (Verificadores.VerificarDataTable(infoUsuario))
-            {
-                MessageBox.Show(Resources.PreecherCampoBusca, Resources.MessageBoxError,
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            DialogResult dialogResult = MessageBox.Show(string.Format(Resources.ConfirmarExclusao1, infoUsuario.Rows[0][1]),
-                Resources.MessageBoxError,
-                MessageBoxButtons.YesNo, MessageBoxIcon.Stop);
-            if (dialogResult == DialogResult.No) return;
-
-            usuarioDb.DeletarUsuarioId(txtIdDeletarUsuario.Text);
-            LimparCampos();
+            cmbNovoStatus.Text = infoUsuario.Rows[0][3].ToString();
         }
 
         private void btnLimparEditarUsuario_Click(object sender, EventArgs e) => LimparCampos();
@@ -96,10 +80,9 @@ namespace ProjectBook.GUI
             txtSenhaCadastrar.Clear();
             txtNovoUsuario.Clear();
             txtNovoSenhaUsuario.Clear();
-            cmdNovoStatus.Text = "";
+            cmbNovoStatus.Text = "";
             txtIdBuscarUsuario.Enabled = true;
             txtIdBuscarUsuario.Clear();
-            txtIdDeletarUsuario.Clear();
         }
     }
 }

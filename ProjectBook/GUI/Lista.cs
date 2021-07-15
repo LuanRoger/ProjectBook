@@ -42,8 +42,11 @@ namespace ProjectBook.GUI
             {
                 pgbAsyncTask.Visible = true;
 
-                Imprimir imprimir = new();
-                await imprimir.ImprimirModelo(dgvLista);
+                if(!Verificadores.VerificarDataGrid(dgvLista))
+                {
+                    Imprimir imprimir = new();
+                    await imprimir.ImprimirModelo(dgvLista);
+                }
 
                 pgbAsyncTask.Visible = false;
             };
@@ -51,7 +54,7 @@ namespace ProjectBook.GUI
             {
                 pgbAsyncTask.Visible = true;
 
-                await ExportToSheets();
+                if(!Verificadores.VerificarDataGrid(dgvLista)) await ExportToSheets();
 
                 pgbAsyncTask.Visible = false;
             };

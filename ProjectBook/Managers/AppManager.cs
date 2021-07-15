@@ -9,7 +9,7 @@ using ProjectBook.DB.SqlServerExpress;
 using ProjectBook.AppInsight;
 using ProjectBook.Tipos;
 
-namespace ProjectBook
+namespace ProjectBook.Managers
 {
     static class AppManager
     {
@@ -47,6 +47,7 @@ namespace ProjectBook
             AutoUpdater.Start(AppConfigurationManager.updateFileServer,
                 Assembly.GetExecutingAssembly());
         }
+
         public static void GiveAdm()
         {
             UserInfo.UserNowInstance.tipoUsuario = TipoUsuario.ADM;
@@ -55,6 +56,7 @@ namespace ProjectBook
         {
             UserInfo.UserNowInstance.tipoUsuario = TipoUsuario.USU;
         }
+
         public static void LoadUser()
         {
             if(File.Exists(Consts.FILE_FULL_NAME)) UserInfo.DeserializeUserInstance();
@@ -79,5 +81,8 @@ namespace ProjectBook
         public const string USER_FORMAT = ".puf";
         public const string USER_FILE_NAME = "UserInfo";
         public const string FILE_FULL_NAME = USER_FILE_NAME + USER_FORMAT;
+
+        public static readonly string PASTA_APLICACAO_ONEDRIVE = 
+            Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\OneDrive\ProjectBook";
     }
 }

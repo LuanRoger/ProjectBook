@@ -9,13 +9,14 @@ using ProjectBook.GUI;
 using ProjectBook.Properties;
 using System.Threading.Tasks;
 using ProjectBook.DB.OneDrive;
+using ProjectBook.Managers;
 
 namespace ProjectBook
 {
     public partial class SplashScreen : Form
     {
-        private readonly string FONTMONTSERRATEXTRABOLD = Application.StartupPath + @"font\Montserrat-ExtraBold.ttf";
-        private readonly string FONTMONTSERRATEXTRALIGHT = Application.StartupPath + @"font\Montserrat-ExtraLight.ttf";
+        private readonly string FONT_MONTSERRAT_EXTRABOLD = Application.StartupPath + @"font\Montserrat-ExtraBold.ttf";
+        private readonly string FONT_MONTSERRAT_EXTRALIGHT = Application.StartupPath + @"font\Montserrat-ExtraLight.ttf";
 
         private LivrosDb livrosDb = new();
 
@@ -26,13 +27,13 @@ namespace ProjectBook
             AppManager.DownloadFonts();
 
             PrivateFontCollection privateFont = new();
-            privateFont.AddFontFile(FONTMONTSERRATEXTRABOLD);
-            privateFont.AddFontFile(FONTMONTSERRATEXTRALIGHT);
+            privateFont.AddFontFile(FONT_MONTSERRAT_EXTRABOLD);
+            privateFont.AddFontFile(FONT_MONTSERRAT_EXTRALIGHT);
 
             label1.Font = new Font(privateFont.Families[0], 20, FontStyle.Bold);
             label2.Font = new Font(privateFont.Families[1], 7, FontStyle.Regular);
         }
-        private async void SplashScreen_Activated(object sender, EventArgs e)
+        private async void SplashScreen_Load(object sender, EventArgs e)
         {
             if (!livrosDb.VerificarConexaoDb()) return;
 

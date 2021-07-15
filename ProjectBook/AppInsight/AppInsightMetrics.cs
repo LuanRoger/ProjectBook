@@ -4,6 +4,7 @@ using Microsoft.ApplicationInsights;
 using System.Reflection;
 using System.Threading;
 using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector;
+using ProjectBook.Managers;
 
 namespace ProjectBook.AppInsight
 {

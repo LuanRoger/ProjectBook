@@ -288,7 +288,7 @@ namespace ProjectBook.GUI
             // btnPesquisarLivros
             // 
             this.btnPesquisarLivros.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnPesquisarLivros.Image = global::ProjectBook.Properties.Resources.zoom;
+            this.btnPesquisarLivros.Image = global::ProjectBook.Properties.Resources.search;
             this.btnPesquisarLivros.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnPesquisarLivros.Name = "btnPesquisarLivros";
             this.btnPesquisarLivros.Size = new System.Drawing.Size(23, 22);

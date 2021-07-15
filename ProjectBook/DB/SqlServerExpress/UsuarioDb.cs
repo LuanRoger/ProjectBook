@@ -10,7 +10,7 @@ namespace ProjectBook.DB.SqlServerExpress
 {
     class UsuarioDb : Db
     {
-        public void CadastrarUsuario(Usuario usuario)
+        public void CadastrarUsuario(UsuarioModel usuario)
         {
             SqlCommand command = new() { Connection = connection};
             #region Parâmetros
@@ -54,7 +54,7 @@ namespace ProjectBook.DB.SqlServerExpress
             catch (SqlException e){ MessageBox.Show(e.Message, Resources.ErrorConectarDb, MessageBoxButtons.OK, MessageBoxIcon.Error); 
                 AppInsightMetrics.SendError(e); }
         }
-        public void AtualizarUsuarioId(string id, Usuario usuario)
+        public void AtualizarUsuarioId(string id, UsuarioModel usuario)
         {
             SqlCommand command = new() { Connection = connection};
             #region Parâmetros

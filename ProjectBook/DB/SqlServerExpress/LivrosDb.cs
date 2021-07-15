@@ -10,7 +10,7 @@ namespace ProjectBook.DB.SqlServerExpress
 {
     class LivrosDb : Db
     {
-        public void AdicionarLivro(Livro livro)
+        public void AdicionarLivro(LivroModel livro)
         {
             SqlCommand command = new() { Connection = connection};
             #region Parâmetros
@@ -186,7 +186,7 @@ namespace ProjectBook.DB.SqlServerExpress
         #endregion
 
         #region Atualizar
-        public void AtualizarViaId(string id, Livro livro)
+        public void AtualizarViaId(string id, LivroModel livro)
         {
             SqlCommand command = new() { Connection = connection};
             #region Parâmetros
@@ -216,7 +216,7 @@ namespace ProjectBook.DB.SqlServerExpress
             catch (SqlException e) { MessageBox.Show(e.Message, Resources.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error); 
                 AppInsightMetrics.SendError(e); }
         }
-        public void AtualizarViaTitulo(string titulo, Livro livro)
+        public void AtualizarViaTitulo(string titulo, LivroModel livro)
         {
             SqlCommand command = new() { Connection = connection};
             #region Parâmetros
@@ -246,7 +246,7 @@ namespace ProjectBook.DB.SqlServerExpress
             catch (SqlException e) { MessageBox.Show(e.Message, Resources.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error); 
                 AppInsightMetrics.SendError(e); }
         }
-        public void AtualizarViaAutor(string autor, Livro livro)
+        public void AtualizarViaAutor(string autor, LivroModel livro)
         {
             SqlCommand command = new() { Connection = connection};
             #region Parâmetros

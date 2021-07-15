@@ -2,9 +2,9 @@
 
 namespace ProjectBook.Livros
 {
-    class Livro
+    class LivroModel
     {
-        public Livro(string id, string titulo, string autor, string editora, string edicao, string ano,
+        public LivroModel(string id, string titulo, string autor, string editora, string edicao, string ano,
             string genero, string isbn, DateTime dataCadastro, string observacoes)
         {
             this.id = id;

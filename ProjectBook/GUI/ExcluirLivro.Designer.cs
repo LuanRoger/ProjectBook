@@ -49,7 +49,7 @@ namespace ProjectBook.GUI
             this.btnBuscarExcluirLivro.BackColor = System.Drawing.Color.Transparent;
             this.btnBuscarExcluirLivro.FlatAppearance.BorderSize = 0;
             this.btnBuscarExcluirLivro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBuscarExcluirLivro.Image = global::ProjectBook.Properties.Resources.zoom;
+            this.btnBuscarExcluirLivro.Image = global::ProjectBook.Properties.Resources.search;
             this.btnBuscarExcluirLivro.Location = new System.Drawing.Point(227, 38);
             this.btnBuscarExcluirLivro.Name = "btnBuscarExcluirLivro";
             this.btnBuscarExcluirLivro.Size = new System.Drawing.Size(28, 23);

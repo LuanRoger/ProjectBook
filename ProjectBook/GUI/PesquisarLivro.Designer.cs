@@ -115,7 +115,7 @@ namespace ProjectBook.GUI
             this.btnPesquisarSeletiva.BackColor = System.Drawing.Color.Transparent;
             this.btnPesquisarSeletiva.FlatAppearance.BorderSize = 0;
             this.btnPesquisarSeletiva.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPesquisarSeletiva.Image = global::ProjectBook.Properties.Resources.zoom;
+            this.btnPesquisarSeletiva.Image = global::ProjectBook.Properties.Resources.search;
             this.btnPesquisarSeletiva.Location = new System.Drawing.Point(324, 80);
             this.btnPesquisarSeletiva.Name = "btnPesquisarSeletiva";
             this.btnPesquisarSeletiva.Size = new System.Drawing.Size(25, 23);

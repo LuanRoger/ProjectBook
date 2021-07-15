@@ -1,11 +1,11 @@
 ﻿using System;
-using System.Configuration;
 using System.Data;
 using System.Windows.Forms;
 using ProjectBook.AppInsight;
 using ProjectBook.DB.SqlServerExpress;
 using ProjectBook.Livros;
 using ProjectBook.Properties;
+using ProjectBook.Managers;
 
 namespace ProjectBook.GUI
 {
@@ -98,11 +98,11 @@ namespace ProjectBook.GUI
             }
             #endregion
 
-            Livro livro;
+            LivroModel livro;
             //Aplicar a formatação na instânciação do livro
             if (AppConfigurationManager.formatarLivro)
             {
-                livro = new Livro(
+                livro = new LivroModel(
                     txtEditarCodigo.Text,
                     txtEditarTitulo.Text.ToUpper(),
                     txtEditarAutor.Text.ToUpper(),
@@ -116,7 +116,7 @@ namespace ProjectBook.GUI
             }
             else
             {
-                livro = new Livro(
+                livro = new LivroModel(
                     txtEditarCodigo.Text,
                     txtEditarTitulo.Text,
                     txtEditarAutor.Text,

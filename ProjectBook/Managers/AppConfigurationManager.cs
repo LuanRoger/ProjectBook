@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Configuration;
 
-namespace ProjectBook
+namespace ProjectBook.Managers
 {
     public static class AppConfigurationManager
     {

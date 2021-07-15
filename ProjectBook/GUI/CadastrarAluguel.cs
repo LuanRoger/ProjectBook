@@ -97,7 +97,7 @@ namespace ProjectBook.GUI
 
         private void btnSalvarAluguel_Click(object sender, EventArgs e)
         {
-            Aluguel aluguel = new(
+            AluguelModel aluguel = new(
                 txtTituloLivroAluguel.Text,
                 txtAutorLivroAluguel.Text,
                 txtNomeClienteAluguel.Text,

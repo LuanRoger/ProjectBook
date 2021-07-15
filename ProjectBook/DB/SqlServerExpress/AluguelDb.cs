@@ -9,7 +9,7 @@ namespace ProjectBook.DB.SqlServerExpress
 {
     class AluguelDb : Db
     {
-        public void CadastrarAluguel(Aluguel aluguel)
+        public void CadastrarAluguel(AluguelModel aluguel)
         {
             SqlCommand command = new() { Connection = connection};
             #region Parâmetros
@@ -215,7 +215,7 @@ namespace ProjectBook.DB.SqlServerExpress
         #endregion
 
         #region Atualizar
-        public void AtualizarAluguelNomeCliente(Aluguel aluguel, string nomeCliente, string nomeLivro)
+        public void AtualizarAluguelNomeCliente(AluguelModel aluguel, string nomeCliente, string nomeLivro)
         {
             SqlCommand command = new() { Connection = connection};
             #region Parâmetros

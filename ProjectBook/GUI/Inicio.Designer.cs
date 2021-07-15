@@ -115,6 +115,7 @@ namespace ProjectBook.GUI
             this.mnuArBuscaRapida = new System.Windows.Forms.ToolStripButton();
             this.totAccountError = new System.Windows.Forms.ToolTip(this.components);
             this.bgwInicioActivated = new System.ComponentModel.BackgroundWorker();
+            this.mnuExcluirUsuario = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuInicio.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -277,14 +278,14 @@ namespace ProjectBook.GUI
             this.mnuNovoLivro.BackColor = System.Drawing.SystemColors.Control;
             this.mnuNovoLivro.Image = global::ProjectBook.Properties.Resources.book_add;
             this.mnuNovoLivro.Name = "mnuNovoLivro";
-            this.mnuNovoLivro.Size = new System.Drawing.Size(130, 22);
+            this.mnuNovoLivro.Size = new System.Drawing.Size(180, 22);
             this.mnuNovoLivro.Text = "Novo livro";
             // 
             // mnuEditarLivro
             // 
             this.mnuEditarLivro.Image = global::ProjectBook.Properties.Resources.book_edit;
             this.mnuEditarLivro.Name = "mnuEditarLivro";
-            this.mnuEditarLivro.Size = new System.Drawing.Size(130, 22);
+            this.mnuEditarLivro.Size = new System.Drawing.Size(180, 22);
             this.mnuEditarLivro.Text = "Editar livro";
             // 
             // mnuClientes
@@ -300,14 +301,14 @@ namespace ProjectBook.GUI
             // 
             this.mnuCadastrarCliente.Image = global::ProjectBook.Properties.Resources.client_add;
             this.mnuCadastrarCliente.Name = "mnuCadastrarCliente";
-            this.mnuCadastrarCliente.Size = new System.Drawing.Size(147, 22);
+            this.mnuCadastrarCliente.Size = new System.Drawing.Size(180, 22);
             this.mnuCadastrarCliente.Text = "Novo cliente";
             // 
             // mnuEditarClientes
             // 
             this.mnuEditarClientes.Image = global::ProjectBook.Properties.Resources.client_edit;
             this.mnuEditarClientes.Name = "mnuEditarClientes";
-            this.mnuEditarClientes.Size = new System.Drawing.Size(147, 22);
+            this.mnuEditarClientes.Size = new System.Drawing.Size(180, 22);
             this.mnuEditarClientes.Text = "Editar clientes";
             // 
             // mnuAluguel
@@ -323,14 +324,14 @@ namespace ProjectBook.GUI
             // 
             this.mnuCadastrarAluguel.Image = global::ProjectBook.Properties.Resources.page_add;
             this.mnuCadastrarAluguel.Name = "mnuCadastrarAluguel";
-            this.mnuCadastrarAluguel.Size = new System.Drawing.Size(146, 22);
+            this.mnuCadastrarAluguel.Size = new System.Drawing.Size(180, 22);
             this.mnuCadastrarAluguel.Text = "Novo aluguel";
             // 
             // mnuEditarAluguel
             // 
             this.mnuEditarAluguel.Image = global::ProjectBook.Properties.Resources.page_edit;
             this.mnuEditarAluguel.Name = "mnuEditarAluguel";
-            this.mnuEditarAluguel.Size = new System.Drawing.Size(146, 22);
+            this.mnuEditarAluguel.Size = new System.Drawing.Size(180, 22);
             this.mnuEditarAluguel.Text = "Editar aluguel";
             // 
             // mnuUsuario
@@ -344,16 +345,16 @@ namespace ProjectBook.GUI
             // 
             // mnuGerenciarUsuario
             // 
-            this.mnuGerenciarUsuario.Image = global::ProjectBook.Properties.Resources.user_gray;
+            this.mnuGerenciarUsuario.Image = global::ProjectBook.Properties.Resources.admin;
             this.mnuGerenciarUsuario.Name = "mnuGerenciarUsuario";
-            this.mnuGerenciarUsuario.Size = new System.Drawing.Size(171, 22);
+            this.mnuGerenciarUsuario.Size = new System.Drawing.Size(180, 22);
             this.mnuGerenciarUsuario.Text = "Gerenciar usuario";
             // 
             // mnuPesquisarUsuarios
             // 
-            this.mnuPesquisarUsuarios.Image = global::ProjectBook.Properties.Resources.zoom;
+            this.mnuPesquisarUsuarios.Image = global::ProjectBook.Properties.Resources.search;
             this.mnuPesquisarUsuarios.Name = "mnuPesquisarUsuarios";
-            this.mnuPesquisarUsuarios.Size = new System.Drawing.Size(171, 22);
+            this.mnuPesquisarUsuarios.Size = new System.Drawing.Size(180, 22);
             this.mnuPesquisarUsuarios.Text = "Pesquisar usuários";
             // 
             // mnuPesquisar
@@ -373,7 +374,7 @@ namespace ProjectBook.GUI
             // 
             // mnuTodosLivros
             // 
-            this.mnuTodosLivros.Image = global::ProjectBook.Properties.Resources.zoom;
+            this.mnuTodosLivros.Image = global::ProjectBook.Properties.Resources.search;
             this.mnuTodosLivros.Name = "mnuTodosLivros";
             this.mnuTodosLivros.Size = new System.Drawing.Size(196, 22);
             this.mnuTodosLivros.Text = "Ver todos os livros";
@@ -392,7 +393,7 @@ namespace ProjectBook.GUI
             // 
             // mnuTodosClientes
             // 
-            this.mnuTodosClientes.Image = global::ProjectBook.Properties.Resources.zoom;
+            this.mnuTodosClientes.Image = global::ProjectBook.Properties.Resources.search;
             this.mnuTodosClientes.Name = "mnuTodosClientes";
             this.mnuTodosClientes.Size = new System.Drawing.Size(196, 22);
             this.mnuTodosClientes.Text = "Ver todos os clientes";
@@ -411,7 +412,7 @@ namespace ProjectBook.GUI
             // 
             // mnuLivrosAlugados
             // 
-            this.mnuLivrosAlugados.Image = global::ProjectBook.Properties.Resources.zoom;
+            this.mnuLivrosAlugados.Image = global::ProjectBook.Properties.Resources.search;
             this.mnuLivrosAlugados.Name = "mnuLivrosAlugados";
             this.mnuLivrosAlugados.Size = new System.Drawing.Size(196, 22);
             this.mnuLivrosAlugados.Text = "Ver livros alugados";
@@ -428,7 +429,8 @@ namespace ProjectBook.GUI
             this.mnuExcluir.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuExcluirLivro,
             this.mnuExcluirCliente,
-            this.mnuExcluirAluguel});
+            this.mnuExcluirAluguel,
+            this.mnuExcluirUsuario});
             this.mnuExcluir.Name = "mnuExcluir";
             this.mnuExcluir.Size = new System.Drawing.Size(54, 20);
             this.mnuExcluir.Text = "Excluir";
@@ -437,21 +439,21 @@ namespace ProjectBook.GUI
             // 
             this.mnuExcluirLivro.Image = global::ProjectBook.Properties.Resources.book_delete;
             this.mnuExcluirLivro.Name = "mnuExcluirLivro";
-            this.mnuExcluirLivro.Size = new System.Drawing.Size(151, 22);
+            this.mnuExcluirLivro.Size = new System.Drawing.Size(180, 22);
             this.mnuExcluirLivro.Text = "Excluir livro";
             // 
             // mnuExcluirCliente
             // 
             this.mnuExcluirCliente.Image = global::ProjectBook.Properties.Resources.client_delete;
             this.mnuExcluirCliente.Name = "mnuExcluirCliente";
-            this.mnuExcluirCliente.Size = new System.Drawing.Size(151, 22);
+            this.mnuExcluirCliente.Size = new System.Drawing.Size(180, 22);
             this.mnuExcluirCliente.Text = "Excluir cliente";
             // 
             // mnuExcluirAluguel
             // 
             this.mnuExcluirAluguel.Image = global::ProjectBook.Properties.Resources.page_delete;
             this.mnuExcluirAluguel.Name = "mnuExcluirAluguel";
-            this.mnuExcluirAluguel.Size = new System.Drawing.Size(151, 22);
+            this.mnuExcluirAluguel.Size = new System.Drawing.Size(180, 22);
             this.mnuExcluirAluguel.Text = "Excluir aluguel";
             // 
             // mnuConfig
@@ -730,7 +732,7 @@ namespace ProjectBook.GUI
             // mnuArUsuario
             // 
             this.mnuArUsuario.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.mnuArUsuario.Image = global::ProjectBook.Properties.Resources.user_gray;
+            this.mnuArUsuario.Image = global::ProjectBook.Properties.Resources.admin;
             this.mnuArUsuario.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.mnuArUsuario.Name = "mnuArUsuario";
             this.mnuArUsuario.Size = new System.Drawing.Size(23, 22);
@@ -758,6 +760,13 @@ namespace ProjectBook.GUI
             // bgwInicioActivated
             // 
             this.bgwInicioActivated.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwInicioActivated_DoWork);
+            // 
+            // mnuExcluirUsuario
+            // 
+            this.mnuExcluirUsuario.Image = global::ProjectBook.Properties.Resources.delete;
+            this.mnuExcluirUsuario.Name = "mnuExcluirUsuario";
+            this.mnuExcluirUsuario.Size = new System.Drawing.Size(180, 22);
+            this.mnuExcluirUsuario.Text = "Excluir usuário";
             // 
             // Inicio
             // 
@@ -875,6 +884,7 @@ namespace ProjectBook.GUI
         private System.Windows.Forms.Button btnAccountError;
         private System.Windows.Forms.ToolTip totAccountError;
         private System.ComponentModel.BackgroundWorker bgwInicioActivated;
+        private System.Windows.Forms.ToolStripMenuItem mnuExcluirUsuario;
     }
 }
 

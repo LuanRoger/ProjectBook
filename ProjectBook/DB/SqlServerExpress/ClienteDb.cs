@@ -9,7 +9,7 @@ namespace ProjectBook.DB.SqlServerExpress
 {
     class ClienteDb : Db
     {
-        public void CadastrarCliente(Cliente cliente)
+        public void CadastrarCliente(ClienteModel cliente)
         {
             SqlCommand command = new() { Connection = connection};
             #region Parâmetros
@@ -134,7 +134,7 @@ namespace ProjectBook.DB.SqlServerExpress
         #endregion
 
         #region Atualizar
-        public void AtualizarClienteId(string id, Cliente cliente)
+        public void AtualizarClienteId(string id, ClienteModel cliente)
         {
             SqlCommand command = new() { Connection = connection};
             #region Parâmetros

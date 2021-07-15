@@ -2,9 +2,9 @@
 
 namespace ProjectBook.Livros
 {
-    class Aluguel
+    class AluguelModel
     {
-        public Aluguel(string titulo, string autor, string alugadoPor, DateTime dataEntrega, DateTime dataDevolucao, string status)
+        public AluguelModel(string titulo, string autor, string alugadoPor, DateTime dataEntrega, DateTime dataDevolucao, string status)
         {
             this.titulo = titulo;
             this.autor = autor;

@@ -1,11 +1,11 @@
 ﻿using System;
-using System.Configuration;
 using System.Data;
 using System.Windows.Forms;
 using ProjectBook.AppInsight;
 using ProjectBook.DB.SqlServerExpress;
 using ProjectBook.Livros;
 using ProjectBook.Properties;
+using ProjectBook.Managers;
 
 namespace ProjectBook.GUI
 {
@@ -59,11 +59,11 @@ namespace ProjectBook.GUI
             catch { MessageBox.Show(string.Format(Resources.TypeError, "Ano"), Resources.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error); 
                 AppInsightMetrics.SendError(new Exception(string.Format(Resources.TypeError, "Ano"))); return;}
 
-            Livro livro;
+            LivroModel livro;
             //Aplicar a formatação na instânciação do livro
             if (AppConfigurationManager.formatarLivro)
             {
-                livro = new Livro(
+                livro = new LivroModel(
                     txtCodigoLivro.Text,
                     txtTituloLivro.Text.ToUpper(),
                     txtAutorLivro.Text.ToUpper(),
@@ -77,7 +77,7 @@ namespace ProjectBook.GUI
             }
             else
             {
-                livro = new Livro(
+                livro = new LivroModel(
                     txtCodigoLivro.Text,
                     txtTituloLivro.Text,
                     txtAutorLivro.Text,
@@ -92,7 +92,7 @@ namespace ProjectBook.GUI
             
             if (Verificadores.VerificarCamposLivros(livro))
             {
-                MessageBox.Show(Properties.Resources.preencherCamposObrigatorios_MessageBox, Properties.Resources.MessageBoxError,
+                MessageBox.Show(Resources.preencherCamposObrigatorios_MessageBox, Resources.MessageBoxError,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }

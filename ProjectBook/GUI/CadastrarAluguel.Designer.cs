@@ -176,7 +176,7 @@ namespace ProjectBook.GUI
             // 
             this.btnBuscarLivroAluguel.FlatAppearance.BorderSize = 0;
             this.btnBuscarLivroAluguel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBuscarLivroAluguel.Image = global::ProjectBook.Properties.Resources.zoom;
+            this.btnBuscarLivroAluguel.Image = global::ProjectBook.Properties.Resources.search;
             this.btnBuscarLivroAluguel.Location = new System.Drawing.Point(199, 48);
             this.btnBuscarLivroAluguel.Name = "btnBuscarLivroAluguel";
             this.btnBuscarLivroAluguel.Size = new System.Drawing.Size(23, 23);
@@ -343,7 +343,7 @@ namespace ProjectBook.GUI
             // 
             this.btnBuscarCliente.FlatAppearance.BorderSize = 0;
             this.btnBuscarCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBuscarCliente.Image = global::ProjectBook.Properties.Resources.zoom;
+            this.btnBuscarCliente.Image = global::ProjectBook.Properties.Resources.search;
             this.btnBuscarCliente.Location = new System.Drawing.Point(199, 46);
             this.btnBuscarCliente.Name = "btnBuscarCliente";
             this.btnBuscarCliente.Size = new System.Drawing.Size(23, 23);

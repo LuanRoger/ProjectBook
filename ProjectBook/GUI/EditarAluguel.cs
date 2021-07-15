@@ -187,7 +187,7 @@ namespace ProjectBook.GUI
 
         private void btnSalvarEditarAluguel_Click(object sender, EventArgs e)
         {
-            Aluguel aluguel = new(txtNovoTituloLivroAluguel.Text, txtNovoAutorAluguel.Text, txtNovoClienteAluguel.Text,
+            AluguelModel aluguel = new(txtNovoTituloLivroAluguel.Text, txtNovoAutorAluguel.Text, txtNovoClienteAluguel.Text,
                 dtpEditarDataEntrega.Value, dtpEditarDataRecebimento.Value, cmbNovoStatus.Text);
 
             if (Verificadores.VerificarCamposAluguel(aluguel) || infoAluguelAntigo == null)
