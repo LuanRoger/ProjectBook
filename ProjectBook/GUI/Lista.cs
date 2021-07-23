@@ -21,7 +21,7 @@ namespace ProjectBook.GUI
             try
             {
                 PrivateFontCollection privateFont = new();
-                privateFont.AddFontFile(Application.StartupPath + @"font\Lato-Bold.ttf");
+                privateFont.AddFontFile(Consts.FONT_LATO_BOLD);
                 Font lato = new(privateFont.Families[0], 8, FontStyle.Bold);
 
                 int columnQuantidade = dgvLista.ColumnCount;

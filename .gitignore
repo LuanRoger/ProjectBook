@@ -5,6 +5,9 @@ project.lock.json
 *.pyc
 nupkg/
 
+# Certificates
+*.pfx
+
 # Visual Studio Code
 .vscode
 

@@ -15,9 +15,6 @@ namespace ProjectBook
 {
     public partial class SplashScreen : Form
     {
-        private readonly string FONT_MONTSERRAT_EXTRABOLD = Application.StartupPath + @"font\Montserrat-ExtraBold.ttf";
-        private readonly string FONT_MONTSERRAT_EXTRALIGHT = Application.StartupPath + @"font\Montserrat-ExtraLight.ttf";
-
         private LivrosDb livrosDb = new();
 
         public SplashScreen()
@@ -27,8 +24,8 @@ namespace ProjectBook
             AppManager.DownloadFonts();
 
             PrivateFontCollection privateFont = new();
-            privateFont.AddFontFile(FONT_MONTSERRAT_EXTRABOLD);
-            privateFont.AddFontFile(FONT_MONTSERRAT_EXTRALIGHT);
+            privateFont.AddFontFile(Consts.FONT_MONTSERRAT_EXTRABOLD);
+            privateFont.AddFontFile(Consts.FONT_MONTSERRAT_EXTRALIGHT);
 
             label1.Font = new Font(privateFont.Families[0], 20, FontStyle.Bold);
             label2.Font = new Font(privateFont.Families[1], 7, FontStyle.Regular);

@@ -32,7 +32,9 @@ namespace ProjectBook.Tipos
 
         public static void SerializeUserInstance()
         {
-            BinaryWriter binaryWriter = new(File.Open(Consts.FILE_FULL_NAME, FileMode.Create));
+            AppManager.CriarPastaDataApp();
+
+            BinaryWriter binaryWriter = new(File.Open(Consts.FILE_FULL_NAME, FileMode.OpenOrCreate));
 
             binaryWriter.Write(UserNow.idUsuario);
             binaryWriter.Write(UserNow.userName);
