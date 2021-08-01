@@ -43,22 +43,10 @@ namespace ProjectBook.Managers
             if(!Directory.Exists(Consts.APPLOCAL_FOLDER)) Directory.CreateDirectory(Consts.APPLOCAL_FOLDER);
         }
 
-        public static void ProcurarAtualizacoes()
-        {
-            AutoUpdater.ShowRemindLaterButton = false;
-
-            AutoUpdater.Start(AppConfigurationManager.updateFileServer,
-                Assembly.GetExecutingAssembly());
-        }
-
-        public static void GiveAdm()
-        {
+        public static void GiveAdm() =>
             UserInfo.UserNowInstance.tipoUsuario = TipoUsuario.ADM;
-        }
-        public static void RemoveAdm()
-        {
+        public static void RemoveAdm() =>
             UserInfo.UserNowInstance.tipoUsuario = TipoUsuario.USU;
-        }
 
         public static void LoadUser()
         {

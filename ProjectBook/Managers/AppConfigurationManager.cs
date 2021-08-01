@@ -123,15 +123,6 @@ namespace ProjectBook.Managers
                 config.AppSettings.Settings["pastaDb"].Value = value;
             }
         }
-        public static string updateFileServer
-        {
-            get => ConfigurationManager.AppSettings["updateFileServer"];
-            set
-            {
-                config.AppSettings.Settings["updateFileServer"].Value = value;
-                SaveConfig();
-            }
-        }
         public static bool telemetry
         {
             get => ConfigurationManager.AppSettings["telemetry"].ToBool();

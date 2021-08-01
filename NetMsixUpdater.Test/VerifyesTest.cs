@@ -13,5 +13,14 @@ namespace NetMsixUpdater.Test
 
             Assert.False(msixUpdater.hasUpdated);
         }
+
+        [Fact]
+        public void VerifyUpdateInServer()
+        {
+            MsixUpdater msixUpdater = new(Assembly.GetExecutingAssembly(), Consts.YAML_SERVER_PATH);
+            msixUpdater.Build();
+
+            Assert.False(msixUpdater.hasUpdated);
+        }
     }
 }

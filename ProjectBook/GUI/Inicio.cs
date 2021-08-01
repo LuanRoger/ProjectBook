@@ -166,7 +166,22 @@ namespace ProjectBook.GUI
                 Sobre sobre = new();
                 sobre.Show();
             };
-            mnuProcurarAtualizacoes.Click += (_, _) => AppManager.ProcurarAtualizacoes();
+            mnuProcurarAtualizacoes.Click += (_, _) =>
+            {
+                if(AppUpdateManager.hasUpdated())
+                {
+                    MessageBox.Show("PrjectBook já está atualziado", Resources.MessageBoxInformacao,
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+                DialogResult dialogResult = MessageBox.Show("Há uma atualização, deseja instalar?", Resources.Atualizacao_MessageBox,
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if(dialogResult != DialogResult.Yes) return;
+
+                AppUpdateManager.Update();
+            };
             #endregion
 
             #region Acesso rápido
@@ -261,7 +276,6 @@ namespace ProjectBook.GUI
         }
         private void Inicio_Load(object sender, EventArgs e)
         {
-            // Deixar o Form invisível enquanto a SplashScreen está carregando
             Opacity = 0;
             ShowInTaskbar = false;
 

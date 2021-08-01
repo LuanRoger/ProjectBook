@@ -22,6 +22,8 @@ namespace ProjectBook
         public static string FONT_MONTSERRAT_EXTRALIGHT = FONTS_FOLDER + "Montserrat-ExtraLight.ttf";
         public static string FONT_LATO_BOLD = FONTS_FOLDER + "Lato-Bold.ttf";
 
+        public const string YAML_UPDATER_SERVER_URL = "https://raw.githubusercontent.com/LuanRoger/ProjectBook/dev/update.yaml";
+
         public static readonly string PASTA_APLICACAO_ONEDRIVE = 
             Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\OneDrive\ProjectBook";
     }

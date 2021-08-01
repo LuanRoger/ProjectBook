@@ -68,7 +68,17 @@ namespace ProjectBook
         private async Task SearchForUpdates()
         {
             lblStatusCarregamento.Text = Resources.ProcurandoAtualizacoesSplashScreen;
-            await Task.Run(AppManager.ProcurarAtualizacoes);
+            await Task.Run(() => 
+            {
+                if(AppUpdateManager.hasUpdated()) return;
+
+                DialogResult dialogResult = MessageBox.Show("Há uma atualização, deseja instalar?", "Atualização diponivel",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if(dialogResult != DialogResult.Yes) return;
+
+                AppUpdateManager.Update();
+            });
         }
         private async Task AtualizarAluguel()
         {

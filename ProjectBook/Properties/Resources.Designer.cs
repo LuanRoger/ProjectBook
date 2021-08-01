@@ -80,6 +80,15 @@ namespace ProjectBook.Properties {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Atualização disponível.
+        /// </summary>
+        internal static string Atualizacao_MessageBox {
+            get {
+                return ResourceManager.GetString("Atualizacao_MessageBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Atualiazando status dos alugueis....
         /// </summary>
         internal static string AtualizandoBancoDadosSpashScreen {

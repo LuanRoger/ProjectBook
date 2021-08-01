@@ -13,9 +13,11 @@ namespace NetMsixUpdater.YamlInfo
 
         internal YamlUpdateInfo(string yamlFilePath)
         {
-            isInServer = Uri.CheckSchemeName(yamlFilePath);
+            Uri tempUriResult;
+            isInServer = Uri.TryCreate(yamlFilePath, UriKind.Absolute, out tempUriResult) && 
+                (tempUriResult.Scheme == Uri.UriSchemeHttp || tempUriResult.Scheme == Uri.UriSchemeHttps);
 
-            if(isInServer) 
+            if(isInServer)
                 using(WebClient webClient = new()) yamlText = webClient.DownloadString(yamlFilePath);
             else 
                 yamlText = File.ReadAllText(yamlFilePath);
