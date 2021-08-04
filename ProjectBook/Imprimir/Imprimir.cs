@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using KimToo;
 using ProjectBook.Managers;
+using ProjectBook.Managers.Configuration;
 
 namespace ProjectBook
 {
@@ -10,12 +11,12 @@ namespace ProjectBook
         private EasyHTMLReports reports = new();
         public async Task ImprimirModelo(DataGridView dataGrid)
         {
-            if (AppConfigurationManager.exibirId)
+            if (AppConfigurationManager.printerConfiguration.ShowId)
                 try { dataGrid.Columns.Remove(dataGrid.Columns["ID"]); } catch { /* Continuar */ } // Remover coluna ID se existir
 
             await Task.Run(() => reports.AddDatagridView(dataGrid));
 
-            if (AppConfigurationManager.visualizarImpressao) reports.Print();
+            if (AppConfigurationManager.printerConfiguration.PreviewPrinter) reports.Print();
             else reports.ShowPrintPreviewDialog();
 
             reports.Dispose();

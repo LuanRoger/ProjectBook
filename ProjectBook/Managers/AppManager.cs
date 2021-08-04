@@ -4,7 +4,6 @@ using System.IO;
 using System.Diagnostics;
 using System.Reflection;
 using System.Windows.Forms;
-using AutoUpdaterDotNET;
 using ProjectBook.DB.SqlServerExpress;
 using ProjectBook.AppInsight;
 using ProjectBook.Tipos;

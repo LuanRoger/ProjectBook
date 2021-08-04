@@ -4,6 +4,7 @@ using System.Linq;
 using System.Windows.Forms;
 using ProjectBook.Properties;
 using ProjectBook.Managers;
+using ProjectBook.Managers.Configuration;
 
 namespace ProjectBook.DB.OneDrive
 {
@@ -20,9 +21,9 @@ namespace ProjectBook.DB.OneDrive
 
                     if (dialogResult == DialogResult.No)
                     {
-                        AppConfigurationManager.dbPadrao = Tipos.TipoDatabase.SqlServerLocalDb;
-                        AppConfigurationManager.SqlConnectionString =
-                            $@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = {AppConfigurationManager.pastaDb}; Integrated Security = True";
+                        AppConfigurationManager.databaseConfiguration.DbEngine = Tipos.TipoDatabase.SqlServerLocalDb;
+                        AppConfigurationManager.databaseConfiguration.SqlConnectionString =
+                            $@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = {AppConfigurationManager.databaseConfiguration.DbFolder}; Integrated Security = True";
 
                         AppManager.ReiniciarPrograma();
                         return;
@@ -32,7 +33,7 @@ namespace ProjectBook.DB.OneDrive
                 }
 
                 Directory.Move(Directory
-                    .GetParent(AppConfigurationManager.pastaDb).ToString(), Consts.PASTA_APLICACAO_ONEDRIVE);
+                    .GetParent(AppConfigurationManager.databaseConfiguration.DbFolder).ToString(), Consts.PASTA_APLICACAO_ONEDRIVE);
 
                 //Pegar o novo diretorio do banco de dados
                 string diretorioDbOneDrive = Directory
@@ -40,10 +41,10 @@ namespace ProjectBook.DB.OneDrive
                     .First();
 
                 //Criar nova string de conexão
-                AppConfigurationManager.SqlConnectionString =
+                AppConfigurationManager.databaseConfiguration.SqlConnectionString =
                     $@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={diretorioDbOneDrive};Integrated Security=True";
 
-                AppConfigurationManager.pastaDb = Consts.PASTA_APLICACAO_ONEDRIVE;
+                AppConfigurationManager.databaseConfiguration.DbFolder = Consts.PASTA_APLICACAO_ONEDRIVE;
             }
             catch (Exception e)
             {

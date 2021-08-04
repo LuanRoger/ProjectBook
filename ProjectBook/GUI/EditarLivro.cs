@@ -6,6 +6,7 @@ using ProjectBook.DB.SqlServerExpress;
 using ProjectBook.Livros;
 using ProjectBook.Properties;
 using ProjectBook.Managers;
+using ProjectBook.Managers.Configuration;
 
 namespace ProjectBook.GUI
 {
@@ -100,7 +101,7 @@ namespace ProjectBook.GUI
 
             LivroModel livro;
             //Aplicar a formatação na instânciação do livro
-            if (AppConfigurationManager.formatarLivro)
+            if (AppConfigurationManager.formattingConfiguration.FormatBook)
             {
                 livro = new LivroModel(
                     txtEditarCodigo.Text,
