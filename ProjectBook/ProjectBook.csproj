@@ -5,11 +5,11 @@
     <TargetFramework>net5.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
     <AssemblyName>Project Book</AssemblyName>
-    <Version>0.3.0</Version>
+    <Version>1.0.0</Version>
     <NeutralLanguage>pt-BR</NeutralLanguage>
 
-    <AssemblyVersion>0.6.6.0</AssemblyVersion>
-    <FileVersion>0.0.2.0</FileVersion>
+    <AssemblyVersion>0.6.7.2</AssemblyVersion>
+    <FileVersion>0.0.4.0</FileVersion>
     <PackageId>Project Book</PackageId>
     <Company></Company>
     <Authors>Luan Roger</Authors>
@@ -22,14 +22,19 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Autoupdater.NET.Official" Version="1.6.4" />
     <PackageReference Include="ClosedXML" Version="0.95.4" />
     <PackageReference Include="EasyHTMLReports" Version="1.0.0" />
     <PackageReference Include="Microsoft.ApplicationInsights" Version="2.17.0" />
     <PackageReference Include="Microsoft.ApplicationInsights.WorkerService" Version="2.17.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="5.0.0" />
     <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="5.0.0" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
     <PackageReference Include="System.Management" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\NetMsixUpdater\NetMsixUpdater.csproj" />
   </ItemGroup>
 
   <ItemGroup>

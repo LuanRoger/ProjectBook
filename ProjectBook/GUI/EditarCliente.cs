@@ -6,6 +6,7 @@ using ProjectBook.DB.SqlServerExpress;
 using ProjectBook.Livros;
 using ProjectBook.Properties;
 using ProjectBook.Managers;
+using ProjectBook.Managers.Configuration;
 
 namespace ProjectBook.GUI
 {
@@ -78,7 +79,7 @@ namespace ProjectBook.GUI
         {
             ClienteModel cliente;
             //Aplicar a formatação na instânciação do cliente
-            if (AppConfigurationManager.formatarCliente)
+            if (AppConfigurationManager.configuration.FormatClient)
             {
                 cliente = new ClienteModel(
                     txtNovoNome.Text.ToUpper(),

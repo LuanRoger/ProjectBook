@@ -4,7 +4,7 @@ using Microsoft.ApplicationInsights;
 using System.Reflection;
 using System.Threading;
 using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector;
-using ProjectBook.Managers;
+using ProjectBook.Managers.Configuration;
 
 namespace ProjectBook.AppInsight
 {
@@ -15,7 +15,7 @@ namespace ProjectBook.AppInsight
 
         public static void InicializarInsights()
         {
-            if(AppConfigurationManager.telemetry) return;
+            if(AppConfigurationManager.configuration.UseTelemetry) return;
 
             telemetryConfiguration = TelemetryConfiguration.CreateDefault();
             telemetryConfiguration.ConnectionString = ApiKeys.TELEMETRY_CONNECTION;

@@ -4,7 +4,6 @@ using System.IO;
 using System.Diagnostics;
 using System.Reflection;
 using System.Windows.Forms;
-using AutoUpdaterDotNET;
 using ProjectBook.DB.SqlServerExpress;
 using ProjectBook.AppInsight;
 using ProjectBook.Tipos;
@@ -13,11 +12,6 @@ namespace ProjectBook.Managers
 {
     static class AppManager
     {
-        private static readonly string[] FONTS_DOWNLOAD = 
-            { "Lato-Bold.ttf", "Montserrat-ExtraBold.ttf", "Montserrat-ExtraLight.ttf" };
-        private static readonly string FONTS_FOLDER = Application.StartupPath + @"\font";
-        private static readonly string URI_DOWNLAD_FONTS = "https://github.com/LuanRoger/ProjectBook/raw/master/ProjectBook/assets/fontes/";
-
         public static void ReiniciarPrograma()
         {
             AppInsightMetrics.FlushTelemetry();
@@ -29,33 +23,29 @@ namespace ProjectBook.Managers
 
         public static void DownloadFonts()
         {
-            if (File.Exists(@$"{FONTS_FOLDER}\{FONTS_DOWNLOAD[0]}") && File.Exists(@$"{FONTS_FOLDER}\{FONTS_DOWNLOAD[1]}") &&
-                File.Exists(@$"{FONTS_FOLDER}\{FONTS_DOWNLOAD[2]}")) return;
-            Directory.CreateDirectory(FONTS_FOLDER);
+            if (File.Exists(@$"{Consts.FONTS_FOLDER}\{Consts.FONTS_DOWNLOAD[0]}") && 
+                File.Exists(@$"{Consts.FONTS_FOLDER}\{Consts.FONTS_DOWNLOAD[1]}") &&
+                File.Exists(@$"{Consts.FONTS_FOLDER}\{Consts.FONTS_DOWNLOAD[2]}")) return;
+
+            Directory.CreateDirectory(Consts.FONTS_FOLDER);
 
             using WebClient webClient = new();
-            foreach (string font in FONTS_DOWNLOAD)
+            foreach (string font in Consts.FONTS_DOWNLOAD)
             {
-                webClient.DownloadFile(new Uri(URI_DOWNLAD_FONTS + font),
-                @$"{FONTS_FOLDER}\{font}");
+                webClient.DownloadFile(new Uri(Consts.URI_DOWNLAD_FONTS + font),
+                @$"{Consts.FONTS_FOLDER}\{font}");
             }
         }
-        public static void ProcurarAtualizacoes()
-        {
-            AutoUpdater.ShowRemindLaterButton = false;
 
-            AutoUpdater.Start(AppConfigurationManager.updateFileServer,
-                Assembly.GetExecutingAssembly());
+        public static void CriarPastaDataApp()
+        {
+            if(!Directory.Exists(Consts.APPLOCAL_FOLDER)) Directory.CreateDirectory(Consts.APPLOCAL_FOLDER);
         }
 
-        public static void GiveAdm()
-        {
+        public static void GiveAdm() =>
             UserInfo.UserNowInstance.tipoUsuario = TipoUsuario.ADM;
-        }
-        public static void RemoveAdm()
-        {
+        public static void RemoveAdm() =>
             UserInfo.UserNowInstance.tipoUsuario = TipoUsuario.USU;
-        }
 
         public static void LoadUser()
         {
@@ -73,16 +63,5 @@ namespace ProjectBook.Managers
                 UserInfo.UserNowInstance.userName,
                 UserInfo.UserNowInstance.tipoUsuario.ToString());
         }
-    }
-    public class Consts
-    {
-        public const int SPLASH_SCREEN_LOADTIME = 2500;
-
-        public const string USER_FORMAT = ".puf";
-        public const string USER_FILE_NAME = "UserInfo";
-        public const string FILE_FULL_NAME = USER_FILE_NAME + USER_FORMAT;
-
-        public static readonly string PASTA_APLICACAO_ONEDRIVE = 
-            Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\OneDrive\ProjectBook";
     }
 }

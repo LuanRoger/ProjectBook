@@ -6,6 +6,7 @@ using ProjectBook.DB.SqlServerExpress;
 using ProjectBook.Tipos;
 using ProjectBook.Managers;
 using System.Windows.Forms;
+using ProjectBook.Managers.Configuration;
 
 namespace ProjectBook
 {
@@ -93,7 +94,7 @@ namespace ProjectBook
         {
             return directoryInfo.FullName.Contains("OneDrive") && 
                    directoryInfo.GetFiles("*.mdf", SearchOption.AllDirectories).Length >= 1 &&
-                   AppConfigurationManager.dbPadrao == TipoDatabase.OneDrive;
+                   AppConfigurationManager.configuration.DbEngine == TipoDatabase.OneDrive;
         }
 
         public static bool VerificarUsuarioLogado()
@@ -109,6 +110,7 @@ namespace ProjectBook
 
             return usuarioValido;
         }
+        public static bool VerificarConfiguracoes() => File.Exists(Consts.CONFIGURATION_PATH);
 
         #region Verificar strings
         /// <summary>

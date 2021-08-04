@@ -5,6 +5,9 @@ project.lock.json
 *.pyc
 nupkg/
 
+# Certificates
+*.pfx
+
 # Visual Studio Code
 .vscode
 
@@ -18,6 +21,7 @@ nupkg/
 *.sln.docstates
 
 # Build results
+AppPackages/
 [Dd]ebug/
 [Dd]ebugPublic/
 [Rr]elease/

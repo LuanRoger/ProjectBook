@@ -7,13 +7,14 @@ using System.Diagnostics;
 using ProjectBook.GUI;
 using ProjectBook.AppInsight;
 using ProjectBook.Managers;
+using ProjectBook.Managers.Configuration;
 
 namespace ProjectBook.DB.SqlServerExpress
 {
     abstract class Db
     {
         protected static readonly SqlConnection connection = 
-            new(AppConfigurationManager.SqlConnectionString);
+            new(AppConfigurationManager.configuration.SqlConnectionString);
 
         /// <summary>
         /// Verifica a conexão entre o programa e o banco de dados

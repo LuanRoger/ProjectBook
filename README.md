@@ -15,7 +15,7 @@
 * Acesso rápido para pesquisa e barra superior para acessar.
 * Integração nativa com o OneDrive, oferece sincronização em tempo real para um banco de dados local.
 * Autoformatação para maiúsculo ao salvar.
-* Impressão de qualquer pesquisa com DGVPrinter.
+* Impressão de qualquer pesquisa.
 * Sistema de login.
 * Atalhos nas teclas de função.
 
@@ -26,25 +26,18 @@
 - C#
 ## Capturas de tela
 ![](https://github.com/LuanRoger/ProjectBook/blob/master/ProjectBook/assets/screenshots/PrintInicio.png)
-> Inicio.
 
 ![](https://github.com/LuanRoger/ProjectBook/blob/master/ProjectBook/assets/screenshots/PrintLogin.png?raw=true)
-> Login
 
 ![](https://github.com/LuanRoger/ProjectBook/blob/master/ProjectBook/assets/screenshots/PrintNovoLivro.png)
-> Cadastrar livro.
 
 ![](https://github.com/LuanRoger/ProjectBook/blob/master/ProjectBook/assets/screenshots/PrintNovoCliente.png)
-> Cadastrar cliente.
 
 ![](https://github.com/LuanRoger/ProjectBook/blob/master/ProjectBook/assets/screenshots/PrintNovoAluguel.png)
-> Registrar aluguel.
 
 ![](https://github.com/LuanRoger/ProjectBook/blob/master/ProjectBook/assets/screenshots/PrintConfiguracoes.png)
-> Configurações.
 
 ![](https://github.com/LuanRoger/ProjectBook/blob/master/ProjectBook/assets/screenshots/PrintPesquisaRapida.png)
-> Pesquisa rápida.
 
 ## Pré-requisitos
 - [.NET Desktop Runtime 5x](https://dotnet.microsoft.com/download/dotnet/5.0)
@@ -82,9 +75,10 @@ O programa irá reiniciar e já estará sincronizado.
 ~~~powershell
 sqllocaldb i
 ~~~
-> Para ver as intâncias
+Para ver as intâncias.
+
 Copie o nome da intâncias e:
 ~~~powershell
  sqllocaldb s "nome da instancia"
 ~~~
-> Para iniciar a instância
+Para iniciar a instância.

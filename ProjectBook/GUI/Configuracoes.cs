@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using ProjectBook.Properties;
 using ProjectBook.Tipos;
 using ProjectBook.Managers;
+using ProjectBook.Managers.Configuration;
 
 namespace ProjectBook.GUI
 {
@@ -44,8 +45,8 @@ namespace ProjectBook.GUI
             btnSelecionarArquivoDb.Visible = false;
             txtStringConexaoCaminhoDb.Visible = false;
 
-            DirectoryInfo directoryInfo = string.IsNullOrEmpty(AppConfigurationManager.pastaDb) ?
-                null : Directory.GetParent(AppConfigurationManager.pastaDb);
+            DirectoryInfo directoryInfo = string.IsNullOrEmpty(AppConfigurationManager.configuration.DbFolder) ?
+                null : Directory.GetParent(AppConfigurationManager.configuration.DbFolder);
 
             if(directoryInfo == null && directoryInfo.Parent == null)
             {
@@ -65,17 +66,17 @@ namespace ProjectBook.GUI
 
         private void CarregarConfiguracoes()
         {
-            var directoryInfo = string.IsNullOrEmpty(AppConfigurationManager.pastaDb) ?
-                "" : Directory.GetParent(AppConfigurationManager.pastaDb).ToString();
+            var directoryInfo = string.IsNullOrEmpty(AppConfigurationManager.configuration.DbFolder) ?
+                "" : Directory.GetParent(AppConfigurationManager.configuration.DbFolder).ToString();
 
-            chbVisualizarImpressao.Checked = AppConfigurationManager.visualizarImpressao;
-            chbAtualizarStatusAluguel.Checked = AppConfigurationManager.atualizarStatusAluguel;
-            chbFormatarCliente.Checked =  AppConfigurationManager.formatarCliente;
-            chbFormatarLivro.Checked = AppConfigurationManager.formatarLivro;
-            chbExibirCodigo.Checked = AppConfigurationManager.exibirId;
-            chbTelemetria.Checked = AppConfigurationManager.telemetry;
+            chbVisualizarImpressao.Checked = AppConfigurationManager.configuration.PreviewPrinter;
+            chbAtualizarStatusAluguel.Checked = AppConfigurationManager.configuration.UpdateRentStatus;
+            chbFormatarCliente.Checked =  AppConfigurationManager.configuration.FormatClient;
+            chbFormatarLivro.Checked = AppConfigurationManager.configuration.FormatBook;
+            chbExibirCodigo.Checked = AppConfigurationManager.configuration.ShowId;
+            chbTelemetria.Checked = AppConfigurationManager.configuration.UseTelemetry;
 
-            switch (AppConfigurationManager.dbPadrao)
+            switch (AppConfigurationManager.configuration.DbEngine)
             {
                 case TipoDatabase.SqlServerExpress:
                     rabSqlServerExpress.Checked = true;
@@ -87,43 +88,44 @@ namespace ProjectBook.GUI
                     rabOneDrive.Checked = true;
                     break;
             }
-            txtStringConexaoCaminhoDb.Text = AppConfigurationManager.SqlConnectionString;
+            txtStringConexaoCaminhoDb.Text = AppConfigurationManager.configuration.SqlConnectionString;
         }
 
         private void btnSalvarConfiguracoes_Click(object sender, EventArgs e)
         {
             //Nescessario para verificar se houve mudança
-            string stringConexaoAtual = AppConfigurationManager.SqlConnectionString;
+            string stringConexaoAtual = AppConfigurationManager.configuration.SqlConnectionString;
 
-            //Preferencias de impressão
-            AppConfigurationManager.visualizarImpressao = chbVisualizarImpressao.Checked;
-            AppConfigurationManager.exibirId = chbExibirCodigo.Checked;
-            
-            //Formatação
-            AppConfigurationManager.formatarCliente = chbFormatarCliente.Checked;
-            AppConfigurationManager.formatarLivro = chbFormatarLivro.Checked;
-
-            //Preferencias de aluguel
-            AppConfigurationManager.atualizarStatusAluguel = chbAtualizarStatusAluguel.Checked;
-
-            //Telemetria
-            AppConfigurationManager.telemetry = chbTelemetria.Checked;
+            ConfigurationModel configurationModel = new()
+            {
+                PreviewPrinter = chbVisualizarImpressao.Checked,
+                ShowId = chbExibirCodigo.Checked,
+                FormatClient = chbFormatarCliente.Checked,
+                FormatBook = chbFormatarLivro.Checked,
+                UpdateRentStatus = chbAtualizarStatusAluguel.Checked,
+                UseTelemetry = chbTelemetria.Checked,
+            };
 
             //String de conexão
             if (rabSqlServerExpress.Checked)
             {
-                AppConfigurationManager.dbPadrao = TipoDatabase.SqlServerExpress;
-                AppConfigurationManager.SqlConnectionString = txtStringConexaoCaminhoDb.Text;
-                AppConfigurationManager.pastaDb = "";
+                configurationModel = configurationModel with
+                {
+                    DbEngine = TipoDatabase.SqlServerExpress,
+                    SqlConnectionString = txtStringConexaoCaminhoDb.Text,
+                    DbFolder = string.Empty
+                };
             }
             else if (rabSqlServerLocalDb.Checked)
             {
-                AppConfigurationManager.dbPadrao = AppConfigurationManager.pastaDb.Contains("OneDrive") ?
-                    TipoDatabase.OneDrive : TipoDatabase.SqlServerLocalDb;
-
-                AppConfigurationManager.SqlConnectionString = txtStringConexaoCaminhoDb.Text;
+                configurationModel = configurationModel with
+                {
+                    DbEngine = AppConfigurationManager.configuration.DbFolder.Contains("OneDrive") ?
+                    TipoDatabase.OneDrive : TipoDatabase.SqlServerLocalDb,
+                    SqlConnectionString = txtStringConexaoCaminhoDb.Text
+                };
             }
-            else if (rabOneDrive.Checked && !AppConfigurationManager.pastaDb.Contains("OneDrive"))
+            else if (rabOneDrive.Checked && !AppConfigurationManager.configuration.DbFolder.Contains("OneDrive"))
             {
                 DialogResult dialogResult = MessageBox
                     .Show(Resources.ConexaoLocalMigrarOneDrive,
@@ -131,15 +133,20 @@ namespace ProjectBook.GUI
 
                 if (dialogResult != DialogResult.Yes) return;
 
-                AppConfigurationManager.pastaDb = "onedrive";
-                AppConfigurationManager.SqlConnectionString = "";
+                configurationModel = configurationModel with
+                {
+                    DbFolder = "onedrive",
+                    SqlConnectionString = string.Empty
+                };
             }
+
+            AppConfigurationManager.configuration = configurationModel;
 
             MessageBox.Show(Resources.ConfiguracoesSalvas, Resources.concluido_MessageBox,
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             // Se o usuário mudou a string de conexão o programa deve ser reinicado
-            if (!stringConexaoAtual.Equals(AppConfigurationManager.SqlConnectionString))
+            if (!stringConexaoAtual.Equals(AppConfigurationManager.configuration.SqlConnectionString))
             {
                 MessageBox.Show(Resources.mudancaConnectionString,
                     Resources.MessageBoxInformacao, MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -154,7 +161,7 @@ namespace ProjectBook.GUI
             DialogResult dialogResult = caminho.ShowDialog();
             if (dialogResult != DialogResult.OK) return;
 
-            AppConfigurationManager.pastaDb = caminho.FileName;
+            AppConfigurationManager.configuration.DbFolder = caminho.FileName;
             txtStringConexaoCaminhoDb.Text =
                 $@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={caminho.FileName};Integrated Security=True";
         }

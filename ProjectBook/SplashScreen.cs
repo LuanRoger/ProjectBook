@@ -10,14 +10,12 @@ using ProjectBook.Properties;
 using System.Threading.Tasks;
 using ProjectBook.DB.OneDrive;
 using ProjectBook.Managers;
+using ProjectBook.Managers.Configuration;
 
 namespace ProjectBook
 {
     public partial class SplashScreen : Form
     {
-        private readonly string FONT_MONTSERRAT_EXTRABOLD = Application.StartupPath + @"font\Montserrat-ExtraBold.ttf";
-        private readonly string FONT_MONTSERRAT_EXTRALIGHT = Application.StartupPath + @"font\Montserrat-ExtraLight.ttf";
-
         private LivrosDb livrosDb = new();
 
         public SplashScreen()
@@ -25,10 +23,11 @@ namespace ProjectBook
             InitializeComponent();
 
             AppManager.DownloadFonts();
+            AppConfigurationManager.CreateConfigurationFile();
 
             PrivateFontCollection privateFont = new();
-            privateFont.AddFontFile(FONT_MONTSERRAT_EXTRABOLD);
-            privateFont.AddFontFile(FONT_MONTSERRAT_EXTRALIGHT);
+            privateFont.AddFontFile(Consts.FONT_MONTSERRAT_EXTRABOLD);
+            privateFont.AddFontFile(Consts.FONT_MONTSERRAT_EXTRALIGHT);
 
             label1.Font = new Font(privateFont.Families[0], 20, FontStyle.Bold);
             label2.Font = new Font(privateFont.Families[1], 7, FontStyle.Regular);
@@ -61,8 +60,8 @@ namespace ProjectBook
 
         private async Task SyncOneDrive()
         {
-            if (AppConfigurationManager.dbPadrao == Tipos.TipoDatabase.OneDrive &&
-                AppConfigurationManager.SqlConnectionString == "")
+            if (AppConfigurationManager.configuration.DbEngine == Tipos.TipoDatabase.OneDrive &&
+                AppConfigurationManager.configuration.SqlConnectionString == "")
             {
                 lblStatusCarregamento.Text = Resources.MigrandoOneDrive;
                 await Task.Run(OneDrive.MigrarOneDrive);
@@ -71,12 +70,22 @@ namespace ProjectBook
         private async Task SearchForUpdates()
         {
             lblStatusCarregamento.Text = Resources.ProcurandoAtualizacoesSplashScreen;
-            await Task.Run(AppManager.ProcurarAtualizacoes);
+            await Task.Run(() => 
+            {
+                if(AppUpdateManager.hasUpdated()) return;
+
+                DialogResult dialogResult = MessageBox.Show("Há uma atualização, deseja instalar?", "Atualização diponivel",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if(dialogResult != DialogResult.Yes) return;
+
+                AppUpdateManager.Update();
+            });
         }
         private async Task AtualizarAluguel()
         {
             lblStatusCarregamento.Text = Resources.AtualizandoBancoDadosSpashScreen;
-            if (AppConfigurationManager.atualizarStatusAluguel) await Task.Run(AtualizarAtrasso);
+            if (AppConfigurationManager.configuration.UpdateRentStatus) await Task.Run(AtualizarAtrasso);
         }
 
         private void UsuarioLogado()
