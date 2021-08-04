@@ -62,7 +62,7 @@ namespace ProjectBook.GUI
 
             LivroModel livro;
             //Aplicar a formatação na instânciação do livro
-            if (AppConfigurationManager.formattingConfiguration.FormatBook)
+            if (AppConfigurationManager.configuration.FormatBook)
             {
                 livro = new LivroModel(
                     txtCodigoLivro.Text,

@@ -16,7 +16,7 @@ namespace ProjectBook.GUI
         private void Sobre_Load(object sender, System.EventArgs e)
         {
             PrivateFontCollection privateFont = new PrivateFontCollection();
-            privateFont.AddFontFile(Application.StartupPath + @"font\\Montserrat-ExtraBold.ttf");
+            privateFont.AddFontFile(Consts.FONT_MONTSERRAT_EXTRABOLD);
             lblProgramName.Font = new Font(privateFont.Families[0], 20, FontStyle.Bold);
 
             lblProgramName.Text = Assembly.GetExecutingAssembly().GetName().Name;

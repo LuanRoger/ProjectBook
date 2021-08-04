@@ -94,7 +94,7 @@ namespace ProjectBook
         {
             return directoryInfo.FullName.Contains("OneDrive") && 
                    directoryInfo.GetFiles("*.mdf", SearchOption.AllDirectories).Length >= 1 &&
-                   AppConfigurationManager.databaseConfiguration.DbEngine == TipoDatabase.OneDrive;
+                   AppConfigurationManager.configuration.DbEngine == TipoDatabase.OneDrive;
         }
 
         public static bool VerificarUsuarioLogado()
@@ -110,6 +110,7 @@ namespace ProjectBook
 
             return usuarioValido;
         }
+        public static bool VerificarConfiguracoes() => File.Exists(Consts.CONFIGURATION_PATH);
 
         #region Verificar strings
         /// <summary>

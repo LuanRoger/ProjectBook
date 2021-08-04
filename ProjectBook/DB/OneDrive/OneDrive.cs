@@ -21,9 +21,9 @@ namespace ProjectBook.DB.OneDrive
 
                     if (dialogResult == DialogResult.No)
                     {
-                        AppConfigurationManager.databaseConfiguration.DbEngine = Tipos.TipoDatabase.SqlServerLocalDb;
-                        AppConfigurationManager.databaseConfiguration.SqlConnectionString =
-                            $@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = {AppConfigurationManager.databaseConfiguration.DbFolder}; Integrated Security = True";
+                        AppConfigurationManager.configuration.DbEngine = Tipos.TipoDatabase.SqlServerLocalDb;
+                        AppConfigurationManager.configuration.SqlConnectionString =
+                            $@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = {AppConfigurationManager.configuration.DbFolder}; Integrated Security = True";
 
                         AppManager.ReiniciarPrograma();
                         return;
@@ -33,7 +33,7 @@ namespace ProjectBook.DB.OneDrive
                 }
 
                 Directory.Move(Directory
-                    .GetParent(AppConfigurationManager.databaseConfiguration.DbFolder).ToString(), Consts.PASTA_APLICACAO_ONEDRIVE);
+                    .GetParent(AppConfigurationManager.configuration.DbFolder).ToString(), Consts.PASTA_APLICACAO_ONEDRIVE);
 
                 //Pegar o novo diretorio do banco de dados
                 string diretorioDbOneDrive = Directory
@@ -41,10 +41,10 @@ namespace ProjectBook.DB.OneDrive
                     .First();
 
                 //Criar nova string de conexão
-                AppConfigurationManager.databaseConfiguration.SqlConnectionString =
+                AppConfigurationManager.configuration.SqlConnectionString =
                     $@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={diretorioDbOneDrive};Integrated Security=True";
 
-                AppConfigurationManager.databaseConfiguration.DbFolder = Consts.PASTA_APLICACAO_ONEDRIVE;
+                AppConfigurationManager.configuration.DbFolder = Consts.PASTA_APLICACAO_ONEDRIVE;
             }
             catch (Exception e)
             {
