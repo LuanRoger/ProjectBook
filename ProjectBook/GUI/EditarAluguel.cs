@@ -94,7 +94,7 @@ namespace ProjectBook.GUI
 
             if (Verificadores.VerificarStrings(txtBuscarAluguel.Text))
             {
-                MessageBox.Show(Resources.PreecherCampoBusca, Resources.MessageBoxError,
+                MessageBox.Show(Resources.PesquiseParaContinuar, Resources.Error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -126,7 +126,7 @@ namespace ProjectBook.GUI
 
             if(Verificadores.VerificarDataTable(infoAluguel))
             {
-                MessageBox.Show(Resources.clienteLivroNaoAlugados, Resources.MessageBoxError,
+                MessageBox.Show(Resources.ClienteLivroNaoAlugados, Resources.Error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -143,7 +143,7 @@ namespace ProjectBook.GUI
 
             if (Verificadores.VerificarStrings(buscarLivro) || infoAluguelAntigo == null)
             {
-                MessageBox.Show(Resources.PreecherCampoBusca, Resources.MessageBoxError,
+                MessageBox.Show(Resources.PesquiseParaContinuar, Resources.Error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -154,7 +154,7 @@ namespace ProjectBook.GUI
 
             if(Verificadores.VerificarDataTable(infoLivro))
             {
-                MessageBox.Show(Resources.clienteLivroNaoAlugados, Resources.MessageBoxError,
+                MessageBox.Show(Resources.ClienteLivroNaoAlugados, Resources.Error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -167,7 +167,7 @@ namespace ProjectBook.GUI
 
             if (Verificadores.VerificarStrings(buscarCliete) || infoAluguelAntigo == null)
             {
-                MessageBox.Show(Resources.PreecherCampoBusca, Resources.MessageBoxError,
+                MessageBox.Show(Resources.PesquiseParaContinuar, Resources.Error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -177,7 +177,7 @@ namespace ProjectBook.GUI
 
             if(Verificadores.VerificarDataTable(infoCliente))
             {
-                MessageBox.Show(Resources.clienteLivroNaoAlugados, Resources.MessageBoxError,
+                MessageBox.Show(Resources.ClienteLivroNaoAlugados, Resources.Error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -192,7 +192,7 @@ namespace ProjectBook.GUI
 
             if (Verificadores.VerificarCamposAluguel(aluguel) || infoAluguelAntigo == null)
             {
-                MessageBox.Show(Resources.PreecherCampoBusca, Resources.MessageBoxError,
+                MessageBox.Show(Resources.PesquiseParaContinuar, Resources.Error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }

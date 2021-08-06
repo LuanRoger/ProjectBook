@@ -59,7 +59,7 @@ namespace ProjectBook.GUI
             
             if (Verificadores.VerificarStrings(txtBuscarAluguel.Text))
             {
-                MessageBox.Show(Resources.PreecherCampoBusca, Resources.MessageBoxError,
+                MessageBox.Show(Resources.PesquiseParaContinuar, Resources.Error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -79,7 +79,7 @@ namespace ProjectBook.GUI
 
             if(Verificadores.VerificarDataTable(data))
             {
-                MessageBox.Show(Resources.LivroNAluguado, Resources.MessageBoxError,
+                MessageBox.Show(Resources.LivroNaoAluguado, Resources.Error_MessageBox,
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -92,7 +92,7 @@ namespace ProjectBook.GUI
 
             if (Verificadores.VerificarStrings(txtBuscarAluguel.Text))
             {
-                MessageBox.Show(Resources.PreecherCampoBusca, Resources.MessageBoxError,
+                MessageBox.Show(Resources.PesquiseParaContinuar, Resources.Error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }

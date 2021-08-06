@@ -16,8 +16,8 @@ namespace ProjectBook.DB.OneDrive
             {
                 if (Directory.Exists(Consts.PASTA_APLICACAO_ONEDRIVE))
                 {
-                    DialogResult dialogResult = MessageBox.Show(Resources.existePastaOneDrive,
-                        Resources.MessageBoxInformacao, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    DialogResult dialogResult = MessageBox.Show(Resources.ExistePastaOneDrive,
+                        Resources.Informacao_MessageBox, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                     if (dialogResult == DialogResult.No)
                     {
@@ -50,7 +50,7 @@ namespace ProjectBook.DB.OneDrive
             {
                 MessageBox.Show(
                     string.Format(Resources.ErrorMigrarOneDrive, e.Message),
-                    Resources.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Resources.Error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

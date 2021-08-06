@@ -74,7 +74,7 @@ namespace ProjectBook.GUI
 
             if(Verificadores.VerificarStrings(tituloParaBusca))
             {
-                MessageBox.Show(Properties.Resources.preencherCampoBusca_MessageBox, Properties.Resources.MessageBoxError ,
+                MessageBox.Show(Properties.Resources.PesquiseParaContinuar, Properties.Resources.Error_MessageBox ,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -87,7 +87,7 @@ namespace ProjectBook.GUI
 
             if(Verificadores.VerificarStrings(clienteParaBuscar))
             {
-                MessageBox.Show(Properties.Resources.preencherCampoBusca_MessageBox, Properties.Resources.MessageBoxError,
+                MessageBox.Show(Properties.Resources.PesquiseParaContinuar, Properties.Resources.Error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -107,7 +107,7 @@ namespace ProjectBook.GUI
             
             if (Verificadores.VerificarCamposAluguel(aluguel))
             {
-                MessageBox.Show(Properties.Resources.preencherCampoBusca_MessageBox, Properties.Resources.MessageBoxError,
+                MessageBox.Show(Properties.Resources.PesquiseParaContinuar, Properties.Resources.Error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -132,7 +132,7 @@ namespace ProjectBook.GUI
             }
             catch
             {
-                MessageBox.Show(Properties.Resources.LivroNExiste, Properties.Resources.MessageBoxError,
+                MessageBox.Show(Properties.Resources.LivroNaoExiste, Properties.Resources.Error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -151,7 +151,7 @@ namespace ProjectBook.GUI
             }
             catch
             {
-                MessageBox.Show(Properties.Resources.clienteNaoExiste_MessageBox, Properties.Resources.MessageBoxError,
+                MessageBox.Show(Properties.Resources.ClienteNaoCadastrado, Properties.Resources.Error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

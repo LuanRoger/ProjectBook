@@ -29,10 +29,10 @@ namespace ProjectBook.DB.SqlServerExpress
 
                 command.Dispose();
 
-                MessageBox.Show(Resources.UsuarioRegistrado, Resources.concluido_MessageBox,
+                MessageBox.Show(Resources.UsuarioRegistrado, Resources.Concluido_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch (SqlException e) { MessageBox.Show(e.Message, Resources.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error); 
+            catch (SqlException e) { MessageBox.Show(e.Message, Resources.Error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); 
                 AppInsightMetrics.SendError(e); }
         }
         public void DeletarUsuarioId(string id)
@@ -48,7 +48,7 @@ namespace ProjectBook.DB.SqlServerExpress
 
                 command.Dispose();
 
-                MessageBox.Show(Resources.UsuarioDeletado, Resources.concluido_MessageBox,
+                MessageBox.Show(Resources.UsuarioDeletado, Resources.Concluido_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (SqlException e){ MessageBox.Show(e.Message, Resources.ErrorConectarDb, MessageBoxButtons.OK, MessageBoxIcon.Error); 
@@ -72,9 +72,9 @@ namespace ProjectBook.DB.SqlServerExpress
 
                 command.Dispose();
 
-                MessageBox.Show(Resources.informações_atualizadas, Resources.concluido_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(Resources.InformaçõesAtualizadas_MessageBox, Resources.Concluido_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch (SqlException e) { MessageBox.Show(e.Message, Resources.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error); 
+            catch (SqlException e) { MessageBox.Show(e.Message, Resources.Error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); 
                 AppInsightMetrics.SendError(e);}
         }
 
@@ -89,7 +89,7 @@ namespace ProjectBook.DB.SqlServerExpress
                 FechaConecxaoDb();
                 adapter.Fill(dataTable);
             }
-            catch (SqlException e) { MessageBox.Show(e.Message, Resources.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error); 
+            catch (SqlException e) { MessageBox.Show(e.Message, Resources.Error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); 
                 AppInsightMetrics.SendError(e); }
 
             return dataTable;
@@ -104,7 +104,7 @@ namespace ProjectBook.DB.SqlServerExpress
                 FechaConecxaoDb();
                 adapter.Fill(dataTable);
             }
-            catch (SqlException e){ MessageBox.Show(e.Message, Resources.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error); 
+            catch (SqlException e){ MessageBox.Show(e.Message, Resources.Error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); 
                 AppInsightMetrics.SendError(e); }
 
             return dataTable;
@@ -121,7 +121,7 @@ namespace ProjectBook.DB.SqlServerExpress
                 FechaConecxaoDb();
                 adapter.Fill(dataTable);
             }
-            catch (Exception e){ MessageBox.Show(e.Message, Resources.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error); 
+            catch (Exception e){ MessageBox.Show(e.Message, Resources.Error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); 
                 AppInsightMetrics.SendError(e);}
 
             return dataTable.Rows[0][0].ToString() == "ADM" ? Tipos.TipoUsuario.ADM : Tipos.TipoUsuario.USU;;
@@ -138,7 +138,7 @@ namespace ProjectBook.DB.SqlServerExpress
                 FechaConecxaoDb();
                 adapter.Fill(table);
             }
-            catch (SqlException e) { MessageBox.Show(e.Message, Resources.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error); 
+            catch (SqlException e) { MessageBox.Show(e.Message, Resources.Error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); 
                 AppInsightMetrics.SendError(e); }
 
             return table;
@@ -153,7 +153,7 @@ namespace ProjectBook.DB.SqlServerExpress
                 FechaConecxaoDb();
                 adapter.Fill(table);
             }
-            catch (SqlException e) { MessageBox.Show(e.Message, Resources.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error); 
+            catch (SqlException e) { MessageBox.Show(e.Message, Resources.Error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); 
                 AppInsightMetrics.SendError(e); }
 
             return table;
@@ -168,7 +168,7 @@ namespace ProjectBook.DB.SqlServerExpress
                 FechaConecxaoDb();
                 adapter.Fill(table);
             }
-            catch (SqlException e) { MessageBox.Show(e.Message, Resources.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error); 
+            catch (SqlException e) { MessageBox.Show(e.Message, Resources.Error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); 
                 AppInsightMetrics.SendError(e); }
 
             return table;
@@ -183,7 +183,7 @@ namespace ProjectBook.DB.SqlServerExpress
                 FechaConecxaoDb();
                 adapter.Fill(table);
             }
-            catch (SqlException e) { MessageBox.Show(e.Message, Resources.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error); 
+            catch (SqlException e) { MessageBox.Show(e.Message, Resources.Error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); 
                 AppInsightMetrics.SendError(e); }
 
             return table;
@@ -198,7 +198,7 @@ namespace ProjectBook.DB.SqlServerExpress
                 FechaConecxaoDb();
                 adapter.Fill(table);
             }
-            catch (SqlException e) { MessageBox.Show(e.Message, Resources.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error); 
+            catch (SqlException e) { MessageBox.Show(e.Message, Resources.Error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); 
                 AppInsightMetrics.SendError(e); }
 
             return table;

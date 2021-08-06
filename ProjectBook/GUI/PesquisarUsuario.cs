@@ -35,7 +35,7 @@ namespace ProjectBook.GUI
         {
             if (Verificadores.VerificarStrings(txtNomeUsuarioBusca.Text))
             {
-                MessageBox.Show(Resources.PreecherCampoBusca, Resources.MessageBoxError,
+                MessageBox.Show(Resources.PesquiseParaContinuar, Resources.Error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }

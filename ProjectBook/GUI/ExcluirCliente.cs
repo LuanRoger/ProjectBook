@@ -39,13 +39,13 @@ namespace ProjectBook.GUI
             
             if (Verificadores.VerificarStrings(termoBusca))
             {
-                MessageBox.Show(Resources.PreecherCampoBusca, Resources.MessageBoxError,
+                MessageBox.Show(Resources.PesquiseParaContinuar, Resources.Error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             if(!rabBsucarIdCliente.Checked && !rabBuscarNome.Checked)
             {
-                MessageBox.Show(Resources.MarcarOpcao, Resources.MessageBoxError,
+                MessageBox.Show(Resources.MarcarOpcaoBusca, Resources.Error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -55,14 +55,14 @@ namespace ProjectBook.GUI
             
             if (Verificadores.VerificarDataTable(data))
             {
-                MessageBox.Show(Resources.ClienteNExiste, Resources.MessageBoxError,
+                MessageBox.Show(Resources.ClienteNaoExiste, Resources.Error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             DialogResult resultadoExcluir = MessageBox.Show(
                 string.Format(Resources.ConfirmarExclusao1, data.Rows[0][1]),
-                Resources.MessageBoxExcluir, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                Resources.Excluir_MessageBox, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             
             if (resultadoExcluir == DialogResult.Yes)
             {

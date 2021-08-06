@@ -28,7 +28,7 @@ namespace ProjectBook.GUI
 
             if (Verificadores.VerificarCamposUsuario(usuario))
             {
-                MessageBox.Show(Resources.PreecherCampoBusca, Resources.MessageBoxError,
+                MessageBox.Show(Resources.PesquiseParaContinuar, Resources.Error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -43,7 +43,7 @@ namespace ProjectBook.GUI
             UsuarioModel usuario = new(txtNovoUsuario.Text, txtNovoSenhaUsuario.Text, cmbNovoStatus.Text);
             if (Verificadores.VerificarCamposUsuario(usuario))
             {
-                MessageBox.Show(Resources.PreecherCampoBusca, Resources.MessageBoxError,
+                MessageBox.Show(Resources.PesquiseParaContinuar, Resources.Error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -61,7 +61,7 @@ namespace ProjectBook.GUI
 
             if (Verificadores.VerificarDataTable(infoUsuario))
             {
-                MessageBox.Show(Resources.PreecherCampoBusca, Resources.MessageBoxError,
+                MessageBox.Show(Resources.PesquiseParaContinuar, Resources.Error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }

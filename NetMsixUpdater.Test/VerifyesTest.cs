@@ -11,7 +11,7 @@ namespace NetMsixUpdater.Test
             MsixUpdater msixUpdater = new(Assembly.GetExecutingAssembly(), Consts.YAML_PATH);
             msixUpdater.Build();
 
-            Assert.False(msixUpdater.hasUpdated);
+            Assert.True(msixUpdater.hasUpdated);
         }
 
         [Fact]
@@ -20,7 +20,7 @@ namespace NetMsixUpdater.Test
             MsixUpdater msixUpdater = new(Assembly.GetExecutingAssembly(), Consts.YAML_SERVER_PATH);
             msixUpdater.Build();
 
-            Assert.False(msixUpdater.hasUpdated);
+            Assert.True(msixUpdater.hasUpdated);
         }
     }
 }

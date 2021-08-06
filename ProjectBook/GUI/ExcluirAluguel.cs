@@ -40,13 +40,13 @@ namespace ProjectBook.GUI
 
             if (Verificadores.VerificarStrings(txtBuscaAluguel.Text))
             {
-                MessageBox.Show(Resources.PreecherCampoBusca, Resources.MessageBoxError,
+                MessageBox.Show(Resources.PesquiseParaContinuar, Resources.Error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             if(!rabExcluirAluguelTitulo.Checked && !rabExcluirAluguelCliente.Checked)
             {
-                MessageBox.Show(Resources.MarcarOpcao, Resources.MessageBoxError,
+                MessageBox.Show(Resources.MarcarOpcaoBusca, Resources.Error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -66,14 +66,14 @@ namespace ProjectBook.GUI
 
             if(Verificadores.VerificarDataTable(infoAluguel))
             {
-                MessageBox.Show(Resources.clienteLivroNaoAlugados, Resources.MessageBoxError,
+                MessageBox.Show(Resources.ClienteLivroNaoAlugados, Resources.Error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             DialogResult resultadoExcluir = MessageBox.Show(
            string.Format(Resources.ConfirmarExclusao2, infoAluguel.Rows[0][0], infoAluguel.Rows[0][2]),
-                Resources.MessageBoxExcluir, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                Resources.Excluir_MessageBox, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
             if (resultadoExcluir != DialogResult.Yes) return;
 

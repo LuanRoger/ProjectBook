@@ -82,18 +82,36 @@ namespace ProjectBook.Properties {
         /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Atualização disponível.
         /// </summary>
-        internal static string Atualizacao_MessageBox {
+        internal static string AtualizacaoDisponivel {
             get {
-                return ResourceManager.GetString("Atualizacao_MessageBox", resourceCulture);
+                return ResourceManager.GetString("AtualizacaoDisponivel", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Atualiazando status dos alugueis....
         /// </summary>
-        internal static string AtualizandoBancoDadosSpashScreen {
+        internal static string AtualizandoBancoDados_SpashScreen {
             get {
-                return ResourceManager.GetString("AtualizandoBancoDadosSpashScreen", resourceCulture);
+                return ResourceManager.GetString("AtualizandoBancoDados_SpashScreen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Aviso.
+        /// </summary>
+        internal static string Aviso_MessageBox {
+            get {
+                return ResourceManager.GetString("Aviso_MessageBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Esta é provavelmente a conta de administrador padrão do programa, se deleta-la, certifique-se de possuir uma outra conta de administrador, Deseja continuar?.
+        /// </summary>
+        internal static string AvisoDeletarAdmin {
+            get {
+                return ResourceManager.GetString("AvisoDeletarAdmin", resourceCulture);
             }
         }
         
@@ -218,36 +236,36 @@ namespace ProjectBook.Properties {
         /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Cliente deletado com sucesso..
         /// </summary>
-        internal static string cliente_deletado_com_sucesso {
+        internal static string ClienteDeletado {
             get {
-                return ResourceManager.GetString("cliente_deletado_com_sucesso", resourceCulture);
+                return ResourceManager.GetString("ClienteDeletado", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Este livro não foi alugado ou o cliente não alugou nenhum livro..
         /// </summary>
-        internal static string clienteLivroNaoAlugados {
+        internal static string ClienteLivroNaoAlugados {
             get {
-                return ResourceManager.GetString("clienteLivroNaoAlugados", resourceCulture);
+                return ResourceManager.GetString("ClienteLivroNaoAlugados", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Este cliente não está cadastrado, verifique se a informação de busca foi digitada corretamente..
         /// </summary>
-        internal static string clienteNaoExiste_MessageBox {
+        internal static string ClienteNaoCadastrado {
             get {
-                return ResourceManager.GetString("clienteNaoExiste_MessageBox", resourceCulture);
+                return ResourceManager.GetString("ClienteNaoCadastrado", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Este cliente não existe..
         /// </summary>
-        internal static string ClienteNExiste {
+        internal static string ClienteNaoExiste {
             get {
-                return ResourceManager.GetString("ClienteNExiste", resourceCulture);
+                return ResourceManager.GetString("ClienteNaoExiste", resourceCulture);
             }
         }
         
@@ -263,9 +281,9 @@ namespace ProjectBook.Properties {
         /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Concluido.
         /// </summary>
-        internal static string concluido_MessageBox {
+        internal static string Concluido_MessageBox {
             get {
-                return ResourceManager.GetString("concluido_MessageBox", resourceCulture);
+                return ResourceManager.GetString("Concluido_MessageBox", resourceCulture);
             }
         }
         
@@ -275,6 +293,15 @@ namespace ProjectBook.Properties {
         internal static string ConexaoLocalMigrarOneDrive {
             get {
                 return ResourceManager.GetString("ConexaoLocalMigrarOneDrive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a É necessário fazer uma conexão local com o banco de dados, indicando o caminho, para fazer a migração para o OneDrive..
+        /// </summary>
+        internal static string ConexaoLocalNescessaria {
+            get {
+                return ResourceManager.GetString("ConexaoLocalNescessaria", resourceCulture);
             }
         }
         
@@ -363,16 +390,6 @@ namespace ProjectBook.Properties {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a É necessário fazer uma conexão local com o banco de dados, indicando o caminho, para fazer a migração para o OneDrive..
-        /// </summary>
-        internal static string é_necessário_fazer_uma_conexão_local_com_o_banco_de_dados_para_fazer_a_migração_para_o_OneDrive_ {
-            get {
-                return ResourceManager.GetString("é_necessário_fazer_uma_conexão_local_com_o_banco_de_dados_para_fazer_a_migração_p" +
-                        "ara_o_OneDrive_", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap enter_account {
@@ -389,6 +406,15 @@ namespace ProjectBook.Properties {
             get {
                 object obj = ResourceManager.GetObject("error", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Error.
+        /// </summary>
+        internal static string Error_MessageBox {
+            get {
+                return ResourceManager.GetString("Error_MessageBox", resourceCulture);
             }
         }
         
@@ -411,15 +437,6 @@ namespace ProjectBook.Properties {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Houve um error ao tentar recuperar o caminho do banco de dados..
-        /// </summary>
-        internal static string ErrorGetSourceDb {
-            get {
-                return ResourceManager.GetString("ErrorGetSourceDb", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Ocorreu um error: {0}. Volte as configurações e crie uma novo string de conexão..
         /// </summary>
         internal static string ErrorMigrarOneDrive {
@@ -429,11 +446,29 @@ namespace ProjectBook.Properties {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Houve um error ao tentar recuperar o caminho do banco de dados..
+        /// </summary>
+        internal static string ErrorRecuperarCaminho {
+            get {
+                return ResourceManager.GetString("ErrorRecuperarCaminho", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Excluir.
+        /// </summary>
+        internal static string Excluir_MessageBox {
+            get {
+                return ResourceManager.GetString("Excluir_MessageBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Já existe um banco de dados sincronizado, deseja sobrescrever?.
         /// </summary>
-        internal static string existePastaOneDrive {
+        internal static string ExistePastaOneDrive {
             get {
-                return ResourceManager.GetString("existePastaOneDrive", resourceCulture);
+                return ResourceManager.GetString("ExistePastaOneDrive", resourceCulture);
             }
         }
         
@@ -450,18 +485,27 @@ namespace ProjectBook.Properties {
         /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Está faltando arquivos escenciais para abrir o programa, tente reistalar-lo novamente..
         /// </summary>
-        internal static string FaltaArquivoEscenciaisParaContinuar {
+        internal static string FaltaArquivoEscenciais {
             get {
-                return ResourceManager.GetString("FaltaArquivoEscenciaisParaContinuar", resourceCulture);
+                return ResourceManager.GetString("FaltaArquivoEscenciais", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Informação.
+        /// </summary>
+        internal static string Informacao_MessageBox {
+            get {
+                return ResourceManager.GetString("Informacao_MessageBox", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Informações atualizadas.
         /// </summary>
-        internal static string informações_atualizadas {
+        internal static string InformaçõesAtualizadas_MessageBox {
             get {
-                return ResourceManager.GetString("informações_atualizadas", resourceCulture);
+                return ResourceManager.GetString("InformaçõesAtualizadas_MessageBox", resourceCulture);
             }
         }
         
@@ -506,9 +550,9 @@ namespace ProjectBook.Properties {
         /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a O livro ou o cliente não existem..
         /// </summary>
-        internal static string LivroClienteNExistem {
+        internal static string LivroClienteNaoExistem {
             get {
-                return ResourceManager.GetString("LivroClienteNExistem", resourceCulture);
+                return ResourceManager.GetString("LivroClienteNaoExistem", resourceCulture);
             }
         }
         
@@ -524,18 +568,18 @@ namespace ProjectBook.Properties {
         /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Este livro não foi alugado..
         /// </summary>
-        internal static string LivroNAluguado {
+        internal static string LivroNaoAluguado {
             get {
-                return ResourceManager.GetString("LivroNAluguado", resourceCulture);
+                return ResourceManager.GetString("LivroNaoAluguado", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Este livro não existe..
         /// </summary>
-        internal static string LivroNExiste {
+        internal static string LivroNaoExiste {
             get {
-                return ResourceManager.GetString("LivroNExiste", resourceCulture);
+                return ResourceManager.GetString("LivroNaoExiste", resourceCulture);
             }
         }
         
@@ -561,63 +605,9 @@ namespace ProjectBook.Properties {
         /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Marque uma opção de busca para continuar..
         /// </summary>
-        internal static string marcar_opcao_busca {
+        internal static string MarcarOpcaoBusca {
             get {
-                return ResourceManager.GetString("marcar_opcao_busca", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Marque uma opção de busca para continuar..
-        /// </summary>
-        internal static string MarcarOpcao {
-            get {
-                return ResourceManager.GetString("MarcarOpcao", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Concluido.
-        /// </summary>
-        internal static string MessageBoxConcluido {
-            get {
-                return ResourceManager.GetString("MessageBoxConcluido", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Error.
-        /// </summary>
-        internal static string MessageBoxError {
-            get {
-                return ResourceManager.GetString("MessageBoxError", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Excluir.
-        /// </summary>
-        internal static string MessageBoxExcluir {
-            get {
-                return ResourceManager.GetString("MessageBoxExcluir", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Informação.
-        /// </summary>
-        internal static string MessageBoxInformacao {
-            get {
-                return ResourceManager.GetString("MessageBoxInformacao", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Pergunta.
-        /// </summary>
-        internal static string MessageBoxPergunta {
-            get {
-                return ResourceManager.GetString("MessageBoxPergunta", resourceCulture);
+                return ResourceManager.GetString("MarcarOpcaoBusca", resourceCulture);
             }
         }
         
@@ -633,18 +623,9 @@ namespace ProjectBook.Properties {
         /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Houve uma mudança na String de conexão, o programa será reiniciado..
         /// </summary>
-        internal static string mudancaConnectionString {
+        internal static string MudancaConnectionString {
             get {
-                return ResourceManager.GetString("mudancaConnectionString", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Não foi possivel conectar-se a base de dados: {0}. Deseja abrir a configurações?.
-        /// </summary>
-        internal static string não_foi_possivel_conectar_se_a_base_de_dados___0___Deseja_abrir_a_configurações_ {
-            get {
-                return ResourceManager.GetString("não_foi_possivel_conectar_se_a_base_de_dados___0___Deseja_abrir_a_configurações_", resourceCulture);
+                return ResourceManager.GetString("MudancaConnectionString", resourceCulture);
             }
         }
         
@@ -699,29 +680,29 @@ namespace ProjectBook.Properties {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Preencha o campo de busca primeiro..
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Pergunta.
         /// </summary>
-        internal static string PreecherCampoBusca {
+        internal static string Pergunta_MessageBox {
             get {
-                return ResourceManager.GetString("PreecherCampoBusca", resourceCulture);
+                return ResourceManager.GetString("Pergunta_MessageBox", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Faça uma pesquisa para continuar..
         /// </summary>
-        internal static string preencherCampoBusca_MessageBox {
+        internal static string PesquiseParaContinuar {
             get {
-                return ResourceManager.GetString("preencherCampoBusca_MessageBox", resourceCulture);
+                return ResourceManager.GetString("PesquiseParaContinuar", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Preencha todos os campos obrigatórios.
         /// </summary>
-        internal static string preencherCamposObrigatorios_MessageBox {
+        internal static string PreencherCamposObrigatorios {
             get {
-                return ResourceManager.GetString("preencherCamposObrigatorios_MessageBox", resourceCulture);
+                return ResourceManager.GetString("PreencherCamposObrigatorios", resourceCulture);
             }
         }
         
@@ -748,9 +729,9 @@ namespace ProjectBook.Properties {
         /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Procurando por atualizações....
         /// </summary>
-        internal static string ProcurandoAtualizacoesSplashScreen {
+        internal static string ProcurandoAtualizacoes_SplashScreen {
             get {
-                return ResourceManager.GetString("ProcurandoAtualizacoesSplashScreen", resourceCulture);
+                return ResourceManager.GetString("ProcurandoAtualizacoes_SplashScreen", resourceCulture);
             }
         }
         
@@ -765,20 +746,11 @@ namespace ProjectBook.Properties {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Realizando verificações de segurança....
-        /// </summary>
-        internal static string realizando_verificações_de_segurança_splashscreen {
-            get {
-                return ResourceManager.GetString("realizando_verificações_de_segurança_splashscreen", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Para que as alterações do banco de dados sejam aplicadas será nescessário reiniciar o programa. Desseja reiniciar?.
         /// </summary>
-        internal static string reiniciarPrograma_MessageBox {
+        internal static string ReiniciarPrograma {
             get {
-                return ResourceManager.GetString("reiniciarPrograma_MessageBox", resourceCulture);
+                return ResourceManager.GetString("ReiniciarPrograma", resourceCulture);
             }
         }
         
@@ -805,9 +777,9 @@ namespace ProjectBook.Properties {
         /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Sobre.
         /// </summary>
-        internal static string sobre_MessageBox {
+        internal static string Sobre_MessageBox {
             get {
-                return ResourceManager.GetString("sobre_MessageBox", resourceCulture);
+                return ResourceManager.GetString("Sobre_MessageBox", resourceCulture);
             }
         }
         
@@ -824,9 +796,9 @@ namespace ProjectBook.Properties {
         /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a String de conexão:.
         /// </summary>
-        internal static string StringConexaoConfiguracoes {
+        internal static string StringConexao {
             get {
-                return ResourceManager.GetString("StringConexaoConfiguracoes", resourceCulture);
+                return ResourceManager.GetString("StringConexao", resourceCulture);
             }
         }
         
@@ -902,6 +874,15 @@ namespace ProjectBook.Properties {
         internal static string UsuarioRegistrado {
             get {
                 return ResourceManager.GetString("UsuarioRegistrado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Realizando verificações de segurança....
+        /// </summary>
+        internal static string VerificacoesSeguranca_SplashScreen {
+            get {
+                return ResourceManager.GetString("VerificacoesSeguranca_SplashScreen", resourceCulture);
             }
         }
     }

@@ -32,8 +32,8 @@ namespace ProjectBook.GUI
             }
             catch
             {
-                MessageBox.Show(Resources.FaltaArquivoEscenciaisParaContinuar,
-                    Resources.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(Resources.FaltaArquivoEscenciais,
+                    Resources.Error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Process.GetCurrentProcess().Kill();
             }
 
@@ -128,7 +128,7 @@ namespace ProjectBook.GUI
 
 
             workbook.SaveAs(saveFileDialog.FileName);
-            MessageBox.Show("Planilha salva com sucesso", Resources.MessageBoxInformacao, MessageBoxButtons.OK,
+            MessageBox.Show("Planilha salva com sucesso", Resources.Informacao_MessageBox, MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
         }
     }
