@@ -57,7 +57,7 @@ namespace ProjectBook.GUI
             #endregion
 
             try { int.Parse(txtAno.Text); }
-            catch { MessageBox.Show(string.Format(Resources.TypeError, "Ano"), Resources.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error); 
+            catch { MessageBox.Show(string.Format(Resources.TypeError, "Ano"), Resources.Error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); 
                 AppInsightMetrics.SendError(new Exception(string.Format(Resources.TypeError, "Ano"))); return;}
 
             LivroModel livro;
@@ -93,7 +93,7 @@ namespace ProjectBook.GUI
             
             if (Verificadores.VerificarCamposLivros(livro))
             {
-                MessageBox.Show(Resources.preencherCamposObrigatorios_MessageBox, Resources.MessageBoxError,
+                MessageBox.Show(Resources.PreencherCamposObrigatorios, Resources.Error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }

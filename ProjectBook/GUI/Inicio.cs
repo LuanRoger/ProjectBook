@@ -170,12 +170,12 @@ namespace ProjectBook.GUI
             {
                 if(AppUpdateManager.hasUpdated())
                 {
-                    MessageBox.Show("PrjectBook já está atualziado", Resources.MessageBoxInformacao,
+                    MessageBox.Show("PrjectBook já está atualziado", Resources.Informacao_MessageBox,
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
 
-                DialogResult dialogResult = MessageBox.Show("Há uma atualização, deseja instalar?", Resources.Atualizacao_MessageBox,
+                DialogResult dialogResult = MessageBox.Show("Há uma atualização, deseja instalar?", Resources.AtualizacaoDisponivel,
                     MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if(dialogResult != DialogResult.Yes) return;
@@ -327,7 +327,7 @@ namespace ProjectBook.GUI
 
         private void Inicio_FormClosing(object sender, FormClosingEventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show(Resources.ConfirmarSair, Resources.MessageBoxInformacao,
+            DialogResult dialogResult = MessageBox.Show(Resources.ConfirmarSair, Resources.Informacao_MessageBox,
                 MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
 
             e.Cancel = dialogResult != DialogResult.Yes;

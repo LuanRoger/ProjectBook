@@ -8,6 +8,7 @@ using ProjectBook.Managers.Configuration;
 
 namespace ProjectBook.AppInsight
 {
+    // Inativo
     public static class AppInsightMetrics
     {
         private static TelemetryClient telemetryClient;

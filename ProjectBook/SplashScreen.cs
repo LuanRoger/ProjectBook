@@ -36,7 +36,7 @@ namespace ProjectBook
         {
             if (!livrosDb.VerificarConexaoDb()) return;
 
-            lblStatusCarregamento.Text = Resources.realizando_verificações_de_segurança_splashscreen;
+            lblStatusCarregamento.Text = Resources.VerificacoesSeguranca_SplashScreen;
 
             AppManager.LoadUser();
             if (!Verificadores.VerificarUsuarioLogado())
@@ -69,7 +69,7 @@ namespace ProjectBook
         }
         private async Task SearchForUpdates()
         {
-            lblStatusCarregamento.Text = Resources.ProcurandoAtualizacoesSplashScreen;
+            lblStatusCarregamento.Text = Resources.ProcurandoAtualizacoes_SplashScreen;
             await Task.Run(() => 
             {
                 if(AppUpdateManager.hasUpdated()) return;
@@ -84,7 +84,7 @@ namespace ProjectBook
         }
         private async Task AtualizarAluguel()
         {
-            lblStatusCarregamento.Text = Resources.AtualizandoBancoDadosSpashScreen;
+            lblStatusCarregamento.Text = Resources.AtualizandoBancoDados_SpashScreen;
             if (AppConfigurationManager.configuration.UpdateRentStatus) await Task.Run(AtualizarAtrasso);
         }
 

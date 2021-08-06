@@ -23,7 +23,7 @@ namespace ProjectBook.GUI
             if (Verificadores.VerificarStrings(txtLoginUsuario.Text, txtLoginSenha.Text) || 
                 Verificadores.VerificarStrings(txtLoginCodigo.Text, txtLoginSenha.Text))
             {
-                MessageBox.Show(Resources.preencherCamposObrigatorios_MessageBox, Resources.MessageBoxError,
+                MessageBox.Show(Resources.PreencherCamposObrigatorios, Resources.Error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -36,7 +36,7 @@ namespace ProjectBook.GUI
 
                 if(Verificadores.VerificarDataTable(infoUsuario))
                 {
-                    MessageBox.Show(Resources.InformacoesIncorretasLogin, Resources.MessageBoxError,
+                    MessageBox.Show(Resources.InformacoesIncorretasLogin, Resources.Error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }

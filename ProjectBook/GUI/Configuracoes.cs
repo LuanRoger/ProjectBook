@@ -24,7 +24,7 @@ namespace ProjectBook.GUI
         #region CheckedChanged
         private void rabSqlServerExpress_CheckedChanged(object sender, EventArgs e)
         {
-            lblInfoTxt.Text = Resources.StringConexaoConfiguracoes;
+            lblInfoTxt.Text = Resources.StringConexao;
 
             lblInfoTxt.ForeColor = Color.Black;
             btnSelecionarArquivoDb.Visible = false;
@@ -51,7 +51,7 @@ namespace ProjectBook.GUI
             if(directoryInfo == null && directoryInfo.Parent == null)
             {
                 MessageBox.Show(Resources.ConexaoLocalMigrarOneDrive,
-                    Resources.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Resources.Error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 rabSqlServerLocalDb.Checked = true;
                 return;
             }
@@ -129,7 +129,7 @@ namespace ProjectBook.GUI
             {
                 DialogResult dialogResult = MessageBox
                     .Show(Resources.ConexaoLocalMigrarOneDrive,
-                    Resources.MessageBoxInformacao, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    Resources.Informacao_MessageBox, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (dialogResult != DialogResult.Yes) return;
 
@@ -142,14 +142,14 @@ namespace ProjectBook.GUI
 
             AppConfigurationManager.configuration = configurationModel;
 
-            MessageBox.Show(Resources.ConfiguracoesSalvas, Resources.concluido_MessageBox,
+            MessageBox.Show(Resources.ConfiguracoesSalvas, Resources.Concluido_MessageBox,
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             // Se o usuário mudou a string de conexão o programa deve ser reinicado
             if (!stringConexaoAtual.Equals(AppConfigurationManager.configuration.SqlConnectionString))
             {
-                MessageBox.Show(Resources.mudancaConnectionString,
-                    Resources.MessageBoxInformacao, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(Resources.MudancaConnectionString,
+                    Resources.Informacao_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 AppManager.ReiniciarPrograma();
             }

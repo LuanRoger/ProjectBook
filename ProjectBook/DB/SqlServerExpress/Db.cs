@@ -34,7 +34,7 @@ namespace ProjectBook.DB.SqlServerExpress
                 {
                     DialogResult dialogResult = MessageBox.Show(
                         string.Format(Resources.ErrorConectarDb, e.Message),
-                        Resources.MessageBoxError,
+                        Resources.Error_MessageBox,
                         MessageBoxButtons.YesNo, MessageBoxIcon.Error);
 
                     if (dialogResult == DialogResult.Yes)

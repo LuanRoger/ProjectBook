@@ -31,10 +31,10 @@ namespace ProjectBook.DB.SqlServerExpress
 
                 command.Dispose();
 
-                MessageBox.Show(Resources.AluguelRegistrado, Resources.concluido_MessageBox,
+                MessageBox.Show(Resources.AluguelRegistrado, Resources.Concluido_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch (SqlException e) { MessageBox.Show(e.Message, Resources.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error); 
+            catch (SqlException e) { MessageBox.Show(e.Message, Resources.Error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); 
                 AppInsightMetrics.SendError(e); }
         }
         public DataTable VerTodosAluguel()
@@ -48,7 +48,7 @@ namespace ProjectBook.DB.SqlServerExpress
 
                 adapter.Fill(table);
             }
-            catch (SqlException e) { MessageBox.Show(e.Message, Resources.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error); 
+            catch (SqlException e) { MessageBox.Show(e.Message, Resources.Error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); 
                 AppInsightMetrics.SendError(e); }
 
 
@@ -69,10 +69,10 @@ namespace ProjectBook.DB.SqlServerExpress
 
                 command.Dispose();
 
-                MessageBox.Show(Resources.LivroDeletado, Resources.concluido_MessageBox,
+                MessageBox.Show(Resources.LivroDeletado, Resources.Concluido_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch (SqlException e) { MessageBox.Show(e.Message, Resources.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error); 
+            catch (SqlException e) { MessageBox.Show(e.Message, Resources.Error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); 
                 AppInsightMetrics.SendError(e); }
         }
         public void DeletarAluguelCliente(string nomeCliente)
@@ -87,10 +87,10 @@ namespace ProjectBook.DB.SqlServerExpress
                 FechaConecxaoDb();
                 command.Dispose();
 
-                MessageBox.Show(Resources.LivroDeletado, Resources.concluido_MessageBox,
+                MessageBox.Show(Resources.LivroDeletado, Resources.Concluido_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch (SqlException e) { MessageBox.Show(e.Message, Resources.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error); 
+            catch (SqlException e) { MessageBox.Show(e.Message, Resources.Error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); 
                 AppInsightMetrics.SendError(e); }
         }
         public void DeletarAluguelTituloLivro(string titulo, string nomeCliente)
@@ -105,10 +105,10 @@ namespace ProjectBook.DB.SqlServerExpress
                 FechaConecxaoDb();
                 command.Dispose();
 
-                MessageBox.Show(Resources.LivroDeletado, Resources.concluido_MessageBox,
+                MessageBox.Show(Resources.LivroDeletado, Resources.Concluido_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch (SqlException e) { MessageBox.Show(e.Message, Resources.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error); 
+            catch (SqlException e) { MessageBox.Show(e.Message, Resources.Error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); 
                 AppInsightMetrics.SendError(e); }
         }
         #endregion
@@ -125,7 +125,7 @@ namespace ProjectBook.DB.SqlServerExpress
 
                 adapter.Fill(table);
             }
-            catch (SqlException e) { MessageBox.Show(e.Message, Resources.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error); 
+            catch (SqlException e) { MessageBox.Show(e.Message, Resources.Error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); 
                 AppInsightMetrics.SendError(e); }
 
             return table;
@@ -141,7 +141,7 @@ namespace ProjectBook.DB.SqlServerExpress
 
                 adapter.Fill(table);
             }
-            catch (SqlException e) { MessageBox.Show(e.Message, Resources.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error); 
+            catch (SqlException e) { MessageBox.Show(e.Message, Resources.Error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); 
                 AppInsightMetrics.SendError(e); }
 
             return table;
@@ -157,7 +157,7 @@ namespace ProjectBook.DB.SqlServerExpress
 
                 adapter.Fill(table);
             }
-            catch (SqlException e) { MessageBox.Show(e.Message, Resources.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error); 
+            catch (SqlException e) { MessageBox.Show(e.Message, Resources.Error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); 
                 AppInsightMetrics.SendError(e); }
 
             return table;
@@ -173,7 +173,7 @@ namespace ProjectBook.DB.SqlServerExpress
 
                 adapter.Fill(table);
             }
-            catch (SqlException e) { MessageBox.Show(e.Message, Resources.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error); 
+            catch (SqlException e) { MessageBox.Show(e.Message, Resources.Error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); 
                 AppInsightMetrics.SendError(e); }
 
             return table;
@@ -190,7 +190,7 @@ namespace ProjectBook.DB.SqlServerExpress
 
                 adapter.Fill(table);
             }
-            catch (SqlException e) { MessageBox.Show(e.Message, Resources.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error); 
+            catch (SqlException e) { MessageBox.Show(e.Message, Resources.Error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); 
                 AppInsightMetrics.SendError(e); }
 
             return table;
@@ -207,7 +207,7 @@ namespace ProjectBook.DB.SqlServerExpress
 
                 adapter.Fill(table);
             }
-            catch (SqlException e) { MessageBox.Show(e.Message, Resources.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error); 
+            catch (SqlException e) { MessageBox.Show(e.Message, Resources.Error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); 
                 AppInsightMetrics.SendError(e); }
 
             return table;
@@ -238,9 +238,9 @@ namespace ProjectBook.DB.SqlServerExpress
 
                 command.Dispose();
 
-                MessageBox.Show(Resources.informações_atualizadas, Resources.concluido_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(Resources.InformaçõesAtualizadas_MessageBox, Resources.Concluido_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch (SqlException e) { MessageBox.Show(e.Message, Resources.MessageBoxError, MessageBoxButtons.OK, MessageBoxIcon.Error); 
+            catch (SqlException e) { MessageBox.Show(e.Message, Resources.Error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); 
                 AppInsightMetrics.SendError(e); }
         }
         public void AtualizarStatusAtrasado(string alugadoPor)

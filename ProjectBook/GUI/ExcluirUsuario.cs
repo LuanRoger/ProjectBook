@@ -23,24 +23,30 @@ namespace ProjectBook.GUI
 
             if (Verificadores.VerificarDataTable(infoUsuario))
             {
-                MessageBox.Show(Resources.PreecherCampoBusca, Resources.MessageBoxError,
+                MessageBox.Show(Resources.PesquiseParaContinuar, Resources.Error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             DialogResult dialogResult = MessageBox.Show(string.Format(Resources.ConfirmarExclusao1, infoUsuario.Rows[0][1]),
-                Resources.MessageBoxError,
+                Resources.Error_MessageBox,
                 MessageBoxButtons.YesNo, MessageBoxIcon.Stop);
-            if (dialogResult == DialogResult.No) return;
+
+            if (dialogResult != DialogResult.Yes) return;
+            if(Verificadores.VerificarAdmin(infoUsuario.Rows[0]))
+            {
+                dialogResult = MessageBox.Show(Resources.AvisoDeletarAdmin, Resources.Aviso_MessageBox,
+                MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if(dialogResult != DialogResult.Yes) return;
+            }
 
             usuarioDb.DeletarUsuarioId(txtCodigoDeletarUsuario.Text);
             LimparCampos();
         }
 
-        private void LimparCampos()
-        {
+        private void LimparCampos() =>
             txtCodigoDeletarUsuario.Clear();
-        }
 
         private void btnCancelar_Click(object sender, EventArgs e) => Close();
     }

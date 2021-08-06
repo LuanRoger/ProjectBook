@@ -22,7 +22,7 @@ namespace ProjectBook.GUI
             string termoPesquisa = txtPesquisarCliente.Text;
             if (Verificadores.VerificarStrings(termoPesquisa))
             {
-                MessageBox.Show(Resources.PreecherCampoBusca, Resources.MessageBoxError,
+                MessageBox.Show(Resources.PesquiseParaContinuar, Resources.Error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -33,7 +33,7 @@ namespace ProjectBook.GUI
 
             if (Verificadores.VerificarDataTable(dataTable))
             {
-                MessageBox.Show(Resources.ClienteNExiste, Resources.MessageBoxError,
+                MessageBox.Show(Resources.ClienteNaoExiste, Resources.Error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }

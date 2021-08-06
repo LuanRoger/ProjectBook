@@ -46,7 +46,7 @@ namespace ProjectBook.GUI
 
             if (Verificadores.VerificarStrings(termoPesquisa))
             {
-                MessageBox.Show(Resources.PreecherCampoBusca, Resources.MessageBoxError,
+                MessageBox.Show(Resources.PesquiseParaContinuar, Resources.Error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -58,7 +58,7 @@ namespace ProjectBook.GUI
 
             if (Verificadores.VerificarDataTable(resultado))
             {
-                MessageBox.Show(Resources.LivroClienteNExistem, Resources.MessageBoxError,
+                MessageBox.Show(Resources.LivroClienteNaoExistem, Resources.Error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
