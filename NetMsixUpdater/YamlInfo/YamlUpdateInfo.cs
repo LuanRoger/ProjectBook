@@ -33,12 +33,14 @@ namespace NetMsixUpdater.YamlInfo
             return deserialize.Deserialize<T>(yamlText);
         }
 
-        private bool disposed { get; set; } = false;
+        public bool disposed { get; set; } = false;
         public void Dispose()
         {
-            if(disposed) return;
+            yamlText = null;
 
             GC.SuppressFinalize(this);
+            
+            disposed = true;
         }
     }
 }

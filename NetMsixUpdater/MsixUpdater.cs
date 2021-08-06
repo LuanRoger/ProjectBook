@@ -1,10 +1,11 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
 using NetMsixUpdater.YamlInfo;
 using NetMsixUpdater.YamlInfo.Model;
 
 namespace NetMsixUpdater
 {
-    public class MsixUpdater
+    public class MsixUpdater : IDisposable
     {
         internal Assembly programAssembly { get; set; }
 
@@ -21,11 +22,24 @@ namespace NetMsixUpdater
             programAssembly = assembly;
             this.yamlPath = yamlPath;
         }
+        ~MsixUpdater() => Dispose();
 
         public void Build()
         {
             using(YamlUpdateInfo yamlFileInfo = new(yamlPath))
                 yamlUpdateInfo = (YamlFileInfo)yamlFileInfo.DeserializeYaml<YamlFileInfo>();
+        }
+
+        public bool disposed { get; set; } = false;
+        public void Dispose()
+        {
+            programAssembly = null;
+            yamlPath = null;
+            yamlUpdateInfo = null;
+
+            GC.SuppressFinalize(this);
+
+            disposed = true;
         }
     }
 }

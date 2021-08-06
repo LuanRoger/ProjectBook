@@ -1,5 +1,6 @@
 using Xunit;
 using System.Reflection;
+using System;
 
 namespace NetMsixUpdater.Test
 {
