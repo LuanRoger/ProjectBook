@@ -47,6 +47,7 @@ namespace ProjectBook.GUI
             this.chbAtualizarStatusAluguel = new System.Windows.Forms.CheckBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.chbTelemetria = new System.Windows.Forms.CheckBox();
+            this.btnRedefinirConfig = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.gpbBancoDados.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -247,11 +248,25 @@ namespace ProjectBook.GUI
             this.chbTelemetria.Text = "Permitir telemetria";
             this.chbTelemetria.UseVisualStyleBackColor = true;
             // 
+            // btnRedefinirConfig
+            // 
+            this.btnRedefinirConfig.Image = global::ProjectBook.Properties.Resources.cog_delete;
+            this.btnRedefinirConfig.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRedefinirConfig.Location = new System.Drawing.Point(12, 237);
+            this.btnRedefinirConfig.Name = "btnRedefinirConfig";
+            this.btnRedefinirConfig.Size = new System.Drawing.Size(79, 23);
+            this.btnRedefinirConfig.TabIndex = 6;
+            this.btnRedefinirConfig.Text = "Redefinir";
+            this.btnRedefinirConfig.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnRedefinirConfig.UseVisualStyleBackColor = true;
+            this.btnRedefinirConfig.Click += new System.EventHandler(this.btnRedefinirConfig_Click);
+            // 
             // Configuracoes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(493, 270);
+            this.Controls.Add(this.btnRedefinirConfig);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox3);
@@ -298,5 +313,6 @@ namespace ProjectBook.GUI
         private System.Windows.Forms.CheckBox chbExibirCodigo;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.CheckBox chbTelemetria;
+        private System.Windows.Forms.Button btnRedefinirConfig;
     }
 }

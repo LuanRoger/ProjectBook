@@ -96,7 +96,7 @@ namespace ProjectBook.GUI
             //Nescessario para verificar se houve mudança
             string stringConexaoAtual = AppConfigurationManager.configuration.SqlConnectionString;
 
-            ConfigurationModel configurationModel = new()
+            AppConfigurationManager.configuration = AppConfigurationManager.configuration with
             {
                 PreviewPrinter = chbVisualizarImpressao.Checked,
                 ShowId = chbExibirCodigo.Checked,
@@ -109,20 +109,19 @@ namespace ProjectBook.GUI
             //String de conexão
             if (rabSqlServerExpress.Checked)
             {
-                configurationModel = configurationModel with
+                AppConfigurationManager.configuration = AppConfigurationManager.configuration with
                 {
                     DbEngine = TipoDatabase.SqlServerExpress,
                     SqlConnectionString = txtStringConexaoCaminhoDb.Text,
-                    DbFolder = string.Empty
                 };
             }
             else if (rabSqlServerLocalDb.Checked)
             {
-                configurationModel = configurationModel with
+                AppConfigurationManager.configuration = AppConfigurationManager.configuration with
                 {
                     DbEngine = AppConfigurationManager.configuration.DbFolder.Contains("OneDrive") ?
                     TipoDatabase.OneDrive : TipoDatabase.SqlServerLocalDb,
-                    SqlConnectionString = txtStringConexaoCaminhoDb.Text
+                    SqlConnectionString = txtStringConexaoCaminhoDb.Text,
                 };
             }
             else if (rabOneDrive.Checked && !AppConfigurationManager.configuration.DbFolder.Contains("OneDrive"))
@@ -133,19 +132,19 @@ namespace ProjectBook.GUI
 
                 if (dialogResult != DialogResult.Yes) return;
 
-                configurationModel = configurationModel with
+                AppConfigurationManager.configuration = AppConfigurationManager.configuration with
                 {
                     DbFolder = "onedrive",
                     SqlConnectionString = string.Empty
                 };
             }
 
-            AppConfigurationManager.configuration = configurationModel;
+            AppConfigurationManager.SaveConfiguration();
 
             MessageBox.Show(Resources.ConfiguracoesSalvas, Resources.Concluido_MessageBox,
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            // Se o usuário mudou a string de conexão o programa deve ser reinicado
+            // Se o usuário mudou a string de conexão o programa deve reiniciar
             if (!stringConexaoAtual.Equals(AppConfigurationManager.configuration.SqlConnectionString))
             {
                 MessageBox.Show(Resources.MudancaConnectionString,
@@ -157,13 +156,27 @@ namespace ProjectBook.GUI
 
         private void btnSelecionarArquivoDb_Click(object sender, EventArgs e)
         {
-            OpenFileDialog caminho = new() { Filter = "Arquivo MDF (*.mdf)|*.mdf", Multiselect = false };
+            OpenFileDialog caminho = new() { Filter = Consts.MDF_FILE_FILTER, Multiselect = false };
             DialogResult dialogResult = caminho.ShowDialog();
             if (dialogResult != DialogResult.OK) return;
 
-            AppConfigurationManager.configuration.DbFolder = caminho.FileName;
+            AppConfigurationManager.configuration = AppConfigurationManager.configuration with
+            {
+                DbFolder = caminho.FileName
+            };
             txtStringConexaoCaminhoDb.Text =
                 $@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={caminho.FileName};Integrated Security=True";
+        }
+
+        private void btnRedefinirConfig_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show(Resources.RedefinirConfig, Resources.Aviso_MessageBox,
+                MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if(dialogResult != DialogResult.Yes) return;
+
+            AppConfigurationManager.ResetConfig();
+            AppManager.ReiniciarPrograma();
         }
     }
 }
