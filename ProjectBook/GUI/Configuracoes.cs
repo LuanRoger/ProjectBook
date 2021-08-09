@@ -24,24 +24,27 @@ namespace ProjectBook.GUI
         #region CheckedChanged
         private void rabSqlServerExpress_CheckedChanged(object sender, EventArgs e)
         {
-            lblInfoTxt.Text = Resources.StringConexao;
+            lblInfoText.Text = Resources.StringConexao;
+            lblInfoText.Visible = true;
 
-            lblInfoTxt.ForeColor = Color.Black;
+            lblInfoText.ForeColor = Color.Black;
             btnSelecionarArquivoDb.Visible = false;
             txtStringConexaoCaminhoDb.Visible = true;
             txtStringConexaoCaminhoDb.Size = new Size(459, 23);
         }
         private void rabSqlServerLocalDb_CheckedChanged(object sender, EventArgs e)
         {
-            lblInfoTxt.Text = Resources.CaminhoBanco;
-            lblInfoTxt.ForeColor = Color.Black;
+            lblInfoText.Visible = true;
+            lblInfoText.Text = Resources.CaminhoBanco;
+            lblInfoText.ForeColor = Color.Black;
+
             btnSelecionarArquivoDb.Visible = true;
             txtStringConexaoCaminhoDb.Visible = true;
             txtStringConexaoCaminhoDb.Size = new Size(426, 23);
         }
         private void rabOneDrive_CheckedChanged(object sender, EventArgs e)
         {
-            lblInfoTxt.Visible = false;
+            lblInfoText.Visible = false;
             btnSelecionarArquivoDb.Visible = false;
             txtStringConexaoCaminhoDb.Visible = false;
 
@@ -57,9 +60,9 @@ namespace ProjectBook.GUI
             }
             if (Verificadores.HasSyncOneDrive(directoryInfo))
             {
-                lblInfoTxt.Visible = true;
-                lblInfoTxt.Text = Resources.BancoSincronizadoOneDrive;
-                lblInfoTxt.ForeColor = Color.Green;
+                lblInfoText.Visible = true;
+                lblInfoText.Text = Resources.BancoSincronizadoOneDrive;
+                lblInfoText.ForeColor = Color.Green;
             }
         }
         #endregion

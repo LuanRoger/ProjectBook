@@ -37,7 +37,7 @@ namespace ProjectBook.GUI
             this.rabOneDrive = new System.Windows.Forms.RadioButton();
             this.btnSelecionarArquivoDb = new System.Windows.Forms.Button();
             this.rabSqlServerLocalDb = new System.Windows.Forms.RadioButton();
-            this.lblInfoTxt = new System.Windows.Forms.Label();
+            this.lblInfoText = new System.Windows.Forms.Label();
             this.txtStringConexaoCaminhoDb = new System.Windows.Forms.TextBox();
             this.rabSqlServerExpress = new System.Windows.Forms.RadioButton();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -104,7 +104,7 @@ namespace ProjectBook.GUI
             this.gpbBancoDados.Controls.Add(this.rabOneDrive);
             this.gpbBancoDados.Controls.Add(this.btnSelecionarArquivoDb);
             this.gpbBancoDados.Controls.Add(this.rabSqlServerLocalDb);
-            this.gpbBancoDados.Controls.Add(this.lblInfoTxt);
+            this.gpbBancoDados.Controls.Add(this.lblInfoText);
             this.gpbBancoDados.Controls.Add(this.txtStringConexaoCaminhoDb);
             this.gpbBancoDados.Controls.Add(this.rabSqlServerExpress);
             this.gpbBancoDados.Enabled = false;
@@ -149,14 +149,14 @@ namespace ProjectBook.GUI
             this.rabSqlServerLocalDb.UseVisualStyleBackColor = true;
             this.rabSqlServerLocalDb.CheckedChanged += new System.EventHandler(this.rabSqlServerLocalDb_CheckedChanged);
             // 
-            // lblInfoTxt
+            // lblInfoText
             // 
-            this.lblInfoTxt.AutoSize = true;
-            this.lblInfoTxt.Location = new System.Drawing.Point(6, 48);
-            this.lblInfoTxt.Name = "lblInfoTxt";
-            this.lblInfoTxt.Size = new System.Drawing.Size(105, 15);
-            this.lblInfoTxt.TabIndex = 2;
-            this.lblInfoTxt.Text = "String de conexão:";
+            this.lblInfoText.AutoSize = true;
+            this.lblInfoText.Location = new System.Drawing.Point(6, 48);
+            this.lblInfoText.Name = "lblInfoText";
+            this.lblInfoText.Size = new System.Drawing.Size(105, 15);
+            this.lblInfoText.TabIndex = 2;
+            this.lblInfoText.Text = "String de conexão:";
             // 
             // txtStringConexaoCaminhoDb
             // 
@@ -299,7 +299,7 @@ namespace ProjectBook.GUI
         private System.Windows.Forms.CheckBox chbVisualizarImpressao;
         private System.Windows.Forms.Button btnSalvarConfiguracoes;
         private System.Windows.Forms.GroupBox gpbBancoDados;
-        private System.Windows.Forms.Label lblInfoTxt;
+        private System.Windows.Forms.Label lblInfoText;
         private System.Windows.Forms.TextBox txtStringConexaoCaminhoDb;
         private System.Windows.Forms.RadioButton rabSqlServerExpress;
         private System.Windows.Forms.GroupBox groupBox3;
