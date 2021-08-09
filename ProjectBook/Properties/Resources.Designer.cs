@@ -279,6 +279,16 @@ namespace ProjectBook.Properties {
         }
         
         /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap cog_delete {
+            get {
+                object obj = ResourceManager.GetObject("cog_delete", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Concluido.
         /// </summary>
         internal static string Concluido_MessageBox {
@@ -593,16 +603,6 @@ namespace ProjectBook.Properties {
         }
         
         /// <summary>
-        ///   Consulta um recurso localizado do tipo System.Drawing.Icon semelhante a (Ícone).
-        /// </summary>
-        internal static System.Drawing.Icon MainIcon {
-            get {
-                object obj = ResourceManager.GetObject("MainIcon", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Marque uma opção de busca para continuar..
         /// </summary>
         internal static string MarcarOpcaoBusca {
@@ -742,6 +742,15 @@ namespace ProjectBook.Properties {
             get {
                 object obj = ResourceManager.GetObject("ProjectBookIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a As configurações serão redefinidas e o programa será reiniciado, deseja continuar?.
+        /// </summary>
+        internal static string RedefinirConfig {
+            get {
+                return ResourceManager.GetString("RedefinirConfig", resourceCulture);
             }
         }
         

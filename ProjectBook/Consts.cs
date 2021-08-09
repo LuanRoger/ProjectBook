@@ -13,6 +13,8 @@ namespace ProjectBook
         public const string USER_FILE_NAME = "UserInfo";
         public static readonly string FILE_FULL_NAME = APPLOCAL_FOLDER + USER_FILE_NAME + USER_FORMAT;
 
+        public const string MDF_FILE_FILTER = "Arquivo MDF (*.mdf)|*.mdf";
+
         public static readonly string[] FONTS_DOWNLOAD = 
             { "Lato-Bold.ttf", "Montserrat-ExtraBold.ttf", "Montserrat-ExtraLight.ttf" };
 
@@ -22,7 +24,7 @@ namespace ProjectBook
         public static readonly string FONT_MONTSERRAT_EXTRALIGHT = FONTS_FOLDER + "Montserrat-ExtraLight.ttf";
         public static readonly string FONT_LATO_BOLD = FONTS_FOLDER + "Lato-Bold.ttf";
 
-        public const string YAML_UPDATER_SERVER_URL = "https://raw.githubusercontent.com/LuanRoger/ProjectBook/dev/update.yaml";
+        public const string YAML_UPDATER_SERVER_URL = "https://raw.githubusercontent.com/LuanRoger/ProjectBook/master/update.yaml";
 
         public static readonly string PASTA_APLICACAO_ONEDRIVE = 
             Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\OneDrive\ProjectBook";

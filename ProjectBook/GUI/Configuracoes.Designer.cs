@@ -37,7 +37,7 @@ namespace ProjectBook.GUI
             this.rabOneDrive = new System.Windows.Forms.RadioButton();
             this.btnSelecionarArquivoDb = new System.Windows.Forms.Button();
             this.rabSqlServerLocalDb = new System.Windows.Forms.RadioButton();
-            this.lblInfoTxt = new System.Windows.Forms.Label();
+            this.lblInfoText = new System.Windows.Forms.Label();
             this.txtStringConexaoCaminhoDb = new System.Windows.Forms.TextBox();
             this.rabSqlServerExpress = new System.Windows.Forms.RadioButton();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -47,6 +47,7 @@ namespace ProjectBook.GUI
             this.chbAtualizarStatusAluguel = new System.Windows.Forms.CheckBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.chbTelemetria = new System.Windows.Forms.CheckBox();
+            this.btnRedefinirConfig = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.gpbBancoDados.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -103,7 +104,7 @@ namespace ProjectBook.GUI
             this.gpbBancoDados.Controls.Add(this.rabOneDrive);
             this.gpbBancoDados.Controls.Add(this.btnSelecionarArquivoDb);
             this.gpbBancoDados.Controls.Add(this.rabSqlServerLocalDb);
-            this.gpbBancoDados.Controls.Add(this.lblInfoTxt);
+            this.gpbBancoDados.Controls.Add(this.lblInfoText);
             this.gpbBancoDados.Controls.Add(this.txtStringConexaoCaminhoDb);
             this.gpbBancoDados.Controls.Add(this.rabSqlServerExpress);
             this.gpbBancoDados.Enabled = false;
@@ -148,14 +149,14 @@ namespace ProjectBook.GUI
             this.rabSqlServerLocalDb.UseVisualStyleBackColor = true;
             this.rabSqlServerLocalDb.CheckedChanged += new System.EventHandler(this.rabSqlServerLocalDb_CheckedChanged);
             // 
-            // lblInfoTxt
+            // lblInfoText
             // 
-            this.lblInfoTxt.AutoSize = true;
-            this.lblInfoTxt.Location = new System.Drawing.Point(6, 48);
-            this.lblInfoTxt.Name = "lblInfoTxt";
-            this.lblInfoTxt.Size = new System.Drawing.Size(105, 15);
-            this.lblInfoTxt.TabIndex = 2;
-            this.lblInfoTxt.Text = "String de conexão:";
+            this.lblInfoText.AutoSize = true;
+            this.lblInfoText.Location = new System.Drawing.Point(6, 48);
+            this.lblInfoText.Name = "lblInfoText";
+            this.lblInfoText.Size = new System.Drawing.Size(105, 15);
+            this.lblInfoText.TabIndex = 2;
+            this.lblInfoText.Text = "String de conexão:";
             // 
             // txtStringConexaoCaminhoDb
             // 
@@ -247,11 +248,25 @@ namespace ProjectBook.GUI
             this.chbTelemetria.Text = "Permitir telemetria";
             this.chbTelemetria.UseVisualStyleBackColor = true;
             // 
+            // btnRedefinirConfig
+            // 
+            this.btnRedefinirConfig.Image = global::ProjectBook.Properties.Resources.cog_delete;
+            this.btnRedefinirConfig.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRedefinirConfig.Location = new System.Drawing.Point(12, 237);
+            this.btnRedefinirConfig.Name = "btnRedefinirConfig";
+            this.btnRedefinirConfig.Size = new System.Drawing.Size(79, 23);
+            this.btnRedefinirConfig.TabIndex = 6;
+            this.btnRedefinirConfig.Text = "Redefinir";
+            this.btnRedefinirConfig.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnRedefinirConfig.UseVisualStyleBackColor = true;
+            this.btnRedefinirConfig.Click += new System.EventHandler(this.btnRedefinirConfig_Click);
+            // 
             // Configuracoes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(493, 270);
+            this.Controls.Add(this.btnRedefinirConfig);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox3);
@@ -284,7 +299,7 @@ namespace ProjectBook.GUI
         private System.Windows.Forms.CheckBox chbVisualizarImpressao;
         private System.Windows.Forms.Button btnSalvarConfiguracoes;
         private System.Windows.Forms.GroupBox gpbBancoDados;
-        private System.Windows.Forms.Label lblInfoTxt;
+        private System.Windows.Forms.Label lblInfoText;
         private System.Windows.Forms.TextBox txtStringConexaoCaminhoDb;
         private System.Windows.Forms.RadioButton rabSqlServerExpress;
         private System.Windows.Forms.GroupBox groupBox3;
@@ -298,5 +313,6 @@ namespace ProjectBook.GUI
         private System.Windows.Forms.CheckBox chbExibirCodigo;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.CheckBox chbTelemetria;
+        private System.Windows.Forms.Button btnRedefinirConfig;
     }
 }

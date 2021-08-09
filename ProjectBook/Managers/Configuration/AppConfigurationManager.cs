@@ -11,6 +11,7 @@ namespace ProjectBook.Managers.Configuration
             get
             {
                 if(configurationModel == null) Reload();
+
                 return configurationModel;
             }
             set
@@ -41,7 +42,14 @@ namespace ProjectBook.Managers.Configuration
 
             File.WriteAllText(Consts.CONFIGURATION_PATH, JsonSerializer.Serialize<ConfigurationModel>(configurationModel));
         }
-        private static void SaveConfiguration() =>
+        public static void ResetConfig()
+        {
+            File.Delete(Consts.CONFIGURATION_PATH);
+            configurationModel = null;
+            CreateConfigurationFile();
+        }
+
+        public static void SaveConfiguration() =>
             File.WriteAllText(Consts.CONFIGURATION_PATH, JsonSerializer.Serialize(configurationModel));
     }
 }
