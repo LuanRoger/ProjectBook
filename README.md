@@ -68,3 +68,13 @@ Para migrar seu banco para o OneDrive:
 2. Em Banco de dados marque OneDrive
 3. Salve
 O programa irá reiniciar e já estará sincronizado.
+
+## Links úteis
+- [Problemas frequentes.](https://github.com/LuanRoger/ProjectBook/blob/master/PROBLEMS.md)
+
+## Apoiador
+<img src="https://resources.jetbrains.com/storage/products/company/brand/logos/jb_beam.png" height=170 width=170>
+
+Obrigado à [JetBrains](https://jb.gg/OpenSource) por fornecer softwares para o desenvolvimento do projeto.
+
+*Copyright © 2000-2021 JetBrains s.r.o. JetBrains and the JetBrains logo are registered trademarks of JetBrains s.r.o.*
