@@ -49,7 +49,7 @@ namespace ProjectBook
             List<Task> inicializeTasks = new();
 
             inicializeTasks.Add(SyncOneDrive());
-            inicializeTasks.Add(SearchForUpdates());
+            inicializeTasks.Add( Task.Run(SearchForUpdates));
             inicializeTasks.Add(AtualizarAluguel());
             inicializeTasks.Add(Task.Delay(Consts.SPLASH_SCREEN_LOADTIME));
 
@@ -67,20 +67,10 @@ namespace ProjectBook
                 await Task.Run(OneDrive.MigrarOneDrive);
             }
         }
-        private async Task SearchForUpdates()
+        private void SearchForUpdates()
         {
             lblStatusCarregamento.Text = Resources.ProcurandoAtualizacoes_SplashScreen;
-            await Task.Run(() => 
-            {
-                if(AppUpdateManager.hasUpdated()) return;
-
-                DialogResult dialogResult = MessageBox.Show("Há uma atualização, deseja instalar?", "Atualização diponivel",
-                    MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-                if(dialogResult != DialogResult.Yes) return;
-
-                AppUpdateManager.Update();
-            });
+            AppUpdateManager.SearchUpdates();
         }
         private async Task AtualizarAluguel()
         {

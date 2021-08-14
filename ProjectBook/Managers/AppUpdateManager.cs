@@ -1,6 +1,7 @@
 ﻿using NetMsixUpdater;
 using System.Reflection;
 using NetMsixUpdater.Updater.Extensions;
+using ProjectBook.GUI;
 
 namespace ProjectBook.Managers
 {
@@ -18,7 +19,12 @@ namespace ProjectBook.Managers
         }
 
         public static bool hasUpdated() => updater.hasUpdated;
+        public static void SearchUpdates()
+        {
+            if(hasUpdated()) return;
 
-        public static void Update() => updater.VerifyAndDownload();
+            UpdateApp updateApp = new(updater);
+            updateApp.Show();
+        }
     }
 }

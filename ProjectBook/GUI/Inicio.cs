@@ -174,13 +174,7 @@ namespace ProjectBook.GUI
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
-
-                DialogResult dialogResult = MessageBox.Show("Há uma atualização, deseja instalar?", Resources.AtualizacaoDisponivel,
-                    MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-                if(dialogResult != DialogResult.Yes) return;
-
-                AppUpdateManager.Update();
+                AppUpdateManager.SearchUpdates();
             };
             #endregion
 
