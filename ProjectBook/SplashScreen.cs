@@ -23,7 +23,7 @@ namespace ProjectBook
             InitializeComponent();
 
             AppManager.DownloadFonts();
-            AppConfigurationManager.CreateConfigurationFile();
+            AppConfigurationManager.LoadConfig();
 
             PrivateFontCollection privateFont = new();
             privateFont.AddFontFile(Consts.FONT_MONTSERRAT_EXTRABOLD);
@@ -60,8 +60,8 @@ namespace ProjectBook
 
         private async Task SyncOneDrive()
         {
-            if (AppConfigurationManager.configuration.DbEngine == Tipos.TipoDatabase.OneDrive &&
-                AppConfigurationManager.configuration.SqlConnectionString == "")
+            if (AppConfigurationManager.configuration.database.DbEngine == Tipos.TipoDatabase.OneDrive &&
+                AppConfigurationManager.configuration.database.SqlConnectionString == "")
             {
                 lblStatusCarregamento.Text = Resources.MigrandoOneDrive;
                 await Task.Run(OneDrive.MigrarOneDrive);
@@ -75,7 +75,7 @@ namespace ProjectBook
         private async Task AtualizarAluguel()
         {
             lblStatusCarregamento.Text = Resources.AtualizandoBancoDados_SpashScreen;
-            if (AppConfigurationManager.configuration.UpdateRentStatus) await Task.Run(AtualizarAtrasso);
+            if (AppConfigurationManager.configuration.renting.UpdateRentStatus) await Task.Run(AtualizarAtrasso);
         }
 
         private void UsuarioLogado()

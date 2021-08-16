@@ -35,6 +35,8 @@ namespace ProjectBook.GUI
             this.lblUpdateInfo = new System.Windows.Forms.Label();
             this.wbvUpdate = new Microsoft.Web.WebView2.WinForms.WebView2();
             this.pgbDownload = new System.Windows.Forms.ProgressBar();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblTitle = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.wbvUpdate)).BeginInit();
             this.SuspendLayout();
             // 
@@ -61,19 +63,19 @@ namespace ProjectBook.GUI
             // lblUpdateInfo
             // 
             this.lblUpdateInfo.AutoSize = true;
-            this.lblUpdateInfo.Location = new System.Drawing.Point(12, 9);
+            this.lblUpdateInfo.Location = new System.Drawing.Point(12, 29);
             this.lblUpdateInfo.Name = "lblUpdateInfo";
-            this.lblUpdateInfo.Size = new System.Drawing.Size(151, 45);
+            this.lblUpdateInfo.Size = new System.Drawing.Size(55, 30);
             this.lblUpdateInfo.TabIndex = 2;
-            this.lblUpdateInfo.Text = "Há uma nova versão de {0}.\r\nAtual: {1}\r\nNova: {2}";
+            this.lblUpdateInfo.Text = "Atual: {0}\r\nNova: {1}";
             // 
             // wbvUpdate
             // 
             this.wbvUpdate.CreationProperties = null;
             this.wbvUpdate.DefaultBackgroundColor = System.Drawing.Color.White;
-            this.wbvUpdate.Location = new System.Drawing.Point(12, 69);
+            this.wbvUpdate.Location = new System.Drawing.Point(12, 93);
             this.wbvUpdate.Name = "wbvUpdate";
-            this.wbvUpdate.Size = new System.Drawing.Size(348, 340);
+            this.wbvUpdate.Size = new System.Drawing.Size(348, 316);
             this.wbvUpdate.TabIndex = 3;
             this.wbvUpdate.ZoomFactor = 1D;
             // 
@@ -84,11 +86,32 @@ namespace ProjectBook.GUI
             this.pgbDownload.Size = new System.Drawing.Size(348, 23);
             this.pgbDownload.TabIndex = 4;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 75);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(68, 15);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Changelog:";
+            // 
+            // lblTitle
+            // 
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblTitle.Location = new System.Drawing.Point(12, 9);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(201, 20);
+            this.lblTitle.TabIndex = 6;
+            this.lblTitle.Text = "Há uma nova versão de {0}.";
+            // 
             // UpdateApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(372, 446);
+            this.Controls.Add(this.lblTitle);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.pgbDownload);
             this.Controls.Add(this.wbvUpdate);
             this.Controls.Add(this.lblUpdateInfo);
@@ -113,5 +136,7 @@ namespace ProjectBook.GUI
         private System.Windows.Forms.Label lblUpdateInfo;
         private Microsoft.Web.WebView2.WinForms.WebView2 wbvUpdate;
         private System.Windows.Forms.ProgressBar pgbDownload;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblTitle;
     }
 }

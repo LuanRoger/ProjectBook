@@ -87,7 +87,7 @@ namespace ProjectBook
         public static bool HasSyncOneDrive(DirectoryInfo directoryInfo) =>
             directoryInfo.FullName.Contains("OneDrive") && 
                    directoryInfo.GetFiles("*.mdf", SearchOption.AllDirectories).Length >= 1 &&
-                   AppConfigurationManager.configuration.DbEngine == TipoDatabase.OneDrive;
+                   AppConfigurationManager.configuration.database.DbEngine == TipoDatabase.OneDrive;
 
         /// <summary>
         /// Verifica se há um usuario logado

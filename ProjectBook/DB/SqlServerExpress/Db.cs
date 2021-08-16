@@ -14,7 +14,7 @@ namespace ProjectBook.DB.SqlServerExpress
     abstract class Db
     {
         protected static readonly SqlConnection connection = 
-            new(AppConfigurationManager.configuration.SqlConnectionString);
+            new(AppConfigurationManager.configuration.database.SqlConnectionString);
 
         /// <summary>
         /// Verifica a conexão entre o programa e o banco de dados

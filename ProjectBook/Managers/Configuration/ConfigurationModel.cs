@@ -1,29 +1,20 @@
-﻿namespace ProjectBook.Managers.Configuration
+﻿using ProjectBook.Managers.Configuration.Sections;
+using SerializedConfig.Types;
+
+namespace ProjectBook.Managers.Configuration
 {
-    public record ConfigurationModel
+    public record ConfigurationModel : IConfigurationModel
     {
-        #region Printer
-        public bool PreviewPrinter { get; set; }
-        public bool ShowId { get; set; }
-        #endregion
-
-        #region Formating
-        public bool FormatClient { get; set; }
-        public bool FormatBook { get; set; }
-        #endregion
-
-        #region Renting
-        public bool UpdateRentStatus { get; set; }
-        #endregion
-
-        #region Telemetry
-        public bool UseTelemetry { get; set; }
-        #endregion
-
-        #region DatabaseSection
-        public Tipos.TipoDatabase DbEngine { get; set; }
-        public string DbFolder { get; set; }
-        public string SqlConnectionString { get; set; }
-        #endregion
+        // TODO - Made all records
+        [Section]
+        public PrinterSection printer { get; set; }
+        [Section]
+        public FormatingSection formating { get; set; }
+        [Section]
+        public RentingSection renting { get; set; }
+        [Section]
+        public TelemetrySection telemetry { get; set; }
+        [Section]
+        public DatabaseSection database { get; set; }
     }
 }

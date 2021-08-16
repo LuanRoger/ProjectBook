@@ -26,8 +26,10 @@ namespace ProjectBook.GUI
 
         private void Update_Load(object sender, EventArgs e)
         {
-            lblUpdateInfo.Text = string.Format(lblUpdateInfo.Text, 
-                Assembly.GetExecutingAssembly().GetName().Name, //Program name
+            lblTitle.Text = string.Format(lblTitle.Text, 
+                Assembly.GetExecutingAssembly().GetName().Name); //Program name
+            
+            lblUpdateInfo.Text = string.Format(lblUpdateInfo.Text,
                 Assembly.GetExecutingAssembly().GetName().Version, //Atual version
                 updateInfo.yamlUpdateInfo.version); //New version
             

@@ -1,55 +1,52 @@
-﻿using System.Text.Json;
-using System.IO;
+﻿using ProjectBook.Tipos;
+using SerializedConfig;
+using SerializedConfig.Types;
 
 namespace ProjectBook.Managers.Configuration
 {
     public static class AppConfigurationManager
     {
-        private static ConfigurationModel configurationModel {get; set;}
-        public static ConfigurationModel configuration
+        private static readonly ConfigurationModel defaultConfig = new()
         {
-            get
-            {
-                if(configurationModel == null) Reload();
-
-                return configurationModel;
-            }
-            set
-            {
-                configurationModel = value;
-                SaveConfiguration();
-            }
-        }
-
-        public static void Reload() =>
-            configurationModel = JsonSerializer.Deserialize<ConfigurationModel>(File.ReadAllText(Consts.CONFIGURATION_PATH));
-        public static void CreateConfigurationFile()
-        {
-            if(Verificadores.VerificarConfiguracoes()) return;
-
-            ConfigurationModel configurationModel = new()
+            printer = new()
             {
                 PreviewPrinter = false,
-                ShowId = false,
+                ShowId = false
+            },
+            formating = new()
+            {
                 FormatClient = false,
-                FormatBook = false,
-                UpdateRentStatus = true,
-                UseTelemetry = true,
-                DbEngine = Tipos.TipoDatabase.SqlServerLocalDb,
+                FormatBook = false
+            },
+            renting = new()
+            {
+                UpdateRentStatus = true
+            },
+            telemetry = new()
+            {
+                UseTelemetry = true
+            },
+            database = new()
+            {
+                DbEngine = TipoDatabase.SqlServerLocalDb,
                 DbFolder = string.Empty,
                 SqlConnectionString = string.Empty
-            };
-
-            File.WriteAllText(Consts.CONFIGURATION_PATH, JsonSerializer.Serialize<ConfigurationModel>(configurationModel));
-        }
-        public static void ResetConfig()
+            }
+        };
+        private static ConfigManager<ConfigurationModel> configManager {get;} = 
+            new(Consts.CONFIGURATION_PATH, SerializationFormat.Json, defaultConfig);
+        public static ConfigurationModel configuration
         {
-            File.Delete(Consts.CONFIGURATION_PATH);
-            configurationModel = null;
-            CreateConfigurationFile();
+            get => configManager.configuration;
+            set => configManager.configuration = value;
         }
-
-        public static void SaveConfiguration() =>
-            File.WriteAllText(Consts.CONFIGURATION_PATH, JsonSerializer.Serialize(configurationModel));
+        
+        public static void SaveConfig() => configManager.Save();
+        public static void LoadConfig()
+        {
+            if(!Verificadores.VerificarConfiguracoes()) configManager.Save();
+            configManager.Load();
+        }
+        //public static void ResetConfig() => configManager.Reset();
     }
 }
