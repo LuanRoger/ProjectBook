@@ -1,262 +1,88 @@
-﻿using ProjectBook.Livros;
-using System.Data;
-using System.Data.SqlClient;
-using System.Windows.Forms;
-using ProjectBook.Properties;
-using ProjectBook.AppInsight;
+﻿using System.Collections.Generic;
+using ProjectBook.Livros;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using ProjectBook.Tipos;
 
 namespace ProjectBook.DB.SqlServerExpress
 {
-    class AluguelDb : Db
+    public class AluguelDb
     {
         public void CadastrarAluguel(AluguelModel aluguel)
         {
-            SqlCommand command = new() { Connection = connection};
-            #region Parâmetros
-            command.Parameters.AddWithValue("@titulo", aluguel.titulo);
-            command.Parameters.AddWithValue("@autor", aluguel.autor);
-            command.Parameters.AddWithValue("@alugadoPor", aluguel.alugadoPor);
-            command.Parameters.AddWithValue("@dataSaida", aluguel.dataEntrega);
-            command.Parameters.AddWithValue("@dataDevolucao", aluguel.dataDevolucao);
-            command.Parameters.AddWithValue("@status", aluguel.status);
-            #endregion
-            try
-            {
-                command.CommandText = "INSERT INTO Aluguel(Titulo, Autor, [Alugado por], [Data de saida], [Data de devolucao], Status) " +
-                "VALUES(@titulo, @autor, @alugadoPor, @dataSaida, @dataDevolucao, @status)";
-
-                AbrirConexaoDb();
-                command.ExecuteNonQuery();
-                FechaConecxaoDb();
-
-                command.Dispose();
-
-                MessageBox.Show(Resources.AluguelRegistrado, Resources.Concluido_MessageBox,
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (SqlException e) { MessageBox.Show(e.Message, Resources.Error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); 
-                AppInsightMetrics.SendError(e); }
+            DatabaseManager.databaseManager.aluguelModel.Add(aluguel);
+            DatabaseManager.databaseManager.SaveChanges();
         }
-        public DataTable VerTodosAluguel()
-        {
-            DataTable table = new();
-            try
-            {
-                AbrirConexaoDb();
-                SqlDataAdapter adapter = new("SELECT * FROM Aluguel", connection);
-                FechaConecxaoDb();
-
-                adapter.Fill(table);
-            }
-            catch (SqlException e) { MessageBox.Show(e.Message, Resources.Error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); 
-                AppInsightMetrics.SendError(e); }
-
-
-            return table;
-        }
+        public async Task<List<AluguelModel>> VerTodosAluguel() =>
+            await DatabaseManager.databaseManager.aluguelModel.ToListAsync();
 
         #region Deletar
         public void DeletarAluguelTitulo(string titulo)
         {
-            SqlCommand command = new() { Connection = connection};
-
-            try
-            {
-                command.CommandText = $"DELETE FROM Aluguel WHERE Titulo = \'{titulo}\'";
-                AbrirConexaoDb();
-                command.ExecuteNonQuery();
-                FechaConecxaoDb();
-
-                command.Dispose();
-
-                MessageBox.Show(Resources.LivroDeletado, Resources.Concluido_MessageBox,
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (SqlException e) { MessageBox.Show(e.Message, Resources.Error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); 
-                AppInsightMetrics.SendError(e); }
+            DatabaseManager.databaseManager.aluguelModel.Remove(new() {titulo = titulo});
+            DatabaseManager.databaseManager.SaveChanges();
         }
         public void DeletarAluguelCliente(string nomeCliente)
         {
-            SqlCommand command = new() { Connection = connection}; 
-
-            try
-            {
-                command.CommandText = $"DELETE FROM Aluguel WHERE [Alugado por] = \'{nomeCliente}\'";
-                AbrirConexaoDb();
-                command.ExecuteNonQuery();
-                FechaConecxaoDb();
-                command.Dispose();
-
-                MessageBox.Show(Resources.LivroDeletado, Resources.Concluido_MessageBox,
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (SqlException e) { MessageBox.Show(e.Message, Resources.Error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); 
-                AppInsightMetrics.SendError(e); }
+            DatabaseManager.databaseManager.aluguelModel.Remove(new() {alugadoPor = nomeCliente});
+            DatabaseManager.databaseManager.SaveChanges();
         }
         public void DeletarAluguelTituloLivro(string titulo, string nomeCliente)
         {
-            SqlCommand command = new() { Connection = connection}; 
-
-            try
-            {
-                command.CommandText = $"DELETE FROM Aluguel WHERE [Titulo] LIKE \'%{titulo}%\' AND [Alugado por] LIKE \'%{nomeCliente}%\'";
-                AbrirConexaoDb();
-                command.ExecuteNonQuery();
-                FechaConecxaoDb();
-                command.Dispose();
-
-                MessageBox.Show(Resources.LivroDeletado, Resources.Concluido_MessageBox,
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (SqlException e) { MessageBox.Show(e.Message, Resources.Error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); 
-                AppInsightMetrics.SendError(e); }
+            DatabaseManager.databaseManager.aluguelModel.Remove(new() {titulo = titulo, alugadoPor = nomeCliente});
+            DatabaseManager.databaseManager.SaveChanges();
         }
         #endregion
 
         #region Buscar
-        public DataTable BuscarAluguelLivro(string titulo)
-        {
-            DataTable table = new();
-            try
-            {
-                AbrirConexaoDb();
-                SqlDataAdapter adapter = new($"SELECT * FROM Aluguel WHERE Titulo LIKE \'%{titulo}%\'", connection);
-                FechaConecxaoDb();
+        public async Task<List<AluguelModel>> BuscarAluguelLivro(string titulo) =>
+            await DatabaseManager.databaseManager.aluguelModel.Where(aluguel => aluguel.titulo.Contains(titulo))
+                .ToListAsync();
+        public async Task<List<AluguelModel>> BuscarAluguelCliente(string nomeCliente) =>
+            await DatabaseManager.databaseManager.aluguelModel
+                .Where(aluguel => aluguel.alugadoPor.Contains(nomeCliente))
+                .ToListAsync();
+        public async Task<List<AluguelModel>> BuscarAluguelLivroCliente(string titulo, string nomeCliente) =>
+            await DatabaseManager.databaseManager.aluguelModel.Where(aluguel => aluguel.titulo.Contains(titulo) && 
+                aluguel.alugadoPor.Contains(nomeCliente))
+                .ToListAsync();
+        public async Task<List<AluguelModel>> PegarLivrosAlugados() =>
+            await DatabaseManager.databaseManager.aluguelModel
+                .Where(aluguel => aluguel.status.Equals(StatusAluguel.Alugado.ToString()))
+                .ToListAsync();
 
-                adapter.Fill(table);
-            }
-            catch (SqlException e) { MessageBox.Show(e.Message, Resources.Error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); 
-                AppInsightMetrics.SendError(e); }
+        public async Task<List<AluguelModel>> PegarLivroDevolvido() =>
+            await DatabaseManager.databaseManager.aluguelModel
+                .Where(aluguel => aluguel.status.Equals(StatusAluguel.Devolvido.ToString()))
+                .ToListAsync();
 
-            return table;
-        }
-        public DataTable BuscarAluguelCliente(string nomeCliente)
-        {
-            DataTable table = new();
-            try
-            {
-                AbrirConexaoDb();
-                SqlDataAdapter adapter = new($"SELECT * FROM Aluguel WHERE [Alugado por] LIKE \'%{nomeCliente}%\'", connection);
-                FechaConecxaoDb();
-
-                adapter.Fill(table);
-            }
-            catch (SqlException e) { MessageBox.Show(e.Message, Resources.Error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); 
-                AppInsightMetrics.SendError(e); }
-
-            return table;
-        }
-        public DataTable BuscarAluguelLivroCliente(string titulo, string nomeCliente)
-        {
-            DataTable table = new();
-            try
-            {
-                AbrirConexaoDb();
-                SqlDataAdapter adapter = new($"SELECT * FROM Aluguel WHERE [Titulo] LIKE \'%{titulo}%\' AND [Alugado por] LIKE \'%{nomeCliente}%\'", connection);
-                FechaConecxaoDb();
-
-                adapter.Fill(table);
-            }
-            catch (SqlException e) { MessageBox.Show(e.Message, Resources.Error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); 
-                AppInsightMetrics.SendError(e); }
-
-            return table;
-        }
-        public DataTable PegarLivrosAlugados()
-        {
-            DataTable table = new();
-            try
-            {
-                AbrirConexaoDb();
-                SqlDataAdapter adapter = new($"SELECT * FROM Aluguel WHERE Status = \'{Tipos.StatusAluguel.Alugado}\'", connection);
-                FechaConecxaoDb();
-
-                adapter.Fill(table);
-            }
-            catch (SqlException e) { MessageBox.Show(e.Message, Resources.Error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); 
-                AppInsightMetrics.SendError(e); }
-
-            return table;
-        }
-
-        public DataTable PegarLivroDevolvido()
-        {
-            DataTable table = new();
-            try
-            {
-                AbrirConexaoDb();
-                SqlDataAdapter adapter = new($"SELECT * FROM Aluguel WHERE Status = \'{Tipos.StatusAluguel.Devolvido}\'", connection);
-                FechaConecxaoDb();
-
-                adapter.Fill(table);
-            }
-            catch (SqlException e) { MessageBox.Show(e.Message, Resources.Error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); 
-                AppInsightMetrics.SendError(e); }
-
-            return table;
-        }
-
-        public DataTable PegarLivroAtrassado()
-        {
-            DataTable table = new();
-            try
-            {
-                AbrirConexaoDb();
-                SqlDataAdapter adapter = new($"SELECT * FROM Aluguel WHERE Status = \'{Tipos.StatusAluguel.Atrasado}\'", connection);
-                FechaConecxaoDb();
-
-                adapter.Fill(table);
-            }
-            catch (SqlException e) { MessageBox.Show(e.Message, Resources.Error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); 
-                AppInsightMetrics.SendError(e); }
-
-            return table;
-        }
+        public async Task<List<AluguelModel>> PegarLivroAtrassado() =>
+            await DatabaseManager.databaseManager.aluguelModel
+                .Where(aluguel => aluguel.status.Equals(StatusAluguel.Atrasado.ToString()))
+                .ToListAsync();
         #endregion
 
         #region Atualizar
-        public void AtualizarAluguelNomeCliente(AluguelModel aluguel, string nomeCliente, string nomeLivro)
+        public async void AtualizarAluguelNomeCliente(AluguelModel aluguel, string titulo, string nomeCliente)
         {
-            SqlCommand command = new() { Connection = connection};
-            #region Parâmetros
-            command.Parameters.AddWithValue("@titulo", aluguel.titulo);
-            command.Parameters.AddWithValue("@autor", aluguel.autor);
-            command.Parameters.AddWithValue("@alugadoPor", aluguel.alugadoPor);
-            command.Parameters.AddWithValue("@dataSaida", aluguel.dataEntrega);
-            command.Parameters.AddWithValue("@dataDevolucao", aluguel.dataDevolucao);
-            command.Parameters.AddWithValue("@status", aluguel.status);
-            #endregion
-            try
-            {
-                command.CommandText = "UPDATE Aluguel SET Titulo = @titulo, Autor = @autor, [Alugado por] = @alugadoPor," +
-                    $" [Data de saida] = @dataSaida, [Data de devolucao] = @dataDevolucao, Status = @status WHERE [Alugado por] = \'{nomeCliente}\' " +
-                    $"AND Titulo = \'{nomeLivro}\'";
-
-                AbrirConexaoDb();
-                command.ExecuteNonQuery();
-                FechaConecxaoDb();
-
-                command.Dispose();
-
-                MessageBox.Show(Resources.InformaçõesAtualizadas_MessageBox, Resources.Concluido_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (SqlException e) { MessageBox.Show(e.Message, Resources.Error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); 
-                AppInsightMetrics.SendError(e); }
+            var alugueis = await BuscarAluguelLivroCliente(titulo, nomeCliente);
+            AluguelModel aluguelModel = alugueis.First();
+            
+            aluguelModel = aluguel;
+            
+            await DatabaseManager.databaseManager.SaveChangesAsync();
+            DatabaseManager.DisposeInstance();
         }
-        public void AtualizarStatusAtrasado(string alugadoPor)
+        public async void AtualizarStatusAtrasado(string alugadoPor)
         {
-            try
-            {
-                SqlCommand command = new() { Connection = connection };
-                command.CommandText = $"UPDATE Aluguel SET Status = \'{Tipos.StatusAluguel.Atrasado}\' WHERE [Alugado por] = \'{alugadoPor}\'";
-
-                AbrirConexaoDb();
-                command.ExecuteNonQuery();
-                FechaConecxaoDb();
-
-                command.Dispose();
-            }
-            catch(SqlException e) { AppInsightMetrics.SendError(e); }
+            var alugueis = await BuscarAluguelCliente(alugadoPor);
+            AluguelModel aluguelModel = alugueis.First();
+            
+            aluguelModel.status = StatusAluguel.Atrasado;
+            
+            await DatabaseManager.databaseManager.SaveChangesAsync();
+            DatabaseManager.DisposeInstance();
         }
         #endregion
     }

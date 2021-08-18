@@ -1,16 +1,30 @@
-﻿namespace ProjectBook.Livros
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using ProjectBook.Tipos;
+
+namespace ProjectBook.Livros
 {
+    [Table("Usuarios")]
     public class UsuarioModel
     {
-        public string usuario { get; set; }
-        public string senha { get; set; }
-        public string tipo { get; set; }
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Column("ID")]
+        public int id { get; set; }
         
-        public UsuarioModel(string usuario, string senha, string tipo)
-        {
-            this.usuario = usuario;
-            this.senha = senha;
-            this.tipo = tipo;
-        }
+        [Required]
+        [MaxLength(50)]
+        [Column("Usuario")]
+        public string usuario { get; set; }
+        
+        [Required]
+        [MaxLength(50)]
+        [Column("Senha")]
+        public string senha { get; set; }
+        
+        [Required]
+        [MaxLength(3)]
+        [Column("Tipo")]
+        public TipoUsuario tipo { get; set; }
     }
 }

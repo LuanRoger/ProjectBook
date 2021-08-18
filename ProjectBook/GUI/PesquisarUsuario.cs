@@ -17,12 +17,12 @@ namespace ProjectBook.GUI
             #region MenuClick
             mnuVerAdm.Click += (sender, e) =>
             {
-                ListaPesquisa listaPesquisa = new(usuarioDb.VerAdm());
+                ListaPesquisa listaPesquisa = new(usuarioDb.PegarTodosAdm());
                 listaPesquisa.Show();
             };
             mnuVerUsuarios.Click += (sender, e) =>
             {
-                ListaPesquisa listaPesquisa = new(usuarioDb.VerUsu());
+                ListaPesquisa listaPesquisa = new(usuarioDb.PegarTodosUsu());
                 listaPesquisa.Show();
             };
             #endregion

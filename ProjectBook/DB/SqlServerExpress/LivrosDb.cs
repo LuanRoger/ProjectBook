@@ -1,280 +1,81 @@
-﻿using System;
-using System.Data.SqlClient;
-using System.Windows.Forms;
-using System.Data;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using ProjectBook.Livros;
-using ProjectBook.Properties;
-using ProjectBook.AppInsight;
 
 namespace ProjectBook.DB.SqlServerExpress
 {
-    class LivrosDb : Db
+    public class LivrosDb
     {
         public void AdicionarLivro(LivroModel livro)
         {
-            SqlCommand command = new() { Connection = connection};
-            #region Parâmetros
-            command.Parameters.AddWithValue("@id", livro.id);
-            command.Parameters.AddWithValue("@titulo", livro.titulo);
-            command.Parameters.AddWithValue("@autor", livro.autor);
-            command.Parameters.AddWithValue("@editora", livro.editora);
-            command.Parameters.AddWithValue("@edicao", livro.edicao);
-            command.Parameters.AddWithValue("@ano", livro.ano);
-            command.Parameters.AddWithValue("@genero", livro.genero);
-            command.Parameters.AddWithValue("@isbn", livro.isbn);
-            command.Parameters.AddWithValue("@dataCadastro", livro.dataCadastro);
-            command.Parameters.AddWithValue("@observacoes", livro.observacoes);
-            #endregion
-            try
-            {
-                command.CommandText = "INSERT INTO Livros(ID, Titulo, Autor, Editora, Edicao, Ano, Genero, Isbn, DataCadastro, Observacoes) " +
-                "VALUES(@id, @titulo, @autor, @editora, @edicao, @ano, @genero, @isbn, @dataCadastro, @observacoes)";
-
-                AbrirConexaoDb();
-                command.ExecuteNonQuery();
-                FechaConecxaoDb();
-
-                command.Dispose();
-
-                MessageBox.Show(Resources.LivroRegistrado, Resources.Concluido_MessageBox,
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch(SqlException e) { MessageBox.Show(e.Message, Resources.Error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); 
-                AppInsightMetrics.SendError(e); }
+            DatabaseManager.databaseManager.livroModel.Add(livro);
+            DatabaseManager.databaseManager.SaveChanges();
         }
 
         #region Deletar
-        public void DeletarLivroId(string id)
+        public void DeletarLivroId(int id)
         {
-            SqlCommand command = new() { Connection = connection};
-
-            try
-            {
-                command.CommandText = $"DELETE FROM Livros WHERE ID = {id}";
-
-                AbrirConexaoDb();
-                command.ExecuteNonQuery();
-                FechaConecxaoDb();
-
-                command.Dispose();
-
-                MessageBox.Show(Resources.LivroDeletado, Resources.Concluido_MessageBox,
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (SqlException e) { MessageBox.Show(e.Message, Resources.Error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); 
-                AppInsightMetrics.SendError(e); }
+            DatabaseManager.databaseManager.livroModel.Remove(new() {id = id});
+            DatabaseManager.databaseManager.SaveChanges();
         }
         public void DeletarLivroTitulo(string tituloLivro)
         {
-            SqlCommand command = new() { Connection = connection};
-
-            try
-            {
-                command.CommandText = $"DELETE FROM Livros WHERE Titulo LIKE \'%{tituloLivro}%\'";
-
-                AbrirConexaoDb();
-                command.ExecuteNonQuery();
-                FechaConecxaoDb();
-
-                command.Dispose();
-
-                MessageBox.Show(Resources.LivroDeletado, Resources.Concluido_MessageBox,
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (SqlException e) { MessageBox.Show(e.Message, Resources.Error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); 
-                AppInsightMetrics.SendError(e); }
+            DatabaseManager.databaseManager.livroModel.Remove(new() {titulo = tituloLivro});
+            DatabaseManager.databaseManager.SaveChanges();
         }
         #endregion
-        
-        public DataTable VerTodosLivros()
-        {
-            DataTable table = new();
-            try
-            {
-                AbrirConexaoDb();
-                SqlDataAdapter adapter = new("SELECT * FROM Livros", connection);
-                FechaConecxaoDb();
-
-                adapter.Fill(table);
-            }
-            catch (SqlException e) { MessageBox.Show(e.Message, Resources.Error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); 
-                AppInsightMetrics.SendError(e); }
-            
-            return table;
-        }
-
-        public DataTable PegarGeneros()
-        {
-            DataTable table = new();
-            try
-            {
-                AbrirConexaoDb();
-                SqlDataAdapter adapter = new("SELECT DISTINCT Genero FROM Livros", connection);
-                FechaConecxaoDb();
-
-                adapter.Fill(table);
-            }
-            catch (SqlException e) { MessageBox.Show(e.Message, Resources.Error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); 
-                AppInsightMetrics.SendError(e); }
-
-            return table;
-        }
 
         #region Buscar
-        public DataTable BuscarLivrosId(string id)
+        public async Task<List<LivroModel>> VerTodosLivros() => 
+            await DatabaseManager.databaseManager.livroModel.ToListAsync();
+
+        public async Task<List<string>> PegarGeneros()
         {
-            DataTable table = new();
-            try
-            {
-                AbrirConexaoDb();
-                SqlDataAdapter adapter = new($"SELECT * FROM Livros WHERE ID = ${id}", connection);
-                FechaConecxaoDb();
-                adapter.Fill(table);
-            }
-            catch (SqlException e) { MessageBox.Show(e.Message, Resources.Error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); 
-                AppInsightMetrics.SendError(e); }
-
-            return table;
+            var livroModels = await VerTodosLivros();
+            return livroModels.Select(livroModel => livroModel.genero).ToList();
         }
-        public DataTable BuscarLivrosTitulo(string titulo)
-        {
-            DataTable table = new();
-            try
-            {
-                AbrirConexaoDb();
-                SqlDataAdapter adapter = new($"SELECT * FROM Livros WHERE Titulo LIKE \'%{titulo}%\'", connection);
-                FechaConecxaoDb();
-                adapter.Fill(table);
-            }
-            catch (SqlException e) { MessageBox.Show(e.Message, Resources.Error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); 
-                AppInsightMetrics.SendError(e);}
-
-            return table;
-        }
-        public DataTable BuscarLivrosAutor(string autor)
-        {
-            DataTable table = new();
-            try
-            {
-                AbrirConexaoDb();
-                SqlDataAdapter adapter = new($"SELECT * FROM Livros WHERE Autor LIKE \'%{autor}%\'", connection);
-                FechaConecxaoDb();
-
-                adapter.Fill(table);
-            }
-            catch (SqlException e) { MessageBox.Show(e.Message, Resources.Error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); 
-                AppInsightMetrics.SendError(e); }
-
-            return table;
-        }
-        public DataTable BuscarLivrosGenero(string genero)
-        {
-            DataTable table = new();
-            try
-            {
-                AbrirConexaoDb();
-                SqlDataAdapter adapter = new($"SELECT * FROM Livros WHERE Genero = \'{genero}\'", connection);
-                FechaConecxaoDb();
-
-                adapter.Fill(table);
-            }
-            catch (SqlException e) { MessageBox.Show(e.Message, Resources.Error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); 
-                AppInsightMetrics.SendError(e);}
-
-            return table;
-        }
+        
+        public async Task<LivroModel> BuscarLivrosId(int id) => 
+            await DatabaseManager.databaseManager.livroModel.FindAsync(id);
+        public async Task<List<LivroModel>> BuscarLivrosTitulo(string titulo) =>
+            await DatabaseManager.databaseManager.livroModel.Where(livro => livro.titulo.Contains(titulo))
+                .ToListAsync();
+        public async Task<List<LivroModel>> BuscarLivrosAutor(string autor) =>
+            await DatabaseManager.databaseManager.livroModel.Where(livro => livro.autor.Contains(autor))
+                .ToListAsync();
+        public async Task<List<LivroModel>> BuscarLivrosGenero(string genero) =>
+            await DatabaseManager.databaseManager.livroModel.Where(livro => livro.genero.Contains(genero))
+                .ToListAsync();
         #endregion
 
         #region Atualizar
-        public void AtualizarViaId(string id, LivroModel livro)
+        public async void AtualizarViaId(int id, LivroModel livro)
         {
-            SqlCommand command = new() { Connection = connection};
-            #region Parâmetros
-            command.Parameters.AddWithValue("@titulo", livro.titulo);
-            command.Parameters.AddWithValue("@autor", livro.autor);
-            command.Parameters.AddWithValue("@editora", livro.editora);
-            command.Parameters.AddWithValue("@edicao", livro.edicao);
-            command.Parameters.AddWithValue("@ano", livro.ano);
-            command.Parameters.AddWithValue("@genero", livro.genero);
-            command.Parameters.AddWithValue("@isbn", livro.isbn);
-            command.Parameters.AddWithValue("@observacoes", livro.observacoes);
-            #endregion
-            try
-            {
-                command.CommandText = "UPDATE Livros SET Titulo = @titulo, Autor = @autor, Editora = @editora," +
-                    $" Edicao = @edicao, Ano = @ano, Genero = @genero, Isbn = @isbn," +
-                    $" Observacoes = @observacoes WHERE ID = {id}";
-
-                AbrirConexaoDb();
-                command.ExecuteNonQuery();
-                FechaConecxaoDb();
-
-                command.Dispose();
-
-                MessageBox.Show(Resources.InformaçõesAtualizadas_MessageBox, Resources.Concluido_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (SqlException e) { MessageBox.Show(e.Message, Resources.Error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); 
-                AppInsightMetrics.SendError(e); }
+            LivroModel livroModel = await BuscarLivrosId(id);
+            livroModel ??= livro;
+            
+            await DatabaseManager.databaseManager.SaveChangesAsync();
+            DatabaseManager.DisposeInstance();
         }
-        public void AtualizarViaTitulo(string titulo, LivroModel livro)
+        public async void AtualizarViaTitulo(string titulo, LivroModel livro)
         {
-            SqlCommand command = new() { Connection = connection};
-            #region Parâmetros
-            command.Parameters.AddWithValue("@titulo", livro.titulo);
-            command.Parameters.AddWithValue("@autor", livro.autor);
-            command.Parameters.AddWithValue("@editora", livro.editora);
-            command.Parameters.AddWithValue("@edicao", livro.edicao);
-            command.Parameters.AddWithValue("@ano", Convert.ToInt32(livro.ano));
-            command.Parameters.AddWithValue("@genero", livro.genero);
-            command.Parameters.AddWithValue("@isbn", livro.isbn);
-            command.Parameters.AddWithValue("@observacoes", livro.observacoes);
-            #endregion
-            try
-            {
-                command.CommandText = "UPDATE Livros SET Titulo = @titulo, Autor = @autor, Editora = @editora," +
-                    $" Edicao = @edicao, Ano = @ano, Genero = @genero, Isbn = @isbn," +
-                    $" Observacoes = @observacoes WHERE Titulo = \'{titulo}\'";
-
-                AbrirConexaoDb();
-                command.ExecuteNonQuery();
-                FechaConecxaoDb();
-
-                command.Dispose();
-
-                MessageBox.Show(Resources.InformaçõesAtualizadas_MessageBox, Resources.Concluido_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (SqlException e) { MessageBox.Show(e.Message, Resources.Error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); 
-                AppInsightMetrics.SendError(e); }
+            var livroModels = await BuscarLivrosTitulo(titulo);
+            LivroModel livroModel = livroModels.First();
+            livroModel = livro;
+            
+            await DatabaseManager.databaseManager.SaveChangesAsync();
+            DatabaseManager.DisposeInstance();
         }
-        public void AtualizarViaAutor(string autor, LivroModel livro)
+        public async void AtualizarViaAutor(string autor, LivroModel livro)
         {
-            SqlCommand command = new() { Connection = connection};
-            #region Parâmetros
-            command.Parameters.AddWithValue("@titulo", livro.titulo);
-            command.Parameters.AddWithValue("@autor", livro.autor);
-            command.Parameters.AddWithValue("@editora", livro.editora);
-            command.Parameters.AddWithValue("@edicao", livro.edicao);
-            command.Parameters.AddWithValue("@ano", Convert.ToInt32(livro.ano));
-            command.Parameters.AddWithValue("@genero", livro.genero);
-            command.Parameters.AddWithValue("@isbn", livro.isbn);
-            command.Parameters.AddWithValue("@observacoes", livro.observacoes);
-            #endregion
-            try
-            {
-                command.CommandText = "UPDATE Livros SET Titulo = @titulo, Autor = @autor, Editora = @editora," +
-                    $" Edicao = @edicao, Ano = @ano, Genero = @genero, Isbn = @isbn," +
-                    $" Observacoes = @observacoes WHERE Autor = \'{autor}\'";
-
-                AbrirConexaoDb();
-                command.ExecuteNonQuery();
-                FechaConecxaoDb();
-
-                command.Dispose();
-
-                MessageBox.Show(Resources.InformaçõesAtualizadas_MessageBox, Resources.Concluido_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (SqlException e) { MessageBox.Show(e.Message, Resources.Error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); 
-                AppInsightMetrics.SendError(e); }
+            var livroModels = await BuscarLivrosAutor(autor);
+            LivroModel livroModel = livroModels.First();
+            livroModel = livro;
+            
+            await DatabaseManager.databaseManager.SaveChangesAsync();
+            DatabaseManager.DisposeInstance();
         }
         #endregion
     }

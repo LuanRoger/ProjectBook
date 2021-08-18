@@ -56,7 +56,7 @@ namespace ProjectBook.Managers
             UsuarioDb usuarioDb = new();
             
             UserInfo.UserNowInstance.tipoUsuario = 
-                usuarioDb.ReceberTipoUsuario(UserInfo.UserNowInstance.userName);
+                usuarioDb.VerTipoUsuario(UserInfo.UserNowInstance.userName);
 
             AppInsightMetrics.SendUserInfo(
                 UserInfo.UserNowInstance.idUsuario,
