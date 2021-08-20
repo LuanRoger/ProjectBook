@@ -49,14 +49,7 @@ namespace ProjectBook
         /// <returns>Retorna <c>error</c></returns>
         public static bool VerificarCamposUsuario(UsuarioModel usuario) =>
             usuario.usuario.Length == 0 || usuario.senha.Length == 0 || usuario == null;
-
-        /// <summary>
-        /// Verifica se uma <c>DataTable</c> está vazia.
-        /// </summary>
-        /// <param name="table"><c>DataTable</c> que será analisado</param>.
-        /// <returns>Retorna <c>error</c></returns>
-        public static bool VerificarDataTable(DataTable table) =>
-            table.Rows.Count == 0;
+        
         public static bool VerificarDataGrid(DataGridView dataGridView) => dataGridView.Rows.Count == 0;
 
         /// <summary>
@@ -111,8 +104,8 @@ namespace ProjectBook
         /// Verifica se o usuario é ADM
         /// </summary>
         /// <returns>isAdm</returns>
-        public static bool VerificarAdmin(DataRow infoUser) => 
-            (int)infoUser[0] == 1 && (string)infoUser[1] == "admin" && (string)infoUser[3] == "ADM";
+        public static bool VerificarAdmin(UsuarioModel infoUser) => 
+            infoUser.id == 1 && infoUser.usuario == "admin" && infoUser.tipo == TipoUsuario.ADM;
 
         #region Verificar strings
         /// <summary>

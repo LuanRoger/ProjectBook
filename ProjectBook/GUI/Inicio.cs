@@ -4,6 +4,7 @@ using ProjectBook.DB.SqlServerExpress;
 using ProjectBook.Properties;
 using ProjectBook.AppInsight;
 using System.ComponentModel;
+using ProjectBook.Livros;
 using ProjectBook.Tipos;
 using ProjectBook.Managers;
 
@@ -11,10 +12,6 @@ namespace ProjectBook.GUI
 {
     public partial class Inicio : Form
     {
-        private LivrosDb livrosDb = new();
-        private AluguelDb aluguelDb = new();
-        private ClienteDb clienteDb = new();
-
         public Inicio()
         {
             InitializeComponent();
@@ -110,9 +107,9 @@ namespace ProjectBook.GUI
                 AppInsightMetrics.TrackEvent("AbrirExcluirUsuarioMenu");
             };
 
-            mnuTodosLivros.Click += (_, _) =>
+            mnuTodosLivros.Click += async (_, _) =>
             {
-                ListaPesquisa listaPesquisa = new(livrosDb.VerTodosLivros());
+                ListaPesquisa<LivroModel> listaPesquisa = new(await LivrosDb.VerTodosLivros());
                 listaPesquisa.Show();
 
                 AppInsightMetrics.TrackEvent("AbrirVerTodosLivrosMenu");
@@ -124,9 +121,9 @@ namespace ProjectBook.GUI
 
                 AppInsightMetrics.TrackEvent("AbrirPesquisarLivroMenu");
             };
-            mnuLivrosAlugados.Click += (_, _) =>
+            mnuLivrosAlugados.Click += async (_, _) =>
             {
-                ListaPesquisa listaPesquisa = new(aluguelDb.VerTodosAluguel());
+                ListaPesquisa<AluguelModel> listaPesquisa = new(await AluguelDb.VerTodosAluguel());
                 listaPesquisa.Show();
 
                 AppInsightMetrics.TrackEvent("AbrirVerTodosAlugueisMenu");
@@ -138,9 +135,9 @@ namespace ProjectBook.GUI
 
                 AppInsightMetrics.TrackEvent("AbrirPesquisarAluguelMenu");
             };
-            mnuTodosClientes.Click += (_, _) =>
+            mnuTodosClientes.Click += async (_, _) =>
             {
-                ListaPesquisa listaPesquisa = new(clienteDb.VerTodosClientes());
+                ListaPesquisa<ClienteModel> listaPesquisa = new(await ClienteDb.VerTodosClientes());
                 listaPesquisa.Show();
 
                 AppInsightMetrics.TrackEvent("AbrirVerTodosClientesMenu");
@@ -249,13 +246,13 @@ namespace ProjectBook.GUI
             AppManager.ReiniciarPrograma();
         }
 
-        private void bgwInicioActivated_DoWork(object sender, DoWorkEventArgs e)
+        private async void bgwInicioActivated_DoWork(object sender, DoWorkEventArgs e)
         {
             if (Opacity != 0)
             {
-                lblLivrosCadastrados.Text = livrosDb.VerTodosLivros().Rows.Count.ToString();
-                lblClientesCadastrados.Text = clienteDb.VerTodosClientes().Rows.Count.ToString();
-                lblAlugueisRegistrados.Text = aluguelDb.VerTodosAluguel().Rows.Count.ToString();
+                lblLivrosCadastrados.Text = (await LivrosDb.VerTodosLivros()).Count.ToString();
+                lblClientesCadastrados.Text = (await ClienteDb.VerTodosClientes()).Count.ToString();
+                lblAlugueisRegistrados.Text = (await AluguelDb.VerTodosAluguel()).Count.ToString();
 
                 AppInsightMetrics.SendMetric("LivrosRegistrados", int.Parse(lblLivrosCadastrados.Text));
                 AppInsightMetrics.SendMetric("ClientesCadastrados", int.Parse(lblClientesCadastrados.Text));
@@ -270,7 +267,7 @@ namespace ProjectBook.GUI
         }
         private void Inicio_Load(object sender, EventArgs e)
         {
-            Opacity = 0;
+            Opacity = 0; //TODO - Create a propertie than say if the Form is visible or not
             ShowInTaskbar = false;
 
             SplashScreen splashScreen = new();

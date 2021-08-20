@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using ProjectBook.Tipos;
 
 namespace ProjectBook.GUI
 {
@@ -191,8 +192,8 @@ namespace ProjectBook.GUI
             this.cmbNovoStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbNovoStatus.FormattingEnabled = true;
             this.cmbNovoStatus.Items.AddRange(new object[] {
-            "ADM",
-            "USU"});
+            TipoUsuario.USU, 
+            TipoUsuario.ADM});
             this.cmbNovoStatus.Location = new System.Drawing.Point(9, 195);
             this.cmbNovoStatus.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmbNovoStatus.Name = "cmbNovoStatus";

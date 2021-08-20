@@ -11,7 +11,6 @@ namespace ProjectBook.GUI
 {
     public partial class GerenciarUsuario : Form
     {
-        private UsuarioDb usuarioDb = new();
         public GerenciarUsuario()
         {
             InitializeComponent();
@@ -21,10 +20,12 @@ namespace ProjectBook.GUI
 
         private void btnCadastrarUsuario_Click(object sender, EventArgs e)
         {
-            UsuarioModel usuario = 
-                new(txtUsuarioCadastrar.Text,
-                txtSenhaCadastrar.Text,
-                TipoUsuario.USU.ToString());
+            UsuarioModel usuario = new()
+            {
+                usuario = txtUsuarioCadastrar.Text,
+                senha = txtSenhaCadastrar.Text,
+                tipo = TipoUsuario.USU 
+            };
 
             if (Verificadores.VerificarCamposUsuario(usuario))
             {
@@ -33,14 +34,20 @@ namespace ProjectBook.GUI
                 return;
             }
             
-            usuarioDb.CadastrarUsuario(usuario);
+            UsuarioDb.CadastrarUsuario(usuario);
             
             LimparCampos();
         }
 
         private void btnSalvarEditarUsuario_Click(object sender, EventArgs e)
         {
-            UsuarioModel usuario = new(txtNovoUsuario.Text, txtNovoSenhaUsuario.Text, cmbNovoStatus.Text);
+            //TODO - Isso ta errado, pesquise antes de excluir
+            UsuarioModel usuario = new()
+            {
+                usuario = txtNovoUsuario.Text,
+                senha = txtNovoSenhaUsuario.Text,
+                tipo = (TipoUsuario)cmbNovoStatus.SelectedIndex //TODO - Status to Tipo
+            };
             if (Verificadores.VerificarCamposUsuario(usuario))
             {
                 MessageBox.Show(Resources.PesquiseParaContinuar, Resources.Error_MessageBox,
@@ -48,27 +55,27 @@ namespace ProjectBook.GUI
                 return;
             }
             
-            usuarioDb.AtualizarUsuarioId(txtIdBuscarUsuario.Text, usuario);
+            UsuarioDb.AtualizarUsuarioId(int.Parse(txtIdBuscarUsuario.Text), usuario);
 
             LimparCampos();
         }
 
-        private void btnBuscarUsuario_Click(object sender, EventArgs e)
+        private async void btnBuscarUsuario_Click(object sender, EventArgs e)
         {
             txtIdBuscarUsuario.Enabled = false;
 
-            DataTable infoUsuario = usuarioDb.BuscarUsuarioId(txtIdBuscarUsuario.Text);
+            UsuarioModel infoUsuario = await UsuarioDb.BuscarUsuarioId(int.Parse(txtIdBuscarUsuario.Text));
 
-            if (Verificadores.VerificarDataTable(infoUsuario))
+            if (Verificadores.VerificarCamposUsuario(infoUsuario))
             {
                 MessageBox.Show(Resources.PesquiseParaContinuar, Resources.Error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            txtNovoUsuario.Text = infoUsuario.Rows[0][1].ToString();
-            txtNovoSenhaUsuario.Text = infoUsuario.Rows[0][2].ToString();
-            cmbNovoStatus.Text = infoUsuario.Rows[0][3].ToString();
+            txtNovoUsuario.Text = infoUsuario.usuario;
+            txtNovoSenhaUsuario.Text = infoUsuario.senha;
+            cmbNovoStatus.Text = infoUsuario.tipo.ToString();
         }
 
         private void btnLimparEditarUsuario_Click(object sender, EventArgs e) => LimparCampos();

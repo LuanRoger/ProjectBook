@@ -4,6 +4,7 @@ using System.Data;
 using System.Windows.Forms;
 using ProjectBook.Properties;
 using ProjectBook.AppInsight;
+using ProjectBook.Livros;
 
 namespace ProjectBook.GUI
 {
@@ -16,24 +17,24 @@ namespace ProjectBook.GUI
             Load += (_, _) => AppInsightMetrics.TrackForm("ExcluirUsuario");
         }
 
-        private void btnPesquisarExcluirUsuario_Click(object sender, EventArgs e)
+        private async void btnPesquisarExcluirUsuario_Click(object sender, EventArgs e)
         {
-            UsuarioDb usuarioDb = new();
-            DataTable infoUsuario = usuarioDb.BuscarUsuarioId(txtCodigoDeletarUsuario.Text);
+            UsuarioModel infoUsuario = await UsuarioDb.BuscarUsuarioId(int.Parse(txtCodigoDeletarUsuario.Text));
 
-            if (Verificadores.VerificarDataTable(infoUsuario))
+            if (Verificadores.VerificarCamposUsuario(infoUsuario))
             {
                 MessageBox.Show(Resources.PesquiseParaContinuar, Resources.Error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            DialogResult dialogResult = MessageBox.Show(string.Format(Resources.ConfirmarExclusao1, infoUsuario.Rows[0][1]),
+            DialogResult dialogResult = MessageBox.Show(string.Format(Resources.ConfirmarExclusao1, infoUsuario.usuario),
                 Resources.Error_MessageBox,
                 MessageBoxButtons.YesNo, MessageBoxIcon.Stop);
 
             if (dialogResult != DialogResult.Yes) return;
-            if(Verificadores.VerificarAdmin(infoUsuario.Rows[0]))
+            
+            if(Verificadores.VerificarAdmin(infoUsuario))
             {
                 dialogResult = MessageBox.Show(Resources.AvisoDeletarAdmin, Resources.Aviso_MessageBox,
                 MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
@@ -41,7 +42,7 @@ namespace ProjectBook.GUI
                 if(dialogResult != DialogResult.Yes) return;
             }
 
-            usuarioDb.DeletarUsuarioId(txtCodigoDeletarUsuario.Text);
+            UsuarioDb.DeletarUsuarioId(int.Parse(txtCodigoDeletarUsuario.Text));
             LimparCampos();
         }
 

@@ -15,7 +15,7 @@ namespace ProjectBook.Tipos
             {
                 if(UserNow == null)
                 {
-                    UserNowInstance = new UserInfo()
+                    UserNowInstance = new()
                     {
                         idUsuario = 0,
                         userName = "placeholder",
