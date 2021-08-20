@@ -1,7 +1,6 @@
 ﻿using System.Threading.Tasks;
 using System.Windows.Forms;
 using KimToo;
-using ProjectBook.Managers;
 using ProjectBook.Managers.Configuration;
 
 namespace ProjectBook

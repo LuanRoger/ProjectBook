@@ -3,22 +3,19 @@ using System.Windows.Forms;
 using ProjectBook.AppInsight;
 using ProjectBook.DB.SqlServerExpress;
 using ProjectBook.Livros;
-using ProjectBook.Managers;
 using ProjectBook.Managers.Configuration;
 
 namespace ProjectBook.GUI
 {
     public partial class CadastrarClientes : Form
     {
-        ClienteDb clienteDb = new();
-
         public CadastrarClientes()
         {
             InitializeComponent();
 
-            btnVerClientes.Click += delegate
+            btnVerClientes.Click += async delegate
             {
-                ListaPesquisa listaPesquisa = new(clienteDb.VerTodosClientes());
+                ListaPesquisa<ClienteModel> listaPesquisa = new(await ClienteDb.VerTodosClientes());
                 listaPesquisa.Show();
             };
             btnPesquisarCliente.Click += delegate
@@ -36,27 +33,31 @@ namespace ProjectBook.GUI
             //Aplicar a formatação na instânciação do cliente
             if (AppConfigurationManager.configuration.formating.FormatClient)
             {
-                cliente = new ClienteModel(
-                    txtNomeCliente.Text.ToUpper(),
-                    txtEnderecoCliente.Text.ToUpper(),
-                    txtCidadeCliente.Text.ToUpper(),
-                    cmbEstadoCliente.Text.ToUpper(),
-                    txtCepCliente.Text.ToUpper(),
-                    txtTelefone1Cliente.Text.ToUpper(),
-                    txtTelefone2Cliente.Text.ToUpper(),
-                    txtEmailCliente.Text);
+                cliente = new()
+                {
+                    nomeCompleto = txtNomeCliente.Text.ToUpper(),
+                    endereco = txtEnderecoCliente.Text.ToUpper(),
+                    cidade = txtCidadeCliente.Text.ToUpper(),
+                    estado = cmbEstadoCliente.Text.ToUpper(),
+                    cep = txtCepCliente.Text.ToUpper(),
+                    telefone1 = txtTelefone1Cliente.Text.ToUpper(),
+                    telefone2 = txtTelefone2Cliente.Text.ToUpper(),
+                    email = txtEmailCliente.Text
+                };
             }
             else
             {
-                cliente = new ClienteModel(
-                    txtNomeCliente.Text,
-                    txtEnderecoCliente.Text,
-                    txtCidadeCliente.Text,
-                    cmbEstadoCliente.Text,
-                    txtCepCliente.Text,
-                    txtTelefone1Cliente.Text,
-                    txtTelefone2Cliente.Text,
-                    txtEmailCliente.Text);
+                cliente = new()
+                {
+                    nomeCompleto = txtNomeCliente.Text,
+                    endereco = txtEnderecoCliente.Text,
+                    cidade = txtCidadeCliente.Text,
+                    estado = cmbEstadoCliente.Text,
+                    cep = txtCepCliente.Text,
+                    telefone1 = txtTelefone1Cliente.Text,
+                    telefone2 = txtTelefone2Cliente.Text,
+                    email = txtEmailCliente.Text
+                };
             }
 
             if (Verificadores.VerificarCamposCliente(cliente))
@@ -65,7 +66,7 @@ namespace ProjectBook.GUI
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            clienteDb.CadastrarCliente(cliente);
+            ClienteDb.CadastrarCliente(cliente);
 
             LimparCampos();
         }

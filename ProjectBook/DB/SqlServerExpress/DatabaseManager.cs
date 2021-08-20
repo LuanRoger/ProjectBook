@@ -1,9 +1,6 @@
-﻿using System;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using ProjectBook.Livros;
 using ProjectBook.Managers.Configuration;
-using ProjectBook.Managers.Configuration.Sections;
 
 namespace ProjectBook.DB.SqlServerExpress
 {

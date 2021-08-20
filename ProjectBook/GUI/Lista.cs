@@ -1,4 +1,4 @@
-﻿using System.Data;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Text;
@@ -7,36 +7,19 @@ using ProjectBook.Properties;
 using ClosedXML.Excel;
 using ProjectBook.AppInsight;
 using System.Threading.Tasks;
+using ProjectBook.Util.Extensions;
 
 namespace ProjectBook.GUI
 {
-    public partial class ListaPesquisa : Form
+    public partial class ListaPesquisa<T> : Form
     {
-        public ListaPesquisa(DataTable data)
+        private List<T> dataList { get; }
+        public ListaPesquisa(List<T> dataList)
         {
             InitializeComponent();
-
-            dgvLista.DataSource = data;
-
-            try
-            {
-                PrivateFontCollection privateFont = new();
-                privateFont.AddFontFile(Consts.FONT_LATO_BOLD);
-                Font lato = new(privateFont.Families[0], 8, FontStyle.Bold);
-
-                int columnQuantidade = dgvLista.ColumnCount;
-                for (int i = 0; i < columnQuantidade; i++)
-                {
-                    dgvLista.Columns[i].DefaultCellStyle.Font = lato;
-                }
-            }
-            catch
-            {
-                MessageBox.Show(Resources.FaltaArquivoEscenciais,
-                    Resources.Error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Process.GetCurrentProcess().Kill();
-            }
-
+            
+            this.dataList = dataList;
+            
             #region MenuClick
             mnuImprimirLista.Click += async (sender, e) =>
             {
@@ -59,12 +42,33 @@ namespace ProjectBook.GUI
                 pgbAsyncTask.Visible = false;
             };
             #endregion
-
-            Load += (_, _) => AppInsightMetrics.TrackForm("Lista");
         }
 
         private void ListaPesquisa_Load(object sender, System.EventArgs e)
         {
+            AppInsightMetrics.TrackForm("Lista");
+            
+            try
+            {
+                PrivateFontCollection privateFont = new();
+                privateFont.AddFontFile(Consts.FONT_LATO_BOLD);
+                Font lato = new(privateFont.Families[0], 8, FontStyle.Bold);
+
+                int columnQuantidade = dgvLista.ColumnCount;
+                for (int i = 0; i < columnQuantidade; i++)
+                {
+                    dgvLista.Columns[i].DefaultCellStyle.Font = lato;
+                }
+            }
+            catch
+            {
+                MessageBox.Show(Resources.FaltaArquivoEscenciais,
+                    Resources.Error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Process.GetCurrentProcess().Kill();
+            }
+            
+            dgvLista.DataSource = dataList.ToDataTableAsync();
+            
             lblQItensExibidos.Text = dgvLista.Rows.Count.ToString();
             lblQColunas.Text = dgvLista.ColumnCount.ToString();
         }

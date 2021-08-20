@@ -3,7 +3,6 @@ using System.Drawing;
 using System.Net;
 using System.Reflection;
 using System.Windows.Forms;
-using DocumentFormat.OpenXml.Bibliography;
 using NetMsixUpdater;
 using NetMsixUpdater.Updater.Extensions;
 

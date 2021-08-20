@@ -1,7 +1,7 @@
 ﻿
 namespace ProjectBook.GUI
 {
-    partial class ListaPesquisa
+    partial class ListaPesquisa<T>
     {
         /// <summary>
         /// Required designer variable.

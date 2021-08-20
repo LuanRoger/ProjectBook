@@ -1,29 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Windows.Forms;
-using DocumentFormat.OpenXml.Drawing.Charts;
 using Microsoft.EntityFrameworkCore;
-using ProjectBook.AppInsight;
 using ProjectBook.Livros;
-using ProjectBook.Properties;
 using ProjectBook.Tipos;
-using DataTable = System.Data.DataTable;
 
 namespace ProjectBook.DB.SqlServerExpress
 {
-    public class UsuarioDb
+    public static class UsuarioDb
     {
-        public void CadastrarUsuario(UsuarioModel usuario)
+        public static void CadastrarUsuario(UsuarioModel usuario)
         {
            DatabaseManager.databaseManager.usuarioModel.Add(usuario);
            DatabaseManager.databaseManager.SaveChanges();
         }
 
         #region Deletar
-        public void DeletarUsuarioId(int id)
+        public static void DeletarUsuarioId(int id)
         {
             DatabaseManager.databaseManager.usuarioModel.Remove(new() {id = id});
             DatabaseManager.databaseManager.SaveChanges();
@@ -31,22 +24,22 @@ namespace ProjectBook.DB.SqlServerExpress
         #endregion
         
         #region Buscar
-        public async Task<UsuarioModel> BuscarUsuarioId(int id) =>
+        public static async Task<UsuarioModel> BuscarUsuarioId(int id) =>
             await DatabaseManager.databaseManager.usuarioModel.FindAsync(id);
-        public async Task<List<UsuarioModel>> BuscarUsuarioNome(string nomeUsuario) => 
+        public static async Task<List<UsuarioModel>> BuscarUsuarioNome(string nomeUsuario) => 
             await DatabaseManager.databaseManager.usuarioModel.Where(usuario => usuario.usuario.Contains(nomeUsuario))
                 .ToListAsync();
-        public async Task<List<UsuarioModel>> PegarTodosAdm() =>
+        public static async Task<List<UsuarioModel>> PegarTodosAdm() =>
             await DatabaseManager.databaseManager.usuarioModel
                     .Where(usuairo => usuairo.tipo.Equals(TipoUsuario.ADM.ToString()))
                     .ToListAsync();
-        public async Task<List<UsuarioModel>> PegarTodosUsu() =>
+        public static async Task<List<UsuarioModel>> PegarTodosUsu() =>
             await DatabaseManager.databaseManager.usuarioModel
                 .Where(usuairo => usuairo.tipo.Equals(TipoUsuario.ADM.ToString()))
                 .ToListAsync();
         #endregion
         
-        public async void AtualizarUsuarioId(int id, UsuarioModel usuario)
+        public static async void AtualizarUsuarioId(int id, UsuarioModel usuario)
         {
             UsuarioModel usuarioModel = await BuscarUsuarioId(id);
             
@@ -57,17 +50,17 @@ namespace ProjectBook.DB.SqlServerExpress
         }
 
         #region Login
-        public UsuarioModel LoginUsuario(string nomeUsuario, string senha) =>
+        public static UsuarioModel LoginUsuario(string nomeUsuario, string senha) =>
             DatabaseManager.databaseManager.usuarioModel
                 .Single(usuario => usuario.usuario.Equals(nomeUsuario) &&
                                    usuario.senha.Equals(senha));
-        public UsuarioModel LoginCodigo(int id, string senha) =>
+        public static UsuarioModel LoginCodigo(int id, string senha) =>
             DatabaseManager.databaseManager.usuarioModel
                 .Single(usuario => usuario.id.Equals(id) &&
                                    usuario.senha.Equals(senha));
         #endregion
 
-        public TipoUsuario VerTipoUsuario(string nomeUsuario) =>
+        public static TipoUsuario VerTipoUsuario(string nomeUsuario) =>
             DatabaseManager.databaseManager.usuarioModel
                 .Single(usuario => usuario.usuario.Equals(nomeUsuario)).tipo;
     }

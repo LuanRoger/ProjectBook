@@ -1,19 +1,17 @@
 ﻿using System;
 using System.Data;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using ProjectBook.AppInsight;
 using ProjectBook.DB.SqlServerExpress;
 using ProjectBook.Livros;
 using ProjectBook.Properties;
-using ProjectBook.Managers;
 using ProjectBook.Managers.Configuration;
 
 namespace ProjectBook.GUI
 {
     public partial class CadastroLivro : Form
     {
-        LivrosDb livrosDb = new();
-
         public CadastroLivro()
         {
             InitializeComponent();
@@ -21,9 +19,9 @@ namespace ProjectBook.GUI
             SugerirEditora();
             ColocarGeneros();
 
-            btnVerLivros.Click += delegate
+            btnVerLivros.Click += async delegate
             {
-                ListaPesquisa listaPesquisa = new(livrosDb.VerTodosLivros());
+                ListaPesquisa<LivroModel> listaPesquisa = new(await LivrosDb.VerTodosLivros());
                 listaPesquisa.Show();
             };
             btnPesquisarLivros.Click += delegate
@@ -38,7 +36,7 @@ namespace ProjectBook.GUI
         {
             #region Tratar código
             string codigoTxt = txtCodigoLivro.Text;
-            if (Verificadores.VerificarStrings(codigoTxt))
+            if (Verificadores.VerificarStrings(codigoTxt)) //TODO - Refactor
             {
                 int codigo = new Random().Next(0, 999);
 
@@ -56,39 +54,46 @@ namespace ProjectBook.GUI
             }
             #endregion
 
-            try { int.Parse(txtAno.Text); }
-            catch { MessageBox.Show(string.Format(Resources.TypeError, "Ano"), Resources.Error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); 
-                AppInsightMetrics.SendError(new Exception(string.Format(Resources.TypeError, "Ano"))); return;}
+            if(!Verificadores.VerificarAnoLivro(txtAno.Text))
+            {
+                MessageBox.Show(string.Format(Resources.TypeError, "Ano"), Resources.Error_MessageBox,
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             LivroModel livro;
             //Aplicar a formatação na instânciação do livro
             if (AppConfigurationManager.configuration.formating.FormatBook)
             {
-                livro = new LivroModel(
-                    txtCodigoLivro.Text,
-                    txtTituloLivro.Text.ToUpper(),
-                    txtAutorLivro.Text.ToUpper(),
-                    txtEditoraLivro.Text.ToUpper(),
-                    txtEdicaoLivro.Text.ToUpper(),
-                    txtAno.Text.ToUpper(),
-                    cmbGenero.Text.ToUpper(),
-                    txtIsbn.Text.ToUpper(),
-                    DateTime.Now,
-                    txtObservacoesCadastro.Text.ToUpper());
+                livro = new()
+                {
+                    id = int.Parse(txtCodigoLivro.Text),
+                    titulo = txtTituloLivro.Text.ToUpper(),
+                    autor = txtAutorLivro.Text.ToUpper(),
+                    editora = txtEditoraLivro.Text.ToUpper(),
+                    edicao = txtEdicaoLivro.Text.ToUpper(),
+                    ano = int.Parse(txtAno.Text.ToUpper()),
+                    genero = cmbGenero.Text.ToUpper(),
+                    isbn = txtIsbn.Text.ToUpper(),
+                    dataCadastro = DateTime.Now,
+                    observacoes = txtObservacoesCadastro.Text.ToUpper()
+                };
             }
             else
             {
-                livro = new LivroModel(
-                    txtCodigoLivro.Text,
-                    txtTituloLivro.Text,
-                    txtAutorLivro.Text,
-                    txtEditoraLivro.Text,
-                    txtEdicaoLivro.Text,
-                    txtAno.Text,
-                    cmbGenero.Text,
-                    txtIsbn.Text,
-                    DateTime.Now,
-                    txtObservacoesCadastro.Text);
+                livro = new()
+                {
+                    id = int.Parse(txtCodigoLivro.Text),
+                    titulo = txtTituloLivro.Text,
+                    autor = txtAutorLivro.Text,
+                    editora = txtEditoraLivro.Text,
+                    edicao = txtEdicaoLivro.Text,
+                    ano = int.Parse(txtAno.Text),
+                    genero = cmbGenero.Text,
+                    isbn = txtIsbn.Text,
+                    dataCadastro = DateTime.Now,
+                    observacoes = txtObservacoesCadastro.Text
+                };
             }
             
             if (Verificadores.VerificarCamposLivros(livro))
@@ -98,7 +103,7 @@ namespace ProjectBook.GUI
                 return;
             }
 
-            livrosDb.AdicionarLivro(livro);
+            LivrosDb.AdicionarLivro(livro);
 
             SugerirAutores();
             SugerirEditora();
@@ -106,31 +111,34 @@ namespace ProjectBook.GUI
             LimparCamposCadastro();
         }
 
-        private void btnFecharCadastro_Click(object sender, EventArgs e) => this.Close();
+        private void btnFecharCadastro_Click(object sender, EventArgs e) => Close();
         private void btnLimparTxtLivros_Click(object sender, EventArgs e) => LimparCamposCadastro();
 
-        private void SugerirAutores()
+        private async void SugerirAutores()
         {
             txtAutorLivro.AutoCompleteCustomSource.Clear();
-
             AutoCompleteStringCollection autorSugestoes = new();
-            foreach (DataRow autor in livrosDb.VerTodosLivros().Rows) autorSugestoes.Add(autor[2].ToString());
+            
+            foreach (LivroModel livro in await LivrosDb.VerTodosLivros()) 
+                autorSugestoes.Add(livro.autor);
+            
             txtAutorLivro.AutoCompleteCustomSource = autorSugestoes;
         }
-        private void SugerirEditora()
+        private async void SugerirEditora()
         {
             txtEditoraLivro.AutoCompleteCustomSource.Clear();
-
-            AutoCompleteStringCollection editoraAutoCompleteString = new();
-            foreach (DataRow editora in livrosDb.VerTodosLivros().Rows) editoraAutoCompleteString.Add(editora[3].ToString());
-            txtEditoraLivro.AutoCompleteCustomSource = editoraAutoCompleteString;
+            AutoCompleteStringCollection editora = new();
+            
+            foreach (LivroModel livro in await LivrosDb.VerTodosLivros()) 
+                editora.Add(livro.editora);
+            
+            txtEditoraLivro.AutoCompleteCustomSource = editora;
         }
-        private void ColocarGeneros()
+        private async void ColocarGeneros()
         {
             cmbGenero.Items.Clear();
-
-            //Colocar todos os generos no combobox
-            foreach(DataRow itens in livrosDb.PegarGeneros().Rows) cmbGenero.Items.Add(itens["Genero"]);
+            
+            foreach(string itens in await LivrosDb.PegarGeneros()) cmbGenero.Items.Add(itens);
         }
         private void LimparCamposCadastro()
         {
