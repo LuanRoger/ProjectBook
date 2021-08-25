@@ -53,10 +53,8 @@ namespace ProjectBook.Managers
         }
         public static void UpdateUserInfo()
         {
-            UsuarioDb usuarioDb = new();
-            
             UserInfo.UserNowInstance.tipoUsuario = 
-                usuarioDb.VerTipoUsuario(UserInfo.UserNowInstance.userName);
+                UsuarioDb.VerTipoUsuario(UserInfo.UserNowInstance.userName);
 
             AppInsightMetrics.SendUserInfo(
                 UserInfo.UserNowInstance.idUsuario,

@@ -45,6 +45,7 @@ namespace ProjectBook.Managers.Configuration
         public static void LoadConfig()
         {
             if(!Verificadores.VerificarConfiguracoes()) configManager.Save();
+            
             configManager.Load();
         }
         //public static void ResetConfig() => configManager.Reset();

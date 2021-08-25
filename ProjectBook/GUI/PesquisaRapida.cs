@@ -1,21 +1,20 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
+using System.Runtime.Remoting;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ProjectBook.DB.SqlServerExpress;
 using Color = System.Drawing.Color;
 using ProjectBook.Properties;
 using ProjectBook.AppInsight;
+using ProjectBook.Livros;
 
 namespace ProjectBook.GUI
 {
     public partial class PesquisaRapida : Form
     {
-        private LivrosDb livrosDb = new();
-        private ClienteDb clienteDb = new();
-
-        private DataTable resultado = new();
         public PesquisaRapida()
         {
             InitializeComponent();
@@ -29,18 +28,14 @@ namespace ProjectBook.GUI
         private void PesquisaRapida_Load(object sender, EventArgs e) => lblParaCaixaTexto.BackColor = Color.Transparent;
         private void PesquisaRapida_Deactivate(object sender, EventArgs e)
         {
-            Task.Run(async () =>
-            {
-                await Task.Delay(1000);
-                Invoke((MethodInvoker)Close);
-            });
+            Close();
         }
 
         private void txtPesquisaRapida_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter) Pesquisar();
         }
-        private void Pesquisar()
+        private async void Pesquisar()
         {
             string termoPesquisa = txtPesquisaRapida.Text;
 
@@ -50,42 +45,50 @@ namespace ProjectBook.GUI
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            
+            dynamic resultado;
+            
+            if (rabLivroId.Checked) resultado = await LivrosDb.BuscarLivrosId(int.Parse(termoPesquisa));
+            else if (rabLivroNome.Checked) resultado = await LivrosDb.BuscarLivrosTitulo(termoPesquisa);
+            else if (rabClienteId.Checked) resultado = await ClienteDb.BuscarClienteId(int.Parse(termoPesquisa));
+            else resultado = await ClienteDb.BuscarClienteNome(termoPesquisa);
 
-            if (rabLivroId.Checked) resultado = livrosDb.BuscarLivrosId(termoPesquisa);
-            else if (rabLivroNome.Checked) resultado = livrosDb.BuscarLivrosTitulo(termoPesquisa);
-            else if (rabClienteId.Checked) resultado = clienteDb.BuscarClienteId(termoPesquisa);
-            else if (rabClienteNome.Checked) resultado = clienteDb.BuscarClienteNome(termoPesquisa);
-
-            if (Verificadores.VerificarDataTable(resultado))
+            if(((ObjectHandle)resultado).Unwrap().GetType() == typeof(LivroModel))
             {
-                MessageBox.Show(Resources.LivroClienteNaoExistem, Resources.Error_MessageBox,
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                ListaPesquisa<LivroModel> listaPesquisa = new((List<LivroModel>)resultado);
+                listaPesquisa.Show();
+                listaPesquisa.BringToFront();
             }
-
-            ListaPesquisa listaPesquisa = new(resultado);
-            listaPesquisa.Show();
-            listaPesquisa.BringToFront();
+            else
+            {
+                ListaPesquisa<ClienteModel> listaPesquisa = new((List<ClienteModel>)resultado);
+                listaPesquisa.Show();
+                listaPesquisa.BringToFront();
+            }
         }
 
         #region CheckChange
-        private void rabLivroNome_CheckedChanged(object sender, EventArgs e)
+        private async void rabLivroNome_CheckedChanged(object sender, EventArgs e)
         {
             txtPesquisaRapida.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
 
-            AutoCompleteStringCollection livroSugestao = new();
-            foreach (DataRow livro in livrosDb.VerTodosLivros().Rows) livroSugestao.Add(livro[1].ToString());
-
-            txtPesquisaRapida.AutoCompleteCustomSource = livroSugestao;
+            txtPesquisaRapida.AutoCompleteCustomSource ??= new();
+            
+            foreach (LivroModel livro in await LivrosDb.VerTodosLivros()) 
+                txtPesquisaRapida.Invoke(new MethodInvoker(delegate
+                {
+                    txtPesquisaRapida.AutoCompleteCustomSource.Add(livro.titulo);
+                }));
         }
-        private void rabClienteNome_CheckedChanged(object sender, EventArgs e)
+        private async void rabClienteNome_CheckedChanged(object sender, EventArgs e)
         {
             txtPesquisaRapida.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-
-            AutoCompleteStringCollection clienteSugestao = new();
-            foreach (DataRow cliente in clienteDb.VerTodosClientes().Rows) clienteSugestao.Add(cliente[1].ToString());
-
-            txtPesquisaRapida.AutoCompleteCustomSource = clienteSugestao;
+            
+            foreach (ClienteModel cliente in await ClienteDb.VerTodosClientes()) 
+                txtPesquisaRapida.Invoke(new MethodInvoker(delegate
+                {
+                    txtPesquisaRapida.AutoCompleteCustomSource.Add(cliente.nomeCompleto);
+                }));
         }
         private void rabLivroId_CheckedChanged(object sender, EventArgs e) => RemoverSugestao();
         private void rabClienteId_CheckedChanged(object sender, EventArgs e) => RemoverSugestao();

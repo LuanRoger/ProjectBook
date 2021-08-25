@@ -26,5 +26,7 @@ namespace ProjectBook.DB.SqlServerExpress
         {
             optionsBuilder.UseSqlServer(connectionString);
         }
+        
+        public static bool VerificarConexao() => _databaseManager.Database.CanConnect();
     }
 }

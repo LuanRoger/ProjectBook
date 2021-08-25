@@ -1,61 +1,67 @@
 ﻿using System;
 using System.Data;
+using System.Linq;
 using System.Windows.Forms;
 using ProjectBook.DB.SqlServerExpress;
 using ProjectBook.Tipos;
 using ProjectBook.Properties;
 using ProjectBook.AppInsight;
+using ProjectBook.Livros;
 
 namespace ProjectBook.GUI
 {
     public partial class PesquisarAluguel : Form
     {
-        private AluguelDb aluguelDb = new();
-
         public PesquisarAluguel()
         {
             InitializeComponent();
 
-            #region MenuClick
-            mnuVerLivroAlugado.Click += (_, _) =>
+            Load += (_, _) =>
             {
-                ListaPesquisa lista = new(aluguelDb.PegarLivrosAlugados());
-                lista.Show();
+                #region MenuClick
+                mnuVerLivroAlugado.Click += async (_, _) =>
+                {
+                    ListaPesquisa<AluguelModel> lista = new(await AluguelDb.PegarLivrosAlugados());
+                    lista.Show();
+                };
+                mnuVerLivrosAtasados.Click += async (_, _) =>
+                {
+                    ListaPesquisa<AluguelModel> lista = new(await AluguelDb.PegarLivroAtrassado());
+                    lista.Show();
+                };
+                mnuVerLivrosDevolvidos.Click += async (_, _) =>
+                {
+                    ListaPesquisa<AluguelModel> lista = new(await AluguelDb.PegarLivroDevolvido());
+                    lista.Show();
+                };
+                #endregion
+                
+                AppInsightMetrics.TrackForm("PesquisarAluguel");
             };
-            mnuVerLivrosAtasados.Click += (_, _) =>
-            {
-                ListaPesquisa lista = new(aluguelDb.PegarLivroAtrassado());
-                lista.Show();
-            };
-            mnuVerLivrosDevolvidos.Click += (_, _) =>
-            {
-                ListaPesquisa lista = new(aluguelDb.PegarLivroDevolvido());
-                lista.Show();
-            };
-            #endregion
-
-            Load += (_, _) => AppInsightMetrics.TrackForm("PesquisarAluguel");
         }
 
         #region CheckChange
-        private void rabTituloLivro_CheckedChanged(object sender, EventArgs e)
+        private async void rabTituloLivro_CheckedChanged(object sender, EventArgs e)
         {
             AutoCompleteStringCollection aluguelSugestao = new();
-            foreach (DataRow livro in aluguelDb.VerTodosAluguel().Rows) aluguelSugestao.Add($"{livro[0]} - {livro[2]}");
+            foreach (AluguelModel aluguel in await AluguelDb.VerTodosAluguel()) 
+                aluguelSugestao.Add($"{aluguel.titulo} - {aluguel.alugadoPor}");
             txtBuscarAluguel.AutoCompleteCustomSource = aluguelSugestao;
         }
-        private void rabNomeCliente_CheckedChanged(object sender, EventArgs e)
+        private async void rabNomeCliente_CheckedChanged(object sender, EventArgs e)
         {
             AutoCompleteStringCollection aluguelSugestao = new();
-            foreach (DataRow cliente in aluguelDb.VerTodosAluguel().Rows) aluguelSugestao.Add($"{cliente[2]} - {cliente[0]}");
+            foreach (AluguelModel aluguel in await AluguelDb.VerTodosAluguel()) 
+                aluguelSugestao.Add($"{aluguel.alugadoPor} - {aluguel.titulo}");
+            
             txtBuscarAluguel.AutoCompleteCustomSource = aluguelSugestao;
         }
         #endregion
 
-        private void btnBuscarClientePesquisaAluguel_Click(object sender, EventArgs e)
+        private async void btnBuscarClientePesquisaAluguel_Click(object sender, EventArgs e)
         {
             string[] termoBusca = txtBuscarAluguel.Text.Split("-", 2, StringSplitOptions.TrimEntries);
-            DataTable data = new();
+            AluguelModel aluguel = new();
             
             if (Verificadores.VerificarStrings(txtBuscarAluguel.Text))
             {
@@ -66,27 +72,27 @@ namespace ProjectBook.GUI
             
             if(termoBusca.Length == 1)
             {
-                if (rabNomeCliente.Checked) data = aluguelDb.BuscarAluguelCliente(termoBusca[0].Trim());
-                else if (rabTituloLivro.Checked) data = aluguelDb.BuscarAluguelLivro(termoBusca[0].Trim());
+                if (rabNomeCliente.Checked) aluguel = (await AluguelDb.BuscarAluguelCliente(termoBusca[0].Trim())).First();
+                else if (rabTituloLivro.Checked) aluguel = (await AluguelDb.BuscarAluguelLivro(termoBusca[0].Trim())).First();
             }
             else
             {
                 string titulo = rabTituloLivro.Checked ? termoBusca[0] : termoBusca[1];
                 string nomeCliente = rabNomeCliente.Checked ? termoBusca[0] : termoBusca[1];
 
-                data = aluguelDb.BuscarAluguelLivroCliente(titulo, nomeCliente);
+                aluguel = (await AluguelDb.BuscarAluguelLivroCliente(titulo, nomeCliente)).First();
             }
 
-            if(Verificadores.VerificarDataTable(data))
+            if(Verificadores.VerificarCamposAluguel(aluguel))
             {
                 MessageBox.Show(Resources.LivroNaoAluguado, Resources.Error_MessageBox,
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            PreencherCampos(data);
+            PreencherCampos(aluguel);
         }
-        private void btnVerEmRelatorio_Click(object sender, EventArgs e)
+        private async void btnVerEmRelatorio_Click(object sender, EventArgs e)
         {
             string[] termoBusca = txtBuscarAluguel.Text.Split("-");
 
@@ -97,31 +103,31 @@ namespace ProjectBook.GUI
                 return;
             }
 
-            ListaPesquisa lista;
+            ListaPesquisa<AluguelModel> lista;
 
             if (rabNomeCliente.Checked)
             {
-                lista = new ListaPesquisa(aluguelDb.BuscarAluguelCliente(termoBusca[0].Trim()));
+                lista = new(await AluguelDb.BuscarAluguelCliente(termoBusca[0].Trim()));
                 lista.Show();
             }
             else if (rabTituloLivro.Checked)
             {
-                lista = new ListaPesquisa(aluguelDb.BuscarAluguelLivro(termoBusca[0].Trim()));
+                lista = new(await AluguelDb.BuscarAluguelLivro(termoBusca[0].Trim()));
                 lista.Show();
             }
 
             LimparCampos();
         }
 
-        private void PreencherCampos(DataTable data)
+        private void PreencherCampos(AluguelModel aluguel)
         {
-            txtResultadoCliete.Text = data.Rows[0][2].ToString();
-            txtResultadoLivro.Text = data.Rows[0][0].ToString();
-            txtResultadoStatus.Text = data.Rows[0][5].ToString();
+            txtResultadoCliete.Text = aluguel.alugadoPor;
+            txtResultadoLivro.Text = aluguel.titulo;
+            txtResultadoStatus.Text = aluguel.status.ToString();
 
             if (txtResultadoStatus.Text == StatusAluguel.Devolvido.ToString()) return;
             DateTime hoje = DateTime.Now.Date;
-            DateTime devolucao = (DateTime)data.Rows[0][4];
+            DateTime devolucao = aluguel.dataDevolucao;
             txtAVencer.Text = Convert.ToInt32((devolucao.Date - hoje).Days) <= 0
                 ? "-" : (devolucao.Date - hoje).Days.ToString();
             txtAtraso.Text = Convert.ToInt32((hoje - devolucao.Date).Days) <= 0

@@ -1,37 +1,41 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
 using ProjectBook.DB.SqlServerExpress;
 using ProjectBook.Properties;
 using ProjectBook.AppInsight;
+using ProjectBook.Livros;
 
 namespace ProjectBook.GUI
 {
     public partial class PesquisarUsuario : Form
     {
-        private UsuarioDb usuarioDb = new();
         public PesquisarUsuario()
         {
             InitializeComponent();
 
-            #region MenuClick
-            mnuVerAdm.Click += (sender, e) =>
+            Load += (_, _) =>
             {
-                ListaPesquisa listaPesquisa = new(usuarioDb.PegarTodosAdm());
-                listaPesquisa.Show();
+                #region MenuClick
+                mnuVerAdm.Click += async (_, _) =>
+                {
+                    ListaPesquisa<UsuarioModel> listaPesquisa = new(await UsuarioDb.PegarTodosAdm());
+                    listaPesquisa.Show();
+                };
+                mnuVerUsuarios.Click += async (_, _) =>
+                {
+                    ListaPesquisa<UsuarioModel> listaPesquisa = new(await UsuarioDb.PegarTodosUsu());
+                    listaPesquisa.Show();
+                };
+                #endregion
+                
+                AppInsightMetrics.TrackForm("PesquisarUsuario");  
             };
-            mnuVerUsuarios.Click += (sender, e) =>
-            {
-                ListaPesquisa listaPesquisa = new(usuarioDb.PegarTodosUsu());
-                listaPesquisa.Show();
-            };
-            #endregion
-
-            Load += (_, _) => AppInsightMetrics.TrackForm("PesquisarUsuario");
         }
 
         private void btnCancelarBuscaUsuario_Click(object sender, EventArgs e) => Close();
-        private void bntBuscarUsuario_Click(object sender, EventArgs e)
+        private async void bntBuscarUsuario_Click(object sender, EventArgs e)
         {
             if (Verificadores.VerificarStrings(txtNomeUsuarioBusca.Text))
             {
@@ -40,11 +44,12 @@ namespace ProjectBook.GUI
                 return;
             }
 
-            DataTable infoUsuario = new();
-            if (rabCodigoUsuario.Checked) infoUsuario = usuarioDb.BuscarUsuarioId(txtNomeUsuarioBusca.Text);
-            else if (rabUsuarioNome.Checked) infoUsuario = usuarioDb.PesquisarUsuarioNome(txtNomeUsuarioBusca.Text);
+            List<UsuarioModel> infoUsuario = new();
+            
+            if (rabCodigoUsuario.Checked) infoUsuario.Add(await UsuarioDb.BuscarUsuarioId(int.Parse(txtNomeUsuarioBusca.Text)));
+            else if (rabUsuarioNome.Checked) infoUsuario = await UsuarioDb.BuscarUsuarioNome(txtNomeUsuarioBusca.Text);
 
-            ListaPesquisa lista = new(infoUsuario);
+            ListaPesquisa<UsuarioModel> lista = new(infoUsuario);
             lista.Show();
         }
     }

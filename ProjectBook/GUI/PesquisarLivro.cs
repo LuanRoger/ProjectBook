@@ -1,14 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
 using ProjectBook.AppInsight;
 using ProjectBook.DB.SqlServerExpress;
+using ProjectBook.Livros;
 
 namespace ProjectBook.GUI
 {
     public partial class PesquisarLivro : Form
     {
-        LivrosDb livrosDb = new();
         public PesquisarLivro()
         {
             InitializeComponent();
@@ -21,39 +22,44 @@ namespace ProjectBook.GUI
 
         private void rabPesquisarTitulo_CheckedChanged(object sender, EventArgs e) => txtTermoPesquisa.AutoCompleteMode = AutoCompleteMode.None;
 
-        private void rabPesquisarAutor_CheckedChanged(object sender, EventArgs e)
+        private async void rabPesquisarAutor_CheckedChanged(object sender, EventArgs e)
         {
             txtTermoPesquisa.Clear();
             txtTermoPesquisa.AutoCompleteMode = AutoCompleteMode.Suggest;
 
             AutoCompleteStringCollection autores = new();
-            foreach (DataRow autor in livrosDb.VerTodosLivros().Rows) autores.Add(autor[2].ToString());
+            foreach (LivroModel livro in await LivrosDb.VerTodosLivros()) 
+                autores.Add(livro.autor);
+            
             txtTermoPesquisa.AutoCompleteCustomSource = autores;
         }
 
-        private void rabPesquisarGenero_CheckedChanged(object sender, EventArgs e)
+        private async void rabPesquisarGenero_CheckedChanged(object sender, EventArgs e)
         {
             txtTermoPesquisa.AutoCompleteCustomSource.Clear();
             txtTermoPesquisa.AutoCompleteMode = AutoCompleteMode.Suggest;
 
             AutoCompleteStringCollection generos = new();
-            foreach (DataRow genero in livrosDb.PegarGeneros().Rows) generos.Add(genero[0].ToString());
+            foreach (string genero in await LivrosDb.PegarGeneros()) 
+                generos.Add(genero);
+            
             txtTermoPesquisa.AutoCompleteCustomSource = generos;
         }
         #endregion
 
-        private void btnPesquisarSeletiva_Click(object sender, EventArgs e)
+        private async void btnPesquisarSeletiva_Click(object sender, EventArgs e)
         {
             string termoPesquisa = txtTermoPesquisa.Text;
-            DataTable resultadoPesquisa;
+            
+            List<LivroModel> resultadoPesquisa = new();
 
-            if (rabPesquisarId.Checked) resultadoPesquisa = livrosDb.BuscarLivrosId(termoPesquisa);
-            else if (rabPesquisarTitulo.Checked) resultadoPesquisa = livrosDb.BuscarLivrosTitulo(termoPesquisa);
-            else if (rabPesquisarAutor.Checked) resultadoPesquisa = livrosDb.BuscarLivrosAutor(termoPesquisa);
-            else if (rabPesquisarGenero.Checked) resultadoPesquisa = livrosDb.BuscarLivrosGenero(termoPesquisa);
+            if (rabPesquisarId.Checked) resultadoPesquisa.Add(await LivrosDb.BuscarLivrosId(int.Parse(termoPesquisa)));
+            else if (rabPesquisarTitulo.Checked) resultadoPesquisa = await LivrosDb.BuscarLivrosTitulo(termoPesquisa);
+            else if (rabPesquisarAutor.Checked) resultadoPesquisa = await LivrosDb.BuscarLivrosAutor(termoPesquisa);
+            else if (rabPesquisarGenero.Checked) resultadoPesquisa = await LivrosDb.BuscarLivrosGenero(termoPesquisa);
             else return;
 
-            ListaPesquisa listaPesquisa = new(resultadoPesquisa);
+            ListaPesquisa<LivroModel> listaPesquisa = new(resultadoPesquisa);
             listaPesquisa.Show();
 
             txtTermoPesquisa.Clear();

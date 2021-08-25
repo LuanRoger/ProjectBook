@@ -9,6 +9,7 @@ using ProjectBook.GUI;
 using ProjectBook.Properties;
 using System.Threading.Tasks;
 using ProjectBook.DB.OneDrive;
+using ProjectBook.Livros;
 using ProjectBook.Managers;
 using ProjectBook.Managers.Configuration;
 
@@ -16,8 +17,6 @@ namespace ProjectBook
 {
     public partial class SplashScreen : Form
     {
-        private LivrosDb livrosDb = new();
-
         public SplashScreen()
         {
             InitializeComponent();
@@ -34,7 +33,7 @@ namespace ProjectBook
         }
         private async void SplashScreen_Load(object sender, EventArgs e)
         {
-            if (!livrosDb.VerificarConexaoDb()) return;
+            if (!DatabaseManager.VerificarConexao()) return;
 
             lblStatusCarregamento.Text = Resources.VerificacoesSeguranca_SplashScreen;
 
@@ -50,7 +49,7 @@ namespace ProjectBook
 
             inicializeTasks.Add(SyncOneDrive());
             inicializeTasks.Add( Task.Run(SearchForUpdates));
-            inicializeTasks.Add(AtualizarAluguel());
+            inicializeTasks.Add(AtualizarAtrasso());
             inicializeTasks.Add(Task.Delay(Consts.SPLASH_SCREEN_LOADTIME));
 
             await Task.WhenAll(inicializeTasks.ToArray());
@@ -72,11 +71,6 @@ namespace ProjectBook
             lblStatusCarregamento.Text = Resources.ProcurandoAtualizacoes_SplashScreen;
             AppUpdateManager.SearchUpdates();
         }
-        private async Task AtualizarAluguel()
-        {
-            lblStatusCarregamento.Text = Resources.AtualizandoBancoDados_SpashScreen;
-            if (AppConfigurationManager.configuration.renting.UpdateRentStatus) await Task.Run(AtualizarAtrasso);
-        }
 
         private void UsuarioLogado()
         {
@@ -89,16 +83,16 @@ namespace ProjectBook
             else AppManager.ReiniciarPrograma();
         }
 
-        private void AtualizarAtrasso()
+        private async Task AtualizarAtrasso()
         {
-            AluguelDb aluguelDb = new();
-
-            foreach (DataRow data in aluguelDb.PegarLivrosAlugados().Rows)
+            lblStatusCarregamento.Text = Resources.AtualizandoBancoDados_SpashScreen;
+            
+            foreach (AluguelModel data in await AluguelDb.PegarLivrosAlugados())
             {
                 DateTime hoje = DateTime.Now.Date;
-                DateTime devolucao = (DateTime)data[4];
+                DateTime devolucao = data.dataDevolucao;
                 if (Convert.ToInt32((hoje - devolucao).Days) >= 0)
-                    aluguelDb.AtualizarStatusAtrasado(data[2].ToString());
+                    AluguelDb.AtualizarStatusAtrasado(data.alugadoPor);
             }
         }
     }
