@@ -72,7 +72,6 @@ namespace ProjectBook.DB.SqlServerExpress
             aluguelModel = aluguel;
             
             await DatabaseManager.databaseManager.SaveChangesAsync();
-            DatabaseManager.DisposeInstance();
         }
         public static async void AtualizarStatusAtrasado(string alugadoPor)
         {
@@ -82,7 +81,6 @@ namespace ProjectBook.DB.SqlServerExpress
             aluguelModel.status = StatusAluguel.Atrasado;
             
             await DatabaseManager.databaseManager.SaveChangesAsync();
-            DatabaseManager.DisposeInstance();
         }
         #endregion
     }

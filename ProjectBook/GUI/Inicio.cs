@@ -15,7 +15,40 @@ namespace ProjectBook.GUI
         public Inicio()
         {
             InitializeComponent();
+        }
 
+        private void btnAccountError_Click(object sender, EventArgs e) => new GerenciarUsuario().Show();
+        private void btnSairUsuario_Click(object sender, EventArgs e)
+        {
+            UserInfo.UserNowInstance.userName = "";
+            UserInfo.UserNowInstance.idUsuario = 0;
+
+            AppInsightMetrics.TrackEvent("SairUsuario");
+
+            AppManager.ReiniciarPrograma();
+        }
+
+        private async void bgwInicioActivated_DoWork(object sender, DoWorkEventArgs e)
+        {
+            if (Opacity != 0)
+            {
+                lblLivrosCadastrados.Text = (await LivrosDb.VerTodosLivros()).Count.ToString();
+                lblClientesCadastrados.Text = (await ClienteDb.VerTodosClientes()).Count.ToString();
+                lblAlugueisRegistrados.Text = (await AluguelDb.VerTodosAluguel()).Count.ToString();
+
+                AppInsightMetrics.SendMetric("LivrosRegistrados", int.Parse(lblLivrosCadastrados.Text));
+                AppInsightMetrics.SendMetric("ClientesCadastrados", int.Parse(lblClientesCadastrados.Text));
+                AppInsightMetrics.SendMetric("AlugueisRegistrados", int.Parse(lblAlugueisRegistrados.Text));
+            }
+
+            GC.Collect();
+        }
+        private void Inicio_ActivatedAsync(object sender, EventArgs e)
+        {
+            if(!bgwInicioActivated.IsBusy) bgwInicioActivated.RunWorkerAsync();
+        }
+        private void Inicio_Load(object sender, EventArgs e)
+        {
             #region MenuClick
             mnuNovoLivro.Click += (_, _) =>
             {
@@ -233,40 +266,7 @@ namespace ProjectBook.GUI
                 AppInsightMetrics.TrackEvent("AbrirPesquisaRapidaAr");
             };
             #endregion
-        }
-
-        private void btnAccountError_Click(object sender, EventArgs e) => new GerenciarUsuario().Show();
-        private void btnSairUsuario_Click(object sender, EventArgs e)
-        {
-            UserInfo.UserNowInstance.userName = "";
-            UserInfo.UserNowInstance.idUsuario = 0;
-
-            AppInsightMetrics.TrackEvent("SairUsuario");
-
-            AppManager.ReiniciarPrograma();
-        }
-
-        private async void bgwInicioActivated_DoWork(object sender, DoWorkEventArgs e)
-        {
-            if (Opacity != 0)
-            {
-                lblLivrosCadastrados.Text = (await LivrosDb.VerTodosLivros()).Count.ToString();
-                lblClientesCadastrados.Text = (await ClienteDb.VerTodosClientes()).Count.ToString();
-                lblAlugueisRegistrados.Text = (await AluguelDb.VerTodosAluguel()).Count.ToString();
-
-                AppInsightMetrics.SendMetric("LivrosRegistrados", int.Parse(lblLivrosCadastrados.Text));
-                AppInsightMetrics.SendMetric("ClientesCadastrados", int.Parse(lblClientesCadastrados.Text));
-                AppInsightMetrics.SendMetric("AlugueisRegistrados", int.Parse(lblAlugueisRegistrados.Text));
-            }
-
-            GC.Collect();
-        }
-        private void Inicio_ActivatedAsync(object sender, EventArgs e)
-        {
-            if(!bgwInicioActivated.IsBusy) bgwInicioActivated.RunWorkerAsync();
-        }
-        private void Inicio_Load(object sender, EventArgs e)
-        {
+            
             Opacity = 0; //TODO - Create a propertie than say if the Form is visible or not
             ShowInTaskbar = false;
 
@@ -274,7 +274,7 @@ namespace ProjectBook.GUI
             splashScreen.Show();
             splashScreen.FormClosed += delegate
             {
-                Opacity = 100;
+                Opacity = 1;
                 ShowInTaskbar = true;
 
                 lblNomeUsuario.Text = UserInfo.UserNowInstance.userName;

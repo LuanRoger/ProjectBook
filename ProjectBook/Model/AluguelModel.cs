@@ -5,7 +5,7 @@ using ProjectBook.Tipos;
 
 namespace ProjectBook.Livros
 {
-    [Table("Alugueis")]
+    [Table("Aluguel")]
     public class AluguelModel
     {
         [Key]

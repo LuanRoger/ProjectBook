@@ -1,22 +1,28 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using ProjectBook.Livros;
 using ProjectBook.Managers.Configuration;
+using ProjectBook.Tipos;
 
 namespace ProjectBook.DB.SqlServerExpress
 {
     public class DatabaseManager : DbContext
     {
-        // TODO - Locker
-        private static DatabaseManager _databaseManager { get; set; }
+        //TODO - All thread safe, instance for each operation
+        private static DatabaseManager _databaseManagers {get; set;}
         public static DatabaseManager databaseManager
         {
-            get => _databaseManager ??= new();
+            get
+            {
+                _databaseManagers ??= new();
+                return _databaseManagers;
+            }
         }
-        public static void DisposeInstance() => _databaseManager.Dispose();
-        
-        private readonly string connectionString = 
+        public static void DisposeSingletons() => _databaseManagers.Dispose();
+
+        private readonly string connectionString =
             AppConfigurationManager.configuration.database.SqlConnectionString;
-        
+
         public DbSet<LivroModel> livroModel { get; set; }
         public DbSet<ClienteModel> clienteModel { get; set; }
         public DbSet<AluguelModel> aluguelModel { get; set; }
@@ -27,6 +33,20 @@ namespace ProjectBook.DB.SqlServerExpress
             optionsBuilder.UseSqlServer(connectionString);
         }
         
-        public static bool VerificarConexao() => _databaseManager.Database.CanConnect();
+        public static bool VerificarConexao() => databaseManager.Database.CanConnect();
+        
+        public static Task MigrateDb() => databaseManager.Database.MigrateAsync();
+        
+        public static async Task CreateDb()
+        {
+            await databaseManager.Database.EnsureCreatedAsync();
+            UsuarioDb.CadastrarUsuario(new()
+            {
+                id = 0,
+                usuario = "admin",
+                senha = "admin",
+                tipo = TipoUsuario.ADM
+            });
+        }
     }
 }

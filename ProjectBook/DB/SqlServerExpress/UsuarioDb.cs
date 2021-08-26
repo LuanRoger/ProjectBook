@@ -46,7 +46,6 @@ namespace ProjectBook.DB.SqlServerExpress
             usuarioModel = usuario;
             
             await DatabaseManager.databaseManager.SaveChangesAsync();
-            DatabaseManager.DisposeInstance();
         }
 
         #region Login

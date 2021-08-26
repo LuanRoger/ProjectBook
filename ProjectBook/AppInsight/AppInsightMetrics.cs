@@ -21,7 +21,7 @@ namespace ProjectBook.AppInsight
             telemetryConfiguration = TelemetryConfiguration.CreateDefault();
             telemetryConfiguration.ConnectionString = ApiKeys.TELEMETRY_CONNECTION;
 
-            telemetryClient = new TelemetryClient(telemetryConfiguration);
+            telemetryClient = new(telemetryConfiguration);
             telemetryClient.Context.Session.Id = Guid.NewGuid().ToString();
             telemetryClient.Context.Device.OperatingSystem = Environment.OSVersion.ToString();
             telemetryClient.Context.Component.Version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
@@ -47,7 +47,7 @@ namespace ProjectBook.AppInsight
             if(telemetryClient == null) return;
 
             var perfCollectorModule = new PerformanceCollectorModule();
-            perfCollectorModule.Counters.Add(new PerformanceCounterCollectionRequest(
+            perfCollectorModule.Counters.Add(new(
                 @"\Process(ProjectBook.exe)\Page Faults/sec", "PageFaultsPerfSec"));
 
             perfCollectorModule.Initialize(telemetryConfiguration);

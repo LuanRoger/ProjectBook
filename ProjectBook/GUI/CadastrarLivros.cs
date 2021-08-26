@@ -15,10 +15,11 @@ namespace ProjectBook.GUI
         public CadastroLivro()
         {
             InitializeComponent();
-            SugerirAutores();
-            SugerirEditora();
-            ColocarGeneros();
-
+        }
+        
+        private async void CadastroLivro_Load(object sender, EventArgs e)
+        {
+            #region MenuClick
             btnVerLivros.Click += async delegate
             {
                 ListaPesquisa<LivroModel> listaPesquisa = new(await LivrosDb.VerTodosLivros());
@@ -29,31 +30,17 @@ namespace ProjectBook.GUI
                 PesquisarLivro pesquisarLivro = new();
                 pesquisarLivro.Show();
             };
-            Load += (_, _) => AppInsightMetrics.TrackForm("CadastrarLivro");
+            #endregion
+            
+            SugerirAutores();
+            SugerirEditora();
+            ColocarGeneros();
+            
+            AppInsightMetrics.TrackForm("CadastrarLivro");
         }
 
         private void btnSalvarLivro_Click(object sender, EventArgs e)
         {
-            #region Tratar código
-            string codigoTxt = txtCodigoLivro.Text;
-            if (Verificadores.VerificarStrings(codigoTxt)) //TODO - Refactor
-            {
-                int codigo = new Random().Next(0, 999);
-
-                while (Verificadores.VerificarIdLivro(codigo)) codigo = new Random().Next(0, 999);
-
-                txtCodigoLivro.Text = codigo.ToString();
-            }
-            else
-            {
-                if(Verificadores.VerificarIdLivro(Convert.ToInt32(codigoTxt))) 
-                {
-                    MessageBox.Show("O código do livro digitado já existe.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-            }
-            #endregion
-
             if(!Verificadores.VerificarAnoLivro(txtAno.Text))
             {
                 MessageBox.Show(string.Format(Resources.TypeError, "Ano"), Resources.Error_MessageBox,

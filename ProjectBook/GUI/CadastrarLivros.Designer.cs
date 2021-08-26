@@ -328,6 +328,7 @@ namespace ProjectBook.GUI
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastrar livro";
+            this.Load += new System.EventHandler(this.CadastroLivro_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);

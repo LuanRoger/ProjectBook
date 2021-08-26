@@ -2,7 +2,6 @@
 using ProjectBook.Livros;
 using System.Linq;
 using System.Threading.Tasks;
-using DocumentFormat.OpenXml.Bibliography;
 using Microsoft.EntityFrameworkCore;
 
 namespace ProjectBook.DB.SqlServerExpress
@@ -46,7 +45,6 @@ namespace ProjectBook.DB.SqlServerExpress
             clienteModel = cliente;
             
             await DatabaseManager.databaseManager.SaveChangesAsync();
-            DatabaseManager.DisposeInstance();
         }
         #endregion
     }

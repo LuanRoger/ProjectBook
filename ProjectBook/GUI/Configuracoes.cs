@@ -31,7 +31,7 @@ namespace ProjectBook.GUI
             lblInfoText.ForeColor = Color.Black;
             btnSelecionarArquivoDb.Visible = false;
             txtStringConexaoCaminhoDb.Visible = true;
-            txtStringConexaoCaminhoDb.Size = new Size(459, 23);
+            txtStringConexaoCaminhoDb.Size = new(459, 23);
         }
         private void rabSqlServerLocalDb_CheckedChanged(object sender, EventArgs e)
         {
@@ -41,7 +41,7 @@ namespace ProjectBook.GUI
 
             btnSelecionarArquivoDb.Visible = true;
             txtStringConexaoCaminhoDb.Visible = true;
-            txtStringConexaoCaminhoDb.Size = new Size(426, 23);
+            txtStringConexaoCaminhoDb.Size = new(426, 23);
         }
         private void rabOneDrive_CheckedChanged(object sender, EventArgs e)
         {

@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using DocumentFormat.OpenXml.Bibliography;
 using Microsoft.EntityFrameworkCore;
 using ProjectBook.Livros;
 
@@ -39,7 +38,7 @@ namespace ProjectBook.DB.SqlServerExpress
         }
 
         public static async Task<LivroModel> BuscarLivrosId(int id) => 
-            await DatabaseManager.databaseManager.livroModel.FindAsync(id);
+            await DatabaseManager.databaseManager.livroModel.SingleOrDefaultAsync(book => book.id == id);
         public static async Task<List<LivroModel>> BuscarLivrosTitulo(string titulo) =>
             await DatabaseManager.databaseManager.livroModel.Where(livro => livro.titulo.Contains(titulo))
                 .ToListAsync();
@@ -58,7 +57,6 @@ namespace ProjectBook.DB.SqlServerExpress
             livroModel ??= livro;
             
             await DatabaseManager.databaseManager.SaveChangesAsync();
-            DatabaseManager.DisposeInstance();
         }
         public static async void AtualizarViaTitulo(string titulo, LivroModel livro)
         {
@@ -67,7 +65,6 @@ namespace ProjectBook.DB.SqlServerExpress
             livroModel = livro;
             
             await DatabaseManager.databaseManager.SaveChangesAsync();
-            DatabaseManager.DisposeInstance();
         }
         public static async void AtualizarViaAutor(string autor, LivroModel livro)
         {
@@ -76,7 +73,6 @@ namespace ProjectBook.DB.SqlServerExpress
             livroModel = livro;
             
             await DatabaseManager.databaseManager.SaveChangesAsync();
-            DatabaseManager.DisposeInstance();
         }
         #endregion
     }

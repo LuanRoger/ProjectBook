@@ -28,12 +28,19 @@ namespace ProjectBook
             privateFont.AddFontFile(Consts.FONT_MONTSERRAT_EXTRABOLD);
             privateFont.AddFontFile(Consts.FONT_MONTSERRAT_EXTRALIGHT);
 
-            label1.Font = new Font(privateFont.Families[0], 20, FontStyle.Bold);
-            label2.Font = new Font(privateFont.Families[1], 7, FontStyle.Regular);
+            label1.Font = new(privateFont.Families[0], 20, FontStyle.Bold);
+            label2.Font = new(privateFont.Families[1], 7, FontStyle.Regular);
         }
         private async void SplashScreen_Load(object sender, EventArgs e)
         {
-            if (!DatabaseManager.VerificarConexao()) return;
+            bool createDatabase = false;
+            if (!DatabaseManager.VerificarConexao())
+            {
+                DialogResult dialogResult = MessageBox.Show("Não foi possivel conectar ao banco," +
+                                " deseja criar um novo?", "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+                createDatabase = dialogResult == DialogResult.Yes;
+            }
+            await CreateDatabase(createDatabase);
 
             lblStatusCarregamento.Text = Resources.VerificacoesSeguranca_SplashScreen;
 
@@ -48,7 +55,7 @@ namespace ProjectBook
             List<Task> inicializeTasks = new();
 
             inicializeTasks.Add(SyncOneDrive());
-            inicializeTasks.Add( Task.Run(SearchForUpdates));
+            inicializeTasks.Add(Task.Run(SearchForUpdates));
             inicializeTasks.Add(AtualizarAtrasso());
             inicializeTasks.Add(Task.Delay(Consts.SPLASH_SCREEN_LOADTIME));
 
@@ -68,7 +75,8 @@ namespace ProjectBook
         }
         private void SearchForUpdates()
         {
-            lblStatusCarregamento.Text = Resources.ProcurandoAtualizacoes_SplashScreen;
+            lblStatusCarregamento.Invoke(new MethodInvoker(delegate
+                { lblStatusCarregamento.Text = Resources.ProcurandoAtualizacoes_SplashScreen; }));
             AppUpdateManager.SearchUpdates();
         }
 
@@ -83,6 +91,11 @@ namespace ProjectBook
             else AppManager.ReiniciarPrograma();
         }
 
+        private async Task CreateDatabase(bool createDb)
+        {
+            if(createDb) await DatabaseManager.CreateDb();
+        }
+        
         private async Task AtualizarAtrasso()
         {
             lblStatusCarregamento.Text = Resources.AtualizandoBancoDados_SpashScreen;

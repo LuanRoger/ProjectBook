@@ -15,9 +15,9 @@ namespace ProjectBook.GUI
 
         private void Sobre_Load(object sender, System.EventArgs e)
         {
-            PrivateFontCollection privateFont = new PrivateFontCollection();
+            PrivateFontCollection privateFont = new();
             privateFont.AddFontFile(Consts.FONT_MONTSERRAT_EXTRABOLD);
-            lblProgramName.Font = new Font(privateFont.Families[0], 20, FontStyle.Bold);
+            lblProgramName.Font = new(privateFont.Families[0], 20, FontStyle.Bold);
 
             lblProgramName.Text = Assembly.GetExecutingAssembly().GetName().Name;
             lblProgramVersion.Text = $"v{Assembly.GetExecutingAssembly().GetName().Version}";

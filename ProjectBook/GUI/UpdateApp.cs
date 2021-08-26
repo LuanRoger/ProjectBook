@@ -32,12 +32,12 @@ namespace ProjectBook.GUI
                 Assembly.GetExecutingAssembly().GetName().Version, //Atual version
                 updateInfo.yamlUpdateInfo.version); //New version
             
-            wbvUpdate.Source = new Uri(updateInfo.yamlUpdateInfo.changelog);
+            wbvUpdate.Source = new(updateInfo.yamlUpdateInfo.changelog);
         }
 
         private async void btnUpdate_Click(object sender, System.EventArgs e)
         {
-            Size = new Size(388, 526);
+            Size = new(388, 526);
             await updateInfo.DownloadAndInstallAsync();
         }
 

@@ -36,7 +36,7 @@ namespace ProjectBook.Livros
         public int ano { get; set; }
         
         [MaxLength(100)]
-        [Column("Titulo")]
+        [Column("Genero")]
         public string genero { get; set; }
         
         [Required]
