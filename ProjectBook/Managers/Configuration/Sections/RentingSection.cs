@@ -1,6 +1,6 @@
 ﻿namespace ProjectBook.Managers.Configuration.Sections
 {
-    public class RentingSection
+    public record RentingSection
     {
         public bool UpdateRentStatus { get; set; }
     }

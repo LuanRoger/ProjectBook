@@ -1,6 +1,6 @@
 ﻿namespace ProjectBook.Managers.Configuration.Sections
 {
-    public class TelemetrySection
+    public record TelemetrySection
     {
         public bool UseTelemetry { get; set; }
     }

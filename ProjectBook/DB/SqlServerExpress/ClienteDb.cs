@@ -10,41 +10,74 @@ namespace ProjectBook.DB.SqlServerExpress
     {
         public static void CadastrarCliente(ClienteModel cliente)
         {
-            DatabaseManager.databaseManager.clienteModel.Add(cliente);
-            DatabaseManager.databaseManager.SaveChanges();
+            using DatabaseManager databaseManager = new();
+            
+            databaseManager.clienteModel.Add(cliente);
+            databaseManager.SaveChanges();
         }
         
         #region Deletar
         public static void DeletarClienteId(int id)
         {
-            DatabaseManager.databaseManager.clienteModel.Remove(new() {id = id});
-            DatabaseManager.databaseManager.SaveChanges();
+            using DatabaseManager databaseManager = new();
+            
+            databaseManager.clienteModel.Remove(new() {id = id});
+            databaseManager.SaveChanges();
         }
         public static void DeletarClienteNome(string nome)
         {
-            DatabaseManager.databaseManager.clienteModel.Remove(new() {nomeCompleto = nome});
-            DatabaseManager.databaseManager.SaveChanges();
+            using DatabaseManager databaseManager = new();
+            
+            databaseManager.clienteModel.Remove(databaseManager.clienteModel
+                .Where(cliente => cliente.nomeCompleto == nome)
+                .ToList()
+                .First());
+            databaseManager.SaveChanges();
         }
         #endregion
         
         #region Buscar
-        public static async Task<List<ClienteModel>> VerTodosClientes() =>
-            await DatabaseManager.databaseManager.clienteModel.ToListAsync();
-        public static async Task<ClienteModel> BuscarClienteId(int id) =>
-            await DatabaseManager.databaseManager.clienteModel.FindAsync(id);
-        public static async Task<List<ClienteModel>> BuscarClienteNome(string nomeCompleto) =>
-            await DatabaseManager.databaseManager.clienteModel.Where(cliente => cliente.nomeCompleto.Contains(nomeCompleto))
-                .ToListAsync();
+        public static async Task<List<ClienteModel>> VerTodosClientes()
+        {
+            await using DatabaseManager databaseManager = new();
+            
+            return await databaseManager.clienteModel.ToListAsync();
+        }
+            
+        public static async Task<ClienteModel> BuscarClienteId(int id)
+        {
+            await using DatabaseManager databaseManager = new();
+            
+            return await databaseManager.clienteModel.FindAsync(id);
+        }
+            
+        public static async Task<List<ClienteModel>> BuscarClienteNome(string nomeCompleto)
+        {
+            await using DatabaseManager databaseManager = new();
+            
+            return await databaseManager.clienteModel.Where(cliente => cliente.nomeCompleto.Contains(nomeCompleto))
+                            .ToListAsync();
+        }
+            
         #endregion
         
         #region Atualizar
         public static async void AtualizarClienteId(int id, ClienteModel cliente)
         {
-            ClienteModel clienteModel = await BuscarClienteId(id);
+            await using DatabaseManager databaseManager = new();
             
-            clienteModel = cliente;
+            ClienteModel clienteModel = await databaseManager.clienteModel.FindAsync(id);
             
-            await DatabaseManager.databaseManager.SaveChangesAsync();
+            clienteModel.nomeCompleto = cliente.nomeCompleto;
+            clienteModel.endereco = cliente.endereco;
+            clienteModel.cidade = cliente.cidade;
+            clienteModel.estado = cliente.estado;
+            clienteModel.cep = cliente.cep;
+            clienteModel.telefone1 = cliente.telefone1;
+            clienteModel.telefone2 = cliente.telefone2;
+            clienteModel.email = cliente.email;
+
+            databaseManager.SaveChanges();
         }
         #endregion
     }

@@ -68,7 +68,7 @@ namespace ProjectBook.GUI
             if (resultadoExcluir != DialogResult.Yes) return;
             
             if (rabIdExcluirLivro.Checked) LivrosDb.DeletarLivroId(int.Parse(termoBusca));
-            else if (rabExcluirTitulo.Checked) LivrosDb.DeletarLivroTitulo(termoBusca);
+            else if (rabExcluirTitulo.Checked) LivrosDb.DeletarLivroTitulo( termoBusca);
             
             txtExcluirLivro.Clear();
         }

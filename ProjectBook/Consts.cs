@@ -5,6 +5,8 @@ namespace ProjectBook
     public static class Consts
     {
         public const int SPLASH_SCREEN_LOADTIME = 2500;
+        
+        public const int ID_GENERATION_RANGE = 900;
 
         public static string APPLOCAL_FOLDER = 
             Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\LuanRoger\ProjectBook\";

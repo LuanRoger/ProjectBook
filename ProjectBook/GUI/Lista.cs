@@ -44,7 +44,7 @@ namespace ProjectBook.GUI
             #endregion
         }
 
-        private void ListaPesquisa_Load(object sender, System.EventArgs e)
+        private async void ListaPesquisa_Load(object sender, System.EventArgs e)
         {
             AppInsightMetrics.TrackForm("Lista");
             
@@ -67,7 +67,7 @@ namespace ProjectBook.GUI
                 Process.GetCurrentProcess().Kill();
             }
             
-            dgvLista.DataSource = dataList.ToDataTableAsync();
+            dgvLista.DataSource = await dataList.ToDataTableAsync();
             
             lblQItensExibidos.Text = dgvLista.Rows.Count.ToString();
             lblQColunas.Text = dgvLista.ColumnCount.ToString();

@@ -5,7 +5,6 @@ namespace ProjectBook.Managers.Configuration
 {
     public record ConfigurationModel : IConfigurationModel
     {
-        // TODO - Made all records
         [Section]
         public PrinterSection printer { get; set; }
         [Section]

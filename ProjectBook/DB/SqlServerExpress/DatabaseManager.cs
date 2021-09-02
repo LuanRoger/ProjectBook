@@ -8,18 +8,6 @@ namespace ProjectBook.DB.SqlServerExpress
 {
     public class DatabaseManager : DbContext
     {
-        //TODO - All thread safe, instance for each operation
-        private static DatabaseManager _databaseManagers {get; set;}
-        public static DatabaseManager databaseManager
-        {
-            get
-            {
-                _databaseManagers ??= new();
-                return _databaseManagers;
-            }
-        }
-        public static void DisposeSingletons() => _databaseManagers.Dispose();
-
         private readonly string connectionString =
             AppConfigurationManager.configuration.database.SqlConnectionString;
 
@@ -33,13 +21,18 @@ namespace ProjectBook.DB.SqlServerExpress
             optionsBuilder.UseSqlServer(connectionString);
         }
         
-        public static bool VerificarConexao() => databaseManager.Database.CanConnect();
-        
-        public static Task MigrateDb() => databaseManager.Database.MigrateAsync();
-        
+        public static bool VerificarConexao()
+        {
+            using DatabaseManager databaseManager = new();
+            
+            return databaseManager.Database.CanConnect();
+        }
+
         public static async Task CreateDb()
         {
+            using DatabaseManager databaseManager = new();
             await databaseManager.Database.EnsureCreatedAsync();
+            
             UsuarioDb.CadastrarUsuario(new()
             {
                 id = 0,

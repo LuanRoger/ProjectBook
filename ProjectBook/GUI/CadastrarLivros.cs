@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ProjectBook.AppInsight;
@@ -7,6 +8,7 @@ using ProjectBook.DB.SqlServerExpress;
 using ProjectBook.Livros;
 using ProjectBook.Properties;
 using ProjectBook.Managers.Configuration;
+using ProjectBook.Util;
 
 namespace ProjectBook.GUI
 {
@@ -17,7 +19,7 @@ namespace ProjectBook.GUI
             InitializeComponent();
         }
         
-        private async void CadastroLivro_Load(object sender, EventArgs e)
+        private void CadastroLivro_Load(object sender, EventArgs e)
         {
             #region MenuClick
             btnVerLivros.Click += async delegate
@@ -39,8 +41,40 @@ namespace ProjectBook.GUI
             AppInsightMetrics.TrackForm("CadastrarLivro");
         }
 
-        private void btnSalvarLivro_Click(object sender, EventArgs e)
+        #region Events
+        private void txtCodigoLivro_KeyPress(object sender, KeyPressEventArgs e)
         {
+            if(!Verificadores.VerificarKeyIsInt(e)) return;
+            
+            e.Handled = true;
+        }
+        private void txtAno_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(!Verificadores.VerificarKeyIsInt(e)) return;
+            
+            e.Handled = true;
+        }
+        #endregion
+
+        private async void btnSalvarLivro_Click(object sender, EventArgs e)
+        {
+            #region Tratar código
+            string codigoTxt = txtCodigoLivro.Text;
+            if (Verificadores.VerificarStrings(codigoTxt))
+            {
+                txtCodigoLivro.Text = (await IdGenerator.GenerateIdLivro()).ToString();
+            }
+            else
+            {
+                if(await Verificadores.VerificarIdLivro(Convert.ToInt32(codigoTxt))) 
+                {
+                    MessageBox.Show("O código do livro digitado já existe.", Resources.Error_MessageBox,
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+            #endregion
+            
             if(!Verificadores.VerificarAnoLivro(txtAno.Text))
             {
                 MessageBox.Show(string.Format(Resources.TypeError, "Ano"), Resources.Error_MessageBox,

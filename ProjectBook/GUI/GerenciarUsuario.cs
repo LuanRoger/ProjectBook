@@ -41,12 +41,11 @@ namespace ProjectBook.GUI
 
         private void btnSalvarEditarUsuario_Click(object sender, EventArgs e)
         {
-            //TODO - Isso ta errado, pesquise antes de excluir
             UsuarioModel usuario = new()
             {
                 usuario = txtNovoUsuario.Text,
                 senha = txtNovoSenhaUsuario.Text,
-                tipo = (TipoUsuario)cmbNovoStatus.SelectedIndex //TODO - Status to Tipo
+                tipo = (TipoUsuario)cmbNovoStatus.SelectedIndex
             };
             if (Verificadores.VerificarCamposUsuario(usuario))
             {

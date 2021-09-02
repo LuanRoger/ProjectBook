@@ -1,6 +1,6 @@
-﻿using System.Data;
-using System.IO;
+﻿using System.IO;
 using System.Management;
+using System.Threading.Tasks;
 using ProjectBook.Livros;
 using ProjectBook.DB.SqlServerExpress;
 using ProjectBook.Tipos;
@@ -17,13 +17,16 @@ namespace ProjectBook
         /// <param name="livro"><c>Livro</c> que será analisado</param>.
         /// <returns>Retorna <c>error</c></returns>
         public static bool VerificarCamposLivros(LivroModel livro) =>
-            livro.titulo.Length == 0 || livro.autor.Length == 0 || livro.editora.Length == 0 || livro == null;
-        public static bool VerificarIdLivro(int id)
+            livro.titulo.Length == 0 || livro.autor.Length == 0 || livro.editora.Length == 0;
+        public static async Task<bool> VerificarIdLivro(int id)
         {
-            LivroModel? livro = LivrosDb.BuscarLivrosId(id).Result;
+            LivroModel? livro = await LivrosDb.BuscarLivrosId(id);
             return livro != null;
         }
         public static bool VerificarAnoLivro(string stringId) => int.TryParse(stringId, out _);
+        
+        public static bool VerificarKeyIsInt(KeyPressEventArgs e) =>
+            !char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar);
 
         /// <summary>
         /// Verificar todos os campos obrigatórios em <c>Aluguel</c>.
@@ -40,7 +43,7 @@ namespace ProjectBook
         /// <returns>Retorna <c>error</c></returns>
         public static bool VerificarCamposCliente(ClienteModel cliente) => 
             cliente.nomeCompleto.Length == 0 || cliente.cidade.Length == 0 || cliente.estado.Length == 0 ||
-            cliente.telefone1.Length == 0 || cliente == null;
+            cliente.telefone1.Length == 0;
 
         /// <summary>
         /// Verificar todos os campos obrigatórios em <c>Usuario</c>.
@@ -48,7 +51,7 @@ namespace ProjectBook
         /// <param name="usuario"><c>Usuario</c> que será analisado</param>.
         /// <returns>Retorna <c>error</c></returns>
         public static bool VerificarCamposUsuario(UsuarioModel usuario) =>
-            usuario.usuario.Length == 0 || usuario.senha.Length == 0 || usuario == null;
+            usuario.usuario.Length == 0 || usuario.senha.Length == 0;
         
         public static bool VerificarDataGrid(DataGridView dataGridView) => dataGridView.Rows.Count == 0;
 

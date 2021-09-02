@@ -33,9 +33,13 @@ namespace ProjectBook.GUI
 
         private void txtPesquisaRapida_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter) Pesquisar();
+            if (e.KeyCode != Keys.Enter) return;
+            
+            if(rabLivroId.Checked || rabLivroNome.Checked) Pesquisar<LivroModel>();
+            else if(rabClienteId.Checked || rabClienteNome.Checked) Pesquisar<ClienteModel>();
+            else throw new ArgumentException();
         }
-        private async void Pesquisar()
+        private async void Pesquisar<T>()
         {
             string termoPesquisa = txtPesquisaRapida.Text;
 
@@ -46,24 +50,35 @@ namespace ProjectBook.GUI
                 return;
             }
             
-            dynamic resultado;
-            
-            if (rabLivroId.Checked) resultado = await LivrosDb.BuscarLivrosId(int.Parse(termoPesquisa));
-            else if (rabLivroNome.Checked) resultado = await LivrosDb.BuscarLivrosTitulo(termoPesquisa);
-            else if (rabClienteId.Checked) resultado = await ClienteDb.BuscarClienteId(int.Parse(termoPesquisa));
-            else resultado = await ClienteDb.BuscarClienteNome(termoPesquisa);
-
-            if(((ObjectHandle)resultado).Unwrap().GetType() == typeof(LivroModel))
+            if(typeof(T) == typeof(LivroModel))
             {
-                ListaPesquisa<LivroModel> listaPesquisa = new((List<LivroModel>)resultado);
-                listaPesquisa.Show();
-                listaPesquisa.BringToFront();
+                ListaPesquisa<LivroModel> livroModels = new(null);
+                List<LivroModel> livroHolder = new();
+
+                if (rabLivroId.Checked)
+                {
+                    livroHolder.Add(await LivrosDb.BuscarLivrosId(int.Parse(termoPesquisa)));
+                    livroModels = new(livroHolder);
+                }
+                else if (rabLivroNome.Checked) livroModels = new(await LivrosDb.BuscarLivrosTitulo(termoPesquisa));
+
+                livroModels.Show();
+                livroModels.BringToFront();
             }
             else
             {
-                ListaPesquisa<ClienteModel> listaPesquisa = new((List<ClienteModel>)resultado);
-                listaPesquisa.Show();
-                listaPesquisa.BringToFront();
+                ListaPesquisa<ClienteModel> clienteModels = new(null);
+                List<ClienteModel> clienteHolder = new();
+
+                if(rabClienteId.Checked)
+                {
+                    clienteHolder.Add(await ClienteDb.BuscarClienteId(int.Parse(termoPesquisa)));
+                    clienteModels = new(clienteHolder);
+                }
+                else if(rabClienteNome.Checked) clienteModels = new(await ClienteDb.BuscarClienteNome(termoPesquisa));
+                
+                clienteModels.Show();
+                clienteModels.BringToFront();
             }
         }
 

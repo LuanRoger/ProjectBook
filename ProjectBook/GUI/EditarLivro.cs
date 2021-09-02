@@ -7,6 +7,7 @@ using ProjectBook.DB.SqlServerExpress;
 using ProjectBook.Livros;
 using ProjectBook.Properties;
 using ProjectBook.Managers.Configuration;
+using ProjectBook.Util;
 
 namespace ProjectBook.GUI
 {
@@ -33,7 +34,7 @@ namespace ProjectBook.GUI
             Load += (_, _) => AppInsightMetrics.TrackForm("EditarLivro");
         }
 
-        #region CheckedChanged
+        #region Events
         private void rabEditarId_CheckedChanged(object sender, EventArgs e) =>
             txtEditarBuscar.AutoCompleteMode = AutoCompleteMode.None;
         private async void rabEditarTitulo_CheckedChanged(object sender, EventArgs e)
@@ -54,6 +55,19 @@ namespace ProjectBook.GUI
             foreach (LivroModel livro in await LivrosDb.VerTodosLivros()) 
                 autorSugestao.Add($"{livro.autor} - {livro.titulo}"); //Autor - Titulo
             txtEditarBuscar.AutoCompleteCustomSource = autorSugestao;
+        }
+        
+        private void txtEditarCodigo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(!Verificadores.VerificarKeyIsInt(e)) return;
+            
+            e.Handled = true;
+        }
+        private void txtEditarAno_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(!Verificadores.VerificarKeyIsInt(e)) return;
+            
+            e.Handled = true;
         }
         #endregion
 
@@ -87,25 +101,19 @@ namespace ProjectBook.GUI
             PreencherCampos(infoLivro);
         }
 
-        private void btnSalvarEditar_Click(object sender, EventArgs e)
+        private async void btnSalvarEditar_Click(object sender, EventArgs e)
         {
             #region Tratar código
             string codigoTxt = txtEditarCodigo.Text;
-            //TODO - Refactor
-            //TODO - Made a method
-            if (Verificadores.VerificarStrings(codigoTxt)) 
-            {
-                int codigo = new Random().Next(0, 999);
-
-                while (Verificadores.VerificarIdLivro(codigo)) codigo = new Random().Next(0, 999);
-
-                txtEditarCodigo.Text = codigo.ToString();
-            }
+            
+            if (Verificadores.VerificarStrings(codigoTxt))
+                txtEditarCodigo.Text = (await IdGenerator.GenerateIdLivro()).ToString();
             else
             {
-                if(Verificadores.VerificarIdLivro(Convert.ToInt32(codigoTxt))) 
+                if(await Verificadores.VerificarIdLivro(Convert.ToInt32(codigoTxt)) && Convert.ToInt32(codigoTxt) != infoLivro.id) 
                 {
-                    MessageBox.Show("O código do livro digitado já existe.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("O código do livro digitado já existe.", Resources.Error_MessageBox,
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
             }

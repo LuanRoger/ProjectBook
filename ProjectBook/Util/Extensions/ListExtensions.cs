@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data;
 using System.Linq;
@@ -12,39 +13,35 @@ namespace ProjectBook.Util.Extensions
     {
         public static async Task<DataTable> ToDataTableAsync<T>(this List<T> list)
         {
-            DataTable finalTable = await CreateTable(list);
+            DataTable finalTable = await CreateTable<T>();
+            PropertyDescriptorCollection properties = TypeDescriptor.GetProperties(typeof(T));
             
             await Task.Run(() =>
             {
-                foreach (T properties in list)
+                foreach (T item in list)
                 {
-                    DataRow row = finalTable.NewRow();
-                    int c = 0;
-                    foreach (PropertyInfo propertyInfo in properties.GetType().GetProperties())
+                    DataRow dataRow = finalTable.NewRow();
+                    foreach (PropertyDescriptor prop in properties)
                     {
-                        row[c] = propertyInfo.GetValue(properties) ?? throw new("Don't fit schema");
-                        c++;
+                        dataRow[prop.Name] = prop.GetValue(item) ?? throw new InvalidOperationException();
                     }
-                    finalTable.Rows.Add(row);
-                } 
+                    finalTable.Rows.Add(dataRow);
+                }
             });
             
             return finalTable;
         }
         
-        private static async Task<DataTable> CreateTable<T>(List<T> baseList)
+        private static async Task<DataTable> CreateTable<T>()
         {
             DataTable dataTable = new();
             
             await Task.Run(() =>
             {
-                foreach (ColumnAttribute columnAttribute in from propertie in
-                    baseList from propertyInfo in
-                    propertie.GetType().GetProperties() from
-                    Attribute atributes in
-                    propertyInfo.GetCustomAttributes(true) where
-                    atributes.GetType() == typeof(ColumnAttribute) select
-                    atributes as ColumnAttribute) dataTable.Columns.Add(columnAttribute.Name); 
+                Type objectType = typeof(T);
+                PropertyDescriptorCollection properties = TypeDescriptor.GetProperties(objectType);
+                foreach (PropertyDescriptor prop in properties)
+                    dataTable.Columns.Add(char.ToUpper(prop.Name[0]) + prop.Name[1..]);
             });
 
             return dataTable;

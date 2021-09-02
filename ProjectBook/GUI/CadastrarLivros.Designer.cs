@@ -139,6 +139,7 @@ namespace ProjectBook.GUI
             this.txtAno.Name = "txtAno";
             this.txtAno.Size = new System.Drawing.Size(103, 23);
             this.txtAno.TabIndex = 6;
+            this.txtAno.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAno_KeyPress);
             // 
             // label5
             // 
@@ -239,6 +240,7 @@ namespace ProjectBook.GUI
             this.txtCodigoLivro.Name = "txtCodigoLivro";
             this.txtCodigoLivro.Size = new System.Drawing.Size(49, 23);
             this.txtCodigoLivro.TabIndex = 1;
+            this.txtCodigoLivro.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodigoLivro_KeyPress);
             // 
             // txtIsbn
             // 
@@ -253,9 +255,9 @@ namespace ProjectBook.GUI
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(12, 246);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(77, 15);
+            this.label10.Size = new System.Drawing.Size(123, 15);
             this.label10.TabIndex = 17;
-            this.label10.Text = "Observações:";
+            this.label10.Text = "Observações/Sinopse:";
             // 
             // txtObservacoesCadastro
             // 
