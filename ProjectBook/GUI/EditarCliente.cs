@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 using ProjectBook.AppInsight;
@@ -121,12 +120,15 @@ namespace ProjectBook.GUI
             }
 
             ClienteDb.AtualizarClienteId(infoCliente.id, cliente);
+            
+            MessageBox.Show(Resources.InformaçõesAtualizadas_MessageBox, Resources.Concluido_MessageBox, MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
 
             LimparCampos();
         }
 
         private void btnLimparEditarCliente_Click(object sender, EventArgs e) => LimparCampos();
-        private void btnCancelarEditarCliente_Click(object sender, EventArgs e) => this.Close();
+        private void btnCancelarEditarCliente_Click(object sender, EventArgs e) => Close();
         private void PreencherCampos(ClienteModel info)
         {
             txtNovoNome.Text = info.nomeCompleto;

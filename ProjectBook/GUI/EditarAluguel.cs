@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Data;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using ProjectBook.AppInsight;
 using ProjectBook.DB.SqlServerExpress;
@@ -214,6 +212,9 @@ namespace ProjectBook.GUI
 
             AluguelDb.AtualizarAluguelNomeCliente(aluguel, infoAluguelAntigo.titulo,
                     infoAluguelAntigo.alugadoPor);
+            
+            MessageBox.Show(Resources.InformaçõesAtualizadas_MessageBox, Resources.Concluido_MessageBox, MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
 
             LimparCampos();
         }

@@ -89,7 +89,7 @@ namespace ProjectBook.DB.SqlServerExpress
             await using DatabaseManager databaseManager = new();
             
             return await databaseManager.aluguelModel
-                            .Where(aluguel => aluguel.status.Equals(StatusAluguel.Alugado.ToString()))
+                            .Where(aluguel => aluguel.status.Equals(StatusAluguel.Alugado))
                             .ToListAsync();
         }
             
@@ -99,7 +99,7 @@ namespace ProjectBook.DB.SqlServerExpress
             await using DatabaseManager databaseManager = new();
             
             return await databaseManager.aluguelModel
-                            .Where(aluguel => aluguel.status.Equals(StatusAluguel.Devolvido.ToString()))
+                            .Where(aluguel => aluguel.status.Equals(StatusAluguel.Devolvido))
                             .ToListAsync();
         }
             
@@ -109,7 +109,7 @@ namespace ProjectBook.DB.SqlServerExpress
             await using DatabaseManager databaseManager = new();
             
             return await databaseManager.aluguelModel
-                            .Where(aluguel => aluguel.status.Equals(StatusAluguel.Atrasado.ToString()))
+                            .Where(aluguel => aluguel.status.Equals(StatusAluguel.Atrasado))
                             .ToListAsync();
         }
             

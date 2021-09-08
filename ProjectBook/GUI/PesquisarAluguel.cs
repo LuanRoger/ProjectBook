@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 using ProjectBook.DB.SqlServerExpress;
@@ -134,7 +133,7 @@ namespace ProjectBook.GUI
                 ? "-" : (hoje - devolucao.Date).Days.ToString();
         }
 
-        private void btnFecharPesquisaAluguel_Click(object sender, EventArgs e) => this.Close();
+        private void btnFecharPesquisaAluguel_Click(object sender, EventArgs e) => Close();
         private void btnLimparPequisaAluguel_Click(object sender, EventArgs e) => LimparCampos();
         
         private void LimparCampos()

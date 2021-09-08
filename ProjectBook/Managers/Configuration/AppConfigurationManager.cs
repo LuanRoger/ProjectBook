@@ -1,6 +1,6 @@
 ﻿using ProjectBook.Tipos;
 using SerializedConfig;
-using SerializedConfig.Types;
+using SerializedConfig.Types.Serialization;
 
 namespace ProjectBook.Managers.Configuration
 {

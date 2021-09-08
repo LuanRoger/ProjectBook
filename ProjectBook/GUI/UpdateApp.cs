@@ -1,16 +1,15 @@
 ﻿using System;
-using System.Drawing;
 using System.Net;
 using System.Reflection;
 using System.Windows.Forms;
 using NetMsixUpdater;
-using NetMsixUpdater.Updater.Extensions;
+using NetMsixUpdater.Updater.Extensions.MsixUpdater;
 
 namespace ProjectBook.GUI
 {
     public partial class UpdateApp : Form
     {
-        public MsixUpdater updateInfo { get; }
+        private MsixUpdater updateInfo { get; }
 
         public UpdateApp(MsixUpdater updateInfo)
         {
@@ -25,7 +24,7 @@ namespace ProjectBook.GUI
 
         private void Update_Load(object sender, EventArgs e)
         {
-            lblTitle.Text = string.Format(lblTitle.Text, 
+            lblTitle.Text = string.Format(lblTitle.Text,
                 Assembly.GetExecutingAssembly().GetName().Name); //Program name
             
             lblUpdateInfo.Text = string.Format(lblUpdateInfo.Text,
@@ -35,13 +34,13 @@ namespace ProjectBook.GUI
             wbvUpdate.Source = new(updateInfo.yamlUpdateInfo.changelog);
         }
 
-        private async void btnUpdate_Click(object sender, System.EventArgs e)
+        private async void btnUpdate_Click(object sender, EventArgs e)
         {
             Size = new(388, 526);
             await updateInfo.DownloadAndInstallAsync();
         }
 
-        private void btnRemindLater_Click(object sender, System.EventArgs e) =>
+        private void btnRemindLater_Click(object sender, EventArgs e) =>
             Close();
     }
 }

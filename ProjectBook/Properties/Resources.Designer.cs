@@ -194,6 +194,15 @@ namespace ProjectBook.Properties {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Carregando....
+        /// </summary>
+        internal static string Carregando_SplashScreen {
+            get {
+                return ResourceManager.GetString("Carregando_SplashScreen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap client_add {
@@ -429,7 +438,7 @@ namespace ProjectBook.Properties {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Não foi possivel conectar-se a base de dados: {0}. Deseja abrir a configurações?.
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Não foi possivel conectar-se a base de dados. Deseja abrir a configurações?.
         /// </summary>
         internal static string ErrorConectarDb {
             get {
@@ -498,6 +507,15 @@ namespace ProjectBook.Properties {
         internal static string FaltaArquivoEscenciais {
             get {
                 return ResourceManager.GetString("FaltaArquivoEscenciais", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a O código do livro digitado já existe..
+        /// </summary>
+        internal static string IdExistente {
+            get {
+                return ResourceManager.GetString("IdExistente", resourceCulture);
             }
         }
         

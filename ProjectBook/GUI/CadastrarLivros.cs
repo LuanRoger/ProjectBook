@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Data;
+using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using ProjectBook.AppInsight;
 using ProjectBook.DB.SqlServerExpress;
@@ -68,7 +67,7 @@ namespace ProjectBook.GUI
             {
                 if(await Verificadores.VerificarIdLivro(Convert.ToInt32(codigoTxt))) 
                 {
-                    MessageBox.Show("O código do livro digitado já existe.", Resources.Error_MessageBox,
+                    MessageBox.Show(Resources.IdExistente, Resources.Error_MessageBox,
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
@@ -83,7 +82,6 @@ namespace ProjectBook.GUI
             }
 
             LivroModel livro;
-            //Aplicar a formatação na instânciação do livro
             if (AppConfigurationManager.configuration.formating.FormatBook)
             {
                 livro = new()
@@ -125,6 +123,9 @@ namespace ProjectBook.GUI
             }
 
             LivrosDb.AdicionarLivro(livro);
+            
+            MessageBox.Show(Resources.LivroRegistrado, Resources.Concluido_MessageBox, MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
 
             SugerirAutores();
             SugerirEditora();
@@ -158,8 +159,11 @@ namespace ProjectBook.GUI
         private async void ColocarGeneros()
         {
             cmbGenero.Items.Clear();
+            List<string> listGenero = new();
+
+            foreach(string genero in await LivrosDb.PegarGeneros()) listGenero.Add(genero);
             
-            foreach(string itens in await LivrosDb.PegarGeneros()) cmbGenero.Items.Add(itens);
+            cmbGenero.Items.AddRange(listGenero.Distinct().ToArray());
         }
         private void LimparCamposCadastro()
         {

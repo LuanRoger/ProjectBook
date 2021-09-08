@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Data;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using ProjectBook.AppInsight;
 using ProjectBook.DB.SqlServerExpress;
 using ProjectBook.Livros;
+using ProjectBook.Properties;
 using ProjectBook.Tipos;
 
 namespace ProjectBook.GUI
@@ -112,6 +111,9 @@ namespace ProjectBook.GUI
 
             AluguelDb.CadastrarAluguel(aluguel);
             
+            MessageBox.Show(Resources.AluguelRegistrado, Resources.Concluido_MessageBox, MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
+            
             LimparCampos();
         }
         
@@ -141,7 +143,7 @@ namespace ProjectBook.GUI
         }
 
         private void btnLimparCadastroAluguel_Click(object sender, EventArgs e) => LimparCampos();
-        private void btnCancelarCadastroAluguel_Click(object sender, EventArgs e) => this.Close();
+        private void btnCancelarCadastroAluguel_Click(object sender, EventArgs e) => Close();
 
         private void LimparCampos()
         {

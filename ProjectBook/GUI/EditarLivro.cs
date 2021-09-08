@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Data;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using ProjectBook.AppInsight;
@@ -71,7 +71,7 @@ namespace ProjectBook.GUI
         }
         #endregion
 
-        private void btnFecharEdicao_Click(object sender, EventArgs e) => this.Close();
+        private void btnFecharEdicao_Click(object sender, EventArgs e) => Close();
 
         private async void btnBuscarEditar_Click(object sender, EventArgs e)
         {
@@ -112,7 +112,7 @@ namespace ProjectBook.GUI
             {
                 if(await Verificadores.VerificarIdLivro(Convert.ToInt32(codigoTxt)) && Convert.ToInt32(codigoTxt) != infoLivro.id) 
                 {
-                    MessageBox.Show("O código do livro digitado já existe.", Resources.Error_MessageBox,
+                    MessageBox.Show(Resources.IdExistente, Resources.Error_MessageBox,
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
@@ -127,7 +127,6 @@ namespace ProjectBook.GUI
             }
 
             LivroModel livro;
-            //Aplicar a formatação na instânciação do livro
             if (AppConfigurationManager.configuration.formating.FormatBook)
             {
                 livro = new()
@@ -169,6 +168,9 @@ namespace ProjectBook.GUI
             }
 
             LivrosDb.AtualizarViaId(infoLivro.id, livro);
+            
+            MessageBox.Show(Resources.InformaçõesAtualizadas_MessageBox, Resources.Concluido_MessageBox, MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
 
             SugerirAutores();
             ColocarGeneros();
@@ -207,9 +209,11 @@ namespace ProjectBook.GUI
         private async void ColocarGeneros()
         {
             cmbEditarGenero.Items.Clear();
+            List<string> listGenero = new();
 
-            foreach(string itens in await LivrosDb.PegarGeneros()) 
-                cmbEditarGenero.Items.Add(itens);
+            foreach(string genero in await LivrosDb.PegarGeneros()) listGenero.Add(genero);
+            
+            cmbEditarGenero.Items.AddRange(listGenero.Distinct().ToArray());
         }
 
         private void btnLimparTxtEditar_Click(object sender, EventArgs e) => LimparCamposEditar();

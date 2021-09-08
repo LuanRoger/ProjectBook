@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace ProjectBook.Managers.Configuration.Extensions
+﻿namespace ProjectBook.Managers.Configuration.Extensions
 {
     public static class ConfigurationUtilities
     {

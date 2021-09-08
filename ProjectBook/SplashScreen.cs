@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Drawing;
 using System.Drawing.Text;
 using System.Windows.Forms;
@@ -36,11 +35,11 @@ namespace ProjectBook
             bool createDatabase = false;
             if (!DatabaseManager.VerificarConexao())
             {
-                DialogResult dialogResult = MessageBox.Show("Não foi possivel conectar ao banco," +
-                                " deseja criar um novo?", "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+                DialogResult dialogResult = MessageBox.Show(Resources.ErrorConectarDb, Resources.Error_MessageBox, MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Error);
                 createDatabase = dialogResult == DialogResult.Yes;
             }
-            await CreateDatabase(createDatabase);
+            if(createDatabase) DatabaseManager.OpenConfigurationSafeMode();
 
             lblStatusCarregamento.Text = Resources.VerificacoesSeguranca_SplashScreen;
 
@@ -51,14 +50,16 @@ namespace ProjectBook
                 return;
             }
             else AppManager.UpdateUserInfo();
+            
+            lblStatusCarregamento.Text = Resources.Carregando_SplashScreen;
 
             List<Task> inicializeTasks = new();
 
             inicializeTasks.Add(SyncOneDrive());
-            inicializeTasks.Add(Task.Run(SearchForUpdates));
             inicializeTasks.Add(AtualizarAtrasso());
             inicializeTasks.Add(Task.Delay(Consts.SPLASH_SCREEN_LOADTIME));
-
+            AppUpdateManager.SearchUpdates();
+            
             await Task.WhenAll(inicializeTasks.ToArray());
 
             Close();
@@ -73,12 +74,6 @@ namespace ProjectBook
                 await Task.Run(OneDrive.MigrarOneDrive);
             }
         }
-        private void SearchForUpdates()
-        {
-            lblStatusCarregamento.Invoke(new MethodInvoker(delegate
-                { lblStatusCarregamento.Text = Resources.ProcurandoAtualizacoes_SplashScreen; }));
-            AppUpdateManager.SearchUpdates();
-        }
 
         private void UsuarioLogado()
         {
@@ -91,11 +86,6 @@ namespace ProjectBook
             else AppManager.ReiniciarPrograma();
         }
 
-        private async Task CreateDatabase(bool createDb)
-        {
-            if(createDb) await DatabaseManager.CreateDb();
-        }
-        
         private async Task AtualizarAtrasso()
         {
             lblStatusCarregamento.Text = Resources.AtualizandoBancoDados_SpashScreen;

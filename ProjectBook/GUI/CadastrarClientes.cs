@@ -4,6 +4,7 @@ using ProjectBook.AppInsight;
 using ProjectBook.DB.SqlServerExpress;
 using ProjectBook.Livros;
 using ProjectBook.Managers.Configuration;
+using ProjectBook.Properties;
 
 namespace ProjectBook.GUI
 {
@@ -62,17 +63,20 @@ namespace ProjectBook.GUI
 
             if (Verificadores.VerificarCamposCliente(cliente))
             {
-                MessageBox.Show(Properties.Resources.PreencherCamposObrigatorios, Properties.Resources.Error_MessageBox,
+                MessageBox.Show(Resources.PreencherCamposObrigatorios, Resources.Error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             ClienteDb.CadastrarCliente(cliente);
+            
+            MessageBox.Show(Resources.ClienteRegistrado, Resources.Concluido_MessageBox, MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
 
             LimparCampos();
         }
 
         private void btnLimparCliente_Click(object sender, EventArgs e) => LimparCampos();
-        private void btnCancelarCadastrarClientes_Click(object sender, EventArgs e) => this.Close();
+        private void btnCancelarCadastrarClientes_Click(object sender, EventArgs e) => Close();
         private void LimparCampos()
         {
             txtNomeCliente.Clear();

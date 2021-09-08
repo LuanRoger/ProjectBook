@@ -1,5 +1,6 @@
 ﻿using NetMsixUpdater;
 using System.Reflection;
+using System.Threading;
 using ProjectBook.GUI;
 
 namespace ProjectBook.Managers
@@ -21,7 +22,7 @@ namespace ProjectBook.Managers
         public static void SearchUpdates()
         {
             if(hasUpdated()) return;
-
+            
             UpdateApp updateApp = new(updater);
             updateApp.Show();
         }

@@ -1,6 +1,5 @@
 ﻿using ProjectBook.DB.SqlServerExpress;
 using System;
-using System.Data;
 using System.Windows.Forms;
 using ProjectBook.Properties;
 using ProjectBook.AppInsight;

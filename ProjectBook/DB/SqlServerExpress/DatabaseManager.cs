@@ -1,6 +1,9 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using ProjectBook.GUI;
 using ProjectBook.Livros;
+using ProjectBook.Managers;
 using ProjectBook.Managers.Configuration;
 using ProjectBook.Tipos;
 
@@ -27,10 +30,24 @@ namespace ProjectBook.DB.SqlServerExpress
             
             return databaseManager.Database.CanConnect();
         }
+        
+        public static void OpenConfigurationSafeMode()
+        {
+            AppManager.GiveAdm();
+            
+            Configuracoes configuracoes = new();
+            configuracoes.FormClosed += (_, _) =>
+            {
+                AppManager.RemoveAdm();
+                Environment.Exit(1);
+            };
+            configuracoes.Show();
+            configuracoes.BringToFront();
+        }
 
         public static async Task CreateDb()
         {
-            using DatabaseManager databaseManager = new();
+            await using DatabaseManager databaseManager = new();
             await databaseManager.Database.EnsureCreatedAsync();
             
             UsuarioDb.CadastrarUsuario(new()

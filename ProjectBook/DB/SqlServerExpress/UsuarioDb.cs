@@ -57,7 +57,7 @@ namespace ProjectBook.DB.SqlServerExpress
             await using DatabaseManager databaseManager = new();
             
             return await databaseManager.usuarioModel
-                            .Where(usuairo => usuairo.tipo.Equals(TipoUsuario.ADM))
+                            .Where(usuairo => usuairo.tipo.Equals(TipoUsuario.USU))
                             .ToListAsync();
         }
             
