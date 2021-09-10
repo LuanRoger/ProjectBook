@@ -16,6 +16,8 @@ namespace ProjectBook
         public static readonly string FILE_FULL_NAME = APPLOCAL_FOLDER + USER_FILE_NAME + USER_FORMAT;
 
         public const string MDF_FILE_FILTER = "Arquivo MDF (*.mdf)|*.mdf";
+        public const string CONN_STRING_LOCAL_MODEL =  
+            @"Data Source=(LocalDB)\\MSSQLLocalDB;Database={0};Integrated Security=True";
 
         public static readonly string[] FONTS_DOWNLOAD = 
             { "Lato-Bold.ttf", "Montserrat-ExtraBold.ttf", "Montserrat-ExtraLight.ttf" };

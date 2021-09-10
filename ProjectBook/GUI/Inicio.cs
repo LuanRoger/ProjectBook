@@ -200,7 +200,7 @@ namespace ProjectBook.GUI
             {
                 if(AppUpdateManager.hasUpdated())
                 {
-                    MessageBox.Show("PrjectBook já está atualziado", Resources.Informacao_MessageBox,
+                    MessageBox.Show(Resources.ProjectBookAtualizado, Resources.Informacao_MessageBox,
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
@@ -278,7 +278,7 @@ namespace ProjectBook.GUI
                 ShowInTaskbar = true;
 
                 lblNomeUsuario.Text = UserInfo.UserNowInstance.userName;
-                btnAccountError.Visible = lblNomeUsuario.Text == "admin";
+                btnAccountError.Visible = Verificadores.IsDefaultUser();
                 if(UserInfo.UserNowInstance.tipoUsuario != TipoUsuario.ADM)
                 {
                     mnuUsuario.Visible = false;

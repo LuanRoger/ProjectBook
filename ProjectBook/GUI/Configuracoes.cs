@@ -2,23 +2,44 @@
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+using Microsoft.VisualBasic;
+using ProjectBook.DB.SqlServerExpress;
 using ProjectBook.Properties;
 using ProjectBook.Tipos;
 using ProjectBook.Managers;
 using ProjectBook.Managers.Configuration;
+using ProjectBook.Properties;
+using ProjectBook.Properties;
 
 namespace ProjectBook.GUI
 {
     public partial class Configuracoes : Form
     {
+        private bool safeMode { get; }
+        
         // TODO - Refatorar esta classe
-        public Configuracoes()
+        public Configuracoes(bool safeMode = false)
         {
             InitializeComponent();
+            this.safeMode = safeMode;
+        }
+        
+        private void Configuracoes_Load(object sender, EventArgs e)
+        {
             CarregarConfiguracoes();
-
+            
+            if (safeMode)
+            {
+                btnCriarBanco.Visible = true;
+                AppManager.GiveAdm();
+                FormClosed += (_, _) =>
+                {
+                    AppManager.RemoveAdm();
+                    Environment.Exit(1);  
+                };
+            }
+            
             gpbBancoDados.Enabled = UserInfo.UserNowInstance.tipoUsuario == TipoUsuario.ADM;
-
             rabOneDrive.Visible = Verificadores.IsWin10();
         }
 
@@ -97,7 +118,7 @@ namespace ProjectBook.GUI
 
         private void btnSalvarConfiguracoes_Click(object sender, EventArgs e)
         {
-            //Nescessario para verificar se houve mudança
+            // Nescessario para verificar se houve mudança
             string stringConexaoAtual = AppConfigurationManager.configuration.database.SqlConnectionString;
 
             AppConfigurationManager.configuration = AppConfigurationManager.configuration with
@@ -161,39 +182,48 @@ namespace ProjectBook.GUI
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             // Se o usuário mudou a string de conexão o programa deve reiniciar
-            if (!stringConexaoAtual.Equals(AppConfigurationManager.configuration.database.SqlConnectionString))
-            {
-                MessageBox.Show(Resources.MudancaConnectionString,
-                    Resources.Informacao_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (stringConexaoAtual.Equals(AppConfigurationManager.configuration.database.SqlConnectionString)) return;
+            MessageBox.Show(Resources.MudancaConnectionString,
+                Resources.Informacao_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                AppManager.ReiniciarPrograma();
-            }
+            AppManager.ReiniciarPrograma();
         }
 
         private void btnSelecionarArquivoDb_Click(object sender, EventArgs e)
         {
-            OpenFileDialog caminho = new() { Filter = Consts.MDF_FILE_FILTER, Multiselect = false };
-            DialogResult dialogResult = caminho.ShowDialog();
-            if (dialogResult != DialogResult.OK) return;
-
-            AppConfigurationManager.configuration.database = AppConfigurationManager.configuration.database with
-            {
-                DbFolder = caminho.FileName
-            };
-            txtStringConexaoCaminhoDb.Text =
-                $@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={caminho.FileName};Integrated Security=True";
+            GetInput getInput = new("Nome do banco");
+            getInput.ShowDialog();
+            
+            if(getInput.hasCanceled) return;
+            
+            txtStringConexaoCaminhoDb.Text = string.Format(Consts.CONN_STRING_LOCAL_MODEL, getInput.input);
         }
 
         private void btnRedefinirConfig_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
-            /*DialogResult dialogResult = MessageBox.Show(Resources.RedefinirConfig, Resources.Aviso_MessageBox,
+            DialogResult dialogResult = MessageBox.Show(Resources.RedefinirConfig, Resources.Aviso_MessageBox,
                 MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
             if(dialogResult != DialogResult.Yes) return;
 
-            AppConfigurationManager.Reset();
-            AppManager.ReiniciarPrograma();*/
+            AppConfigurationManager.ResetConfig();
+            AppManager.ReiniciarPrograma();
+        }
+        private async void btnCriarBanco_Click(object sender, EventArgs e)
+        {
+            pgbCreateDatabase.Visible = true;
+            
+            AppConfigurationManager.configuration.database.SqlConnectionString = txtStringConexaoCaminhoDb.Text;
+            AppConfigurationManager.SaveConfig();
+            
+            try { await DatabaseManager.CreateDb(); }
+            catch { MessageBox.Show(Resources.ErrorExecutarAcao,
+                Resources.Error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); Environment.Exit(1); }
+
+            MessageBox.Show(Resources.BancoCriado, Resources.Informacao_MessageBox,
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
+            
+            AppManager.ReiniciarPrograma();
         }
     }
 }

@@ -24,23 +24,16 @@ namespace ProjectBook.DB.SqlServerExpress
             optionsBuilder.UseSqlServer(connectionString);
         }
         
-        public static bool VerificarConexao()
+        public static async Task<bool> VerificarConexao()
         {
-            using DatabaseManager databaseManager = new();
+            await using DatabaseManager databaseManager = new();
             
-            return databaseManager.Database.CanConnect();
+            return await databaseManager.Database.CanConnectAsync();
         }
         
         public static void OpenConfigurationSafeMode()
         {
-            AppManager.GiveAdm();
-            
-            Configuracoes configuracoes = new();
-            configuracoes.FormClosed += (_, _) =>
-            {
-                AppManager.RemoveAdm();
-                Environment.Exit(1);
-            };
+            Configuracoes configuracoes = new(true);
             configuracoes.Show();
             configuracoes.BringToFront();
         }
@@ -49,7 +42,7 @@ namespace ProjectBook.DB.SqlServerExpress
         {
             await using DatabaseManager databaseManager = new();
             await databaseManager.Database.EnsureCreatedAsync();
-            
+
             UsuarioDb.CadastrarUsuario(new()
             {
                 id = 0,

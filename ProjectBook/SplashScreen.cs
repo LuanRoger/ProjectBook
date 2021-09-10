@@ -32,14 +32,20 @@ namespace ProjectBook
         }
         private async void SplashScreen_Load(object sender, EventArgs e)
         {
-            bool createDatabase = false;
-            if (!DatabaseManager.VerificarConexao())
+            lblStatusCarregamento.Text = Resources.VerificandoConexao_SplashScreen;
+            
+            if(await DatabaseManager.VerificarConexao() == false)
             {
                 DialogResult dialogResult = MessageBox.Show(Resources.ErrorConectarDb, Resources.Error_MessageBox, MessageBoxButtons.YesNo,
                     MessageBoxIcon.Error);
-                createDatabase = dialogResult == DialogResult.Yes;
+                
+                if(dialogResult == DialogResult.Yes)
+                {
+                    DatabaseManager.OpenConfigurationSafeMode();
+                    return;   
+                }
+                else Environment.Exit(1);
             }
-            if(createDatabase) DatabaseManager.OpenConfigurationSafeMode();
 
             lblStatusCarregamento.Text = Resources.VerificacoesSeguranca_SplashScreen;
 

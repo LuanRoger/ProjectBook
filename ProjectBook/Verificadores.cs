@@ -96,6 +96,9 @@ namespace ProjectBook
 
             return usuarioValido;
         }
+        public static bool IsDefaultUser() => UserInfo.UserNowInstance.userName == "admin" && 
+                                              UserInfo.UserNowInstance.tipoUsuario == TipoUsuario.ADM &&
+                                              UserInfo.UserNowInstance.idUsuario == 1;
 
         /// <summary>
         /// Verifica se o arquivo de configuração existe

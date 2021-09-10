@@ -48,6 +48,6 @@ namespace ProjectBook.Managers.Configuration
             
             configManager.Load();
         }
-        //public static void ResetConfig() => configManager.Reset();
+        public static void ResetConfig() => configManager.Reset();
     }
 }

@@ -8,7 +8,7 @@ namespace ProjectBook.Tipos
     // Não instancie isso
     public class UserInfo
     {
-        private static UserInfo UserNow { get; set; }
+        private static UserInfo UserNow { get; set; } // TODO - Made UsuarioModel model
         public static UserInfo UserNowInstance
         {
             get
