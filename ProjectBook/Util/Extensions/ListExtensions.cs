@@ -20,7 +20,7 @@ namespace ProjectBook.Util.Extensions
                     DataRow dataRow = finalTable.NewRow();
                     foreach (PropertyDescriptor prop in properties)
                     {
-                        dataRow[prop.Name] = prop.GetValue(item) ?? throw new InvalidOperationException();
+                        dataRow[prop.Name] = prop.GetValue(item) ?? "-";
                     }
                     finalTable.Rows.Add(dataRow);
                 }

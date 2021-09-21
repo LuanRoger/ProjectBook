@@ -877,6 +877,15 @@ namespace ProjectBook.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Digite uma string de conexão valida para a criação do banco de dados..
+        /// </summary>
+        internal static string StringConexaoValida {
+            get {
+                return ResourceManager.GetString("StringConexaoValida", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap table {

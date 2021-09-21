@@ -4,9 +4,9 @@ using System.Linq;
 using System.Windows.Forms;
 using ProjectBook.AppInsight;
 using ProjectBook.DB.SqlServerExpress;
-using ProjectBook.Livros;
 using ProjectBook.Properties;
 using ProjectBook.Managers.Configuration;
+using ProjectBook.Model;
 using ProjectBook.Util;
 
 namespace ProjectBook.GUI

@@ -4,9 +4,9 @@ using ProjectBook.DB.SqlServerExpress;
 using ProjectBook.Properties;
 using ProjectBook.AppInsight;
 using System.ComponentModel;
-using ProjectBook.Livros;
 using ProjectBook.Tipos;
 using ProjectBook.Managers;
+using ProjectBook.Model;
 
 namespace ProjectBook.GUI
 {

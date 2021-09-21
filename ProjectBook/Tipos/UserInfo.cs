@@ -53,5 +53,7 @@ namespace ProjectBook.Tipos
                 tipoUsuario = (TipoUsuario)binaryReader.ReadInt32()
             };
         }
+        
+        public static void DeleteUserFile() => File.Delete(Consts.FILE_FULL_NAME);
     }
 }

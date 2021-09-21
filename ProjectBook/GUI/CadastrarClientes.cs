@@ -2,8 +2,8 @@
 using System.Windows.Forms;
 using ProjectBook.AppInsight;
 using ProjectBook.DB.SqlServerExpress;
-using ProjectBook.Livros;
 using ProjectBook.Managers.Configuration;
+using ProjectBook.Model;
 using ProjectBook.Properties;
 
 namespace ProjectBook.GUI
@@ -41,9 +41,13 @@ namespace ProjectBook.GUI
                     cidade = txtCidadeCliente.Text.ToUpper(),
                     estado = cmbEstadoCliente.Text.ToUpper(),
                     cep = txtCepCliente.Text.ToUpper(),
+                    dataNascimento = dtpDataNascimento.Value.Date,
+                    profissao = txtProfissao.Text.ToUpper(),
+                    empresa = txtEmpressa.Text.ToUpper(),
                     telefone1 = txtTelefone1Cliente.Text.ToUpper(),
                     telefone2 = txtTelefone2Cliente.Text.ToUpper(),
-                    email = txtEmailCliente.Text
+                    email = txtEmailCliente.Text.ToUpper(),
+                    observacoes = txtObservacoes.Text.ToUpper()
                 };
             }
             else
@@ -55,9 +59,13 @@ namespace ProjectBook.GUI
                     cidade = txtCidadeCliente.Text,
                     estado = cmbEstadoCliente.Text,
                     cep = txtCepCliente.Text,
+                    dataNascimento = dtpDataNascimento.Value.Date,
+                    profissao = txtProfissao.Text,
+                    empresa = txtEmpressa.Text,
                     telefone1 = txtTelefone1Cliente.Text,
                     telefone2 = txtTelefone2Cliente.Text,
-                    email = txtEmailCliente.Text
+                    email = txtEmailCliente.Text,
+                    observacoes = txtObservacoes.Text
                 };
             }
 
@@ -84,9 +92,12 @@ namespace ProjectBook.GUI
             txtCidadeCliente.Clear();
             cmbEstadoCliente.Text = "";
             txtCepCliente.Clear();
+            txtProfissao.Clear();
+            txtEmpressa.Clear();
             txtTelefone1Cliente.Clear();
             txtTelefone2Cliente.Clear();
             txtEmailCliente.Clear();
+            txtObservacoes.Clear();
         }
     }
 }

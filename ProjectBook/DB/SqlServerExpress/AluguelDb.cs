@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using ProjectBook.Livros;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using ProjectBook.Model;
 using ProjectBook.Tipos;
 
 namespace ProjectBook.DB.SqlServerExpress

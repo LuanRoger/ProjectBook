@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using ProjectBook.Tipos;
 
-namespace ProjectBook.Livros
+namespace ProjectBook.Model
 {
     [Table("Usuarios")]
     public class UsuarioModel

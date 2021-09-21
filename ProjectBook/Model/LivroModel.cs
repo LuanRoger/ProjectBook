@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace ProjectBook.Livros
+namespace ProjectBook.Model
 {
     [Table("Livros")]
     public class LivroModel

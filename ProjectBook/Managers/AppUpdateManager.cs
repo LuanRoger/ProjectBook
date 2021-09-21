@@ -1,6 +1,5 @@
 ﻿using NetMsixUpdater;
 using System.Reflection;
-using System.Threading;
 using ProjectBook.GUI;
 
 namespace ProjectBook.Managers

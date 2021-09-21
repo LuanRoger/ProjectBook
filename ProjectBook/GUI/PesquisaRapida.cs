@@ -6,7 +6,7 @@ using ProjectBook.DB.SqlServerExpress;
 using Color = System.Drawing.Color;
 using ProjectBook.Properties;
 using ProjectBook.AppInsight;
-using ProjectBook.Livros;
+using ProjectBook.Model;
 
 namespace ProjectBook.GUI
 {

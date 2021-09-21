@@ -1,17 +1,15 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using ProjectBook.GUI;
-using ProjectBook.Livros;
-using ProjectBook.Managers;
 using ProjectBook.Managers.Configuration;
+using ProjectBook.Model;
 using ProjectBook.Tipos;
 
 namespace ProjectBook.DB.SqlServerExpress
 {
     public class DatabaseManager : DbContext
     {
-        private readonly string connectionString =
+        private static string connectionString =>
             AppConfigurationManager.configuration.database.SqlConnectionString;
 
         public DbSet<LivroModel> livroModel { get; set; }
@@ -27,6 +25,8 @@ namespace ProjectBook.DB.SqlServerExpress
         public static async Task<bool> VerificarConexao()
         {
             await using DatabaseManager databaseManager = new();
+            
+            if(Verificadores.VerificarStrings(connectionString)) return false;
             
             return await databaseManager.Database.CanConnectAsync();
         }

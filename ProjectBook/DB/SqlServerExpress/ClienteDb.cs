@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using ProjectBook.Livros;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using ProjectBook.Model;
 
 namespace ProjectBook.DB.SqlServerExpress
 {
@@ -73,9 +73,13 @@ namespace ProjectBook.DB.SqlServerExpress
             clienteModel.cidade = cliente.cidade;
             clienteModel.estado = cliente.estado;
             clienteModel.cep = cliente.cep;
+            clienteModel.dataNascimento = cliente.dataNascimento;
+            clienteModel.profissao = cliente.profissao;
+            clienteModel.empresa = cliente.empresa;
             clienteModel.telefone1 = cliente.telefone1;
             clienteModel.telefone2 = cliente.telefone2;
             clienteModel.email = cliente.email;
+            clienteModel.observacoes = cliente.observacoes;
 
             databaseManager.SaveChanges();
         }

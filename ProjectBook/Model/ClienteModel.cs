@@ -1,7 +1,8 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace ProjectBook.Livros
+namespace ProjectBook.Model
 {
     [Table("Clientes")]
     public class ClienteModel
@@ -37,7 +38,19 @@ namespace ProjectBook.Livros
         public string cep { get; set; }
         
         [Required]
+        [Column("DataNascimento")]
+        public DateTime dataNascimento { get; set;}
+        
+        [MaxLength(50)]
+        [Column("Profissao")]
+        public string profissao { get; set; }
+        
+        [MaxLength(50)]
+        [Column("Empresa")]
+        public string empresa { get; set; }
+        
         [MaxLength(18)]
+        [Required]
         [Column("Telefone1")]
         public string telefone1 { get; set; }
         
@@ -48,5 +61,8 @@ namespace ProjectBook.Livros
         [MaxLength(100)]
         [Column("Email")]
         public string email { get; set; }
+        
+        [Column("Observacoes", TypeName = "varchar(MAX)")]
+        public string observacoes { get; set; }
     }
 }

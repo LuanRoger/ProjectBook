@@ -2,14 +2,11 @@
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
-using Microsoft.VisualBasic;
 using ProjectBook.DB.SqlServerExpress;
 using ProjectBook.Properties;
 using ProjectBook.Tipos;
 using ProjectBook.Managers;
 using ProjectBook.Managers.Configuration;
-using ProjectBook.Properties;
-using ProjectBook.Properties;
 
 namespace ProjectBook.GUI
 {
@@ -207,15 +204,26 @@ namespace ProjectBook.GUI
             if(dialogResult != DialogResult.Yes) return;
 
             AppConfigurationManager.ResetConfig();
+            UserInfo.DeleteUserFile();
             AppManager.ReiniciarPrograma();
         }
         private async void btnCriarBanco_Click(object sender, EventArgs e)
         {
-            pgbCreateDatabase.Visible = true;
-            
             AppConfigurationManager.configuration.database.SqlConnectionString = txtStringConexaoCaminhoDb.Text;
             AppConfigurationManager.SaveConfig();
             
+            if(await DatabaseManager.VerificarConexao() == false)
+            {
+                MessageBox.Show(Resources.StringConexaoValida, Resources.Error_MessageBox,
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AppConfigurationManager.configuration.database.SqlConnectionString = string.Empty;
+                AppConfigurationManager.SaveConfig();
+                return;
+            }
+
+            pgbCreateDatabase.Visible = true;
+            btnCriarBanco.Enabled = false;
+
             try { await DatabaseManager.CreateDb(); }
             catch { MessageBox.Show(Resources.ErrorExecutarAcao,
                 Resources.Error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); Environment.Exit(1); }

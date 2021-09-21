@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using ProjectBook.Livros;
+using ProjectBook.Model;
 using ProjectBook.Tipos;
 
 namespace ProjectBook.DB.SqlServerExpress
@@ -82,9 +82,8 @@ namespace ProjectBook.DB.SqlServerExpress
         {
             using DatabaseManager databaseManager = new();
             
-            return databaseManager.usuarioModel
-                .Single(usuario => usuario.usuario.Equals(nomeUsuario) &&
-                                   usuario.senha.Equals(senha));   
+            return databaseManager.usuarioModel.First(usuario => usuario.usuario.Equals(nomeUsuario) &&
+                                                                 usuario.senha.Equals(senha));   
         }
         public static UsuarioModel LoginCodigo(int id, string senha)
         {
@@ -102,7 +101,7 @@ namespace ProjectBook.DB.SqlServerExpress
             using DatabaseManager databaseManager = new();
             
             return databaseManager.usuarioModel
-                            .Single(usuario => usuario.usuario.Equals(nomeUsuario)).tipo;
+                            .First(usuario => usuario.usuario.Equals(nomeUsuario)).tipo;
         }
             
     }

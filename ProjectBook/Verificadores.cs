@@ -1,11 +1,11 @@
 ﻿using System.IO;
 using System.Management;
 using System.Threading.Tasks;
-using ProjectBook.Livros;
 using ProjectBook.DB.SqlServerExpress;
 using ProjectBook.Tipos;
 using System.Windows.Forms;
 using ProjectBook.Managers.Configuration;
+using ProjectBook.Model;
 
 namespace ProjectBook
 {

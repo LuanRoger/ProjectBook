@@ -409,4 +409,7 @@
   <data name="ErrorExecutarAcao" xml:space="preserve">
     <value>Não foi possivel executar essa ação, tente novamente mais tarde.</value>
   </data>
+  <data name="StringConexaoValida" xml:space="preserve">
+    <value>Digite uma string de conexão valida para a criação do banco de dados.</value>
+  </data>
 </root>

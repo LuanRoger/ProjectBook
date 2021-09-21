@@ -2,10 +2,10 @@
 using System.Linq;
 using System.Windows.Forms;
 using ProjectBook.DB.SqlServerExpress;
-using ProjectBook.Livros;
 using ProjectBook.Properties;
 using ProjectBook.Tipos;
 using ProjectBook.Managers;
+using ProjectBook.Model;
 
 namespace ProjectBook.GUI
 {

@@ -8,9 +8,9 @@ using ProjectBook.GUI;
 using ProjectBook.Properties;
 using System.Threading.Tasks;
 using ProjectBook.DB.OneDrive;
-using ProjectBook.Livros;
 using ProjectBook.Managers;
 using ProjectBook.Managers.Configuration;
+using ProjectBook.Model;
 
 namespace ProjectBook
 {
@@ -44,7 +44,8 @@ namespace ProjectBook
                     DatabaseManager.OpenConfigurationSafeMode();
                     return;   
                 }
-                else Environment.Exit(1);
+
+                Environment.Exit(1);
             }
 
             lblStatusCarregamento.Text = Resources.VerificacoesSeguranca_SplashScreen;
@@ -74,7 +75,7 @@ namespace ProjectBook
         private async Task SyncOneDrive()
         {
             if (AppConfigurationManager.configuration.database.DbEngine == Tipos.TipoDatabase.OneDrive &&
-                AppConfigurationManager.configuration.database.SqlConnectionString == "")
+                string.IsNullOrEmpty(AppConfigurationManager.configuration.database.SqlConnectionString))
             {
                 lblStatusCarregamento.Text = Resources.MigrandoOneDrive;
                 await Task.Run(OneDrive.MigrarOneDrive);

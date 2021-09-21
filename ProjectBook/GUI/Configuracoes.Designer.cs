@@ -282,7 +282,7 @@ namespace ProjectBook.GUI
             this.pgbCreateDatabase.Location = new System.Drawing.Point(228, 238);
             this.pgbCreateDatabase.Name = "pgbCreateDatabase";
             this.pgbCreateDatabase.Size = new System.Drawing.Size(132, 22);
-            this.pgbCreateDatabase.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            this.pgbCreateDatabase.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
             this.pgbCreateDatabase.TabIndex = 8;
             this.pgbCreateDatabase.Visible = false;
             // 

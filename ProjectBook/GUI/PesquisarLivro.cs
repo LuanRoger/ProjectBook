@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using ProjectBook.AppInsight;
 using ProjectBook.DB.SqlServerExpress;
-using ProjectBook.Livros;
+using ProjectBook.Model;
 
 namespace ProjectBook.GUI
 {

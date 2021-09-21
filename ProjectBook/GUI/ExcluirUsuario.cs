@@ -3,7 +3,7 @@ using System;
 using System.Windows.Forms;
 using ProjectBook.Properties;
 using ProjectBook.AppInsight;
-using ProjectBook.Livros;
+using ProjectBook.Model;
 
 namespace ProjectBook.GUI
 {

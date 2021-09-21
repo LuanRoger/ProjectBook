@@ -3,9 +3,9 @@ using System.Linq;
 using System.Windows.Forms;
 using ProjectBook.AppInsight;
 using ProjectBook.DB.SqlServerExpress;
-using ProjectBook.Livros;
 using ProjectBook.Properties;
 using ProjectBook.Managers.Configuration;
+using ProjectBook.Model;
 
 namespace ProjectBook.GUI
 {
@@ -91,9 +91,13 @@ namespace ProjectBook.GUI
                     cidade = txtNovoCidade.Text.ToUpper(),
                     estado = cmbNovoUf.Text.ToUpper(),
                     cep = txtNovoCep.Text.ToUpper(),
+                    dataNascimento = dtpNovaDataNascimento.Value.Date,
+                    profissao = txtNovoProfissao.Text.ToUpper(),
+                    empresa = txtNovoEmpressa.Text.ToUpper(),
                     telefone1 = txtNovoTelefone1.Text.ToUpper(),
                     telefone2 = txtNovoTelefone2.Text.ToUpper(),
-                    email = txtNovoEmail.Text
+                    email = txtNovoEmail.Text,
+                    observacoes = txtNovoObservacoes.Text.ToUpper()
                 };
                 
             }
@@ -106,9 +110,13 @@ namespace ProjectBook.GUI
                     cidade = txtNovoCidade.Text,
                     estado = cmbNovoUf.Text,
                     cep = txtNovoCep.Text,
+                    dataNascimento = dtpNovaDataNascimento.Value.Date,
+                    profissao = txtNovoProfissao.Text,
+                    empresa = txtNovoEmpressa.Text,
                     telefone1 = txtNovoTelefone1.Text,
                     telefone2 = txtNovoTelefone2.Text,
-                    email = txtNovoEmail.Text
+                    email = txtNovoEmail.Text,
+                    observacoes = txtNovoObservacoes.Text
                 };
             }
 
@@ -136,9 +144,13 @@ namespace ProjectBook.GUI
             txtNovoCidade.Text = info.cidade;
             cmbNovoUf.Text = info.estado;
             txtNovoCep.Text = info.cep;
+            dtpNovaDataNascimento.Value = info.dataNascimento;
+            txtNovoProfissao.Text = info.profissao;
+            txtNovoEmpressa.Text = info.empresa;
             txtNovoTelefone1.Text = info.telefone1;
             txtNovoTelefone2.Text = info.telefone2;
             txtNovoEmail.Text = info.email;
+            txtNovoObservacoes.Text = info.observacoes;
         }
         private void LimparCampos()
         {
@@ -149,9 +161,12 @@ namespace ProjectBook.GUI
             txtNovoCidade.Clear();
             cmbNovoUf.Text = "";
             txtNovoCep.Clear();
+            txtNovoProfissao.Clear();
+            txtNovoEmpressa.Clear();
             txtNovoTelefone1.Clear();
             txtNovoTelefone2.Clear();
             txtNovoEmail.Clear();
+            txtNovoObservacoes.Clear();
         }
     }
 }

@@ -3,7 +3,7 @@ using System.Linq;
 using System.Windows.Forms;
 using ProjectBook.AppInsight;
 using ProjectBook.DB.SqlServerExpress;
-using ProjectBook.Livros;
+using ProjectBook.Model;
 using ProjectBook.Properties;
 
 namespace ProjectBook.GUI
