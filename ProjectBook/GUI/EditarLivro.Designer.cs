@@ -87,6 +87,7 @@ namespace ProjectBook.GUI
             this.txtEditarAno.Name = "txtEditarAno";
             this.txtEditarAno.Size = new System.Drawing.Size(52, 23);
             this.txtEditarAno.TabIndex = 7;
+            this.txtEditarAno.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEditarAno_KeyPress);
             // 
             // label5
             // 
@@ -298,6 +299,7 @@ namespace ProjectBook.GUI
             this.txtEditarCodigo.Name = "txtEditarCodigo";
             this.txtEditarCodigo.Size = new System.Drawing.Size(100, 23);
             this.txtEditarCodigo.TabIndex = 2;
+            this.txtEditarCodigo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEditarCodigo_KeyPress);
             // 
             // label9
             // 

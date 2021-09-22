@@ -1,167 +1,87 @@
-﻿using ProjectBook.Livros;
-using System.Data;
-using System.Data.SqlClient;
-using System.Windows.Forms;
-using ProjectBook.Properties;
-using ProjectBook.AppInsight;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using ProjectBook.Model;
 
 namespace ProjectBook.DB.SqlServerExpress
 {
-    class ClienteDb : Db
+    public static class ClienteDb
     {
-        public void CadastrarCliente(ClienteModel cliente)
+        public static void CadastrarCliente(ClienteModel cliente)
         {
-            SqlCommand command = new() { Connection = connection};
-            #region Parâmetros
-            command.Parameters.AddWithValue("@nomeCompleto", cliente.nomeCompleto);
-            command.Parameters.AddWithValue("@endereco", cliente.endereco);
-            command.Parameters.AddWithValue("@cidade", cliente.cidade);
-            command.Parameters.AddWithValue("@estado", cliente.estado);
-            command.Parameters.AddWithValue("@cep", cliente.cep);
-            command.Parameters.AddWithValue("@telefone1", cliente.telefone1);
-            command.Parameters.AddWithValue("@telefone2", cliente.telefone2);
-            command.Parameters.AddWithValue("@email", cliente.email);
-            #endregion
-            try
-            {
-                command.CommandText = "INSERT INTO Clientes([Nome completo], Endereco, Cidade, Estado, Cep, Telefone1, Telefone2, Email) " +
-                "VALUES(@nomeCompleto, @endereco, @cidade, @estado, @cep, @telefone1, @telefone2, @email)";
-                
-                AbrirConexaoDb();
-                command.ExecuteNonQuery();
-                FechaConecxaoDb();
-
-                command.Dispose();
-
-                MessageBox.Show(Resources.ClienteRegistrado, Resources.Concluido_MessageBox,
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (SqlException e) { MessageBox.Show(e.Message, Resources.Error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); 
-                AppInsightMetrics.SendError(e); }
+            using DatabaseManager databaseManager = new();
+            
+            databaseManager.clienteModel.Add(cliente);
+            databaseManager.SaveChanges();
         }
-        public DataTable VerTodosClientes()
-        {
-            DataTable table = new();
-            try
-            {
-                AbrirConexaoDb();
-                SqlDataAdapter adapter = new("SELECT * FROM Clientes", connection);
-                FechaConecxaoDb();
-
-                adapter.Fill(table);
-            }
-            catch (SqlException e) { MessageBox.Show(e.Message, Resources.Error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); 
-                AppInsightMetrics.SendError(e); }
-
-            return table;
-        }
-
+        
         #region Deletar
-        public void DeletarClienteId(string id)
+        public static void DeletarClienteId(int id)
         {
-            SqlCommand command = new() { Connection = connection};
-
-            try
-            {
-                command.CommandText = $"DELETE FROM Clientes WHERE ID = {id}";
-                AbrirConexaoDb();
-                command.ExecuteNonQuery();
-                FechaConecxaoDb();
-
-                command.Dispose();
-
-                MessageBox.Show(Resources.ClienteDeletado, Resources.ClienteDeletado,
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (SqlException e) { MessageBox.Show(e.Message, Resources.Error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); 
-                AppInsightMetrics.SendError(e); }
+            using DatabaseManager databaseManager = new();
+            
+            databaseManager.clienteModel.Remove(new() {id = id});
+            databaseManager.SaveChanges();
         }
-        public void DeletarClienteNome(string nome)
+        public static void DeletarClienteNome(string nome)
         {
-            SqlCommand command = new() { Connection = connection};
-
-            try
-            {
-                command.CommandText = $"DELETE FROM Clientes WHERE [Nome completo] LIKE \'%{nome}%\'";
-                AbrirConexaoDb();
-                command.ExecuteNonQuery();
-                FechaConecxaoDb();
-                command.Dispose();
-
-                MessageBox.Show(Resources.ClienteDeletado, Resources.Concluido_MessageBox,
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (SqlException e) { MessageBox.Show(e.Message, Resources.Error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); 
-                AppInsightMetrics.SendError(e); }
+            using DatabaseManager databaseManager = new();
+            
+            databaseManager.clienteModel.Remove(databaseManager.clienteModel
+                .Where(cliente => cliente.nomeCompleto == nome)
+                .ToList()
+                .First());
+            databaseManager.SaveChanges();
         }
         #endregion
         
         #region Buscar
-        public DataTable BuscarClienteId(string id)
+        public static async Task<List<ClienteModel>> VerTodosClientes()
         {
-            DataTable table = new();
-
-            try
-            {
-                AbrirConexaoDb();
-                SqlDataAdapter adapter = new($"SELECT * FROM Clientes WHERE ID = {id}", connection);
-                FechaConecxaoDb();
-
-                adapter.Fill(table);
-            }
-            catch (SqlException e) { MessageBox.Show(e.Message, Resources.Error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); 
-                AppInsightMetrics.SendError(e); }
-
-            return table;
+            await using DatabaseManager databaseManager = new();
+            
+            return await databaseManager.clienteModel.ToListAsync();
         }
-        public DataTable BuscarClienteNome(string nomeCompleto)
+            
+        public static async Task<ClienteModel> BuscarClienteId(int id)
         {
-            DataTable table = new();
-
-            try
-            {
-                AbrirConexaoDb();
-                SqlDataAdapter adapter = new($"SELECT * FROM Clientes WHERE [Nome completo] LIKE \'%{nomeCompleto}%\'", connection);
-                FechaConecxaoDb();
-
-                adapter.Fill(table);
-            }
-            catch (SqlException e) { MessageBox.Show(e.Message, Resources.PesquiseParaContinuar, MessageBoxButtons.OK, MessageBoxIcon.Error); 
-                AppInsightMetrics.SendError(e); }
-
-            return table;
+            await using DatabaseManager databaseManager = new();
+            
+            return await databaseManager.clienteModel.FindAsync(id);
         }
+            
+        public static async Task<List<ClienteModel>> BuscarClienteNome(string nomeCompleto)
+        {
+            await using DatabaseManager databaseManager = new();
+            
+            return await databaseManager.clienteModel.Where(cliente => cliente.nomeCompleto.Contains(nomeCompleto))
+                            .ToListAsync();
+        }
+            
         #endregion
-
+        
         #region Atualizar
-        public void AtualizarClienteId(string id, ClienteModel cliente)
+        public static async void AtualizarClienteId(int id, ClienteModel cliente)
         {
-            SqlCommand command = new() { Connection = connection};
-            #region Parâmetros
-            command.Parameters.AddWithValue("@nomeCompleto", cliente.nomeCompleto);
-            command.Parameters.AddWithValue("@endereco", cliente.endereco);
-            command.Parameters.AddWithValue("@cidade", cliente.cidade);
-            command.Parameters.AddWithValue("@estado", cliente.estado);
-            command.Parameters.AddWithValue("@cep", cliente.cep);
-            command.Parameters.AddWithValue("@telefone1", cliente.telefone1);
-            command.Parameters.AddWithValue("@telefone2", cliente.telefone2);
-            command.Parameters.AddWithValue("@email", cliente.email);
-            #endregion
-            try
-            {
-                command.CommandText = "UPDATE Clientes SET [Nome completo] = @nomeCompleto, Endereco = @endereco, Cidade = @cidade, Estado = @estado, Cep = @cep, Telefone1 = @telefone1," +
-                    $" Telefone2 = @telefone2, Email = @email WHERE ID = {id}";
+            await using DatabaseManager databaseManager = new();
+            
+            ClienteModel clienteModel = await databaseManager.clienteModel.FindAsync(id);
+            
+            clienteModel.nomeCompleto = cliente.nomeCompleto;
+            clienteModel.endereco = cliente.endereco;
+            clienteModel.cidade = cliente.cidade;
+            clienteModel.estado = cliente.estado;
+            clienteModel.cep = cliente.cep;
+            clienteModel.dataNascimento = cliente.dataNascimento;
+            clienteModel.profissao = cliente.profissao;
+            clienteModel.empresa = cliente.empresa;
+            clienteModel.telefone1 = cliente.telefone1;
+            clienteModel.telefone2 = cliente.telefone2;
+            clienteModel.email = cliente.email;
+            clienteModel.observacoes = cliente.observacoes;
 
-                AbrirConexaoDb();
-                command.ExecuteNonQuery();
-                FechaConecxaoDb();
-
-                command.Dispose();
-
-                MessageBox.Show(Resources.InformaçõesAtualizadas_MessageBox, Resources.Concluido_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (SqlException e) { MessageBox.Show(e.Message, Resources.Error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); 
-                AppInsightMetrics.SendError(e);}
+            databaseManager.SaveChanges();
         }
         #endregion
     }

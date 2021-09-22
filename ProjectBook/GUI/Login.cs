@@ -1,16 +1,16 @@
 ﻿using System;
-using System.Data;
+using System.Linq;
 using System.Windows.Forms;
 using ProjectBook.DB.SqlServerExpress;
 using ProjectBook.Properties;
 using ProjectBook.Tipos;
 using ProjectBook.Managers;
+using ProjectBook.Model;
 
 namespace ProjectBook.GUI
 {
     public partial class Login : Form
     {
-        private UsuarioDb usuarioDb = new();
         public Login()
         {
             InitializeComponent();
@@ -28,13 +28,13 @@ namespace ProjectBook.GUI
                 return;
             }
             
-            DataTable infoUsuario = usuarioDb.LoginUsuario(txtLoginUsuario.Text, txtLoginSenha.Text);
+            UsuarioModel infoUsuario = UsuarioDb.LoginUsuario(txtLoginUsuario.Text, txtLoginSenha.Text);
             
-            if (Verificadores.VerificarDataTable(infoUsuario))
+            if (Verificadores.VerificarCamposUsuario(infoUsuario))
             {
-                infoUsuario = usuarioDb.LoginCodigo(txtLoginCodigo.Text, txtLoginSenha.Text);
+                infoUsuario = UsuarioDb.LoginCodigo(int.Parse(txtLoginCodigo.Text), txtLoginSenha.Text);
 
-                if(Verificadores.VerificarDataTable(infoUsuario))
+                if(Verificadores.VerificarCamposUsuario(infoUsuario))
                 {
                     MessageBox.Show(Resources.InformacoesIncorretasLogin, Resources.Error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -42,36 +42,36 @@ namespace ProjectBook.GUI
                 }
             }
 
-            UserInfo.UserNowInstance = new UserInfo
+            UserInfo.UserNowInstance = new()
             {
-                idUsuario = int.Parse(infoUsuario.Rows[0][0].ToString()), 
-                userName = infoUsuario.Rows[0][1].ToString(), 
-                tipoUsuario = infoUsuario.Rows[0][3].ToString() == "ADM" ? TipoUsuario.ADM : TipoUsuario.USU
+                idUsuario = infoUsuario.id,
+                userName = infoUsuario.usuario, 
+                tipoUsuario = infoUsuario.tipo
             };
 
             AppManager.ReiniciarPrograma();
         }
 
-        #region txtLeave
-        private void txtLoginCodigo_Leave(object sender, EventArgs e)
+        #region TxtLeave
+        private async void txtLoginCodigo_Leave(object sender, EventArgs e)
         {
             if (Verificadores.VerificarStrings(txtLoginCodigo.Text)) return;
 
-            DataTable codigoUsuario = usuarioDb.BuscarUsuarioId(txtLoginCodigo.Text);
+            UsuarioModel codigoUsuario = await UsuarioDb.BuscarUsuarioId(int.Parse(txtLoginCodigo.Text));
 
-            if (Verificadores.VerificarDataTable(codigoUsuario)) return;
+            if (Verificadores.VerificarCamposUsuario(codigoUsuario)) return;
 
-            txtLoginUsuario.Text = codigoUsuario.Rows[0][1].ToString();
+            txtLoginUsuario.Text = codigoUsuario.usuario;
         }
-        private void txtLoginUsuario_Leave(object sender, EventArgs e)
+        private async void txtLoginUsuario_Leave(object sender, EventArgs e)
         {
             if (Verificadores.VerificarStrings(txtLoginUsuario.Text)) return;
 
-            DataTable nomeUsuario = usuarioDb.BuscarUsuarioNome(txtLoginUsuario.Text);
+            UsuarioModel nomeUsuario = (await UsuarioDb.BuscarUsuarioNome(txtLoginUsuario.Text)).First();
 
-            if (Verificadores.VerificarDataTable(nomeUsuario)) return;
+            if (Verificadores.VerificarCamposUsuario(nomeUsuario)) return;
 
-            txtLoginCodigo.Text = nomeUsuario.Rows[0][0].ToString();
+            txtLoginCodigo.Text = nomeUsuario.id.ToString();
         }
         #endregion
 

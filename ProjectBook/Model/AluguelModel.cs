@@ -1,24 +1,43 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using ProjectBook.Tipos;
 
-namespace ProjectBook.Livros
+namespace ProjectBook.Model
 {
-    class AluguelModel
+    [Table("Aluguel")]
+    public class AluguelModel
     {
-        public AluguelModel(string titulo, string autor, string alugadoPor, DateTime dataEntrega, DateTime dataDevolucao, string status)
-        {
-            this.titulo = titulo;
-            this.autor = autor;
-            this.alugadoPor = alugadoPor;
-            this.dataEntrega = dataEntrega;
-            this.dataDevolucao = dataDevolucao;
-            this.status = status;
-        }
-
-        public string titulo { get;}
-        public string autor { get;}
-        public string alugadoPor { get;}
-        public DateTime dataEntrega { get;}
-        public DateTime dataDevolucao { get;}
-        public string status { get;}
+        [Key]
+        [Column("ID")]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int id { get; set; }
+        
+        [Required]
+        [MaxLength(100)]
+        [Column("Titulo")]
+        public string titulo { get; set; }
+        
+        [Required]
+        [MaxLength(100)]
+        [Column("Autor")]
+        public string autor { get; set; }
+        
+        [Required]
+        [MaxLength(100)]
+        [Column("AlugadoPor")]
+        public string alugadoPor { get; set; }
+        
+        [Required]
+        [Column("DataEntrega")]
+        public DateTime dataEntrega { get; set; }
+        
+        [Required]
+        [Column("DataDevolucao")]
+        public DateTime dataDevolucao { get; set; }
+        
+        [MaxLength(9)]
+        [Column("Status")]
+        public StatusAluguel status { get; set; }
     }
 }

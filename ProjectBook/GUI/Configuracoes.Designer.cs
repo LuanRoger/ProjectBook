@@ -48,6 +48,8 @@ namespace ProjectBook.GUI
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.chbTelemetria = new System.Windows.Forms.CheckBox();
             this.btnRedefinirConfig = new System.Windows.Forms.Button();
+            this.btnCriarBanco = new System.Windows.Forms.Button();
+            this.pgbCreateDatabase = new System.Windows.Forms.ProgressBar();
             this.groupBox1.SuspendLayout();
             this.gpbBancoDados.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -261,11 +263,36 @@ namespace ProjectBook.GUI
             this.btnRedefinirConfig.UseVisualStyleBackColor = true;
             this.btnRedefinirConfig.Click += new System.EventHandler(this.btnRedefinirConfig_Click);
             // 
+            // btnCriarBanco
+            // 
+            this.btnCriarBanco.Image = global::ProjectBook.Properties.Resources.database_add;
+            this.btnCriarBanco.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCriarBanco.Location = new System.Drawing.Point(97, 237);
+            this.btnCriarBanco.Name = "btnCriarBanco";
+            this.btnCriarBanco.Size = new System.Drawing.Size(125, 23);
+            this.btnCriarBanco.TabIndex = 7;
+            this.btnCriarBanco.Text = "Criar novo banco";
+            this.btnCriarBanco.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnCriarBanco.UseVisualStyleBackColor = true;
+            this.btnCriarBanco.Visible = false;
+            this.btnCriarBanco.Click += new System.EventHandler(this.btnCriarBanco_Click);
+            // 
+            // pgbCreateDatabase
+            // 
+            this.pgbCreateDatabase.Location = new System.Drawing.Point(228, 238);
+            this.pgbCreateDatabase.Name = "pgbCreateDatabase";
+            this.pgbCreateDatabase.Size = new System.Drawing.Size(132, 22);
+            this.pgbCreateDatabase.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+            this.pgbCreateDatabase.TabIndex = 8;
+            this.pgbCreateDatabase.Visible = false;
+            // 
             // Configuracoes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(493, 270);
+            this.Controls.Add(this.pgbCreateDatabase);
+            this.Controls.Add(this.btnCriarBanco);
             this.Controls.Add(this.btnRedefinirConfig);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox2);
@@ -279,6 +306,7 @@ namespace ProjectBook.GUI
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Configurações";
+            this.Load += new System.EventHandler(this.Configuracoes_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.gpbBancoDados.ResumeLayout(false);
@@ -314,5 +342,7 @@ namespace ProjectBook.GUI
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.CheckBox chbTelemetria;
         private System.Windows.Forms.Button btnRedefinirConfig;
+        private System.Windows.Forms.Button btnCriarBanco;
+        private System.Windows.Forms.ProgressBar pgbCreateDatabase;
     }
 }

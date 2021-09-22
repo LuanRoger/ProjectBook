@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace ProjectBook.Managers.Configuration.Extensions
+﻿namespace ProjectBook.Managers.Configuration.Extensions
 {
     public static class ConfigurationUtilities
     {
@@ -12,14 +10,14 @@ namespace ProjectBook.Managers.Configuration.Extensions
             {
                 "ADM" => Tipos.TipoUsuario.ADM,
                 "USU" => Tipos.TipoUsuario.USU,
-                _ => throw new Exception("Isto não é um TipoUsuário")
+                _ => throw new("Isto não é um TipoUsuário")
             };
         private static string TipoUsuárioToString(this Tipos.TipoUsuario tipoUsuário) =>
             tipoUsuário switch
             {
                 Tipos.TipoUsuario.ADM => "ADM",
                 Tipos.TipoUsuario.USU => "USU",
-                _ => throw new Exception("Isto não é um TipoUsuário")
+                _ => throw new("Isto não é um TipoUsuário")
             };
 
         private static Tipos.TipoDatabase ToDatabaseType(this string toConvert) =>
@@ -28,7 +26,7 @@ namespace ProjectBook.Managers.Configuration.Extensions
                 "OneDrive" => Tipos.TipoDatabase.OneDrive,
                 "SqlServerLocalDb" => Tipos.TipoDatabase.SqlServerLocalDb,
                 "SqlServerExpress" => Tipos.TipoDatabase.SqlServerExpress,
-                _ => throw new Exception("Isto não é um DatabaseType"),
+                _ => throw new("Isto não é um DatabaseType"),
             };
         private static string DatabaseTypeToString(this Tipos.TipoDatabase databaseType) =>
             databaseType switch
@@ -36,7 +34,7 @@ namespace ProjectBook.Managers.Configuration.Extensions
                 Tipos.TipoDatabase.OneDrive => "OneDrive",
                 Tipos.TipoDatabase.SqlServerLocalDb => "SqlServerLocalDb",
                 Tipos.TipoDatabase.SqlServerExpress => "SqlServerExpress",
-                _ => throw new Exception("Isto não é um DatabaseType"),
+                _ => throw new("Isto não é um DatabaseType"),
             };
     }
 }

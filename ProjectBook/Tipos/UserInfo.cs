@@ -8,14 +8,14 @@ namespace ProjectBook.Tipos
     // Não instancie isso
     public class UserInfo
     {
-        private static UserInfo UserNow { get; set; }
+        private static UserInfo UserNow { get; set; } // TODO - Made UsuarioModel model
         public static UserInfo UserNowInstance
         {
             get
             {
                 if(UserNow == null)
                 {
-                    UserNowInstance = new UserInfo()
+                    UserNowInstance = new()
                     {
                         idUsuario = 0,
                         userName = "placeholder",
@@ -53,5 +53,7 @@ namespace ProjectBook.Tipos
                 tipoUsuario = (TipoUsuario)binaryReader.ReadInt32()
             };
         }
+        
+        public static void DeleteUserFile() => File.Delete(Consts.FILE_FULL_NAME);
     }
 }

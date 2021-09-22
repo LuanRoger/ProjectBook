@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Drawing;
 using System.Drawing.Text;
 using System.Windows.Forms;
@@ -11,30 +10,43 @@ using System.Threading.Tasks;
 using ProjectBook.DB.OneDrive;
 using ProjectBook.Managers;
 using ProjectBook.Managers.Configuration;
+using ProjectBook.Model;
 
 namespace ProjectBook
 {
     public partial class SplashScreen : Form
     {
-        private LivrosDb livrosDb = new();
-
         public SplashScreen()
         {
             InitializeComponent();
 
             AppManager.DownloadFonts();
-            AppConfigurationManager.CreateConfigurationFile();
+            AppConfigurationManager.LoadConfig();
 
             PrivateFontCollection privateFont = new();
             privateFont.AddFontFile(Consts.FONT_MONTSERRAT_EXTRABOLD);
             privateFont.AddFontFile(Consts.FONT_MONTSERRAT_EXTRALIGHT);
 
-            label1.Font = new Font(privateFont.Families[0], 20, FontStyle.Bold);
-            label2.Font = new Font(privateFont.Families[1], 7, FontStyle.Regular);
+            label1.Font = new(privateFont.Families[0], 20, FontStyle.Bold);
+            label2.Font = new(privateFont.Families[1], 7, FontStyle.Regular);
         }
         private async void SplashScreen_Load(object sender, EventArgs e)
         {
-            if (!livrosDb.VerificarConexaoDb()) return;
+            lblStatusCarregamento.Text = Resources.VerificandoConexao_SplashScreen;
+            
+            if(await DatabaseManager.VerificarConexao() == false)
+            {
+                DialogResult dialogResult = MessageBox.Show(Resources.ErrorConectarDb, Resources.Error_MessageBox, MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Error);
+                
+                if(dialogResult == DialogResult.Yes)
+                {
+                    DatabaseManager.OpenConfigurationSafeMode();
+                    return;   
+                }
+
+                Environment.Exit(1);
+            }
 
             lblStatusCarregamento.Text = Resources.VerificacoesSeguranca_SplashScreen;
 
@@ -45,14 +57,16 @@ namespace ProjectBook
                 return;
             }
             else AppManager.UpdateUserInfo();
+            
+            lblStatusCarregamento.Text = Resources.Carregando_SplashScreen;
 
             List<Task> inicializeTasks = new();
 
             inicializeTasks.Add(SyncOneDrive());
-            inicializeTasks.Add(SearchForUpdates());
-            inicializeTasks.Add(AtualizarAluguel());
+            inicializeTasks.Add(AtualizarAtrasso());
             inicializeTasks.Add(Task.Delay(Consts.SPLASH_SCREEN_LOADTIME));
-
+            AppUpdateManager.SearchUpdates();
+            
             await Task.WhenAll(inicializeTasks.ToArray());
 
             Close();
@@ -60,32 +74,12 @@ namespace ProjectBook
 
         private async Task SyncOneDrive()
         {
-            if (AppConfigurationManager.configuration.DbEngine == Tipos.TipoDatabase.OneDrive &&
-                AppConfigurationManager.configuration.SqlConnectionString == "")
+            if (AppConfigurationManager.configuration.database.DbEngine == Tipos.TipoDatabase.OneDrive &&
+                string.IsNullOrEmpty(AppConfigurationManager.configuration.database.SqlConnectionString))
             {
                 lblStatusCarregamento.Text = Resources.MigrandoOneDrive;
                 await Task.Run(OneDrive.MigrarOneDrive);
             }
-        }
-        private async Task SearchForUpdates()
-        {
-            lblStatusCarregamento.Text = Resources.ProcurandoAtualizacoes_SplashScreen;
-            await Task.Run(() => 
-            {
-                if(AppUpdateManager.hasUpdated()) return;
-
-                DialogResult dialogResult = MessageBox.Show("Há uma atualização, deseja instalar?", "Atualização diponivel",
-                    MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-                if(dialogResult != DialogResult.Yes) return;
-
-                AppUpdateManager.Update();
-            });
-        }
-        private async Task AtualizarAluguel()
-        {
-            lblStatusCarregamento.Text = Resources.AtualizandoBancoDados_SpashScreen;
-            if (AppConfigurationManager.configuration.UpdateRentStatus) await Task.Run(AtualizarAtrasso);
         }
 
         private void UsuarioLogado()
@@ -99,16 +93,16 @@ namespace ProjectBook
             else AppManager.ReiniciarPrograma();
         }
 
-        private void AtualizarAtrasso()
+        private async Task AtualizarAtrasso()
         {
-            AluguelDb aluguelDb = new();
-
-            foreach (DataRow data in aluguelDb.PegarLivrosAlugados().Rows)
+            lblStatusCarregamento.Text = Resources.AtualizandoBancoDados_SpashScreen;
+            
+            foreach (AluguelModel data in await AluguelDb.PegarLivrosAlugados())
             {
                 DateTime hoje = DateTime.Now.Date;
-                DateTime devolucao = (DateTime)data[4];
+                DateTime devolucao = data.dataDevolucao;
                 if (Convert.ToInt32((hoje - devolucao).Days) >= 0)
-                    aluguelDb.AtualizarStatusAtrasado(data[2].ToString());
+                    AluguelDb.AtualizarStatusAtrasado(data.alugadoPor);
             }
         }
     }

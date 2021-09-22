@@ -1,208 +1,108 @@
-﻿using System;
-using System.Data;
-using System.Data.SqlClient;
-using System.Windows.Forms;
-using ProjectBook.AppInsight;
-using ProjectBook.Livros;
-using ProjectBook.Properties;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using ProjectBook.Model;
+using ProjectBook.Tipos;
 
 namespace ProjectBook.DB.SqlServerExpress
 {
-    class UsuarioDb : Db
+    public static class UsuarioDb
     {
-        public void CadastrarUsuario(UsuarioModel usuario)
+        public static void CadastrarUsuario(UsuarioModel usuario)
         {
-            SqlCommand command = new() { Connection = connection};
-            #region Parâmetros
-            command.Parameters.AddWithValue("@usuario", usuario.usuario);
-            command.Parameters.AddWithValue("@senha", usuario.senha);
-            command.Parameters.AddWithValue("@tipo", usuario.tipo);
-            #endregion
-            try
-            {
-                command.CommandText = "INSERT INTO Usuarios(Usuario, Senha, Tipo) " +
-                                      "VALUES(@usuario, @senha, @tipo)";
-
-                AbrirConexaoDb();
-                command.ExecuteNonQuery();
-                FechaConecxaoDb();
-
-                command.Dispose();
-
-                MessageBox.Show(Resources.UsuarioRegistrado, Resources.Concluido_MessageBox,
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (SqlException e) { MessageBox.Show(e.Message, Resources.Error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); 
-                AppInsightMetrics.SendError(e); }
+            using DatabaseManager databaseManager = new();
+            
+           databaseManager.usuarioModel.Add(usuario);
+           databaseManager.SaveChanges();
         }
-        public void DeletarUsuarioId(string id)
+
+        #region Deletar
+        public static void DeletarUsuarioId(int id)
         {
-            SqlCommand command = new() { Connection = connection };
-            try
-            {
-                command.CommandText = $"DELETE FROM Usuarios WHERE ID = {id}";
-
-                AbrirConexaoDb();
-                command.ExecuteNonQuery();
-                FechaConecxaoDb();
-
-                command.Dispose();
-
-                MessageBox.Show(Resources.UsuarioDeletado, Resources.Concluido_MessageBox,
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (SqlException e){ MessageBox.Show(e.Message, Resources.ErrorConectarDb, MessageBoxButtons.OK, MessageBoxIcon.Error); 
-                AppInsightMetrics.SendError(e); }
+            using DatabaseManager databaseManager = new();
+            
+            databaseManager.usuarioModel.Remove(new() {id = id});
+            databaseManager.SaveChanges();
         }
-        public void AtualizarUsuarioId(string id, UsuarioModel usuario)
+        #endregion
+        
+        #region Buscar
+        public static async Task<UsuarioModel> BuscarUsuarioId(int id)
         {
-            SqlCommand command = new() { Connection = connection};
-            #region Parâmetros
-            command.Parameters.AddWithValue("@usuario", usuario.usuario);
-            command.Parameters.AddWithValue("@senha", usuario.senha);
-            command.Parameters.AddWithValue("@tipo", usuario.tipo);
-            #endregion
-            try
-            {
-                command.CommandText = $"UPDATE Usuarios SET Usuario = @usuario, Senha = @senha, Tipo = @tipo WHERE ID = {id}";
-
-                AbrirConexaoDb();
-                command.ExecuteNonQuery();
-                FechaConecxaoDb();
-
-                command.Dispose();
-
-                MessageBox.Show(Resources.InformaçõesAtualizadas_MessageBox, Resources.Concluido_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (SqlException e) { MessageBox.Show(e.Message, Resources.Error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); 
-                AppInsightMetrics.SendError(e);}
+            await using DatabaseManager databaseManager = new();
+            
+            return await databaseManager.usuarioModel.FindAsync(id);
         }
+            
+        public static async Task<List<UsuarioModel>> BuscarUsuarioNome(string nomeUsuario)
+        {
+            await using DatabaseManager databaseManager = new();
+            
+            return await databaseManager.usuarioModel.Where(usuario => usuario.usuario.Contains(nomeUsuario))
+                            .ToListAsync();
+        }
+            
+        public static async Task<List<UsuarioModel>> PegarTodosAdm()
+        {
+            await using DatabaseManager databaseManager = new();
+            
+            return await databaseManager.usuarioModel
+                                .Where(usuairo => usuairo.tipo.Equals(TipoUsuario.ADM))
+                                .ToListAsync();
+        }
+            
+        public static async Task<List<UsuarioModel>> PegarTodosUsu()
+        {
+            await using DatabaseManager databaseManager = new();
+            
+            return await databaseManager.usuarioModel
+                            .Where(usuairo => usuairo.tipo.Equals(TipoUsuario.USU))
+                            .ToListAsync();
+        }
+            
+        #endregion
+
+        #region Atualizar
+        public static async void AtualizarUsuarioId(int id, UsuarioModel usuario)
+        {
+            await using DatabaseManager databaseManager = new();
+            UsuarioModel usuarioModel = await databaseManager.usuarioModel.FindAsync(id);
+            
+            usuarioModel.usuario = usuario.usuario;
+            usuarioModel.senha = usuario.senha;
+            usuarioModel.tipo = usuario.tipo;
+
+            databaseManager.SaveChanges();
+        }
+        #endregion
 
         #region Login
-        public DataTable LoginUsuario(string usuario, string senha)
+        public static UsuarioModel LoginUsuario(string nomeUsuario, string senha)
         {
-            DataTable dataTable = new();
-            try
-            {
-                AbrirConexaoDb();
-                SqlDataAdapter adapter = new($"SELECT * FROM Usuarios WHERE Usuario = \'{usuario}\' AND Senha = \'{senha}\'", connection);
-                FechaConecxaoDb();
-                adapter.Fill(dataTable);
-            }
-            catch (SqlException e) { MessageBox.Show(e.Message, Resources.Error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); 
-                AppInsightMetrics.SendError(e); }
-
-            return dataTable;
+            using DatabaseManager databaseManager = new();
+            
+            return databaseManager.usuarioModel.First(usuario => usuario.usuario.Equals(nomeUsuario) &&
+                                                                 usuario.senha.Equals(senha));   
         }
-        public DataTable LoginCodigo(string id, string senha)
+        public static UsuarioModel LoginCodigo(int id, string senha)
         {
-            DataTable dataTable = new();
-            try
-            {
-                AbrirConexaoDb();
-                SqlDataAdapter adapter = new($"SELECT * FROM Usuarios WHERE ID = \'{id}\' AND Senha = \'{senha}\'", connection);
-                FechaConecxaoDb();
-                adapter.Fill(dataTable);
-            }
-            catch (SqlException e){ MessageBox.Show(e.Message, Resources.Error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); 
-                AppInsightMetrics.SendError(e); }
-
-            return dataTable;
+            using DatabaseManager databaseManager = new();
+            
+            return databaseManager.usuarioModel
+                            .Single(usuario => usuario.id.Equals(id) &&
+                                               usuario.senha.Equals(senha));
         }
+            
         #endregion
 
-        public Tipos.TipoUsuario ReceberTipoUsuario(string usuario)
+        public static TipoUsuario VerTipoUsuario(string nomeUsuario)
         {
-            DataTable dataTable = new();
-            try
-            {
-                AbrirConexaoDb();
-                SqlDataAdapter adapter = new($"SELECT Tipo FROM Usuarios WHERE Usuario = '{usuario}'", connection);
-                FechaConecxaoDb();
-                adapter.Fill(dataTable);
-            }
-            catch (Exception e){ MessageBox.Show(e.Message, Resources.Error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); 
-                AppInsightMetrics.SendError(e);}
-
-            return dataTable.Rows[0][0].ToString() == "ADM" ? Tipos.TipoUsuario.ADM : Tipos.TipoUsuario.USU;;
+            using DatabaseManager databaseManager = new();
+            
+            return databaseManager.usuarioModel
+                            .First(usuario => usuario.usuario.Equals(nomeUsuario)).tipo;
         }
-        #region Buscar
-        public DataTable BuscarUsuarioId(string id)
-        {
-            DataTable table = new();
-
-            try
-            {
-                AbrirConexaoDb();
-                SqlDataAdapter adapter = new($"SELECT * FROM Usuarios WHERE ID = {id}", connection);
-                FechaConecxaoDb();
-                adapter.Fill(table);
-            }
-            catch (SqlException e) { MessageBox.Show(e.Message, Resources.Error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); 
-                AppInsightMetrics.SendError(e); }
-
-            return table;
-        }
-        public DataTable BuscarUsuarioNome(string nomeUsuario)
-        {
-            DataTable table = new();
-            try
-            {
-                AbrirConexaoDb();
-                SqlDataAdapter adapter = new($"SELECT * FROM Usuarios WHERE Usuario = \'{nomeUsuario}\'", connection);
-                FechaConecxaoDb();
-                adapter.Fill(table);
-            }
-            catch (SqlException e) { MessageBox.Show(e.Message, Resources.Error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); 
-                AppInsightMetrics.SendError(e); }
-
-            return table;
-        }
-        public DataTable PesquisarUsuarioNome(string nomeUsuario)
-        {
-            DataTable table = new();
-            try
-            {
-                AbrirConexaoDb();
-                SqlDataAdapter adapter = new($"SELECT * FROM Usuarios WHERE Usuario LIKE \'%{nomeUsuario}%\'", connection);
-                FechaConecxaoDb();
-                adapter.Fill(table);
-            }
-            catch (SqlException e) { MessageBox.Show(e.Message, Resources.Error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); 
-                AppInsightMetrics.SendError(e); }
-
-            return table;
-        }
-        public DataTable VerAdm()
-        {
-            DataTable table = new();
-            try
-            {
-                AbrirConexaoDb();
-                SqlDataAdapter adapter = new($"SELECT * FROM Usuarios WHERE Tipo = \'{Tipos.TipoUsuario.ADM}\'", connection);
-                FechaConecxaoDb();
-                adapter.Fill(table);
-            }
-            catch (SqlException e) { MessageBox.Show(e.Message, Resources.Error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); 
-                AppInsightMetrics.SendError(e); }
-
-            return table;
-        }
-        public DataTable VerUsu()
-        {
-            DataTable table = new();
-            try
-            {
-                AbrirConexaoDb();
-                SqlDataAdapter adapter = new($"SELECT * FROM Usuarios WHERE Tipo = \'{Tipos.TipoUsuario.USU}\'", connection);
-                FechaConecxaoDb();
-                adapter.Fill(table);
-            }
-            catch (SqlException e) { MessageBox.Show(e.Message, Resources.Error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); 
-                AppInsightMetrics.SendError(e); }
-
-            return table;
-        }
-        #endregion
+            
     }
 }

@@ -1,33 +1,54 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace ProjectBook.Livros
+namespace ProjectBook.Model
 {
-    class LivroModel
+    [Table("Livros")]
+    public class LivroModel
     {
-        public LivroModel(string id, string titulo, string autor, string editora, string edicao, string ano,
-            string genero, string isbn, DateTime dataCadastro, string observacoes)
-        {
-            this.id = id;
-            this.titulo = titulo;
-            this.autor = autor;
-            this.editora = editora;
-            this.edicao = edicao;
-            this.ano = ano;
-            this.genero = genero;
-            this.dataCadastro = dataCadastro;
-            this.isbn = isbn;
-            this.observacoes = observacoes;
-        }
-
-        public string id { get; private set; }
-        public string titulo { get; private set; }
-        public string autor { get; private set; }
-        public string editora { get; private set; }
-        public string edicao { get; private set; }
-        public string ano { get; private set; }
-        public string genero { get; private set; }
-        public DateTime dataCadastro { get; private set; }
-        public string isbn { get; private set; }
-        public string observacoes { get; private set; }
+        [Key]
+        [Required]
+        [Column("ID")]
+        public int id { get; set; }
+        
+        [Required]
+        [MaxLength(100)]
+        [Column("Titulo")]
+        public string titulo { get; set; }
+        
+        [Required]
+        [MaxLength(100)]
+        [Column("Autor")]
+        public string autor { get; set; }
+        
+        [Required]
+        [MaxLength(100)]
+        [Column("Editora")]
+        public string editora { get; set; }
+        
+        [MaxLength(100)]
+        [Column("Edicao")]
+        public string edicao { get; set; }
+        
+        [MaxLength(100)]
+        [Column("Ano")]
+        public int ano { get; set; }
+        
+        [MaxLength(100)]
+        [Column("Genero")]
+        public string genero { get; set; }
+        
+        [Required]
+        [MaxLength(100)]
+        [Column("DataCadastro")]
+        public DateTime dataCadastro { get;  set; }
+        
+        [MaxLength(17)]
+        [Column("ISBN")]
+        public string isbn { get; set; }
+        
+        [Column("Observacoes", TypeName = "varchar(MAX)")]
+        public string observacoes { get; set; }
     }
 }

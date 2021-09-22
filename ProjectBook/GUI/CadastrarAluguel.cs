@@ -1,32 +1,31 @@
 ﻿using System;
-using System.Data;
+using System.Linq;
 using System.Windows.Forms;
 using ProjectBook.AppInsight;
 using ProjectBook.DB.SqlServerExpress;
-using ProjectBook.Livros;
+using ProjectBook.Model;
+using ProjectBook.Properties;
+using ProjectBook.Tipos;
 
 namespace ProjectBook.GUI
 {
     public partial class CadastrarAluguel : Form
     {
-        private AluguelDb aluguelDb = new();
-        private LivrosDb livrosDb = new();
-        private ClienteDb clienteDb = new();
-
-        private DataTable livro = new();
-        private DataTable cliente = new();
+        private LivroModel livro {get; set;}
+        private ClienteModel cliente {get; set;}
+        
         public CadastrarAluguel()
         {
             InitializeComponent();
 
-            btnVerLivros.Click += (_, _) =>
+            btnVerLivros.Click += async (_, _) =>
             {
-                ListaPesquisa listaPesquisa = new(livrosDb.VerTodosLivros());
+                ListaPesquisa<LivroModel> listaPesquisa = new(await LivrosDb.VerTodosLivros());
                 listaPesquisa.Show();
             };
-            btnVerClientes.Click += (_, _) =>
+            btnVerClientes.Click += async (_, _) =>
             {
-                ListaPesquisa listaPesquisa = new(clienteDb.VerTodosClientes());
+                ListaPesquisa<ClienteModel> listaPesquisa = new(await ClienteDb.VerTodosClientes());
                 listaPesquisa.Show();
             };
             Load += (_, _) => AppInsightMetrics.TrackForm("CadastrarAluguel");
@@ -36,50 +35,46 @@ namespace ProjectBook.GUI
         private void rabPesquisarLivroCodigo_CheckedChanged(object sender, EventArgs e) =>
             txtBuscarLivroAluguel.AutoCompleteMode = AutoCompleteMode.None;
 
-        private void rabPesquisarLivroTitulo_CheckedChanged(object sender, EventArgs e)
+        private async void rabPesquisarLivroTitulo_CheckedChanged(object sender, EventArgs e)
         {
-            AutoCompleteStringCollection aluguelSugestao = new AutoCompleteStringCollection();
             txtBuscarLivroAluguel.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-
-            foreach (DataRow livroResult in livrosDb.VerTodosLivros().Rows) 
-                aluguelSugestao.Add(livroResult[1].ToString());
-            txtBuscarLivroAluguel.AutoCompleteCustomSource = aluguelSugestao;
+            txtBuscarLivroAluguel.AutoCompleteCustomSource = new();
+            
+            foreach (LivroModel livro in await LivrosDb.VerTodosLivros()) 
+                txtBuscarLivroAluguel.AutoCompleteCustomSource.Add(livro.titulo);
         }
-        private void rabPesquisarLivroAutor_CheckedChanged(object sender, EventArgs e)
+        private async void rabPesquisarLivroAutor_CheckedChanged(object sender, EventArgs e)
         {
-            AutoCompleteStringCollection aluguelSugestao = new AutoCompleteStringCollection();
             txtBuscarLivroAluguel.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            txtBuscarLivroAluguel.AutoCompleteCustomSource = new();
 
-            foreach (DataRow livroResult in livrosDb.VerTodosLivros().Rows) 
-                aluguelSugestao.Add(livroResult[2].ToString());
-            txtBuscarLivroAluguel.AutoCompleteCustomSource = aluguelSugestao;
+            foreach (LivroModel livro in await LivrosDb.VerTodosLivros()) 
+                txtBuscarLivroAluguel.AutoCompleteCustomSource.Add(livro.autor);
         }
 
         private void rabPesquisarClienteCodigo_CheckedChanged(object sender, EventArgs e) => 
             txtBuscarClienteAluguel.AutoCompleteMode = AutoCompleteMode.None;
-        private void rabPesquisarClienteNome_CheckedChanged(object sender, EventArgs e)
+        private async void rabPesquisarClienteNome_CheckedChanged(object sender, EventArgs e)
         {
-            AutoCompleteStringCollection aluguelSugestao = new AutoCompleteStringCollection();
             txtBuscarClienteAluguel.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-
-            foreach (DataRow clienteResult in clienteDb.VerTodosClientes().Rows) 
-                aluguelSugestao.Add(clienteResult[1].ToString());
-            txtBuscarClienteAluguel.AutoCompleteCustomSource = aluguelSugestao;
+            txtBuscarClienteAluguel.AutoCompleteCustomSource = new();
+            
+            foreach (ClienteModel cliente in await ClienteDb.VerTodosClientes()) 
+                txtBuscarClienteAluguel.AutoCompleteCustomSource.Add(cliente.nomeCompleto);
         }
         #endregion
 
         private void btnBuscarLivroAluguel_Click(object sender, EventArgs e)
         {
-            string tituloParaBusca = txtBuscarLivroAluguel.Text;
-
-            if(Verificadores.VerificarStrings(tituloParaBusca))
+            string termoBusca = txtBuscarLivroAluguel.Text;
+            if(Verificadores.VerificarStrings(termoBusca))
             {
                 MessageBox.Show(Properties.Resources.PesquiseParaContinuar, Properties.Resources.Error_MessageBox ,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            PreencharCamposLivro(tituloParaBusca);
+            PreencharCamposLivro(termoBusca);
         }
         private void btnBuscarCliente_Click(object sender, EventArgs e)
         {
@@ -97,13 +92,15 @@ namespace ProjectBook.GUI
 
         private void btnSalvarAluguel_Click(object sender, EventArgs e)
         {
-            AluguelModel aluguel = new(
-                txtTituloLivroAluguel.Text,
-                txtAutorLivroAluguel.Text,
-                txtNomeClienteAluguel.Text,
-                dtpDataEntrega.Value,
-                dtpDataRecebimento.Value,
-                cmbStatusAluguel.SelectedItem.ToString());
+            AluguelModel aluguel = new()
+            {
+                titulo = txtTituloLivroAluguel.Text,
+                autor = txtAutorLivroAluguel.Text,
+                alugadoPor = txtNomeClienteAluguel.Text,
+                dataEntrega = dtpDataEntrega.Value,
+                dataDevolucao = dtpDataRecebimento.Value,
+                status = (StatusAluguel)cmbStatusAluguel.SelectedItem
+            };
             
             if (Verificadores.VerificarCamposAluguel(aluguel))
             {
@@ -112,57 +109,46 @@ namespace ProjectBook.GUI
                 return;
             }
 
-            aluguelDb.CadastrarAluguel(aluguel);
+            AluguelDb.CadastrarAluguel(aluguel);
+            
+            MessageBox.Show(Resources.AluguelRegistrado, Resources.Concluido_MessageBox, MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
             
             LimparCampos();
         }
         
-        private void PreencharCamposLivro(string livroParaBusca)
+        private async void PreencharCamposLivro(string livroParaBusca)
         {
-            if (rabPesquisarLivroCodigo.Checked) livro = livrosDb.BuscarLivrosId(livroParaBusca);
-            else if (rabPesquisarLivroTitulo.Checked) livro = livrosDb.BuscarLivrosTitulo(livroParaBusca);
-            else livro = livrosDb.BuscarLivrosAutor(livroParaBusca);
-
-                try
-            {
-                txtTituloLivroAluguel.Text = livro.Rows[0][1].ToString(); // Titulo do livro
-                txtAutorLivroAluguel.Text = livro.Rows[0][2].ToString(); // Autor
-                txtEditoraLivro.Text = livro.Rows[0][3].ToString(); // Editora
-                txtEdicaoLivro.Text = livro.Rows[0][4].ToString(); // Edição
-            }
-            catch
-            {
-                MessageBox.Show(Properties.Resources.LivroNaoExiste, Properties.Resources.Error_MessageBox,
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            if (rabPesquisarLivroCodigo.Checked) livro = await LivrosDb.BuscarLivrosId(int.Parse(livroParaBusca));
+            else if (rabPesquisarLivroTitulo.Checked) livro = (await LivrosDb.BuscarLivrosTitulo(livroParaBusca)).FirstOrDefault();
+            else livro = (await LivrosDb.BuscarLivrosAutor(livroParaBusca)).FirstOrDefault();
+            
+            if(Verificadores.VerificarCamposLivros(livro)) return;
+            
+            txtTituloLivroAluguel.Text = livro.titulo;
+            txtAutorLivroAluguel.Text = livro.autor;
+            txtEditoraLivro.Text = livro.editora; 
+            txtEdicaoLivro.Text = livro.edicao;
         }
-        private void PreencherCamposClientes(string clienteParaBuscar)
+        private async void PreencherCamposClientes(string termoBuscaCliente)
         {
             cliente = rabPesquisarClienteCodigo.Checked ? 
-                clienteDb.BuscarClienteId(clienteParaBuscar) :
-                clienteDb.BuscarClienteNome(clienteParaBuscar);
-
-            try
-            {
-                txtNomeClienteAluguel.Text = cliente.Rows[0][1].ToString(); // Nome completo
-                txtEnderecoClienteAluguel.Text = cliente.Rows[0][2].ToString(); // Endereço
-                txtTelefoneClienteAluguel.Text = cliente.Rows[0][6].ToString(); // Telefone 1
-                txtEmailClienteAluguel.Text = cliente.Rows[0][8].ToString(); // Email
-            }
-            catch
-            {
-                MessageBox.Show(Properties.Resources.ClienteNaoCadastrado, Properties.Resources.Error_MessageBox,
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+                await ClienteDb.BuscarClienteId(int.Parse(termoBuscaCliente)) :
+                (await ClienteDb.BuscarClienteNome(termoBuscaCliente)).FirstOrDefault();
+            
+            txtNomeClienteAluguel.Text = cliente.nomeCompleto;
+            txtEnderecoClienteAluguel.Text = cliente.endereco;
+            txtTelefoneClienteAluguel.Text = cliente.telefone1;
+            txtEmailClienteAluguel.Text = cliente.email;
         }
 
         private void btnLimparCadastroAluguel_Click(object sender, EventArgs e) => LimparCampos();
-        private void btnCancelarCadastroAluguel_Click(object sender, EventArgs e) => this.Close();
+        private void btnCancelarCadastroAluguel_Click(object sender, EventArgs e) => Close();
 
         private void LimparCampos()
         {
-            livro.Clear();
-            cliente.Clear();
+            livro = null;
+            cliente = null;
 
             txtBuscarLivroAluguel.Clear();
             txtTituloLivroAluguel.Clear();

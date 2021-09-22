@@ -1,15 +1,15 @@
 ﻿using System;
-using System.Data;
+using System.Linq;
 using System.Windows.Forms;
 using ProjectBook.AppInsight;
 using ProjectBook.DB.SqlServerExpress;
+using ProjectBook.Model;
 using ProjectBook.Properties;
 
 namespace ProjectBook.GUI
 {
     public partial class ExcluirLivro : Form
     {
-        LivrosDb livrosDb = new();
         public ExcluirLivro()
         {
             InitializeComponent();
@@ -19,21 +19,22 @@ namespace ProjectBook.GUI
 
         #region CheckChange
         private void rabIdExcluirLivro_CheckedChanged(object sender, EventArgs e) => txtExcluirLivro.AutoCompleteMode = AutoCompleteMode.None;
-        private void rabExcluirTitulo_CheckedChanged(object sender, EventArgs e)
+        private async void rabExcluirTitulo_CheckedChanged(object sender, EventArgs e)
         {
             AutoCompleteStringCollection sugestaoLivro = new();
             txtExcluirLivro.AutoCompleteMode = AutoCompleteMode.Suggest;
 
-            foreach(DataRow livro in livrosDb.VerTodosLivros().Rows) sugestaoLivro.Add(livro[1].ToString());
+            foreach(LivroModel livro in await LivrosDb.VerTodosLivros()) 
+                sugestaoLivro.Add(livro.titulo);
 
             txtExcluirLivro.AutoCompleteCustomSource = sugestaoLivro;
         }
         #endregion
 
-        private void btnBuscarExcluirLivro_Click(object sender, EventArgs e)
+        private async void btnBuscarExcluirLivro_Click(object sender, EventArgs e)
         {
             string termoBusca = txtExcluirLivro.Text;
-            DataTable data = new();
+            LivroModel infoLivro = new();
             
             if (Verificadores.VerificarStrings(termoBusca))
             {
@@ -48,10 +49,12 @@ namespace ProjectBook.GUI
                 return;
             }
 
-            if (rabIdExcluirLivro.Checked) data = livrosDb.BuscarLivrosId(termoBusca);
-            else if (rabExcluirTitulo.Checked) data = livrosDb.BuscarLivrosTitulo(termoBusca);
+            if (rabIdExcluirLivro.Checked) 
+                infoLivro = await LivrosDb.BuscarLivrosId(int.Parse(termoBusca));
+            else if (rabExcluirTitulo.Checked) 
+                infoLivro = (await LivrosDb.BuscarLivrosTitulo(termoBusca)).First();
 
-            if (Verificadores.VerificarDataTable(data))
+            if (Verificadores.VerificarCamposLivros(infoLivro))
             {
                 MessageBox.Show(Resources.LivroNaoExiste, Resources.Excluir_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -59,15 +62,14 @@ namespace ProjectBook.GUI
             }
 
             DialogResult resultadoExcluir = MessageBox.Show(
-                string.Format(Resources.ConfirmarExclusao1, data.Rows[0][1]),
+                string.Format(Resources.ConfirmarExclusao1, infoLivro.titulo),
                 Resources.Excluir_MessageBox, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             
-            if (resultadoExcluir == DialogResult.Yes)
-            {
-                if (rabExcluirTitulo.Checked) livrosDb.DeletarLivroTitulo(termoBusca);
-                else if (rabIdExcluirLivro.Checked) livrosDb.DeletarLivroId(termoBusca);
-            }
-
+            if (resultadoExcluir != DialogResult.Yes) return;
+            
+            if (rabIdExcluirLivro.Checked) LivrosDb.DeletarLivroId(int.Parse(termoBusca));
+            else if (rabExcluirTitulo.Checked) LivrosDb.DeletarLivroTitulo( termoBusca);
+            
             txtExcluirLivro.Clear();
         }
         private void btnCancelarExcluirLivro_Click(object sender, EventArgs e) => Close();
