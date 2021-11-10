@@ -87,8 +87,7 @@ namespace ProjectBook
             if (Application.OpenForms.Count < 2)
             {
                 Login login = new();
-                login.BringToFront();
-                login.Show();
+                login.ShowDialog();
             }
             else AppManager.ReiniciarPrograma();
         }
