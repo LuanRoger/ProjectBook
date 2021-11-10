@@ -1,5 +1,5 @@
-version: 0.6.9.0
-url: https://github.com/LuanRoger/ProjectBook/releases/download/v0.6.9-beta/ProjectBook.Pakage_0.6.9.0_AnyCPU.msix
+version: 0.7.0.1
+url: https://github.com/LuanRoger/ProjectBook/releases/download/v0.7.0.1/ProjectBook.Pakage_0.7.0.1_AnyCPU.msix
 extension: .msix
-changelog: https://github.com/LuanRoger/ProjectBook/releases/tag/v0.6.9-beta
+changelog: https://github.com/LuanRoger/ProjectBook/releases/tag/v0.7.0.1
 mandatory: false
