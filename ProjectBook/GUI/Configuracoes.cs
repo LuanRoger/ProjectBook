@@ -211,15 +211,6 @@ namespace ProjectBook.GUI
         {
             AppConfigurationManager.configuration.database.SqlConnectionString = txtStringConexaoCaminhoDb.Text;
             AppConfigurationManager.SaveConfig();
-            
-            if(await DatabaseManager.VerificarConexao() == false)
-            {
-                MessageBox.Show(Resources.StringConexaoValida, Resources.Error_MessageBox,
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                AppConfigurationManager.configuration.database.SqlConnectionString = string.Empty;
-                AppConfigurationManager.SaveConfig();
-                return;
-            }
 
             pgbCreateDatabase.Visible = true;
             btnCriarBanco.Enabled = false;

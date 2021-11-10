@@ -39,6 +39,7 @@ namespace ProjectBook.GUI
             this.btnFecharLogin = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.txtLoginCodigo = new System.Windows.Forms.TextBox();
+            this.chbKeepConnected = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // txtLoginUsuario
@@ -82,7 +83,7 @@ namespace ProjectBook.GUI
             // 
             this.btnEntrarLogin.Image = global::ProjectBook.Properties.Resources.enter_account;
             this.btnEntrarLogin.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEntrarLogin.Location = new System.Drawing.Point(14, 102);
+            this.btnEntrarLogin.Location = new System.Drawing.Point(13, 133);
             this.btnEntrarLogin.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnEntrarLogin.Name = "btnEntrarLogin";
             this.btnEntrarLogin.Size = new System.Drawing.Size(62, 22);
@@ -94,7 +95,7 @@ namespace ProjectBook.GUI
             // 
             // btnFecharLogin
             // 
-            this.btnFecharLogin.Location = new System.Drawing.Point(196, 102);
+            this.btnFecharLogin.Location = new System.Drawing.Point(195, 133);
             this.btnFecharLogin.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnFecharLogin.Name = "btnFecharLogin";
             this.btnFecharLogin.Size = new System.Drawing.Size(51, 22);
@@ -121,12 +122,23 @@ namespace ProjectBook.GUI
             this.txtLoginCodigo.TabIndex = 1;
             this.txtLoginCodigo.Leave += new System.EventHandler(this.txtLoginCodigo_Leave);
             // 
+            // chbKeepConnected
+            // 
+            this.chbKeepConnected.AutoSize = true;
+            this.chbKeepConnected.Location = new System.Drawing.Point(14, 102);
+            this.chbKeepConnected.Name = "chbKeepConnected";
+            this.chbKeepConnected.Size = new System.Drawing.Size(123, 19);
+            this.chbKeepConnected.TabIndex = 9;
+            this.chbKeepConnected.Text = "Manter conectado";
+            this.chbKeepConnected.UseVisualStyleBackColor = true;
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(258, 135);
+            this.ClientSize = new System.Drawing.Size(258, 167);
+            this.Controls.Add(this.chbKeepConnected);
             this.Controls.Add(this.txtLoginCodigo);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnFecharLogin);
@@ -136,7 +148,7 @@ namespace ProjectBook.GUI
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtLoginUsuario);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Icon = ProjectBook.Properties.Resources.UserGrayIcons;
+            this.Icon = global::ProjectBook.Properties.Resources.UserGrayIcons;
             this.KeyPreview = true;
             this.Location = new System.Drawing.Point(15, 15);
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -145,6 +157,7 @@ namespace ProjectBook.GUI
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Login_FormClosing);
+            this.Load += new System.EventHandler(this.Login_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -163,5 +176,6 @@ namespace ProjectBook.GUI
 
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtLoginCodigo;
+        private System.Windows.Forms.CheckBox chbKeepConnected;
     }
 }

@@ -5,6 +5,7 @@ using ProjectBook.DB.SqlServerExpress;
 using ProjectBook.Properties;
 using ProjectBook.Tipos;
 using ProjectBook.Managers;
+using ProjectBook.Managers.Configuration;
 using ProjectBook.Model;
 
 namespace ProjectBook.GUI
@@ -14,6 +15,10 @@ namespace ProjectBook.GUI
         public Login()
         {
             InitializeComponent();
+        }
+        private void Login_Load(object sender, EventArgs e)
+        {
+            chbKeepConnected.Checked = AppConfigurationManager.configuration.login.keepConnected;
         }
 
         private void btnFecharLogin_Click(object sender, EventArgs e) => Application.Exit();
@@ -48,11 +53,16 @@ namespace ProjectBook.GUI
                 userName = infoUsuario.usuario, 
                 tipoUsuario = infoUsuario.tipo
             };
+            AppConfigurationManager.configuration.login = AppConfigurationManager.configuration.login with
+            {
+                keepConnected = chbKeepConnected.Checked
+            };
+            AppConfigurationManager.SaveConfig();
 
             AppManager.ReiniciarPrograma();
         }
 
-        #region TxtLeave
+        #region txtLeave
         private async void txtLoginCodigo_Leave(object sender, EventArgs e)
         {
             if (Verificadores.VerificarStrings(txtLoginCodigo.Text)) return;

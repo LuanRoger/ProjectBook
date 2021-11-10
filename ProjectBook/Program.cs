@@ -1,6 +1,7 @@
 using System;
 using System.Windows.Forms;
 using ProjectBook.GUI;
+using ProjectBook.Properties;
 
 namespace ProjectBook
 {
@@ -17,7 +18,14 @@ namespace ProjectBook
             {
                 Application.Run(new Inicio());
             }
-            catch(Exception e) { AppInsight.AppInsightMetrics.SendError(e); }
+            catch(Exception e) 
+            { 
+                MessageBox.Show("Não foi possivel inicializar o programa: " + e.Message,
+                    Resources.Error_MessageBox,
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                AppInsight.AppInsightMetrics.SendError(e);
+            }
         }
     }
 }

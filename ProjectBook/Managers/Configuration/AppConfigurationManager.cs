@@ -31,6 +31,10 @@ namespace ProjectBook.Managers.Configuration
                 DbEngine = TipoDatabase.SqlServerLocalDb,
                 DbFolder = string.Empty,
                 SqlConnectionString = string.Empty
+            },
+            login = new()
+            {
+                keepConnected = false
             }
         };
         private static ConfigManager<ConfigurationModel> configManager {get;} = 

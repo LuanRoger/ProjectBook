@@ -5,7 +5,6 @@ using ProjectBook.Managers;
 namespace ProjectBook.Tipos
 {
     [Serializable]
-    // Não instancie isso
     public class UserInfo
     {
         private static UserInfo UserNow { get; set; } // TODO - Made UsuarioModel model

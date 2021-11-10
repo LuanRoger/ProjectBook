@@ -12,5 +12,6 @@ namespace ProjectBook.Managers.Configuration
         public RentingSection renting { get; set; }
         public TelemetrySection telemetry { get; set; }
         public DatabaseSection database { get; set; }
+        public LoginPreferencesSection login { get; set; }
     }
 }

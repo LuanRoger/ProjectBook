@@ -6,6 +6,7 @@ using ProjectBook.AppInsight;
 using System.ComponentModel;
 using ProjectBook.Tipos;
 using ProjectBook.Managers;
+using ProjectBook.Managers.Configuration;
 using ProjectBook.Model;
 
 namespace ProjectBook.GUI
@@ -32,6 +33,7 @@ namespace ProjectBook.GUI
         {
             if (Opacity != 0)
             {
+                //TODO - Create a method to get only the count
                 lblLivrosCadastrados.Text = (await LivrosDb.VerTodosLivros()).Count.ToString();
                 lblClientesCadastrados.Text = (await ClienteDb.VerTodosClientes()).Count.ToString();
                 lblAlugueisRegistrados.Text = (await AluguelDb.VerTodosAluguel()).Count.ToString();
@@ -322,7 +324,8 @@ namespace ProjectBook.GUI
                 MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
 
             e.Cancel = dialogResult != DialogResult.Yes;
-            if (!e.Cancel) AppInsightMetrics.FlushTelemetry();
+            if(!e.Cancel) AppInsightMetrics.FlushTelemetry();
+            if(!AppConfigurationManager.configuration.login.keepConnected) UserInfo.DeleteUserFile();
         }
     }
 }
