@@ -119,8 +119,6 @@
     <Content Include="Images\Large.scale-200.png" />
     <Content Include="Images\Large.scale-400.png" />
     <Content Include="Images\Mid.scale-100.png" />
-    <Content Include="Images\Mid.scale-125.png" />
-    <Content Include="Images\Mid.scale-150.png" />
     <Content Include="Images\Mid.scale-200.png" />
     <Content Include="Images\Mid.scale-400.png" />
     <Content Include="Images\Small.scale-100.png" />
