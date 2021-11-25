@@ -213,7 +213,7 @@ namespace ProjectBook.GUI
             AluguelDb.AtualizarAluguelNomeCliente(aluguel, infoAluguelAntigo.titulo,
                     infoAluguelAntigo.alugadoPor);
             
-            MessageBox.Show(Resources.InformaçõesAtualizadas_MessageBox, Resources.Concluido_MessageBox, MessageBoxButtons.OK,
+            MessageBox.Show(Resources.InformacoesAtualizadas_MessageBox, Resources.Concluido_MessageBox, MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
 
             LimparCampos();

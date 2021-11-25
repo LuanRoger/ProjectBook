@@ -35,6 +35,9 @@ namespace ProjectBook.GUI
             
             UsuarioDb.CadastrarUsuario(usuario);
             
+            MessageBox.Show(Resources.UsuarioCadastrado, Resources.Concluido_MessageBox,
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
+            
             LimparCampos();
         }
 
@@ -54,7 +57,10 @@ namespace ProjectBook.GUI
             }
             
             UsuarioDb.AtualizarUsuarioId(int.Parse(txtIdBuscarUsuario.Text), usuario);
-
+            
+            MessageBox.Show(Resources.InformacoesAtualizadas_MessageBox, Resources.Concluido_MessageBox,
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
+            
             LimparCampos();
         }
 

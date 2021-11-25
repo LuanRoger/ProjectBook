@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿#nullable enable
+using System.IO;
 using System.Management;
 using System.Threading.Tasks;
 using ProjectBook.DB.SqlServerExpress;
@@ -54,30 +55,6 @@ namespace ProjectBook
             usuario.usuario.Length == 0 || usuario.senha.Length == 0;
         
         public static bool VerificarDataGrid(DataGridView dataGridView) => dataGridView.Rows.Count == 0;
-
-        /// <summary>
-        /// Verifica se o sistema usado é o Windows 10
-        /// </summary>
-        /// <returns><c>isWin10</c></returns>
-        public static bool IsWin10()
-        {
-            string so = null;
-
-            using (ManagementObjectSearcher searcher = new("SELECT * FROM Win32_OperatingSystem"))
-                foreach (var infos in searcher.Get()) so = infos["Caption"].ToString();
-
-            return so.Contains("Windows 10");
-        }
-
-        /// <summary>
-        /// Verifica se o banco de dados está sincronizado com o OneDrive
-        /// </summary>
-        /// <param name="directoryInfo"></param>
-        /// <returns><c>exists</c></returns>
-        public static bool HasSyncOneDrive(DirectoryInfo directoryInfo) =>
-            directoryInfo.FullName.Contains("OneDrive") && 
-                   directoryInfo.GetFiles("*.mdf", SearchOption.AllDirectories).Length >= 1 &&
-                   AppConfigurationManager.configuration.database.DbEngine == TipoDatabase.OneDrive;
 
         /// <summary>
         /// Verifica se há um usuario logado

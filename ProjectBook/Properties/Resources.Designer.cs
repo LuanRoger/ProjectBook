@@ -569,9 +569,9 @@ namespace ProjectBook.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Informações atualizadas.
         /// </summary>
-        internal static string InformaçõesAtualizadas_MessageBox {
+        internal static string InformacoesAtualizadas_MessageBox {
             get {
-                return ResourceManager.GetString("InformaçõesAtualizadas_MessageBox", resourceCulture);
+                return ResourceManager.GetString("InformacoesAtualizadas_MessageBox", resourceCulture);
             }
         }
         
@@ -939,6 +939,15 @@ namespace ProjectBook.Properties {
             get {
                 object obj = ResourceManager.GetObject("UserGrayIcons", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Usuario cadastrado com sucesso.
+        /// </summary>
+        internal static string UsuarioCadastrado {
+            get {
+                return ResourceManager.GetString("UsuarioCadastrado", resourceCulture);
             }
         }
         

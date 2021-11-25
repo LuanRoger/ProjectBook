@@ -169,7 +169,7 @@ namespace ProjectBook.GUI
 
             LivrosDb.AtualizarViaId(infoLivro.id, livro);
             
-            MessageBox.Show(Resources.InformaçõesAtualizadas_MessageBox, Resources.Concluido_MessageBox, MessageBoxButtons.OK,
+            MessageBox.Show(Resources.InformacoesAtualizadas_MessageBox, Resources.Concluido_MessageBox, MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
 
             SugerirAutores();
