@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img alt="SplashScreen" src="https://github.com/LuanRoger/ProjectBook/blob/master/ProjectBook/assets/screenshots/PrintSplashScreen.png"/>
+  <img alt="SplashScreen" src="https://github.com/LuanRoger/ProjectBook/blob/master/ProjectBook/assets/screenshots/PrintSplashScreen.png?raw=true"/>
 </h1>
 
 <p>
@@ -13,7 +13,6 @@
 
 ## Features
 * Acesso rápido para pesquisa e barra superior para acessar.
-* Integração nativa com o OneDrive, oferece sincronização em tempo real para um banco de dados local.
 * Autoformatação para maiúsculo ao salvar.
 * Impressão de qualquer pesquisa.
 * Sistema de login.
@@ -25,19 +24,19 @@
 - SQL Local DB
 - C#
 ## Capturas de tela
-![](https://github.com/LuanRoger/ProjectBook/blob/master/ProjectBook/assets/screenshots/PrintInicio.png)
+![](https://github.com/LuanRoger/ProjectBook/blob/master/ProjectBook/assets/screenshots/PrintInicio.png?raw=true)
 
 ![](https://github.com/LuanRoger/ProjectBook/blob/master/ProjectBook/assets/screenshots/PrintLogin.png?raw=true)
 
-![](https://github.com/LuanRoger/ProjectBook/blob/master/ProjectBook/assets/screenshots/PrintNovoLivro.png)
+![](https://github.com/LuanRoger/ProjectBook/blob/master/ProjectBook/assets/screenshots/PrintNovoLivro.png?raw=true)
 
-![](https://github.com/LuanRoger/ProjectBook/blob/master/ProjectBook/assets/screenshots/PrintNovoCliente.png)
+![](https://github.com/LuanRoger/ProjectBook/blob/master/ProjectBook/assets/screenshots/PrintNovoCliente.png?raw=true)
 
-![](https://github.com/LuanRoger/ProjectBook/blob/master/ProjectBook/assets/screenshots/PrintNovoAluguel.png)
+![](https://github.com/LuanRoger/ProjectBook/blob/master/ProjectBook/assets/screenshots/PrintNovoAluguel.png?raw=true)
 
-![](https://github.com/LuanRoger/ProjectBook/blob/master/ProjectBook/assets/screenshots/PrintConfiguracoes.png)
+![](https://github.com/LuanRoger/ProjectBook/blob/master/ProjectBook/assets/screenshots/PrintConfiguracoes.png?raw=true)
 
-![](https://github.com/LuanRoger/ProjectBook/blob/master/ProjectBook/assets/screenshots/PrintPesquisaRapida.png)
+![](https://github.com/LuanRoger/ProjectBook/blob/master/ProjectBook/assets/screenshots/PrintPesquisaRapida.png?raw=true)
 
 ## Pré-requisitos
 - [.NET Desktop Runtime 5x](https://dotnet.microsoft.com/download/dotnet/5.0)
@@ -56,18 +55,6 @@ mas lembre que você deve anexar os dois arquivos de [DbModel](./DbModel).
 Se preferir baixe o [arquivo SQL](./DbModel/ModeloSQL.sql) e execute em seu banco de dados para criar todas as tabelas de forma que o programa consiga interpretar sem problemas.
 
 Se preferir baixe o [arquivo SQL](./DbModel/ModeloSQL.sql) e execute em seu banco de dados para criar todas as tabelas de forma que o programa consiga ler sem problemas.
-
-## OneDrive
-<p>
-<img alt="onedrive" src="https://img.shields.io/badge/sync-onedrive-blue">
-</p>
-A integração com OneDrive só funciona no Windows 10 que esteja com o OneDrive instalado e atualizado.
-Para migrar seu banco para o OneDrive:
-
-1. Vá em Configurações
-2. Em Banco de dados marque OneDrive
-3. Salve
-O programa irá reiniciar e já estará sincronizado.
 
 ## Links úteis
 - [Problemas frequentes.](https://github.com/LuanRoger/ProjectBook/blob/master/PROBLEMS.md)
