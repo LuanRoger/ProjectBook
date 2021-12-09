@@ -32,7 +32,7 @@ namespace ProjectBook.GUI
         {
             lblStatusCarregamento.Text = Resources.VerificandoConexao_SplashScreen;
             
-            if(await DatabaseManager.VerificarConexao() == false)
+            if(DatabaseManager.VerificarConexao() == false)
             {
                 DialogResult dialogResult = MessageBox.Show(Resources.ErrorConectarDb, Resources.Error_MessageBox, MessageBoxButtons.YesNo,
                     MessageBoxIcon.Error);
@@ -54,16 +54,17 @@ namespace ProjectBook.GUI
                 UsuarioLogado();
                 return;
             }
-            else AppManager.UpdateUserInfo();
-            
+
+            AppManager.UpdateUserInfo();
+
             lblStatusCarregamento.Text = Resources.Carregando_SplashScreen;
 
-            List<Task> inicializeTasks = new();
-            
-            inicializeTasks.Add(AtualizarAtrasso());
-            inicializeTasks.Add(Task.Delay(Consts.SPLASH_SCREEN_LOADTIME));
-            AppUpdateManager.SearchUpdates();
-            
+            List<Task> inicializeTasks = new()
+            {
+                AtualizarAtrasso(),
+                Task.Delay(Consts.SPLASH_SCREEN_LOADTIME)
+            };
+
             await Task.WhenAll(inicializeTasks.ToArray());
 
             Close();

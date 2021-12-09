@@ -25,7 +25,7 @@ namespace ProjectBook.GUI
         private void Login_FormClosing(object sender, FormClosingEventArgs e) => Application.Exit();
         private void btnEntrarLogin_Click(object sender, EventArgs e)
         {
-            if (Verificadores.VerificarStrings(txtLoginUsuario.Text, txtLoginSenha.Text) || 
+            if(Verificadores.VerificarStrings(txtLoginUsuario.Text, txtLoginSenha.Text) || 
                 Verificadores.VerificarStrings(txtLoginCodigo.Text, txtLoginSenha.Text))
             {
                 MessageBox.Show(Resources.PreencherCamposObrigatorios, Resources.Error_MessageBox,
@@ -35,7 +35,7 @@ namespace ProjectBook.GUI
             
             UsuarioModel infoUsuario = UsuarioDb.LoginUsuario(txtLoginUsuario.Text, txtLoginSenha.Text);
             
-            if (Verificadores.VerificarCamposUsuario(infoUsuario))
+            if(Verificadores.VerificarCamposUsuario(infoUsuario))
             {
                 infoUsuario = UsuarioDb.LoginCodigo(int.Parse(txtLoginCodigo.Text), txtLoginSenha.Text);
 
@@ -65,21 +65,21 @@ namespace ProjectBook.GUI
         #region txtLeave
         private async void txtLoginCodigo_Leave(object sender, EventArgs e)
         {
-            if (Verificadores.VerificarStrings(txtLoginCodigo.Text)) return;
+            if(Verificadores.VerificarStrings(txtLoginCodigo.Text)) return;
 
             UsuarioModel codigoUsuario = await UsuarioDb.BuscarUsuarioId(int.Parse(txtLoginCodigo.Text));
 
-            if (Verificadores.VerificarCamposUsuario(codigoUsuario)) return;
+            if(Verificadores.VerificarCamposUsuario(codigoUsuario)) return;
 
             txtLoginUsuario.Text = codigoUsuario.usuario;
         }
         private async void txtLoginUsuario_Leave(object sender, EventArgs e)
         {
-            if (Verificadores.VerificarStrings(txtLoginUsuario.Text)) return;
+            if(Verificadores.VerificarStrings(txtLoginUsuario.Text)) return;
 
-            UsuarioModel nomeUsuario = (await UsuarioDb.BuscarUsuarioNome(txtLoginUsuario.Text)).First();
+            UsuarioModel nomeUsuario = (await UsuarioDb.BuscarUsuarioNome(txtLoginUsuario.Text)).FirstOrDefault();
 
-            if (Verificadores.VerificarCamposUsuario(nomeUsuario)) return;
+            if(Verificadores.VerificarCamposUsuario(nomeUsuario)) return;
 
             txtLoginCodigo.Text = nomeUsuario.id.ToString();
         }

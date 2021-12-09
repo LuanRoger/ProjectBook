@@ -22,13 +22,11 @@ namespace ProjectBook.DB.SqlServerExpress
             optionsBuilder.UseSqlServer(connectionString);
         }
         
-        public static async Task<bool> VerificarConexao()
+        public static bool VerificarConexao()
         {
-            await using DatabaseManager databaseManager = new();
+            using DatabaseManager databaseManager = new();
             
-            if(Verificadores.VerificarStrings(connectionString)) return false;
-            
-            return await databaseManager.Database.CanConnectAsync();
+            return !Verificadores.VerificarStrings(connectionString) && databaseManager.Database.CanConnect();
         }
         
         public static void OpenConfigurationSafeMode()

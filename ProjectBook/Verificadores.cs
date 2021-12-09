@@ -1,11 +1,9 @@
 ﻿#nullable enable
 using System.IO;
-using System.Management;
 using System.Threading.Tasks;
 using ProjectBook.DB.SqlServerExpress;
 using ProjectBook.Tipos;
 using System.Windows.Forms;
-using ProjectBook.Managers.Configuration;
 using ProjectBook.Model;
 
 namespace ProjectBook
@@ -52,7 +50,7 @@ namespace ProjectBook
         /// <param name="usuario"><c>Usuario</c> que será analisado</param>.
         /// <returns>Retorna <c>error</c></returns>
         public static bool VerificarCamposUsuario(UsuarioModel usuario) =>
-            usuario.usuario.Length == 0 || usuario.senha.Length == 0;
+            usuario == null || usuario.usuario.Length == 0 || usuario.senha.Length == 0;
         
         public static bool VerificarDataGrid(DataGridView dataGridView) => dataGridView.Rows.Count == 0;
 

@@ -1,29 +1,27 @@
 ﻿using NetMsixUpdater;
 using System.Reflection;
-using ProjectBook.GUI;
+using NetMsixUpdaterFormsComponent.Enum;
+using NetMsixUpdaterFormsComponent.Forms;
 
 namespace ProjectBook.Managers
 {
     public static class AppUpdateManager
     {
-        private static MsixUpdater updater
+        private static UpdateForm _updateForm { get; set; }
+        public static UpdateForm updateForm
         {
             get
             {
-                MsixUpdater msixUpdater = new(Assembly.GetExecutingAssembly(), Consts.YAML_UPDATER_SERVER_URL);
-                msixUpdater.Build();
+                if(_updateForm == null || _updateForm.IsDisposed)
+                {
+                    _updateForm = new(new(Assembly.GetExecutingAssembly(), Consts.YAML_UPDATER_SERVER_URL));
+                    _updateForm.mandatoryType = MandatoryType.AutoUpdate;
+                    _updateForm.showUpdateState = true;
+                }
 
-                return msixUpdater;
+                return _updateForm;
             }
         }
-
-        public static bool hasUpdated() => updater.hasUpdated;
-        public static void SearchUpdates()
-        {
-            if(hasUpdated()) return;
-            
-            UpdateApp updateApp = new(updater);
-            updateApp.Show();
-        }
+        public static void StartUpdate() => updateForm.Start();
     }
 }
