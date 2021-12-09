@@ -13,8 +13,6 @@ namespace ProjectBook.GUI
     public partial class Configuracoes : Form
     {
         private bool safeMode { get; }
-        
-        // TODO - Refatorar esta classe
         public Configuracoes(bool safeMode = false)
         {
             InitializeComponent();
@@ -37,7 +35,6 @@ namespace ProjectBook.GUI
             }
             
             gpbBancoDados.Enabled = UserInfo.UserNowInstance.tipoUsuario == TipoUsuario.ADM;
-            rabOneDrive.Visible = Verificadores.IsWin10();
         }
 
         #region CheckedChanged
@@ -61,34 +58,11 @@ namespace ProjectBook.GUI
             txtStringConexaoCaminhoDb.Visible = true;
             txtStringConexaoCaminhoDb.Size = new(426, 23);
         }
-        private void rabOneDrive_CheckedChanged(object sender, EventArgs e)
-        {
-            lblInfoText.Visible = false;
-            btnSelecionarArquivoDb.Visible = false;
-            txtStringConexaoCaminhoDb.Visible = false;
-
-            DirectoryInfo directoryInfo = string.IsNullOrEmpty(AppConfigurationManager.configuration.database.DbFolder) ?
-                null : Directory.GetParent(AppConfigurationManager.configuration.database.DbFolder);
-
-            if(directoryInfo == null && directoryInfo.Parent == null)
-            {
-                MessageBox.Show(Resources.ConexaoLocalMigrarOneDrive,
-                    Resources.Error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                rabSqlServerLocalDb.Checked = true;
-                return;
-            }
-            if (Verificadores.HasSyncOneDrive(directoryInfo))
-            {
-                lblInfoText.Visible = true;
-                lblInfoText.Text = Resources.BancoSincronizadoOneDrive;
-                lblInfoText.ForeColor = Color.Green;
-            }
-        }
         #endregion
 
         private void CarregarConfiguracoes()
         {
-            var directoryInfo = string.IsNullOrEmpty(AppConfigurationManager.configuration.database.DbFolder) ?
+            string directoryInfo = string.IsNullOrEmpty(AppConfigurationManager.configuration.database.DbFolder) ?
                 "" : Directory.GetParent(AppConfigurationManager.configuration.database.DbFolder).ToString();
 
             chbVisualizarImpressao.Checked = AppConfigurationManager.configuration.printer.PreviewPrinter;
@@ -106,16 +80,12 @@ namespace ProjectBook.GUI
                 case TipoDatabase.SqlServerLocalDb:
                     rabSqlServerLocalDb.Checked = true;
                     break;
-                case TipoDatabase.OneDrive when directoryInfo.Contains("OneDrive"):
-                    rabOneDrive.Checked = true;
-                    break;
             }
             txtStringConexaoCaminhoDb.Text = AppConfigurationManager.configuration.database.SqlConnectionString;
         }
 
         private void btnSalvarConfiguracoes_Click(object sender, EventArgs e)
         {
-            // Nescessario para verificar se houve mudança
             string stringConexaoAtual = AppConfigurationManager.configuration.database.SqlConnectionString;
 
             AppConfigurationManager.configuration = AppConfigurationManager.configuration with
@@ -153,23 +123,8 @@ namespace ProjectBook.GUI
             {
                 AppConfigurationManager.configuration.database = AppConfigurationManager.configuration.database with
                 {
-                    DbEngine = AppConfigurationManager.configuration.database.DbFolder.Contains("OneDrive") ?
-                    TipoDatabase.OneDrive : TipoDatabase.SqlServerLocalDb,
+                    DbEngine = TipoDatabase.SqlServerLocalDb,
                     SqlConnectionString = txtStringConexaoCaminhoDb.Text,
-                };
-            }
-            else if (rabOneDrive.Checked && !AppConfigurationManager.configuration.database.DbFolder.Contains("OneDrive"))
-            {
-                DialogResult dialogResult = MessageBox
-                    .Show(Resources.ConexaoLocalMigrarOneDrive,
-                    Resources.Informacao_MessageBox, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-                if (dialogResult != DialogResult.Yes) return;
-
-                AppConfigurationManager.configuration.database = AppConfigurationManager.configuration.database with
-                {
-                    DbFolder = "onedrive",
-                    SqlConnectionString = string.Empty
                 };
             }
 
@@ -214,10 +169,17 @@ namespace ProjectBook.GUI
 
             pgbCreateDatabase.Visible = true;
             btnCriarBanco.Enabled = false;
+            btnRedefinirConfig.Enabled = false;
+            btnSalvarConfiguracoes.Enabled = false;
 
             try { await DatabaseManager.CreateDb(); }
-            catch { MessageBox.Show(Resources.ErrorExecutarAcao,
-                Resources.Error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); Environment.Exit(1); }
+            catch 
+            { 
+                MessageBox.Show(Resources.ErrorExecutarAcao,
+                Resources.Error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error); 
+                
+                Environment.Exit(1); 
+            }
 
             MessageBox.Show(Resources.BancoCriado, Resources.Informacao_MessageBox,
                 MessageBoxButtons.OK, MessageBoxIcon.Information);

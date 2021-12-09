@@ -129,7 +129,7 @@ namespace ProjectBook.GUI
 
             ClienteDb.AtualizarClienteId(infoCliente.id, cliente);
             
-            MessageBox.Show(Resources.InformaçõesAtualizadas_MessageBox, Resources.Concluido_MessageBox, MessageBoxButtons.OK,
+            MessageBox.Show(Resources.InformacoesAtualizadas_MessageBox, Resources.Concluido_MessageBox, MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
 
             LimparCampos();

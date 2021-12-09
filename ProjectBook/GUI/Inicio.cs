@@ -198,17 +198,8 @@ namespace ProjectBook.GUI
                 Sobre sobre = new();
                 sobre.Show();
             };
-            mnuProcurarAtualizacoes.Click += (_, _) =>
-            {
-                if(AppUpdateManager.hasUpdated())
-                {
-                    MessageBox.Show(Resources.ProjectBookAtualizado, Resources.Informacao_MessageBox,
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
-                AppUpdateManager.SearchUpdates();
-            };
-            #endregion
+            mnuProcurarAtualizacoes.Click += (_, _) => AppUpdateManager.StartUpdate();
+                #endregion
 
             #region Acesso rápido
             mnuArCadastroLivro.Click += (_, _) =>

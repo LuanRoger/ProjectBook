@@ -34,7 +34,6 @@ namespace ProjectBook.GUI
             this.chbVisualizarImpressao = new System.Windows.Forms.CheckBox();
             this.btnSalvarConfiguracoes = new System.Windows.Forms.Button();
             this.gpbBancoDados = new System.Windows.Forms.GroupBox();
-            this.rabOneDrive = new System.Windows.Forms.RadioButton();
             this.btnSelecionarArquivoDb = new System.Windows.Forms.Button();
             this.rabSqlServerLocalDb = new System.Windows.Forms.RadioButton();
             this.lblInfoText = new System.Windows.Forms.Label();
@@ -103,7 +102,6 @@ namespace ProjectBook.GUI
             // 
             // gpbBancoDados
             // 
-            this.gpbBancoDados.Controls.Add(this.rabOneDrive);
             this.gpbBancoDados.Controls.Add(this.btnSelecionarArquivoDb);
             this.gpbBancoDados.Controls.Add(this.rabSqlServerLocalDb);
             this.gpbBancoDados.Controls.Add(this.lblInfoText);
@@ -116,18 +114,6 @@ namespace ProjectBook.GUI
             this.gpbBancoDados.TabIndex = 2;
             this.gpbBancoDados.TabStop = false;
             this.gpbBancoDados.Text = "Banco de dados";
-            // 
-            // rabOneDrive
-            // 
-            this.rabOneDrive.AutoSize = true;
-            this.rabOneDrive.Location = new System.Drawing.Point(391, 22);
-            this.rabOneDrive.Name = "rabOneDrive";
-            this.rabOneDrive.Size = new System.Drawing.Size(74, 19);
-            this.rabOneDrive.TabIndex = 5;
-            this.rabOneDrive.TabStop = true;
-            this.rabOneDrive.Text = "OneDrive";
-            this.rabOneDrive.UseVisualStyleBackColor = true;
-            this.rabOneDrive.CheckedChanged += new System.EventHandler(this.rabOneDrive_CheckedChanged);
             // 
             // btnSelecionarArquivoDb
             // 
@@ -335,7 +321,6 @@ namespace ProjectBook.GUI
         private System.Windows.Forms.CheckBox chbFormatarCliente;
         private System.Windows.Forms.RadioButton rabSqlServerLocalDb;
         private System.Windows.Forms.Button btnSelecionarArquivoDb;
-        private System.Windows.Forms.RadioButton rabOneDrive;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.CheckBox chbAtualizarStatusAluguel;
         private System.Windows.Forms.CheckBox chbExibirCodigo;

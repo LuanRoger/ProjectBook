@@ -82,7 +82,7 @@ namespace ProjectBook.DB.SqlServerExpress
         {
             using DatabaseManager databaseManager = new();
             
-            return databaseManager.usuarioModel.First(usuario => usuario.usuario.Equals(nomeUsuario) &&
+            return databaseManager.usuarioModel.FirstOrDefault(usuario => usuario.usuario.Equals(nomeUsuario) &&
                                                                  usuario.senha.Equals(senha));   
         }
         public static UsuarioModel LoginCodigo(int id, string senha)
@@ -90,7 +90,7 @@ namespace ProjectBook.DB.SqlServerExpress
             using DatabaseManager databaseManager = new();
             
             return databaseManager.usuarioModel
-                            .Single(usuario => usuario.id.Equals(id) &&
+                            .SingleOrDefault(usuario => usuario.id.Equals(id) &&
                                                usuario.senha.Equals(senha));
         }
             

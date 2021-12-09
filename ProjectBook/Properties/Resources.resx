@@ -331,7 +331,7 @@
   <data name="Sobre_MessageBox" xml:space="preserve">
     <value>Sobre</value>
   </data>
-  <data name="InformaçõesAtualizadas_MessageBox" xml:space="preserve">
+  <data name="InformacoesAtualizadas_MessageBox" xml:space="preserve">
     <value>Informações atualizadas</value>
   </data>
   <data name="textfield" type="System.Resources.ResXFileRef, System.Windows.Forms">
@@ -411,5 +411,8 @@
   </data>
   <data name="StringConexaoValida" xml:space="preserve">
     <value>Digite uma string de conexão valida para a criação do banco de dados.</value>
+  </data>
+  <data name="UsuarioCadastrado" xml:space="preserve">
+    <value>Usuario cadastrado com sucesso</value>
   </data>
 </root>

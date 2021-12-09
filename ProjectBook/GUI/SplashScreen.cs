@@ -2,17 +2,15 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using ProjectBook.DB.SqlServerExpress;
-using ProjectBook.GUI;
-using ProjectBook.Properties;
-using System.Threading.Tasks;
-using ProjectBook.DB.OneDrive;
 using ProjectBook.Managers;
 using ProjectBook.Managers.Configuration;
 using ProjectBook.Model;
+using ProjectBook.Properties;
 
-namespace ProjectBook
+namespace ProjectBook.GUI
 {
     public partial class SplashScreen : Form
     {
@@ -34,7 +32,7 @@ namespace ProjectBook
         {
             lblStatusCarregamento.Text = Resources.VerificandoConexao_SplashScreen;
             
-            if(await DatabaseManager.VerificarConexao() == false)
+            if(DatabaseManager.VerificarConexao() == false)
             {
                 DialogResult dialogResult = MessageBox.Show(Resources.ErrorConectarDb, Resources.Error_MessageBox, MessageBoxButtons.YesNo,
                     MessageBoxIcon.Error);
@@ -56,30 +54,20 @@ namespace ProjectBook
                 UsuarioLogado();
                 return;
             }
-            else AppManager.UpdateUserInfo();
-            
+
+            AppManager.UpdateUserInfo();
+
             lblStatusCarregamento.Text = Resources.Carregando_SplashScreen;
 
-            List<Task> inicializeTasks = new();
+            List<Task> inicializeTasks = new()
+            {
+                AtualizarAtrasso(),
+                Task.Delay(Consts.SPLASH_SCREEN_LOADTIME)
+            };
 
-            inicializeTasks.Add(SyncOneDrive());
-            inicializeTasks.Add(AtualizarAtrasso());
-            inicializeTasks.Add(Task.Delay(Consts.SPLASH_SCREEN_LOADTIME));
-            AppUpdateManager.SearchUpdates();
-            
             await Task.WhenAll(inicializeTasks.ToArray());
 
             Close();
-        }
-
-        private async Task SyncOneDrive()
-        {
-            if (AppConfigurationManager.configuration.database.DbEngine == Tipos.TipoDatabase.OneDrive &&
-                string.IsNullOrEmpty(AppConfigurationManager.configuration.database.SqlConnectionString))
-            {
-                lblStatusCarregamento.Text = Resources.MigrandoOneDrive;
-                await Task.Run(OneDrive.MigrarOneDrive);
-            }
         }
 
         private void UsuarioLogado()

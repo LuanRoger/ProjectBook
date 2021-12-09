@@ -1,5 +1,5 @@
 ﻿
-namespace ProjectBook
+namespace ProjectBook.GUI
 {
     partial class SplashScreen
     {
