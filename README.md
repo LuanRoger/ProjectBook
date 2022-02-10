@@ -1,15 +1,10 @@
-<h1 align="center">
-  <img alt="SplashScreen" src="https://github.com/LuanRoger/ProjectBook/blob/master/ProjectBook/assets/screenshots/PrintSplashScreen.png?raw=true"/>
-</h1>
+![](https://github.com/LuanRoger/ProjectBook/blob/master/ProjectBook/assets/screenshots/PrintSplashScreen.png?raw=true)
+# Project Book
+![](https://img.shields.io/github/v/release/LuanRoger/ProjectBook?include_prereleases)
+![](https://img.shields.io/github/license/LuanRoger/ProjectBook)
+![](https://img.shields.io/github/last-commit/LuanRoger/ProjectBook)
 
-<p>
-<img alt="GitHub release" src="https://img.shields.io/github/v/release/LuanRoger/ProjectBook?include_prereleases">
-<img alt="GitHub License" src="https://img.shields.io/github/license/LuanRoger/ProjectBook">
-<img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/LuanRoger/ProjectBook">
-</p>
-
-<h4 align="center"> Programa para gerenciamento de livros, clientes e alguel.</h4>
-<h3 align="center">Projeto ainda em desenvolvimento...</h3>
+### Programa para gerenciamento de livros, clientes e aluguel.
 
 ## Features
 * Acesso rápido para pesquisa e barra superior para acessar.
@@ -19,10 +14,11 @@
 * Atalhos nas teclas de função.
 
 ## Tecnologias e linguagem
-- [.NET 5](https://dotnet.microsoft.com)
+- [.NET 6](https://dotnet.microsoft.com)
 - [SQL Server Express 2019](https://www.microsoft.com/pt-br/sql-server)
-- SQL Local DB
 - C#
+- Entity Framework
+
 ## Capturas de tela
 ![](https://github.com/LuanRoger/ProjectBook/blob/master/ProjectBook/assets/screenshots/PrintInicio.png?raw=true)
 
