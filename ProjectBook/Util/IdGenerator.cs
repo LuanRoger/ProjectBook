@@ -9,7 +9,7 @@ namespace ProjectBook.Util
         {
             int codigo = new Random().Next(0, Consts.ID_GENERATION_RANGE);
 
-            while (await Verificadores.VerificarIdLivro(codigo)) codigo = new Random().Next(0, 999);
+            while(await Verificadores.VerificarIdLivro(codigo)) codigo = new Random().Next(0, 999);
 
             return codigo;
         }

@@ -1,5 +1,4 @@
-﻿
-namespace ProjectBook.GUI
+﻿namespace ProjectBook.GUI
 {
     partial class SplashScreen
     {
@@ -62,7 +61,7 @@ namespace ProjectBook.GUI
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(105, 15);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Luan Roger© 2021";
+            this.label2.Text = Properties.Resources.TheCreator;
             // 
             // lblStatusCarregamento
             // 

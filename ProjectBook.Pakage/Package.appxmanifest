@@ -9,7 +9,7 @@
   <Identity
     Name="LuanRoger.ProjectBook"
     Publisher="CN=LuanRoger"
-    Version="0.7.0.0" />
+    Version="1.0.0.0" />
 
   <Properties>
     <DisplayName>Project Book</DisplayName>

@@ -17,9 +17,11 @@ namespace ProjectBook.GUI
         public SplashScreen()
         {
             InitializeComponent();
-
-            AppManager.DownloadFonts();
+        }
+        private async void SplashScreen_Load(object sender, EventArgs e)
+        {
             AppConfigurationManager.LoadConfig();
+            await AppManager.DownloadFonts();
 
             PrivateFontCollection privateFont = new();
             privateFont.AddFontFile(Consts.FONT_MONTSERRAT_EXTRABOLD);
@@ -27,12 +29,11 @@ namespace ProjectBook.GUI
 
             label1.Font = new(privateFont.Families[0], 20, FontStyle.Bold);
             label2.Font = new(privateFont.Families[1], 7, FontStyle.Regular);
-        }
-        private async void SplashScreen_Load(object sender, EventArgs e)
-        {
-            lblStatusCarregamento.Text = Resources.VerificandoConexao_SplashScreen;
             
-            if(DatabaseManager.VerificarConexao() == false)
+            lblStatusCarregamento.Text = Resources.VerificandoConexao_SplashScreen;
+
+
+            if (DatabaseManager.VerificarConexao() == false)
             {
                 DialogResult dialogResult = MessageBox.Show(Resources.ErrorConectarDb, Resources.Error_MessageBox, MessageBoxButtons.YesNo,
                     MessageBoxIcon.Error);

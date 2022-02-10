@@ -1,8 +1,10 @@
 ﻿using System;
-using System.Net;
+using System.Collections.Generic;
 using System.IO;
 using System.Diagnostics;
+using System.Net.Http;
 using System.Reflection;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using ProjectBook.DB.SqlServerExpress;
 using ProjectBook.AppInsight;
@@ -21,19 +23,22 @@ namespace ProjectBook.Managers
             Process.GetCurrentProcess().Kill();
         }
 
-        public static void DownloadFonts()
+        public static async Task DownloadFonts()
         {
             if (File.Exists(@$"{Consts.FONTS_FOLDER}\{Consts.FONTS_DOWNLOAD[0]}") && 
                 File.Exists(@$"{Consts.FONTS_FOLDER}\{Consts.FONTS_DOWNLOAD[1]}") &&
-                File.Exists(@$"{Consts.FONTS_FOLDER}\{Consts.FONTS_DOWNLOAD[2]}")) return;
+                File.Exists(@$"{Consts.FONTS_FOLDER}\{Consts.FONTS_DOWNLOAD[2]}"))
+                return;
 
             Directory.CreateDirectory(Consts.FONTS_FOLDER);
 
-            using WebClient webClient = new();
+            using HttpClient httpClient = new();
             foreach (string font in Consts.FONTS_DOWNLOAD)
             {
-                webClient.DownloadFile(new Uri(Consts.URI_DOWNLAD_FONTS + font),
-                @$"{Consts.FONTS_FOLDER}\{font}");
+                HttpResponseMessage response = await httpClient.GetAsync(new Uri(Consts.URI_DOWNLAD_FONTS + font));
+
+                await using FileStream fileStream = new(@$"{Consts.FONTS_FOLDER}\{font}", FileMode.Create);
+                await response.Content.CopyToAsync(fileStream);
             }
         }
 
