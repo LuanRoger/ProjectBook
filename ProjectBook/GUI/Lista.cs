@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Text;
@@ -21,7 +22,7 @@ namespace ProjectBook.GUI
             this.dataList = dataList;
             
             #region MenuClick
-            mnuImprimirLista.Click += async (sender, e) =>
+            mnuImprimirLista.Click += async (_, _) =>
             {
                 pgbAsyncTask.Visible = true;
 
@@ -33,7 +34,7 @@ namespace ProjectBook.GUI
 
                 pgbAsyncTask.Visible = false;
             };
-            mnuExportarExcel.Click += async (sender, e) =>
+            mnuExportarExcel.Click += async (_, _) =>
             {
                 pgbAsyncTask.Visible = true;
 
@@ -44,28 +45,11 @@ namespace ProjectBook.GUI
             #endregion
         }
 
-        private async void ListaPesquisa_Load(object sender, System.EventArgs e)
+        private async void ListaPesquisa_Load(object sender, EventArgs e)
         {
             AppInsightMetrics.TrackForm("Lista");
             
-            try
-            {
-                PrivateFontCollection privateFont = new();
-                privateFont.AddFontFile(Consts.FONT_LATO_BOLD);
-                Font lato = new(privateFont.Families[0], 8, FontStyle.Bold);
-
-                int columnQuantidade = dgvLista.ColumnCount;
-                for (int i = 0; i < columnQuantidade; i++)
-                {
-                    dgvLista.Columns[i].DefaultCellStyle.Font = lato;
-                }
-            }
-            catch
-            {
-                MessageBox.Show(Resources.FaltaArquivoEscenciais,
-                    Resources.Error_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Process.GetCurrentProcess().Kill();
-            }
+            SetFonts();
             
             dgvLista.DataSource = await dataList.ToDataTableAsync();
             
@@ -73,10 +57,23 @@ namespace ProjectBook.GUI
             lblQColunas.Text = dgvLista.ColumnCount.ToString();
         }
 
+        private void SetFonts()
+        {
+            PrivateFontCollection privateFont = new();
+            try { privateFont.AddFontFile(Consts.FONT_LATO_BOLD); }
+            catch { /*Nothing*/ }
+            
+            Font lato = new(privateFont.Families.Length > 1 ? privateFont.Families[0] : new("Arial"),
+                8, FontStyle.Bold);
+            
+            foreach (DataGridViewColumn gridViewColumn in dgvLista.Columns)
+                gridViewColumn.DefaultCellStyle.Font = lato;
+        }
+
         private async Task ExportToSheets()
         {
-            var workbook = new XLWorkbook();
-            var worksheet = workbook.Worksheets.Add("Página 1");
+            XLWorkbook workbook = new();
+            IXLWorksheet worksheet = workbook.Worksheets.Add("Página 1");
 
             // Colocar o cabeçalho
             await Task.Run(() =>
@@ -127,12 +124,12 @@ namespace ProjectBook.GUI
             });
 
             SaveFileDialog saveFileDialog = new();
-            saveFileDialog.Filter = "Arquivo XLSX (*.xlsx) |*.xlsx| Arquivo XLSM (*.xlsm) |*.xlsm";
+            saveFileDialog.Filter = Consts.EXCEL_FILE_FILTER;
             if (saveFileDialog.ShowDialog() != DialogResult.OK) return;
 
 
             workbook.SaveAs(saveFileDialog.FileName);
-            MessageBox.Show("Planilha salva com sucesso", Resources.Informacao_MessageBox, MessageBoxButtons.OK,
+            MessageBox.Show(Resources.PlanilhaSalva, Resources.Informacao_MessageBox, MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
         }
     }

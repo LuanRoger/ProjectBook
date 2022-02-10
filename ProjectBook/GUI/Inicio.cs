@@ -13,6 +13,8 @@ namespace ProjectBook.GUI
 {
     public partial class Inicio : Form
     {
+        private bool isVisible => Opacity != 0;
+        
         public Inicio()
         {
             InitializeComponent();
@@ -31,7 +33,7 @@ namespace ProjectBook.GUI
 
         private async void bgwInicioActivated_DoWork(object sender, DoWorkEventArgs e)
         {
-            if (Opacity != 0)
+            if (isVisible)
             {
                 //TODO - Create a method to get only the count
                 lblLivrosCadastrados.Text = (await LivrosDb.VerTodosLivros()).Count.ToString();
@@ -149,14 +151,14 @@ namespace ProjectBook.GUI
 
                 AppInsightMetrics.TrackEvent("AbrirVerTodosLivrosMenu");
             };
-            mnuPesquisaSeletiva.Click += (_, _) =>
+            mnuPesquisarLivro.Click += (_, _) =>
             {
                 PesquisarLivro pesquisarLivro = new();
                 pesquisarLivro.Show();
 
                 AppInsightMetrics.TrackEvent("AbrirPesquisarLivroMenu");
             };
-            mnuLivrosAlugados.Click += async (_, _) =>
+            mnuTodosAlugueis.Click += async (_, _) =>
             {
                 ListaPesquisa<AluguelModel> listaPesquisa = new(await AluguelDb.VerTodosAluguel());
                 listaPesquisa.Show();
@@ -260,7 +262,7 @@ namespace ProjectBook.GUI
             };
             #endregion
             
-            Opacity = 0; //TODO - Create a propertie than say if the Form is visible or not
+            Opacity = 0; 
             ShowInTaskbar = false;
 
             SplashScreen splashScreen = new();

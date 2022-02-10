@@ -18,6 +18,8 @@ namespace ProjectBook
         public const string MDF_FILE_FILTER = "Arquivo MDF (*.mdf)|*.mdf";
         public const string CONN_STRING_LOCAL_MODEL =  
             @"Data Source=(LocalDB)\\MSSQLLocalDB;Database={0};Integrated Security=True";
+        
+        public const string EXCEL_FILE_FILTER = "Arquivo XLSX (*.xlsx) |*.xlsx| Arquivo XLSM (*.xlsm) |*.xlsm";
 
         public static readonly string[] FONTS_DOWNLOAD = 
             { "Lato-Bold.ttf", "Montserrat-ExtraBold.ttf", "Montserrat-ExtraLight.ttf" };
