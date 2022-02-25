@@ -49,7 +49,6 @@ namespace ProjectBook.GUI
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            //TODO - Default mark RadioButtom
 
             if(termoBusca.Length == 1)
             {
@@ -85,7 +84,9 @@ namespace ProjectBook.GUI
                 else if (rabExcluirAluguelTitulo.Checked) AluguelDb.DeletarAluguelTitulo(infoAluguel.titulo);
             }
             else AluguelDb.DeletarAluguelTituloLivro(infoAluguel.titulo, infoAluguel.alugadoPor);
-
+            
+            MessageBox.Show(Resources.AluguelExcluido, Resources.Concluido_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            
             txtBuscaAluguel.Clear();
         }
 

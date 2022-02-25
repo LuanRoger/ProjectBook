@@ -1,6 +1,6 @@
 ﻿namespace ProjectBook.Managers.Configuration.Sections
 {
-    public record LoginPreferencesSection
+    public class LoginPreferencesSection
     {
         public bool keepConnected { get; set; }
     }

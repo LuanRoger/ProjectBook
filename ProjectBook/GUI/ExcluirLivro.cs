@@ -5,6 +5,7 @@ using ProjectBook.AppInsight;
 using ProjectBook.DB.SqlServerExpress;
 using ProjectBook.Model;
 using ProjectBook.Properties;
+using ProjectBook.Properties;
 
 namespace ProjectBook.GUI
 {
@@ -69,6 +70,8 @@ namespace ProjectBook.GUI
             
             if (rabIdExcluirLivro.Checked) LivrosDb.DeletarLivroId(int.Parse(termoBusca));
             else if (rabExcluirTitulo.Checked) LivrosDb.DeletarLivroTitulo( termoBusca);
+            
+            MessageBox.Show(Resources.LivroExcluido, Resources.Informacao_MessageBox, MessageBoxButtons.OK);
             
             txtExcluirLivro.Clear();
         }

@@ -20,8 +20,8 @@ namespace ProjectBook.GUI
         }
         private async void SplashScreen_Load(object sender, EventArgs e)
         {
-            AppConfigurationManager.LoadConfig();
             await AppManager.DownloadFonts();
+            AppConfigurationManager.LoadConfig();
 
             PrivateFontCollection privateFont = new();
             privateFont.AddFontFile(Consts.FONT_MONTSERRAT_EXTRABOLD);
@@ -31,8 +31,7 @@ namespace ProjectBook.GUI
             label2.Font = new(privateFont.Families[1], 7, FontStyle.Regular);
             
             lblStatusCarregamento.Text = Resources.VerificandoConexao_SplashScreen;
-
-
+            
             if (DatabaseManager.VerificarConexao() == false)
             {
                 DialogResult dialogResult = MessageBox.Show(Resources.ErrorConectarDb, Resources.Error_MessageBox, MessageBoxButtons.YesNo,

@@ -282,14 +282,12 @@ namespace ProjectBook.GUI
                     tssUsuario.Visible = false;
                 }
 
-                splashScreen.Dispose();
+                AppInsightMetrics.InicializarInsights();
+                AppInsightMetrics.SendProcessInfo();
+                AppInsightMetrics.TrackForm("Inicio");
+                
+                BringToFront();
             };
-
-            AppInsightMetrics.InicializarInsights();
-            AppInsightMetrics.SendProcessInfo();
-            AppInsightMetrics.TrackForm("Inicio");
-
-            BringToFront();
         }
 
         private void Inicio_KeyDown(object sender, KeyEventArgs e)

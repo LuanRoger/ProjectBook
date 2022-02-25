@@ -62,9 +62,6 @@ namespace ProjectBook.GUI
 
         private void CarregarConfiguracoes()
         {
-            string directoryInfo = string.IsNullOrEmpty(AppConfigurationManager.configuration.database.DbFolder) ?
-                "" : Directory.GetParent(AppConfigurationManager.configuration.database.DbFolder).ToString();
-
             chbVisualizarImpressao.Checked = AppConfigurationManager.configuration.printer.PreviewPrinter;
             chbAtualizarStatusAluguel.Checked = AppConfigurationManager.configuration.renting.UpdateRentStatus;
             chbFormatarCliente.Checked =  AppConfigurationManager.configuration.formating.FormatClient;
@@ -88,43 +85,40 @@ namespace ProjectBook.GUI
         {
             string stringConexaoAtual = AppConfigurationManager.configuration.database.SqlConnectionString;
 
-            AppConfigurationManager.configuration = AppConfigurationManager.configuration with
+            AppConfigurationManager.configuration.printer = new()
             {
-                printer = new()
-                {
-                    PreviewPrinter = chbVisualizarImpressao.Checked,
-                    ShowId = chbExibirCodigo.Checked
-                },
-                formating = new() 
-                {
-                    FormatClient = chbFormatarCliente.Checked,
-                    FormatBook = chbFormatarLivro.Checked,
-                },
-                renting = new() 
-                {
-                    UpdateRentStatus = chbAtualizarStatusAluguel.Checked,
-                },
-                telemetry = new() 
-                {
-                    UseTelemetry = chbTelemetria.Checked,   
-                } 
+                PreviewPrinter = chbVisualizarImpressao.Checked,
+                ShowId = chbExibirCodigo.Checked
+            };
+            AppConfigurationManager.configuration.formating = new() 
+            {
+                FormatClient = chbFormatarCliente.Checked,
+                FormatBook = chbFormatarLivro.Checked,
+            };
+            AppConfigurationManager.configuration.renting = new() 
+            {
+                UpdateRentStatus = chbAtualizarStatusAluguel.Checked,
+            };
+            AppConfigurationManager.configuration.telemetry = new() 
+            {
+                UseTelemetry = chbTelemetria.Checked,   
             };
 
             //String de conexão
             if (rabSqlServerExpress.Checked)
             {
-                AppConfigurationManager.configuration.database = AppConfigurationManager.configuration.database with
+                AppConfigurationManager.configuration.database = new()
                 {
                     DbEngine = TipoDatabase.SqlServerExpress,
-                    SqlConnectionString = txtStringConexaoCaminhoDb.Text,
+                    SqlConnectionString = txtStringConexaoCaminhoDb.Text
                 };
             }
             else if (rabSqlServerLocalDb.Checked)
             {
-                AppConfigurationManager.configuration.database = AppConfigurationManager.configuration.database with
+                AppConfigurationManager.configuration.database = new()
                 {
                     DbEngine = TipoDatabase.SqlServerLocalDb,
-                    SqlConnectionString = txtStringConexaoCaminhoDb.Text,
+                    SqlConnectionString = txtStringConexaoCaminhoDb.Text
                 };
             }
 

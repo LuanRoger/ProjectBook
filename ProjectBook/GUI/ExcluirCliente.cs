@@ -72,6 +72,8 @@ namespace ProjectBook.GUI
             if (rabBuscarNome.Checked) ClienteDb.DeletarClienteNome(clienteInfo.nomeCompleto);
             else if (rabBsucarIdCliente.Checked) ClienteDb.DeletarClienteId(clienteInfo.id);
             
+            MessageBox.Show(Resources.ClienteExcluido, Resources.Informacao_MessageBox, MessageBoxButtons.OK);
+            
             LimparCamposExcluirCliente();
         }
         private void btnCancelarExcluirCliente_Click(object sender, EventArgs e) => Close();

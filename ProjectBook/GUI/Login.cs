@@ -53,7 +53,7 @@ namespace ProjectBook.GUI
                 userName = infoUsuario.usuario, 
                 tipoUsuario = infoUsuario.tipo
             };
-            AppConfigurationManager.configuration.login = AppConfigurationManager.configuration.login with
+            AppConfigurationManager.configuration.login = new()
             {
                 keepConnected = chbKeepConnected.Checked
             };
@@ -87,12 +87,7 @@ namespace ProjectBook.GUI
 
         private void txtLoginSenha_KeyDown(object sender, KeyEventArgs e)
         {
-            switch(e.KeyCode)
-            {
-                case Keys.Enter:
-                    btnEntrarLogin.PerformClick();
-                    break;
-            }
+            if(e.KeyCode == Keys.Enter) btnEntrarLogin.PerformClick();
         }
     }
 }

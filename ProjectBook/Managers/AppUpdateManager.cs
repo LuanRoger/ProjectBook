@@ -7,7 +7,7 @@ namespace ProjectBook.Managers
     public static class AppUpdateManager
     {
         private static UpdateForm _updateForm { get; set; }
-        public static UpdateForm updateForm
+        private static UpdateForm updateForm
         {
             get
             {

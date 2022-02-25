@@ -17,7 +17,7 @@ namespace ProjectBook
 
         public const string MDF_FILE_FILTER = "Arquivo MDF (*.mdf)|*.mdf";
         public const string CONN_STRING_LOCAL_MODEL =  
-            @"Data Source=(LocalDB)\\MSSQLLocalDB;Database={0};Integrated Security=True";
+            @"Data Source=(localdb)\MSSQLLocalDB;Database={0};Integrated Security=True";
         
         public const string EXCEL_FILE_FILTER = "Arquivo XLSX (*.xlsx) |*.xlsx| Arquivo XLSM (*.xlsm) |*.xlsm";
 
