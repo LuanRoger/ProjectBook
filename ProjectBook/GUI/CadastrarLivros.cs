@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Windows.Forms;
-using ProjectBook.AppInsight;
-using ProjectBook.DB.SqlServerExpress;
+﻿using System.Windows.Forms;
+using ProjectBook.DB;
+using ProjectBook.DB.Models;
 using ProjectBook.Properties;
-using ProjectBook.Managers.Configuration;
 using ProjectBook.Model;
 using ProjectBook.Util;
 
@@ -23,7 +19,10 @@ namespace ProjectBook.GUI
             #region MenuClick
             btnVerLivros.Click += async delegate
             {
-                ListaPesquisa<LivroModel> listaPesquisa = new(await LivrosDb.VerTodosLivros());
+                IContextTransaction transaction = Globals.databaseController.GetTransactionContext();
+                ICrudContext<LivroModel> livrosContext = (LivrosContext)transaction.StartTransaction<LivroModel>();
+                
+                ListaPesquisa<LivroModel> listaPesquisa = new(await livrosContext.ReadAllAsync());
                 listaPesquisa.Show();
             };
             btnPesquisarLivros.Click += delegate
@@ -36,8 +35,6 @@ namespace ProjectBook.GUI
             SugerirAutores();
             SugerirEditora();
             ColocarGeneros();
-            
-            AppInsightMetrics.TrackForm("CadastrarLivro");
         }
 
         #region Events
@@ -55,14 +52,12 @@ namespace ProjectBook.GUI
         }
         #endregion
 
-        private async void btnSalvarLivro_Click(object sender, EventArgs e)
+        private void btnSalvarLivro_Click(object sender, EventArgs e)
         {
-            #region Tratar código
+            #region Generate ID
             string codigoTxt = txtCodigoLivro.Text;
             if (Verificadores.VerificarStrings(codigoTxt))
-            {
-                txtCodigoLivro.Text = (await IdGenerator.GenerateIdLivro()).ToString();
-            }
+                txtCodigoLivro.Text = IdGenerator.GenerateIdLivro().ToString();
             else
             {
                 if(await Verificadores.VerificarIdLivro(Convert.ToInt32(codigoTxt))) 
@@ -80,49 +75,46 @@ namespace ProjectBook.GUI
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
-            LivroModel livro;
-            if (AppConfigurationManager.configuration.formating.FormatBook)
-            {
-                livro = new()
-                {
-                    id = int.Parse(txtCodigoLivro.Text),
-                    titulo = txtTituloLivro.Text.ToUpper(),
-                    autor = txtAutorLivro.Text.ToUpper(),
-                    editora = txtEditoraLivro.Text.ToUpper(),
-                    edicao = txtEdicaoLivro.Text.ToUpper(),
-                    ano = int.Parse(txtAno.Text.ToUpper()),
-                    genero = cmbGenero.Text.ToUpper(),
-                    isbn = txtIsbn.Text.ToUpper(),
-                    dataCadastro = DateTime.Now,
-                    observacoes = txtObservacoesCadastro.Text.ToUpper()
-                };
-            }
-            else
-            {
-                livro = new()
-                {
-                    id = int.Parse(txtCodigoLivro.Text),
-                    titulo = txtTituloLivro.Text,
-                    autor = txtAutorLivro.Text,
-                    editora = txtEditoraLivro.Text,
-                    edicao = txtEdicaoLivro.Text,
-                    ano = int.Parse(txtAno.Text),
-                    genero = cmbGenero.Text,
-                    isbn = txtIsbn.Text,
-                    dataCadastro = DateTime.Now,
-                    observacoes = txtObservacoesCadastro.Text
-                };
-            }
             
+            LivroModel livro = Globals.configurationController.configuration.formating.FormatBook ? 
+                new()
+            {
+                id = int.Parse(txtCodigoLivro.Text),
+                titulo = txtTituloLivro.Text.ToUpper(),
+                autor = txtAutorLivro.Text.ToUpper(),
+                editora = txtEditoraLivro.Text.ToUpper(),
+                edicao = txtEdicaoLivro.Text.ToUpper(),
+                ano = int.Parse(txtAno.Text.ToUpper()),
+                genero = cmbGenero.Text.ToUpper(),
+                isbn = txtIsbn.Text.ToUpper(),
+                dataCadastro = DateTime.Now,
+                observacoes = txtObservacoesCadastro.Text.ToUpper()
+            } : new()
+            {
+                id = int.Parse(txtCodigoLivro.Text),
+                titulo = txtTituloLivro.Text,
+                autor = txtAutorLivro.Text,
+                editora = txtEditoraLivro.Text,
+                edicao = txtEdicaoLivro.Text,
+                ano = int.Parse(txtAno.Text),
+                genero = cmbGenero.Text,
+                isbn = txtIsbn.Text,
+                dataCadastro = DateTime.Now,
+                observacoes = txtObservacoesCadastro.Text
+            };
+
             if (Verificadores.VerificarCamposLivros(livro))
             {
                 MessageBox.Show(Resources.PreencherCamposObrigatorios, Resources.Error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
-            LivrosDb.AdicionarLivro(livro);
+            
+            IContextTransaction transaction = Globals.databaseController.GetTransactionContext();
+            ICrudContext<LivroModel> livrosContext = (LivrosContext)transaction.StartTransaction<LivroModel>();
+            livrosContext.Create(livro);
+            
+            await transaction.EndTransactionAsync();
             
             MessageBox.Show(Resources.LivroRegistrado, Resources.Concluido_MessageBox, MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
@@ -141,7 +133,10 @@ namespace ProjectBook.GUI
             txtAutorLivro.AutoCompleteCustomSource.Clear();
             AutoCompleteStringCollection autorSugestoes = new();
             
-            foreach (LivroModel livro in await LivrosDb.VerTodosLivros()) 
+            IContextTransaction transaction = Globals.databaseController.GetTransactionContext();
+            ICrudContext<LivroModel> livrosContext = (LivrosContext)transaction.StartTransaction<LivroModel>();
+            
+            foreach (LivroModel livro in await livrosContext.ReadAllAsync()) 
                 autorSugestoes.Add(livro.autor);
             
             txtAutorLivro.AutoCompleteCustomSource = autorSugestoes;
@@ -151,7 +146,10 @@ namespace ProjectBook.GUI
             txtEditoraLivro.AutoCompleteCustomSource.Clear();
             AutoCompleteStringCollection editora = new();
             
-            foreach (LivroModel livro in await LivrosDb.VerTodosLivros()) 
+            IContextTransaction transaction = Globals.databaseController.GetTransactionContext();
+            ICrudContext<LivroModel> livrosContext = (LivrosContext)transaction.StartTransaction<LivroModel>();
+            
+            foreach (LivroModel livro in await livrosContext.ReadAllAsync()) 
                 editora.Add(livro.editora);
             
             txtEditoraLivro.AutoCompleteCustomSource = editora;
@@ -160,8 +158,11 @@ namespace ProjectBook.GUI
         {
             cmbGenero.Items.Clear();
             List<string> listGenero = new();
-
-            foreach(string genero in await LivrosDb.PegarGeneros()) listGenero.Add(genero);
+            
+            IContextTransaction transaction = Globals.databaseController.GetTransactionContext();
+            LivrosContext livrosContext = (LivrosContext)transaction.StartTransaction<LivroModel>();
+            
+            foreach(string genero in await livrosContext.GetGenres()) listGenero.Add(genero);
             
             cmbGenero.Items.AddRange(listGenero.Distinct().ToArray());
         }

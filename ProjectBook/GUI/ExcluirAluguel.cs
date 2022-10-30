@@ -1,8 +1,6 @@
-﻿using System;
-using System.Linq;
-using System.Windows.Forms;
-using ProjectBook.AppInsight;
-using ProjectBook.DB.SqlServerExpress;
+﻿using System.Windows.Forms;
+using ProjectBook.DB;
+using ProjectBook.DB.Models;
 using ProjectBook.Model;
 using ProjectBook.Properties;
 
@@ -13,8 +11,6 @@ namespace ProjectBook.GUI
         public ExcluirAluguel()
         {
             InitializeComponent();
-
-            Load += (_, _) => AppInsightMetrics.TrackForm("ExcluirAluguel");
         }
 
         #region CheckedChanged
@@ -22,7 +18,10 @@ namespace ProjectBook.GUI
         {
             AutoCompleteStringCollection livrosSugestoes = new();
             
-            foreach (AluguelModel aluguel in await AluguelDb.VerTodosAluguel()) 
+            IContextTransaction transaction = Globals.databaseController.GetTransactionContext();
+            ICrudContext<AluguelModel> aluguelContext = (AluguelContext)transaction.StartTransaction<AluguelModel>();
+            
+            foreach (AluguelModel aluguel in await aluguelContext.ReadAllAsync()) 
                 livrosSugestoes.Add($"{aluguel.titulo} - {aluguel.autor}");
             
             txtBuscaAluguel.AutoCompleteCustomSource = livrosSugestoes;
@@ -31,7 +30,11 @@ namespace ProjectBook.GUI
         private async void rabExcluirAluguelCliente_CheckedChanged(object sender, EventArgs e)
         {
             AutoCompleteStringCollection livrosSugestoes = new();
-            foreach (AluguelModel aluguel in await AluguelDb.VerTodosAluguel()) 
+            
+            IContextTransaction transaction = Globals.databaseController.GetTransactionContext();
+            ICrudContext<AluguelModel> aluguelContext = (AluguelContext)transaction.StartTransaction<AluguelModel>();
+            
+            foreach (AluguelModel aluguel in await aluguelContext.ReadAllAsync()) 
                 livrosSugestoes.Add($"{aluguel.autor} - {aluguel.titulo}");
             
             txtBuscaAluguel.AutoCompleteCustomSource = livrosSugestoes;
@@ -49,20 +52,23 @@ namespace ProjectBook.GUI
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
+            
+            IContextTransaction transaction = Globals.databaseController.GetTransactionContext();
+            AluguelContext aluguelContext = (AluguelContext)transaction.StartTransaction<AluguelModel>();
+            
             if(termoBusca.Length == 1)
             {
                 if (rabExcluirAluguelCliente.Checked) 
-                    infoAluguel = (await AluguelDb.BuscarAluguelCliente(termoBusca[0])).First();
+                    infoAluguel = (await aluguelContext.SearchAluguelCliente(termoBusca[0])).First();
                 else if (rabExcluirAluguelTitulo.Checked) 
-                    infoAluguel = (await AluguelDb.BuscarAluguelLivro(termoBusca[0])).First();
+                    infoAluguel = (await aluguelContext.SearchAluguelLivro(termoBusca[0])).First();
             }
             else 
             {
                 string titulo = rabExcluirAluguelTitulo.Checked ? termoBusca[0] : termoBusca[1];
                 string nomeCliente = rabExcluirAluguelCliente.Checked ? termoBusca[0] : termoBusca[2];
 
-                infoAluguel = (await AluguelDb.BuscarAluguelLivroCliente(titulo, nomeCliente)).First();
+                infoAluguel = (await aluguelContext.SearchAluguelLivroCliente(titulo, nomeCliente)).First();
             }
 
             if(Verificadores.VerificarCamposAluguel(infoAluguel))
@@ -80,10 +86,12 @@ namespace ProjectBook.GUI
 
             if(termoBusca.Length == 1)
             {
-                if (rabExcluirAluguelCliente.Checked) AluguelDb.DeletarAluguelCliente(infoAluguel.alugadoPor);
-                else if (rabExcluirAluguelTitulo.Checked) AluguelDb.DeletarAluguelTitulo(infoAluguel.titulo);
+                if (rabExcluirAluguelCliente.Checked) aluguelContext.DeleteAluguelCliente(infoAluguel.alugadoPor);
+                else if (rabExcluirAluguelTitulo.Checked) aluguelContext.DeleteAluguelTitulo(infoAluguel.titulo);
             }
-            else AluguelDb.DeletarAluguelTituloLivro(infoAluguel.titulo, infoAluguel.alugadoPor);
+            else aluguelContext.DeleteAluguelTituloClient(infoAluguel.titulo, infoAluguel.alugadoPor);
+            
+            await transaction.EndTransactionAsync();
             
             MessageBox.Show(Resources.AluguelExcluido, Resources.Concluido_MessageBox, MessageBoxButtons.OK, MessageBoxIcon.Information);
             

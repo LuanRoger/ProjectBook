@@ -1,21 +1,20 @@
-﻿using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 using KimToo;
-using ProjectBook.Managers.Configuration;
+using ProjectBook.Controllers;
 
-namespace ProjectBook
+namespace ProjectBook.Imprimir
 {
     class Imprimir
     {
         private EasyHTMLReports reports = new();
         public async Task ImprimirModelo(DataGridView dataGrid)
         {
-            if (AppConfigurationManager.configuration.printer.ShowId && dataGrid.Columns["ID"] != null)
+            if (ConfigurationController.configuration.printer.ShowId && dataGrid.Columns["ID"] != null)
                 dataGrid.Columns.Remove(dataGrid.Columns["ID"]);
 
             await Task.Run(() => reports.AddDatagridView(dataGrid));
 
-            if (AppConfigurationManager.configuration.printer.PreviewPrinter) reports.Print();
+            if (ConfigurationController.configuration.printer.PreviewPrinter) reports.Print();
             else reports.ShowPrintPreviewDialog();
 
             reports.Dispose();

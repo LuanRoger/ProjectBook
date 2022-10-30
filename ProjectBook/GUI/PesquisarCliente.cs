@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Windows.Forms;
-using ProjectBook.AppInsight;
-using ProjectBook.DB.SqlServerExpress;
+﻿using System.Windows.Forms;
+using ProjectBook.DB;
+using ProjectBook.DB.Models;
 using ProjectBook.Model;
 using ProjectBook.Properties;
 
@@ -13,8 +11,6 @@ namespace ProjectBook.GUI
         public PesquisarCliente()
         {
             InitializeComponent();
-
-            Load += (_, _) => AppInsightMetrics.TrackForm("PesquisarCliente");
         }
 
         private async void btnPesquisarCliente_Click(object sender, EventArgs e)
@@ -26,10 +22,13 @@ namespace ProjectBook.GUI
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            
             List<ClienteModel> cliente = new();
-
-            if (rabPesquisarId.Checked) cliente.Add(await ClienteDb.BuscarClienteId(int.Parse(termoPesquisa)));
-            else if (rabPesquisarNome.Checked) cliente = await ClienteDb.BuscarClienteNome(termoPesquisa);
+            IContextTransaction transaction = Globals.databaseController.GetTransactionContext();
+            ClienteContext clienteContext = (ClienteContext)transaction.StartTransaction<ClienteModel>();
+            
+            if (rabPesquisarId.Checked) cliente.Add(clienteContext.ReadById(int.Parse(termoPesquisa)));
+            else if (rabPesquisarNome.Checked) cliente = await clienteContext.SearchClienteNome(termoPesquisa);
 
             ListaPesquisa<ClienteModel> listaPesquisa = new(cliente);
             listaPesquisa.Show();

@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
+﻿using System.Drawing;
 using System.Drawing.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using ProjectBook.DB.SqlServerExpress;
-using ProjectBook.Managers;
-using ProjectBook.Managers.Configuration;
+using ProjectBook.Controllers;
+using ProjectBook.DB;
+using ProjectBook.DB.Models;
 using ProjectBook.Model;
 using ProjectBook.Properties;
+using ProjectBook.Services;
 
 namespace ProjectBook.GUI
 {
@@ -20,8 +18,14 @@ namespace ProjectBook.GUI
         }
         private async void SplashScreen_Load(object sender, EventArgs e)
         {
-            await AppManager.DownloadFonts();
-            AppConfigurationManager.LoadConfig();
+            WebDownloadService webDownloadService = new();
+            
+            Task firstTasks = Task.WhenAll(new List<Task> 
+            { 
+                webDownloadService.DownloadFonts(), 
+                Globals.configurationController.LoadConfig()
+            });
+            await firstTasks;
 
             PrivateFontCollection privateFont = new();
             privateFont.AddFontFile(Consts.FONT_MONTSERRAT_EXTRABOLD);
@@ -32,14 +36,16 @@ namespace ProjectBook.GUI
             
             lblStatusCarregamento.Text = Resources.VerificandoConexao_SplashScreen;
             
-            if (DatabaseManager.VerificarConexao() == false)
+            if (Globals.databaseController.CanConnect() == false)
             {
                 DialogResult dialogResult = MessageBox.Show(Resources.ErrorConectarDb, Resources.Error_MessageBox, MessageBoxButtons.YesNo,
                     MessageBoxIcon.Error);
                 
                 if(dialogResult == DialogResult.Yes)
                 {
-                    DatabaseManager.OpenConfigurationSafeMode();
+                    Configuracoes configuracoes = new(safeMode: true);
+                    configuracoes.Show();
+                    configuracoes.BringToFront();
                     return;   
                 }
 
@@ -48,49 +54,46 @@ namespace ProjectBook.GUI
 
             lblStatusCarregamento.Text = Resources.VerificacoesSeguranca_SplashScreen;
 
-            AppManager.LoadUser();
-            if (!Verificadores.VerificarUsuarioLogado())
+            Globals.userSessionController.LoadUser();
+            if (UserSessionController.isAnonymus)
             {
-                UsuarioLogado();
+                LoginUser();
                 return;
             }
-
-            AppManager.UpdateUserInfo();
 
             lblStatusCarregamento.Text = Resources.Carregando_SplashScreen;
 
             List<Task> inicializeTasks = new()
             {
+                Globals.userSessionController.UpdateUserAccessType(),
                 AtualizarAtrasso(),
                 Task.Delay(Consts.SPLASH_SCREEN_LOADTIME)
             };
 
-            await Task.WhenAll(inicializeTasks.ToArray());
+            await Task.WhenAll(inicializeTasks);
 
             Close();
         }
 
-        private void UsuarioLogado()
+        private void LoginUser()
         {
             if (Application.OpenForms.Count < 2)
             {
                 Login login = new();
                 login.ShowDialog();
             }
-            else AppManager.ReiniciarPrograma();
+            else AppController.RestartApplication();
         }
 
         private async Task AtualizarAtrasso()
         {
             lblStatusCarregamento.Text = Resources.AtualizandoBancoDados_SpashScreen;
             
-            foreach (AluguelModel data in await AluguelDb.PegarLivrosAlugados())
-            {
-                DateTime hoje = DateTime.Now.Date;
-                DateTime devolucao = data.dataDevolucao;
-                if (Convert.ToInt32((hoje - devolucao).Days) >= 0)
-                    AluguelDb.AtualizarStatusAtrasado(data.alugadoPor);
-            }
+            IContextTransaction transaction = Globals.databaseController.GetTransactionContext();
+            AluguelContext aluguelTransaction = (AluguelContext)transaction.StartTransaction<AluguelModel>();
+            await aluguelTransaction.UpdateStatusAtrasado();
+            
+            await transaction.EndTransactionAsync();
         }
     }
 }

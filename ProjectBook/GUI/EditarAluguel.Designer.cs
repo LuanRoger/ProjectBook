@@ -1,4 +1,6 @@
 ﻿
+using ProjectBook.Model.Enums;
+
 namespace ProjectBook.GUI
 {
     partial class EditarAluguel
@@ -460,9 +462,9 @@ namespace ProjectBook.GUI
             this.cmbNovoStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbNovoStatus.FormattingEnabled = true;
             this.cmbNovoStatus.Items.AddRange(new object[] {
-            ProjectBook.Tipos.StatusAluguel.Alugado,
-            ProjectBook.Tipos.StatusAluguel.Devolvido,
-            ProjectBook.Tipos.StatusAluguel.Atrasado});
+            StatusAluguel.Alugado,
+            StatusAluguel.Devolvido,
+            StatusAluguel.Atrasado});
             this.cmbNovoStatus.Location = new System.Drawing.Point(12, 442);
             this.cmbNovoStatus.Name = "cmbNovoStatus";
             this.cmbNovoStatus.Size = new System.Drawing.Size(232, 23);

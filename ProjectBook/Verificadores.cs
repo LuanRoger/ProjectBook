@@ -1,10 +1,7 @@
-﻿#nullable enable
-using System.IO;
-using System.Threading.Tasks;
-using ProjectBook.DB.SqlServerExpress;
-using ProjectBook.Tipos;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
+using ProjectBook.DB.Models;
 using ProjectBook.Model;
+using ProjectBook.Model.Enums;
 
 namespace ProjectBook
 {
@@ -17,9 +14,11 @@ namespace ProjectBook
         /// <returns>Retorna <c>error</c></returns>
         public static bool VerificarCamposLivros(LivroModel livro) =>
             livro.titulo.Length == 0 || livro.autor.Length == 0 || livro.editora.Length == 0;
+        
+        //FIX: Check if a book exists
         public static async Task<bool> VerificarIdLivro(int id)
         {
-            LivroModel? livro = await LivrosDb.BuscarLivrosId(id);
+            LivroModel? livro = await LivrosContext.BuscarLivrosId(id);
             return livro != null;
         }
         public static bool VerificarAnoLivro(string stringId) => int.TryParse(stringId, out _);
@@ -54,23 +53,6 @@ namespace ProjectBook
         
         public static bool VerificarDataGrid(DataGridView dataGridView) => dataGridView.Rows.Count == 0;
 
-        /// <summary>
-        /// Verifica se há um usuario logado
-        /// </summary>
-        /// <returns><c>exists</c></returns>
-        public static bool VerificarUsuarioLogado()
-        {
-            bool usuarioValido;
-
-            if (File.Exists(Consts.FILE_FULL_NAME))
-            {
-                usuarioValido = UserInfo.UserNowInstance.userName != "placeholder" &&
-                    !string.IsNullOrEmpty(UserInfo.UserNowInstance.userName);
-            }
-            else usuarioValido = false;
-
-            return usuarioValido;
-        }
         public static bool IsDefaultUser() => UserInfo.UserNowInstance.userName == "admin" && 
                                               UserInfo.UserNowInstance.tipoUsuario == TipoUsuario.ADM &&
                                               UserInfo.UserNowInstance.idUsuario == 1;

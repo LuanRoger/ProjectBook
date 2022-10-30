@@ -1,8 +1,6 @@
-﻿using System;
-using System.Windows.Forms;
-using ProjectBook.AppInsight;
-using ProjectBook.DB.SqlServerExpress;
-using ProjectBook.Managers.Configuration;
+﻿using System.Windows.Forms;
+using ProjectBook.DB;
+using ProjectBook.DB.Models;
 using ProjectBook.Model;
 using ProjectBook.Properties;
 
@@ -16,7 +14,10 @@ namespace ProjectBook.GUI
 
             btnVerClientes.Click += async delegate
             {
-                ListaPesquisa<ClienteModel> listaPesquisa = new(await ClienteDb.VerTodosClientes());
+                IContextTransaction transaction = Globals.databaseController.GetTransactionContext();
+                ICrudContext<ClienteModel> clienteContext = (ClienteContext)transaction.StartTransaction<ClienteModel>();
+                
+                ListaPesquisa<ClienteModel> listaPesquisa = new(await clienteContext.ReadAllAsync());
                 listaPesquisa.Show();
             };
             btnPesquisarCliente.Click += delegate
@@ -24,58 +25,54 @@ namespace ProjectBook.GUI
                 PesquisarCliente pesquisarCliente = new();
                 pesquisarCliente.Show();
             };
-            Load += (_, _) => AppInsightMetrics.TrackForm("CadastrarCliente");
         }
 
         private void btnSalvarCliente_Click(object sender, EventArgs e)
         {
-            ClienteModel cliente;
-
             //Aplicar a formatação na instânciação do cliente
-            if (AppConfigurationManager.configuration.formating.FormatClient)
+            ClienteModel cliente = Globals.configurationController.configuration.formating.FormatClient ? 
+                new()
             {
-                cliente = new()
-                {
-                    nomeCompleto = txtNomeCliente.Text.ToUpper(),
-                    endereco = txtEnderecoCliente.Text.ToUpper(),
-                    cidade = txtCidadeCliente.Text.ToUpper(),
-                    estado = cmbEstadoCliente.Text.ToUpper(),
-                    cep = txtCepCliente.Text.ToUpper(),
-                    dataNascimento = dtpDataNascimento.Value.Date,
-                    profissao = txtProfissao.Text.ToUpper(),
-                    empresa = txtEmpressa.Text.ToUpper(),
-                    telefone1 = txtTelefone1Cliente.Text.ToUpper(),
-                    telefone2 = txtTelefone2Cliente.Text.ToUpper(),
-                    email = txtEmailCliente.Text.ToUpper(),
-                    observacoes = txtObservacoes.Text.ToUpper()
-                };
-            }
-            else
+                nomeCompleto = txtNomeCliente.Text.ToUpper(),
+                endereco = txtEnderecoCliente.Text.ToUpper(),
+                cidade = txtCidadeCliente.Text.ToUpper(),
+                estado = cmbEstadoCliente.Text.ToUpper(),
+                cep = txtCepCliente.Text.ToUpper(),
+                dataNascimento = dtpDataNascimento.Value.Date,
+                profissao = txtProfissao.Text.ToUpper(),
+                empresa = txtEmpressa.Text.ToUpper(),
+                telefone1 = txtTelefone1Cliente.Text.ToUpper(),
+                telefone2 = txtTelefone2Cliente.Text.ToUpper(),
+                email = txtEmailCliente.Text.ToUpper(),
+                observacoes = txtObservacoes.Text.ToUpper()
+            } : new()
             {
-                cliente = new()
-                {
-                    nomeCompleto = txtNomeCliente.Text,
-                    endereco = txtEnderecoCliente.Text,
-                    cidade = txtCidadeCliente.Text,
-                    estado = cmbEstadoCliente.Text,
-                    cep = txtCepCliente.Text,
-                    dataNascimento = dtpDataNascimento.Value.Date,
-                    profissao = txtProfissao.Text,
-                    empresa = txtEmpressa.Text,
-                    telefone1 = txtTelefone1Cliente.Text,
-                    telefone2 = txtTelefone2Cliente.Text,
-                    email = txtEmailCliente.Text,
-                    observacoes = txtObservacoes.Text
-                };
-            }
-
+                nomeCompleto = txtNomeCliente.Text,
+                endereco = txtEnderecoCliente.Text,
+                cidade = txtCidadeCliente.Text,
+                estado = cmbEstadoCliente.Text,
+                cep = txtCepCliente.Text,
+                dataNascimento = dtpDataNascimento.Value.Date,
+                profissao = txtProfissao.Text,
+                empresa = txtEmpressa.Text,
+                telefone1 = txtTelefone1Cliente.Text,
+                telefone2 = txtTelefone2Cliente.Text,
+                email = txtEmailCliente.Text,
+                observacoes = txtObservacoes.Text
+            };
+            
             if (Verificadores.VerificarCamposCliente(cliente))
             {
                 MessageBox.Show(Resources.PreencherCamposObrigatorios, Resources.Error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            ClienteDb.CadastrarCliente(cliente);
+            
+            IContextTransaction transaction = Globals.databaseController.GetTransactionContext();
+            ClienteContext clienteContext = (ClienteContext)transaction.StartTransaction<ClienteModel>();
+            clienteContext.Create(cliente);
+            
+            transaction.EndTransaction();
             
             MessageBox.Show(Resources.ClienteRegistrado, Resources.Concluido_MessageBox, MessageBoxButtons.OK,
                 MessageBoxIcon.Information);

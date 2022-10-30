@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Windows.Forms;
-using ProjectBook.AppInsight;
-using ProjectBook.DB.SqlServerExpress;
+﻿using System.Windows.Forms;
+using ProjectBook.DB;
+using ProjectBook.DB.Models;
 using ProjectBook.Properties;
-using ProjectBook.Managers.Configuration;
 using ProjectBook.Model;
 using ProjectBook.Util;
 
@@ -13,7 +9,7 @@ namespace ProjectBook.GUI
 {
     public partial class EditarLivro : Form
     {
-        private LivroModel infoLivro;
+        private LivroModel? infoLivro;
 
         public EditarLivro()
         {
@@ -23,7 +19,10 @@ namespace ProjectBook.GUI
 
             btnVerLivros.Click += async (_, _) =>
             {
-                ListaPesquisa<LivroModel> listaPesquisa = new(await LivrosDb.VerTodosLivros());
+                IContextTransaction transaction = Globals.databaseController.GetTransactionContext();
+                ICrudContext<LivroModel> livrosContext = (LivrosContext)transaction.StartTransaction<LivroModel>();
+                
+                ListaPesquisa<LivroModel> listaPesquisa = new(await livrosContext.ReadAllAsync());
                 listaPesquisa.Show();
             };
             btnPesquisarLivros.Click += (_, _) =>
@@ -31,18 +30,22 @@ namespace ProjectBook.GUI
                 PesquisarLivro pesquisarLivro = new();
                 pesquisarLivro.Show();
             };
-            Load += (_, _) => AppInsightMetrics.TrackForm("EditarLivro");
         }
 
-        #region Events
+        #region CheckedChanged
         private void rabEditarId_CheckedChanged(object sender, EventArgs e) =>
             txtEditarBuscar.AutoCompleteMode = AutoCompleteMode.None;
+        
+        //TODO: Made those tow events redirect to one
         private async void rabEditarTitulo_CheckedChanged(object sender, EventArgs e)
         {
             txtEditarBuscar.AutoCompleteMode = AutoCompleteMode.Suggest;
             AutoCompleteStringCollection tituloSugestao = new();
-
-            foreach (LivroModel livro in await LivrosDb.VerTodosLivros()) 
+            
+            IContextTransaction transaction = Globals.databaseController.GetTransactionContext();
+            ICrudContext<LivroModel> livrosContext = (LivrosContext)transaction.StartTransaction<LivroModel>();
+            
+            foreach (LivroModel livro in await livrosContext.ReadAllAsync())
                 tituloSugestao.Add($"{livro.titulo} - {livro.autor}");
             
             txtEditarBuscar.AutoCompleteCustomSource = tituloSugestao;
@@ -51,8 +54,11 @@ namespace ProjectBook.GUI
         {
             txtEditarBuscar.AutoCompleteMode = AutoCompleteMode.Suggest;
             AutoCompleteStringCollection autorSugestao = new();
-
-            foreach (LivroModel livro in await LivrosDb.VerTodosLivros()) 
+            
+            IContextTransaction transaction = Globals.databaseController.GetTransactionContext();
+            ICrudContext<LivroModel> livrosContext = (LivrosContext)transaction.StartTransaction<LivroModel>();
+            
+            foreach (LivroModel livro in await livrosContext.ReadAllAsync()) 
                 autorSugestao.Add($"{livro.autor} - {livro.titulo}"); //Autor - Titulo
             txtEditarBuscar.AutoCompleteCustomSource = autorSugestao;
         }
@@ -89,28 +95,32 @@ namespace ProjectBook.GUI
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
+            
+            IContextTransaction transaction = Globals.databaseController.GetTransactionContext();
+            LivrosContext livrosContext = (LivrosContext)transaction.StartTransaction<LivroModel>();
+            
             if (rabEditarId.Checked)
-                infoLivro = await LivrosDb.BuscarLivrosId(int.Parse(txtEditarBuscar.Text)); 
+                infoLivro = livrosContext.ReadById(int.Parse(txtEditarBuscar.Text)); 
             else if (rabEditarTitulo.Checked) 
-                infoLivro = (await LivrosDb.BuscarLivrosTitulo(paraBuscar[0].Trim())).First(); 
+                infoLivro = (await livrosContext.SearchLivrosTitulo(paraBuscar[0].Trim())).First(); 
             else if (rabEditarAutor.Checked)
-                infoLivro = (await LivrosDb.BuscarLivrosAutor(paraBuscar[0].Trim())).First(); 
+                infoLivro = (await livrosContext.SearchLivrosAutor(paraBuscar[0].Trim())).First(); 
             else return; 
 
             PreencherCampos(infoLivro);
         }
 
-        private async void btnSalvarEditar_Click(object sender, EventArgs e)
+        private void btnSalvarEditar_Click(object sender, EventArgs e)
         {
-            #region Tratar código
+            #region Generate ID
             string codigoTxt = txtEditarCodigo.Text;
             
             if (Verificadores.VerificarStrings(codigoTxt))
-                txtEditarCodigo.Text = (await IdGenerator.GenerateIdLivro()).ToString();
+                txtEditarCodigo.Text = IdGenerator.GenerateIdLivro().ToString();
             else
             {
-                if(await Verificadores.VerificarIdLivro(Convert.ToInt32(codigoTxt)) && Convert.ToInt32(codigoTxt) != infoLivro.id) 
+                if(infoLivro is null || await Verificadores.VerificarIdLivro(Convert.ToInt32(codigoTxt)) && 
+                   Convert.ToInt32(codigoTxt) != infoLivro.id) 
                 {
                     MessageBox.Show(Resources.IdExistente, Resources.Error_MessageBox,
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -126,39 +136,31 @@ namespace ProjectBook.GUI
                 return;
             }
 
-            LivroModel livro;
-            if (AppConfigurationManager.configuration.formating.FormatBook)
+            LivroModel livro = Globals.configurationController.configuration.formating.FormatBook ? new()
             {
-                livro = new()
-                {
-                    id = int.Parse(txtEditarCodigo.Text),
-                    titulo = txtEditarTitulo.Text.ToUpper(),
-                    autor = txtEditarAutor.Text.ToUpper(),
-                    editora = txtEditarEditora.Text.ToUpper(),
-                    edicao = txtEditarEdicao.Text.ToUpper(),
-                    ano = int.Parse(txtEditarAno.Text),
-                    genero = cmbEditarGenero.Text.ToUpper(),
-                    isbn = txtEditarIsbn.Text.ToUpper(),
-                    dataCadastro = DateTime.Now,
-                    observacoes = txtEditarObservacoes.Text.ToUpper()
-                };
-            }
-            else
+                id = int.Parse(txtEditarCodigo.Text),
+                titulo = txtEditarTitulo.Text.ToUpper(),
+                autor = txtEditarAutor.Text.ToUpper(),
+                editora = txtEditarEditora.Text.ToUpper(),
+                edicao = txtEditarEdicao.Text.ToUpper(),
+                ano = int.Parse(txtEditarAno.Text),
+                genero = cmbEditarGenero.Text.ToUpper(),
+                isbn = txtEditarIsbn.Text.ToUpper(),
+                dataCadastro = DateTime.Now,
+                observacoes = txtEditarObservacoes.Text.ToUpper()
+            } : new()
             {
-                livro = new()
-                {
-                    id = int.Parse(txtEditarCodigo.Text),
-                    titulo = txtEditarTitulo.Text,
-                    autor = txtEditarAutor.Text,
-                    editora = txtEditarEditora.Text,
-                    edicao = txtEditarEdicao.Text,
-                    ano = int.Parse(txtEditarAno.Text),
-                    genero = cmbEditarGenero.Text,
-                    isbn = txtEditarIsbn.Text,
-                    dataCadastro = DateTime.Now,
-                    observacoes = txtEditarObservacoes.Text
-                };
-            }
+                id = int.Parse(txtEditarCodigo.Text),
+                titulo = txtEditarTitulo.Text,
+                autor = txtEditarAutor.Text,
+                editora = txtEditarEditora.Text,
+                edicao = txtEditarEdicao.Text,
+                ano = int.Parse(txtEditarAno.Text),
+                genero = cmbEditarGenero.Text,
+                isbn = txtEditarIsbn.Text,
+                dataCadastro = DateTime.Now,
+                observacoes = txtEditarObservacoes.Text
+            };
             
             if (Verificadores.VerificarCamposLivros(livro))
             {
@@ -166,8 +168,13 @@ namespace ProjectBook.GUI
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
-            LivrosDb.AtualizarViaId(infoLivro.id, livro);
+            
+            IContextTransaction transaction = Globals.databaseController.GetTransactionContext();
+            LivrosContext livrosContext = (LivrosContext)transaction.StartTransaction<LivroModel>();
+            
+            livrosContext.UpdateById(infoLivro!.id, livro);
+            
+            transaction.EndTransaction();
             
             MessageBox.Show(Resources.InformacoesAtualizadas_MessageBox, Resources.Concluido_MessageBox, MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
@@ -201,7 +208,11 @@ namespace ProjectBook.GUI
         private async void SugerirAutores()
         {
             AutoCompleteStringCollection autorSugestoes = new();
-            foreach (LivroModel livro in await LivrosDb.VerTodosLivros()) 
+            
+            IContextTransaction transaction = Globals.databaseController.GetTransactionContext();
+            LivrosContext livrosContext = (LivrosContext)transaction.StartTransaction<LivroModel>();
+            
+            foreach (LivroModel livro in await livrosContext.ReadAllAsync()) 
                 autorSugestoes.Add(livro.autor);
 
             txtEditarAutor.AutoCompleteCustomSource = autorSugestoes;
@@ -210,8 +221,11 @@ namespace ProjectBook.GUI
         {
             cmbEditarGenero.Items.Clear();
             List<string> listGenero = new();
+            
+            IContextTransaction transaction = Globals.databaseController.GetTransactionContext();
+            LivrosContext livrosContext = (LivrosContext)transaction.StartTransaction<LivroModel>();
 
-            foreach(string genero in await LivrosDb.PegarGeneros()) listGenero.Add(genero);
+            foreach(string genero in await livrosContext.GetGenres()) listGenero.Add(genero);
             
             cmbEditarGenero.Items.AddRange(listGenero.Distinct().ToArray());
         }

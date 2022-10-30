@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace ProjectBook
+﻿namespace ProjectBook
 {
     public static class Consts
     {
@@ -8,12 +6,12 @@ namespace ProjectBook
         
         public const int ID_GENERATION_RANGE = 900;
 
-        public static string APPLOCAL_FOLDER = 
+        public static readonly string APPLOCAL_FOLDER = 
             Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\LuanRoger\ProjectBook\";
 
-        public const string USER_FORMAT = ".puf";
-        public const string USER_FILE_NAME = "UserInfo";
-        public static readonly string FILE_FULL_NAME = APPLOCAL_FOLDER + USER_FILE_NAME + USER_FORMAT;
+        private const string USER_FORMAT = ".puf";
+        private const string USER_FILE_NAME = "UserInfo";
+        public static readonly string USER_FILE = APPLOCAL_FOLDER + USER_FILE_NAME + USER_FORMAT;
 
         public const string MDF_FILE_FILTER = "Arquivo MDF (*.mdf)|*.mdf";
         public const string CONN_STRING_LOCAL_MODEL =  

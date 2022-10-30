@@ -1,8 +1,6 @@
-﻿using System;
-using System.Linq;
-using System.Windows.Forms;
-using ProjectBook.AppInsight;
-using ProjectBook.DB.SqlServerExpress;
+﻿using System.Windows.Forms;
+using ProjectBook.DB;
+using ProjectBook.DB.Models;
 using ProjectBook.Model;
 using ProjectBook.Properties;
 
@@ -13,8 +11,6 @@ namespace ProjectBook.GUI
         public ExcluirCliente()
         {
             InitializeComponent();
-
-            Load += (_, _) => AppInsightMetrics.TrackForm("ExcluirCliente");
         }
 
         #region CheckChange
@@ -25,8 +21,11 @@ namespace ProjectBook.GUI
         {
             AutoCompleteStringCollection sugestaoCliente = new();
             txtBuscarExcluirCliente.AutoCompleteMode = AutoCompleteMode.Suggest;
+            
+            IContextTransaction transaction = Globals.databaseController.GetTransactionContext();
+            ICrudContext<ClienteModel> clienteContext = (ClienteContext)transaction.StartTransaction<ClienteModel>();
 
-            foreach(ClienteModel cliente in await ClienteDb.VerTodosClientes()) 
+            foreach(ClienteModel cliente in await clienteContext.ReadAllAsync()) 
                 sugestaoCliente.Add(cliente.nomeCompleto);
 
             txtBuscarExcluirCliente.AutoCompleteCustomSource = sugestaoCliente;
@@ -50,11 +49,14 @@ namespace ProjectBook.GUI
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            
+            IContextTransaction transaction = Globals.databaseController.GetTransactionContext();
+            ClienteContext clienteContext = (ClienteContext)transaction.StartTransaction<ClienteModel>();
 
             if (rabBsucarIdCliente.Checked) 
-                clienteInfo = await ClienteDb.BuscarClienteId(int.Parse(termoBusca));
+                clienteInfo = clienteContext.ReadById(int.Parse(termoBusca));
             else if (rabBuscarNome.Checked) 
-                clienteInfo = (await ClienteDb.BuscarClienteNome(termoBusca)).First();
+                clienteInfo = (await clienteContext.SearchClienteNome(termoBusca)).First();
             
             if (Verificadores.VerificarCamposCliente(clienteInfo))
             {
@@ -68,9 +70,11 @@ namespace ProjectBook.GUI
                 Resources.Excluir_MessageBox, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
             if (resultadoExcluir != DialogResult.Yes) return;
+
+            if (rabBuscarNome.Checked) clienteContext.DeleteByClienteNome(clienteInfo.nomeCompleto);
+            else if (rabBsucarIdCliente.Checked) clienteContext.DeleteById(clienteInfo.id);
             
-            if (rabBuscarNome.Checked) ClienteDb.DeletarClienteNome(clienteInfo.nomeCompleto);
-            else if (rabBsucarIdCliente.Checked) ClienteDb.DeletarClienteId(clienteInfo.id);
+            await transaction.EndTransactionAsync();
             
             MessageBox.Show(Resources.ClienteExcluido, Resources.Informacao_MessageBox, MessageBoxButtons.OK);
             

@@ -1,8 +1,7 @@
-﻿using ProjectBook.DB.SqlServerExpress;
-using System;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
+using ProjectBook.DB;
+using ProjectBook.DB.Models;
 using ProjectBook.Properties;
-using ProjectBook.AppInsight;
 using ProjectBook.Model;
 
 namespace ProjectBook.GUI
@@ -12,13 +11,14 @@ namespace ProjectBook.GUI
         public ExcluirUsuario()
         {
             InitializeComponent();
-
-            Load += (_, _) => AppInsightMetrics.TrackForm("ExcluirUsuario");
         }
 
-        private async void btnPesquisarExcluirUsuario_Click(object sender, EventArgs e)
+        private void btnPesquisarExcluirUsuario_Click(object sender, EventArgs e)
         {
-            UsuarioModel infoUsuario = await UsuarioDb.BuscarUsuarioId(int.Parse(txtCodigoDeletarUsuario.Text));
+            IContextTransaction transaction = Globals.databaseController.GetTransactionContext();
+            ICrudContext<UsuarioModel> usuariosContext = (UsuariosContext)transaction.StartTransaction<UsuarioModel>();
+            
+            UsuarioModel infoUsuario = usuariosContext.ReadById(int.Parse(txtCodigoDeletarUsuario.Text));
 
             if (Verificadores.VerificarCamposUsuario(infoUsuario))
             {
@@ -41,7 +41,10 @@ namespace ProjectBook.GUI
                 if(dialogResult != DialogResult.Yes) return;
             }
 
-            UsuarioDb.DeletarUsuarioId(int.Parse(txtCodigoDeletarUsuario.Text));
+            usuariosContext.DeleteById(int.Parse(txtCodigoDeletarUsuario.Text));
+            
+            transaction.EndTransaction();
+            
             LimparCampos();
         }
 

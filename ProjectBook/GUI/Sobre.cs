@@ -13,7 +13,7 @@ namespace ProjectBook.GUI
             InitializeComponent();
         }
 
-        private void Sobre_Load(object sender, System.EventArgs e)
+        private void Sobre_Load(object sender, EventArgs e)
         {
             PrivateFontCollection privateFont = new();
             privateFont.AddFontFile(Consts.FONT_MONTSERRAT_EXTRABOLD);

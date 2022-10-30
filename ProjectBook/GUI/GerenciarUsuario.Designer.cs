@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel;
-using ProjectBook.Tipos;
+using ProjectBook.Model.Enums;
 
 namespace ProjectBook.GUI
 {

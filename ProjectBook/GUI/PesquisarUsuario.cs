@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Windows.Forms;
-using ProjectBook.DB.SqlServerExpress;
+﻿using System.Windows.Forms;
+using ProjectBook.DB;
+using ProjectBook.DB.Models;
 using ProjectBook.Properties;
-using ProjectBook.AppInsight;
 using ProjectBook.Model;
 
 namespace ProjectBook.GUI
@@ -19,17 +17,21 @@ namespace ProjectBook.GUI
                 #region MenuClick
                 mnuVerAdm.Click += async (_, _) =>
                 {
-                    ListaPesquisa<UsuarioModel> listaPesquisa = new(await UsuarioDb.PegarTodosAdm());
+                    IContextTransaction transaction = Globals.databaseController.GetTransactionContext();
+                    UsuariosContext usuariosContext = (UsuariosContext)transaction.StartTransaction<UsuarioModel>();
+                    
+                    ListaPesquisa<UsuarioModel> listaPesquisa = new(await usuariosContext.GetAllAdms());
                     listaPesquisa.Show();
                 };
                 mnuVerUsuarios.Click += async (_, _) =>
                 {
-                    ListaPesquisa<UsuarioModel> listaPesquisa = new(await UsuarioDb.PegarTodosUsu());
+                    IContextTransaction transaction = Globals.databaseController.GetTransactionContext();
+                    UsuariosContext usuariosContext = (UsuariosContext)transaction.StartTransaction<UsuarioModel>();
+                    
+                    ListaPesquisa<UsuarioModel> listaPesquisa = new(await usuariosContext.GetAllUsu());
                     listaPesquisa.Show();
                 };
                 #endregion
-                
-                AppInsightMetrics.TrackForm("PesquisarUsuario");  
             };
         }
 
@@ -44,9 +46,11 @@ namespace ProjectBook.GUI
             }
 
             List<UsuarioModel> infoUsuario = new();
-            
-            if (rabCodigoUsuario.Checked) infoUsuario.Add(await UsuarioDb.BuscarUsuarioId(int.Parse(txtNomeUsuarioBusca.Text)));
-            else if (rabUsuarioNome.Checked) infoUsuario = await UsuarioDb.BuscarUsuarioNome(txtNomeUsuarioBusca.Text);
+            IContextTransaction transaction = Globals.databaseController.GetTransactionContext();
+            UsuariosContext usuariosContext = (UsuariosContext)transaction.StartTransaction<UsuarioModel>();
+
+            if (rabCodigoUsuario.Checked) infoUsuario.Add(usuariosContext.ReadById(int.Parse(txtNomeUsuarioBusca.Text)));
+            else if (rabUsuarioNome.Checked) infoUsuario = await usuariosContext.SearchUsuarioNome(txtNomeUsuarioBusca.Text);
 
             ListaPesquisa<UsuarioModel> lista = new(infoUsuario);
             lista.Show();

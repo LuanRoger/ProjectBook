@@ -1,19 +1,17 @@
-﻿using System;
-using System.Linq;
-using System.Windows.Forms;
-using ProjectBook.AppInsight;
-using ProjectBook.DB.SqlServerExpress;
+﻿using System.Windows.Forms;
+using ProjectBook.DB;
+using ProjectBook.DB.Models;
 using ProjectBook.Model;
+using ProjectBook.Model.Enums;
 using ProjectBook.Properties;
-using ProjectBook.Tipos;
 
 namespace ProjectBook.GUI
 {
     public partial class EditarAluguel : Form
     {
-        private AluguelModel infoAluguelAntigo;
-        private LivroModel infoLivro = new();
-        private ClienteModel infoCliente = new();
+        private AluguelModel? infoAluguelAntigo;
+        private LivroModel? infoLivro;
+        private ClienteModel? infoCliente;
 
         public EditarAluguel()
         {
@@ -21,20 +19,28 @@ namespace ProjectBook.GUI
 
             btnVerTodosAlugueis.Click += async delegate
             {
-                ListaPesquisa<AluguelModel> listaPesquisa = new(await AluguelDb.VerTodosAluguel());
+                IContextTransaction transaction = Globals.databaseController.GetTransactionContext();
+                ICrudContext<AluguelModel> aluguelContext = (AluguelContext)transaction.StartTransaction<AluguelModel>();
+                
+                ListaPesquisa<AluguelModel> listaPesquisa = new(await aluguelContext.ReadAllAsync());
                 listaPesquisa.Show();
             };
             btnVerTodosLivros.Click += async delegate
             {
-                ListaPesquisa<LivroModel> listaPesquisa = new(await LivrosDb.VerTodosLivros());
+                IContextTransaction transaction = Globals.databaseController.GetTransactionContext();
+                ICrudContext<LivroModel> livrosContext = (LivrosContext)transaction.StartTransaction<LivroModel>();
+                
+                ListaPesquisa<LivroModel> listaPesquisa = new(await livrosContext.ReadAllAsync());
                 listaPesquisa.Show();
             };
             btnVerTodosClientes.Click += async delegate
             {
-                ListaPesquisa<ClienteModel> listaPesquisa = new(await ClienteDb.VerTodosClientes());
+                IContextTransaction transaction = Globals.databaseController.GetTransactionContext();
+                ICrudContext<ClienteModel> clienteContext = (ClienteContext)transaction.StartTransaction<ClienteModel>();
+                
+                ListaPesquisa<ClienteModel> listaPesquisa = new(await clienteContext.ReadAllAsync());
                 listaPesquisa.Show();
             };
-            Load += (_, _) => AppInsightMetrics.TrackForm("EditarAluguel");
         }
 
         #region CheckedChanged & Sugestões
@@ -42,7 +48,10 @@ namespace ProjectBook.GUI
         {
             AutoCompleteStringCollection aluguelSugestao = new();
             
-            foreach (AluguelModel aluguel in await AluguelDb.VerTodosAluguel()) 
+            IContextTransaction transaction = Globals.databaseController.GetTransactionContext();
+            ICrudContext<AluguelModel> aluguelContext = (AluguelContext)transaction.StartTransaction<AluguelModel>();
+            
+            foreach (AluguelModel aluguel in await aluguelContext.ReadAllAsync()) 
                 aluguelSugestao.Add($"{aluguel.alugadoPor} - {aluguel.titulo}");
             
             txtBuscarAluguel.AutoCompleteCustomSource = aluguelSugestao;
@@ -50,7 +59,11 @@ namespace ProjectBook.GUI
         private async void rabBuscarTituloLivro_CheckedChanged(object sender, EventArgs e)
         {
             AutoCompleteStringCollection aluguelSugestao = new();
-            foreach (AluguelModel aluguel in await AluguelDb.VerTodosAluguel()) 
+            
+            IContextTransaction transaction = Globals.databaseController.GetTransactionContext();
+            ICrudContext<AluguelModel> aluguelContext = (AluguelContext)transaction.StartTransaction<AluguelModel>();
+            
+            foreach (AluguelModel aluguel in await aluguelContext.ReadAllAsync()) 
                 aluguelSugestao.Add($"{aluguel.titulo} - {aluguel.alugadoPor}");
             
             txtBuscarAluguel.AutoCompleteCustomSource = aluguelSugestao;
@@ -63,8 +76,11 @@ namespace ProjectBook.GUI
         {
             AutoCompleteStringCollection livrosSugestao = new();
             txtMudarLivroAluguel.AutoCompleteMode = AutoCompleteMode.Suggest;
+            
+            IContextTransaction transaction = Globals.databaseController.GetTransactionContext();
+            ICrudContext<LivroModel> livrosContext = (LivrosContext)transaction.StartTransaction<LivroModel>();
 
-            foreach (LivroModel livro in await LivrosDb.VerTodosLivros()) 
+            foreach (LivroModel livro in await livrosContext.ReadAllAsync()) 
                 livrosSugestao.Add(livro.titulo);
             
             txtMudarLivroAluguel.AutoCompleteCustomSource = livrosSugestao;
@@ -73,8 +89,11 @@ namespace ProjectBook.GUI
         {
             AutoCompleteStringCollection livrosSugestao = new();
             txtMudarLivroAluguel.AutoCompleteMode = AutoCompleteMode.Suggest;
+            
+            IContextTransaction transaction = Globals.databaseController.GetTransactionContext();
+            ICrudContext<LivroModel> livrosContext = (LivrosContext)transaction.StartTransaction<LivroModel>();
 
-            foreach (LivroModel livro in await LivrosDb.VerTodosLivros()) 
+            foreach (LivroModel livro in await livrosContext.ReadAllAsync()) 
                 livrosSugestao.Add(livro.autor);
             
             txtMudarLivroAluguel.AutoCompleteCustomSource = livrosSugestao;
@@ -87,8 +106,11 @@ namespace ProjectBook.GUI
         {
             AutoCompleteStringCollection clienteSugestao = new();
             txtMudarClienteAluguel.AutoCompleteMode = AutoCompleteMode.Suggest;
+            
+            IContextTransaction transaction = Globals.databaseController.GetTransactionContext();
+            ICrudContext<ClienteModel> clienteContext = (ClienteContext)transaction.StartTransaction<ClienteModel>();
 
-            foreach (ClienteModel cliente in await ClienteDb.VerTodosClientes()) 
+            foreach (ClienteModel cliente in await clienteContext.ReadAllAsync()) 
                 clienteSugestao.Add(cliente.nomeCompleto);
             
             txtMudarClienteAluguel.AutoCompleteCustomSource = clienteSugestao;
@@ -106,25 +128,30 @@ namespace ProjectBook.GUI
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            
+            IContextTransaction transaction = Globals.databaseController.GetTransactionContext();
+            AluguelContext aluguelContext = (AluguelContext)transaction.StartTransaction<AluguelModel>();
+            ClienteContext clienteContext = (ClienteContext)transaction.StartTransaction<ClienteModel>();
+            LivrosContext livrosContext = (LivrosContext)transaction.StartTransaction<LivroModel>();
 
             if (buscarEditarAluguel.Length == 1)
             {
                 if (rabBuscarNomeCliente.Checked)
-                    infoAluguel = (await AluguelDb.BuscarAluguelCliente(buscarEditarAluguel[0])).First();
+                    infoAluguel = (await aluguelContext.SearchAluguelCliente(buscarEditarAluguel[0])).First();
                 else if (rabBuscarTituloLivro.Checked)
-                    infoAluguel = (await AluguelDb.BuscarAluguelLivro(buscarEditarAluguel[0])).First();
+                    infoAluguel = (await aluguelContext.SearchAluguelLivro(buscarEditarAluguel[0])).First();
                 
-                infoLivro = (await LivrosDb.BuscarLivrosTitulo(infoAluguel.titulo)).First();
-                infoCliente = (await ClienteDb.BuscarClienteNome(infoAluguel.alugadoPor)).First();
+                infoLivro = (await livrosContext.SearchLivrosTitulo(infoAluguel.titulo)).First();
+                infoCliente = (await clienteContext.SearchClienteNome(infoAluguel.alugadoPor)).First();
             }
             else
             {
                 string titulo = rabBuscarTituloLivro.Checked ? buscarEditarAluguel[0] : buscarEditarAluguel[1];
                 string nomeCliente = rabBuscarNomeCliente.Checked ? buscarEditarAluguel[0] : buscarEditarAluguel[2];
 
-                infoAluguel = (await AluguelDb.BuscarAluguelLivroCliente(titulo, nomeCliente)).First();
-                infoLivro = (await LivrosDb.BuscarLivrosTitulo(titulo)).First();
-                infoCliente = (await ClienteDb.BuscarClienteNome(nomeCliente)).First();
+                infoAluguel = (await aluguelContext.SearchAluguelLivroCliente(titulo, nomeCliente)).First();
+                infoLivro = (await livrosContext.SearchLivrosTitulo(titulo)).First();
+                infoCliente = (await clienteContext.SearchClienteNome(nomeCliente)).First();
             }
 
             if(Verificadores.VerificarCamposAluguel(infoAluguel))
@@ -144,18 +171,21 @@ namespace ProjectBook.GUI
         {
             string buscarLivro = txtMudarLivroAluguel.Text;
 
-            if (Verificadores.VerificarStrings(buscarLivro) || infoAluguelAntigo == null)
+            if (infoAluguelAntigo == null || Verificadores.VerificarStrings(buscarLivro))
             {
                 MessageBox.Show(Resources.PesquiseParaContinuar, Resources.Error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            
+            IContextTransaction transaction = Globals.databaseController.GetTransactionContext();
+            LivrosContext livrosContext = (LivrosContext)transaction.StartTransaction<LivroModel>();
 
             if (rabBuscarNovoLivroCodigo.Checked) 
-                infoLivro = await LivrosDb.BuscarLivrosId(int.Parse(buscarLivro));
+                infoLivro = livrosContext.ReadById(int.Parse(buscarLivro));
             else if (rabBuscarNovoLivroTitulo.Checked) 
-                infoLivro = (await LivrosDb.BuscarLivrosTitulo(buscarLivro)).First();
-            else infoLivro = (await LivrosDb.BuscarLivrosAutor(buscarLivro)).First();
+                infoLivro = (await livrosContext.SearchLivrosTitulo(buscarLivro)).First();
+            else infoLivro = (await livrosContext.SearchLivrosAutor(buscarLivro)).First();
 
             if(Verificadores.VerificarCamposLivros(infoLivro))
             {
@@ -176,10 +206,13 @@ namespace ProjectBook.GUI
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
+            
+            IContextTransaction transaction = Globals.databaseController.GetTransactionContext();
+            ClienteContext clienteContext = (ClienteContext)transaction.StartTransaction<ClienteModel>();
+            
             infoCliente = rabBuscarNovoClienteCodigo.Checked ?
-                await ClienteDb.BuscarClienteId(int.Parse(buscarCliete)) : 
-                (await ClienteDb.BuscarClienteNome(buscarCliete)).First();
+                clienteContext.ReadById(int.Parse(buscarCliete)) : 
+                (await clienteContext.SearchClienteNome(buscarCliete)).First();
 
             if(Verificadores.VerificarCamposCliente(infoCliente))
             {
@@ -209,9 +242,14 @@ namespace ProjectBook.GUI
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
-            AluguelDb.AtualizarAluguelNomeCliente(aluguel, infoAluguelAntigo.titulo,
+            
+            IContextTransaction transaction = Globals.databaseController.GetTransactionContext();
+            AluguelContext aluguelContext = (AluguelContext)transaction.StartTransaction<AluguelModel>();
+            
+            aluguelContext.UpdateByNomeCliente(aluguel, infoAluguelAntigo.titulo,
                     infoAluguelAntigo.alugadoPor);
+            
+            transaction.EndTransaction();
             
             MessageBox.Show(Resources.InformacoesAtualizadas_MessageBox, Resources.Concluido_MessageBox, MessageBoxButtons.OK,
                 MessageBoxIcon.Information);

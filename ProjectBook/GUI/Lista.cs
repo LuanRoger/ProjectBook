@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Drawing;
+﻿using System.Drawing;
 using System.Drawing.Text;
 using System.Windows.Forms;
 using ProjectBook.Properties;
 using ClosedXML.Excel;
-using ProjectBook.AppInsight;
-using System.Threading.Tasks;
 using ProjectBook.Util.Extensions;
 
 namespace ProjectBook.GUI
@@ -28,7 +23,7 @@ namespace ProjectBook.GUI
 
                 if(!Verificadores.VerificarDataGrid(dgvLista))
                 {
-                    Imprimir imprimir = new();
+                    Imprimir.Imprimir imprimir = new();
                     await imprimir.ImprimirModelo(dgvLista);
                 }
 
@@ -47,8 +42,6 @@ namespace ProjectBook.GUI
 
         private async void ListaPesquisa_Load(object sender, EventArgs e)
         {
-            AppInsightMetrics.TrackForm("Lista");
-            
             SetFonts();
             
             dgvLista.DataSource = await dataList.ToDataTableAsync();

@@ -1,17 +1,14 @@
-﻿using System;
-using System.Linq;
-using System.Windows.Forms;
-using ProjectBook.AppInsight;
-using ProjectBook.DB.SqlServerExpress;
+﻿using System.Windows.Forms;
+using ProjectBook.DB;
+using ProjectBook.DB.Models;
 using ProjectBook.Properties;
-using ProjectBook.Managers.Configuration;
 using ProjectBook.Model;
 
 namespace ProjectBook.GUI
 {
     public partial class EditarCliente : Form
     {
-        private ClienteModel infoCliente;
+        private ClienteModel? infoCliente;
 
         public EditarCliente()
         {
@@ -19,7 +16,10 @@ namespace ProjectBook.GUI
 
             btnVerClientes.Click += async delegate
             {
-                ListaPesquisa<ClienteModel> listaPesquisa = new(await ClienteDb.VerTodosClientes());
+                IContextTransaction transaction = Globals.databaseController.GetTransactionContext();
+                ICrudContext<ClienteModel> clienteContext = (ClienteContext)transaction.StartTransaction<ClienteModel>();
+                
+                ListaPesquisa<ClienteModel> listaPesquisa = new(await clienteContext.ReadAllAsync());
                 listaPesquisa.Show();
             };
             btnPesquisarCliente.Click += delegate
@@ -27,7 +27,6 @@ namespace ProjectBook.GUI
                 PesquisarCliente pesquisarCliente = new();
                 pesquisarCliente.Show();
             };
-            Load += (_, _) => AppInsightMetrics.TrackForm("EditarCliente");
         }
 
         #region CheckedChanged
@@ -39,7 +38,10 @@ namespace ProjectBook.GUI
             txtBuscarClienteEditar.AutoCompleteMode = AutoCompleteMode.Suggest;
             AutoCompleteStringCollection autoCompleteStringCollection = new();
             
-            foreach (ClienteModel cliente in await ClienteDb.VerTodosClientes()) 
+            IContextTransaction transaction = Globals.databaseController.GetTransactionContext();
+            ICrudContext<ClienteModel> clienteContext = (ClienteContext)transaction.StartTransaction<ClienteModel>();
+            
+            foreach (ClienteModel cliente in await clienteContext.ReadAllAsync()) 
                 autoCompleteStringCollection.Add(cliente.nomeCompleto);
             
             txtBuscarClienteEditar.AutoCompleteCustomSource = autoCompleteStringCollection;
@@ -63,13 +65,16 @@ namespace ProjectBook.GUI
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
+            
+            IContextTransaction transaction = Globals.databaseController.GetTransactionContext();
+            ClienteContext clienteContext = (ClienteContext)transaction.StartTransaction<ClienteModel>();
+            
             if (rabBuscarClienteId.Checked) infoCliente = 
-                await ClienteDb.BuscarClienteId(int.Parse(termoBuscaCliente));
+                clienteContext.ReadById(int.Parse(termoBuscaCliente));
             else if (rabBuscarClienteNome.Checked) infoCliente = 
-                (await ClienteDb.BuscarClienteNome(termoBuscaCliente)).First();
+                (await clienteContext.SearchClienteNome(termoBuscaCliente)).First();
 
-            if (Verificadores.VerificarCamposCliente(infoCliente))
+            if (infoCliente is null || Verificadores.VerificarCamposCliente(infoCliente))
             {
                 MessageBox.Show(Resources.ClienteNaoExiste, Resources.Error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -80,54 +85,50 @@ namespace ProjectBook.GUI
         }
         private void btnSalvarEditarCliente_Click(object sender, EventArgs e)
         {
-            ClienteModel cliente;
-            //Aplicar a formatação na instânciação do cliente
-            if (AppConfigurationManager.configuration.formating.FormatClient)
+            ClienteModel cliente = Globals.configurationController.configuration.formating.FormatClient ? 
+                new()
             {
-                cliente = new()
-                {
-                    nomeCompleto = txtNovoNome.Text.ToUpper(),
-                    endereco = txtNovoEndereco.Text.ToUpper(),
-                    cidade = txtNovoCidade.Text.ToUpper(),
-                    estado = cmbNovoUf.Text.ToUpper(),
-                    cep = txtNovoCep.Text.ToUpper(),
-                    dataNascimento = dtpNovaDataNascimento.Value.Date,
-                    profissao = txtNovoProfissao.Text.ToUpper(),
-                    empresa = txtNovoEmpressa.Text.ToUpper(),
-                    telefone1 = txtNovoTelefone1.Text.ToUpper(),
-                    telefone2 = txtNovoTelefone2.Text.ToUpper(),
-                    email = txtNovoEmail.Text,
-                    observacoes = txtNovoObservacoes.Text.ToUpper()
-                };
-                
-            }
-            else
+                nomeCompleto = txtNovoNome.Text.ToUpper(),
+                endereco = txtNovoEndereco.Text.ToUpper(),
+                cidade = txtNovoCidade.Text.ToUpper(),
+                estado = cmbNovoUf.Text.ToUpper(),
+                cep = txtNovoCep.Text.ToUpper(),
+                dataNascimento = dtpNovaDataNascimento.Value.Date,
+                profissao = txtNovoProfissao.Text.ToUpper(),
+                empresa = txtNovoEmpressa.Text.ToUpper(),
+                telefone1 = txtNovoTelefone1.Text.ToUpper(),
+                telefone2 = txtNovoTelefone2.Text.ToUpper(),
+                email = txtNovoEmail.Text,
+                observacoes = txtNovoObservacoes.Text.ToUpper()
+            } : new()
             {
-                cliente = new()
-                {
-                    nomeCompleto = txtNovoNome.Text,
-                    endereco = txtNovoEndereco.Text,
-                    cidade = txtNovoCidade.Text,
-                    estado = cmbNovoUf.Text,
-                    cep = txtNovoCep.Text,
-                    dataNascimento = dtpNovaDataNascimento.Value.Date,
-                    profissao = txtNovoProfissao.Text,
-                    empresa = txtNovoEmpressa.Text,
-                    telefone1 = txtNovoTelefone1.Text,
-                    telefone2 = txtNovoTelefone2.Text,
-                    email = txtNovoEmail.Text,
-                    observacoes = txtNovoObservacoes.Text
-                };
-            }
+                nomeCompleto = txtNovoNome.Text,
+                endereco = txtNovoEndereco.Text,
+                cidade = txtNovoCidade.Text,
+                estado = cmbNovoUf.Text,
+                cep = txtNovoCep.Text,
+                dataNascimento = dtpNovaDataNascimento.Value.Date,
+                profissao = txtNovoProfissao.Text,
+                empresa = txtNovoEmpressa.Text,
+                telefone1 = txtNovoTelefone1.Text,
+                telefone2 = txtNovoTelefone2.Text,
+                email = txtNovoEmail.Text,
+                observacoes = txtNovoObservacoes.Text
+            };
 
-            if (Verificadores.VerificarCamposCliente(cliente) || Verificadores.VerificarCamposCliente(infoCliente))
+            if (infoCliente is null || Verificadores.VerificarCamposCliente(cliente) || Verificadores.VerificarCamposCliente(infoCliente))
             {
                 MessageBox.Show(Resources.PesquiseParaContinuar, Resources.Error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
-            ClienteDb.AtualizarClienteId(infoCliente.id, cliente);
+            
+            IContextTransaction transaction = Globals.databaseController.GetTransactionContext();
+            ClienteContext clienteContext = (ClienteContext)transaction.StartTransaction<ClienteModel>();
+            
+            clienteContext.UpdateById(infoCliente.id, cliente);
+            
+            transaction.EndTransaction();
             
             MessageBox.Show(Resources.InformacoesAtualizadas_MessageBox, Resources.Concluido_MessageBox, MessageBoxButtons.OK,
                 MessageBoxIcon.Information);

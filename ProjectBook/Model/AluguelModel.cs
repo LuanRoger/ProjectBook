@@ -1,7 +1,6 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using ProjectBook.Tipos;
+using ProjectBook.Model.Enums;
 
 namespace ProjectBook.Model
 {

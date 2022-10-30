@@ -1,11 +1,9 @@
-﻿using System;
-using System.Linq;
-using System.Windows.Forms;
-using ProjectBook.DB.SqlServerExpress;
-using ProjectBook.Tipos;
+﻿using System.Windows.Forms;
+using ProjectBook.DB;
+using ProjectBook.DB.Models;
 using ProjectBook.Properties;
-using ProjectBook.AppInsight;
 using ProjectBook.Model;
+using ProjectBook.Model.Enums;
 
 namespace ProjectBook.GUI
 {
@@ -20,22 +18,26 @@ namespace ProjectBook.GUI
                 #region MenuClick
                 mnuVerLivroAlugado.Click += async (_, _) =>
                 {
-                    ListaPesquisa<AluguelModel> lista = new(await AluguelDb.PegarLivrosAlugados());
+                    IContextTransaction transaction = Globals.databaseController.GetTransactionContext();
+                    AluguelContext aluguelContext = (AluguelContext)transaction.StartTransaction<AluguelModel>();
+                    ListaPesquisa<AluguelModel> lista = new(await aluguelContext.ReadLivrosAlugados());
                     lista.Show();
                 };
                 mnuVerLivrosAtasados.Click += async (_, _) =>
                 {
-                    ListaPesquisa<AluguelModel> lista = new(await AluguelDb.PegarLivroAtrassado());
+                    IContextTransaction transaction = Globals.databaseController.GetTransactionContext();
+                    AluguelContext aluguelContext = (AluguelContext)transaction.StartTransaction<AluguelModel>();
+                    ListaPesquisa<AluguelModel> lista = new(await aluguelContext.ReadLivroAtrassado());
                     lista.Show();
                 };
                 mnuVerLivrosDevolvidos.Click += async (_, _) =>
                 {
-                    ListaPesquisa<AluguelModel> lista = new(await AluguelDb.PegarLivroDevolvido());
+                    IContextTransaction transaction = Globals.databaseController.GetTransactionContext();
+                    AluguelContext aluguelContext = (AluguelContext)transaction.StartTransaction<AluguelModel>();
+                    ListaPesquisa<AluguelModel> lista = new(await aluguelContext.ReadLivroDevolvido());
                     lista.Show();
                 };
                 #endregion
-                
-                AppInsightMetrics.TrackForm("PesquisarAluguel");
             };
         }
 
@@ -43,14 +45,23 @@ namespace ProjectBook.GUI
         private async void rabTituloLivro_CheckedChanged(object sender, EventArgs e)
         {
             AutoCompleteStringCollection aluguelSugestao = new();
-            foreach (AluguelModel aluguel in await AluguelDb.VerTodosAluguel()) 
+            
+            IContextTransaction transaction = Globals.databaseController.GetTransactionContext();
+            AluguelContext aluguelContext = (AluguelContext)transaction.StartTransaction<AluguelModel>();
+            
+            foreach (AluguelModel aluguel in await aluguelContext.ReadAllAsync()) 
                 aluguelSugestao.Add($"{aluguel.titulo} - {aluguel.alugadoPor}");
+            
             txtBuscarAluguel.AutoCompleteCustomSource = aluguelSugestao;
         }
         private async void rabNomeCliente_CheckedChanged(object sender, EventArgs e)
         {
             AutoCompleteStringCollection aluguelSugestao = new();
-            foreach (AluguelModel aluguel in await AluguelDb.VerTodosAluguel()) 
+            
+            IContextTransaction transaction = Globals.databaseController.GetTransactionContext();
+            AluguelContext aluguelContext = (AluguelContext)transaction.StartTransaction<AluguelModel>();
+            
+            foreach (AluguelModel aluguel in await aluguelContext.ReadAllAsync()) 
                 aluguelSugestao.Add($"{aluguel.alugadoPor} - {aluguel.titulo}");
             
             txtBuscarAluguel.AutoCompleteCustomSource = aluguelSugestao;
@@ -69,17 +80,19 @@ namespace ProjectBook.GUI
                 return;
             }
             
+            IContextTransaction transaction = Globals.databaseController.GetTransactionContext();
+            AluguelContext aluguelContext = (AluguelContext)transaction.StartTransaction<AluguelModel>();
             if(termoBusca.Length == 1)
             {
-                if (rabNomeCliente.Checked) aluguel = (await AluguelDb.BuscarAluguelCliente(termoBusca[0].Trim())).First();
-                else if (rabTituloLivro.Checked) aluguel = (await AluguelDb.BuscarAluguelLivro(termoBusca[0].Trim())).First();
+                if (rabNomeCliente.Checked) aluguel = (await aluguelContext.SearchAluguelCliente(termoBusca[0].Trim())).First();
+                else if (rabTituloLivro.Checked) aluguel = (await aluguelContext.SearchAluguelLivro(termoBusca[0].Trim())).First();
             }
             else
             {
                 string titulo = rabTituloLivro.Checked ? termoBusca[0] : termoBusca[1];
                 string nomeCliente = rabNomeCliente.Checked ? termoBusca[0] : termoBusca[1];
 
-                aluguel = (await AluguelDb.BuscarAluguelLivroCliente(titulo, nomeCliente)).First();
+                aluguel = (await aluguelContext.SearchAluguelLivroCliente(titulo, nomeCliente)).First();
             }
 
             if(Verificadores.VerificarCamposAluguel(aluguel))
@@ -91,6 +104,7 @@ namespace ProjectBook.GUI
 
             PreencherCampos(aluguel);
         }
+        
         private async void btnVerEmRelatorio_Click(object sender, EventArgs e)
         {
             string[] termoBusca = txtBuscarAluguel.Text.Split("-");
@@ -102,18 +116,17 @@ namespace ProjectBook.GUI
                 return;
             }
 
-            ListaPesquisa<AluguelModel> lista;
-
+            ListaPesquisa<AluguelModel>? lista = null;
+            IContextTransaction transaction = Globals.databaseController.GetTransactionContext();
+            AluguelContext aluguelContext = (AluguelContext)transaction.StartTransaction<AluguelModel>();
+            
             if (rabNomeCliente.Checked)
-            {
-                lista = new(await AluguelDb.BuscarAluguelCliente(termoBusca[0].Trim()));
-                lista.Show();
-            }
+                lista = new(await aluguelContext.SearchAluguelCliente(termoBusca[0].Trim()));
+
             else if (rabTituloLivro.Checked)
-            {
-                lista = new(await AluguelDb.BuscarAluguelLivro(termoBusca[0].Trim()));
-                lista.Show();
-            }
+                lista = new(await aluguelContext.SearchAluguelCliente(termoBusca[0].Trim()));
+
+            lista?.Show();
 
             LimparCampos();
         }

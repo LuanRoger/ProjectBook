@@ -1,4 +1,4 @@
-﻿namespace ProjectBook.Managers.Configuration.Sections
+﻿namespace ProjectBook.Model.Configuration.Sections
 {
     public class LoginPreferencesSection
     {

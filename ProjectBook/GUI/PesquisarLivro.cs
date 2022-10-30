@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Windows.Forms;
-using ProjectBook.AppInsight;
-using ProjectBook.DB.SqlServerExpress;
+﻿using System.Windows.Forms;
+using ProjectBook.DB;
+using ProjectBook.DB.Models;
 using ProjectBook.Model;
 
 namespace ProjectBook.GUI
@@ -12,8 +10,6 @@ namespace ProjectBook.GUI
         public PesquisarLivro()
         {
             InitializeComponent();
-
-            Load += (_, _) => AppInsightMetrics.TrackForm("PesquisarLivro");
         }
 
         #region CheckedChanged
@@ -25,9 +21,12 @@ namespace ProjectBook.GUI
         {
             txtTermoPesquisa.Clear();
             txtTermoPesquisa.AutoCompleteMode = AutoCompleteMode.Suggest;
-
             AutoCompleteStringCollection autores = new();
-            foreach (LivroModel livro in await LivrosDb.VerTodosLivros()) 
+            
+            IContextTransaction transaction = Globals.databaseController.GetTransactionContext();
+            ICrudContext<LivroModel> livrosContext = (LivrosContext)transaction.StartTransaction<LivroModel>();
+            
+            foreach (LivroModel livro in await livrosContext.ReadAllAsync()) 
                 autores.Add(livro.autor);
             
             txtTermoPesquisa.AutoCompleteCustomSource = autores;
@@ -37,9 +36,12 @@ namespace ProjectBook.GUI
         {
             txtTermoPesquisa.AutoCompleteCustomSource.Clear();
             txtTermoPesquisa.AutoCompleteMode = AutoCompleteMode.Suggest;
-
+            
+            IContextTransaction transaction = Globals.databaseController.GetTransactionContext();
+            LivrosContext livrosContext = (LivrosContext)transaction.StartTransaction<LivroModel>();
+            
             AutoCompleteStringCollection generos = new();
-            foreach (string genero in await LivrosDb.PegarGeneros()) 
+            foreach (string genero in await livrosContext.GetGenres()) 
                 generos.Add(genero);
             
             txtTermoPesquisa.AutoCompleteCustomSource = generos;
@@ -51,11 +53,14 @@ namespace ProjectBook.GUI
             string termoPesquisa = txtTermoPesquisa.Text;
             
             List<LivroModel> resultadoPesquisa = new();
-
-            if (rabPesquisarId.Checked) resultadoPesquisa.Add(await LivrosDb.BuscarLivrosId(int.Parse(termoPesquisa)));
-            else if (rabPesquisarTitulo.Checked) resultadoPesquisa = await LivrosDb.BuscarLivrosTitulo(termoPesquisa);
-            else if (rabPesquisarAutor.Checked) resultadoPesquisa = await LivrosDb.BuscarLivrosAutor(termoPesquisa);
-            else if (rabPesquisarGenero.Checked) resultadoPesquisa = await LivrosDb.BuscarLivrosGenero(termoPesquisa);
+            
+            IContextTransaction transaction = Globals.databaseController.GetTransactionContext();
+            LivrosContext livrosContext = (LivrosContext)transaction.StartTransaction<LivroModel>();
+            
+            if (rabPesquisarId.Checked) resultadoPesquisa.Add(livrosContext.ReadById(int.Parse(termoPesquisa)));
+            else if (rabPesquisarTitulo.Checked) resultadoPesquisa = await livrosContext.SearchLivrosTitulo(termoPesquisa);
+            else if (rabPesquisarAutor.Checked) resultadoPesquisa = await livrosContext.SearchLivrosAutor(termoPesquisa);
+            else if (rabPesquisarGenero.Checked) resultadoPesquisa = await livrosContext.SearchLivrosGenero(termoPesquisa);
             else return;
 
             ListaPesquisa<LivroModel> listaPesquisa = new(resultadoPesquisa);

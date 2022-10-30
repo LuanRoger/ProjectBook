@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
+﻿using System.Drawing;
 using System.Windows.Forms;
-using ProjectBook.DB.SqlServerExpress;
+using ProjectBook.DB;
+using ProjectBook.DB.Models;
 using Color = System.Drawing.Color;
 using ProjectBook.Properties;
-using ProjectBook.AppInsight;
 using ProjectBook.Model;
 
 namespace ProjectBook.GUI
@@ -15,8 +13,6 @@ namespace ProjectBook.GUI
         public PesquisaRapida()
         {
             InitializeComponent();
-
-            Load += (_, _) => AppInsightMetrics.TrackForm("PesquisaRapida");
         }
 
         private void tableLayoutPanel1_CellPaint(object sender, TableLayoutCellPaintEventArgs e) =>
@@ -46,36 +42,40 @@ namespace ProjectBook.GUI
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            
+
             if(typeof(T) == typeof(LivroModel))
             {
-                ListaPesquisa<LivroModel> livroModels = new(null);
-                List<LivroModel> livroHolder = new();
-
+                List<LivroModel> results = new();
+                ListaPesquisa<LivroModel>? listForm = null;
+                IContextTransaction transaction = Globals.databaseController.GetTransactionContext();
+                LivrosContext livrosContext = (LivrosContext)transaction.StartTransaction<LivroModel>();
+                
                 if (rabLivroId.Checked)
                 {
-                    livroHolder.Add(await LivrosDb.BuscarLivrosId(int.Parse(termoPesquisa)));
-                    livroModels = new(livroHolder);
+                    results.Add(livrosContext.ReadById(int.Parse(termoPesquisa)));
+                    listForm = new(results);
                 }
-                else if (rabLivroNome.Checked) livroModels = new(await LivrosDb.BuscarLivrosTitulo(termoPesquisa));
+                else if (rabLivroNome.Checked) listForm = new(await livrosContext.SearchLivrosTitulo(termoPesquisa));
 
-                livroModels.Show();
-                livroModels.BringToFront();
+                listForm?.Show();
+                listForm?.BringToFront();
             }
             else
             {
-                ListaPesquisa<ClienteModel> clienteModels = new(null);
+                ListaPesquisa<ClienteModel>? clienteModels = null;
                 List<ClienteModel> clienteHolder = new();
+                IContextTransaction transaction = Globals.databaseController.GetTransactionContext();
+                ClienteContext clienteContext = (ClienteContext)transaction.StartTransaction<ClienteModel>();
 
                 if(rabClienteId.Checked)
                 {
-                    clienteHolder.Add(await ClienteDb.BuscarClienteId(int.Parse(termoPesquisa)));
+                    clienteHolder.Add(clienteContext.ReadById(int.Parse(termoPesquisa)));
                     clienteModels = new(clienteHolder);
                 }
-                else if(rabClienteNome.Checked) clienteModels = new(await ClienteDb.BuscarClienteNome(termoPesquisa));
+                else if(rabClienteNome.Checked) clienteModels = new(await clienteContext.SearchClienteNome(termoPesquisa));
                 
-                clienteModels.Show();
-                clienteModels.BringToFront();
+                clienteModels?.Show();
+                clienteModels?.BringToFront();
             }
         }
 
@@ -83,10 +83,12 @@ namespace ProjectBook.GUI
         private async void rabLivroNome_CheckedChanged(object sender, EventArgs e)
         {
             txtPesquisaRapida.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-
             txtPesquisaRapida.AutoCompleteCustomSource ??= new();
             
-            foreach (LivroModel livro in await LivrosDb.VerTodosLivros()) 
+            IContextTransaction transaction = Globals.databaseController.GetTransactionContext();
+            LivrosContext livrosContext = (LivrosContext)transaction.StartTransaction<LivroModel>();
+            
+            foreach (LivroModel livro in await livrosContext.ReadAllAsync()) 
                 txtPesquisaRapida.Invoke(new MethodInvoker(delegate
                 {
                     txtPesquisaRapida.AutoCompleteCustomSource.Add(livro.titulo);
@@ -96,7 +98,10 @@ namespace ProjectBook.GUI
         {
             txtPesquisaRapida.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             
-            foreach (ClienteModel cliente in await ClienteDb.VerTodosClientes()) 
+            IContextTransaction transaction = Globals.databaseController.GetTransactionContext();
+            ICrudContext<ClienteModel> clienteContext = (ClienteContext)transaction.StartTransaction<ClienteModel>();
+            
+            foreach (ClienteModel cliente in await clienteContext.ReadAllAsync())
                 txtPesquisaRapida.Invoke(new MethodInvoker(delegate
                 {
                     txtPesquisaRapida.AutoCompleteCustomSource.Add(cliente.nomeCompleto);

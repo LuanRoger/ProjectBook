@@ -1,10 +1,7 @@
-﻿using System;
-using System.Linq;
-using System.Windows.Forms;
-using ProjectBook.AppInsight;
-using ProjectBook.DB.SqlServerExpress;
+﻿using System.Windows.Forms;
+using ProjectBook.DB;
+using ProjectBook.DB.Models;
 using ProjectBook.Model;
-using ProjectBook.Properties;
 using ProjectBook.Properties;
 
 namespace ProjectBook.GUI
@@ -14,8 +11,6 @@ namespace ProjectBook.GUI
         public ExcluirLivro()
         {
             InitializeComponent();
-
-            Load += (_, _) => AppInsightMetrics.TrackForm("ExcluirLivro");
         }
 
         #region CheckChange
@@ -24,8 +19,11 @@ namespace ProjectBook.GUI
         {
             AutoCompleteStringCollection sugestaoLivro = new();
             txtExcluirLivro.AutoCompleteMode = AutoCompleteMode.Suggest;
+            
+            IContextTransaction transaction = Globals.databaseController.GetTransactionContext();
+            ICrudContext<LivroModel> clienteContext = (LivrosContext)transaction.StartTransaction<LivroModel>();
 
-            foreach(LivroModel livro in await LivrosDb.VerTodosLivros()) 
+            foreach(LivroModel livro in await clienteContext.ReadAllAsync())
                 sugestaoLivro.Add(livro.titulo);
 
             txtExcluirLivro.AutoCompleteCustomSource = sugestaoLivro;
@@ -37,23 +35,21 @@ namespace ProjectBook.GUI
             string termoBusca = txtExcluirLivro.Text;
             LivroModel infoLivro = new();
             
-            if (Verificadores.VerificarStrings(termoBusca))
-            {
-                MessageBox.Show(Resources.PesquiseParaContinuar, Resources.Error_MessageBox,
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            if(!rabIdExcluirLivro.Checked && !rabExcluirTitulo.Checked)
+            if (Verificadores.VerificarStrings(termoBusca) || 
+                !rabIdExcluirLivro.Checked && !rabExcluirTitulo.Checked)
             {
                 MessageBox.Show(Resources.PesquiseParaContinuar, Resources.Error_MessageBox,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
+            IContextTransaction transaction = Globals.databaseController.GetTransactionContext();
+            LivrosContext livrosContext = (LivrosContext)transaction.StartTransaction<LivroModel>();
+            
             if (rabIdExcluirLivro.Checked) 
-                infoLivro = await LivrosDb.BuscarLivrosId(int.Parse(termoBusca));
+                infoLivro = livrosContext.ReadById(int.Parse(termoBusca));
             else if (rabExcluirTitulo.Checked) 
-                infoLivro = (await LivrosDb.BuscarLivrosTitulo(termoBusca)).First();
+                infoLivro = (await livrosContext.SearchLivrosTitulo(termoBusca)).First();
 
             if (Verificadores.VerificarCamposLivros(infoLivro))
             {
@@ -68,10 +64,12 @@ namespace ProjectBook.GUI
             
             if (resultadoExcluir != DialogResult.Yes) return;
             
-            if (rabIdExcluirLivro.Checked) LivrosDb.DeletarLivroId(int.Parse(termoBusca));
-            else if (rabExcluirTitulo.Checked) LivrosDb.DeletarLivroTitulo( termoBusca);
+            if (rabIdExcluirLivro.Checked) livrosContext.DeleteById(int.Parse(termoBusca));
+            else if (rabExcluirTitulo.Checked) livrosContext.DeleteLivroTitulo( termoBusca);
             
             MessageBox.Show(Resources.LivroExcluido, Resources.Informacao_MessageBox, MessageBoxButtons.OK);
+            
+            await transaction.EndTransactionAsync();
             
             txtExcluirLivro.Clear();
         }

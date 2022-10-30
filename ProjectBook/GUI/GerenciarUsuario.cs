@@ -1,10 +1,9 @@
-﻿using System;
-using System.Windows.Forms;
-using ProjectBook.AppInsight;
-using ProjectBook.DB.SqlServerExpress;
+﻿using System.Windows.Forms;
+using ProjectBook.DB;
+using ProjectBook.DB.Models;
 using ProjectBook.Model;
+using ProjectBook.Model.Enums;
 using ProjectBook.Properties;
-using ProjectBook.Tipos;
 
 namespace ProjectBook.GUI
 {
@@ -13,8 +12,6 @@ namespace ProjectBook.GUI
         public GerenciarUsuario()
         {
             InitializeComponent();
-
-            Load += (_, _) => AppInsightMetrics.TrackForm("GerenciarUsuario");
         }
 
         private void btnCadastrarUsuario_Click(object sender, EventArgs e)
@@ -33,7 +30,10 @@ namespace ProjectBook.GUI
                 return;
             }
             
-            UsuarioDb.CadastrarUsuario(usuario);
+            IContextTransaction transaction = Globals.databaseController.GetTransactionContext();
+            ICrudContext<UsuarioModel> usuariosContext = (UsuariosContext)transaction.StartTransaction<UsuarioModel>();
+            usuariosContext.Create(usuario);
+            transaction.EndTransaction();
             
             MessageBox.Show(Resources.UsuarioCadastrado, Resources.Concluido_MessageBox,
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -56,7 +56,10 @@ namespace ProjectBook.GUI
                 return;
             }
             
-            UsuarioDb.AtualizarUsuarioId(int.Parse(txtIdBuscarUsuario.Text), usuario);
+            IContextTransaction transaction = Globals.databaseController.GetTransactionContext();
+            ICrudContext<UsuarioModel> usuariosContext = (UsuariosContext)transaction.StartTransaction<UsuarioModel>();
+            usuariosContext.UpdateById(int.Parse(txtIdBuscarUsuario.Text), usuario);
+            transaction.EndTransaction();
             
             MessageBox.Show(Resources.InformacoesAtualizadas_MessageBox, Resources.Concluido_MessageBox,
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -64,11 +67,11 @@ namespace ProjectBook.GUI
             LimparCampos();
         }
 
-        private async void btnBuscarUsuario_Click(object sender, EventArgs e)
+        private void btnBuscarUsuario_Click(object sender, EventArgs e)
         {
-            txtIdBuscarUsuario.Enabled = false;
-
-            UsuarioModel infoUsuario = await UsuarioDb.BuscarUsuarioId(int.Parse(txtIdBuscarUsuario.Text));
+            IContextTransaction transaction = Globals.databaseController.GetTransactionContext();
+            ICrudContext<UsuarioModel> usuariosContext = (UsuariosContext)transaction.StartTransaction<UsuarioModel>();
+            UsuarioModel infoUsuario = usuariosContext.ReadById(int.Parse(txtIdBuscarUsuario.Text));
 
             if (Verificadores.VerificarCamposUsuario(infoUsuario))
             {
